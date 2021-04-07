@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro from "../Style";
+import WebIntro, { Header } from "../Style";
 
 export default function PaymentFail() {
 
@@ -125,28 +125,5 @@ export default function PaymentFail() {
                 </div>
             </Mobile>
         </>
-    )
-}
-
-export function Header({ content }) {
-    return (
-        <div style={{
-            width: "100%",
-            height: 56,
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            backgroundColor: "#ffffff",
-            borderBottom: "1px solid #dfdfdf",
-            justifyContent: "center",
-        }}>
-            <div style={{
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#051a1a",
-                alignSelf: "center",
-                justifyContent: "center",
-            }}>{content}</div>
-        </div>
     )
 }
