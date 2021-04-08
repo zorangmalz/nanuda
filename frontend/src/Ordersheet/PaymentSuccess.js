@@ -2,8 +2,7 @@ import React from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 
-export default function PaymentFail() {
-
+export default function PaymentSuccess() {
     return (
         <>
             <Default>
@@ -36,46 +35,50 @@ export default function PaymentFail() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="작성 실패" />
+                            <Header content="작성 완료" />
                             <div style={{
                                 width: 80,
                                 height: 80,
                                 borderRadius: 40,
                                 marginTop: 32,
-                                backgroundColor: "#f72b2b"
+                                backgroundColor: "#2dd9d3"
                             }}>
                             </div>
                             <div style={{
                                 marginTop: 32,
                                 fontSize: 21,
                                 fontWeight: "bold",
-                                color: "#f72b2b"
-                            }}>작성에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
+                                color: "#2dd9d3"
+                            }}>작성이 완료<span style={{ color: "#051a1a" }}>되었습니다!</span></div>
                             <div style={{
-                                fontSize: 16,
-                                color: "#051a1a",
-                                opacity: 0.6,
-                                marginTop: 16,
-                            }}>실패 사유 : Invalid Number</div>
-                            <div style={{
-                                borderRadius: 8,
                                 width: 440,
-                                height: 56,
-                                marginLeft: 20,
-                                marginRight: 20,
-                                marginTop: 32,
+                                paddingTop: 15,
+                                paddingBottom: 15,
                                 backgroundColor: "#2dd9d3",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                color: "#ffffff",
+                                borderRadius: 6,
+                                marginTop: 32,
+
+                                textAlign: "center",
                                 fontSize: 18,
                                 fontWeight: "bold",
-                            }}><div style={{
                                 color: "#ffffff",
+                                cursor: "pointer"
+                            }}>홈으로</div>
+                            <div style={{
+                                width: 440,
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                backgroundColor: "#ffffff",
+                                borderRadius: 6,
+                                marginTop: 32,
+                                border: "1px solid #dfdfdf",
+
+                                textAlign: "center",
                                 fontSize: 18,
-                                fontWeight: "bold",
-                            }}>홈으로</div></div>
+                                opacity: 0.6,
+                                color: "#051a1a",
+                                cursor: "pointer"
+                            }}>내 리뷰 확인하기</div>
                         </div>
                     </div>
                 </div>
@@ -88,49 +91,53 @@ export default function PaymentFail() {
                     justifyContent: "flex-start",
 
                     width: "100%",
-                    height: "100vh",
+                    minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="작성 실패" />
+                    <Header content="작성 완료" />
                     <div style={{
                         width: 80,
                         height: 80,
                         borderRadius: 40,
                         marginTop: 32,
-                        backgroundColor: "#f72b2b"
+                        backgroundColor: "#2dd9d3"
                     }}>
                     </div>
                     <div style={{
                         marginTop: 32,
                         fontSize: 21,
                         fontWeight: "bold",
-                        color: "#f72b2b"
-                    }}>작성에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
+                        color: "#2dd9d3"
+                    }}>작성이 완료<span style={{ color: "#051a1a" }}>되었습니다!</span></div>
                     <div style={{
-                        fontSize: 16,
-                        color: "#051a1a",
-                        opacity: 0.6,
-                        marginTop: 16,
-                    }}>실패 사유 : Invalid Number</div>
-                    <div style={{
-                        borderRadius: 8,
                         width: "90%",
-                        height: 56,
-                        marginLeft: 20,
-                        marginRight: 20,
-                        marginTop: 32,
+                        paddingTop: 8,
+                        paddingBottom: 8,
                         backgroundColor: "#2dd9d3",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        color: "#ffffff",
-                        fontSize: 18,
+                        borderRadius: 6,
+                        marginTop: 32,
+
+                        textAlign: "center",
+                        fontSize: 16,
                         fontWeight: "bold",
-                    }}><div style={{
                         color: "#ffffff",
-                        fontSize: 18,
-                        fontWeight: "bold",
-                    }}>홈으로</div></div>
+                        cursor: "pointer"
+                    }}>홈으로</div>
+                    <div style={{
+                        width: "90%",
+                        paddingTop: 8,
+                        paddingBottom: 8,
+                        backgroundColor: "#ffffff",
+                        borderRadius: 6,
+                        marginTop: 16,
+                        border: "1px solid #dfdfdf",
+
+                        textAlign: "center",
+                        fontSize: 16,
+                        opacity: 0.6,
+                        color: "#051a1a",
+                        cursor: "pointer"
+                    }}>내 리뷰 확인하기</div>
                 </div>
             </Mobile>
         </>
