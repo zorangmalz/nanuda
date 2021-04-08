@@ -17,7 +17,7 @@ export const Mobile = ({ children }) => {
 function App() {
   return (
     <>
-      <TOrderSheet />
+      <WishDealURL />
     </>
   );
 }
