@@ -1,6 +1,9 @@
 import './App.css';
+
 import { useMediaQuery } from "react-responsive";
+
 import PaymentSuccess from './Ordersheet/PaymentSuccess';
+
 
 export const Default = ({ children }) => {
     const isNotMobile = useMediaQuery({ minWidth: 451 })
@@ -15,7 +18,9 @@ export const Mobile = ({ children }) => {
 function App() {
   return (
     <>
-      <PaymentSuccess />
+
+     <PaymentSuccess />
+
     </>
   );
 }
