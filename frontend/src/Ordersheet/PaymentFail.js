@@ -14,7 +14,7 @@ export default function PaymentFail() {
                     justifyContent: "center",
 
                     width: "100%",
-                    height: "100vh",
+                    minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
                     <WebIntro />
@@ -25,7 +25,7 @@ export default function PaymentFail() {
                         justifyContent: "flex-start",
 
                         width: 480,
-                        height: "100vh",
+                        minHeight: "100vh",
                         backgroundColor: "#ffffff",
                     }}>
                         <Header content="작성 실패" />

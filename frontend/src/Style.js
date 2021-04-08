@@ -75,7 +75,6 @@ export function Header({ content }) {
     return (
         <div style={{
             width: "100%",
-            height: 56,
             display: "flex",
             flexDirection: "row",
             alignItems: "center",

@@ -1,8 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import { useMediaQuery } from "react-responsive"
-import PaymentFail from './Ordersheet/PaymentFail';
-import TOrderSheet from './Timedeal/TOrderSheet';
+import { useMediaQuery } from "react-responsive";
+import OrderSheet from "./Ordersheet/OrderSheet";
 
 export const Default = ({ children }) => {
     const isNotMobile = useMediaQuery({ minWidth: 451 })
@@ -17,7 +16,7 @@ export const Mobile = ({ children }) => {
 function App() {
   return (
     <>
-      <WishDealURL />
+      <OrderSheet />
     </>
   );
 }
