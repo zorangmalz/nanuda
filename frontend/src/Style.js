@@ -60,6 +60,7 @@ export default function WebIntro() {
                     분할결제 할 수 있게 도와주는 서비스입니다.
                 </div>
                     <div style={{
+                        cursor: "pointer",
                         fontSize: 18,
                         fontWeight: "bold",
                         color: "#202426",
