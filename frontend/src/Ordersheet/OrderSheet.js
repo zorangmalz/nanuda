@@ -204,6 +204,27 @@ export default function OrderSheet() {
                             }}>결제 수단</div>
                             {register ?
                                 <div style={{
+                                    width: 408,
+                                    alignSelf: "center",
+                                    padding: 16,
+                                    borderRadius: 6,
+                                    border: "1px solid #dfdfdf",
+                                    marginTop: 16,
+
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                }}>
+                                    <div style={{
+                                        fontSize: 16,
+                                        opacity: 0.8,
+                                        color: "#202426"
+                                    }}>우리 1002-550-5**544</div>
+                                    <div>임시 로고</div>
+                                </div>
+                                :
+                                <div style={{
                                     width: 440,
                                     height: 180,
                                     marginRight: 20,
@@ -231,27 +252,6 @@ export default function OrderSheet() {
                                         color: "#202426",
                                         marginTop: 16
                                     }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
-                                </div>
-                                :
-                                <div style={{
-                                    width: 408,
-                                    alignSelf: "center",
-                                    padding: 16,
-                                    borderRadius: 6,
-                                    border: "1px solid #dfdfdf",
-                                    marginTop: 16,
-
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-                                }}>
-                                    <div style={{
-                                        fontSize: 16,
-                                        opacity: 0.8,
-                                        color: "#202426"
-                                    }}>우리 1002-550-5**544</div>
-                                    <div>임시 로고</div>
                                 </div>
                             }
                             <div style={{
