@@ -34,13 +34,15 @@ export default function WebIntro() {
                         marginBottom: 32,
                         fontSize: 32,
                         fontWeight: "bold",
-                        color: "#051a1a"
+                        color: "#051a1a",
+                        fontFamily: "NotoSansCJKkr"
                     }}>나누다</div>
                     <div style={{
                         fontSize: 24,
                         fontWeight: "bold",
                         color: "#202426",
                         marginBottom: 16,
+                        fontFamily: "NotoSansCJKkr"
                     }}>
                         <span style={{
                             color: "#2dd9d3"
@@ -53,7 +55,8 @@ export default function WebIntro() {
                     <div style={{
                         fontSize: 21,
                         color: "#202426",
-                        marginBottom: 32
+                        marginBottom: 32,
+                        fontFamily: "NotoSansCJKkr"
                     }}>
                         나누다는 <br />
                     원하는 상품을 신용등급 상관없이 누구나 <br />
@@ -64,7 +67,8 @@ export default function WebIntro() {
                         fontSize: 18,
                         fontWeight: "bold",
                         color: "#202426",
-                        textDecorationLine: "underline"
+                        textDecorationLine: "underline",
+                        fontFamily: "NotoSansCJKkr"
                     }}>나누다는 신용카드와 무엇이 다른가요?</div>
                 </div>
             </div>
