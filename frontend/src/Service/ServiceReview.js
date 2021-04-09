@@ -101,6 +101,7 @@ export default function ServiceReview() {
                                 marginLeft: 20,
                                 marginBottom: 32,
                                 marginTop: 32,
+                                fontFamily: "NotoSansCJKkr"
                             }}>아직도 나누다 이용을 망설이시나요?</div>
                             <div style={{
                                 display: "flex",
@@ -128,12 +129,14 @@ export default function ServiceReview() {
                                         fontSize: 32,
                                         fontWeight: "bold",
                                         color: "#051a1a",
-                                        marginBottom: 16
+                                        marginBottom: 16,
+                                        fontFamily: "NotoSansCJKkr"
                                     }}>109,000</div>
                                     <div style={{
                                         fontSize: 16,
                                         opacity: 0.6,
-                                        color: "#202426"
+                                        color: "#202426",
+                                        fontFamily: "NotoSansCJKkr"
                                     }}>나누다를 사용한 사람들</div>
                                 </div>
                                 <div style={{
@@ -153,12 +156,14 @@ export default function ServiceReview() {
                                         fontSize: 32,
                                         fontWeight: "bold",
                                         color: "#051a1a",
-                                        marginBottom: 16
+                                        marginBottom: 16,
+                                        fontFamily: "NotoSansCJKkr"
                                     }}>209,000</div>
                                     <div style={{
                                         fontSize: 16,
                                         opacity: 0.6,
-                                        color: "#202426"
+                                        color: "#202426",
+                                        fontFamily: "NotoSansCJKkr"
                                     }}>나누다로 구매한 상품들</div>
                                 </div>
                             </div>
@@ -187,6 +192,7 @@ export default function ServiceReview() {
                                 fontWeight: "bold",
                                 textAlign: "center",
                                 cursor: "pointer",
+                                fontFamily: "NotoSansCJKkr"
                             }}>나누다 사용후기 작성하기</div>
                         </div>
                     </div>
@@ -211,6 +217,7 @@ export default function ServiceReview() {
                         marginLeft: "5%",
                         marginBottom: 32,
                         marginTop: 32,
+                        fontFamily: "NotoSansCJKkr"
                     }}>아직도 나누다 이용을 망설이시나요?</div>
                     <div style={{
                         display: "flex",
@@ -238,12 +245,14 @@ export default function ServiceReview() {
                                 fontSize: 28,
                                 fontWeight: "bold",
                                 color: "#051a1a",
-                                marginBottom: 16
+                                marginBottom: 16,
+                                fontFamily: "NotoSansCJKkr"
                             }}>109,000</div>
                             <div style={{
                                 fontSize: 14,
                                 opacity: 0.6,
-                                color: "#202426"
+                                color: "#202426",
+                                fontFamily: "NotoSansCJKkr"
                             }}>나누다를 사용한 사람들</div>
                         </div>
                         <div style={{
@@ -263,12 +272,14 @@ export default function ServiceReview() {
                                 fontSize: 28,
                                 fontWeight: "bold",
                                 color: "#051a1a",
-                                marginBottom: 16
+                                marginBottom: 16,
+                                fontFamily: "NotoSansCJKkr"
                             }}>209,000</div>
                             <div style={{
                                 fontSize: 14,
                                 opacity: 0.6,
-                                color: "#202426"
+                                color: "#202426",
+                                fontFamily: "NotoSansCJKkr"
                             }}>나누다로 구매한 상품들</div>
                         </div>
                     </div>
@@ -297,6 +308,7 @@ export default function ServiceReview() {
                         fontWeight: "bold",
                         textAlign: "center",
                         cursor: "pointer",
+                        fontFamily: "NotoSansCJKkr"
                     }}>나누다 사용후기 작성하기</div>
                 </div>
             </Mobile>
@@ -324,6 +336,7 @@ function Review({ num, name, property, date, content }) {
                     fontWeight: "bold",
                     color: "#26c1f0",
                     marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>{num}/5.0</div>
                 <div style={{
                     display: "flex",
@@ -338,17 +351,20 @@ function Review({ num, name, property, date, content }) {
                         opacity: 0.4,
                         color: "#202426",
                         fontSize: 14,
+                        fontFamily: "NotoSansCJKkr"
                     }}>{name}({property})</div>
                     <div style={{
                         opacity: 0.4,
                         color: "#202426",
                         fontSize: 14,
+                        fontFamily: "NotoSansCJKkr"
                     }}>{date}</div>
                 </div>
                 <div style={{
                     fontSize: 16,
                     color: "#202426",
-                    lineHeight: 1.5
+                    lineHeight: 1.5,
+                    fontFamily: "NotoSansCJKkr"
                 }}>{content}</div>
             </div>
         </>
@@ -375,6 +391,7 @@ function MReview({ num, name, property, date, content }) {
                     fontWeight: "bold",
                     color: "#26c1f0",
                     marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>{num}/5.0</div>
                 <div style={{
                     display: "flex",
@@ -389,17 +406,20 @@ function MReview({ num, name, property, date, content }) {
                         opacity: 0.4,
                         color: "#202426",
                         fontSize: 14,
+                        fontFamily: "NotoSansCJKkr"
                     }}>{name}({property})</div>
                     <div style={{
                         opacity: 0.4,
                         color: "#202426",
                         fontSize: 14,
+                        fontFamily: "NotoSansCJKkr"
                     }}>{date}</div>
                 </div>
                 <div style={{
                     fontSize: 16,
                     color: "#202426",
-                    lineHeight: 1.5
+                    lineHeight: 1.5,
+                    fontFamily: "NotoSansCJKkr"
                 }}>{content}</div>
             </div>
         </>

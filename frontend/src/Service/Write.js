@@ -81,6 +81,7 @@ export default function Write() {
                                     color: "#202426",
                                     marginTop: 32,
                                     marginLeft: 20,
+                                    fontFamily: "NotoSansCJKkr"
                                 }}>나누다 서비스 만족도는 어느정도인가요?</div>
                                 <div style={{
                                     display: "flex",
@@ -101,6 +102,7 @@ export default function Write() {
                                     color: "#202426",
                                     marginTop: 36,
                                     marginLeft: 20,
+                                    fontFamily: "NotoSansCJKkr"
                                 }}>나누다 서비스 이용 후기를 작성해주세요!</div>
                                 <textarea cols="10" rows="5" value="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
                                     outline: 0,
@@ -112,7 +114,8 @@ export default function Write() {
                                     minHeight: 180,
                                     marginLeft: 20,
                                     marginTop: 16,
-                                    resize: "none"
+                                    resize: "none",
+                                    fontFamily: "NotoSansCJKkr"
                                 }} />
                                 <div style={{
                                     fontSize: 18,
@@ -120,6 +123,7 @@ export default function Write() {
                                     color: "#202426",
                                     marginTop: 32,
                                     marginLeft: 20,
+                                    fontFamily: "NotoSansCJKkr"
                                 }}>더 나은 서비스를 위한 의견을 말씀해주세요.</div>
                                 <textarea cols="10" rows="5" value="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
                                     outline: 0,
@@ -131,7 +135,8 @@ export default function Write() {
                                     minHeight: 180,
                                     marginLeft: 20,
                                     marginTop: 16,
-                                    resize: "none"
+                                    resize: "none",
+                                    fontFamily: "NotoSansCJKkr"
                                 }} />
                             </div>
                             <div style={{
@@ -149,6 +154,7 @@ export default function Write() {
                                 color: "#ffffff",
                                 marginTop: 32,
                                 marginBottom: 40,
+                                fontFamily: "NotoSansCJKkr"
                             }}>작성 완료</div>
                         </div>
                     </div>
@@ -177,6 +183,7 @@ export default function Write() {
                             color: "#202426",
                             marginTop: 32,
                             marginLeft: "5%",
+                            fontFamily: "NotoSansCJKkr"
                         }}>나누다 서비스 만족도는 어느정도인가요?</div>
                         <div style={{
                             display: "flex",
@@ -197,6 +204,7 @@ export default function Write() {
                             color: "#202426",
                             marginTop: 36,
                             marginLeft: "5%",
+                            fontFamily: "NotoSansCJKkr"
                         }}>나누다 서비스 이용 후기를 작성해주세요!</div>
                         <textarea cols="10" rows="5" value="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
                             outline: 0,
@@ -208,7 +216,8 @@ export default function Write() {
                             minHeight: 100,
                             marginLeft: "5%",
                             marginTop: 16,
-                            resize: "none"
+                            resize: "none",
+                            fontFamily: "NotoSansCJKkr"
                         }} />
                         <div style={{
                             fontSize: 16,
@@ -216,6 +225,7 @@ export default function Write() {
                             color: "#202426",
                             marginTop: 32,
                             marginLeft: "5%",
+                            fontFamily: "NotoSansCJKkr"
                         }}>더 나은 서비스를 위한 의견을 말씀해주세요.</div>
                         <textarea cols="10" rows="5" value="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
                             outline: 0,
@@ -227,7 +237,8 @@ export default function Write() {
                             minHeight: 100,
                             marginLeft: "5%",
                             marginTop: 16,
-                            resize: "none"
+                            resize: "none",
+                            fontFamily: "NotoSansCJKkr"
                         }} />
                     </div>
                     <div style={{
@@ -245,6 +256,7 @@ export default function Write() {
                         color: "#ffffff",
                         marginTop: 24,
                         marginBottom: 20,
+                        fontFamily: "NotoSansCJKkr"
                     }}>작성 완료</div>
                 </div>
             </Mobile>
