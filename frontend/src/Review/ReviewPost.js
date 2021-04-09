@@ -1,9 +1,42 @@
-import React from "react";
+import React,{useReducer} from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
+import { BsFillStarFill } from "react-icons/bs"
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'ONE':
+            return 1;
+        case 'TWO':
+            return 2;
+        case 'THREE':
+            return 3;
+        case 'FOUR':
+            return 4;
+        case 'FIVE':
+            return 5;
+        default:
+            return state;
+    }
+}
 
 export default function WishDeal() {
-
+    const [number, dispatch] = useReducer(reducer, 0);
+    const onOne = () => {
+        dispatch({ type: 'ONE' });
+    };
+    const onTwo = () => {
+        dispatch({ type: 'TWO' });
+    };
+    const onThree = () => {
+        dispatch({ type: 'THREE' });
+    };
+    const onFour = () => {
+        dispatch({ type: 'FOUR' });
+    };
+    const onFive = () => {
+        dispatch({ type: 'FIVE' });
+    };
     return (
         <>
             <Default>
@@ -32,7 +65,7 @@ export default function WishDeal() {
                             justifyContent: "flex-start",
 
                             width: 480,
-                            height: "100vh",
+                            minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
                             <Header content="나눠산 사람들" />
@@ -100,13 +133,49 @@ export default function WishDeal() {
                                 border:"0.5px solid #051a1a",
                                 opacity:0.2
                             }}></div>
+                            <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
+                            <div style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    marginLeft: 20,
+                                    marginTop: 18,
+                                }}>
+                                    <BsFillStarFill onClick={onOne} color={number > 0 ? "#fad94f" : "#dfdfdf"} size={42} style={{ marginRight: 5, cursor: "pointer" }} />
+                                    <BsFillStarFill onClick={onTwo} color={number > 1 ? "#fad94f" : "#dfdfdf"} size={42} style={{ marginRight: 5, cursor: "pointer" }} />
+                                    <BsFillStarFill onClick={onThree} color={number > 2 ? "#fad94f" : "#dfdfdf"} size={42} style={{ marginRight: 5, cursor: "pointer" }} />
+                                    <BsFillStarFill onClick={onFour} color={number > 3 ? "#fad94f" : "#dfdfdf"} size={42} style={{ marginRight: 5, cursor: "pointer" }} />
+                                    <BsFillStarFill onClick={onFive} color={number > 4 ? "#fad94f" : "#dfdfdf"} size={42} style={{ cursor: "pointer" }} />
+                                </div>
+                                <div style={{
+                                        width: 32,
+                                        height: 32,
+                                        backgroundColor: "#f2f3f8",
+                                        marginTop: 32,
+                                        marginRight: 20,
+                                        borderRadius: 16
+                                    }}>
+                                    </div>
+                            </div>
+                            <div style={{
+                                marginTop:16,
+                                marginLeft:20,
+                                width:440,
+                                fontSize:14,
+                            }}> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</div>
+                            <div style={{
+                                marginLeft:20,
+                                marginTop:4,
+                                fontSize:12,
+                                opacity:0.8
+                            }}> 2021.03.30 </div>
                             <div style={{
                                 borderRadius: 8,
                                 width: 440,
                                 height: 56,
                                 marginLeft: 20,
                                 marginRight: 20,
-                                marginTop: 32,
+                                marginTop: 52,
                                 backgroundColor: "#2dd9d3",
                                 display: "flex",
                                 justifyContent: "center",
