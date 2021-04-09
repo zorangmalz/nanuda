@@ -100,6 +100,7 @@ function AddressInput() {
                 color: "#202426",
                 marginTop: 44,
                 marginBottom: 16,
+                fontFamily: "NotoSansCJKkr"
             }}>받는 사람</div>
             <input placeholder="이름 혹은 별명" style={{
                 outline: 0,
@@ -114,6 +115,7 @@ function AddressInput() {
                 fontSize: 16,
                 color: "#202426",
                 marginLeft: 20,
+                fontFamily: "NotoSansCJKkr"
             }} />
             <div style={{
                 marginLeft: 20,
@@ -122,6 +124,7 @@ function AddressInput() {
                 color: "#202426",
                 marginTop: 16,
                 marginBottom: 16,
+                fontFamily: "NotoSansCJKkr"
             }}>주소</div>
             <div style={{
                 display: "flex",
@@ -142,6 +145,7 @@ function AddressInput() {
                     fontSize: 16,
                     color: "#202426",
                     marginRight: 20,
+                    fontFamily: "NotoSansCJKkr"
                 }} />
                 <div style={{
                     cursor: "pointer",
@@ -154,6 +158,7 @@ function AddressInput() {
                     fontWeight: "bold",
                     textAlign: "center",
                     color: "#ffffff",
+                    fontFamily: "NotoSansCJKkr"
                 }}>우편번호 찾기</div>
             </div>
             <input placeholder="주소" style={{
@@ -170,6 +175,7 @@ function AddressInput() {
                 color: "#202426",
                 marginTop: 16,
                 marginLeft: 20,
+                fontFamily: "NotoSansCJKkr"
             }} />
             <input placeholder="상세주소" style={{
                 outline: 0,
@@ -185,6 +191,7 @@ function AddressInput() {
                 color: "#202426",
                 marginTop: 16,
                 marginLeft: 20,
+                fontFamily: "NotoSansCJKkr"
             }} />
             <div style={{
                 marginLeft: 20,
@@ -193,6 +200,7 @@ function AddressInput() {
                 color: "#202426",
                 marginTop: 16,
                 marginBottom: 16,
+                fontFamily: "NotoSansCJKkr"
             }}>연락처</div>
             <input placeholder="핸드폰 번호 11자리" style={{
                 outline: 0,
@@ -207,6 +215,7 @@ function AddressInput() {
                 fontSize: 16,
                 color: "#202426",
                 marginLeft: 20,
+                fontFamily: "NotoSansCJKkr"
             }} />
             <div style={{
                 marginLeft: 20,
@@ -215,6 +224,7 @@ function AddressInput() {
                 color: "#202426",
                 marginTop: 16,
                 marginBottom: 16,
+                fontFamily: "NotoSansCJKkr"
             }}>배송 요청사항</div>
             <div onClick={onOne} style={{
                 display: "flex",
@@ -230,7 +240,8 @@ function AddressInput() {
                     fontSize: 16,
                     opacity: 0.6,
                     color: "#202426",
-                    marginLeft: 8
+                    marginLeft: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>문 앞</div>
             </div>
             <div onClick={onTwo} style={{
@@ -247,7 +258,8 @@ function AddressInput() {
                     fontSize: 16,
                     opacity: 0.6,
                     color: "#202426",
-                    marginLeft: 8
+                    marginLeft: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>직접 받고 부재시 문앞</div>
             </div>
             <div onClick={onThree} style={{
@@ -264,7 +276,8 @@ function AddressInput() {
                     fontSize: 16,
                     opacity: 0.6,
                     color: "#202426",
-                    marginLeft: 8
+                    marginLeft: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>경비실</div>
             </div>
             <div onClick={onFour} style={{
@@ -281,7 +294,8 @@ function AddressInput() {
                     fontSize: 16,
                     opacity: 0.6,
                     color: "#202426",
-                    marginLeft: 8
+                    marginLeft: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>택배함</div>
             </div>
             <div onClick={onFive} style={{
@@ -298,7 +312,8 @@ function AddressInput() {
                     fontSize: 16,
                     opacity: 0.6,
                     color: "#202426",
-                    marginLeft: 8
+                    marginLeft: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>기타</div>
             </div>
             <input placeholder="장소 입력 (필수)" style={{
@@ -320,6 +335,7 @@ function AddressInput() {
                 color: "#f72b2b",
                 marginTop: 8,
                 marginLeft: 52,
+                fontFamily: "NotoSansCJKkr"
             }}>필수 입력 정보입니다.</div> : <></>}
             <div style={{
                 width: 440,
@@ -335,6 +351,7 @@ function AddressInput() {
                 fontSize: 18,
                 fontWeight: "bold",
                 color: "#ffffff",
+                fontFamily: "NotoSansCJKkr"
             }}>수정완료</div>
         </>
     )
@@ -366,6 +383,7 @@ function MAddressInput() {
                 color: "#202426",
                 marginTop: 44,
                 marginBottom: 16,
+                fontFamily: "NotoSansCJKkr"
             }}>받는 사람</div>
             <input placeholder="이름 혹은 별명" style={{
                 outline: 0,
@@ -380,6 +398,7 @@ function MAddressInput() {
                 fontSize: 16,
                 color: "#202426",
                 alignSelf: "center",
+                fontFamily: "NotoSansCJKkr"
             }} />
             <div style={{
                 marginLeft: "5%",
@@ -388,6 +407,7 @@ function MAddressInput() {
                 color: "#202426",
                 marginTop: 16,
                 marginBottom: 16,
+                fontFamily: "NotoSansCJKkr"
             }}>주소</div>
             <div style={{
                 display: "flex",
@@ -408,6 +428,7 @@ function MAddressInput() {
                     fontSize: 16,
                     color: "#202426",
                     marginRight: 20,
+                    fontFamily: "NotoSansCJKkr"
                 }} />
                 <div style={{
                     cursor: "pointer",
@@ -420,6 +441,7 @@ function MAddressInput() {
                     fontWeight: "bold",
                     textAlign: "center",
                     color: "#ffffff",
+                    fontFamily: "NotoSansCJKkr"
                 }}>우편번호 찾기</div>
             </div>
             <input placeholder="주소" style={{
@@ -435,7 +457,8 @@ function MAddressInput() {
                 fontSize: 16,
                 color: "#202426",
                 marginTop: 16,
-                alignSelf: "center"
+                alignSelf: "center",
+                fontFamily: "NotoSansCJKkr"
             }} />
             <input placeholder="상세주소" style={{
                 outline: 0,
@@ -450,7 +473,8 @@ function MAddressInput() {
                 fontSize: 16,
                 color: "#202426",
                 marginTop: 16,
-                alignSelf: "center"
+                alignSelf: "center",
+                fontFamily: "NotoSansCJKkr"
             }} />
             <div style={{
                 marginLeft: "5%",
@@ -459,6 +483,7 @@ function MAddressInput() {
                 color: "#202426",
                 marginTop: 16,
                 marginBottom: 16,
+                fontFamily: "NotoSansCJKkr"
             }}>연락처</div>
             <input placeholder="핸드폰 번호 11자리" style={{
                 outline: 0,
@@ -473,6 +498,7 @@ function MAddressInput() {
                 fontSize: 16,
                 color: "#202426",
                 alignSelf: "center",
+                fontFamily: "NotoSansCJKkr"
             }} />
             <div style={{
                 marginLeft: "5%",
@@ -481,6 +507,7 @@ function MAddressInput() {
                 color: "#202426",
                 marginTop: 16,
                 marginBottom: 16,
+                fontFamily: "NotoSansCJKkr"
             }}>배송 요청사항</div>
             <div onClick={onOne} style={{
                 display: "flex",
@@ -496,7 +523,8 @@ function MAddressInput() {
                     fontSize: 16,
                     opacity: 0.6,
                     color: "#202426",
-                    marginLeft: 8
+                    marginLeft: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>문 앞</div>
             </div>
             <div onClick={onTwo} style={{
@@ -513,7 +541,8 @@ function MAddressInput() {
                     fontSize: 16,
                     opacity: 0.6,
                     color: "#202426",
-                    marginLeft: 8
+                    marginLeft: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>직접 받고 부재시 문앞</div>
             </div>
             <div onClick={onThree} style={{
@@ -530,7 +559,8 @@ function MAddressInput() {
                     fontSize: 16,
                     opacity: 0.6,
                     color: "#202426",
-                    marginLeft: 8
+                    marginLeft: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>경비실</div>
             </div>
             <div onClick={onFour} style={{
@@ -547,7 +577,8 @@ function MAddressInput() {
                     fontSize: 16,
                     opacity: 0.6,
                     color: "#202426",
-                    marginLeft: 8
+                    marginLeft: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>택배함</div>
             </div>
             <div onClick={onFive} style={{
@@ -564,7 +595,8 @@ function MAddressInput() {
                     fontSize: 16,
                     opacity: 0.6,
                     color: "#202426",
-                    marginLeft: 8
+                    marginLeft: 8,
+                    fontFamily: "NotoSansCJKkr"
                 }}>기타</div>
             </div>
             <input placeholder="장소 입력 (필수)" style={{
@@ -580,12 +612,14 @@ function MAddressInput() {
                 fontSize: 16,
                 color: "#202426",
                 marginLeft: "13%",
+                fontFamily: "NotoSansCJKkr"
             }} />
             {number === 5 ? <div style={{
                 fontSize: 14,
                 color: "#f72b2b",
                 marginTop: 8,
                 marginLeft: "13%",
+                fontFamily: "NotoSansCJKkr"
             }}>필수 입력 정보입니다.</div> : <></>}
             <div style={{
                 width: "90%",
@@ -601,6 +635,7 @@ function MAddressInput() {
                 fontSize: 16,
                 fontWeight: "bold",
                 color: "#ffffff",
+                fontFamily: "NotoSansCJKkr"
             }}>수정완료</div>
         </>
     )
