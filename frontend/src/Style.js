@@ -91,6 +91,7 @@ export function Header({ content }) {
                 color: "#051a1a",
                 alignSelf: "center",
                 justifyContent: "center",
+                fontFamily: "NotoSansCJKkr"
             }}>{content}</div>
         </div>
     )

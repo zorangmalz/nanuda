@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
+import { AiOutlineCheck } from "react-icons/ai";
+import { MOrderDetail, OrderDetail } from "./PaymentFail";
 
 export default function PaymentSuccess() {
+    //WishDeal인지 여부
+    const [wish, setWish] = useState(true)
     return (
         <>
             <Default>
@@ -35,21 +39,40 @@ export default function PaymentSuccess() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="작성 완료" />
+                            <Header content={wish ? "주문 결과" : "작성 완료"} />
                             <div style={{
                                 width: 80,
                                 height: 80,
                                 borderRadius: 40,
                                 marginTop: 32,
-                                backgroundColor: "#2dd9d3"
+                                backgroundColor: "#2dd9d3",
+
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center"
                             }}>
+                                <AiOutlineCheck color="#ffffff" size={50} />
                             </div>
                             <div style={{
                                 marginTop: 32,
                                 fontSize: 21,
                                 fontWeight: "bold",
-                                color: "#2dd9d3"
-                            }}>작성이 완료<span style={{ color: "#051a1a" }}>되었습니다!</span></div>
+                                color: "#2dd9d3",
+                                fontFamily: "NotoSansCJKkr",
+                            }}>{wish ? "주문" : "작성"}이 완료
+                                <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                            </div>
+                            <OrderDetail 
+                                wishTime={wish}
+                                title="PRADA Model 23-9 limited edition berry expensive"
+                                price="460,000"
+                                name="김현명"
+                                number="03770"
+                                address="서울 특별시 서대문구 북아현로 1길 17"
+                                addressDetail="e편한세상 203동 2104호"
+                                phoneNumber="010-4337-6607"
+                                deliveryClaim="집 앞"
+                            />
                             <div style={{
                                 width: 440,
                                 paddingTop: 15,
@@ -62,7 +85,8 @@ export default function PaymentSuccess() {
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 color: "#ffffff",
-                                cursor: "pointer"
+                                cursor: "pointer",
+                                fontFamily: "NotoSansCJKkr"
                             }}>홈으로</div>
                             <div style={{
                                 width: 440,
@@ -77,7 +101,8 @@ export default function PaymentSuccess() {
                                 fontSize: 18,
                                 opacity: 0.6,
                                 color: "#051a1a",
-                                cursor: "pointer"
+                                cursor: "pointer",
+                                fontFamily: "NotoSansCJKkr",
                             }}>내 리뷰 확인하기</div>
                         </div>
                     </div>
@@ -94,21 +119,40 @@ export default function PaymentSuccess() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="작성 완료" />
+                    <Header content={wish ? "주문 결과" : "작성 완료"} />
                     <div style={{
                         width: 80,
                         height: 80,
                         borderRadius: 40,
                         marginTop: 32,
-                        backgroundColor: "#2dd9d3"
+                        backgroundColor: "#2dd9d3",
+
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
                     }}>
+                        <AiOutlineCheck color="#ffffff" size={50} />
                     </div>
                     <div style={{
                         marginTop: 32,
                         fontSize: 21,
                         fontWeight: "bold",
-                        color: "#2dd9d3"
-                    }}>작성이 완료<span style={{ color: "#051a1a" }}>되었습니다!</span></div>
+                        color: "#2dd9d3",
+                        fontFamily: "NotoSansCJKkr"
+                    }}>{wish ? "주문" : "작성"}이 완료
+                        <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                    </div>
+                    <MOrderDetail
+                        wishTime={wish}
+                        title="PRADA Model 23-9 limited edition berry expensive"
+                        price="460,000"
+                        name="김현명"
+                        number="03770"
+                        address="서울 특별시 서대문구 북아현로 1길 17"
+                        addressDetail="e편한세상 203동 2104호"
+                        phoneNumber="010-4337-6607"
+                        deliveryClaim="집 앞"
+                    />
                     <div style={{
                         width: "90%",
                         paddingTop: 8,
@@ -121,7 +165,8 @@ export default function PaymentSuccess() {
                         fontSize: 16,
                         fontWeight: "bold",
                         color: "#ffffff",
-                        cursor: "pointer"
+                        cursor: "pointer",
+                        fontFamily: "NotoSansCJKkr"
                     }}>홈으로</div>
                     <div style={{
                         width: "90%",
@@ -136,7 +181,8 @@ export default function PaymentSuccess() {
                         fontSize: 16,
                         opacity: 0.6,
                         color: "#051a1a",
-                        cursor: "pointer"
+                        cursor: "pointer",
+                        fontFamily: "NotoSansCJKkr",
                     }}>내 리뷰 확인하기</div>
                 </div>
             </Mobile>
