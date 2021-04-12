@@ -100,7 +100,17 @@ export default function ReviewMain() {
                                     marginLeft:32
                                 }}>뽐뿌가 왔다면 위시딜!</div>
                             </div>
+                            <div style={{
+                                display:"grid",
+                                flexDirection:"row",
+                                width:240,
+                                alignItems:"center",
+                                justifyContent:"flex-start",
+                                gridTemplateColumns:"1fr 1fr"
+
+                            }}>
                             {reviewData.map(item=>
+                       
                                 <div style={{
                                     marginLeft:20,
                                     marginTop:32,
@@ -108,7 +118,8 @@ export default function ReviewMain() {
                                 }}>
                                     <div style={{
                                         display:"flex",
-                                        flexDirection:"row"
+                                        flexDirection:"row",
+                                        
                                     }}> <div style={{
                                         width:32,
                                         height:32,
@@ -168,8 +179,13 @@ export default function ReviewMain() {
                                              fontWeight:"bold"
                                          }}>{item.follow}명이 따라 샀어요!</div>
                                 </div>
+                                
                                 )}
+                                </div>
                             <div style={{
+                                position:"fixed",
+                                zIndex:5,
+                                bottom:0,
                                 borderRadius: 8,
                                 width: 440,
                                 height: 56,
@@ -193,29 +209,127 @@ export default function ReviewMain() {
                 </div>
             </Default>
             <Mobile>
-            <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "100%",
-                    
-                    backgroundColor: "#f2f3f8"
-                }}>
-                   
-                        <div style={{
+               <div style={{
                             display: "flex",
                             flexDirection: "column",
 
                             justifyContent: "flex-start",
 
-                            width: 480,
-                            
+                            width: "100%",
+                            minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
                             <Header content="나눠산 사람들" />
-                            
                             <div style={{
+                                width:"90%",
+                                height:150,
+                                marginTop:32,
+                                marginLeft:20,
+                                backgroundColor:"#cb1a86",
+                                borderRadius:6
+
+                            }}>
+                                <div style={{
+                                    fontSize:18,
+                                    color:"#ffffff",
+                                    marginLeft:32,
+                                    marginTop:32
+                                }}>다른 사람들은 어떤걸 샀을까?</div>
+                                <div style={{
+                                    fontSize:24,
+                                    fontWeight:"bold",
+                                    color:"#ffffff",
+                                    marginTop:16,
+                                    marginLeft:32
+                                }}>뽐뿌가 왔다면 위시딜!</div>
+                            </div>
+                            <div style={{
+                                display:"grid",
+                                flexDirection:"row",
+                                width:"50%",
+                                aspectRatio:1,
+                                alignItems:"center",
+                                justifyContent:"flex-start",
+                                gridTemplateColumns:"1fr 1fr"
+
+                            }}>
+                            {reviewData.map(item=>
+                       
+                                <div style={{
+                                    marginLeft:20,
+                                    marginTop:32,
+                                    
+                                }}>
+                                    <div style={{
+                                        display:"flex",
+                                        flexDirection:"row",
+                                        
+                                    }}> <div style={{
+                                        width:32,
+                                        height:32,
+                                        borderRadius:16,
+                                        backgroundColor:item.pic
+                                    }}>
+                                        </div>
+                                        <div style={{
+
+                                            fontSize:14,
+                                            fontWeight:"bold",
+                                            marginLeft:8,
+                                            marginTop:6
+                                        }}>{item.id} </div>
+                                         </div>
+
+                                         <div style={{
+                                             width:170,
+                                             height:170,
+                                             borderRadius:6,
+                                             backgroundColor:"#f2f3f8",
+                                             marginTop:8
+                                         }}> </div>
+                                         <div style={{
+                                             display:"flex",
+                                             flexDirection:"row"  
+                                         }}>
+                                             <div style={{
+                                                 width:24,
+                                                 height:24,
+                                                 marginTop:11
+                                             }}>
+                                                 <BsHeart></BsHeart>
+                                             </div>
+                                            <div style={{marginTop:11,marginLeft:4,fontSize:14,fontWeight:"bold"}}>{item.like}</div>
+                                             <div style={{
+                                                 width:24,
+                                                 height:24,
+                                                 marginTop:11,
+                                                 marginLeft:10
+                                             }}>
+                                                 <IoChatbubbleOutline></IoChatbubbleOutline>
+                                             </div>
+                                             <div style={{marginTop:11,fontSize:14,fontWeight:"bold"}}>{item.reply}</div>
+
+                                              </div>
+                                         <div style={{
+                                             fontSize:14,
+                                             opacity:0.8,
+                                             marginTop:16,
+                                             width:"100%"
+                                         }}>{item.content}</div>
+                                         <div style={{
+                                             color:"#26c1f0",
+                                             marginTop:4,
+                                             fontSize:14,
+                                             fontWeight:"bold"
+                                         }}>{item.follow}명이 따라 샀어요!</div>
+                                </div>
+                                
+                                )}
+                                </div>
+                            <div style={{
+                                position:"fixed",
+                                zIndex:5,
+                                bottom:0,
                                 borderRadius: 8,
                                 width: "90%",
                                 height: 56,
@@ -233,9 +347,9 @@ export default function ReviewMain() {
                                 color: "#ffffff",
                                 fontSize: 18,
                                 fontWeight: "bold",
-                            }}>위시딜 신청하기</div></div>
+                            }}>리뷰 작성하기</div></div>
                         </div>
-                    </div>
+                    
                 
             </Mobile>
         </>
