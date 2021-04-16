@@ -50,7 +50,7 @@ export default function WebIntro() {
                     를 하는 <br />당신을 위한
                     <span style={{
                             color: "#2dd9d3"
-                        }}>분할결제 서비스</span>
+                        }}> 분할결제 서비스</span>
                     </div>
                     <div style={{
                         fontSize: 21,
