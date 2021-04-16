@@ -111,6 +111,7 @@ export default function Home() {
                                     slidesToShow={1}
                                     slidesToScroll={1}
                                     adaptiveHeight={true}
+                                    arrows={false}
                                 >
                                     <div>
                                         <div style={{

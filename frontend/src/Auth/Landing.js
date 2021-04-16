@@ -41,6 +41,7 @@ export default function Landing() {
                                 adaptiveHeight={true}
                                 autoplay={true}
                                 autoplaySpeed={2500}
+                                arrows={false}
                             >
                                 {/* 첫번째 */}
                                 <div>
