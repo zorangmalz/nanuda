@@ -39,6 +39,8 @@ export default function Landing() {
                                 slidesToShow={1}
                                 slidesToScroll={1}
                                 adaptiveHeight={true}
+                                autoplay={true}
+                                autoplaySpeed={2500}
                             >
                                 {/* 첫번째 */}
                                 <div>
@@ -142,60 +144,62 @@ export default function Landing() {
                                     <div style={{
                                         marginTop: 32,
                                         marginLeft: 20,
-                                        display: "flex",
-                                        flexDirection: "row"
-                                    }}>
-                                        <div style={{
-                                            fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr"
-                                        }}>누다에서</div>
-                                        <div style={{ marginLeft: 5, color: "#2dd9d3", fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>원하는 기간을 선택</div>
-
-                                        <div style={{
-                                            fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr"
-                                        }}>하고</div>
-                                    </div>
+                                        fontSize: 24, 
+                                        fontWeight: "bold", 
+                                        fontFamily: "NotoSansCJKkr",
+                                        color: "#202426"
+                                    }}>누다에서<span style={{ color: "#2dd9d3", marginLeft: 4, }}>원하는 기간을 선택</span>하고</div>
                                     <div style={{
                                         marginLeft: 20,
-                                        display: "flex",
-                                        flexDirection: "row"
+                                        fontSize: 24, fontWeight: "bold", color: "#2dd9d3", fontFamily: "NotoSansCJKkr"
+                                    }}>간편하게 분할결제하세요<span style={{ color: "#202426" }}>!</span></div>
+                                    <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", color: "#202426", fontFamily: "NotoSansCJKkr" }}>1. 원하는 상품을 고르고!</div>
+                                    <div style={{
+                                        marginTop: 16,
+                                        marginLeft: 20,
+                                        backgroundColor: "#f2f3f8",
+                                        width: 440,
+                                        paddingTop: 20,
+                                        paddingBottom: 20,
+                                        borderRadius: 6, display: "flex", flexDirection: "row", alignItems: "center"
                                     }}>
-                                        <div style={{
-                                            fontSize: 24, fontWeight: "bold", color: "#2dd9d3", fontFamily: "NotoSansCJKkr"
-                                        }}>
-                                            간편하게 분할결제하세요                            </div>
-                                        <div style={{ fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>!</div>
-                                    </div>
-                                    <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold" }}>1. 원하는 상품을 고르고!</div>
-                                    <div style={{ marginTop: 16, marginLeft: 20, backgroundColor: "#f2f3f8", width: 440, height: 100, borderRadius: 6 }}>
-                                        <div style={{ display: "flex", flexDirection: "row" }}>
-                                            <div style={{}}>아이콘 자리</div>
-                                            <div style={{ display: "flex", flexDirection: "column", marginLeft: 32, marginTop: 20, fontSize: 18, fontWeight: 500 }}>
-                                                <div>지금 사기엔 비싼 노트북</div>
-                                                <div style={{ marginTop: 8, color: "#f72b2b" }}>가격 : 200만원</div>
-                                            </div>
+                                        <div style={{}}>아이콘 자리</div>
+                                        <div style={{ display: "flex", flexDirection: "column", marginLeft: 32, fontSize: 18, fontWeight: 500, fontFamily: "NotoSansCJKkr" }}>
+                                            <div>지금 사기엔 비싼 노트북</div>
+                                            <div style={{ marginTop: 8, color: "#f72b2b", fontWeight: "bold" }}>가격 : 200만원</div>
                                         </div>
                                     </div>
-                                    <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold" }}>2. 분할 결제 옵션 선택하면</div>
-                                    <div style={{ marginTop: 16, marginLeft: 20, backgroundColor: "#f2f3f8", width: 440, height: 100, borderRadius: 6 }}>
-                                        <div style={{ display: "flex", flexDirection: "row" }}>
-                                            <div style={{}}>아이콘 자리</div>
-
-                                            <div style={{ display: "flex", flexDirection: "column", marginLeft: 32, marginTop: 20, fontSize: 18, fontWeight: 500 }}>
-                                                <div>3개월 분할결제 선택 후 25% 결제</div>
-                                                <div style={{ marginTop: 8, color: "#2554d5" }}>첫 결제금 : 50 만원</div>
-                                            </div>
+                                    <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>2. 분할 결제 옵션 선택하면</div>
+                                    <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", color: "#202426", fontFamily: "NotoSansCJKkr" }}>1. 원하는 상품을 고르고!</div>
+                                    <div style={{
+                                        marginTop: 16,
+                                        marginLeft: 20,
+                                        backgroundColor: "#f2f3f8",
+                                        width: 440,
+                                        paddingTop: 20,
+                                        paddingBottom: 20,
+                                        borderRadius: 6, display: "flex", flexDirection: "row", alignItems: "center"
+                                    }}>
+                                        <div style={{}}>아이콘 자리</div>
+                                        <div style={{ display: "flex", flexDirection: "column", marginLeft: 32, fontSize: 18, fontWeight: 500, fontFamily: "NotoSansCJKkr" }}>
+                                            <div>3개월 분할결제 선택 후 25% 결제</div>
+                                            <div style={{ marginTop: 8, color: "#2554d5", fontWeight: "bold" }}>첫 결제금 : 50 만원</div>
                                         </div>
                                     </div>
-                                    <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold" }}>3. 단돈 50만원에 획득!</div>
-                                    <div style={{ marginTop: 16, marginLeft: 20, backgroundColor: "#f2f3f8", width: 440, height: 100, borderRadius: 6 }}>
-                                        <div style={{ display: "flex", flexDirection: "row" }}>
-                                            <div style={{}}>아이콘 자리</div>
-
-                                            <div style={{ display: "flex", flexDirection: "column", marginLeft: 32, marginTop: 37, fontSize: 18, fontWeight: "bold" }}>
-                                                <div>[Web 발신] 택배가 도착했습니다.</div>
-
-                                            </div>
-                                        </div>
+                                    <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>3. 단돈 50만원에 획득!</div>
+                                    <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", color: "#202426", fontFamily: "NotoSansCJKkr" }}>1. 원하는 상품을 고르고!</div>
+                                    <div style={{
+                                        marginTop: 16,
+                                        marginLeft: 20,
+                                        backgroundColor: "#f2f3f8",
+                                        width: 440,
+                                        paddingTop: 20,
+                                        paddingBottom: 20,
+                                        borderRadius: 6, display: "flex", flexDirection: "row", alignItems: "center"
+                                    }}>
+                                        <div style={{}}>아이콘 자리</div>
+                                        <div style={{ marginLeft: 32, fontSize: 18, fontWeight: "bold", fontFamily: "NotoSansCJKkr", color: "#051a1a",
+                                        }}>[Web 발신] 택배가 도착했습니다.</div>
                                     </div>
                                 </div>
                                 {/* 세번째 */}

@@ -118,7 +118,10 @@ $slick-opacity-not-active: 1 !default;
 .desktop-slick-dots {
     position: absolute;
     bottom: 8px;
-    left: 200px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     list-style: none;
     display: block;
     text-align: center;
@@ -240,7 +243,10 @@ $slick-opacity-not-active: 1 !default;
 .desktop-landing-slick-dots {
     position: absolute;
     bottom: -24px;
-    left: 200px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     list-style: none;
     display: block;
     text-align: center;
@@ -252,9 +258,9 @@ $slick-opacity-not-active: 1 !default;
     li {
         position: relative;
         display: inline-block;
-        height: 10px;
-        width: 10px;
-        margin: 0 1px;
+        height: 8px;
+        width: 8px;
+        margin: 0 8px;
         padding: 0;
         cursor: pointer;
         button {
