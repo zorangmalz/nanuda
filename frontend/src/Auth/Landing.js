@@ -1,9 +1,7 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 import Slider from "react-slick"
-import { BsHeart } from "react-icons/bs"
-import { IoChatbubbleOutline } from "react-icons/io5"
 
 export default function Landing() {
     return (
@@ -30,9 +28,7 @@ export default function Landing() {
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
-
                             justifyContent: "flex-start",
-
                             width: 480,
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
@@ -67,24 +63,79 @@ export default function Landing() {
                                         }}>때문에 고민</div>
                                         <div style={{ fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>한 경험이 있나요?</div>
                                     </div>
-                                    <div style={{ marginTop: 32, marginLeft: 172, backgroundColor: "#f2f3f8", width: 288, height: 80, borderRadius: 10, boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)" }}>
-                                        <div style={{ marginTop: 20, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>아.. 노트북이 꼭 필요한데 ㅠㅠ</div>
-                                        <div style={{ marginTop: 4, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>지금 사면 생활비가 너무 부족해... </div>
-                                    </div>
-                                    <div style={{ border: "solid 1px rgba(0,0,0,0.12)", marginTop: 32, marginLeft: 20, backgroundColor: "#ffffff", width: 288, height: 56, borderRadius: 10, boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)" }}>
-                                        <div style={{ marginTop: 20, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>그냥 나눠서 결제하면 되는거 아니야?</div>
-                                    </div>
-                                    <div style={{ marginTop: 32, marginLeft: 172, backgroundColor: "#f2f3f8", width: 288, height: 80, borderRadius: 10, boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)" }}>
-                                        <div style={{ marginTop: 20, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>신용카드도 없는데 어떻게 그렇게 하는</div>
-                                        <div style={{ marginTop: 4, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>거야? </div>
-                                    </div>
-                                    <div style={{ border: "solid 1px rgba(0,0,0,0.12)", marginTop: 32, marginLeft: 20, backgroundColor: "#ffffff", width: 288, height: 80, borderRadius: 10, boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)" }}>
-                                        <div style={{ marginTop: 20, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>나누다에서 나눠서 결제해!</div>
-                                        <div style={{ marginTop: 4, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>할부 이자 없이 구매할 수 있어 ㅎㅎ </div>
-                                    </div>
-                                    <div style={{ width: 440, marginLeft: 20, marginTop: 32, height: 56, backgroundColor: "#D4F7F6", boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)", borderRadius: 10 }}>
-                                        <div style={{ marginTop: 20, marginLeft: 16, fontWeight: "bold", fontSize: 16, opacity: 1, color: "#202426", fontFamily: "NotoSansCJKkr" }}>지금 가입하고 신용등급, 할부이자 상관없이 분할 결제해봐!</div>
-                                    </div>
+                                    <div style={{ 
+                                        marginTop: 32, 
+                                        marginLeft: 172, 
+                                        backgroundColor: "#f2f3f8", 
+                                        width: 256,
+                                        padding: 16,
+                                        borderRadius: 10, 
+                                        boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)",
+
+                                        textAlign: "left",
+                                        lineHeight: 1.5,
+                                        fontSize: 16, 
+                                        fontFamily: "NotoSansCJKkr",
+                                        color: "#202426"
+                                    }}>아.. 노트북이 꼭 필요한데 ㅠㅠ <br /> 지금 사면 생활비가 너무 부족해...</div>
+                                    <div style={{ 
+                                        border: "solid 1px rgba(0,0,0,0.12)", 
+                                        marginTop: 32, 
+                                        marginLeft: 20, 
+                                        backgroundColor: "#ffffff", 
+                                        width: 239,
+                                        padding: 16,
+                                        borderRadius: 10, 
+                                        boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)",
+                                        fontSize: 16, 
+                                        fontFamily: "NotoSansCJKkr",
+                                        textAlign: "left",
+                                        color: "#202426"
+                                    }}>그냥 나눠서 결제하면 되는거 아니야?</div>
+                                    <div style={{ 
+                                        marginTop: 32, 
+                                        marginLeft: 172, 
+                                        backgroundColor: "#f2f3f8", 
+                                        width: 256,
+                                        padding: 16,
+                                        borderRadius: 10, 
+                                        boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)",
+
+                                        textAlign: "left",
+                                        lineHeight: 1.5,
+                                        fontSize: 16, 
+                                        fontFamily: "NotoSansCJKkr",
+                                        color: "#202426"
+                                    }}>아.. 노트북이 꼭 필요한데 ㅠㅠ <br /> 지금 사면 생활비가 너무 부족해...</div>
+                                    <div style={{ 
+                                        border: "solid 1px rgba(0,0,0,0.12)", 
+                                        marginTop: 32, 
+                                        marginLeft: 20, 
+                                        backgroundColor: "#ffffff", 
+                                        width: 239,
+                                        padding: 16,
+                                        borderRadius: 10, 
+                                        boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)",
+                                        fontSize: 16, 
+                                        fontFamily: "NotoSansCJKkr",
+                                        textAlign: "left",
+                                        color: "#202426"
+                                    }}>나누다에서 나눠서 결제해! <br /> 할부 이자 없이 구매할 수 있어 ㅎㅎ</div>
+                                    <div style={{ 
+                                        width: 408, 
+                                        marginLeft: 20, 
+                                        marginTop: 32,
+                                        padding: 16,
+                                        backgroundColor: "#D4F7F6", 
+                                        boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)", 
+                                        borderRadius: 10,
+                                        textAlign: "center",
+                                        fontWeight: "bold", 
+                                        fontSize: 16, 
+                                        color: "#202426", 
+                                        fontFamily: "NotoSansCJKkr",
+                                        marginBottom: 32,
+                                    }}>지금 가입하고 신용등급, 할부이자 상관없이 분할 결제해봐!</div>
                                 </div>
                                 {/* 두번째 */}
                                 <div>
