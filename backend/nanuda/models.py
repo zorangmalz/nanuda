@@ -18,3 +18,14 @@ class User(models.Model):
     limit =  models.IntegerField()
     profile = models.URLField()
     phone_number = PhoneNumberField()
+    address_number = models.TextField()
+    address = models.TextField()
+    address_detail = models.TextField()
+    point = models.IntegerField()
+    # 은행에 대한 choice 필요
+    bank = models.CharField()
+    account = models.CharField(max_length=30)
+
+    class Meta:
+        ordering = ["id", "joinday"]
+        db_table = 'user'
