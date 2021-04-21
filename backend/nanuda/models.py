@@ -23,7 +23,7 @@ class User(models.Model):
     address_detail = models.TextField()
     point = models.IntegerField()
     # 은행에 대한 choice 필요
-    bank = models.CharField()
+    bank = models.CharField(max_length=30)
     account = models.CharField(max_length=30)
 
     class Meta:
