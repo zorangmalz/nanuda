@@ -41,15 +41,18 @@ INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.staticfiles',
     "rest_framework",
+    'rest_framework.authtoken',
+    'rest_auth',
     "nanuda.apps.NanudaConfig",
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
   	'allauth.socialaccount.providers.naver',
-
+    'rest_auth.registration',
     'allauth.socialaccount.providers.auth0',
     'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.facebook',
 ]
 SITE_ID = 1
 

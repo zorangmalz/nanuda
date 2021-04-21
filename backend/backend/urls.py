@@ -18,5 +18,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('account/', include('allauth.urls')),
+    
+    path('rest-auth/google/', GoogleLogin.as_view(), name='google_login')
 ]
