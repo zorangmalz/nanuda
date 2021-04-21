@@ -265,7 +265,8 @@ export default function Home() {
                                 paddingLeft: 20,
                                 paddingRight: 20,
                                 marginTop: 200,
-                                backgroundColor: "#f2f3f8"
+                                backgroundColor: "#f2f3f8",
+                                marginBottom: 100,
                             }}>
                                 <div style={{
                                     display: "flex",
@@ -636,9 +637,10 @@ function TimeShop({ title, sub, price, currentPrice, stock, time }) {
 }
 
 function Review({ num, name, property, date, content }) {
+    let history = useHistory()
     return (
         <>
-            <div style={{
+            <div onClick={() => history.push("/servicereview")} style={{
                 minWidth: 330,
                 padding: 16,
                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
@@ -648,6 +650,7 @@ function Review({ num, name, property, date, content }) {
                 alignSelf: "center",
                 marginRight: 20,
                 borderRadius: 6,
+                cursor: "pointer",
             }}>
                 <div style={{
                     fontSize: 21,

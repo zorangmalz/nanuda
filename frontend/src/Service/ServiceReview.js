@@ -1,8 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 
 export default function ServiceReview() {
+    let history = useHistory()
     const reviewData = [
         {
             num: "5.0",
@@ -176,7 +178,7 @@ export default function ServiceReview() {
                                     content={item.content}
                                 />
                             )}
-                            <div style={{
+                            <div onClick={() => history.push("/servicewrite")} style={{
                                 position: "fixed",
                                 bottom: 40,
                                 width: 440,
@@ -292,7 +294,7 @@ export default function ServiceReview() {
                             content={item.content}
                         />
                     )}
-                    <div style={{
+                    <div onClick={() => history.push("/servicewrite")} style={{
                         position: "fixed",
                         bottom: 40,
                         width: "90%",

@@ -45,7 +45,6 @@ export default function ReviewMain() {
             follow: 10
         },
     ]
-
     return (
         <>
             <Default>
@@ -107,20 +106,18 @@ export default function ReviewMain() {
                                 width: 240,
                                 alignItems: "center",
                                 justifyContent: "flex-start",
-                                gridTemplateColumns: "1fr 1fr"
-
+                                gridTemplateColumns: "1fr 1fr",
+                                marginBottom: 100,
                             }}>
                                 {reviewData.map(item =>
-
-                                    <div style={{
+                                    <div onClick={() => history.push("/reviewpost")} style={{
                                         marginLeft: 20,
                                         marginTop: 32,
-
+                                        cursor: "pointer"
                                     }}>
                                         <div style={{
                                             display: "flex",
                                             flexDirection: "row",
-
                                         }}> <div style={{
                                             width: 32,
                                             height: 32,
@@ -129,14 +126,12 @@ export default function ReviewMain() {
                                         }}>
                                             </div>
                                             <div style={{
-
                                                 fontSize: 14,
                                                 fontWeight: "bold",
                                                 marginLeft: 8,
                                                 marginTop: 6
                                             }}>{item.id} </div>
                                         </div>
-
                                         <div style={{
                                             width: 210,
                                             height: 210,
@@ -165,7 +160,6 @@ export default function ReviewMain() {
                                                 <IoChatbubbleOutline></IoChatbubbleOutline>
                                             </div>
                                             <div style={{ marginTop: 11, fontSize: 14, fontWeight: "bold" }}>{item.reply}</div>
-
                                         </div>
                                         <div style={{
                                             fontSize: 14,
@@ -200,6 +194,7 @@ export default function ReviewMain() {
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 cursor: "pointer",
+                                marginBottom: 30,
                             }}><div style={{
                                 color: "#ffffff",
                                 fontSize: 18,
@@ -228,7 +223,6 @@ export default function ReviewMain() {
                         marginLeft: 20,
                         backgroundColor: "#cb1a86",
                         borderRadius: 6
-
                     }}>
                         <div style={{
                             fontSize: 18,
@@ -252,14 +246,12 @@ export default function ReviewMain() {
                         alignItems: "center",
                         justifyContent: "flex-start",
                         gridTemplateColumns: "1fr 1fr"
-
                     }}>
                         {reviewData.map(item =>
-
-                            <div style={{
+                            <div onClick={() => history.push("/reviewpost")} style={{
                                 marginLeft: 20,
                                 marginTop: 32,
-
+                                cursor: "pointer"
                             }}>
                                 <div style={{
                                     display: "flex",
