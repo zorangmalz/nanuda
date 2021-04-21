@@ -710,54 +710,52 @@ export default function WishDealURL() {
                                     opacity: numberB === 5 ? 1 : 0.8,
                                     textAlign: "center",
                                 }}>기타</div>
-                            </div>
-                            <div>
-                            <div
-                             style={{
-                                 marginTop:16,
-                                marginLeft:20,
-                                marginRight:20
-                                                 }}>
-                                 <div style={{
-                                     display:"flex",
-                                     flexDirection:"row"
-                                 }}>
-                                <input style={{
-                                    outline:0,
-                                    width:210,
-                                    height:26,
-                                    border:"0px solid #ffffff",
-                                    
-                                    }}
-                                name="link"
-                                placeholder="배송비용을 입력해주세요."
-                                >
-                                </input>
-                                <div style={{
-                                    fontWeight:"bold",
-                                    fontsize:16,
-                                    marginLeft:48
-                                }}>원</div>
-                                </div>                    
-                                <div style={{width:278,marginTop:7,height:0,border:"solid 1px #f2f3f8"}}></div>
-                            </div>
-                            
                         </div>
-                        <div style={{
+                        <div>
+                            <div
+                                style={{
+                                    marginTop: 16,
+                                    marginLeft: 20,
+                                    marginRight: 20
+                                }}>
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "row"
+                                }}>
+                                    <input style={{
+                                        outline: 0,
+                                        width: 210,
+                                        height: 26,
+                                        border: "0px solid #ffffff",
+
+                                    }}
+                                        name="link"
+                                        placeholder="배송비용을 입력해주세요."
+                                    >
+                                    </input>
+                                    <div style={{
+                                        fontWeight: "bold",
+                                        fontsize: 16,
+                                        marginLeft: 48
+                                    }}>원</div>
+                                </div>
+                                <div style={{ width: 278, marginTop: 8, height: 0, border: "solid 1px #f2f3f8" }}></div>
+                            </div>
+                        </div>
+                        <div onClick={() => history.push("/ordersheet")} style={{
                             borderRadius: 8,
                             width: "90%",
-                            height: 56,
-                            marginLeft: 20,
-                            marginRight: 20,
+                            paddingTop: "4%",
+                            paddingBottom: "4%",
+                            marginLeft: "5%",
+                            marginRight: "5%",
                             marginTop: 32,
                             backgroundColor: "#2dd9d3",
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
                             color: "#ffffff",
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            marginBottom:150
+                            marginBottom: 120
                         }}><div style={{
                             color: "#ffffff",
                             fontSize: 18,

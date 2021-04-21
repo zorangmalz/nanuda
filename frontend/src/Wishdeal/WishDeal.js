@@ -51,6 +51,7 @@ export default function WishDeal() {
                                         marginRight: 20
                                     }}>
                                     <input style={{
+                                        outline: 0,
                                         width: 440,
                                         height: 26,
                                         border: "0px solid #ffffff"
@@ -101,12 +102,13 @@ export default function WishDeal() {
                                         marginRight: 20
                                     }}>
                                     <input style={{
+                                        outline: 0,
                                         width: 440,
                                         height: 26,
                                         border: "0px solid #ffffff"
 
                                     }}
-                                        name="ext"
+                                        name="text"
                                         placeholder="기타 항목을 입력해주세요."
                                     >
                                     </input>
@@ -173,6 +175,7 @@ export default function WishDeal() {
                                     marginRight: 20
                                 }}>
                                 <input style={{
+                                    outline: 0,
                                     width: "90%",
                                     height: 26,
                                     border: "0px solid #ffffff"
@@ -181,7 +184,7 @@ export default function WishDeal() {
                                     placeholder="링크"
                                 >
                                 </input>
-                                <div style={{ width: 438, marginTop: 7, height: 0, border: "solid 1px #f2f3f8" }}></div>
+                                <div style={{ width: "90vw", marginTop: 8, height: 1, backgroundColor: "#f2f3f8" }}></div>
                             </div>
 
                         </div>
@@ -225,31 +228,28 @@ export default function WishDeal() {
                                 <input style={{
                                     width: "90%",
                                     height: 26,
+                                    outline: 0,
                                     border: "0px solid #ffffff"
-
                                 }}
-                                    name="ext"
+                                    name="text"
                                     placeholder="기타 항목을 입력해주세요."
                                 >
                                 </input>
-                                <div style={{ width: 438, marginTop: 7, height: 0, border: "solid 1px #f2f3f8" }}></div>
+                                <div style={{ width: "90vw", marginTop: 8, height: 1, backgroundColor: "#f2f3f8" }}></div>
                             </div>
-
                         </div>
-                        <div style={{
+                        <div onClick={() => history.push("/wishdealurl")} style={{
                             borderRadius: 8,
                             width: "90%",
-                            height: 56,
-                            marginLeft: 20,
-                            marginRight: 20,
-                            marginTop: 32,
+                            paddingTop: "4%",
+                            paddingBottom: "4%",
+                            marginLeft: "5%",
+                            marginRight: "5%",
+                            marginTop: 28,
                             backgroundColor: "#2dd9d3",
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                            color: "#ffffff",
-                            fontSize: 18,
-                            fontWeight: "bold",
                         }}><div style={{
                             color: "#ffffff",
                             fontSize: 18,

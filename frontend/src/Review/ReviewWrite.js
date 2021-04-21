@@ -133,7 +133,7 @@ export default function ReviewWrite() {
 
                                     </div>
                                 </div>
-                                <BsCheck onClick={onOne} color={number == 1 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
+                                <BsCheck onClick={onOne} color={number === 1 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
                             </div>
 
                             <div style={{
@@ -164,7 +164,7 @@ export default function ReviewWrite() {
 
                                     </div>
                                 </div>
-                                <BsCheck onClick={onTwo} color={number == 2 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
+                                <BsCheck onClick={onTwo} color={number === 2 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
                             </div>
 
                             <div style={{
@@ -195,7 +195,7 @@ export default function ReviewWrite() {
 
                                     </div>
                                 </div>
-                                <BsCheck onClick={onThree} color={number == 3 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
+                                <BsCheck onClick={onThree} color={number === 3 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
                             </div>
                             <div style={{
                                 marginTop: 32,
@@ -353,7 +353,7 @@ export default function ReviewWrite() {
 
                                 </div>
                             </div>
-                            <BsCheck onClick={onOne} color={number == 1 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
+                            <BsCheck onClick={onOne} color={number === 1 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
                         </div>
 
                         <div style={{
@@ -384,7 +384,7 @@ export default function ReviewWrite() {
 
                                 </div>
                             </div>
-                            <BsCheck onClick={onTwo} color={number == 2 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
+                            <BsCheck onClick={onTwo} color={number === 2 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
                         </div>
 
                         <div style={{
@@ -415,7 +415,7 @@ export default function ReviewWrite() {
 
                                 </div>
                             </div>
-                            <BsCheck onClick={onThree} color={number == 3 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
+                            <BsCheck onClick={onThree} color={number === 3 ? "#2dd9d3" : "#dfdfdf"} size={42} style={{ marginRight: 20, marginTop: 37, cursor: "pointer" }} />
                         </div>
                         <div style={{
                             marginTop: 32,
