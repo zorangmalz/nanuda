@@ -18,13 +18,13 @@ class User(models.Model):
     limit =  models.IntegerField()
     profile = models.URLField()
     phone_number = PhoneNumberField()
-    address_number = models.TextField()
-    address = models.TextField()
-    address_detail = models.TextField()
-    point = models.IntegerField()
+    address_number = models.TextField(default="00000")
+    address = models.TextField(default="address")
+    address_detail = models.TextField(default="address_detail")
+    point = models.IntegerField(default=0)
     # 은행에 대한 choice 필요
-    bank = models.CharField(max_length=30)
-    account = models.CharField(max_length=30)
+    bank = models.CharField(max_length=30, default="bank")
+    account = models.CharField(max_length=30, default="account")
 
     class Meta:
         ordering = ["id", "joinday"]
