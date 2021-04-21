@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from "react";
+import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 
@@ -18,6 +19,8 @@ function reducer(state, action) {
 export default function OrderSheet() {
     const [register, setRegister] = useState(false);
     const [number, dispatch] = useReducer(reducer, 2);
+
+    //분할결제 기간 선택
     const onTwo = () => {
         dispatch({ type: 'TWO' });
     };
@@ -28,7 +31,8 @@ export default function OrderSheet() {
         dispatch({ type: 'FOUR' });
     };
 
-    const payment = [
+    //결제 일정 제공
+    const paymentDate = [
         {
             num: "1",
             date: "3/29",
@@ -50,6 +54,10 @@ export default function OrderSheet() {
             money: "-",
         },
     ]
+
+    //결제 성공 시 -> paymentsuccess, 결제 실패 시 -> paymentfail
+    let history = useHistory()
+    const [payment, setPayment] = useState(true)
     return (
         <>
             <Default>
@@ -344,7 +352,7 @@ export default function OrderSheet() {
                                 flexDirection: "column",
                                 alignItems: "center",
                             }}>
-                                {payment.map(item =>
+                                {paymentDate.map(item =>
                                     <div style={{
                                         width: "100%",
 
@@ -534,7 +542,8 @@ export default function OrderSheet() {
                                 textDecorationLine: "underline",
                                 marginBottom: 8,
                                 marginLeft: 20,
-                                fontFamily: "NotoSansCJKkr"
+                                fontFamily: "NotoSansCJKkr",
+                                cursor: "pointer"
                             }}>구매조건 확인 및 결제대행 서비스 약관 동의</div>
                             <div style={{
                                 fontSize: 14,
@@ -543,7 +552,8 @@ export default function OrderSheet() {
                                 textDecorationLine: "underline",
                                 marginBottom: 8,
                                 marginLeft: 20,
-                                fontFamily: "NotoSansCJKkr"
+                                fontFamily: "NotoSansCJKkr",
+                                cursor: "pointer"
                             }}>개인정보 제공안내</div>
                             <div style={{
                                 width: 440,
@@ -568,7 +578,7 @@ export default function OrderSheet() {
                                 marginBottom: 32,
                                 fontFamily: "NotoSansCJKkr"
                             }}>위 주문 내용을 확인 하였으며, 회원은 본인의 결제에 동의합니다.</div>
-                            <div style={{
+                            <div onClick={() => payment ? history.push("/paymentsuccess") : history.push("/paymentfail")} style={{
                                 alignSelf: "center",
                                 width: 440,
                                 paddingTop: 15,
@@ -837,7 +847,7 @@ export default function OrderSheet() {
                         flexDirection: "column",
                         alignItems: "center",
                     }}>
-                        {payment.map(item =>
+                        {paymentDate.map(item =>
                             <div style={{
                                 width: "100%",
 
@@ -1062,7 +1072,7 @@ export default function OrderSheet() {
                         marginBottom: 32,
                         fontFamily: "NotoSansCJKkr"
                     }}>위 주문 내용을 확인 하였으며, 회원은 본인의 결제에 동의합니다.</div>
-                    <div style={{
+                    <div onClick={() => payment ? history.push("/paymentsuccess") : history.push("/paymentfail")} style={{
                         alignSelf: "center",
                         width: "90%",
                         paddingTop: 15,

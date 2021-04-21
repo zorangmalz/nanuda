@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from "react";
+import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 
@@ -51,6 +52,8 @@ export default function WishDealURL() {
     const onEXT = () => {
         dispatchB({ type: 'EXT' });
     };
+
+    let history = useHistory();
 
 
     return (
@@ -389,7 +392,7 @@ export default function WishDealURL() {
                             </div>
                             
                         </div>
-                        <div style={{
+                        <div onClick={() => history.push("/ordersheet")} style={{
                             borderRadius: 8,
                             width: 440,
                             height: 56,
@@ -403,7 +406,8 @@ export default function WishDealURL() {
                             color: "#ffffff",
                             fontSize: 18,
                             fontWeight: "bold",
-                            marginBottom:150
+                            marginBottom:150,
+                            cursor: "pointer",
                         }}><div style={{
                             color: "#ffffff",
                             fontSize: 18,

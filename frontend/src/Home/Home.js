@@ -4,8 +4,10 @@ import WebIntro, { Header } from "../Style";
 import Slider from "react-slick";
 import { BsBookmark, BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
+import { useHistory } from "react-router";
 
 export default function Home() {
+    let history = useHistory()
     return (
         <>
             <Default>
@@ -481,7 +483,7 @@ export default function Home() {
                                     marginTop: 32
                                 }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no.</div>
                             </div>
-                            <div style={{
+                            <div onClick={() => history.push("/wishdeal")} style={{
                                 width: 440,
                                 marginLeft: 20,
                                 marginRight: 20,

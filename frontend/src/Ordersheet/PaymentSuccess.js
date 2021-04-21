@@ -3,10 +3,20 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
 import { MOrderDetail, OrderDetail } from "./PaymentFail";
+import { useHistory } from "react-router";
 
 export default function PaymentSuccess() {
     //WishDeal인지 여부
     const [wish, setWish] = useState(true)
+
+    //화면 변경
+    let history = useHistory()
+    function goHome() {
+        history.push("/")
+    }
+    function goReview() {
+        history.push("/review")
+    }
     return (
         <>
             <Default>
@@ -73,7 +83,7 @@ export default function PaymentSuccess() {
                                 phoneNumber="010-4337-6607"
                                 deliveryClaim="집 앞"
                             />
-                            <div style={{
+                            <div onClick={goHome} style={{
                                 width: 440,
                                 paddingTop: 15,
                                 paddingBottom: 15,
@@ -88,7 +98,7 @@ export default function PaymentSuccess() {
                                 cursor: "pointer",
                                 fontFamily: "NotoSansCJKkr"
                             }}>홈으로</div>
-                            <div style={{
+                            <div onClick={goReview} style={{
                                 width: 440,
                                 paddingTop: 15,
                                 paddingBottom: 15,
@@ -153,7 +163,7 @@ export default function PaymentSuccess() {
                         phoneNumber="010-4337-6607"
                         deliveryClaim="집 앞"
                     />
-                    <div style={{
+                    <div onClick={goHome} style={{
                         width: "90%",
                         paddingTop: 8,
                         paddingBottom: 8,
@@ -168,7 +178,7 @@ export default function PaymentSuccess() {
                         cursor: "pointer",
                         fontFamily: "NotoSansCJKkr"
                     }}>홈으로</div>
-                    <div style={{
+                    <div onClick={goReview} style={{
                         width: "90%",
                         paddingTop: 8,
                         paddingBottom: 8,

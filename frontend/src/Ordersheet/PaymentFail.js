@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 import { AiOutlineClose } from "react-icons/ai";
+import { useHistory } from "react-router";
 
 export default function PaymentFail() {
+    //타임딜 여부
     const [timeDeal, setTimeDeal] = useState(true)
+
+    //화면 변경
+    let history = useHistory()
     return (
         <>
             <Default>
@@ -76,7 +81,7 @@ export default function PaymentFail() {
                                 phoneNumber="010-4337-6607"
                                 deliveryClaim="집 앞"
                             />
-                            <div style={{
+                            <div onClick={() => timeDeal ? history.push("/ordersheet") : history.push("/")} style={{
                                 borderRadius: 8,
                                 width: 440,
                                 height: 56,
@@ -90,7 +95,8 @@ export default function PaymentFail() {
                                 color: "#ffffff",
                                 fontSize: 18,
                                 fontWeight: "bold",
-                                fontFamily: "NotoSansCJKkr"
+                                fontFamily: "NotoSansCJKkr",
+                                cursor: "pointer",
                             }}><div style={{
                                 color: "#ffffff",
                                 fontSize: 18,
@@ -150,7 +156,7 @@ export default function PaymentFail() {
                         phoneNumber="010-4337-6607"
                         deliveryClaim="집 앞"
                     />
-                    <div style={{
+                    <div onClick={() => timeDeal ? history.push("/ordersheet") : history.push("/")} style={{
                         borderRadius: 8,
                         width: "90%",
                         height: 56,
@@ -164,7 +170,8 @@ export default function PaymentFail() {
                         color: "#ffffff",
                         fontSize: 18,
                         fontWeight: "bold",
-                        fontFamily: "NotoSansCJKkr"
+                        fontFamily: "NotoSansCJKkr",
+                        cursor: "pointer",
                     }}><div style={{
                         color: "#ffffff",
                         fontSize: 18,

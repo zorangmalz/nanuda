@@ -1,9 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 
 export default function WishDeal() {
-
+    let history = useHistory();
     return (
         <>
             <Default>
@@ -113,7 +114,7 @@ export default function WishDeal() {
                                 </div>
 
                             </div>
-                            <div style={{
+                            <div onClick={() => history.push("/wishdealurl")} style={{
                                 borderRadius: 8,
                                 width: 440,
                                 height: 56,
@@ -127,6 +128,7 @@ export default function WishDeal() {
                                 color: "#ffffff",
                                 fontSize: 18,
                                 fontWeight: "bold",
+                                cursor: "pointer",
                             }}><div style={{
                                 color: "#ffffff",
                                 fontSize: 18,
