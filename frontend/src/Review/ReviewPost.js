@@ -2,6 +2,7 @@ import React,{useReducer} from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 import { BsFillStarFill } from "react-icons/bs"
+import { useHistory } from "react-router";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -37,6 +38,8 @@ export default function ReviewPost() {
     const onFive = () => {
         dispatch({ type: 'FIVE' });
     };
+
+    let history = useHistory()
     return (
         <>
             <Default>
@@ -169,7 +172,9 @@ export default function ReviewPost() {
                                 fontSize:12,
                                 opacity:0.8
                             }}> 2021.03.30 </div>
-                            <div style={{
+                            <div onClick={() => history.push("/wishdeal")} style={{
+                                cursor: "pointer",
+                                marginBottom: 50,
                                 borderRadius: 8,
                                 width: 440,
                                 height: 56,
@@ -206,11 +211,8 @@ export default function ReviewPost() {
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
-
                             justifyContent: "flex-start",
-
                             width: 480,
-                            
                             backgroundColor: "#ffffff",
                         }}>
                             <Header content="나눠산 사람들" />
@@ -246,9 +248,7 @@ export default function ReviewPost() {
                                 }}>
                                 </div>
                             </div>
-
                             <div style={{ width: "100%", height: 500, backgroundColor: "#2dd9d3", marginTop: 8 }}></div>
-
                             <div style={{
                                 marginTop: 16,
                                 display: "flex",
@@ -314,7 +314,7 @@ export default function ReviewPost() {
                                 fontSize:12,
                                 opacity:0.8
                             }}> 2021.03.30 </div>
-                            <div style={{
+                            <div onClick={() => history.push("/wishdeal")} style={{
                                 borderRadius: 8,
                                 width: "90%",
                                 height: 56,
@@ -328,6 +328,7 @@ export default function ReviewPost() {
                                 color: "#ffffff",
                                 fontSize: 18,
                                 fontWeight: "bold",
+                                cursor: "pointer"
                             }}><div style={{
                                 color: "#ffffff",
                                 fontSize: 18,
@@ -335,7 +336,6 @@ export default function ReviewPost() {
                             }}>위시딜 신청하기</div></div>
                         </div>
                     </div>
-                
             </Mobile>
         </>
     )

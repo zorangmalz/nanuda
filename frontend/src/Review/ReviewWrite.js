@@ -268,7 +268,7 @@ export default function ReviewWrite() {
                                 minHeight: 180,
                                 marginLeft: 20,
                                 marginTop: 16,
-                                resize: "none"
+                                resize: "none",
                             }} />
                             <div onClick={() => history.push("/review")} style={{
                                 borderRadius: 8,
@@ -285,7 +285,7 @@ export default function ReviewWrite() {
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 cursor: "pointer",
-                                marginBottom: 100,
+                                marginBottom: 50,
                             }}><div style={{
                                 color: "#ffffff",
                                 fontSize: 18,

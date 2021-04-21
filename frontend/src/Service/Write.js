@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 import { BsFillStarFill } from "react-icons/bs"
+import { useHistory } from "react-router";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -21,6 +22,7 @@ function reducer(state, action) {
 }
 
 export default function Write() {
+    let history = useHistory()
     const [number, dispatch] = useReducer(reducer, 0);
     const onOne = () => {
         dispatch({ type: 'ONE' });
@@ -139,7 +141,7 @@ export default function Write() {
                                     fontFamily: "NotoSansCJKkr"
                                 }} />
                             </div>
-                            <div style={{
+                            <div onClick={() => history.push("/servicereview")} style={{
                                 width: 440,
                                 marginLeft: 20,
                                 paddingTop: 15,
@@ -241,7 +243,7 @@ export default function Write() {
                             fontFamily: "NotoSansCJKkr"
                         }} />
                     </div>
-                    <div style={{
+                    <div onClick={() => history.push("/servicereview")} style={{
                         width: "90%",
                         marginLeft: "5%",
                         paddingTop: 8,
