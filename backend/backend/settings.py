@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    
+     'corsheaders',
     'django.contrib.staticfiles',
     "rest_framework",
     "nanuda.apps.NanudaConfig",
@@ -61,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+      'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -146,3 +147,4 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+CORS_ORIGIN_ALLOW_ALL = True
