@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-     'corsheaders',
+    'corsheaders',
     'django.contrib.staticfiles',
     "rest_framework",
     "nanuda.apps.NanudaConfig",
