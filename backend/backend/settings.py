@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.auth0',
     'allauth.socialaccount.providers.kakao',
     'allauth.socialaccount.providers.facebook',
+    "phonenumber_field",
 ]
 SITE_ID = 1
 
