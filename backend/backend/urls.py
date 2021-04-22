@@ -15,13 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include, re_path
-
 from nanuda.views import GoogleLogin,FacebookLogin
+
+#API 제작
+from rest_framework.urlpatterns import format_suffix_patterns
+from nanuda import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('rest-auth/facebook/', FacebookLogin.as_view(), name='fb_login'),
-    path('rest-auth/google/', GoogleLogin.as_view(), name='google_login')
+    path('rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
+    path('user/', views.user_list),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
