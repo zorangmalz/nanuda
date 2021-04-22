@@ -51,6 +51,10 @@ class ServiceReview(models.Model):
     def user_gender(self):
         return self.user_id.gender
 
+    def __str__(self):
+        return self.user_id + self.service_date
+    
+
     class Meta:
         ordering = ["id", "service_date"]
         db_table = "servicereview"
@@ -67,6 +71,9 @@ class Product(models.Model):
     product_option_price = models.PositiveIntegerField()
     product_shipping_price = models.PositiveIntegerField()
 
+    def __str__(self):
+        return self.product_name
+    
     class Meta:
         ordering = ["id", "product_type", "product_price"]
         db_table = 'product'
@@ -88,6 +95,9 @@ class Review(models.Model):
     
     def user_profile(self):
         return self.user_id.profile
+
+    def __str__(self):
+        return self.user_nickname + self.review_date
 
     class Meta:
         ordering=["id", "review_date"]
@@ -118,6 +128,9 @@ class Order(models.Model):
     
     def product_price(self):
         return self.product_id.product_price
+    
+    def __str__(self):
+        return self.user_id + self.order_date
     
     class Meta:
         ordering = ["id", "order_date"]
