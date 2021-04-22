@@ -29,6 +29,7 @@ urlpatterns = [
     path('rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
     path('user/', views.user_list),
     path('servicereview/', views.service_review_all),
+    path('product/', views.product_all),
     path('rest-auth/kakao/', KakaoLogin.as_view(), name='kakao_login'),
 ]
 

@@ -63,6 +63,23 @@ def service_review_all(request):
         return Response(service_review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+# Product
+@api_view(["GET", "POST"])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def product_all(request):
+    if request.method == "GET":
+        product = Product.objects.all()
+        product_serializer = ProductAllSerializer(product, many=True)
+        return Response(product_serializer.data)
+    
+    elif request.method == "POST":
+        product_serializer = ProductAllSerializer(data=request.data)
+        if request.user.is_authenticated and product_serializer.is_valid():
+            product_serializer.save()
+            return Response(product_serializer.data, status=status.HTTP_201_CREATED)
+        return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class KakaoLogin(View):
     def get(self, request):
