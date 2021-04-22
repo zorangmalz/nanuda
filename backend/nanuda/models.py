@@ -17,7 +17,7 @@ class User(models.Model):
     age = models.PositiveIntegerField()
     joinday = models.DateTimeField(auto_now_add=True)
     limit =  models.IntegerField()
-    profile = models.URLField()
+    profile = models.URLField(blank=True)
     phone_number = PhoneNumberField(blank=True)
     address_number = models.TextField(blank=True, default="우편번호")
     address = models.TextField(blank=True, default="주소")
