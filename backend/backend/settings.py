@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     "phonenumber_field",
 ]
-SITE_ID = 1
+SITE_ID = 2
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
