@@ -54,12 +54,12 @@ class KakaoLogin(View):
         token_kakao_response=requests.post(url,headers=headers,data=body)
         access_token=json.loads(token_kakao_response.text).get("access_token")
         print("here",access_token)
-        url="http://kapi.kakao.com/v2/user/me"
+        url="https://kapi.kakao.com/v2/user/me"
         headers={
             "Authorization":f"Bearer {access_token}",
             "Content-type":"application/x-www-form-urlencoded; charset=utf-8"
         }
-        kakao_response=requests.get(url,headers=headers)
+        kakao_response=requests.post(url,headers=headers)
         kakao_response=json.loads(kakao_response.text)
         print(kakao_response)
         return HttpResponse(f'{kakao_response}')
