@@ -29,10 +29,9 @@ class User(models.Model):
 
     class Meta:
         ordering = ["id", "joinday"]
-        db_table = "user"
 
     def __str__(self):
-        return self.user_email
+        return "{}".format(self.user_email)
     
 
 class ServiceReview(models.Model):
@@ -52,12 +51,11 @@ class ServiceReview(models.Model):
         return self.user_id.gender
 
     def __str__(self):
-        return self.user_id + self.service_date
+        return "{}".format(self.user_id)
     
 
     class Meta:
         ordering = ["id", "service_date"]
-        db_table = "servicereview"
     
 class Product(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -72,11 +70,10 @@ class Product(models.Model):
     product_shipping_price = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.product_name
+        return "{}".format(self.product_name)
     
     class Meta:
         ordering = ["id", "product_type", "product_price"]
-        db_table = 'product'
 
 
 class Review(models.Model):
@@ -97,11 +94,10 @@ class Review(models.Model):
         return self.user_id.profile
 
     def __str__(self):
-        return self.user_nickname + self.review_date
+        return "{}".format(self.user_nickname)
 
     class Meta:
         ordering=["id", "review_date"]
-        db_table = 'review'
 
 class Order(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -130,9 +126,7 @@ class Order(models.Model):
         return self.product_id.product_price
     
     def __str__(self):
-        return self.user_id + self.order_date
+        return "{}".format(self.user_id)
     
     class Meta:
         ordering = ["id", "order_date"]
-        db_table = 'order'
-

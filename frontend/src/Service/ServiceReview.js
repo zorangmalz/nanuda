@@ -2,6 +2,8 @@ import React from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
+import user from "../images/users.png"
+import present from "../images/present.png"
 
 export default function ServiceReview() {
     let history = useHistory()
@@ -120,13 +122,11 @@ export default function ServiceReview() {
                                     alignItems: "center",
                                     width: 210,
                                 }}>
-                                    <div style={{
+                                    <img src={user} style={{
                                         width: 72,
                                         height: 72,
-                                        backgroundColor: "#000000",
-                                        color: "#ffffff",
                                         marginBottom: 8,
-                                    }}>로고</div>
+                                    }} />
                                     <div style={{
                                         fontSize: 32,
                                         fontWeight: "bold",
@@ -147,13 +147,11 @@ export default function ServiceReview() {
                                     alignItems: "center",
                                     width: 210,
                                 }}>
-                                    <div style={{
+                                    <img src={present} style={{
                                         width: 72,
                                         height: 72,
-                                        backgroundColor: "#000000",
-                                        color: "#ffffff",
                                         marginBottom: 8,
-                                    }}>로고</div>
+                                    }} />
                                     <div style={{
                                         fontSize: 32,
                                         fontWeight: "bold",
@@ -236,13 +234,11 @@ export default function ServiceReview() {
                             alignItems: "center",
                             width: "45%",
                         }}>
-                            <div style={{
+                            <img src={user} style={{
                                 width: 60,
                                 height: 60,
-                                backgroundColor: "#000000",
-                                color: "#ffffff",
                                 marginBottom: 8,
-                            }}>로고</div>
+                            }} />
                             <div style={{
                                 fontSize: 28,
                                 fontWeight: "bold",
@@ -263,13 +259,13 @@ export default function ServiceReview() {
                             alignItems: "center",
                             width: "45%",
                         }}>
-                            <div style={{
+                            <img src={present} style={{
                                 width: 60,
                                 height: 60,
                                 backgroundColor: "#000000",
                                 color: "#ffffff",
                                 marginBottom: 8,
-                            }}>로고</div>
+                            }} />
                             <div style={{
                                 fontSize: 28,
                                 fontWeight: "bold",

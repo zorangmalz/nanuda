@@ -1,4 +1,5 @@
 import React from "react";
+import logoS from "./images/logoS.png"
 
 export default function WebIntro() {
     return (
@@ -24,11 +25,10 @@ export default function WebIntro() {
                     height: "100%",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <div style={{
+                    <img src={logoS} style={{
                         width: 72,
                         height: 72,
-                        backgroundColor: "#ffffff"
-                    }}>로고</div>
+                    }} />
                     <div style={{
                         marginTop: 32,
                         marginBottom: 32,
