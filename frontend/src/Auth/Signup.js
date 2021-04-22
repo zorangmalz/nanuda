@@ -7,7 +7,7 @@ import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
 import googleLogin from "./googleLogin"
 import GoogleLogin from 'react-google-login';
-
+import axios from "axios"
 export default function Signup() {
 
     const responseGoogle = async(response) => {
@@ -17,7 +17,14 @@ export default function Signup() {
         console.log("df",googleResponse);
         console.log("res",response);
       }
-
+    
+    
+    // async function responseKakao(){
+    //     let res = await axios.get(
+    //         ""
+    //       );
+    //       console.log(res)
+    // }
     let history = useHistory()
     return (
         <>
@@ -53,7 +60,8 @@ export default function Signup() {
                         }}>
                             <Header content="회원가입" />
                             {/* 배너 넣어야됨 */}
-                           <div style={{
+                            <a href={"https://kauth.kakao.com/oauth/authorize?client_id=4fb67e3c47027d004aa591828f76d364&redirect_uri=http://localhost:8000/rest-auth/kakao&response_type=code"} target="_blank">
+                           <div  style={{
                                marginLeft:20,
                                marginTop:32,
                                width:440,
@@ -69,6 +77,7 @@ export default function Signup() {
                            }}>
                                카카오톡으로 시작하기
                               </div>
+                              </a>
                               <div style={{
                                marginLeft:20,
                                marginTop:16,
