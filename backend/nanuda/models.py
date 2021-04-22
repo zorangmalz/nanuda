@@ -37,7 +37,7 @@ class User(models.Model):
 
 class ServiceReview(models.Model):
     id = models.BigAutoField(primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.PROTECT)
     service_date = models.DateTimeField(auto_now_add=True)
     service_score = models.FloatField(default=5.0, blank=True)
     service_content = models.CharField(max_length=300, blank=True, null=True)
@@ -57,13 +57,13 @@ class ServiceReview(models.Model):
     
 class Product(models.Model):
     id = models.BigAutoField(primary_key=True)
-    product_type = models.CharField(blank=True, default="제품 종류")
+    product_type = models.CharField(blank=True, default="제품 종류", max_length=10)
     product_source = models.URLField()
-    product_name = models.CharField(blank=True, default="제품 이름")
+    product_name = models.CharField(blank=True, default="제품 이름", max_length=10)
     product_price = models.PositiveIntegerField()
     product_image = models.URLField()
     product_stock = models.PositiveIntegerField()
-    product_option = models.JSONField(default="{}")
+    product_option = models.JSONField(default=dict)
     product_option_price = models.PositiveIntegerField()
     product_shipping_price = models.PositiveIntegerField()
 
@@ -74,8 +74,8 @@ class Product(models.Model):
 
 class Review(models.Model):
     id = models.BigAutoField(primary_key=True)
-    user_id = models.ForeignKey(User)
-    product_id = models.ForeignKey(Product)
+    user_id = models.ForeignKey(User, on_delete=models.PROTECT)
+    product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
     review_date = models.DateTimeField(auto_now_add=True)
     review_content = models.TextField(default="내용", blank=True)
     review_image = models.URLField()
@@ -90,14 +90,36 @@ class Review(models.Model):
         return self.user_id.profile
 
     class Meta:
-        ordering=["id", "review_date", "user_nickname"]
+        ordering=["id", "review_date"]
+        db_table = 'review'
 
-# class Order(models.Model):
-#     id = models.BigAutoField(primary_key=True)
-#     user_id = models.ForeignKey(User)
-#     product_id = models.ForeignKey(Product)
-#     order_date = models.DateTimeField(auto_now_add=True)
-#     order_price = models.PositiveIntegerField()
-#     order_amount = models.PositiveIntegerField()
-#     order_method = models.CharField(default="배달")
-#     order_expected_date = models.DateTimeField()
+class Order(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    user_id = models.ForeignKey(User, on_delete=models.PROTECT)
+    product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
+    order_date = models.DateTimeField(auto_now_add=True)
+    order_price = models.PositiveIntegerField()
+    order_amount = models.PositiveIntegerField()
+    order_method = models.CharField(default="배달", max_length=10)
+    order_expected_date = models.JSONField(default=dict)
+    order_upfront_date = models.DateTimeField(blank=True)
+    order_receiver = models.CharField(default="수령인", max_length=30)
+    order_address_number = models.TextField(default="우편번호")
+    order_address = models.TextField(default="주소")
+    order_address_detail = models.TextField(default="상세주소")
+    order_phone_number = PhoneNumberField()
+    order_request = models.TextField(default="주문 요청사항")
+    
+    def product_name(self):
+        return self.product_id.product_name
+    
+    def product_image(self):
+        return self.product_id.product_image
+    
+    def product_price(self):
+        return self.product_id.product_price
+    
+    class Meta:
+        ordering = ["id", "order_date"]
+        db_table = 'order'
+
