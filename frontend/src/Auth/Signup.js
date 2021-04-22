@@ -5,8 +5,19 @@ import Slider from "react-slick";
 import { BsBookmark, BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
+import googleLogin from "./googleLogin"
+import GoogleLogin from 'react-google-login';
 
 export default function Signup() {
+
+    const responseGoogle = async(response) => {
+        console.log("come")
+        console.log(response)
+        let googleResponse  = await googleLogin(response.accessToken)
+        console.log("df",googleResponse);
+        console.log("res",response);
+      }
+
     let history = useHistory()
     return (
         <>
@@ -40,7 +51,7 @@ export default function Signup() {
                             backgroundColor: "#ffffff",
                             paddingBottom: 20,
                         }}>
-                            <Header content="로그인" />
+                            <Header content="회원가입" />
                             {/* 배너 넣어야됨 */}
                            <div style={{
                                marginLeft:20,
@@ -90,7 +101,7 @@ export default function Signup() {
                            }}>
                                페이스북으로 시작하기
                               </div>
-                              <div style={{
+                              <div onClick={responseGoogle} style={{
                                marginLeft:20,
                                marginTop:16,
                                width:440,
@@ -106,6 +117,13 @@ export default function Signup() {
                            }}>
                                구글로 시작하기
                               </div>
+                              <GoogleLogin
+          clientId="397691346823-d6vp0dn778jln379l3ol3ujsnjv0n844.apps.googleusercontent.com"
+          buttonText="구글로 시작하기"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          
+        />
                             <div style={{
                                 width: 440,
                                 paddingTop: 32,
