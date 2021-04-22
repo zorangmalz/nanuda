@@ -2,6 +2,7 @@ import React, { useState, useReducer } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
+import { BiPlusCircle } from "react-icons/bi";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -262,12 +263,7 @@ export default function OrderSheet() {
 
                                     border: "1px solid #dfdfdf"
                                 }}>
-                                    <div style={{
-                                        width: 30,
-                                        height: 30,
-                                        borderRadius: 15,
-                                        backgroundColor: "#000000"
-                                    }} />
+                                    <BiPlusCircle size={30} color="#000000" />
                                     <div style={{
                                         fontSize: 16,
                                         color: "#202426",
@@ -522,10 +518,10 @@ export default function OrderSheet() {
                                 marginLeft: 20,
                                 fontFamily: "NotoSansCJKkr"
                             }}>
-                                이번달은
+                                이번 달은
                                 <span style={{
                                     color: "#2dd9d3"
-                                }}>240,000 원</span>
+                                }}>  240,000 원</span>
                                  만 결제하세요.
                             </div>
                             <div style={{
@@ -742,35 +738,54 @@ export default function OrderSheet() {
                         marginTop: 16,
                         fontFamily: "NotoSansCJKkr"
                     }}>결제 수단</div>
-                    <div style={{
-                        width: "90%",
-                        alignSelf: "center",
-                        height: 180,
-                        marginTop: 16,
-                        paddingTop: 15,
-                        paddingBottom: 15,
-                        borderRadius: 6,
-
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-
-                        border: "1px solid #dfdfdf"
-                    }}>
+                    {register ?
                         <div style={{
-                            width: 30,
-                            height: 30,
-                            borderRadius: 15,
-                            backgroundColor: "#000000"
-                        }} />
-                        <div style={{
-                            fontSize: 16,
-                            color: "#202426",
+                            width: "82vw",
+                            alignSelf: "center",
+                            padding: "4vw",
+                            borderRadius: 6,
+                            border: "1px solid #dfdfdf",
                             marginTop: 16,
-                            fontFamily: "NotoSansCJKkr"
-                        }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
-                    </div>
+
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                        }}>
+                            <div style={{
+                                fontSize: 16,
+                                opacity: 0.8,
+                                color: "#202426",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>우리 1002-550-5**544</div>
+                            <div>임시 로고</div>
+                        </div>
+                        :
+                        <div style={{
+                            width: "90%",
+                            alignSelf: "center",
+                            height: 100,
+                            marginTop: 16,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            borderRadius: 6,
+
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+
+                            border: "1px solid #dfdfdf"
+                        }}>
+                            <BiPlusCircle size={20} color="#000000"/>
+                            <div style={{
+                                fontSize: 16,
+                                color: "#202426",
+                                marginTop: 16,
+                                fontFamily: "NotoSansCJKkr"
+                            }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
+                        </div>
+                    }
                     <div style={{
                         fontSize: 18,
                         marginLeft: "5%",

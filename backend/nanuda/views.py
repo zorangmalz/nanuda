@@ -8,12 +8,15 @@ import requests
 import json
 
 
-# API 제작 
+# API 제작 - 상태, 기능, 인증, 권한, Header(JSON)
 from rest_framework import status
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.decorators import api_view, authentication_classes, permission_classes, parser_classes
 from rest_framework.response import Response
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.parsers import JSONParser
+
+# Model Import 
 from nanuda.models import User, ServiceReview, Product, Review, Order
 from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
 
@@ -29,6 +32,7 @@ class GoogleLogin(SocialLoginView):
 
 # User Information
 @api_view(["GET", "POST"])
+@parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 @permission_classes([IsAuthenticated])
 def user_list(request):
@@ -47,6 +51,7 @@ def user_list(request):
 
 # ServiceReview
 @api_view(["GET", "POST"])
+@parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 @permission_classes([IsAuthenticatedOrReadOnly])
 def service_review_all(request):
@@ -65,6 +70,7 @@ def service_review_all(request):
 
 # Product
 @api_view(["GET", "POST"])
+@parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 @permission_classes([IsAuthenticatedOrReadOnly])
 def product_all(request):
@@ -80,6 +86,41 @@ def product_all(request):
             return Response(product_serializer.data, status=status.HTTP_201_CREATED)
         return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# Review
+@api_view(["GET", "POST"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def review_all(request):
+    if request.method == "GET":
+        review = Review.objects.all()
+        review_serializer = ReviewAllSerializer(review, many=True)
+        return Response(review_serializer.data)
+    
+    elif request.method == "POST":
+        review_serializer = ReviewAllSerializer(data=request.data)
+        if request.user.is_authenticated and review_serializer.is_valid():
+            review_serializer.save()
+            return Response(review_serializer.data, status=status.HTTP_201_CREATED)
+        return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# Order
+@api_view(["GET", "POST"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def order_all(request):
+    if request.method == "GET":
+        order = Order.objects.all()
+        order_serializer = OrderAllSerializer(order, many=True)
+        return Response(order_serializer.data)
+    
+    elif request.method == "POST":
+        order_serializer = OrderAllSerializer(data=request.data)
+        if request.user.is_authenticated and order_serializer.is_valid():
+            order_serializer.save()
+            return Response(order_serializer.data, status=status.HTTP_201_CREATED)
+        return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class KakaoLogin(View):
     def get(self, request):
