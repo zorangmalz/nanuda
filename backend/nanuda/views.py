@@ -7,6 +7,10 @@ from django.http import HttpResponse
 import requests
 import json
 
+#보안
+import jwt
+from dotenv import load_dotenv
+import os
 
 # API 제작 - 상태, 기능, 인증, 권한, Header(JSON)
 from rest_framework import status
@@ -19,6 +23,10 @@ from rest_framework.parsers import JSONParser
 # Model Import 
 from nanuda.models import User, ServiceReview, Product, Review, Order
 from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
+
+#Python 내장함수
+from datetime import date
+
 
 # Create your views here.
 # FacebookLogin
@@ -122,8 +130,13 @@ def order_all(request):
             return Response(order_serializer.data, status=status.HTTP_201_CREATED)
         return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+
 class KakaoLogin(View):
     def get(self, request):
+        load_dotenv(verbose=True)
+        SECRET_KEY=os.getenv("SECRET_KEY")
+        ALGORITHM=os.getenv("ALGORITHM")
         kakao_access_code=request.GET.get('code',None)
         url="https://kauth.kakao.com/oauth/token"
         headers={"Content-type":"application/x-www-form-urlencoded; charset=utf-8"}
@@ -133,7 +146,7 @@ class KakaoLogin(View):
                 "code":kakao_access_code}
         token_kakao_response=requests.post(url,headers=headers,data=body)
         access_token=json.loads(token_kakao_response.text).get("access_token")
-        print("here",access_token)
+        
         url="https://kapi.kakao.com/v2/user/me"
         headers={
             "Authorization":f"Bearer {access_token}",
@@ -141,5 +154,27 @@ class KakaoLogin(View):
         }
         kakao_response=requests.post(url,headers=headers)
         kakao_response=json.loads(kakao_response.text)
-        print(kakao_response)
-        return HttpResponse(f'{kakao_response}')
+        
+        if User.objects.filter(uid=kakao_response['id']).exists():
+            user    = User.objects.get(uid=kakao_response['id'])
+            jwt_token = jwt.encode({'id':user.id}, SECRET_KEY,ALGORITHM)
+
+            return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:true')
+        else: 
+            today=date.today()
+            print(kakao_response['kakao_account']['gender'])
+            if kakao_response['kakao_account']['gender']=="male":
+                gender=0
+            else:
+                gender=1            
+            User(
+                uid=kakao_response['id'],
+                platform="1",
+                user_email=kakao_response['kakao_account'].get('email',None),
+                name=kakao_response['properties']['nickname'],
+                gender=gender,
+                joinday=today
+            ).save()
+            user    = User.objects.get(uid=kakao_response['id'])
+            jwt_token = jwt.encode({'id':user.id}, SECRET_KEY, ALGORITHM)
+            return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:false')
