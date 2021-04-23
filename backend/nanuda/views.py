@@ -161,7 +161,7 @@ class KakaoLogin(View):
 
             return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:true')
         else: 
-            today=date.today()
+            
             print(kakao_response['kakao_account']['gender'])
             if kakao_response['kakao_account']['gender']=="male":
                 gender=0
@@ -173,7 +173,7 @@ class KakaoLogin(View):
                 user_email=kakao_response['kakao_account'].get('email',None),
                 name=kakao_response['properties']['nickname'],
                 gender=gender,
-                joinday=today
+                
             ).save()
             user    = User.objects.get(uid=kakao_response['id'])
             jwt_token = jwt.encode({'id':user.id}, SECRET_KEY, ALGORITHM)
