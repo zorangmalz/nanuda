@@ -1,6 +1,5 @@
 import React, { useState, useReducer } from "react";
 import styled from "styled-components"
-import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 
@@ -83,7 +82,6 @@ function reducer(state, action) {
 }
 
 export default function SignupProfile() {
-    let history = useHistory()
     const [number, dispatch] = useReducer(reducer, 0)
     const onStudent = () => {
         dispatch({ type: "STUDENT" })

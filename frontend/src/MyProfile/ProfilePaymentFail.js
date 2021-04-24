@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router";
 
 export default function ProfilePaymentFail() {
-    //타임딜 여부
-    const [timeDeal, setTimeDeal] = useState(true)
-
     //화면 변경
     let history = useHistory()
     return (

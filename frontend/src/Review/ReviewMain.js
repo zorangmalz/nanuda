@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 import { BsHeart } from "react-icons/bs"

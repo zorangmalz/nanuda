@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
@@ -9,9 +9,6 @@ export default function ProfilePaymentSuccess() {
     let history = useHistory()
     function goHome() {
         history.push("/")
-    }
-    function goReview() {
-        history.push("/review")
     }
     return (
         <>

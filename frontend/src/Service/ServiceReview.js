@@ -122,7 +122,7 @@ export default function ServiceReview() {
                                     alignItems: "center",
                                     width: 210,
                                 }}>
-                                    <img src={user} style={{
+                                    <img alt="" src={user} style={{
                                         width: 72,
                                         height: 72,
                                         marginBottom: 8,
@@ -147,7 +147,7 @@ export default function ServiceReview() {
                                     alignItems: "center",
                                     width: 210,
                                 }}>
-                                    <img src={present} style={{
+                                    <img alt="" src={present} style={{
                                         width: 72,
                                         height: 72,
                                         marginBottom: 8,
@@ -234,7 +234,7 @@ export default function ServiceReview() {
                             alignItems: "center",
                             width: "45%",
                         }}>
-                            <img src={user} style={{
+                            <img alt="" src={user} style={{
                                 width: 60,
                                 height: 60,
                                 marginBottom: 8,
@@ -259,7 +259,7 @@ export default function ServiceReview() {
                             alignItems: "center",
                             width: "45%",
                         }}>
-                            <img src={present} style={{
+                            <img alt="" src={present} style={{
                                 width: 60,
                                 height: 60,
                                 backgroundColor: "#000000",

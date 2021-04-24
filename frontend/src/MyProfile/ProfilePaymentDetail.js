@@ -8,12 +8,6 @@ export default function ProfilePaymentDetail() {
 
     //화면 변경
     let history = useHistory()
-    function goHome() {
-        history.push("/")
-    }
-    function goReview() {
-        history.push("/review")
-    }
     return (
         <>
             <Default>
@@ -100,19 +94,19 @@ export default function ProfilePaymentDetail() {
                             }} />
                             <PayInfo
                                 num={1}
-                                date={3 / 29}
+                                date={"3 / 29"}
                                 state={0}
                                 payback={180000}
                             />
                             <PayInfo
                                 num={2}
-                                date={4 / 29}
+                                date={"4 / 29"}
                                 state={2}
                                 payback={0}
                             />
                             <PayInfo
                                 num={3}
-                                date={5 / 29}
+                                date={"5 / 29"}
                                 state={1}
                                 payback={310000}
                             />
@@ -219,19 +213,19 @@ export default function ProfilePaymentDetail() {
                     }} />
                     <MPayInfo
                         num={1}
-                        date={3 / 29}
+                        date={"3 / 29"}
                         state={0}
                         payback={180000}
                     />
                     <MPayInfo
                         num={2}
-                        date={4 / 29}
+                        date={"4 / 29"}
                         state={2}
                         payback={0}
                     />
                     <MPayInfo
                         num={3}
-                        date={5 / 29}
+                        date={"5 / 29"}
                         state={1}
                         payback={310000}
                     />

@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";

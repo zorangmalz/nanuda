@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
-import { useHistory } from "react-router";
 
 export default function ProfileProductInfo() {
-    //화면 변경
-    let history = useHistory()
     return (
         <>
             <Default>
