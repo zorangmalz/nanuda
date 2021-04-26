@@ -733,3 +733,157 @@ export function MBottomTag({ marginTop, marginBottom }) {
         </div>
     )
 }
+
+export function LateBox() {
+    return (
+        <div style={{
+            position: "fixed",
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(5, 26, 26, 0.2)",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+        }}>
+            <div style={{
+                width: 440,
+                height: 588,
+                borderRadius: 6,
+                backgroundColor: "#ffffff",
+                border: "1px solid rgba(5, 26, 26, 0.2)",
+            }}>
+                <BsX size={24} color="#051a1a" style={{
+                    marginTop: 8,
+                    marginLeft: 8,
+                }} />
+                <div style={{
+                    marginTop: 8,
+                    marginLeft: 40,
+
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 21,
+                    fontWeight: "bold",
+                    color: "#051a1a",
+                }}>연체료와 미결제 금액은 무엇인가요?</div>
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 18,
+                    color: "#202426",
+                    marginLeft: 40,
+                    marginTop: 16,
+                }}>1. 연체료란</div>
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 14,
+                    opacity: 0.8,
+                    color: "#202426",
+                    lineHeight: 1.5,
+                    marginTop: 16,
+                    marginLeft: 40,
+                }}>
+                    연체료는 약속된 기한까지 분할결제 금액을 납부하지 않는 <br />
+                경우 발생하는 금액입니다.(예시 : 통장 잔액 부족) <br />
+                납부일을 넘기면 자동으로 10,000원의 연체료가 발생합니다. <br />
+                연체료의 총합은 구매 금액의 25%를 초과할 수 없습니다.
+            </div>
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 18,
+                    color: "#202426",
+                    marginLeft: 40,
+                    marginTop: 16,
+                }}>1. 연체료란</div>
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 14,
+                    opacity: 0.8,
+                    color: "#202426",
+                    lineHeight: 1.5,
+                    marginTop: 16,
+                    marginLeft: 40,
+                }}>
+                    미결제 금액은 이전 차수의 분할결제에서 납부하지 않은 금액과 연체료의 합입니다. 미결제 금액은 다음 분할납부 결제일에 합산되어 자동이체 됩니다. <br />
+                예를 들어 10만원을 납부하지 못한경우 다음 결제일의 미결제 금액은 11만원(분할결제 금액 10만원 + 연체료 1만원)입니다. 따라서 다음달 결제일의 결제 금액은 21만원(다음달 분할결제 금액 10만원 + 미결제 금액 11만원)입니다.
+            </div>
+            </div>
+        </div>
+    )
+}
+
+export function LimitBox() {
+    return (
+        <div style={{
+            position: "fixed",
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(5, 26, 26, 0.2)",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+        }}>
+            <div style={{
+                width: 440,
+                height: 588,
+                borderRadius: 6,
+                backgroundColor: "#ffffff",
+                border: "1px solid rgba(5, 26, 26, 0.2)",
+            }}>
+                <BsX size={24} color="#051a1a" style={{
+                    marginTop: 8,
+                    marginLeft: 8,
+                }} />
+                <div style={{
+                    marginTop: 8,
+                    marginLeft: 40,
+
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 21,
+                    fontWeight: "bold",
+                    color: "#051a1a",
+                }}>연체료와 미결제 금액은 무엇인가요?</div>
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 18,
+                    color: "#202426",
+                    marginLeft: 40,
+                    marginTop: 16,
+                }}>1. 연체료란</div>
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 14,
+                    opacity: 0.8,
+                    color: "#202426",
+                    lineHeight: 1.5,
+                    marginTop: 16,
+                    marginLeft: 40,
+                }}>
+                    연체료는 약속된 기한까지 분할결제 금액을 납부하지 않는 <br />
+                경우 발생하는 금액입니다.(예시 : 통장 잔액 부족) <br />
+                납부일을 넘기면 자동으로 10,000원의 연체료가 발생합니다. <br />
+                연체료의 총합은 구매 금액의 25%를 초과할 수 없습니다.
+            </div>
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 18,
+                    color: "#202426",
+                    marginLeft: 40,
+                    marginTop: 16,
+                }}>1. 연체료란</div>
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 14,
+                    opacity: 0.8,
+                    color: "#202426",
+                    lineHeight: 1.5,
+                    marginTop: 16,
+                    marginLeft: 40,
+                }}>
+                    미결제 금액은 이전 차수의 분할결제에서 납부하지 않은 금액과 연체료의 합입니다. 미결제 금액은 다음 분할납부 결제일에 합산되어 자동이체 됩니다. <br />
+                예를 들어 10만원을 납부하지 못한경우 다음 결제일의 미결제 금액은 11만원(분할결제 금액 10만원 + 연체료 1만원)입니다. 따라서 다음달 결제일의 결제 금액은 21만원(다음달 분할결제 금액 10만원 + 미결제 금액 11만원)입니다.
+            </div>
+            </div>
+        </div>
+    )
+}
