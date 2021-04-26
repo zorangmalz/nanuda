@@ -1,38 +1,45 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 import axios from "axios"
 // import ogs from "open-graph-scraper-lite"
 
-export default function WishDeal() {
+export default function WishDealDefault() {
     let history = useHistory();
-    
-
-// useEffect(()=>{
-//     const options = { url: 'https://www.gucci.com/kr/ko/pr/women/womens-handbags/womens-hobos-shoulder-bags/gucci-horsebit-1955-small-shoulder-bag-p-6454541DB0G1000/' };
-//     ogs(options, (error, results, response) => {
-//       console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-//       console.log('results:', results); // This contains all of the Open Graph results
-//       console.log('response:', response); // This contains the HTML of page
-//     });
-// },[])
-
-const ogtag = async(url)=>{
+const [linkOrNot,setLinkOrNot]=useState(false)
+const [text,setText]=useState("")
+const [image,setImage]=useState("")
+const [title,setTitle]=useState("")
+const [des,setDes]=useState("")
+const [url,setUrl]=useState("")
+const onChange = (e) => {
+    console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
+    console.log(e.target.value)	//이벤트가 발생한 타겟의 Value를 출력
+    setText(e.target.value)		//이벤트 발생한 value값으로 {text} 변경
+    console.log(text)
+}
+const ogtag = async()=>{
     let res = await axios.post(
         "http://localhost:3001/api",
         {
           params: 
           {
-              code:url
+              code:text
             },
         }
       );
       console.log(res)
+      if(res.data.error==true){
+          history.push("/wishdealurl")
+      }else{
+          setLinkOrNot(true)
+          setImage(res.data.results.ogImage.url)
+          setTitle(res.data.results.ogTitle)
+          setDes(res.data.results.ogDescription)
+          setUrl(res.data.results.ogUrl)
+      }
 }
-useEffect(()=>{
-    ogtag("https://store.musinsa.com/app/goods/1149329?loc=goods_rank")
-},[])
 
     return (
         <>
@@ -72,35 +79,43 @@ useEffect(()=>{
                                 fontWeight: "bold",
                                 fontSize: 18
                             }}>사고싶은 상품 링크를 입력해주세요!</div>
-                            <div>
-                                <div
-                                    style={{
-                                        marginTop: 16,
-                                        marginLeft: 20,
-                                        marginRight: 20
-                                    }}>
-                                    <input style={{
-                                        outline: 0,
-                                        width: 440,
-                                        height: 26,
-                                        border: "0px solid #ffffff"
-                                    }}
-                                        name="link"
-                                        placeholder="링크"
-                                    >
-                                    </input>
-                                    <div style={{ width: 438, marginTop: 7, height: 0, border: "solid 1px #f2f3f8" }}></div>
-                                </div>
-
+                       
+                            {linkOrNot? 
+                            <>
+                             <div style={{
+                                width: 440,
+                                height: 140,
+                                marginLeft: 20,
+                                marginRight: 20,
+                                marginTop: 32,
+                                
+                            }}>
+                                <img style={{
+                                    width:440,
+                                    height:200,
+                                    objectFit:"cover"
+                                }} src={image}></img>
                             </div>
                             <div style={{
                                 width: 440,
-                                height: 212,
                                 marginLeft: 20,
                                 marginRight: 20,
                                 marginTop: 32,
                                 backgroundColor: "#f2f3f8",
-                            }}></div>
+                            }}>
+                                <div stlye={{
+                                    fontSize:14,
+                                    opacity:0.6,
+                                    color:"#202426",
+                                    
+                                }}>{url.substr(0,20)}...</div>
+                                <div style={{
+                                    fontWeight:"bold",
+                                    marginTop:8,
+                                    fontSize:14
+                                }}>{title}</div>
+                                
+                            </div>
                             <div style={{
                                 marginTop: 18,
                                 marginLeft: 46,
@@ -148,18 +163,71 @@ useEffect(()=>{
                             <div onClick={() => history.push("/wishdealurl")} style={{
                                 borderRadius: 8,
                                 width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
+                                height: 56,
+                                marginLeft: 20,
+                                marginRight: 20,
                                 marginTop: 32,
                                 backgroundColor: "#2dd9d3",
-                                alignSelf: "center",
-
-                                textAlign: "center",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
                                 color: "#ffffff",
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 cursor: "pointer",
-                            }}>다음</div>
+                            }}><div style={{
+                                color: "#ffffff",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                            }}>다음</div></div>
+                            </>
+                            : 
+                            <>
+                                 <div>
+                                <div
+                                    style={{
+                                        marginTop: 16,
+                                        marginLeft: 20,
+                                        marginRight: 20
+                                    }}>
+                                    <input onChange={onChange} style={{
+                                        outline: 0,
+                                        width: 440,
+                                        height: 26,
+                                        border: "0px solid #ffffff"
+                                    }}
+                                        name="link"
+                                        placeholder="링크"
+                                    >
+                                    </input>
+                                    <div style={{ width: 438, marginTop: 7, height: 0, border: "solid 1px #f2f3f8" }}></div>
+                                </div>
+
+                            </div>
+                             <div onClick={ogtag} style={{
+                                borderRadius: 8,
+                                width: 440,
+                                height: 56,
+                                marginLeft: 20,
+                                marginRight: 20,
+                                marginTop: 32,
+                                backgroundColor: "#2dd9d3",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                color: "#ffffff",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                cursor: "pointer",
+                            }}><div style={{
+                                color: "#ffffff",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                            }}>확인</div></div>
+                            </>
+
+                            }
+                           
                         </div>
                     </div>
                 </div>
