@@ -104,7 +104,7 @@ export default function PaymentSuccess() {
                                 paddingBottom: 15,
                                 backgroundColor: "#ffffff",
                                 borderRadius: 6,
-                                marginTop: 32,
+                                marginTop: 16,
                                 border: "1px solid #dfdfdf",
 
                                 textAlign: "center",
@@ -184,7 +184,7 @@ export default function PaymentSuccess() {
                         paddingBottom: 8,
                         backgroundColor: "#ffffff",
                         borderRadius: 6,
-                        marginTop: 16,
+                        marginTop: 8,
                         border: "1px solid #dfdfdf",
 
                         textAlign: "center",
