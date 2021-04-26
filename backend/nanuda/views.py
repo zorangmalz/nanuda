@@ -27,6 +27,7 @@ from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, Pro
 #Python 내장함수
 from datetime import date
 
+import PyOpenGraph
 
 # Create your views here.
 # FacebookLogin
@@ -131,7 +132,12 @@ def order_all(request):
         return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
+class ogt(View):
+    def get(self, request):
+        url=request.GET.get("code",None)
+        og=PyOpenGraph(url)
+        print(og.metadata)
+        
 class KakaoLogin(View):
     def get(self, request):
         load_dotenv(verbose=True)
