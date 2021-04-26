@@ -119,23 +119,18 @@ export default function WishDeal() {
                             <div onClick={() => history.push("/wishdealurl")} style={{
                                 borderRadius: 8,
                                 width: 440,
-                                height: 56,
-                                marginLeft: 20,
-                                marginRight: 20,
+                                paddingTop: 15,
+                                paddingBottom: 15,
                                 marginTop: 32,
                                 backgroundColor: "#2dd9d3",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
+                                alignSelf: "center",
+
+                                textAlign: "center",
                                 color: "#ffffff",
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 cursor: "pointer",
-                            }}><div style={{
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                            }}>다음</div></div>
+                            }}>다음</div>
                         </div>
                     </div>
                 </div>
