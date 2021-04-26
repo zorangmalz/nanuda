@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 
 export default function Notice() {
     const NoticeData = [
@@ -58,7 +58,7 @@ export default function Notice() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="공지사항" />
+                            <Header content="공지사항" goBack={true} />
                             <div style={{
                                 display: "flex",
                                 flexDirection: "column",
@@ -83,7 +83,7 @@ export default function Notice() {
                     backgroundColor: "#ffffff",
                     alignItems: "center",
                 }}>
-                    <Header content="공지사항" />
+                    <MHeader content="공지사항" goBack={true} />
                     <div style={{
                         display: "flex",
                         flexDirection: "column",

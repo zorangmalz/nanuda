@@ -1,5 +1,10 @@
 import React from "react";
 import logoS from "./images/logoS.png"
+import bell from "./images/bell.png"
+import user from "./images/users.png"
+import { IoIosArrowBack } from "react-icons/io";
+import { BsX } from "react-icons/bs"
+import { useHistory } from "react-router";
 
 export default function WebIntro() {
     return (
@@ -76,7 +81,8 @@ export default function WebIntro() {
     )
 }
 
-export function Header({ content }) {
+export function Header({ content, goBack, goX }) {
+    let history = useHistory()
     return (
         <div style={{
             width: "100%",
@@ -88,7 +94,18 @@ export function Header({ content }) {
             justifyContent: "center",
             paddingTop: 15,
             paddingBottom: 15,
+            position: "relative",
         }}>
+            {goBack ? <IoIosArrowBack size={24} color="#051a1a" onClick={() => history.goBack()} style={{
+                position: "absolute",
+                left: 20,
+                cursor: "pointer"
+            }} /> : <></>}
+            {goX ? <BsX size={32} color="#051a1a" onClick={() => history.goBack()} style={{
+                position: "absolute",
+                left: 20,
+                cursor: "pointer"
+            }} /> : <></>}
             <div style={{
                 fontSize: 18,
                 fontWeight: "bold",
@@ -100,6 +117,160 @@ export function Header({ content }) {
         </div>
     )
 }
+
+export function MHeader({ content, goBack, goX }) {
+    let history = useHistory()
+    return (
+        <div style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: "#ffffff",
+            borderBottom: "1px solid #dfdfdf",
+            justifyContent: "center",
+            paddingTop: 15,
+            paddingBottom: 15,
+            position: "relative",
+        }}>
+            {goBack ? <IoIosArrowBack size={24} color="#051a1a" onClick={() => history.goBack()} style={{
+                position: "absolute",
+                left: "5vw",
+                cursor: "pointer"
+            }} /> : <></>}
+            {goX ? <BsX size={24} color="#051a1a" onClick={() => history.goBack()} style={{
+                position: "absolute",
+                left: "5vw",
+                cursor: "pointer"
+            }} /> : <></>}
+            <div style={{
+                fontSize: 16,
+                fontWeight: "bold",
+                color: "#051a1a",
+                alignSelf: "center",
+                justifyContent: "center",
+                fontFamily: "NotoSansCJKkr"
+            }}>{content}</div>
+        </div>
+    )
+}
+
+export function HomeHeader() {
+    let history = useHistory()
+    return (
+        <div style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            backgroundColor: "#ffffff",
+            borderBottom: "1px solid #dfdfdf",
+            paddingTop: 15,
+            paddingBottom: 15,
+        }}>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+
+                marginLeft: 20,
+            }}>
+                <img alt="" src={logoS} style={{
+                    width: 24,
+                    height: 24, 
+                }} />
+                <div style={{
+                    marginLeft: 8,
+                    fontSize: 18,
+                    fontWeight: "bold",
+                    color: "#051a1a",
+                    alignSelf: "center",
+                    justifyContent: "center",
+                    fontFamily: "NotoSansCJKkr"
+                }}>나누다</div>
+            </div>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+
+                marginRight: 20,
+            }}>
+                <img onClick={() => history.push("/notice")} alt="" src={bell} style={{
+                    width: 28,
+                    height: 28, 
+                    cursor: "pointer"
+                }} />
+                <img onClick={() => history.push("/profilemain")} alt="" src={user} style={{
+                    width: 28,
+                    height: 28, 
+                    marginLeft: 8,
+                    cursor: "pointer"
+                }} />
+            </div>
+        </div>
+    )
+}
+
+export function MHomeHeader() {
+    let history = useHistory()
+    return (
+        <div style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            backgroundColor: "#ffffff",
+            borderBottom: "1px solid #dfdfdf",
+            paddingTop: 15,
+            paddingBottom: 15,
+        }}>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+
+                marginLeft: "5vw",
+            }}>
+                <img alt="" src={logoS} style={{
+                    width: 20,
+                    height: 20,
+                }} />
+                <div style={{
+                    marginLeft: 4,
+                    fontSize: 16,
+                    fontWeight: "bold",
+                    color: "#051a1a",
+                    alignSelf: "center",
+                    justifyContent: "center",
+                    fontFamily: "NotoSansCJKkr"
+                }}>나누다</div>
+            </div>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+
+                marginRight: "5vw",
+            }}>
+                <img onClick={() => history.push("/notice")} alt="" src={bell} style={{
+                    width: 24,
+                    height: 24,
+                    cursor: "pointer"
+                }} />
+                <img onClick={() => history.push("/profilemain")} alt="" src={user} style={{
+                    width: 24,
+                    height: 24,
+                    marginLeft: 4,
+                    cursor: "pointer"
+                }} />
+            </div>
+        </div>
+    )
+}
+
 
 export function BottomTag({ marginTop, marginBottom }) {
     return (

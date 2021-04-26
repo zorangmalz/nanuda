@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { useHistory } from "react-router";
 
 export default function ProfilePaymentDetail() {
@@ -40,7 +40,7 @@ export default function ProfilePaymentDetail() {
                             backgroundColor: "#ffffff",
                             paddingBottom: 56,
                         }}>
-                            <Header content="결제 결과" />
+                            <Header content="결제 결과" goBack={true} />
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
@@ -160,7 +160,7 @@ export default function ProfilePaymentDetail() {
                     backgroundColor: "#ffffff",
                     paddingBottom: 32,
                 }}>
-                    <Header content="결제 결과" />
+                    <MHeader content="결제 결과" goBack={true} />
                     <div style={{
                         display: "flex",
                         flexDirection: "row",

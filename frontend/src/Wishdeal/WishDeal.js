@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 
 export default function WishDeal() {
     let history = useHistory();
@@ -36,7 +36,7 @@ export default function WishDeal() {
                             height: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="위시딜" />
+                            <Header content="위시딜" goBack={true} />
                             <div style={{
                                 marginLeft: 20,
                                 marginTop: 32,
@@ -160,7 +160,7 @@ export default function WishDeal() {
                         height: "100vh",
                         backgroundColor: "#ffffff",
                     }}>
-                        <Header content="위시딜" />
+                        <MHeader content="위시딜" goBack={true} />
                         <div style={{
                             marginLeft: 20,
                             marginTop: 32,

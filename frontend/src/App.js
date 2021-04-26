@@ -23,6 +23,16 @@ import ProfilePaymentFail from './MyProfile/ProfilePaymentFail';
 import ProfilePaymentDetail from './MyProfile/ProfilePaymentDetail';
 import ProfileProductInfo from './MyProfile/ProfileProductInfo';
 import ProfileProduct from './MyProfile/ProfileProduct';
+import Notice from './Notice/Notice';
+import NoticePost from './Notice/NoticePost';
+import ProfilePayment from './MyProfile/ProfilePayment';
+import ProfileMain from './MyProfile/ProfileMain';
+import ProfileLimit from './MyProfile/ProfileLimit';
+import ProfilePoint from './MyProfile/ProfilePoint';
+import ProfileVerification from './MyProfile/ProfileVerification';
+import ReviewSelect from './Review/ReviewSelect';
+import ReviewFail from './Review/ReviewFail';
+import ReviewSuccess from './Review/ReviewSuccess';
 
 
 export const Default = ({ children }) => {
@@ -49,13 +59,23 @@ function App() {
         <Route path="/paymentsuccess" component={PaymentSuccess} />
         <Route path="/review" component={ReviewMain} />
         <Route path="/reviewpost" component={ReviewPost} />
+        <Route path="/reviewselect" component={ReviewSelect} />
         <Route path="/reviewwrite" component={ReviewWrite} />
+        <Route path="/reviewsuccess" component={ReviewSuccess} />
+        <Route path="/reviewfail" component={ReviewFail} />
         <Route path="/servicereview" component={ServiceReview} />
         <Route path="/servicewrite" component={Write} />
         <Route path="/wishdeal" component={WishDeal} />
         <Route path="/wishdealurl" component={WishDealURL} />
+        <Route path="/notice" component={Notice} />
+        <Route path="/noticepost" component={NoticePost} />
+        <Route path="/profilemain" component={ProfileMain} />
+        <Route path="/profilelimit" component={ProfileLimit} />
+        <Route path="/profileverification" component={ProfileVerification} />
+        <Route path="/profilepoint" component={ProfilePoint} />
         <Route path="/profileedit" component={ProfileEdit} />
         <Route path="/profileaddressedit" component={ProfileAddressEdit} />
+        <Route path="/profilepayment" component={ProfilePayment} />
         <Route path="/profilepaymentsuccess" component={ProfilePaymentSuccess} />
         <Route path="/profilepaymentfail" component={ProfilePaymentFail} />
         <Route path="/profilepaymentdetail" component={ProfilePaymentDetail} />

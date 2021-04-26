@@ -40,7 +40,7 @@ export default function Login() {
                             backgroundColor: "#ffffff",
                             paddingBottom: 20,
                         }}>
-                            <Header content="로그인" />
+                            <Header content="로그인" goBack={true} />
                             {/* 배너 넣어야됨 */}
                            <div style={{
                                marginLeft:20,
@@ -356,7 +356,7 @@ export default function Login() {
                         height: "100vh",
                         backgroundColor: "#ffffff",
                     }}>
-                        <Header content="로그인" />
+                        <Header content="로그인" goBack={true} />
                         <div style={{
                                marginLeft:20,
                                marginTop:32,

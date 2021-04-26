@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { BottomTag, Header, MBottomTag } from "../Style";
+import WebIntro, { BottomTag, Header, MBottomTag, MHeader } from "../Style";
 import { IoPersonCircle } from "react-icons/io5";
 import { BsPencil } from "react-icons/bs";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
@@ -245,7 +245,7 @@ export default function ProfileMain() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="마이페이지" />
+                            <Header content="마이페이지" goBack={true} />
                             <div style={{
                                 paddingTop: 32,
                                 paddingBottom: 32,
@@ -374,7 +374,7 @@ export default function ProfileMain() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="마이페이지" />
+                    <MHeader content="마이페이지" goBack={true} />
                     <div style={{
                         paddingTop: "8vw",
                         paddingBottom: "8vw",

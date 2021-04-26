@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCheck } from "react-icons/ai";
 import { useHistory } from "react-router";
 
-export default function ProfilePaymentFail() {
+export default function ReviewSuccess() {
     //화면 변경
     let history = useHistory()
+    function goHome() {
+        history.push("/")
+    }
+    function goReview() {
+        history.push("/review")
+    }
     return (
         <>
             <Default>
@@ -39,66 +45,62 @@ export default function ProfilePaymentFail() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="결제 결과" goX={true} />
+                            <Header content="작성 완료" goX={true} />
                             <div style={{
                                 width: 80,
                                 height: 80,
                                 borderRadius: 40,
                                 marginTop: 32,
-                                backgroundColor: "#f72b2b",
-                                
+                                backgroundColor: "#2dd9d3",
+
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center"
                             }}>
-                                <AiOutlineClose color="#ffffff" size={50} />
+                                <AiOutlineCheck color="#ffffff" size={50} />
                             </div>
                             <div style={{
                                 marginTop: 32,
                                 fontSize: 21,
                                 fontWeight: "bold",
-                                color: "#f72b2b",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>결제에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
-                            <div style={{
-                                fontSize: 16,
-                                color: "#051a1a",
-                                opacity: 0.6,
-                                marginTop: 16,
-                                fontFamily: "NotoSansCJKkr"
-                            }}>실패 사유 : 잔액부족</div>
-                            <div onClick={() => history.goBack()} style={{
-                                borderRadius: 6,
+                                color: "#2dd9d3",
+                                fontFamily: "NotoSansCJKkr",
+                            }}>작성이 완료
+                                <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                            </div>
+                            <div onClick={goHome} style={{
+                                borderRadius: 8,
                                 width: 440,
                                 paddingTop: 15,
                                 paddingBottom: 15,
+                                alignSelf: "center",
                                 marginTop: 32,
                                 backgroundColor: "#2dd9d3",
-                                alignSelf: "center",
 
-                                textAlign: "center",
                                 color: "#ffffff",
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
+                                textAlign: "center",
+
                                 cursor: "pointer",
-                            }}>다시 결제하기</div>
-                            <div onClick={() => history.push("/")} style={{
-                                borderRadius: 6,
+                            }}>홈으로</div>
+                            <div onClick={goReview} style={{
                                 width: 440,
                                 paddingTop: 15,
                                 paddingBottom: 15,
-                                marginTop: 16,
                                 backgroundColor: "#ffffff",
-                                alignSelf: "center",
-                                border: "1px solid rgba(5, 26, 26, 0.2)",
+                                borderRadius: 6,
+                                marginTop: 16,
+                                border: "1px solid #dfdfdf",
 
                                 textAlign: "center",
-                                color: "rgba(5, 26, 26, 0.6)",
                                 fontSize: 18,
-                                fontFamily: "NotoSansCJKkr",
+                                opacity: 0.6,
+                                color: "#051a1a",
                                 cursor: "pointer",
-                            }}>홈으로 돌아가기</div>
+                                fontFamily: "NotoSansCJKkr",
+                            }}>내 리뷰 확인하기</div>
                         </div>
                     </div>
                 </div>
@@ -111,68 +113,65 @@ export default function ProfilePaymentFail() {
                     justifyContent: "flex-start",
 
                     width: "100%",
-                    height: "100vh",
+                    minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="결제 결과" goX={true} />
+                    <MHeader content="작성 완료" goX={true} />
                     <div style={{
                         width: 80,
                         height: 80,
                         borderRadius: 40,
                         marginTop: 32,
-                        backgroundColor: "#f72b2b",
+                        backgroundColor: "#2dd9d3",
 
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center"
                     }}>
-                        <AiOutlineClose color="#ffffff" size={50} />
+                        <AiOutlineCheck color="#ffffff" size={50} />
                     </div>
                     <div style={{
                         marginTop: 32,
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: "#f72b2b",
+                        color: "#2dd9d3",
                         fontFamily: "NotoSansCJKkr"
-                    }}>결제에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
-                    <div style={{
-                        fontSize: 14,
-                        color: "#051a1a",
-                        opacity: 0.6,
-                        marginTop: 16,
-                        fontFamily: "NotoSansCJKkr"
-                    }}>실패 사유 : 잔액부족</div>
-                    <div onClick={() => history.goBack()} style={{
-                        borderRadius: 6,
-                        width: "90%",
-                        paddingTop: 12,
-                        paddingBottom: 12,
-                        marginTop: 28,
+                    }}>작성이 완료
+                        <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                    </div>
+                    <div onClick={goHome} style={{
+                        borderRadius: 8,
+                        width: "90vw",
+                        paddingTop: "4vw",
+                        paddingBottom: "4vw",
+                        alignSelf: "center",
+                        marginTop: "8vw",
                         backgroundColor: "#2dd9d3",
 
                         color: "#ffffff",
                         fontSize: 16,
                         fontWeight: "bold",
                         fontFamily: "NotoSansCJKkr",
-                        cursor: "pointer",
                         textAlign: "center",
-                    }}>다시 결제하기</div>
-                    <div onClick={() => history.push("/")} style={{
-                        borderRadius: 6,
-                        width: "90vw",
-                        paddingTop: "4vw",
-                        paddingBottom: "4vw",
-                        marginTop: 12,
+
+                        cursor: "pointer",
+                    }}>홈으로</div>
+                    <div onClick={goReview} style={{
+                        width: "90%",
+                        paddingTop: 8,
+                        paddingBottom: 8,
                         backgroundColor: "#ffffff",
-                        alignSelf: "center",
-                        border: "1px solid rgba(5, 26, 26, 0.2)",
+                        borderRadius: 6,
+                        marginTop: 8,
+                        border: "1px solid #dfdfdf",
 
                         textAlign: "center",
-                        color: "rgba(5, 26, 26, 0.6)",
                         fontSize: 16,
-                        fontFamily: "NotoSansCJKkr",
+                        opacity: 0.6,
+                        color: "#051a1a",
                         cursor: "pointer",
-                    }}>홈으로 돌아가기</div>
+                        fontFamily: "NotoSansCJKkr",
+                    }}>내 리뷰 확인하기</div>
                 </div>
             </Mobile>
         </>

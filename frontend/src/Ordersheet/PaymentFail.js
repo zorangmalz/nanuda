@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router";
 
@@ -42,7 +42,7 @@ export default function PaymentFail() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content={timeDeal ? "작성 실패" : "주문 결과"} />
+                            <Header content={timeDeal ? "작성 실패" : "주문 결과"} goX={true} />
                             <div style={{
                                 width: 80,
                                 height: 80,
@@ -117,7 +117,7 @@ export default function PaymentFail() {
                     height: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content={timeDeal ? "작성 실패" : "주문 결과"} />
+                    <MHeader content={timeDeal ? "작성 실패" : "주문 결과"} goX={true} />
                     <div style={{
                         width: 80,
                         height: 80,

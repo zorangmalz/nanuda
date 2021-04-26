@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { BsFillStarFill } from "react-icons/bs"
 import { useHistory } from "react-router";
 
@@ -76,7 +76,7 @@ export default function Write() {
 
                                 width: 480,
                             }}>
-                                <Header content="나눠본 사람들" />
+                                <Header content="나눠본 사람들" goBack={true} />
                                 <div style={{
                                     fontSize: 18,
                                     fontWeight: "bold",
@@ -178,7 +178,7 @@ export default function Write() {
 
                         width: "100%",
                     }}>
-                        <Header content="나눠본 사람들" />
+                        <MHeader content="나눠본 사람들" goBack={true} />
                         <div style={{
                             fontSize: 16,
                             fontWeight: "bold",

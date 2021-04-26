@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
 import { MOrderDetail, OrderDetail } from "./PaymentFail";
 import { useHistory } from "react-router";
@@ -49,7 +49,7 @@ export default function PaymentSuccess() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content={wish ? "주문 결과" : "작성 완료"} />
+                            <Header content={wish ? "주문 결과" : "작성 완료"} goX={true} />
                             <div style={{
                                 width: 80,
                                 height: 80,
@@ -129,7 +129,7 @@ export default function PaymentSuccess() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content={wish ? "주문 결과" : "작성 완료"} />
+                    <MHeader content={wish ? "주문 결과" : "작성 완료"} goX={true} />
                     <div style={{
                         width: 80,
                         height: 80,

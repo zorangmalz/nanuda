@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 
 export default function ProfileLimit() {
     return (
@@ -34,7 +34,7 @@ export default function ProfileLimit() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="나누다 한도" />
+                            <Header content="나누다 한도" goBack={true} />
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 18,
@@ -250,7 +250,7 @@ export default function ProfileLimit() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="나누다 한도" />
+                    <MHeader content="나누다 한도" goBack={true} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,

@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { BsFillStarFill } from "react-icons/bs"
 import { useHistory } from "react-router";
 
@@ -70,7 +70,7 @@ export default function ReviewPost() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="나눠산 사람들" />
+                            <Header content="나눠산 사람들" goBack={true} />
                             <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                                 <div style={{
                                     display: "flex",
@@ -214,7 +214,7 @@ export default function ReviewPost() {
                         width: 480,
                         backgroundColor: "#ffffff",
                     }}>
-                        <Header content="나눠산 사람들" />
+                        <MHeader content="나눠산 사람들" goBack={true} />
                         <div style={{
                             display: "flex",
                             flexDirection: "row",

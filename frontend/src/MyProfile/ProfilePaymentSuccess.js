@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useHistory } from "react-router";
 
@@ -42,7 +42,7 @@ export default function ProfilePaymentSuccess() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="결제 결과" />
+                            <Header content="결제 결과" goX={true} />
                             <div style={{
                                 width: 80,
                                 height: 80,
@@ -95,7 +95,7 @@ export default function ProfilePaymentSuccess() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="결제 결과" />
+                    <MHeader content="결제 결과" goX={true} />
                     <div style={{
                         width: 80,
                         height: 80,

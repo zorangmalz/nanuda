@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { FaUserCircle } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md"
 
@@ -45,7 +45,7 @@ export default function ProfileEdit() {
                                 flexDirection: "column",
                                 width: "100%",
                             }}>
-                                <Header content="내 정보 관리" />
+                                <Header content="내 정보 관리" goBack={true} />
                                 <FaUserCircle
                                     size={72}
                                     color="#dbdbdb"
@@ -174,7 +174,7 @@ export default function ProfileEdit() {
                         flexDirection: "column",
                         width: "100%",
                     }}>
-                        <Header content="내 정보 관리" />
+                        <MHeader content="내 정보 관리" goBack={true} />
                         <FaUserCircle
                             size={60}
                             color="#dbdbdb"

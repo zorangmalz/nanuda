@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { BsHeart } from "react-icons/bs"
 import { IoChatbubbleOutline } from "react-icons/io5"
 import { useHistory } from "react-router";
@@ -76,7 +76,7 @@ export default function ReviewMain() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="나눠산 사람들" />
+                            <Header content="나눠산 사람들" goBack={true} />
                             <div style={{
                                 width: 440,
                                 height: 150,
@@ -176,7 +176,7 @@ export default function ReviewMain() {
                                     </div>
                                 )}
                             </div>
-                            <div onClick={() => history.push("/reviewwrite")} style={{
+                            <div onClick={() => history.push("/reviewselect")} style={{
                                 position: "fixed",
                                 zIndex: 5,
                                 bottom: 0,
@@ -215,7 +215,7 @@ export default function ReviewMain() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="나눠산 사람들" />
+                    <MHeader content="나눠산 사람들" goBack={true} />
                     <div style={{
                         width: "90%",
                         height: 150,
@@ -309,7 +309,7 @@ export default function ReviewMain() {
                             </div>
                         )}
                     </div>
-                    <div onClick={() => history.push("/reviewwrite")} style={{
+                    <div onClick={() => history.push("/reviewselect")} style={{
                         position: "fixed",
                         zIndex: 5,
                         bottom: 20,

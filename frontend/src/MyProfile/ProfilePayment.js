@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { MdKeyboardArrowRight } from "react-icons/md"
 
 export default function ProfilePayment() {
@@ -36,7 +36,7 @@ export default function ProfilePayment() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="분할결제 스케쥴" />
+                            <Header content="분할결제 스케쥴" goBack={true} />
                             <BNPLForm state={1} date="2021.03.13" title="PRADA Model 23-9 limited… 
 WHITE, 270mm" num={3} payback={310000} />
                             <BNPLForm state={0} date="2021.03.13" title="PRADA Model 23-9 limited… 
@@ -55,7 +55,7 @@ WHITE, 270mm" num={0} payback={0} />
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="분할결제 스케쥴" />
+                    <MHeader content="분할결제 스케쥴" goBack={true} />
                     <MBNPLForm state={1} date="2021.03.13" title="PRADA Model 23-9 limited… 
 WHITE, 270mm" num={3} payback={310000} />
                     <MBNPLForm state={0} date="2021.03.13" title="PRADA Model 23-9 limited… 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import Slider from "react-slick";
 import { BsBookmark, BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
@@ -71,7 +71,7 @@ export default function Signup() {
                             backgroundColor: "#ffffff",
                             paddingBottom: 20,
                         }}>
-                            <Header content="회원가입" />
+                            <Header content="회원가입" goBack={true} />
                             {/* 배너 넣어야됨 */}
                             <KakaoLogin
 token={My_App_Key}
@@ -406,7 +406,7 @@ className="KakaoLogin"
                         height: "100vh",
                         backgroundColor: "#ffffff",
                     }}>
-                        <Header content="로그인" />
+                        <MHeader content="회원가입" goBack={true} />
                         <div style={{
                                marginLeft:20,
                                marginTop:32,

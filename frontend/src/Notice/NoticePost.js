@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 
 export default function NoticePost() {
     return (
@@ -34,7 +34,7 @@ export default function NoticePost() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="공지사항" />
+                            <Header content="공지사항" goBack={true} />
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 16,
@@ -106,7 +106,7 @@ export default function NoticePost() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="공지사항" />
+                    <MHeader content="공지사항" goBack={true} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,

@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { BiPlusCircle } from "react-icons/bi";
 
 function reducer(state, action) {
@@ -87,7 +87,7 @@ export default function OrderSheet() {
                             width: 480,
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="주문서" />
+                            <Header content="주문서" goBack={true} />
                             <div style={{
                                 fontSize: 18,
                                 marginLeft: 20,
@@ -604,7 +604,7 @@ export default function OrderSheet() {
                     width: "100%",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="주문서" />
+                    <MHeader content="주문서" goBack={true} />
                     <div style={{
                         fontSize: 18,
                         marginLeft: "5%",

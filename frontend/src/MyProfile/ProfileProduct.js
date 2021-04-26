@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useHistory } from "react-router";
 
@@ -38,7 +38,7 @@ export default function ProfileProduct() {
                             backgroundColor: "#ffffff",
                             paddingBottom: 40,
                         }}>
-                            <Header content="상품 구매 내역" />
+                            <Header content="상품 구매 내역" goBack={true} />
                             <ProductState 
                                 date="2021.04.13"
                                 title="PRADA Model 23-9 limited WHITE, 270mm"
@@ -78,7 +78,7 @@ export default function ProfileProduct() {
                     backgroundColor: "#ffffff",
                     paddingBottom: 20,
                 }}>
-                    <Header content="상품 구매 내역" />
+                    <MHeader content="상품 구매 내역" goBack={true} />
                     <MProductState
                         date="2021.04.13"
                         title="PRADA Model 23-9 limited WHITE, 270mm"

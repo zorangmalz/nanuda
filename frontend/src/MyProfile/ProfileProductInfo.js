@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 
 export default function ProfileProductInfo() {
     return (
@@ -34,7 +34,7 @@ export default function ProfileProductInfo() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="상품 상세 구매 내역" />
+                            <Header content="상품 상세 구매 내역" goBack={true} />
                             <ProductInfo 
                                 title="PRADA Model 23-9 limited edition berry expensive"
                                 price="460,000"
@@ -59,7 +59,7 @@ export default function ProfileProductInfo() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="상품 상세 구매 내역" />
+                    <MHeader content="상품 상세 구매 내역" goBack={true} />
                     <MProductInfo
                         title="PRADA Model 23-9 limited edition berry expensive"
                         price="460,000"

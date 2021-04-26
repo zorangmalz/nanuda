@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { BottomTag, Header, MBottomTag } from "../Style";
+import WebIntro, { BottomTag, Header, HomeHeader, MBottomTag, MHeader, MHomeHeader } from "../Style";
 import Slider from "react-slick";
 import { BsBookmark, BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
@@ -58,7 +58,7 @@ export default function Home() {
                             backgroundColor: "#ffffff",
                             paddingBottom: 20,
                         }}>
-                            <Header content="나누다" />
+                            <HomeHeader />
                             {/* 배너 넣어야됨 */}
                             <div style={{
                                 marginTop: 32,
@@ -366,7 +366,7 @@ export default function Home() {
                     backgroundColor: "#ffffff",
                     paddingBottom: 20,
                 }}>
-                    <Header content="나누다" />
+                    <MHomeHeader />
                     {/* 배너 넣어야됨 */}
                     <div style={{
                         marginTop: 32,

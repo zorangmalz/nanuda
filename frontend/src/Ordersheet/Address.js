@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import { BsCheck } from "react-icons/bs"
 
 function reducer(state, action) {
@@ -51,7 +51,7 @@ export default function Address() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="배송정보 수정" />
+                            <Header content="배송정보 수정" goBack={true} />
                             <AddressInput />
                         </div>
                     </div>
@@ -66,7 +66,7 @@ export default function Address() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="배송정보 수정" />
+                    <MHeader content="배송정보 수정" goBack={true} />
                     <MAddressInput />
                 </div>
             </Mobile>

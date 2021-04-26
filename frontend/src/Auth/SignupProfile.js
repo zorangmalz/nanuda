@@ -1,9 +1,10 @@
 import React, { useState, useReducer } from "react";
 import styled from "styled-components"
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 
-const Title = styled.div`
+export const Title = styled.div`
+    width: 440px;
     font-family: "NotoSansCJKkr";
     font-size: 18px;
     font-weight: bold;
@@ -13,6 +14,7 @@ const Title = styled.div`
 `;
 
 export const MTitle = styled.div`
+    width: 90vw;
     font-family: "NotoSansCJKkr";
     font-size: 16px;
     font-weight: bold;
@@ -21,7 +23,7 @@ export const MTitle = styled.div`
     margin-left: 5vw;
 `;
 
-const Button = ({text, number, standard, onClick}) => {
+export const Button = ({text, number, standard, onClick}) => {
     return (
         <div onClick={onClick} style={{
             width: 95,
@@ -41,7 +43,7 @@ const Button = ({text, number, standard, onClick}) => {
     )
 }
 
-const MButton = ({text, number, standard, onClick}) => {
+export const MButton = ({text, number, standard, onClick}) => {
     return (
         <div onClick={onClick} style={{
             width: "20vw",
@@ -161,7 +163,7 @@ export default function SignupProfile() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="회원정보" />
+                            <Header content="회원정보" goBack={true} />
                             <Title>닉네임을 설정해주세요.</Title>
                             <InputModule
                                 input={nickname}
@@ -307,7 +309,7 @@ export default function SignupProfile() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="회원정보" />
+                    <MHeader content="회원정보" goBack={true} />
                     <MTitle>닉네임을 설정해주세요.</MTitle>
                     <InputModule
                         input={nickname}

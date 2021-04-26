@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import { InputModule, MTitle } from "../Auth/SignupProfile";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 
 export default function ProfileAddressEdit() {
     let history = useHistory()
@@ -54,7 +54,7 @@ export default function ProfileAddressEdit() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="주소 수정" />
+                            <Header content="주소 수정" goX={true} />
                             <div style={{
                                 marginTop: 32,
                                 marginLeft: 20,
@@ -142,7 +142,7 @@ export default function ProfileAddressEdit() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="회원정보" />
+                    <MHeader content="주소 수정" goX={true} />
                     <MTitle>거주지 주소를 입력해주세요.</MTitle>
                     <div style={{
                         display: "flex",

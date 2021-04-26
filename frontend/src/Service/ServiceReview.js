@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import user from "../images/users.png"
 import present from "../images/present.png"
 
@@ -96,7 +96,7 @@ export default function ServiceReview() {
                             backgroundColor: "#ffffff",
                             paddingBottom: 150,
                         }}>
-                            <Header content="나눠본 사람들" />
+                            <Header content="나눠본 사람들" goBack={true} />
                             <div style={{
                                 fontSize: 21,
                                 fontWeight: "bold",
@@ -208,7 +208,7 @@ export default function ServiceReview() {
                     backgroundColor: "#ffffff",
                     paddingBottom: 120,
                 }}>
-                    <Header content="나눠본 사람들" />
+                    <MHeader content="나눠본 사람들" goBack={true} />
                     <div style={{
                         fontSize: 18,
                         fontWeight: "bold",

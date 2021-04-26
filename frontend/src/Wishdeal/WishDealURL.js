@@ -86,7 +86,7 @@ export default function WishDealURL() {
                         minHeight:"100vh",
                         backgroundColor: "#ffffff",
                     }}>
-                        <Header content="상품 정보 작성" />
+                        <Header content="상품 정보 작성" goBack={true} />
                         <div style={{
                             width:480,
                             height:212,
@@ -437,7 +437,7 @@ export default function WishDealURL() {
                         minHeight:"100vh",
                         backgroundColor: "#ffffff",
                     }}>
-                        <Header content="상품 정보 작성" />
+                        <Header content="상품 정보 작성" goBack={true} />
                         <div style={{
                             width:"100%",
                             height:212,
