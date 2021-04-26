@@ -7,9 +7,12 @@ import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
 import googleLogin from "./googleLogin"
 import GoogleLogin from 'react-google-login';
+import KakaoLogin from "react-kakao-login";
 import axios from "axios"
-export default function Signup() {
 
+
+export default function Signup() {
+    const My_App_Key="821fabeafd73f9e89bc25527d872c5f0"
     const responseGoogle = async(response) => {
         console.log("come")
         console.log(response)
@@ -19,12 +22,22 @@ export default function Signup() {
       }
     
     
-    // async function responseKakao(){
-    //     let res = await axios.get(
-    //         ""
-    //       );
-    //       console.log(res)
-    // }
+    const kakaoResponse = async(response)=>{
+        console.log(response.response.access_token)
+        let res = await axios.get(
+            "http://localhost:8000/rest-auth/kakao/",
+            {
+              params: 
+              {
+                  code:response.response.access_token
+                },
+            }
+          );
+          console.log(res)
+    }
+    const kakaoFail= async(res)=>{
+        console.log("failed")
+    }
     let history = useHistory()
     return (
         <>
@@ -60,6 +73,16 @@ export default function Signup() {
                         }}>
                             <Header content="회원가입" />
                             {/* 배너 넣어야됨 */}
+                            <KakaoLogin
+token={My_App_Key}
+onSuccess={kakaoResponse}
+onFailure={kakaoFail}
+className="KakaoLogin"
+>
+  
+  카카오톡 로그인
+</KakaoLogin>
+                           
                             <a href={"https://kauth.kakao.com/oauth/authorize?client_id=4fb67e3c47027d004aa591828f76d364&redirect_uri=http://localhost:8000/rest-auth/kakao&response_type=code"} target="_blank">
                            <div  style={{
                                marginLeft:20,

@@ -138,23 +138,15 @@ class KakaoLogin(View):
         SECRET_KEY=os.getenv("SECRET_KEY")
         ALGORITHM=os.getenv("ALGORITHM")
         kakao_access_code=request.GET.get('code',None)
-        url="https://kauth.kakao.com/oauth/token"
-        headers={"Content-type":"application/x-www-form-urlencoded; charset=utf-8"}
-        body={"grant_type":"authorization_code",
-                "client_id":"4fb67e3c47027d004aa591828f76d364",
-                "redirect_uri":"http://localhost:8000/rest-auth/kakao",
-                "code":kakao_access_code}
-        token_kakao_response=requests.post(url,headers=headers,data=body)
-        access_token=json.loads(token_kakao_response.text).get("access_token")
         
         url="https://kapi.kakao.com/v2/user/me"
         headers={
-            "Authorization":f"Bearer {access_token}",
+            "Authorization":f"Bearer {kakao_access_code}",
             "Content-type":"application/x-www-form-urlencoded; charset=utf-8"
         }
         kakao_response=requests.post(url,headers=headers)
         kakao_response=json.loads(kakao_response.text)
-        
+        print(kakao_response)
         if User.objects.filter(uid=kakao_response['id']).exists():
             user    = User.objects.get(uid=kakao_response['id'])
             jwt_token = jwt.encode({'id':user.id}, SECRET_KEY,ALGORITHM)
