@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BsHeart } from "react-icons/bs"
 import { IoChatbubbleOutline } from "react-icons/io5"
 import { useHistory } from "react-router";
+import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 
 export default function ReviewMain() {
     let history = useHistory()
@@ -45,6 +46,17 @@ export default function ReviewMain() {
             follow: 10
         },
     ]
+
+    const [like, setLike] = useState(0)
+    function onLike() {
+        setLike(1)
+    }
+    function onDislike() {
+        setLike(2)
+    }
+    function onReset() {
+        setLike(0)
+    }
     return (
         <>
             <Default>
@@ -84,7 +96,6 @@ export default function ReviewMain() {
                                 marginLeft: 20,
                                 backgroundColor: "#cb1a86",
                                 borderRadius: 6
-
                             }}>
                                 <div style={{
                                     fontSize: 18,
@@ -110,7 +121,7 @@ export default function ReviewMain() {
                                 marginBottom: 100,
                             }}>
                                 {reviewData.map(item =>
-                                    <div onClick={() => history.push("/reviewpost")} style={{
+                                    <div style={{
                                         marginLeft: 20,
                                         marginTop: 32,
                                         cursor: "pointer"
@@ -118,12 +129,13 @@ export default function ReviewMain() {
                                         <div style={{
                                             display: "flex",
                                             flexDirection: "row",
-                                        }}> <div style={{
-                                            width: 32,
-                                            height: 32,
-                                            borderRadius: 16,
-                                            backgroundColor: item.pic
                                         }}>
+                                            <div style={{
+                                                width: 32,
+                                                height: 32,
+                                                borderRadius: 16,
+                                                backgroundColor: item.pic
+                                            }}>
                                             </div>
                                             <div style={{
                                                 fontSize: 14,
@@ -132,47 +144,47 @@ export default function ReviewMain() {
                                                 marginTop: 6
                                             }}>{item.id} </div>
                                         </div>
-                                        <div style={{
+                                        <div onClick={() => history.push("/reviewpost")} style={{
                                             width: 210,
                                             height: 210,
                                             borderRadius: 6,
                                             backgroundColor: "#f2f3f8",
                                             marginTop: 8
-                                        }}> </div>
-                                        <div style={{
-                                            display: "flex",
-                                            flexDirection: "row"
-                                        }}>
-                                            <div style={{
-                                                width: 24,
-                                                height: 24,
-                                                marginTop: 11
-                                            }}>
-                                                <BsHeart></BsHeart>
-                                            </div>
-                                            <div style={{ marginTop: 11, marginLeft: 4, fontSize: 14, fontWeight: "bold" }}>{item.like}</div>
-                                            <div style={{
-                                                width: 24,
-                                                height: 24,
-                                                marginTop: 11,
-                                                marginLeft: 10
-                                            }}>
-                                                <IoChatbubbleOutline></IoChatbubbleOutline>
-                                            </div>
-                                            <div style={{ marginTop: 11, fontSize: 14, fontWeight: "bold" }}>{item.reply}</div>
-                                        </div>
-                                        <div style={{
-                                            fontSize: 14,
-                                            opacity: 0.8,
-                                            marginTop: 16,
-                                            width: 210
-                                        }}>{item.content}</div>
+                                        }} />
                                         <div style={{
                                             color: "#26c1f0",
-                                            marginTop: 4,
+                                            marginTop: 8,
                                             fontSize: 14,
                                             fontWeight: "bold"
                                         }}>{item.follow}명이 따라 샀어요!</div>
+                                        <div style={{
+                                            fontSize: 14,
+                                            opacity: 0.8,
+                                            marginTop: 4,
+                                            width: 210
+                                        }}>{item.content}</div>
+                                        <div style={{
+                                            display: "flex",
+                                            flexDirection: "row",
+                                            alignItems: "center",
+                                            marginTop: 8,
+                                        }}>
+                                            {like === 0 ? <AiOutlineLike onClick={onLike} size={24} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={onReset} size={24} color="#051a1a" /> : <AiOutlineLike onClick={onLike} size={24} color="#051a1a" />}
+                                            <div style={{
+                                                fontFamily: "NotoSansCJKkr",
+                                                fontSize: 14,
+                                                color: "#202426",
+                                                marginLeft: 8,
+                                                marginRight: 12,
+                                            }}>100</div>
+                                            {like === 0 ? <AiOutlineDislike onClick={onDislike} size={24} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={onReset} size={24} color="#051a1a" /> : <AiOutlineDislike onClick={onDislike} size={24} color="#051a1a" />}
+                                            <div style={{
+                                                fontFamily: "NotoSansCJKkr",
+                                                fontSize: 14,
+                                                color: "#202426",
+                                                marginLeft: 8,
+                                            }}>100</div>
+                                        </div>
                                     </div>
                                 )}
                             </div>
@@ -182,24 +194,18 @@ export default function ReviewMain() {
                                 bottom: 0,
                                 borderRadius: 8,
                                 width: 440,
-                                height: 56,
-                                marginLeft: 20,
-                                marginRight: 20,
-                                marginTop: 52,
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                alignSelf: "center",
                                 backgroundColor: "#2dd9d3",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
+
+                                textAlign: "center",
                                 color: "#ffffff",
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 cursor: "pointer",
                                 marginBottom: 30,
-                            }}><div style={{
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                            }}>리뷰 작성하기</div></div>
+                            }}>리뷰 작성하기</div>
                         </div>
                     </div>
                 </div>
@@ -211,61 +217,56 @@ export default function ReviewMain() {
 
                     justifyContent: "flex-start",
 
-                    width: "100%",
+                    width: "100vw",
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="나눠산 사람들" goBack={true} />
+                    <Header content="나눠산 사람들" goBack={true} />
                     <div style={{
-                        width: "90%",
-                        height: 150,
-                        marginTop: 32,
-                        marginLeft: 20,
+                        width: "90vw",
+                        height: "30vw",
+                        marginTop: 24,
+                        alignSelf: "center",
                         backgroundColor: "#cb1a86",
                         borderRadius: 6
                     }}>
                         <div style={{
-                            fontSize: 18,
+                            fontSize: 16,
                             color: "#ffffff",
-                            marginLeft: 32,
-                            marginTop: 32
+                            marginLeft: 28,
+                            marginTop: 28
                         }}>다른 사람들은 어떤걸 샀을까?</div>
                         <div style={{
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: "bold",
                             color: "#ffffff",
-                            marginTop: 16,
-                            marginLeft: 32
+                            marginTop: 14,
+                            marginLeft: 28
                         }}>뽐뿌가 왔다면 위시딜!</div>
                     </div>
                     <div style={{
                         display: "grid",
-                        flexDirection: "row",
-                        width: "90%",
-                        marginLeft: "5%",
-                        aspectRatio: 1,
-                        alignItems: "center",
-                        justifyContent: "flex-start",
+                        width: "90vw",
                         gridTemplateColumns: "1fr 1fr",
-                        marginBottom: 100,
+                        marginBottom: 50,
+                        alignSelf: "center",
+                        columnGap: "5vw",
                     }}>
                         {reviewData.map(item =>
                             <div style={{
-                                marginLeft: "5%",
-                                marginTop: 24,
-                                width: "42.5vw",
+                                marginTop: 16,
                                 cursor: "pointer"
                             }}>
                                 <div style={{
                                     display: "flex",
                                     flexDirection: "row",
-
-                                }}> <div style={{
-                                    width: 28,
-                                    height: 28,
-                                    borderRadius: 14,
-                                    backgroundColor: item.pic
                                 }}>
+                                    <div style={{
+                                        width: 28,
+                                        height: 28,
+                                        borderRadius: 14,
+                                        backgroundColor: item.pic
+                                    }}>
                                     </div>
                                     <div style={{
                                         fontSize: 12,
@@ -274,62 +275,68 @@ export default function ReviewMain() {
                                         marginTop: 6
                                     }}>{item.id} </div>
                                 </div>
-
                                 <div onClick={() => history.push("/reviewpost")} style={{
-                                    width: "42.5vw",
-                                    height: "42.5vw",
+                                    width: "42vw",
+                                    height: "42vw",
                                     borderRadius: 6,
                                     backgroundColor: "#f2f3f8",
                                     marginTop: 8
-                                }}> </div>
+                                }} />
+                                <div style={{
+                                    color: "#26c1f0",
+                                    marginTop: 8,
+                                    fontSize: 12,
+                                    fontWeight: "bold"
+                                }}>{item.follow}명이 따라 샀어요!</div>
+                                <div style={{
+                                    fontSize: 12,
+                                    opacity: 0.8,
+                                    marginTop: 4,
+                                    width: "42vw"
+                                }}>{item.content}</div>
                                 <div style={{
                                     display: "flex",
                                     flexDirection: "row",
                                     alignItems: "center",
                                     marginTop: 8,
-                                    width: "42.5vw",
                                 }}>
-                                    <BsHeart size={16} />
-                                    <div style={{ marginLeft: 4, fontSize: 12, fontWeight: "bold", marginRight: 10 }}>{item.like}</div>
-                                    <IoChatbubbleOutline size={16} />
-                                    <div style={{ fontSize: 12, fontWeight: "bold", marginLeft: 4 }}>{item.reply}</div>
+                                    {like === 0 ? <AiOutlineLike onClick={onLike} size={20} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={onReset} size={20} color="#051a1a" /> : <AiOutlineLike onClick={onLike} size={20} color="#051a1a" />}
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 12,
+                                        color: "#202426",
+                                        marginLeft: 8,
+                                        marginRight: 12,
+                                    }}>100</div>
+                                    {like === 0 ? <AiOutlineDislike onClick={onDislike} size={20} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={onReset} size={20} color="#051a1a" /> : <AiOutlineDislike onClick={onDislike} size={20} color="#051a1a" />}
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 12,
+                                        color: "#202426",
+                                        marginLeft: 8,
+                                    }}>100</div>
                                 </div>
-                                <div style={{
-                                    fontSize: 12,
-                                    opacity: 0.8,
-                                    marginTop: 12,
-                                    width: "100%"
-                                }}>{item.content}</div>
-                                <div style={{
-                                    color: "#26c1f0",
-                                    marginTop: 4,
-                                    fontSize: 12,
-                                    fontWeight: "bold"
-                                }}>{item.follow}명이 따라 샀어요!</div>
                             </div>
                         )}
                     </div>
                     <div onClick={() => history.push("/reviewselect")} style={{
                         position: "fixed",
                         zIndex: 5,
-                        bottom: 20,
+                        bottom: 0,
                         borderRadius: 8,
-                        width: "90%",
-                        paddingTop: "4%",
-                        paddingBottom: "4%",
-                        marginLeft: "5%",
-                        marginRight: "5%",
-                        marginTop: 52,
+                        width: "90vw",
+                        paddingTop: "4vw",
+                        paddingBottom: "4vw",
+                        alignSelf: "center",
                         backgroundColor: "#2dd9d3",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        cursor: "pointer",
-                    }}><div style={{
+
+                        textAlign: "center",
                         color: "#ffffff",
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: "bold",
-                    }}>리뷰 작성하기</div></div>
+                        cursor: "pointer",
+                        marginBottom: 30,
+                    }}>리뷰 작성하기</div>
                 </div>
             </Mobile>
         </>
