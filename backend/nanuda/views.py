@@ -37,7 +37,7 @@ class FacebookLogin(SocialLoginView):
 # GoogleLogin
 class GoogleLogin(SocialLoginView):
     adapter_class = GoogleOAuth2Adapter
-
+    
 
 # User Information
 @api_view(["GET", "POST"])

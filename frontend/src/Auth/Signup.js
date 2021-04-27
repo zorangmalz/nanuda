@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import Slider from "react-slick";
@@ -9,10 +9,13 @@ import googleLogin from "./googleLogin"
 import GoogleLogin from 'react-google-login';
 import KakaoLogin from "react-kakao-login";
 import axios from "axios"
+import dotenv from "dotenv"
 
+dotenv.config()
 
 export default function Signup() {
-    const My_App_Key="821fabeafd73f9e89bc25527d872c5f0"
+    dotenv.config()
+        const My_App_Key=process.env.REACT_APP_KEY
     const responseGoogle = async(response) => {
         console.log("come")
         console.log(response)
@@ -20,7 +23,11 @@ export default function Signup() {
         console.log("df",googleResponse);
         console.log("res",response);
       }
-    
+    useEffect(()=>{
+        dotenv.config()
+        const My_App_Key=process.env.REACT_APP_KEY
+        console.log("왜",process.env.REACT_APP_KEY)
+    },[])
     
     const kakaoResponse = async(response)=>{
         console.log(response.response.access_token)
