@@ -11,10 +11,9 @@ import KakaoLogin from "react-kakao-login";
 import axios from "axios"
 import dotenv from "dotenv"
 
-dotenv.config()
 
 export default function Signup() {
-    dotenv.config()
+    
         const My_App_Key=process.env.REACT_APP_KEY
     const responseGoogle = async(response) => {
         console.log("come")
@@ -24,9 +23,9 @@ export default function Signup() {
         console.log("res",response);
       }
     useEffect(()=>{
-        dotenv.config()
+        
         const My_App_Key=process.env.REACT_APP_KEY
-        console.log("왜",process.env.REACT_APP_KEY)
+        console.log("왜",My_App_Key)
     },[])
     
     const kakaoResponse = async(response)=>{
