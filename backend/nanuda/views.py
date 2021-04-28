@@ -27,7 +27,7 @@ from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, Pro
 #Python 내장함수
 from datetime import date
 
-import PyOpenGraph
+
 
 # Create your views here.
 # FacebookLogin
@@ -37,7 +37,7 @@ class FacebookLogin(SocialLoginView):
 # GoogleLogin
 class GoogleLogin(SocialLoginView):
     adapter_class = GoogleOAuth2Adapter
-    
+
 
 # User Information
 @api_view(["GET", "POST"])
