@@ -378,27 +378,29 @@ export default function OrderSheet() {
                                         }}>{item.money} 원</div>
                                     </div>
                                 )}
-                                <div style={{
-                                    marginTop: 8,
-                                    fontSize: 14,
-                                    fontWeight: "bold",
-                                    color: "#202426",
-                                    marginBottom: 4,
-                                    alignSelf: "flex-start",
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>나누다 팁!</div>
-                                <div style={{
-                                    opacity: 0.8,
-                                    fontSize: 14,
-                                    color: "#202426",
-                                    alignSelf: "flex-start",
-                                    lineHeight: 1.5,
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>
-                                    첫 결제 이후 결제 금액들은 자동결제 됩니다. <br />
-                                분할결제 한도에 따라 분할 결제 금액이 바뀔 수 있습니다. <br />
-                                더 알아보기
                             </div>
+                            <div style={{
+                                marginTop: 8,
+                                fontSize: 14,
+                                marginLeft: 36,
+                                fontWeight: "bold",
+                                color: "#202426",
+                                marginBottom: 4,
+                                alignSelf: "flex-start",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>나누다 팁!</div>
+                            <div style={{
+                                opacity: 0.8,
+                                fontSize: 14,
+                                color: "#202426",
+                                alignSelf: "flex-start",
+                                lineHeight: 1.5,
+                                fontFamily: "NotoSansCJKkr",
+                                marginLeft: 36,
+                            }}>
+                                첫 결제 이후 결제 금액들은 자동결제 됩니다. <br />
+                                분할결제 한도에 따라 분할 결제 금액이 바뀔 수 있습니다. <br />
+                                <span style={{ textDecorationLine: "underline" }}>더 알아보기</span>
                             </div>
                             <div style={{
                                 height: 1,
@@ -572,7 +574,8 @@ export default function OrderSheet() {
                                 color: "#202426",
                                 alignSelf: "center",
                                 marginBottom: 32,
-                                fontFamily: "NotoSansCJKkr"
+                                fontFamily: "NotoSansCJKkr",
+                                textAlign: "center",
                             }}>위 주문 내용을 확인 하였으며, 회원은 본인의 결제에 동의합니다.</div>
                             <div onClick={() => payment ? history.push("/paymentsuccess") : history.push("/paymentfail")} style={{
                                 alignSelf: "center",
@@ -606,7 +609,7 @@ export default function OrderSheet() {
                 }}>
                     <MHeader content="주문서" goBack={true} />
                     <div style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         marginLeft: "5%",
                         fontWeight: "bold",
                         color: "#202426",
@@ -622,10 +625,10 @@ export default function OrderSheet() {
                         marginLeft: "5%"
                     }}>
                         <div style={{
-                            width: 120,
-                            height: 120,
+                            width: "25vw",
+                            height: "25vw",
                             borderRadius: 6,
-                            marginRight: 16,
+                            marginRight: "4vw",
                             backgroundColor: "#000000",
                             color: "#ffffff"
                         }}>상품 그림</div>
@@ -636,14 +639,14 @@ export default function OrderSheet() {
                             justifyContent: "flex-start"
                         }}>
                             <div style={{
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: "#202426",
                                 fontFamily: "AvenirNext"
                             }}>PRADA Model 23-9 limited… <br />
                                     WHITE, 270mm</div>
                             <div style={{
                                 marginTop: 8,
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: "bold",
                                 color: "#051a1a",
                                 fontFamily: "NotoSansCJKkr"
@@ -654,8 +657,8 @@ export default function OrderSheet() {
                         height: 1,
                         width: "100%",
                         backgroundColor: "#dfdfdf",
-                        marginTop: 16,
-                        marginBottom: 16,
+                        marginTop: "4vw",
+                        marginBottom: "4vw",
                     }} />
                     <div style={{
                         display: "flex",
@@ -666,13 +669,13 @@ export default function OrderSheet() {
                         alignSelf: "center",
                     }}>
                         <div style={{
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: "bold",
                             color: "#202426",
                             fontFamily: "NotoSansCJKkr"
                         }}>배송 정보</div>
                         <div style={{
-                            fontSize: 14,
+                            fontSize: 12,
                             opacity: 0.8,
                             color: "#202426",
                             textDecorationLine: "underline",
@@ -683,7 +686,7 @@ export default function OrderSheet() {
                     <div style={{
                         width: "82%",
                         alignSelf: "center",
-                        marginTop: 16,
+                        marginTop: "4vw",
                         padding: "4%",
 
                         display: "flex",
@@ -694,48 +697,48 @@ export default function OrderSheet() {
                         border: "1px solid #dfdfdf"
                     }}>
                         <div style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: "bold",
                             color: "#202426",
                             marginBottom: 8,
                             fontFamily: "NotoSansCJKkr"
                         }}>김현명</div>
                         <div style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: "#202426",
                             marginBottom: 8,
                             fontFamily: "NotoSansCJKkr"
                         }}>03770</div>
                         <div style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: "#202426",
                             marginBottom: 8,
                             fontFamily: "NotoSansCJKkr"
                         }}>서울 특별시 서대문구 북아현로 1길 17</div>
                         <div style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: "#202426",
                             marginBottom: 8,
                             fontFamily: "NotoSansCJKkr"
                         }}>e편한세상 203동 2104호</div>
                         <div style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: "#202426",
                             marginBottom: 8,
                             fontFamily: "NotoSansCJKkr"
                         }}>010-4337-6607</div>
                         <div style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: "#202426",
                             fontFamily: "NotoSansCJKkr"
                         }}>배송 요청사항 : 집앞</div>
                     </div>
                     <div style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         marginLeft: "5%",
                         fontWeight: "bold",
                         color: "#202426",
-                        marginTop: 16,
+                        marginTop: "4vw",
                         fontFamily: "NotoSansCJKkr"
                     }}>결제 수단</div>
                     {register ?
@@ -753,7 +756,7 @@ export default function OrderSheet() {
                             justifyContent: "space-between",
                         }}>
                             <div style={{
-                                fontSize: 16,
+                                fontSize: 14,
                                 opacity: 0.8,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
@@ -764,10 +767,10 @@ export default function OrderSheet() {
                         <div style={{
                             width: "90%",
                             alignSelf: "center",
-                            height: 100,
-                            marginTop: 16,
-                            paddingTop: 15,
-                            paddingBottom: 15,
+                            height: "20vw",
+                            marginTop: "4vw",
+                            paddingTop: "4vw",
+                            paddingBottom: "4vw",
                             borderRadius: 6,
 
                             display: "flex",
@@ -779,19 +782,21 @@ export default function OrderSheet() {
                         }}>
                             <BiPlusCircle size={20} color="#000000"/>
                             <div style={{
-                                fontSize: 16,
+                                fontSize: 12,
                                 color: "#202426",
-                                marginTop: 16,
-                                fontFamily: "NotoSansCJKkr"
+                                marginTop: "4vw",
+                                fontFamily: "NotoSansCJKkr",
+                                width: "90%",
+                                textAlign: "center",
                             }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
                         </div>
                     }
                     <div style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         marginLeft: "5%",
                         fontWeight: "bold",
                         color: "#202426",
-                        marginTop: 16,
+                        marginTop: "4vw",
                         fontFamily: "NotoSansCJKkr"
                     }}>분할결제 옵션 선택</div>
                     <div style={{
@@ -800,7 +805,7 @@ export default function OrderSheet() {
                         alignItems: "center",
 
                         marginLeft: "5%",
-                        marginTop: 16
+                        marginTop: "4vw"
                     }}>
                         <div onClick={onTwo} style={{
                             width: 80,
@@ -811,7 +816,7 @@ export default function OrderSheet() {
                             paddingTop: 5,
                             paddingBottom: 5,
 
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: number === 2 ? "bold" : "normal",
                             color: number === 2 ? "#ffffff" : "#051a1a",
                             opacity: number === 2 ? 1 : 0.8,
@@ -827,7 +832,7 @@ export default function OrderSheet() {
                             paddingTop: 5,
                             paddingBottom: 5,
 
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: number === 3 ? "bold" : "normal",
                             color: number === 3 ? "#ffffff" : "#051a1a",
                             opacity: number === 3 ? 1 : 0.8,
@@ -842,7 +847,7 @@ export default function OrderSheet() {
                             paddingTop: 5,
                             paddingBottom: 5,
 
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: number === 4 ? "bold" : "normal",
                             color: number === 4 ? "#ffffff" : "#051a1a",
                             opacity: number === 4 ? 1 : 0.8,
@@ -874,7 +879,7 @@ export default function OrderSheet() {
                                 marginBottom: 8,
                             }}>
                                 <div style={{
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     color: "#051a1a",
                                     fontFamily: "NotoSansCJKkr"
                                 }}>
@@ -885,48 +890,50 @@ export default function OrderSheet() {
                                     }}>({item.date})</span>
                                 </div>
                                 <div style={{
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     fontWeight: "bold",
                                     color: "#202426",
                                     fontFamily: "NotoSansCJKkr"
                                 }}>{item.money} 원</div>
                             </div>
                         )}
-                        <div style={{
-                            marginTop: 8,
-                            fontSize: 14,
-                            fontWeight: "bold",
-                            color: "#202426",
-                            marginBottom: 4,
-                            alignSelf: "flex-start",
-                            fontFamily: "NotoSansCJKkr"
-                        }}>나누다 팁!</div>
-                        <div style={{
-                            opacity: 0.8,
-                            fontSize: 14,
-                            color: "#202426",
-                            alignSelf: "flex-start",
-                            lineHeight: 1.5,
-                            fontFamily: "NotoSansCJKkr"
-                        }}>
-                            첫 결제 이후 결제 금액들은 자동결제 됩니다. <br />
-                                분할결제 한도에 따라 분할 결제 금액이 바뀔 수 있습니다. <br />
-                                더 알아보기
-                            </div>
+                    </div>
+                    <div style={{
+                        marginTop: 8,
+                        fontSize: 12,
+                        marginLeft: "9vw",
+                        fontWeight: "bold",
+                        color: "#202426",
+                        marginBottom: 4,
+                        alignSelf: "flex-start",
+                        fontFamily: "NotoSansCJKkr"
+                    }}>나누다 팁!</div>
+                    <div style={{
+                        opacity: 0.8,
+                        fontSize: 12,
+                        marginLeft: "9vw",
+                        color: "#202426",
+                        alignSelf: "flex-start",
+                        lineHeight: 1.5,
+                        fontFamily: "NotoSansCJKkr"
+                    }}>
+                        첫 결제 이후 결제 금액들은 자동결제 됩니다. <br />
+                        분할결제 한도에 따라 분할 결제 금액이 바뀔 수 있습니다. <br />
+                        <span style={{ textDecorationLine: "underline" }}>더 알아보기</span>
                     </div>
                     <div style={{
                         height: 1,
                         width: "100%",
                         backgroundColor: "#dfdfdf",
-                        marginTop: 32,
-                        marginBottom: 32,
+                        marginTop: "8vw",
+                        marginBottom: "8vw",
                     }} />
                     <div style={{
-                        fontSize: 21,
+                        fontSize: 18,
                         marginLeft: "5%",
                         fontWeight: "bold",
                         color: "#202426",
-                        marginBottom: 12,
+                        marginBottom: "3vw",
                         fontFamily: "NotoSansCJKkr"
                     }}>최종 결제</div>
                     <div style={{
@@ -947,13 +954,13 @@ export default function OrderSheet() {
                             marginBottom: 8,
                         }}>
                             <div style={{
-                                fontSize: 16,
+                                fontSize: 14,
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
                             }}>첫 분할결제 금액 : </div>
                             <div style={{
-                                fontSize: 16,
+                                fontSize: 14,
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
@@ -969,13 +976,13 @@ export default function OrderSheet() {
                             marginBottom: 8,
                         }}>
                             <div style={{
-                                fontSize: 16,
+                                fontSize: 14,
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
                             }}>배송비 : </div>
                             <div style={{
-                                fontSize: 16,
+                                fontSize: 14,
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
@@ -991,13 +998,13 @@ export default function OrderSheet() {
                             marginBottom: 8,
                         }}>
                             <div style={{
-                                fontSize: 16,
+                                fontSize: 14,
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
                             }}>나누다 포인트 : </div>
                             <div style={{
-                                fontSize: 16,
+                                fontSize: 14,
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
@@ -1012,12 +1019,12 @@ export default function OrderSheet() {
                             width: "100%",
                         }}>
                             <div style={{
-                                fontSize: 14,
+                                fontSize: 12,
                                 color: "#26c1f0",
                                 fontFamily: "NotoSansCJKkr"
                             }}>사용가능 : 2,000 P</div>
                             <div style={{
-                                fontSize: 14,
+                                fontSize: 12,
                                 color: "#26c1f0",
                                 fontFamily: "NotoSansCJKkr"
                             }}>전액사용</div>
@@ -1025,10 +1032,10 @@ export default function OrderSheet() {
                     </div>
                     <div style={{
                         width: "90%",
-                        fontSize: 22,
+                        fontSize: 18,
                         fontWeight: "bold",
                         color: "#202426",
-                        marginTop: 32,
+                        marginTop: "8vw",
                         marginLeft: "5%",
                         fontFamily: "NotoSansCJKkr"
                     }}>
@@ -1042,11 +1049,11 @@ export default function OrderSheet() {
                         height: 1,
                         width: "100%",
                         backgroundColor: "#dfdfdf",
-                        marginTop: 32,
-                        marginBottom: 16,
+                        marginTop: "8vw",
+                        marginBottom: "4vw",
                     }} />
                     <div style={{
-                        fontSize: 14,
+                        fontSize: 12,
                         opacity: 0.6,
                         color: "#202426",
                         textDecorationLine: "underline",
@@ -1055,7 +1062,7 @@ export default function OrderSheet() {
                         fontFamily: "NotoSansCJKkr"
                     }}>구매조건 확인 및 결제대행 서비스 약관 동의</div>
                     <div style={{
-                        fontSize: 14,
+                        fontSize: 12,
                         opacity: 0.6,
                         color: "#202426",
                         textDecorationLine: "underline",
@@ -1065,7 +1072,7 @@ export default function OrderSheet() {
                     }}>개인정보 제공안내</div>
                     <div style={{
                         width: "90%",
-                        fontSize: 12,
+                        fontSize: 10,
                         opacity: 0.4,
                         color: "#202426",
                         alignSelf: "center",
@@ -1075,28 +1082,29 @@ export default function OrderSheet() {
                         height: 1,
                         width: "100%",
                         backgroundColor: "#dfdfdf",
-                        marginTop: 16,
-                        marginBottom: 12,
+                        marginTop: "4vw",
+                        marginBottom: "3vw",
                     }} />
                     <div style={{
-                        fontSize: 14,
+                        fontSize: 12,
                         opacity: 0.4,
                         color: "#202426",
                         width: "90%",
                         alignSelf: "center",
-                        marginBottom: 32,
-                        fontFamily: "NotoSansCJKkr"
+                        marginBottom: "8vw",
+                        fontFamily: "NotoSansCJKkr",
+                        textAlign: "center",
                     }}>위 주문 내용을 확인 하였으며, 회원은 본인의 결제에 동의합니다.</div>
                     <div onClick={() => payment ? history.push("/paymentsuccess") : history.push("/paymentfail")} style={{
                         alignSelf: "center",
-                        width: "90%",
-                        paddingTop: 15,
-                        paddingBottom: 15,
+                        width: "90vw",
+                        paddingTop: "4vw",
+                        paddingBottom: "4vw",
                         backgroundColor: "#2dd9d3",
                         borderRadius: 6,
                         marginBottom: 80,
 
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: "bold",
                         color: "#ffffff",
                         textAlign: "center",

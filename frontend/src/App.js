@@ -33,6 +33,9 @@ import ProfileVerification from './MyProfile/ProfileVerification';
 import ReviewSelect from './Review/ReviewSelect';
 import ReviewFail from './Review/ReviewFail';
 import ReviewSuccess from './Review/ReviewSuccess';
+import ProfileReview from './MyProfile/ProfileReview';
+import WishDealDefault from './Wishdeal/WishDealDefault';
+import WishDealNotURL from "./Wishdeal/WishDealNotURL";
 
 
 export const Default = ({ children }) => {
@@ -66,12 +69,15 @@ function App() {
         <Route path="/servicereview" component={ServiceReview} />
         <Route path="/servicewrite" component={Write} />
         <Route path="/wishdeal" component={WishDeal} />
+        <Route path="/wishdealdefault" component={WishDealDefault} />
         <Route path="/wishdealurl" component={WishDealURL} />
+        <Route path="/wishdealnoturl" component={WishDealNotURL} />
         <Route path="/notice" component={Notice} />
         <Route path="/noticepost" component={NoticePost} />
         <Route path="/profilemain" component={ProfileMain} />
         <Route path="/profilelimit" component={ProfileLimit} />
         <Route path="/profileverification" component={ProfileVerification} />
+        <Route path="/profilereview" component={ProfileReview} />
         <Route path="/profilepoint" component={ProfilePoint} />
         <Route path="/profileedit" component={ProfileEdit} />
         <Route path="/profileaddressedit" component={ProfileAddressEdit} />

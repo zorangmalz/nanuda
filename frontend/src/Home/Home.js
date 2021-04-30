@@ -332,7 +332,7 @@ export default function Home() {
                                 />
                             </div>
                             <BottomTag marginTop={200} marginBottom={100} />
-                            <div onClick={() => history.push("/wishdeal")} style={{
+                            <div onClick={() => history.push("/wishdealdefault")} style={{
                                 width: 440,
                                 marginLeft: 20,
                                 marginRight: 20,
@@ -576,7 +576,7 @@ export default function Home() {
                         />
                     </div>
                     <MBottomTag marginTop={100} marginBottom={70} />
-                    <div onClick={() => history.push("/wishdeal")} style={{
+                    <div onClick={() => history.push("/wishdealdefault")} style={{
                         width: "90%",
                         marginLeft: "5%",
                         marginRight: "5%",
