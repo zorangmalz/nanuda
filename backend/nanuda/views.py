@@ -134,17 +134,11 @@ def order_all(request):
 
 class test(View):
     def get(self, request):
-        # # url=request.GET.get("code",None)
-        # req=request.COOKIES.get("access_token")
-        # print(req) 
-        # return HttpResponse({"cookie":req})
-        if not request.COOKIES.get('team'):
-            response = HttpResponse("Visiting for the first time.")
-            response.set_cookie('team', 'barcelona',httponly=True)
-            return response
+        if not request.COOKIES.get("access_token"):
+            return HttpResponse("false")
         else:
-            return HttpResponse("Your favorite team is {}".format(request.COOKIES['team']))
-        
+            return HttpResponse("true")
+
         
 class KakaoLogin(View):
     def post(self, request):
@@ -179,7 +173,7 @@ class KakaoLogin(View):
             
             res=HttpResponse({"success":True})
             # res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True,samesite=None)
-            res.set_cookie(key="access_token",value=jwt_token,httponly=True)
+            res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True)
             return res
 
         else: 
@@ -203,5 +197,7 @@ class KakaoLogin(View):
             # return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:false')
             res=HttpResponse({"success":True})
             # res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True,samesite=None,)
-            res.set_cookie(key="access_token",value=jwt_token,httponly=True)
+            res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True)
             return res
+
+

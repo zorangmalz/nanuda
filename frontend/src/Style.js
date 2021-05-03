@@ -1,11 +1,11 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import logoS from "./images/logoS.png"
 import bell from "./images/bell.png"
 import user from "./images/users.png"
 import { IoIosArrowBack } from "react-icons/io";
 import { BsX } from "react-icons/bs"
 import { useHistory } from "react-router";
-
+import axios from "axios"
 export default function WebIntro() {
     let history = useHistory()
     return (
@@ -159,6 +159,34 @@ export function MHeader({ content, goBack, goX }) {
 
 export function HomeHeader() {
     let history = useHistory()
+    const [log,setLog]=useState("")
+    useEffect(()=>{
+        test()
+    },[])
+    const test=async()=>{
+        console.log("come")
+        let response=await axios.get(
+            "http://localhost:8000/test/",
+            { withCredentials: true }
+        )
+
+        console.log(response.data)
+        setLog(response.data)
+    }
+    function noticeClick(){
+        if(log==true){
+            history.push("/notice")
+        }else{
+            history.push("/signup")
+        }
+    }   
+    function profileClick(){
+        if(log==true){
+            history.push("/profilemain")
+        }else{
+            history.push("/signup")
+        }
+    }
     return (
         <div style={{
             width: "100%",
@@ -200,12 +228,12 @@ export function HomeHeader() {
 
                 marginRight: 20,
             }}>
-                <img onClick={() => history.push("/notice")} alt="" src={bell} style={{
+                <img onClick={noticeClick} alt="" src={bell} style={{
                     width: 28,
                     height: 28, 
                     cursor: "pointer"
                 }} />
-                <img onClick={() => history.push("/profilemain")} alt="" src={user} style={{
+                <img onClick={profileClick} alt="" src={user} style={{
                     width: 28,
                     height: 28, 
                     marginLeft: 8,
@@ -218,6 +246,34 @@ export function HomeHeader() {
 
 export function MHomeHeader() {
     let history = useHistory()
+    const [log,setLog]=useState("")
+    useEffect(()=>{
+        test()
+    },[])
+    const test=async()=>{
+        console.log("come")
+        let response=await axios.get(
+            "http://localhost:8000/test/",
+            { withCredentials: true }
+        )
+
+        console.log(response.data)
+        setLog(response.data)
+    }
+    function noticeClick(){
+        if(log==true){
+            history.push("/notice")
+        }else{
+            history.push("/signup")
+        }
+    }   
+    function profileClick(){
+        if(log==true){
+            history.push("/profilemain")
+        }else{
+            history.push("/signup")
+        }
+    }
     return (
         <div style={{
             width: "100%",
@@ -259,12 +315,12 @@ export function MHomeHeader() {
 
                 marginRight: "5vw",
             }}>
-                <img onClick={() => history.push("/notice")} alt="" src={bell} style={{
+                <img onClick={noticeClick} alt="" src={bell} style={{
                     width: 24,
                     height: 24,
                     cursor: "pointer"
                 }} />
-                <img onClick={() => history.push("/profilemain")} alt="" src={user} style={{
+                <img onClick={profileClick} alt="" src={user} style={{
                     width: 24,
                     height: 24,
                     marginLeft: 4,
