@@ -3,7 +3,7 @@ from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
 from django.views.generic import View
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 import requests
 import json
 
@@ -132,11 +132,13 @@ def order_all(request):
         return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ogt(View):
+class test(View):
     def get(self, request):
-        url=request.GET.get("code",None)
-        og=PyOpenGraph(url)
-        print(og.metadata)
+        # url=request.GET.get("code",None)
+        req=request.COOKIES.get("access_token")
+        print(req) 
+        return HttpResponse({"cookie":req})
+        
         
 class KakaoLogin(View):
     def get(self, request):
@@ -144,7 +146,6 @@ class KakaoLogin(View):
         SECRET_KEY=os.getenv("SECRET_KEY")
         ALGORITHM=os.getenv("ALGORITHM")
         kakao_access_code=request.GET.get('code',None)
-        
         url="https://kapi.kakao.com/v2/user/me"
         headers={
             "Authorization":f"Bearer {kakao_access_code}",
@@ -156,8 +157,12 @@ class KakaoLogin(View):
         if User.objects.filter(uid=kakao_response['id']).exists():
             user    = User.objects.get(uid=kakao_response['id'])
             jwt_token = jwt.encode({'id':user.id}, SECRET_KEY,ALGORITHM)
-
-            return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:true')
+            print(jwt_token)
+            # return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:true')
+            
+            res=HttpResponse({"success":True})
+            res.set_cookie("access_token",jwt_token,httponly=True,secure=True,samesite=None)
+            return res
         else: 
             
             print(kakao_response['kakao_account']['gender'])
@@ -175,4 +180,8 @@ class KakaoLogin(View):
             ).save()
             user    = User.objects.get(uid=kakao_response['id'])
             jwt_token = jwt.encode({'id':user.id}, SECRET_KEY, ALGORITHM)
-            return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:false')
+            print(jwt_token)
+            # return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:false')
+            res=HttpResponse({"success":True})
+            res.set_cookie("access_token",jwt_token,httponly=True,secure=True,samesite=None)
+            return res

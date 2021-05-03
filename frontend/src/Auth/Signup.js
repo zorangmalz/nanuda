@@ -18,9 +18,9 @@ export default function Signup() {
     const responseGoogle = async(response) => {
         console.log("come")
         console.log(response)
-        let googleResponse  = await googleLogin(response.accessToken)
-        console.log("df",googleResponse);
-        console.log("res",response);
+        // let googleResponse  = await googleLogin(response.accessToken)
+        // console.log("df",googleResponse);
+        // console.log("res",response);
       }
     useEffect(()=>{
         
@@ -29,6 +29,7 @@ export default function Signup() {
     },[])
     
     const kakaoResponse = async(response)=>{
+        console.log("fullResponse",response)
         console.log(response.response.access_token)
         let res = await axios.get(
             "http://localhost:8000/rest-auth/kakao/",
@@ -37,7 +38,8 @@ export default function Signup() {
               {
                   code:response.response.access_token
                 },
-            }
+            },
+            { withCredentials: true }
           );
           console.log(res)
     }
@@ -45,6 +47,15 @@ export default function Signup() {
         console.log("failed")
     }
     let history = useHistory()
+
+    const test=async()=>{
+        console.log("come")
+        let response=await axios.get(
+            "http://localhost:8000/test/",
+            { withCredentials: true }
+        )
+        console.log(response)
+    }
     return (
         <>
             <Default>
@@ -86,7 +97,7 @@ onFailure={kakaoFail}
 className="KakaoLogin"
 >
   
-  카카오톡 로그인
+  카카오톡으로 시작하기
 </KakaoLogin>
                            
                             <a href={"https://kauth.kakao.com/oauth/authorize?client_id=4fb67e3c47027d004aa591828f76d364&redirect_uri=http://localhost:8000/rest-auth/kakao&response_type=code"} target="_blank">
@@ -123,7 +134,7 @@ className="KakaoLogin"
                            }}>
                                네이버로 시작하기
                               </div>
-                              <div style={{
+                              <div onClick={test} style={{
                                marginLeft:20,
                                marginTop:16,
                                width:440,
@@ -158,6 +169,7 @@ className="KakaoLogin"
                               <GoogleLogin
           clientId="397691346823-d6vp0dn778jln379l3ol3ujsnjv0n844.apps.googleusercontent.com"
           buttonText="구글로 시작하기"
+          accessType="offline"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
           
