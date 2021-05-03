@@ -37,6 +37,7 @@ import ProfileReview from './MyProfile/ProfileReview';
 import WishDealDefault from './Wishdeal/WishDealDefault';
 import WishDealNotURL from "./Wishdeal/WishDealNotURL";
 import ProfileDelete from './MyProfile/ProfileDelete';
+import Signup from './Auth/Signup';
 
 
 export const Default = ({ children }) => {
@@ -53,7 +54,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={Signup} />
         <Route path="/landing" component={Landing} />
         <Route path="/signup" component={SingupComplete} />
         <Route path="/signupprofile" component={SignupProfile} />

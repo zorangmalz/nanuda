@@ -29,9 +29,9 @@ export default function Signup() {
     },[])
     
     const kakaoResponse = async(response)=>{
-        console.log("fullResponse",response)
-        console.log(response.response.access_token)
-        let res = await axios.get(
+        // console.log("fullResponse",response)
+        // console.log(response.response.access_token)
+        let res = await axios.post(
             "http://localhost:8000/rest-auth/kakao/",
             {
               params: 

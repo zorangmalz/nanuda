@@ -134,26 +134,43 @@ def order_all(request):
 
 class test(View):
     def get(self, request):
-        # url=request.GET.get("code",None)
-        req=request.COOKIES.get("access_token")
-        print(req) 
-        return HttpResponse({"cookie":req})
+        # # url=request.GET.get("code",None)
+        # req=request.COOKIES.get("access_token")
+        # print(req) 
+        # return HttpResponse({"cookie":req})
+        if not request.COOKIES.get('team'):
+            response = HttpResponse("Visiting for the first time.")
+            response.set_cookie('team', 'barcelona',httponly=True)
+            return response
+        else:
+            return HttpResponse("Your favorite team is {}".format(request.COOKIES['team']))
         
         
 class KakaoLogin(View):
-    def get(self, request):
+    def post(self, request):
+        
         load_dotenv(verbose=True)
         SECRET_KEY=os.getenv("SECRET_KEY")
         ALGORITHM=os.getenv("ALGORITHM")
-        kakao_access_code=request.GET.get('code',None)
+        kakao_access_code=json.loads(request.body)
+        print("herere",kakao_access_code["params"]["code"])
         url="https://kapi.kakao.com/v2/user/me"
+        real_code=kakao_access_code["params"]["code"]
         headers={
-            "Authorization":f"Bearer {kakao_access_code}",
+            "Authorization":f"Bearer {real_code}",
             "Content-type":"application/x-www-form-urlencoded; charset=utf-8"
         }
         kakao_response=requests.post(url,headers=headers)
         kakao_response=json.loads(kakao_response.text)
         print(kakao_response)
+
+        # if not request.COOKIES.get('team'):
+        #     response = HttpResponse("Visiting for the first time.")
+        #     response.set_cookie('team', 'barcelona',httponly=True)
+        #     return response
+        # else:
+        #     return HttpResponse("Your favorite team is {}".format(request.COOKIES['team']))
+
         if User.objects.filter(uid=kakao_response['id']).exists():
             user    = User.objects.get(uid=kakao_response['id'])
             jwt_token = jwt.encode({'id':user.id}, SECRET_KEY,ALGORITHM)
@@ -161,8 +178,10 @@ class KakaoLogin(View):
             # return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:true')
             
             res=HttpResponse({"success":True})
-            res.set_cookie("access_token",jwt_token,httponly=True,secure=True,samesite=None)
+            # res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True,samesite=None)
+            res.set_cookie(key="access_token",value=jwt_token,httponly=True)
             return res
+
         else: 
             
             print(kakao_response['kakao_account']['gender'])
@@ -183,5 +202,6 @@ class KakaoLogin(View):
             print(jwt_token)
             # return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:false')
             res=HttpResponse({"success":True})
-            res.set_cookie("access_token",jwt_token,httponly=True,secure=True,samesite=None)
+            # res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True,samesite=None,)
+            res.set_cookie(key="access_token",value=jwt_token,httponly=True)
             return res
