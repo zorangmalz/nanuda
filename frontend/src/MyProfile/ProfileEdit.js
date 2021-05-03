@@ -146,7 +146,7 @@ export default function ProfileEdit() {
                                     cursor: "pointer",
                                     textDecorationLine: "underline"
                                 }}>로그아웃</div>
-                                <div style={{
+                                <div onClick={() => history.push("/profiledelete")} style={{
                                     fontFamily: "NotoSansCJKkr",
                                     opacity: 0.6,
                                     fontSize: 14,

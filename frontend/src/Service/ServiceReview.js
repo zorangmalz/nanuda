@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-import user from "../images/users.png"
-import present from "../images/present.png"
 
 export default function ServiceReview() {
     let history = useHistory()
@@ -65,6 +63,7 @@ export default function ServiceReview() {
             content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
         },
     ]
+    const [noReview, setNoReview] = useState(true)
     return (
         <>
             <Default>
@@ -98,74 +97,31 @@ export default function ServiceReview() {
                         }}>
                             <Header content="나눠본 사람들" goBack={true} />
                             <div style={{
-                                fontSize: 21,
-                                fontWeight: "bold",
-                                color: "#202426",
-
-                                marginLeft: 20,
-                                marginBottom: 32,
-                                marginTop: 32,
-                                fontFamily: "NotoSansCJKkr"
-                            }}>아직도 나누다 이용을 망설이시나요?</div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                justifyContent: "space-between",
-
                                 width: 440,
+                                height: 150,
                                 alignSelf: "center",
+                                marginTop: 32,
+
+                                backgroundColor: "#051a1a",
+                                borderRadius: 6,
                             }}>
                                 <div style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    width: 210,
-                                }}>
-                                    <img alt="" src={user} style={{
-                                        width: 72,
-                                        height: 72,
-                                        marginBottom: 8,
-                                    }} />
-                                    <div style={{
-                                        fontSize: 32,
-                                        fontWeight: "bold",
-                                        color: "#051a1a",
-                                        marginBottom: 16,
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>109,000</div>
-                                    <div style={{
-                                        fontSize: 16,
-                                        opacity: 0.6,
-                                        color: "#202426",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>나누다를 사용한 사람들</div>
-                                </div>
+                                    marginLeft: 32,
+                                    marginTop: 32,
+
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 18,
+                                    color: "#ffffff"
+                                }}>아직도 나누다 사용을 망설이시나요?</div>
                                 <div style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    width: 210,
-                                }}>
-                                    <img alt="" src={present} style={{
-                                        width: 72,
-                                        height: 72,
-                                        marginBottom: 8,
-                                    }} />
-                                    <div style={{
-                                        fontSize: 32,
-                                        fontWeight: "bold",
-                                        color: "#051a1a",
-                                        marginBottom: 16,
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>209,000</div>
-                                    <div style={{
-                                        fontSize: 16,
-                                        opacity: 0.6,
-                                        color: "#202426",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>나누다로 구매한 상품들</div>
-                                </div>
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 24,
+                                    fontWeight: "bold",
+                                    color: "#ffffff",
+
+                                    marginTop: 16,
+                                    marginLeft: 32,
+                                }}>실제 후기를 확인해보세요.</div>
                             </div>
                             {reviewData.map(item =>
                                 <Review
@@ -193,7 +149,7 @@ export default function ServiceReview() {
                                 textAlign: "center",
                                 cursor: "pointer",
                                 fontFamily: "NotoSansCJKkr"
-                            }}>나누다 사용후기 작성하기</div>
+                            }}>{noReview ? "첫 후기 작성하고 2천 포인트 받기" : "나누다 사용후기 작성하기"}</div>
                         </div>
                     </div>
                 </div>
@@ -210,76 +166,30 @@ export default function ServiceReview() {
                 }}>
                     <MHeader content="나눠본 사람들" goBack={true} />
                     <div style={{
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        color: "#202426",
-
-                        marginLeft: "5%",
-                        marginBottom: 32,
-                        marginTop: 32,
-                        fontFamily: "NotoSansCJKkr"
-                    }}>아직도 나누다 이용을 망설이시나요?</div>
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-
-                        width: "90%",
+                        width: "72vw",
                         alignSelf: "center",
+                        marginTop: "8vw",
+                        paddingTop: "8vw",
+                        paddingLeft: "8vw",
+                        paddingRight: "10vw",
+                        paddingBottom: "8vw",
+
+                        backgroundColor: "#051a1a",
+                        borderRadius: 6,
                     }}>
                         <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            width: "45%",
-                        }}>
-                            <img alt="" src={user} style={{
-                                width: 60,
-                                height: 60,
-                                marginBottom: 8,
-                            }} />
-                            <div style={{
-                                fontSize: 28,
-                                fontWeight: "bold",
-                                color: "#051a1a",
-                                marginBottom: 16,
-                                fontFamily: "NotoSansCJKkr"
-                            }}>109,000</div>
-                            <div style={{
-                                fontSize: 14,
-                                opacity: 0.6,
-                                color: "#202426",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>나누다를 사용한 사람들</div>
-                        </div>
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 16,
+                            color: "#ffffff"
+                        }}>아직도 나누다 사용을 망설이시나요?</div>
                         <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            width: "45%",
-                        }}>
-                            <img alt="" src={present} style={{
-                                width: 60,
-                                height: 60,
-                                backgroundColor: "#000000",
-                                color: "#ffffff",
-                                marginBottom: 8,
-                            }} />
-                            <div style={{
-                                fontSize: 28,
-                                fontWeight: "bold",
-                                color: "#051a1a",
-                                marginBottom: 16,
-                                fontFamily: "NotoSansCJKkr"
-                            }}>209,000</div>
-                            <div style={{
-                                fontSize: 14,
-                                opacity: 0.6,
-                                color: "#202426",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>나누다로 구매한 상품들</div>
-                        </div>
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+
+                            marginTop: "4vw",
+                        }}>실제 후기를 확인해보세요.</div>
                     </div>
                     {reviewData.map(item =>
                         <MReview
@@ -307,7 +217,7 @@ export default function ServiceReview() {
                         textAlign: "center",
                         cursor: "pointer",
                         fontFamily: "NotoSansCJKkr"
-                    }}>나누다 사용후기 작성하기</div>
+                    }}>{noReview ? "첫 후기 작성하고 2천 포인트 받기" : "나누다 사용후기 작성하기"}</div>
                 </div>
             </Mobile>
         </>

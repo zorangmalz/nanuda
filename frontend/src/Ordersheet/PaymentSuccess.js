@@ -12,7 +12,7 @@ export default function PaymentSuccess() {
     //화면 변경
     let history = useHistory()
     function goHome() {
-        history.push("/")
+        history.replace("/")
     }
     function goReview() {
         history.push("/review")

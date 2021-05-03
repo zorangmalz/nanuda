@@ -4,7 +4,7 @@ import WebIntro, { Header, MHeader } from "../Style";
 import { BsHeart } from "react-icons/bs"
 import { IoChatbubbleOutline } from "react-icons/io5"
 import { useHistory } from "react-router";
-import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
+import { AiFillDislike, AiFillLike, AiFillStar, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 
 export default function ReviewMain() {
     let history = useHistory()
@@ -152,39 +152,35 @@ export default function ReviewMain() {
                                             marginTop: 8
                                         }} />
                                         <div style={{
-                                            color: "#26c1f0",
-                                            marginTop: 8,
-                                            fontSize: 14,
-                                            fontWeight: "bold"
-                                        }}>{item.follow}명이 따라 샀어요!</div>
-                                        <div style={{
-                                            fontSize: 14,
-                                            opacity: 0.8,
-                                            marginTop: 4,
-                                            width: 210
-                                        }}>{item.content}</div>
-                                        <div style={{
                                             display: "flex",
                                             flexDirection: "row",
                                             alignItems: "center",
+                                            justifyContent: "flex-start",
                                             marginTop: 8,
                                         }}>
-                                            {like === 0 ? <AiOutlineLike onClick={onLike} size={24} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={onReset} size={24} color="#051a1a" /> : <AiOutlineLike onClick={onLike} size={24} color="#051a1a" />}
+                                            <AiFillStar size={16} color="#fad94f" />
                                             <div style={{
                                                 fontFamily: "NotoSansCJKkr",
                                                 fontSize: 14,
-                                                color: "#202426",
-                                                marginLeft: 8,
-                                                marginRight: 12,
-                                            }}>100</div>
-                                            {like === 0 ? <AiOutlineDislike onClick={onDislike} size={24} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={onReset} size={24} color="#051a1a" /> : <AiOutlineDislike onClick={onDislike} size={24} color="#051a1a" />}
-                                            <div style={{
-                                                fontFamily: "NotoSansCJKkr",
-                                                fontSize: 14,
-                                                color: "#202426",
-                                                marginLeft: 8,
-                                            }}>100</div>
+                                                fontWeight: "bold",
+                                                color: "#051a1a",
+                                                marginLeft: 4,
+                                            }}>4.5</div>
                                         </div>
+                                        <div style={{
+                                            fontSize: 14,
+                                            opacity: 0.8,
+                                            marginTop: 8,
+                                            width: 210,
+                                            fontFamily: "NotoSansCJKkr"
+                                        }}>{item.content}</div>
+                                        <div style={{
+                                            color: "#26c1f0",
+                                            marginTop: 4,
+                                            fontSize: 14,
+                                            fontWeight: "bold",
+                                            fontFamily: "NotoSansCJKkr"
+                                        }}>{item.follow}원에 획득 완료</div>
                                     </div>
                                 )}
                             </div>
@@ -283,39 +279,34 @@ export default function ReviewMain() {
                                     marginTop: 8
                                 }} />
                                 <div style={{
-                                    color: "#26c1f0",
-                                    marginTop: 8,
-                                    fontSize: 12,
-                                    fontWeight: "bold"
-                                }}>{item.follow}명이 따라 샀어요!</div>
-                                <div style={{
-                                    fontSize: 12,
-                                    opacity: 0.8,
-                                    marginTop: 4,
-                                    width: "42vw"
-                                }}>{item.content}</div>
-                                <div style={{
                                     display: "flex",
                                     flexDirection: "row",
                                     alignItems: "center",
+                                    justifyContent: "flex-start",
                                     marginTop: 8,
                                 }}>
-                                    {like === 0 ? <AiOutlineLike onClick={onLike} size={20} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={onReset} size={20} color="#051a1a" /> : <AiOutlineLike onClick={onLike} size={20} color="#051a1a" />}
+                                    <AiFillStar size={12} color="#fad94f" />
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
-                                        fontSize: 12,
-                                        color: "#202426",
-                                        marginLeft: 8,
-                                        marginRight: 12,
-                                    }}>100</div>
-                                    {like === 0 ? <AiOutlineDislike onClick={onDislike} size={20} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={onReset} size={20} color="#051a1a" /> : <AiOutlineDislike onClick={onDislike} size={20} color="#051a1a" />}
-                                    <div style={{
-                                        fontFamily: "NotoSansCJKkr",
-                                        fontSize: 12,
-                                        color: "#202426",
-                                        marginLeft: 8,
-                                    }}>100</div>
+                                        fontSize: 14,
+                                        fontWeight: "bold",
+                                        color: "#051a1a",
+                                        marginLeft: 4,
+                                    }}>4.5</div>
                                 </div>
+                                <div style={{
+                                    fontSize: 12,
+                                    opacity: 0.8,
+                                    marginTop: 8,
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>{item.content}</div>
+                                <div style={{
+                                    color: "#26c1f0",
+                                    marginTop: 4,
+                                    fontSize: 12,
+                                    fontWeight: "bold",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>{item.follow}원에 획득 완료</div>
                             </div>
                         )}
                     </div>

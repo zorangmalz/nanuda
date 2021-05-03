@@ -72,12 +72,12 @@ const MMyInfoList = ({ standard, current, limit }) => {
                         opacity: 0.6,
                         marginRight: 4,
                     }}>{standard}</div>
-                    <AiOutlineQuestionCircle size={12} opacity={0.4} color="#051a1a" />
+                    <AiOutlineQuestionCircle size={10} opacity={0.4} color="#051a1a" />
                 </div>
                 :
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
-                    fontSize: 12,
+                    fontSize: 10,
                     color: "#202426",
                     opacity: 0.6,
                 }}>{standard}</div>
@@ -85,7 +85,7 @@ const MMyInfoList = ({ standard, current, limit }) => {
             <div style={{
                 marginTop: 8,
                 fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: "bold",
                 color: "#202426"
             }}>{current}</div>
@@ -356,9 +356,7 @@ export default function ProfileMain() {
                             </div>
                             <ManageList name="내 정보 관리" path="profileedit" />
                             <ManageList name="분할결제 스케쥴" path="profilepayment" />
-                            <ManageList name="상품 구매 내역" path="profileproduct" />
                             <ManageList name="결제 수단 관리" />
-                            <ManageList name="한도 관리" path="profilelimit" />
                             <BottomTag marginTop={120} marginBottom={0} />
                         </div>
                     </div>
@@ -485,9 +483,7 @@ export default function ProfileMain() {
                     </div>
                     <MManageList name="내 정보 관리" path="profileedit" />
                     <MManageList name="분할결제 스케쥴" path="profilepayment" />
-                    <MManageList name="상품 구매 내역" path="profileproduct" />
                     <MManageList name="결제 수단 관리" />
-                    <MManageList name="한도 관리" path="profilelimit" />
                     <MBottomTag marginTop={60} marginBottom={0} />
                 </div>
             </Mobile>

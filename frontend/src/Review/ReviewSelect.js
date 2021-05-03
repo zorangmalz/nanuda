@@ -68,6 +68,7 @@ export default function ReviewSelect() {
                                     name="삼배옷 컬랙션, White, 95"
                                     current={210000}
                                     sale={70000}
+                                    border={true}
                                 />
                             </div>
                             <div onClick={() => history.push("/reviewwrite")} style={{
@@ -113,6 +114,7 @@ export default function ReviewSelect() {
                             name="삼배옷 컬랙션, White, 95"
                             current={210000}
                             sale={70000}
+                            border={true}
                         />
                     </div>
                     <div onClick={() => history.push("/reviewwrite")} style={{
@@ -137,15 +139,19 @@ export default function ReviewSelect() {
     )
 }
 
-function Product({ name, current, sale }) {
+export function Product({ name, current, sale, border }) {
     return (
         <div style={{
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
+            marginLeft: 20,
 
-            cursor: "pointer"
+            cursor: "pointer",
+            paddingBottom: border ? 16 : 0,
+            borderBottom: border ? "1px solid rgba(5, 26, 26, 0.2)" : 0,
+            width: 440,
         }}>
             <div style={{
                 marginTop: 16,
@@ -156,7 +162,6 @@ function Product({ name, current, sale }) {
                     width: 96,
                     height: 96,
                     backgroundColor: "#dfdfdf",
-                    marginLeft: 20,
                     borderRadius: 6
                 }} />
                 <div style={{
@@ -169,20 +174,24 @@ function Product({ name, current, sale }) {
                     <div style={{ fontSize: 16, fontWeight: "bold", color: "#051a1a", marginBottom: 8 }}>{sale} 원에 획득 완료!</div>
                 </div>
             </div>
-            <RiArrowRightSLine color="#dfdfdf" size={42} style={{ marginRight: 20, cursor: "pointer" }} />
+            <RiArrowRightSLine color="#dfdfdf" size={24} style={{ cursor: "pointer" }} />
         </div>
     )
 }
 
-function MProduct({ name, current, sale }) {
+export function MProduct({ name, current, sale, border }) {
     return (
         <div style={{
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
+            marginLeft: 20,
 
-            cursor: "pointer"
+            cursor: "pointer",
+            paddingBottom: border ? "4vw" : 0,
+            borderBottom: border ? "1px solid rgba(5, 26, 26, 0.2)" : 0,
+            width: "90vw",
         }}>
             <div style={{
                 marginTop: 12,
@@ -193,7 +202,6 @@ function MProduct({ name, current, sale }) {
                     width: 80,
                     height: 80,
                     backgroundColor: "#dfdfdf",
-                    marginLeft: "5vw",
                     borderRadius: 6
                 }} />
                 <div style={{
@@ -206,7 +214,7 @@ function MProduct({ name, current, sale }) {
                     <div style={{ fontSize: 14, fontWeight: "bold", color: "#051a1a", marginBottom: 4 }}>{sale} 원에 획득 완료!</div>
                 </div>
             </div>
-            <RiArrowRightSLine color="#dfdfdf" size={36} style={{ marginRight: "5vw", cursor: "pointer" }} />
+            <RiArrowRightSLine color="#dfdfdf" size={20} style={{ cursor: "pointer" }} />
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import { InputModule, MTitle } from "../Auth/SignupProfile";
-import WebIntro, { Header, MHeader } from "../Style";
+import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 
 export default function ProfileAddressEdit() {
     let history = useHistory()
@@ -113,22 +113,11 @@ export default function ProfileAddressEdit() {
                                 marginTop={16}
                                 fontSize={16}
                             />
-                            <div style={{
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                marginTop: 32,
-                                borderRadius: 6,
-                                backgroundColor: "#2dd9d3",
-                                alignSelf: "center",
-
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                cursor: "pointer",
-                                textAlign: "center"
-                            }}>수정 완료</div>
+                            <StandardButton 
+                                marginTop={32}
+                                text="수정 완료"
+                                route="goback"
+                            />
                         </div>
                     </div>
                 </div>
@@ -194,22 +183,11 @@ export default function ProfileAddressEdit() {
                         marginTop={12}
                         fontSize={12}
                     />
-                    <div onClick={() => history.goBack()} style={{
-                        width: "90vw",
-                        paddingTop: 12,
-                        paddingBottom: 12,
-                        marginTop: 24,
-                        borderRadius: 6,
-                        backgroundColor: "#2dd9d3",
-                        alignSelf: "center",
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
-                        fontWeight: "bold",
-                        color: "#ffffff",
-                        cursor: "pointer",
-                        textAlign: "center"
-                    }}>수정 완료</div>
+                    <MStandardButton
+                        marginTop={32}
+                        text="수정 완료"
+                        route="goback"
+                    />
                 </div>
             </Mobile>
         </>

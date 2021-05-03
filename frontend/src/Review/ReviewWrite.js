@@ -3,6 +3,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BsFillStarFill, BsPlusCircle } from "react-icons/bs"
 import { useHistory } from "react-router";
+import { Product, MProduct } from "./ReviewSelect";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -73,48 +74,19 @@ export default function ReviewWrite() {
                             backgroundColor: "#ffffff",
                         }}>
                             <Header content="리뷰 작성" goBack={true} />
-                            <div style={{
-                                marginTop: 32,
-                                marginLeft: 20,
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#202426",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>리뷰를 작성할 상품을 골라주세요.</div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                            }}>
-                                <div style={{
-                                    marginTop: 16,
-                                    display: "flex",
-                                    flexDirection: "row"
-                                }}>
-                                    <div style={{
-                                        width: 96,
-                                        height: 96,
-                                        backgroundColor: "#dfdfdf",
-                                        marginLeft: 20,
-                                        borderRadius: 6
-                                    }}></div>
-                                    <div style={{
-                                        marginLeft: 14,
-                                        display: "flex",
-                                        flexDirection: "column"
-                                    }}>
-                                        <div style={{ fontSize: 14, fontFamily: "AvenirNext", marginBottom: 8 }}>삼베옷 컬렉션, White, 95</div>
-                                        <div style={{ fontSize: 14, opacity: 0.6, textDecoration: "line-through", marginBottom: 8 }}>210,000 원</div>
-                                        <div style={{ fontSize: 16, fontWeight: "bold", color: "#051a1a", marginBottom: 8 }}>70,000 원에 획득 완료!</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <Product
+                                name="삼배옷 컬랙션, White, 95"
+                                current={210000}
+                                sale={70000}
+                                border={true}
+                            />
 
                             <div style={{
-                                marginTop: 32,
+                                marginTop: 16,
                                 marginLeft: 20,
                                 fontWeight: "bold",
                                 fontSize: 18
-                            }}>제품 사용은 만족스러웠나요? </div>
+                            }}>만족도를 표시해주세요! </div>
 
                             <div style={{
                                 display: "flex",
@@ -148,7 +120,7 @@ export default function ReviewWrite() {
                                 marginLeft: 20,
                                 fontWeight: "bold",
                                 fontSize: 18
-                            }}>후기를 작성해주세요.</div>
+                            }}>제품 사용 후 좋았던 점은 무엇인가요?</div>
                             <textarea cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
                                 outline: 0,
                                 border: 0,
@@ -156,7 +128,25 @@ export default function ReviewWrite() {
                                 padding: 16,
                                 borderRadius: 6,
                                 backgroundColor: "#f2f3f8",
-                                minHeight: 180,
+                                minHeight: 100,
+                                marginLeft: 20,
+                                marginTop: 16,
+                                resize: "none",
+                            }} />
+                            <div style={{
+                                marginTop: 16,
+                                marginLeft: 20,
+                                fontWeight: "bold",
+                                fontSize: 18
+                            }}>제품 사용 후 안좋았던 점은 무엇인가요?</div>
+                            <textarea cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
+                                outline: 0,
+                                border: 0,
+                                width: 408,
+                                padding: 16,
+                                borderRadius: 6,
+                                backgroundColor: "#f2f3f8",
+                                minHeight: 100,
                                 marginLeft: 20,
                                 marginTop: 16,
                                 resize: "none",
@@ -192,54 +182,25 @@ export default function ReviewWrite() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="리뷰 작성" goBack={true} />
-                    <div style={{
-                        marginTop: "8vw",
-                        marginLeft: "5vw",
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        color: "#202426",
-                        fontFamily: "NotoSansCJKkr"
-                    }}>리뷰를 작성할 상품을 골라주세요.</div>
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "row",
-                    }}>
-                        <div style={{
-                            marginTop: 16,
-                            display: "flex",
-                            flexDirection: "row"
-                        }}>
-                            <div style={{
-                                width: "20vw",
-                                height: "20vw",
-                                backgroundColor: "#dfdfdf",
-                                marginLeft: 20,
-                                borderRadius: 6
-                            }}></div>
-                            <div style={{
-                                marginLeft: 8,
-                                display: "flex",
-                                flexDirection: "column"
-                            }}>
-                                <div style={{ fontSize: 12, fontFamily: "AvenirNext", marginBottom: 8 }}>삼베옷 컬렉션, White, 95</div>
-                                <div style={{ fontSize: 12, opacity: 0.6, textDecoration: "line-through", marginBottom: 8 }}>210,000 원</div>
-                                <div style={{ fontSize: 14, fontWeight: "bold", color: "#051a1a", marginBottom: 8 }}>70,000 원에 획득 완료!</div>
-                            </div>
-                        </div>
-                    </div>
+                    <MProduct
+                        name="삼배옷 컬랙션, White, 95"
+                        current={210000}
+                        sale={70000}
+                        border={true}
+                    />
 
                     <div style={{
-                        marginTop: "8vw",
+                        marginTop: "4vw",
                         marginLeft: "5vw",
                         fontWeight: "bold",
                         fontSize: 16
-                    }}>제품 사용은 만족스러웠나요? </div>
+                    }}>만족도를 표시해주세요! </div>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
-                        marginLeft: 20,
-                        marginTop: 12,
+                        marginLeft: "5vw",
+                        marginTop: "3vw",
                     }}>
                         <BsFillStarFill onClick={onOneB} color={numberB > 0 ? "#fad94f" : "#dfdfdf"} size={24} style={{ marginRight: 5, cursor: "pointer" }} />
                         <BsFillStarFill onClick={onTwoB} color={numberB > 1 ? "#fad94f" : "#dfdfdf"} size={24} style={{ marginRight: 5, cursor: "pointer" }} />
@@ -266,7 +227,7 @@ export default function ReviewWrite() {
                         marginLeft: "5vw",
                         fontWeight: "bold",
                         fontSize: 16
-                    }}>후기를 작성해주세요.</div>
+                    }}>제품 사용 후 좋았던 점은 무엇인가요?</div>
                     <textarea cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
                         outline: 0,
                         border: 0,
@@ -274,7 +235,25 @@ export default function ReviewWrite() {
                         padding: "4vw",
                         borderRadius: 6,
                         backgroundColor: "#f2f3f8",
-                        minHeight: 180,
+                        minHeight: 100,
+                        marginTop: 16,
+                        resize: "none",
+                        alignSelf: "center",
+                    }} />
+                    <div style={{
+                        marginTop: "4vw",
+                        marginLeft: "5vw",
+                        fontWeight: "bold",
+                        fontSize: 16
+                    }}>제품 사용 후 안좋았던 점은 무엇인가요?</div>
+                    <textarea cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
+                        outline: 0,
+                        border: 0,
+                        width: "82vw",
+                        padding: "4vw",
+                        borderRadius: 6,
+                        backgroundColor: "#f2f3f8",
+                        minHeight: 100,
                         marginTop: 16,
                         resize: "none",
                         alignSelf: "center",

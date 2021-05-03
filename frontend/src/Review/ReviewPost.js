@@ -1,9 +1,10 @@
 import React, { useReducer, useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { BsFillStarFill, BsUpload } from "react-icons/bs"
 import { useHistory } from "react-router";
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
+import { Product, MProduct } from "./ReviewSelect";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -80,6 +81,7 @@ export default function ReviewPost() {
                             width: 480,
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
+                            paddingBottom: 40,
                         }}>
                             <Header content="나눠산 사람들" goBack={true} />
                             <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 32 }}>
@@ -128,71 +130,74 @@ export default function ReviewPost() {
 
                             <div style={{ width: 480, height: 500, backgroundColor: "#2dd9d3", marginTop: 8 }}></div>
 
-                            <div style={{
-                                marginTop: 16,
-                                display: "flex",
-                                flexDirection: "row"
-                            }}>
-                                <div style={{
-                                    width: 96,
-                                    height: 96,
-                                    backgroundColor: "#dfdfdf",
-                                    marginLeft: 20,
-                                    borderRadius: 6
-                                }}></div>
-                                <div style={{
-                                    marginLeft: 14,
-                                    display: "flex",
-                                    flexDirection: "column"
-                                }}>
-                                    <div style={{ fontSize: 14, fontFamily: "AvenirNext", marginBottom: 8 }}>삼베옷 컬렉션, White, 95</div>
-                                    <div style={{ fontSize: 14, opacity: 0.6, textDecoration: "line-through", marginBottom: 8 }}>210,000 원</div>
-                                    <div style={{ fontSize: 16, fontWeight: "bold", color: "#051a1a", marginBottom: 8 }}>70,000 원에 획득 완료!</div>
-                                    <div style={{ fontSize: 14, color: "#26c1f0", fontWeight: "bold", }}>10 명이 따라 샀어요!</div>
-                                </div>
-                            </div>
+                            <Product
+                                name="삼배옷 컬랙션, White, 95"
+                                current={210000}
+                                sale={70000}
+                                border={false}
+                            />
                             <div style={{
                                 marginTop: 16,
                                 width: 480,
                                 border: "0.5px solid #051a1a",
                                 opacity: 0.2
                             }}></div>
-                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 16, marginRight: 20, }}>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    marginLeft: 20,
-                                }}>
-                                    <BsFillStarFill onClick={onOne} color={number > 0 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                    <BsFillStarFill onClick={onTwo} color={number > 1 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                    <BsFillStarFill onClick={onThree} color={number > 2 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                    <BsFillStarFill onClick={onFour} color={number > 3 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                    <BsFillStarFill onClick={onFive} color={number > 4 ? "#fad94f" : "#dfdfdf"} size={28} style={{ cursor: "pointer" }} />
-                                </div>
-                                <BsUpload
-                                    size={24}
-                                    color="#000000"
-                                />
+                            <div style={{
+                                marginLeft: 20,
+                                marginTop: 16,
+                                fontSize: 12,
+                                opacity: 0.6,
+                                fontFamily: "NotoSansCJKkr",
+                                color: "#202426",
+                            }}> 2021.03.30 </div>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginLeft: 20,
+                                marginTop: 8
+                            }}>
+                                <BsFillStarFill onClick={onOne} color={number > 0 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
+                                <BsFillStarFill onClick={onTwo} color={number > 1 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
+                                <BsFillStarFill onClick={onThree} color={number > 2 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
+                                <BsFillStarFill onClick={onFour} color={number > 3 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
+                                <BsFillStarFill onClick={onFive} color={number > 4 ? "#fad94f" : "#dfdfdf"} size={28} style={{ cursor: "pointer" }} />
                             </div>
                             <div style={{
-                                marginTop: 16,
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 14,
+                                fontWeight: "bold",
+                                color: "#26c1f0",
+                                marginLeft: 20,
+                                marginTop: 32,
+                            }}>좋았어요!</div>
+                            <div style={{
+                                marginTop: 8,
                                 marginLeft: 20,
                                 width: 440,
                                 fontSize: 14,
                                 lineHeight: 1.5
                             }}> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</div>
                             <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 14,
+                                fontWeight: "bold",
+                                color: "#f72b2b",
                                 marginLeft: 20,
+                                marginTop: 32,
+                            }}>별로였어요.</div>
+                            <div style={{
                                 marginTop: 8,
-                                fontSize: 12,
-                                opacity: 0.6
-                            }}> 2021.03.30 </div>
+                                marginLeft: 20,
+                                width: 440,
+                                fontSize: 14,
+                                lineHeight: 1.5
+                            }}> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</div>
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
                                 alignItems: "center",
-                                marginTop: 8,
+                                marginTop: 16,
                                 marginLeft: 20,
                             }}>
                                 {like === 0 ? <AiOutlineLike onClick={onLike} size={24} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={onReset} size={24} color="#051a1a" /> : <AiOutlineLike onClick={onLike} size={24} color="#051a1a" />}
@@ -211,22 +216,11 @@ export default function ReviewPost() {
                                     marginLeft: 8,
                                 }}>100</div>
                             </div>
-                            <div onClick={() => history.push("/wishdeal")} style={{
-                                cursor: "pointer",
-                                marginTop: 16,
-                                marginBottom: 50,
-                                borderRadius: 8,
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                backgroundColor: "#2dd9d3",
-                                alignSelf: "center",
-
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                textAlign: "center"
-                            }}>위시딜 신청하기</div>
+                            <StandardButton 
+                                marginTop={30}
+                                text="위시딜 신청하기"
+                                route="/wishdeal"
+                            />
                         </div>
                     </div>
                 </div>
@@ -239,6 +233,7 @@ export default function ReviewPost() {
                     width: "100vw",
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
+                    paddingBottom: "5vw"
                 }}>
                     <Header content="나눠산 사람들" goBack={true} />
                     <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 16 }}>
@@ -287,72 +282,75 @@ export default function ReviewPost() {
 
                     <div style={{ width: "100vw", height: "105vw", backgroundColor: "#2dd9d3", marginTop: 8 }}></div>
 
-                    <div style={{
-                        marginTop: 12,
-                        display: "flex",
-                        flexDirection: "row"
-                    }}>
-                        <div style={{
-                            width: "20vw",
-                            height: "20vw",
-                            backgroundColor: "#dfdfdf",
-                            marginLeft: "5vw",
-                            borderRadius: 6
-                        }}></div>
-                        <div style={{
-                            marginLeft: 12,
-                            display: "flex",
-                            flexDirection: "column"
-                        }}>
-                            <div style={{ fontSize: 12, fontFamily: "AvenirNext", marginBottom: 8 }}>삼베옷 컬렉션, White, 95</div>
-                            <div style={{ fontSize: 12, opacity: 0.6, textDecoration: "line-through", marginBottom: 8 }}>210,000 원</div>
-                            <div style={{ fontSize: 14, fontWeight: "bold", color: "#051a1a", marginBottom: 8 }}>70,000 원에 획득 완료!</div>
-                            <div style={{ fontSize: 12, color: "#26c1f0", fontWeight: "bold", }}>10 명이 따라 샀어요!</div>
-                        </div>
-                    </div>
+                    <MProduct
+                        name="삼배옷 컬랙션, White, 95"
+                        current={210000}
+                        sale={70000}
+                        border={false}
+                    />
                     <div style={{
                         marginTop: 12,
                         width: "100vw",
                         border: "0.5px solid #051a1a",
                         opacity: 0.2
                     }}></div>
-                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 12, marginRight: "5vw" }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            marginLeft: "5vw",
-                        }}>
-                            <BsFillStarFill onClick={onOne} color={number > 0 ? "#fad94f" : "#dfdfdf"} size={24} style={{ marginRight: 5, cursor: "pointer" }} />
-                            <BsFillStarFill onClick={onTwo} color={number > 1 ? "#fad94f" : "#dfdfdf"} size={24} style={{ marginRight: 5, cursor: "pointer" }} />
-                            <BsFillStarFill onClick={onThree} color={number > 2 ? "#fad94f" : "#dfdfdf"} size={24} style={{ marginRight: 5, cursor: "pointer" }} />
-                            <BsFillStarFill onClick={onFour} color={number > 3 ? "#fad94f" : "#dfdfdf"} size={24} style={{ marginRight: 5, cursor: "pointer" }} />
-                            <BsFillStarFill onClick={onFive} color={number > 4 ? "#fad94f" : "#dfdfdf"} size={24} style={{ cursor: "pointer" }} />
-                        </div>
-                        <BsUpload
-                            size={20}
-                            color="#000000"
-                        />
+                    <div style={{
+                        marginLeft: "5vw",
+                        marginTop: "4vw",
+                        fontSize: 10,
+                        opacity: 0.6,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+                    }}> 2021.03.30 </div>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginLeft: "5vw",
+                        marginTop: 12
+                    }}>
+                        <BsFillStarFill onClick={onOne} color={number > 0 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5, cursor: "pointer" }} />
+                        <BsFillStarFill onClick={onTwo} color={number > 1 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5, cursor: "pointer" }} />
+                        <BsFillStarFill onClick={onThree} color={number > 2 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5, cursor: "pointer" }} />
+                        <BsFillStarFill onClick={onFour} color={number > 3 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5, cursor: "pointer" }} />
+                        <BsFillStarFill onClick={onFive} color={number > 4 ? "#fad94f" : "#dfdfdf"} size={20} style={{ cursor: "pointer" }} />
                     </div>
                     <div style={{
-                        marginTop: 12,
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 12,
+                        fontWeight: "bold",
+                        color: "#26c1f0",
+                        marginLeft: "5vw",
+                        marginTop: "8vw",
+                    }}>좋았어요!</div>
+                    <div style={{
+                        marginTop: "2vw",
                         marginLeft: "5vw",
                         width: "90vw",
                         fontSize: 12,
                         lineHeight: 1.5
                     }}> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</div>
                     <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 12,
+                        fontWeight: "bold",
+                        color: "#f72b2b",
                         marginLeft: "5vw",
-                        marginTop: 8,
-                        fontSize: 10,
-                        opacity: 0.6
-                    }}> 2021.03.30 </div>
+                        marginTop: "8vw",
+                    }}>별로였어요.</div>
+                    <div style={{
+                        marginTop: "2vw",
+                        marginLeft: "5vw",
+                        width: "90vw",
+                        fontSize: 12,
+                        lineHeight: 1.5
+                    }}> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</div>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
-                        marginTop: 8,
-                        marginLeft: 20,
+                        marginTop: "4vw",
+                        marginLeft: "5vw",
                     }}>
                         {like === 0 ? <AiOutlineLike onClick={onLike} size={20} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={onReset} size={20} color="#051a1a" /> : <AiOutlineLike onClick={onLike} size={20} color="#051a1a" />}
                         <div style={{
@@ -370,22 +368,11 @@ export default function ReviewPost() {
                             marginLeft: 4,
                         }}>100</div>
                     </div>
-                    <div onClick={() => history.push("/wishdeal")} style={{
-                        cursor: "pointer",
-                        marginTop: 12,
-                        marginBottom: 25,
-                        borderRadius: 6,
-                        width: "90vw",
-                        paddingTop: "4vw",
-                        paddingBottom: "4vw",
-                        backgroundColor: "#2dd9d3",
-                        alignSelf: "center",
-
-                        color: "#ffffff",
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        textAlign: "center"
-                    }}>위시딜 신청하기</div>
+                    <MStandardButton 
+                        marginTop={20}
+                        text="위시딜 신청하기"
+                        route="/wishdeal"
+                    />
                 </div>
             </Mobile>
         </>

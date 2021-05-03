@@ -83,7 +83,7 @@ export default function ProfilePaymentFail() {
                                 fontFamily: "NotoSansCJKkr",
                                 cursor: "pointer",
                             }}>다시 결제하기</div>
-                            <div onClick={() => history.push("/")} style={{
+                            <div onClick={() => history.replace("/")} style={{
                                 borderRadius: 6,
                                 width: 440,
                                 paddingTop: 15,
@@ -157,7 +157,7 @@ export default function ProfilePaymentFail() {
                         cursor: "pointer",
                         textAlign: "center",
                     }}>다시 결제하기</div>
-                    <div onClick={() => history.push("/")} style={{
+                    <div onClick={() => history.replace("/")} style={{
                         borderRadius: 6,
                         width: "90vw",
                         paddingTop: "4vw",

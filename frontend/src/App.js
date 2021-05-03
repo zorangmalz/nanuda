@@ -36,6 +36,7 @@ import ReviewSuccess from './Review/ReviewSuccess';
 import ProfileReview from './MyProfile/ProfileReview';
 import WishDealDefault from './Wishdeal/WishDealDefault';
 import WishDealNotURL from "./Wishdeal/WishDealNotURL";
+import ProfileDelete from './MyProfile/ProfileDelete';
 
 
 export const Default = ({ children }) => {
@@ -87,6 +88,7 @@ function App() {
         <Route path="/profilepaymentdetail" component={ProfilePaymentDetail} />
         <Route path="/profileproduct" component={ProfileProduct} />
         <Route path="/profileproductinfo" component={ProfileProductInfo} />
+        <Route path="/profiledelete" component={ProfileDelete} />
       </Switch>
     </Router>
   );

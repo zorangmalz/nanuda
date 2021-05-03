@@ -7,6 +7,7 @@ import { BsX } from "react-icons/bs"
 import { useHistory } from "react-router";
 
 export default function WebIntro() {
+    let history = useHistory()
     return (
         <>
             <div style={{
@@ -30,9 +31,10 @@ export default function WebIntro() {
                     height: "100%",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <img alt="" src={logoS} style={{
+                    <img onClick={() => history.replace("/")} alt="" src={logoS} style={{
                         width: 72,
                         height: 72,
+                        cursor: "pointer"
                     }} />
                     <div style={{
                         marginTop: 32,
@@ -176,9 +178,10 @@ export function HomeHeader() {
 
                 marginLeft: 20,
             }}>
-                <img alt="" src={logoS} style={{
+                <img alt="" src={logoS} onClick={() => history.replace("/")} style={{
                     width: 24,
                     height: 24, 
+                    cursor: "pointer"
                 }} />
                 <div style={{
                     marginLeft: 8,
@@ -234,9 +237,10 @@ export function MHomeHeader() {
 
                 marginLeft: "5vw",
             }}>
-                <img alt="" src={logoS} style={{
+                <img alt="" src={logoS} onClick={() => history.replace("/")} style={{
                     width: 20,
                     height: 20,
+                    cursor: "pointer"
                 }} />
                 <div style={{
                     marginLeft: 4,
@@ -885,5 +889,51 @@ export function LimitBox() {
             </div>
             </div>
         </div>
+    )
+}
+
+export function StandardButton({ marginTop, text, route }) {
+    let history = useHistory()
+    return (
+        <>
+            <div onClick={() => route === "goback" ? history.goBack() : history.push(route)} style={{
+                width: 440,
+                paddingTop: 16,
+                paddingBottom: 16,
+                borderRadius: 6,
+                backgroundColor: "#2dd9d3",
+                alignSelf: "center",
+                cursor: "pointer",
+                marginTop: marginTop,
+
+                fontSize: 18,
+                fontWeight: "bold",
+                fontFamily: "NotoSansCJKkr",
+                color: "#ffffff",
+                textAlign: "center"
+            }}>{text}</div>
+        </>
+    )
+}
+
+export function MStandardButton({marginTop, text, route}) {
+    let history = useHistory()
+    return (
+        <div onClick={() => route === "goback" ? history.goBack() : history.push(route)} style={{
+            width: "90vw",
+            paddingTop: "4vw",
+            paddingBottom: "4vw",
+            backgroundColor: "#2dd9d3",
+            alignSelf: "center",
+            cursor: "pointer",
+            marginTop: marginTop,
+            borderRadius: 6,
+
+            fontSize: 16,
+            fontWeight: "bold",
+            fontFamily: "NotoSansCJKkr",
+            color: "#ffffff",
+            textAlign: "center"
+        }}>{text}</div>
     )
 }
