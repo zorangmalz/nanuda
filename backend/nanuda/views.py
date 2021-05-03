@@ -137,6 +137,13 @@ class test(View):
         if not request.COOKIES.get("access_token"):
             return HttpResponse("false")
         else:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            print(payload)
             return HttpResponse("true")
 
         
@@ -167,7 +174,7 @@ class KakaoLogin(View):
 
         if User.objects.filter(uid=kakao_response['id']).exists():
             user    = User.objects.get(uid=kakao_response['id'])
-            jwt_token = jwt.encode({'id':user.id}, SECRET_KEY,ALGORITHM)
+            jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY,ALGORITHM)
             print(jwt_token)
             # return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:true')
             
@@ -192,7 +199,7 @@ class KakaoLogin(View):
                 
             ).save()
             user    = User.objects.get(uid=kakao_response['id'])
-            jwt_token = jwt.encode({'id':user.id}, SECRET_KEY, ALGORITHM)
+            jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY, ALGORITHM)
             print(jwt_token)
             # return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:false')
             res=HttpResponse({"success":True})
