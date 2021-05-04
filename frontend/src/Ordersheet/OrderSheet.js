@@ -58,7 +58,7 @@ export default function OrderSheet() {
 
     //결제 성공 시 -> paymentsuccess, 결제 실패 시 -> paymentfail
     let history = useHistory()
-    const [payment, setPayment] = useState(true)
+    const [payment, setPayment] = useState(false)
     return (
         <>
             <Default>
@@ -246,29 +246,27 @@ export default function OrderSheet() {
                                     <div>임시 로고</div>
                                 </div>
                                 :
-                                <div style={{
+                                <div onClick={() => history.push("/paymentaddbank")} style={{
                                     width: 440,
-                                    height: 180,
-                                    marginRight: 20,
-                                    marginLeft: 20,
-                                    marginTop: 16,
-                                    paddingTop: 55,
-                                    paddingBottom: 55,
+                                    height: 136,
+                                    border: "1px solid rgba(5, 26, 26, 0.2)",
                                     borderRadius: 6,
-
+                                    cursor: "pointer",
+                                    marginTop: 16,
+    
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "center",
                                     justifyContent: "center",
-
-                                    border: "1px solid #dfdfdf"
+                                    alignSelf: "center",
                                 }}>
-                                    <BiPlusCircle size={30} color="#000000" />
+                                    <BiPlusCircle size={32} color="rgba(5, 26, 26, 0.6)" />
                                     <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        opacity: 0.6,
                                         fontSize: 16,
                                         color: "#202426",
-                                        marginTop: 16,
-                                        fontFamily: "NotoSansCJKkr"
+                                        marginTop: 8,
                                     }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
                                 </div>
                             }
@@ -764,30 +762,27 @@ export default function OrderSheet() {
                             <div>임시 로고</div>
                         </div>
                         :
-                        <div style={{
-                            width: "90%",
-                            alignSelf: "center",
-                            height: "20vw",
-                            marginTop: "4vw",
-                            paddingTop: "4vw",
-                            paddingBottom: "4vw",
+                        <div onClick={() => history.push("/paymentaddbank")} style={{
+                            width: "76vw",
+                            padding: "5vw 7vw",
+                            border: "1px solid rgba(5, 26, 26, 0.2)",
                             borderRadius: 6,
-
+                            cursor: "pointer",
+                            marginTop: 12,
+    
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
                             justifyContent: "center",
-
-                            border: "1px solid #dfdfdf"
+                            alignSelf: "center",
                         }}>
-                            <BiPlusCircle size={20} color="#000000"/>
+                            <BiPlusCircle size={24} color="rgba(5, 26, 26, 0.6)" />
                             <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                opacity: 0.6,
                                 fontSize: 12,
                                 color: "#202426",
-                                marginTop: "4vw",
-                                fontFamily: "NotoSansCJKkr",
-                                width: "90%",
-                                textAlign: "center",
+                                marginTop: 4,
                             }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
                         </div>
                     }

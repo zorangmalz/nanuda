@@ -1,9 +1,10 @@
 import React from "react";
+import { BiPlusCircle } from "react-icons/bi";
+import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
-import point from "../images/point.png"
 
-export default function SingupComplete() {
+export default function PaymentAddAccount() {
     return (
         <>
             <Default>
@@ -12,8 +13,10 @@ export default function SingupComplete() {
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "center",
+
                     width: "100%",
-                    backgroundColor: "#f2f3f8"
+                    minHeight: "100vh",
+                    backgroundColor: "#f2f3f8",
                 }}>
                     <WebIntro />
                     {/* 절반을 나눔 */}
@@ -33,32 +36,35 @@ export default function SingupComplete() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="회원가입 완료" goBack={true} />
+                            <Header content="결제 계좌 등록" goBack={true} />
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
-                                fontSize: 24,
+                                fontSize: 18,
                                 fontWeight: "bold",
                                 color: "#202426",
 
                                 marginTop: 32,
-                                lineHeight: 1.5,
-                                alignSelf: "center",
-                                marginBottom: 32,
-                            }}>
-                                회원가입을 축하합니다! <br />
-                                작은 선물을 준비했어요.
-                            </div>
-                            <img
-                                src={point}
-                                alt="포인트"
+                                marginLeft: 20,
+                            }}>계좌번호를 입력해주세요.</div>
+                            <input placeholder="계좌번호를 입력해주세요 (-제외)" 
                                 style={{
+                                    marginTop: 16,
                                     alignSelf: "center",
+                                    outline: 0,
+                                    border: 0,
+                                    paddingBottom: 8,
+                                    width: 440,
+                                    borderBottom: "1px solid rgba(5, 26, 26, 0.4)",
+
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 16,
+                                    color: "#202426",
                                 }}
                             />
-                            <StandardButton
-                                text="나누다 시작하기"
+                            <StandardButton 
                                 marginTop={32}
-                                route="/"
+                                text="다음"
+                                route="/paymentaccountveri"
                             />
                         </div>
                     </div>
@@ -70,37 +76,39 @@ export default function SingupComplete() {
                     flexDirection: "column",
                     justifyContent: "flex-start",
 
-                    width: "100%",
+                    width: "100vw",
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="회원가입 완료" goBack={true} />
+                    <MHeader content="결제 계좌 등록" goBack={true} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: "bold",
                         color: "#202426",
 
                         marginTop: "8vw",
-                        lineHeight: 1.5,
-                        alignSelf: "center",
-                        marginBottom: "8vw",
-                    }}>
-                        회원가입을 축하합니다! <br />
-                                작은 선물을 준비했어요.
-                            </div>
-                    <img
-                        src={point}
-                        alt="포인트"
+                        marginLeft: "5vw",
+                    }}>계좌번호를 입력해주세요.</div>
+                    <input placeholder="계좌번호를 입력해주세요 (-제외)"
                         style={{
+                            marginTop: "4vw",
                             alignSelf: "center",
-                            width: "70vw",
+                            outline: 0,
+                            border: 0,
+                            paddingBottom: 8,
+                            width: "90vw",
+                            borderBottom: "1px solid rgba(5, 26, 26, 0.4)",
+
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 14,
+                            color: "#202426",
                         }}
                     />
                     <MStandardButton
-                        text="나누다 시작하기"
-                        marginTop={"8vw"}
-                        route="/"
+                        marginTop={16}
+                        text="다음"
+                        route="/paymentaccountveri"
                     />
                 </div>
             </Mobile>

@@ -200,7 +200,7 @@ export function HomeHeader() {
 
                 marginRight: 20,
             }}>
-                <img onClick={() => history.push("/notice")} alt="" src={bell} style={{
+                <img onClick={() => history.push("/alarm")} alt="" src={bell} style={{
                     width: 28,
                     height: 28, 
                     cursor: "pointer"
@@ -259,7 +259,7 @@ export function MHomeHeader() {
 
                 marginRight: "5vw",
             }}>
-                <img onClick={() => history.push("/notice")} alt="" src={bell} style={{
+                <img onClick={() => history.push("/alarm")} alt="" src={bell} style={{
                     width: 24,
                     height: 24,
                     cursor: "pointer"

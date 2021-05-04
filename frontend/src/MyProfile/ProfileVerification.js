@@ -146,7 +146,6 @@ export default function ProfileVerification() {
                                     display: "flex",
                                     flexDirection: "row",
                                     alignItems: "center",
-                                    justifyContent: "space-between",
 
                                     width: 440,
                                     marginLeft: 20,
@@ -275,7 +274,6 @@ export default function ProfileVerification() {
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
-                            justifyContent: "space-between",
 
                             width: "90vw",
                             marginTop: "4vw",
@@ -334,16 +332,17 @@ export default function ProfileVerification() {
 function PictureButton() {
     return (
         <div style={{
-            width: 210,
-            height: 210,
+            width: 120,
+            height: 120,
             borderRadius: 6,
             backgroundColor: "#f2f3f8",
+            marginRight: 20,
 
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
         }}>
-            <AiOutlinePlusCircle size={60} color="#051a1a" />
+            <AiOutlinePlusCircle size={32} color="#051a1a" />
         </div>
     )
 }
@@ -351,16 +350,17 @@ function PictureButton() {
 function MPictureButton() {
     return (
         <div style={{
-            width: "40vw",
-            height: "40vw",
+            width: "25vw",
+            height: "25vw",
             borderRadius: 6,
             backgroundColor: "#f2f3f8",
+            marginRight: "4vw",
 
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
         }}>
-            <AiOutlinePlusCircle size={30} color="#051a1a" />
+            <AiOutlinePlusCircle size={24} color="#051a1a" />
         </div>
     )
 }

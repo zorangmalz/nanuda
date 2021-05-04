@@ -1,8 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 
-export default function NoticePost() {
+export default function AlarmPost() {
+    let history = useHistory()
     return (
         <>
             <Default>
@@ -34,7 +36,7 @@ export default function NoticePost() {
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="공지사항" goBack={true} />
+                            <Header content="알림" goBack={true} />
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 18,
@@ -64,12 +66,14 @@ export default function NoticePost() {
                                 color: "#202426",
                                 lineHeight: 1.5
                             }}>
-                                안녕하세요 나누다 여러분? <br />
-                                기존 계좌결제 뿐만 아니라 카드 결제까지 되면 얼마나 좋을까 <br />
-                                생각하셨죠? <br /> <br />
-
-                                그래서 저희가 준비했습니다. <br />
-                                이제부터 나누다에 체크카드를 등록해 편하게 사용할 수 있습니다
+                                <span>(결제) 4-29일 회원님의 우리은행계좌에서 100,000원이 자동이체되었습니다. 자세한 사항은 </span>
+                                <span onClick={() => history.push("/profilemain")} style={{
+                                    textDecorationLine: "underline",
+                                    cursor: "pointer",
+                                    marginLeft: 2,
+                                    marginRight: 2,
+                                }}>마이페이지</span>
+                                <span> 에서 확인해주세요. </span>
                             </div>
                         </div>
                     </div>
@@ -85,7 +89,7 @@ export default function NoticePost() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="공지사항" goBack={true} />
+                    <MHeader content="알림" goBack={true} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
@@ -93,7 +97,7 @@ export default function NoticePost() {
                         color: "#202426",
                         marginTop: "8vw",
                         marginLeft: "5vw",
-                    }}>카드 결제 추가 관련 공지</div>
+                    }}>미션에 성공했습니다</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
@@ -116,12 +120,14 @@ export default function NoticePost() {
                         color: "#202426",
                         lineHeight: 1.5
                     }}>
-                        안녕하세요 나누다 여러분?
-                        기존 계좌결제 뿐만 아니라 카드 결제까지 되면 얼마나 좋을까
-                        생각하셨죠? <br /> <br />
-
-                        그래서 저희가 준비했습니다.
-                        이제부터 나누다에 체크카드를 등록해 편하게 사용할 수 있습니다
+                        <span>(결제) 4-29일 회원님의 우리은행계좌에서 100,000원이 자동이체되었습니다. 자세한 사항은 </span>
+                        <span onClick={() => history.push("/profilemain")} style={{
+                            textDecorationLine: "underline",
+                            cursor: "pointer",
+                            marginLeft: 2,
+                            marginRight: 2,
+                        }}>마이페이지</span>
+                        <span> 에서 확인해주세요. </span>
                     </div>
                 </div>
             </Mobile>
