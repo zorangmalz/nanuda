@@ -43,7 +43,7 @@ export default function Signup() {
           );
           console.log(res)
           if(res.data==="success"){
-              history.replace("/")
+              history.replace("/signupprofile")
           }
     }
     const kakaoFail= async(res)=>{

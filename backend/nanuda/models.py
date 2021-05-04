@@ -11,7 +11,7 @@ class User(models.Model):
     ]
     id = models.BigAutoField(primary_key=True)
     user_email = models.EmailField(unique=True)
-    nickname = models.TextField(unique=True,blank=True)
+    nickname = models.TextField(unique=True,blank=True) 
     name = models.TextField(unique=True, default="나누다")
     gender = models.IntegerField(choices=GENDER_CHOICE, default="")
     age = models.PositiveIntegerField(blank=True, default=0)

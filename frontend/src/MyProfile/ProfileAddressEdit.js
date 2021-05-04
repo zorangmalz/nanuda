@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import { InputModule, MTitle } from "../Auth/SignupProfile";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
+import DaumPostCode from 'react-daum-postcode';
+
 
 export default function ProfileAddressEdit() {
+
+    const [modal,setModal]=useState(false)
     let history = useHistory()
 
     //우편번호 입력
@@ -24,15 +28,91 @@ export default function ProfileAddressEdit() {
     const onAddressDetail = (e) => {
         setAddressDetail(e.target.value)
     }
+
+    const [isAddress, setIsAddress] = useState("");
+    const [isZoneCode, setIsZoneCode] = useState();
+    useEffect(()=>{
+        console.log(isAddress)
+        console.log(isZoneCode)
+    },[isZoneCode])
+
+
+    function Daum({setVisible}){
+    const handleComplete = (data) => {
+        console.log(data)
+        let fullAddress = data.address;
+        let extraAddress = "";
+    
+        if (data.addressType === "R") {
+          if (data.bname !== "") {
+            extraAddress += data.bname;
+          }
+          if (data.buildingName !== "") {
+            extraAddress +=
+              extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+          }
+          fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
+        }
+        setIsZoneCode(data.zonecode);
+        setIsAddress(fullAddress);
+        setVisible(false)
+      };
+    
+        return(
+            <div style={{
+                position: "absolute",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100vw",
+                height: "100vh",
+            }}>
+                <div onClick={() => setVisible(false)} style={{
+                    position: "absolute",
+                    top: 0,
+                    width: "100vw",
+                    height: "100vh",
+                    backgroundColor: "#000000",
+                    opacity: 0.4,
+                    zIndex: 5,
+                }} />
+                <div style={{
+                    zIndex: 7,
+                    width: 340,
+                    height: 376,
+                    paddingTop: 30,
+                    paddingBottom: 40,
+                    paddingRight: 30,
+                    paddingLeft: 30,
+                    backgroundColor: "#ffffff",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center"
+                }}>
+                    <DaumPostCode onComplete={handleComplete}/>
+    </div>
+    </div>
+    
+        )
+    }
+    
+
     return (
         <>
             <Default>
+                {modal ?
+                <Daum setVisible={setModal} ></Daum>
+                :
+                <></>
+                }
+                
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "center",
-
+                    zIndex:0,
                     width: "100%",
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
@@ -71,15 +151,16 @@ export default function ProfileAddressEdit() {
                                 marginLeft: 20,
                             }}>
                                 <InputModule
-                                    input={addressNum}
-                                    onChange={onAddressNum}
+                                    input={isZoneCode}
+                                    
                                     placeholder="우편번호"
                                     width={90}
                                     marginLeft={0}
                                     marginTop={0}
                                     fontSize={16}
                                 />
-                                <div style={{
+                                
+                                <div onClick={()=>setModal(true)} style={{
                                     paddingTop: 7,
                                     paddingBottom: 7,
                                     paddingLeft: 10,
@@ -96,8 +177,8 @@ export default function ProfileAddressEdit() {
                                 }}>우편번호 찾기</div>
                             </div>
                             <InputModule
-                                input={address}
-                                onChange={onAddress}
+                                input={isAddress}
+                                
                                 placeholder="주소"
                                 width={440}
                                 marginLeft={20}
@@ -193,3 +274,4 @@ export default function ProfileAddressEdit() {
         </>
     )
 }
+

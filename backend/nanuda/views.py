@@ -146,7 +146,11 @@ class test(View):
             print(payload)
             return HttpResponse("true")
 
-        
+
+# class changeAddress(Vie):
+#     def get(self,request):
+
+
 class KakaoLogin(View):
     def post(self, request):
         
