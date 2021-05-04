@@ -54,9 +54,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={Signup} />
+        <Route path="/" exact component={Home} />
         <Route path="/landing" component={Landing} />
-        <Route path="/signup" component={SingupComplete} />
+        <Route path="/signup" component={Signup} />
         <Route path="/signupprofile" component={SignupProfile} />
         <Route path="/ordersheet" component={OrderSheet} />
         <Route path="/address" component={Address} />

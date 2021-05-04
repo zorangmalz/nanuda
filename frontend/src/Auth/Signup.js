@@ -42,6 +42,9 @@ export default function Signup() {
             { withCredentials: true }
           );
           console.log(res)
+          if(res.data==="success"){
+              history.replace("/")
+          }
     }
     const kakaoFail= async(res)=>{
         console.log("failed")
