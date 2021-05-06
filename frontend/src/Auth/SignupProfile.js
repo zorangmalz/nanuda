@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from "react";
+import { BsCheck } from "react-icons/bs";
 import styled from "styled-components"
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
@@ -23,7 +24,7 @@ export const MTitle = styled.div`
     margin-left: 5vw;
 `;
 
-export const Button = ({text, number, standard, onClick}) => {
+export const Button = ({ text, number, standard, onClick }) => {
     return (
         <div onClick={onClick} style={{
             width: 95,
@@ -43,7 +44,7 @@ export const Button = ({text, number, standard, onClick}) => {
     )
 }
 
-export const MButton = ({text, number, standard, onClick}) => {
+export const MButton = ({ text, number, standard, onClick }) => {
     return (
         <div onClick={onClick} style={{
             width: "20vw",
@@ -181,7 +182,7 @@ export default function SignupProfile() {
                                 marginTop={16}
                                 fontSize={16}
                             />
-                              <Title>휴대폰번호</Title>
+                            <Title>휴대폰번호</Title>
                             <InputModule
                                 input={cellPhone}
                                 onChange={oncellPhone}
@@ -191,7 +192,7 @@ export default function SignupProfile() {
                                 marginTop={16}
                                 fontSize={16}
                             />
-                              <Title>이메일 주소(선택)</Title>
+                            <Title>이메일 주소(선택)</Title>
                             <InputModule
                                 input={email}
                                 onChange={onemail}
@@ -210,44 +211,44 @@ export default function SignupProfile() {
                                 marginTop: 16,
                                 rowGap: 16,
                             }}>
-                                <Button 
+                                <Button
                                     text="대학생"
                                     number={number}
                                     standard={1}
                                     onClick={onStudent}
                                 />
-                                <Button 
+                                <Button
                                     text="직장인"
                                     number={number}
                                     standard={2}
                                     onClick={onEmploy}
                                 />
-                                <Button 
+                                <Button
                                     text="주부"
                                     number={number}
                                     standard={3}
                                     onClick={onHouse}
                                 />
-                                <Button 
+                                <Button
                                     text="취준생"
                                     number={number}
                                     standard={4}
                                     onClick={onReady}
                                 />
-                                <Button 
+                                <Button
                                     text="자영업"
                                     number={number}
                                     standard={5}
                                     onClick={onSelf}
                                 />
-                                <Button 
+                                <Button
                                     text="기타"
                                     number={number}
                                     standard={6}
                                     onClick={onEtc}
                                 />
                             </div>
-                            <InputModule 
+                            <InputModule
                                 input={job}
                                 onChange={onJob}
                                 placeholder="현재 직업을 입력해주세요."
@@ -256,7 +257,134 @@ export default function SignupProfile() {
                                 marginTop={16}
                                 fontSize={16}
                             />
-                            
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                alignSelf: "center",
+
+                                width: 440,
+                                paddingTop: 12,
+                                paddingBottom: 12,
+                                marginTop: 32,
+                                border: "1px solid rgba(5, 26, 26, 0.2)",
+                                borderRadius: 6,
+                            }}>
+                                <BsCheck
+                                    size={24}
+                                    color="#2dd9d3"
+                                    style={{
+                                        marginLeft: 8,
+                                        cursor: "pointer",
+                                    }}
+                                />
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 18,
+                                    fontWeight: "bold",
+                                    color: "#202426",
+                                    marginLeft: 8,
+                                }}>전체 약관 동의</div>
+                            </div>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginLeft: 28,
+                                marginTop: 16,
+                            }}>
+                                <BsCheck
+                                    size={24}
+                                    color="rgba(5, 26, 26, 0.6)"
+                                    style={{
+                                        cursor: "pointer"
+                                    }}
+                                />
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 14,
+                                    color: "#202426",
+                                    marginLeft: 8,
+                                }}><span style={{
+                                    textDecorationLine: "underline",
+                                    marginRight: 2,
+                                }}>개인정보 처리약관</span> 동의 (필수)</div>
+                            </div>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginLeft: 28,
+                                marginTop: 8,
+                            }}>
+                                <BsCheck
+                                    size={24}
+                                    color="rgba(5, 26, 26, 0.6)"
+                                    style={{
+                                        cursor: "pointer"
+                                    }}
+                                />
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 14,
+                                    color: "#202426",
+                                    marginLeft: 8,
+                                }}>나누다 <span style={{
+                                    textDecorationLine: "underline",
+                                    marginRight: 2,
+                                }}>서비스 이용약관</span> 동의 (필수)</div>
+                            </div>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginLeft: 28,
+                                marginTop: 8,
+                            }}>
+                                <BsCheck
+                                    size={24}
+                                    color="rgba(5, 26, 26, 0.6)"
+                                    style={{
+                                        cursor: "pointer"
+                                    }}
+                                />
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 14,
+                                    color: "#202426",
+                                    marginLeft: 8,
+                                }}>
+                                    <span style={{
+                                        textDecorationLine: "underline",
+                                        marginRight: 2,
+                                    }}>휴대폰 본인확인 서비스</span>
+                                    동의 (필수)</div>
+                            </div>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginLeft: 28,
+                                marginTop: 8,
+                            }}>
+                                <BsCheck
+                                    size={24}
+                                    color="rgba(5, 26, 26, 0.6)"
+                                    style={{
+                                        cursor: "pointer"
+                                    }}
+                                />
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 14,
+                                    color: "#202426",
+                                    marginLeft: 8,
+                                }}>마케팅 정보 수신 동의(선택)</div>
+                            </div>
                             <div style={{
                                 width: 440,
                                 paddingTop: 15,
@@ -297,7 +425,7 @@ export default function SignupProfile() {
                         marginTop={12}
                         fontSize={12}
                     />
-                     <MTitle>휴대폰번호</MTitle>
+                    <MTitle>휴대폰번호</MTitle>
                     <InputModule
                         input={cellPhone}
                         onChange={oncellPhone}
@@ -307,7 +435,7 @@ export default function SignupProfile() {
                         marginTop={12}
                         fontSize={12}
                     />
-                     <MTitle>이메일 주소(선택)</MTitle>
+                    <MTitle>이메일 주소(선택)</MTitle>
                     <InputModule
                         input={email}
                         onChange={onemail}
@@ -372,7 +500,132 @@ export default function SignupProfile() {
                         marginTop={12}
                         fontSize={12}
                     />
-                   
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        alignSelf: "center",
+
+                        width: "90vw",
+                        paddingTop: "3vw",
+                        paddingBottom: "3vw",
+                        marginTop: "8vw",
+                        border: "1px solid rgba(5, 26, 26, 0.2)",
+                        borderRadius: 6,
+                    }}>
+                        <BsCheck
+                            size={16}
+                            color="#2dd9d3"
+                            style={{
+                                marginLeft: 8,
+                                cursor: "pointer",
+                            }}
+                        />
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 16,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            marginLeft: 8,
+                        }}>전체 약관 동의</div>
+                    </div>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginLeft: "7vw",
+                        marginTop: "4vw",
+                    }}>
+                        <BsCheck
+                            size={16}
+                            color="rgba(5, 26, 26, 0.6)"
+                            style={{
+                                cursor: "pointer"
+                            }}
+                        />
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            opacity: 0.6,
+                            fontSize: 14,
+                            color: "#202426",
+                            marginLeft: "2vw",
+                        }}><span style={{
+                            textDecorationLine: "underline",
+                            marginRight: 2,
+                        }}>개인정보 처리약관</span> 동의 (필수)</div>
+                    </div>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginLeft: "7vw",
+                        marginTop: "2vw",
+                    }}>
+                        <BsCheck
+                            size={16}
+                            color="rgba(5, 26, 26, 0.6)"
+                            style={{
+                                cursor: "pointer"
+                            }}
+                        />
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            opacity: 0.6,
+                            fontSize: 14,
+                            color: "#202426",
+                            marginLeft: "2vw",
+                        }}>나누다 <span style={{
+                            textDecorationLine: "underline",
+                            marginRight: 2,
+                        }}>서비스 이용약관</span> 동의 (필수)</div>
+                    </div>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginLeft: "7vw",
+                        marginTop: "2vw",
+                    }}>
+                        <BsCheck
+                            size={16}
+                            color="rgba(5, 26, 26, 0.6)"
+                            style={{
+                                cursor: "pointer"
+                            }}
+                        />
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            opacity: 0.6,
+                            fontSize: 14,
+                            color: "#202426",
+                            marginLeft: "2vw",
+                        }}><span style={{
+                            textDecorationLine: "underline",
+                            marginRight: 2,
+                        }}>휴대폰 본인확인 서비스</span> 동의 (필수)</div>
+                    </div>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginLeft: "7vw",
+                        marginTop: "2vw",
+                    }}>
+                        <BsCheck
+                            size={16}
+                            color="rgba(5, 26, 26, 0.6)"
+                            style={{
+                                cursor: "pointer"
+                            }}
+                        />
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            opacity: 0.6,
+                            fontSize: 14,
+                            color: "#202426",
+                            marginLeft: "2vw",
+                        }}>마케팅 정보 수신 동의 (선택)</div>
+                    </div>
                     <div style={{
                         width: "90vw",
                         paddingTop: 12,
