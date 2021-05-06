@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BsFillStarFill, BsPlusCircle } from "react-icons/bs"
@@ -42,6 +42,20 @@ export default function ReviewWrite() {
     };
 
     let history = useHistory()
+
+    //이용후기 및 의견 작성
+    const [inputs, setInputs] = useState({
+        like: "",
+        dislike: "",
+    })
+    const { like, dislike } = inputs
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setInputs({
+            ...inputs,
+            [name]: value
+        })
+    }
     return (
         <>
             <Default>
@@ -121,7 +135,7 @@ export default function ReviewWrite() {
                                 fontWeight: "bold",
                                 fontSize: 18
                             }}>제품 사용 후 좋았던 점은 무엇인가요?</div>
-                            <textarea cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
+                            <textarea onChange={onChange} name="like" value={like} cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
                                 outline: 0,
                                 border: 0,
                                 width: 408,
@@ -139,7 +153,7 @@ export default function ReviewWrite() {
                                 fontWeight: "bold",
                                 fontSize: 18
                             }}>제품 사용 후 안좋았던 점은 무엇인가요?</div>
-                            <textarea cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
+                            <textarea onChange={onChange} name="dislike" value={dislike} cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
                                 outline: 0,
                                 border: 0,
                                 width: 408,
@@ -228,7 +242,7 @@ export default function ReviewWrite() {
                         fontWeight: "bold",
                         fontSize: 16
                     }}>제품 사용 후 좋았던 점은 무엇인가요?</div>
-                    <textarea cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
+                    <textarea onChange={onChange} name="like" value={like} cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
                         outline: 0,
                         border: 0,
                         width: "82vw",
@@ -246,7 +260,7 @@ export default function ReviewWrite() {
                         fontWeight: "bold",
                         fontSize: 16
                     }}>제품 사용 후 안좋았던 점은 무엇인가요?</div>
-                    <textarea cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
+                    <textarea onChange={onChange} name="dislike" value={dislike} cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
                         outline: 0,
                         border: 0,
                         width: "82vw",

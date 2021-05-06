@@ -57,6 +57,7 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/landing" component={Landing} />
         <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
         <Route path="/signupprofile" component={SignupProfile} />
         <Route path="/ordersheet" component={OrderSheet} />
         <Route path="/address" component={Address} />
