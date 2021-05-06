@@ -27,7 +27,7 @@ from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, Pro
 #Python 내장함수
 from datetime import date
 
-class test(View):
+class userInfoName(View):
     def get(self, request):
         if not request.COOKIES.get("access_token"):
             return HttpResponse("false")
