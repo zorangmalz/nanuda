@@ -109,7 +109,14 @@ export default function SignupProfile() {
     const onNickname = (e) => {
         setNickname(e.target.value)
     }
-
+    const [cellPhone, setcellPhone] = useState("")
+    const oncellPhone = (e) => {
+        setcellPhone(e.target.value)
+    }
+    const [email, setemail] = useState("")
+    const onemail = (e) => {
+        setemail(e.target.value)
+    }
     //직업 입력
     const [job, setJob] = useState("")
     const onJob = (e) => {
@@ -164,11 +171,31 @@ export default function SignupProfile() {
                             backgroundColor: "#ffffff",
                         }}>
                             <Header content="회원정보" goBack={true} />
-                            <Title>닉네임을 설정해주세요.</Title>
+                            <Title>이름</Title>
                             <InputModule
                                 input={nickname}
                                 onChange={onNickname}
-                                placeholder="닉네임을 입력해주세요."
+                                placeholder="당신의 이름은 무엇인가요?"
+                                width={440}
+                                marginLeft={20}
+                                marginTop={16}
+                                fontSize={16}
+                            />
+                              <Title>휴대폰번호</Title>
+                            <InputModule
+                                input={cellPhone}
+                                onChange={oncellPhone}
+                                placeholder="휴대폰 번호를 입력해주세요."
+                                width={440}
+                                marginLeft={20}
+                                marginTop={16}
+                                fontSize={16}
+                            />
+                              <Title>이메일 주소(선택)</Title>
+                            <InputModule
+                                input={email}
+                                onChange={onemail}
+                                placeholder="이메일 주소를 입력해주세요."
                                 width={440}
                                 marginLeft={20}
                                 marginTop={16}
@@ -229,57 +256,7 @@ export default function SignupProfile() {
                                 marginTop={16}
                                 fontSize={16}
                             />
-                            <Title>거주지 주소를 입력해주세요.</Title>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginTop: 16,
-                                marginLeft: 20,
-                            }}>
-                                <InputModule
-                                    input={addressNum}
-                                    onChange={onAddressNum}
-                                    placeholder="우편번호"
-                                    width={90}
-                                    marginLeft={0}
-                                    marginTop={0}
-                                    fontSize={16}
-                                />
-                                <div style={{
-                                    paddingTop: 7,
-                                    paddingBottom: 7,
-                                    paddingLeft: 10,
-                                    paddingRight: 10,
-                                    marginLeft: 20,
-                                    borderRadius: 6,
-                                    backgroundColor: "#051a1a",
-
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 12,
-                                    fontWeight: "bold",
-                                    color: "#ffffff",
-                                    cursor: "pointer"
-                                }}>우편번호 찾기</div>
-                            </div>
-                            <InputModule 
-                                input={address}
-                                onChange={onAddress}
-                                placeholder="주소"
-                                width={440}
-                                marginLeft={20}
-                                marginTop={16}
-                                fontSize={16}
-                            />
-                            <InputModule 
-                                input={addressDetatil}
-                                onChange={onAddressDetail}
-                                placeholder="상세주소"
-                                width={440}
-                                marginLeft={20}
-                                marginTop={16}
-                                fontSize={16}
-                            />
+                            
                             <div style={{
                                 width: 440,
                                 paddingTop: 15,
@@ -310,11 +287,31 @@ export default function SignupProfile() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="회원정보" goBack={true} />
-                    <MTitle>닉네임을 설정해주세요.</MTitle>
+                    <MTitle>이름</MTitle>
                     <InputModule
                         input={nickname}
                         onChange={onNickname}
-                        placeholder="닉네임을 입력해주세요."
+                        placeholder="당신의 이름은 무엇인가요?"
+                        width={"90vw"}
+                        marginLeft={"5vw"}
+                        marginTop={12}
+                        fontSize={12}
+                    />
+                     <MTitle>휴대폰번호</MTitle>
+                    <InputModule
+                        input={cellPhone}
+                        onChange={oncellPhone}
+                        placeholder="휴대폰 번호를 입력해주세요"
+                        width={"90vw"}
+                        marginLeft={"5vw"}
+                        marginTop={12}
+                        fontSize={12}
+                    />
+                     <MTitle>이메일 주소(선택)</MTitle>
+                    <InputModule
+                        input={email}
+                        onChange={onemail}
+                        placeholder="이메일 주소를 입력해주세요."
                         width={"90vw"}
                         marginLeft={"5vw"}
                         marginTop={12}
@@ -375,57 +372,7 @@ export default function SignupProfile() {
                         marginTop={12}
                         fontSize={12}
                     />
-                    <MTitle>거주지 주소를 입력해주세요.</MTitle>
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        marginTop: 16,
-                        marginLeft: 20,
-                    }}>
-                        <InputModule
-                            input={addressNum}
-                            onChange={onAddressNum}
-                            placeholder="우편번호"
-                            width={80}
-                            marginLeft={0}
-                            marginTop={0}
-                            fontSize={12}
-                        />
-                        <div style={{
-                            paddingTop: 4,
-                            paddingBottom: 4,
-                            paddingLeft: 8,
-                            paddingRight: 8,
-                            marginLeft: 10,
-                            borderRadius: 6,
-                            backgroundColor: "#051a1a",
-
-                            fontFamily: "NotoSansCJKkr",
-                            fontSize: 12,
-                            fontWeight: "bold",
-                            color: "#ffffff",
-                            cursor: "pointer"
-                        }}>우편번호 찾기</div>
-                    </div>
-                    <InputModule
-                        input={address}
-                        onChange={onAddress}
-                        placeholder="주소"
-                        width={"90vw"}
-                        marginLeft={"5vw"}
-                        marginTop={12}
-                        fontSize={12}
-                    />
-                    <InputModule
-                        input={addressDetatil}
-                        onChange={onAddressDetail}
-                        placeholder="상세주소"
-                        width={"90vw"}
-                        marginLeft={"5vw"}
-                        marginTop={12}
-                        fontSize={12}
-                    />
+                   
                     <div style={{
                         width: "90vw",
                         paddingTop: 12,

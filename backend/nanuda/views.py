@@ -35,8 +35,6 @@ class FacebookLogin(SocialLoginView):
     adapter_class = FacebookOAuth2Adapter
 
 # GoogleLogin
-class GoogleLogin(SocialLoginView):
-    adapter_class = GoogleOAuth2Adapter
 
 
 # User Information
@@ -150,6 +148,40 @@ class test(View):
 # class changeAddress(Vie):
 #     def get(self,request):
 
+class GoogleLogin(View):
+    def post(self, request):
+        load_dotenv(verbose=True)
+        SECRET_KEY=os.getenv("SECRET_KEY")
+        ALGORITHM=os.getenv("ALGORITHM")
+        kakao_access_code=json.loads(request.body)
+        
+        google_uid=kakao_access_code["params"]["code"]["profileObj"]["googleId"]
+        google_name=kakao_access_code["params"]["code"]["profileObj"]["name"]
+        google_email=kakao_access_code["params"]["code"]["profileObj"]["email"]
+        print(google_email,google_name,google_uid)
+        if User.objects.filter(uid=google_uid).exists():
+            user    = User.objects.get(uid=google_uid)
+            jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY,ALGORITHM)
+            print(jwt_token)
+            res=HttpResponse({"success":True})
+            res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True)
+            return res
+        else:            
+            User(
+                uid=google_uid,
+                platform="1",
+                user_email=google_email,
+                name=google_name,
+                
+                
+            ).save()
+            user    = User.objects.get(uid=google_uid)
+            jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY, ALGORITHM)
+            print(jwt_token)
+            res=HttpResponse({"success":True})
+            res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True)
+            return res
+        
 
 class KakaoLogin(View):
     def post(self, request):
@@ -168,22 +200,14 @@ class KakaoLogin(View):
         kakao_response=requests.post(url,headers=headers)
         kakao_response=json.loads(kakao_response.text)
         print(kakao_response)
-
-        # if not request.COOKIES.get('team'):
-        #     response = HttpResponse("Visiting for the first time.")
-        #     response.set_cookie('team', 'barcelona',httponly=True)
-        #     return response
-        # else:
-        #     return HttpResponse("Your favorite team is {}".format(request.COOKIES['team']))
-
         if User.objects.filter(uid=kakao_response['id']).exists():
             user    = User.objects.get(uid=kakao_response['id'])
             jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY,ALGORITHM)
             print(jwt_token)
-            # return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:true')
+           
             
             res=HttpResponse({"success":True})
-            # res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True,samesite=None)
+           
             res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True)
             return res
 
@@ -205,9 +229,9 @@ class KakaoLogin(View):
             user    = User.objects.get(uid=kakao_response['id'])
             jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY, ALGORITHM)
             print(jwt_token)
-            # return HttpResponse(f'id:{user.id}, name:{user.name}, token:{jwt_token}, exist:false')
+          
             res=HttpResponse({"success":True})
-            # res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True,samesite=None,)
+          
             res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True)
             return res
 

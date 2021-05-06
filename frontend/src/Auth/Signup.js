@@ -13,19 +13,32 @@ import dotenv from "dotenv"
 
 
 export default function Signup() {
+    const GOOGLE_APP_KEY=process.env.REACT_APP_KEY_GOOGLE
+    const My_App_Key=process.env.REACT_APP_KEY
     
-        const My_App_Key=process.env.REACT_APP_KEY
+        
     const responseGoogle = async(response) => {
         console.log("come")
-        console.log(response)
-        // let googleResponse  = await googleLogin(response.accessToken)
-        // console.log("df",googleResponse);
-        // console.log("res",response);
+        console.log(response,"here")
+
+        let res=await axios.post(
+            "http://localhost:8000/rest-auth/google/",
+            {
+                params:
+                {
+                    code:response
+                },
+             
+            },
+            {withCredentials:true}
+        )
+        console.log(res)
+        if(res.data==="success"){
+            history.replace("./signupprofile")
+        }
       }
     useEffect(()=>{
-        
-        const My_App_Key=process.env.REACT_APP_KEY
-        console.log("왜",My_App_Key)
+        console.log("왜",My_App_Key,GOOGLE_APP_KEY)
     },[])
     
     const kakaoResponse = async(response)=>{
@@ -170,7 +183,7 @@ className="KakaoLogin"
                                구글로 시작하기
                               </div>
                               <GoogleLogin
-          clientId="397691346823-d6vp0dn778jln379l3ol3ujsnjv0n844.apps.googleusercontent.com"
+          clientId={GOOGLE_APP_KEY}
           buttonText="구글로 시작하기"
           accessType="offline"
           onSuccess={responseGoogle}
