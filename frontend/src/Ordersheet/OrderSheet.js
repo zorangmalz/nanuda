@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BiPlusCircle } from "react-icons/bi";
+import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile/ProfileEdit";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -18,8 +19,18 @@ function reducer(state, action) {
 }
 
 export default function OrderSheet() {
-    const [register, setRegister] = useState(false);
     const [number, dispatch] = useReducer(reducer, 2);
+
+    //기본 배송지 존재 여부
+    const [basicAddress, setBasicAddress] = useState(false)
+    const item = {
+        name: "김현명",
+        addressNum: "03770",
+        address: "서울 특별시 서대문구 북아현로 1길 17",
+        addressDetail: "e편한세상 203동 2104호",
+        phoneNumber: "010-4337-6607",
+        request: "배송 요청사항: 집앞"
+    }
 
     //분할결제 기간 선택
     const onTwo = () => {
@@ -58,7 +69,10 @@ export default function OrderSheet() {
 
     //결제 성공 시 -> paymentsuccess, 결제 실패 시 -> paymentfail
     let history = useHistory()
-    const [payment, setPayment] = useState(false)
+    const [payment, setPayment] = useState(true)
+
+    //계좌 등록 여부
+    const [register, setRegister] = useState(true);
     return (
         <>
             <Default>
@@ -164,57 +178,11 @@ export default function OrderSheet() {
                                     fontFamily: "NotoSansCJKkr"
                                 }}>배송지 수정</div>
                             </div>
-                            <div style={{
-                                width: 408,
-                                marginLeft: 20,
-                                marginRight: 20,
-                                marginTop: 16,
-                                padding: 16,
-
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "flex-start",
-
-                                borderRadius: 6,
-                                border: "1px solid #dfdfdf"
-                            }}>
-                                <div style={{
-                                    fontSize: 16,
-                                    fontWeight: "bold",
-                                    color: "#202426",
-                                    marginBottom: 8,
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>김현명</div>
-                                <div style={{
-                                    fontSize: 16,
-                                    color: "#202426",
-                                    marginBottom: 8,
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>03770</div>
-                                <div style={{
-                                    fontSize: 16,
-                                    color: "#202426",
-                                    marginBottom: 8,
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>서울 특별시 서대문구 북아현로 1길 17</div>
-                                <div style={{
-                                    fontSize: 16,
-                                    color: "#202426",
-                                    marginBottom: 8,
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>e편한세상 203동 2104호</div>
-                                <div style={{
-                                    fontSize: 16,
-                                    color: "#202426",
-                                    marginBottom: 8,
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>010-4337-6607</div>
-                                <div style={{
-                                    fontSize: 16,
-                                    color: "#202426",
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>배송 요청사항 : 집앞</div>
-                            </div>
+                            {basicAddress ?
+                                <BasicAddress item={item} />
+                                :
+                                <NoAddress />
+                            }
                             <div style={{
                                 fontSize: 18,
                                 marginLeft: 20,
@@ -229,7 +197,7 @@ export default function OrderSheet() {
                                     alignSelf: "center",
                                     padding: 16,
                                     borderRadius: 6,
-                                    border: "1px solid #dfdfdf",
+                                    border: "1px solid #2dd9d3",
                                     marginTop: 16,
 
                                     display: "flex",
@@ -243,7 +211,6 @@ export default function OrderSheet() {
                                         color: "#202426",
                                         fontFamily: "NotoSansCJKkr"
                                     }}>우리 1002-550-5**544</div>
-                                    <div>임시 로고</div>
                                 </div>
                                 :
                                 <div onClick={() => history.push("/paymentaddbank")} style={{
@@ -380,7 +347,7 @@ export default function OrderSheet() {
                             <div style={{
                                 marginTop: 8,
                                 fontSize: 14,
-                                marginLeft: 36,
+                                marginLeft: 20,
                                 fontWeight: "bold",
                                 color: "#202426",
                                 marginBottom: 4,
@@ -394,7 +361,7 @@ export default function OrderSheet() {
                                 alignSelf: "flex-start",
                                 lineHeight: 1.5,
                                 fontFamily: "NotoSansCJKkr",
-                                marginLeft: 36,
+                                marginLeft: 20,
                             }}>
                                 첫 결제 이후 결제 금액들은 자동결제 됩니다. <br />
                                 분할결제 한도에 따라 분할 결제 금액이 바뀔 수 있습니다. <br />
@@ -404,8 +371,8 @@ export default function OrderSheet() {
                                 height: 1,
                                 width: 480,
                                 backgroundColor: "#dfdfdf",
-                                marginTop: 32,
-                                marginBottom: 32,
+                                marginTop: 16,
+                                marginBottom: 16,
                             }} />
                             <div style={{
                                 fontSize: 21,
@@ -514,7 +481,7 @@ export default function OrderSheet() {
                                 fontSize: 24,
                                 fontWeight: "bold",
                                 color: "#202426",
-                                marginTop: 32,
+                                marginTop: 16,
                                 marginLeft: 20,
                                 fontFamily: "NotoSansCJKkr"
                             }}>
@@ -659,84 +626,23 @@ export default function OrderSheet() {
                         marginBottom: "4vw",
                     }} />
                     <div style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "flex-end",
-                        justifyContent: "space-between",
-                        width: "90%",
-                        alignSelf: "center",
-                    }}>
-                        <div style={{
-                            fontSize: 16,
-                            fontWeight: "bold",
-                            color: "#202426",
-                            fontFamily: "NotoSansCJKkr"
-                        }}>배송 정보</div>
-                        <div style={{
-                            fontSize: 12,
-                            opacity: 0.8,
-                            color: "#202426",
-                            textDecorationLine: "underline",
-                            cursor: "pointer",
-                            fontFamily: "NotoSansCJKkr"
-                        }}>배송지 수정</div>
-                    </div>
-                    <div style={{
-                        width: "82%",
-                        alignSelf: "center",
-                        marginTop: "4vw",
-                        padding: "4%",
-
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-
-                        borderRadius: 6,
-                        border: "1px solid #dfdfdf"
-                    }}>
-                        <div style={{
-                            fontSize: 14,
-                            fontWeight: "bold",
-                            color: "#202426",
-                            marginBottom: 8,
-                            fontFamily: "NotoSansCJKkr"
-                        }}>김현명</div>
-                        <div style={{
-                            fontSize: 14,
-                            color: "#202426",
-                            marginBottom: 8,
-                            fontFamily: "NotoSansCJKkr"
-                        }}>03770</div>
-                        <div style={{
-                            fontSize: 14,
-                            color: "#202426",
-                            marginBottom: 8,
-                            fontFamily: "NotoSansCJKkr"
-                        }}>서울 특별시 서대문구 북아현로 1길 17</div>
-                        <div style={{
-                            fontSize: 14,
-                            color: "#202426",
-                            marginBottom: 8,
-                            fontFamily: "NotoSansCJKkr"
-                        }}>e편한세상 203동 2104호</div>
-                        <div style={{
-                            fontSize: 14,
-                            color: "#202426",
-                            marginBottom: 8,
-                            fontFamily: "NotoSansCJKkr"
-                        }}>010-4337-6607</div>
-                        <div style={{
-                            fontSize: 14,
-                            color: "#202426",
-                            fontFamily: "NotoSansCJKkr"
-                        }}>배송 요청사항 : 집앞</div>
-                    </div>
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        color: "#202426",
+                        fontFamily: "NotoSansCJKkr",
+                        marginLeft: "5vw"
+                    }}>배송 정보</div>
+                    {basicAddress ?
+                        <MBasicAddress item={item} />
+                        :
+                        <MNoAddress />
+                    }
                     <div style={{
                         fontSize: 16,
                         marginLeft: "5%",
                         fontWeight: "bold",
                         color: "#202426",
-                        marginTop: "4vw",
+                        marginTop: "8vw",
                         fontFamily: "NotoSansCJKkr"
                     }}>결제 수단</div>
                     {register ?
@@ -745,7 +651,7 @@ export default function OrderSheet() {
                             alignSelf: "center",
                             padding: "4vw",
                             borderRadius: 6,
-                            border: "1px solid #dfdfdf",
+                            border: "1px solid #2dd9d3",
                             marginTop: 16,
 
                             display: "flex",
@@ -759,30 +665,29 @@ export default function OrderSheet() {
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
                             }}>우리 1002-550-5**544</div>
-                            <div>임시 로고</div>
                         </div>
                         :
                         <div onClick={() => history.push("/paymentaddbank")} style={{
-                            width: "76vw",
-                            padding: "5vw 7vw",
-                            border: "1px solid rgba(5, 26, 26, 0.2)",
-                            borderRadius: 6,
-                            cursor: "pointer",
-                            marginTop: 12,
-    
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
                             justifyContent: "center",
                             alignSelf: "center",
+
+                            width: "90vw",
+                            height: "30vw",
+                            border: "1px solid rgba(5, 26, 26, 0.2)",
+                            cursor: "pointer",
+                            borderRadius: 6,
+                            marginTop: "4vw",
                         }}>
-                            <BiPlusCircle size={24} color="rgba(5, 26, 26, 0.6)" />
+                            <BiPlusCircle size={28} color="rgba(5, 26, 26, 0.6)" />
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
-                                fontSize: 12,
+                                fontSize: 14,
                                 color: "#202426",
-                                marginTop: 4,
+                                marginTop: "2vw",
                             }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
                         </div>
                     }
@@ -791,7 +696,7 @@ export default function OrderSheet() {
                         marginLeft: "5%",
                         fontWeight: "bold",
                         color: "#202426",
-                        marginTop: "4vw",
+                        marginTop: "8vw",
                         fontFamily: "NotoSansCJKkr"
                     }}>분할결제 옵션 선택</div>
                     <div style={{
@@ -896,7 +801,7 @@ export default function OrderSheet() {
                     <div style={{
                         marginTop: 8,
                         fontSize: 12,
-                        marginLeft: "9vw",
+                        marginLeft: "5vw",
                         fontWeight: "bold",
                         color: "#202426",
                         marginBottom: 4,
@@ -906,7 +811,7 @@ export default function OrderSheet() {
                     <div style={{
                         opacity: 0.8,
                         fontSize: 12,
-                        marginLeft: "9vw",
+                        marginLeft: "5vw",
                         color: "#202426",
                         alignSelf: "flex-start",
                         lineHeight: 1.5,
@@ -920,8 +825,8 @@ export default function OrderSheet() {
                         height: 1,
                         width: "100%",
                         backgroundColor: "#dfdfdf",
-                        marginTop: "8vw",
-                        marginBottom: "8vw",
+                        marginTop: "4vw",
+                        marginBottom: "4vw",
                     }} />
                     <div style={{
                         fontSize: 18,
@@ -1030,7 +935,7 @@ export default function OrderSheet() {
                         fontSize: 18,
                         fontWeight: "bold",
                         color: "#202426",
-                        marginTop: "8vw",
+                        marginTop: "4vw",
                         marginLeft: "5%",
                         fontFamily: "NotoSansCJKkr"
                     }}>

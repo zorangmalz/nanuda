@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-import { BsHeart } from "react-icons/bs"
-import { IoChatbubbleOutline } from "react-icons/io5"
 import { useHistory } from "react-router";
-import { AiFillDislike, AiFillLike, AiFillStar, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
+import nodata from "../images/nodata.png";
 
 export default function ReviewMain() {
     let history = useHistory()
@@ -111,79 +110,108 @@ export default function ReviewMain() {
                                     marginLeft: 32
                                 }}>뽐뿌가 왔다면 위시딜!</div>
                             </div>
-                            <div style={{
-                                display: "grid",
-                                flexDirection: "row",
-                                width: 240,
-                                alignItems: "center",
-                                justifyContent: "flex-start",
-                                gridTemplateColumns: "1fr 1fr",
-                                marginBottom: 100,
-                            }}>
-                                {reviewData.map(item =>
+                            {reviewData.length === 0 ?
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    minHeight: "60vh",
+                                    width: "100%",
+                                }}>
+                                    <img 
+                                        src={nodata}
+                                    />
                                     <div style={{
-                                        marginLeft: 20,
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 24,
+                                        fontWeight: "bold",
                                         marginTop: 32,
-                                        cursor: "pointer"
-                                    }}>
+                                        marginBottom: 8,
+                                        color: "#202426"
+                                    }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 18,
+                                        opacity: 0.6,
+                                        color: "#202426"
+                                    }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
+                                </div>
+                                :
+                                <div style={{
+                                    display: "grid",
+                                    flexDirection: "row",
+                                    width: 240,
+                                    alignItems: "center",
+                                    justifyContent: "flex-start",
+                                    gridTemplateColumns: "1fr 1fr",
+                                    marginBottom: 100,
+                                }}>
+                                    {reviewData.map(item =>
                                         <div style={{
-                                            display: "flex",
-                                            flexDirection: "row",
+                                            marginLeft: 20,
+                                            marginTop: 32,
+                                            cursor: "pointer"
                                         }}>
                                             <div style={{
-                                                width: 32,
-                                                height: 32,
-                                                borderRadius: 16,
-                                                backgroundColor: item.pic
+                                                display: "flex",
+                                                flexDirection: "row",
                                             }}>
+                                                <div style={{
+                                                    width: 32,
+                                                    height: 32,
+                                                    borderRadius: 16,
+                                                    backgroundColor: item.pic
+                                                }}>
+                                                </div>
+                                                <div style={{
+                                                    fontSize: 14,
+                                                    fontWeight: "bold",
+                                                    marginLeft: 8,
+                                                    marginTop: 6
+                                                }}>{item.id} </div>
+                                            </div>
+                                            <div onClick={() => history.push("/reviewpost")} style={{
+                                                width: 210,
+                                                height: 210,
+                                                borderRadius: 6,
+                                                backgroundColor: "#f2f3f8",
+                                                marginTop: 8
+                                            }} />
+                                            <div style={{
+                                                display: "flex",
+                                                flexDirection: "row",
+                                                alignItems: "center",
+                                                justifyContent: "flex-start",
+                                                marginTop: 8,
+                                            }}>
+                                                <AiFillStar size={16} color="#fad94f" />
+                                                <div style={{
+                                                    fontFamily: "NotoSansCJKkr",
+                                                    fontSize: 14,
+                                                    fontWeight: "bold",
+                                                    color: "#051a1a",
+                                                    marginLeft: 4,
+                                                }}>4.5</div>
                                             </div>
                                             <div style={{
                                                 fontSize: 14,
-                                                fontWeight: "bold",
-                                                marginLeft: 8,
-                                                marginTop: 6
-                                            }}>{item.id} </div>
-                                        </div>
-                                        <div onClick={() => history.push("/reviewpost")} style={{
-                                            width: 210,
-                                            height: 210,
-                                            borderRadius: 6,
-                                            backgroundColor: "#f2f3f8",
-                                            marginTop: 8
-                                        }} />
-                                        <div style={{
-                                            display: "flex",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            justifyContent: "flex-start",
-                                            marginTop: 8,
-                                        }}>
-                                            <AiFillStar size={16} color="#fad94f" />
+                                                opacity: 0.8,
+                                                marginTop: 8,
+                                                width: 210,
+                                                fontFamily: "NotoSansCJKkr"
+                                            }}>{item.content}</div>
                                             <div style={{
-                                                fontFamily: "NotoSansCJKkr",
+                                                color: "#26c1f0",
+                                                marginTop: 4,
                                                 fontSize: 14,
                                                 fontWeight: "bold",
-                                                color: "#051a1a",
-                                                marginLeft: 4,
-                                            }}>4.5</div>
+                                                fontFamily: "NotoSansCJKkr"
+                                            }}>{item.follow}원에 획득 완료</div>
                                         </div>
-                                        <div style={{
-                                            fontSize: 14,
-                                            opacity: 0.8,
-                                            marginTop: 8,
-                                            width: 210,
-                                            fontFamily: "NotoSansCJKkr"
-                                        }}>{item.content}</div>
-                                        <div style={{
-                                            color: "#26c1f0",
-                                            marginTop: 4,
-                                            fontSize: 14,
-                                            fontWeight: "bold",
-                                            fontFamily: "NotoSansCJKkr"
-                                        }}>{item.follow}원에 획득 완료</div>
-                                    </div>
-                                )}
-                            </div>
+                                    )}
+                                </div>
+                            }
                             <div onClick={() => history.push("/reviewselect")} style={{
                                 position: "fixed",
                                 zIndex: 5,
@@ -217,99 +245,131 @@ export default function ReviewMain() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="나눠산 사람들" goBack={true} />
+                    <MHeader content="나눠산 사람들" goBack={true} />
                     <div style={{
                         width: "90vw",
                         height: "30vw",
-                        marginTop: 24,
+                        marginTop: "6vw",
                         alignSelf: "center",
                         backgroundColor: "#cb1a86",
                         borderRadius: 6
                     }}>
                         <div style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: "#ffffff",
-                            marginLeft: 28,
-                            marginTop: 28
+                            marginLeft: "7vw",
+                            marginTop: "7vw"
                         }}>다른 사람들은 어떤걸 샀을까?</div>
                         <div style={{
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: "bold",
                             color: "#ffffff",
-                            marginTop: 14,
-                            marginLeft: 28
+                            marginTop: "3.5vw",
+                            marginLeft: "7vw"
                         }}>뽐뿌가 왔다면 위시딜!</div>
                     </div>
-                    <div style={{
-                        display: "grid",
-                        width: "90vw",
-                        gridTemplateColumns: "1fr 1fr",
-                        marginBottom: 50,
-                        alignSelf: "center",
-                        columnGap: "5vw",
-                    }}>
-                        {reviewData.map(item =>
+                    {reviewData.length === 0 ?
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            minHeight: "60vh",
+                            width: "100%",
+                        }}>
+                            <img
+                                src={nodata}
+                                style={{
+                                    width: "50vw"
+                                }}
+                            />
                             <div style={{
-                                marginTop: 16,
-                                cursor: "pointer"
-                            }}>
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 20,
+                                fontWeight: "bold",
+                                marginTop: "8vw",
+                                marginBottom: "2vw",
+                                color: "#202426"
+                            }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 14,
+                                opacity: 0.6,
+                                color: "#202426"
+                            }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
+                        </div>
+                        :
+                        <div style={{
+                            display: "grid",
+                            width: "90vw",
+                            gridTemplateColumns: "1fr 1fr",
+                            marginBottom: 50,
+                            alignSelf: "center",
+                            columnGap: "5vw",
+                        }}>
+                            {reviewData.map(item =>
                                 <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
+                                    marginTop: 16,
+                                    cursor: "pointer"
                                 }}>
                                     <div style={{
-                                        width: 28,
-                                        height: 28,
-                                        borderRadius: 14,
-                                        backgroundColor: item.pic
+                                        display: "flex",
+                                        flexDirection: "row",
                                     }}>
+                                        <div style={{
+                                            width: 28,
+                                            height: 28,
+                                            borderRadius: 14,
+                                            backgroundColor: item.pic
+                                        }}>
+                                        </div>
+                                        <div style={{
+                                            fontSize: 12,
+                                            fontWeight: "bold",
+                                            marginLeft: 8,
+                                            marginTop: 6
+                                        }}>{item.id} </div>
+                                    </div>
+                                    <div onClick={() => history.push("/reviewpost")} style={{
+                                        width: "42vw",
+                                        height: "42vw",
+                                        borderRadius: 6,
+                                        backgroundColor: "#f2f3f8",
+                                        marginTop: 8
+                                    }} />
+                                    <div style={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        justifyContent: "flex-start",
+                                        marginTop: 8,
+                                    }}>
+                                        <AiFillStar size={12} color="#fad94f" />
+                                        <div style={{
+                                            fontFamily: "NotoSansCJKkr",
+                                            fontSize: 14,
+                                            fontWeight: "bold",
+                                            color: "#051a1a",
+                                            marginLeft: 4,
+                                        }}>4.5</div>
                                     </div>
                                     <div style={{
                                         fontSize: 12,
-                                        fontWeight: "bold",
-                                        marginLeft: 8,
-                                        marginTop: 6
-                                    }}>{item.id} </div>
-                                </div>
-                                <div onClick={() => history.push("/reviewpost")} style={{
-                                    width: "42vw",
-                                    height: "42vw",
-                                    borderRadius: 6,
-                                    backgroundColor: "#f2f3f8",
-                                    marginTop: 8
-                                }} />
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "flex-start",
-                                    marginTop: 8,
-                                }}>
-                                    <AiFillStar size={12} color="#fad94f" />
+                                        opacity: 0.8,
+                                        marginTop: 8,
+                                        fontFamily: "NotoSansCJKkr"
+                                    }}>{item.content}</div>
                                     <div style={{
-                                        fontFamily: "NotoSansCJKkr",
-                                        fontSize: 14,
+                                        color: "#26c1f0",
+                                        marginTop: 4,
+                                        fontSize: 12,
                                         fontWeight: "bold",
-                                        color: "#051a1a",
-                                        marginLeft: 4,
-                                    }}>4.5</div>
+                                        fontFamily: "NotoSansCJKkr"
+                                    }}>{item.follow}원에 획득 완료</div>
                                 </div>
-                                <div style={{
-                                    fontSize: 12,
-                                    opacity: 0.8,
-                                    marginTop: 8,
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>{item.content}</div>
-                                <div style={{
-                                    color: "#26c1f0",
-                                    marginTop: 4,
-                                    fontSize: 12,
-                                    fontWeight: "bold",
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>{item.follow}원에 획득 완료</div>
-                            </div>
-                        )}
-                    </div>
+                            )}
+                        </div>
+                    }
                     <div onClick={() => history.push("/reviewselect")} style={{
                         position: "fixed",
                         zIndex: 5,

@@ -22,8 +22,6 @@ export default function ReviewSelect() {
     const onOne = () => {
         dispatch({ type: 'ONE' });
     };
-
-    let history = useHistory()
     return (
         <>
             <Default>
@@ -71,22 +69,6 @@ export default function ReviewSelect() {
                                     border={true}
                                 />
                             </div>
-                            <div onClick={() => history.push("/reviewwrite")} style={{
-                                borderRadius: 6,
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                marginTop: 40,
-                                marginBottom: 50,
-                                backgroundColor: "#2dd9d3",
-                                alignSelf: "center",
-
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                cursor: "pointer",
-                                textAlign: "center"
-                            }}>다음</div>
                         </div>
                     </div>
                 </div>
@@ -117,22 +99,6 @@ export default function ReviewSelect() {
                             border={true}
                         />
                     </div>
-                    <div onClick={() => history.push("/reviewwrite")} style={{
-                        borderRadius: 6,
-                        width: "90vw",
-                        paddingTop: "4vw",
-                        paddingBottom: "4vw",
-                        marginTop: 20,
-                        marginBottom: 20,
-                        backgroundColor: "#2dd9d3",
-                        alignSelf: "center",
-
-                        color: "#ffffff",
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        cursor: "pointer",
-                        textAlign: "center"
-                    }}>다음</div>
                 </div>
             </Mobile>
         </>
@@ -140,8 +106,9 @@ export default function ReviewSelect() {
 }
 
 export function Product({ name, current, sale, border }) {
+    let history = useHistory()
     return (
-        <div style={{
+        <div onClick={() => history.push("/reviewwrite")} style={{
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
@@ -180,8 +147,9 @@ export function Product({ name, current, sale, border }) {
 }
 
 export function MProduct({ name, current, sale, border }) {
+    let history = useHistory()
     return (
-        <div style={{
+        <div onClick={() => history.push("/reviewwrite")} style={{
             display: "flex",
             flexDirection: "row",
             alignItems: "center",

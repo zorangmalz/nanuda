@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { FaUserCircle } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md"
+import { BiPlusCircle } from "react-icons/bi";
 
 export default function ProfileEdit() {
     let history = useHistory()
     const onPhoneVerify = () => { }
     const onJobVerify = () => { }
+    const [basicAddress, setBasicAddress] = useState(true)
+    const item = {
+        name: "김현명",
+        addressNum: "03770",
+        address: "서울 특별시 서대문구 북아현로 1길 17",
+        addressDetail: "e편한세상 203동 2104호",
+        phoneNumber: "010-4337-6607",
+        request: "배송 요청사항: 집앞"
+    }
     return (
         <>
             <Default>
@@ -102,33 +112,14 @@ export default function ProfileEdit() {
                                     fontFamily: "NotoSansCJKkr",
                                     color: "#202426",
                                     marginLeft: 20,
-                                    marginBottom: 16,
-                                }}>거주지 주소</div>
-                                <div onClick={() => history.push("/profileaddressedit")} style={{
-                                    width: 408,
-                                    padding: 16,
-                                    alignSelf: "center",
-                                    border: "1px solid rgba(5, 26, 26, 0.2)",
-                                    borderRadius: 6,
-
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    cursor: "pointer",
-                                }}>
-                                    <div style={{
-                                        width: 364,
-                                        fontFamily: "NotoSansCJKkr",
-                                        fontSize: 18,
-                                        color: "#202426",
-                                        lineHeight: 1.5,
-                                        marginRight: 20,
-                                    }}>서울특별시 서대문구 북아현로 1길 17 이편한세상 203동 2104호</div>
-                                    <MdKeyboardArrowRight
-                                        size={24}
-                                        color="rgba(5, 26, 26, 0.4)"
+                                }}>기본 배송지</div>
+                                {basicAddress ? 
+                                    <BasicAddress 
+                                        item={item}
                                     />
-                                </div>
+                                    :
+                                    <NoAddress />
+                                }
                             </div>
                             <div style={{
                                 display: "flex",
@@ -231,33 +222,12 @@ export default function ProfileEdit() {
                             fontFamily: "NotoSansCJKkr",
                             color: "#202426",
                             marginLeft: "5vw",
-                            marginBottom: 12,
-                        }}>거주지 주소</div>
-                        <div onClick={() => history.push("/profileaddressedit")} style={{
-                            width: "82vw",
-                            padding: "4vw",
-                            alignSelf: "center",
-                            border: "1px solid rgba(5, 26, 26, 0.2)",
-                            borderRadius: 6,
-
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            cursor: "pointer",
-                        }}>
-                            <div style={{
-                                width: "70vw",
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 16,
-                                color: "#202426",
-                                lineHeight: 1.5,
-                                marginRight: 10,
-                            }}>서울특별시 서대문구 북아현로 1길 17 이편한세상 203동 2104호</div>
-                            <MdKeyboardArrowRight
-                                size={20}
-                                color="rgba(5, 26, 26, 0.4)"
-                            />
-                        </div>
+                        }}>기본 배송지</div>
+                        {basicAddress ?
+                            <MBasicAddress item={item} />
+                            :
+                            <MNoAddress />
+                        }
                     </div>
                     <div style={{
                         display: "flex",
@@ -442,6 +412,196 @@ const MProfileWithButton = ({ title, content, width, buttonText, onClick }) => {
                     cursor: "pointer"
                 }}>{buttonText}</div>
             </div>
+        </div>
+    )
+}
+
+export const BasicAddress = ({ item }) => {
+    return (
+        <div style={{
+            width: 408,
+            marginLeft: 20,
+            marginRight: 20,
+            marginTop: 16,
+            padding: 16,
+
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+
+            borderRadius: 6,
+            border: "1px solid #2dd9d3"
+        }}>
+            <div>
+                <div style={{
+                    fontSize: 16,
+                    fontWeight: "bold",
+                    color: "#202426",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.name}</div>
+                <div style={{
+                    fontSize: 16,
+                    color: "#202426",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.addressNum}</div>
+                <div style={{
+                    fontSize: 16,
+                    color: "#202426",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.address}</div>
+                <div style={{
+                    fontSize: 16,
+                    color: "#202426",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.addressDetail}</div>
+                <div style={{
+                    fontSize: 16,
+                    color: "#202426",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.phoneNumber}</div>
+                <div style={{
+                    fontSize: 16,
+                    color: "#202426",
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.request}</div>
+            </div>
+            <MdKeyboardArrowRight 
+                size={24}
+                color="rgba(5, 26, 26, 0.2)"
+            />
+        </div>
+    )
+}
+
+export const MBasicAddress = ({ item }) => {
+    return (
+        <div style={{
+            width: "82vw",
+            marginLeft: "5vw",
+            marginRight: "5vw",
+            marginTop: "4vw",
+            padding: "4vw",
+
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+
+            borderRadius: 6,
+            border: "1px solid #2dd9d3"
+        }}>
+            <div>
+                <div style={{
+                    fontSize: 14,
+                    fontWeight: "bold",
+                    color: "#202426",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.name}</div>
+                <div style={{
+                    fontSize: 14,
+                    color: "#202426",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.addressNum}</div>
+                <div style={{
+                    fontSize: 14,
+                    color: "#202426",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.address}</div>
+                <div style={{
+                    fontSize: 14,
+                    color: "#202426",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.addressDetail}</div>
+                <div style={{
+                    fontSize: 14,
+                    color: "#202426",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.phoneNumber}</div>
+                <div style={{
+                    fontSize: 14,
+                    color: "#202426",
+                    fontFamily: "NotoSansCJKkr"
+                }}>{item.request}</div>
+            </div>
+            <MdKeyboardArrowRight 
+                size={20}
+                color="rgba(5, 26, 26, 0.2)"
+            />
+        </div>
+    )
+}
+
+export const NoAddress = () => {
+    let history = useHistory()
+    return (
+        <div onClick={() => history.push("/address")} style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            alignSelf: "center",
+
+            width: 440,
+            height: 136,
+            border: "1px solid rgba(5, 26, 26, 0.2)",
+            cursor: "pointer",
+            borderRadius: 6,
+            marginTop: 16,
+        }}>
+            <BiPlusCircle 
+                size={32}
+                color="rgba(5, 26, 26, 0.6)"
+            />
+            <div style={{
+                fontFamily: "NotoSansCJKkr",
+                fontSize: 16,
+                opacity: 0.6,
+                color: "#202426",
+                marginTop: 8,
+            }}>빠른 결제를 위해 기본 배송지를 설정해주세요.</div>
+        </div>
+    )
+}
+
+export const MNoAddress = () => {
+    let history = useHistory()
+    return (
+        <div onClick={() => history.push("/address")} style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            alignSelf: "center",
+
+            width: "90vw",
+            height: "30vw",
+            border: "1px solid rgba(5, 26, 26, 0.2)",
+            cursor: "pointer",
+            borderRadius: 6,
+            marginTop: "4vw",
+        }}>
+            <BiPlusCircle 
+                size={28}
+                color="rgba(5, 26, 26, 0.6)"
+            />
+            <div style={{
+                fontFamily: "NotoSansCJKkr",
+                fontSize: 14,
+                opacity: 0.6,
+                color: "#202426",
+                marginTop: "2vw",
+            }}>빠른 결제를 위해 기본 배송지를 설정해주세요.</div>
         </div>
     )
 }
