@@ -36,10 +36,10 @@ class test(View):
             SECRET_KEY=os.getenv("SECRET_KEY")
             ALGORITHM=os.getenv("ALGORITHM")
             token=request.COOKIES.get("access_token")
-            
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-            print(payload)
-            return HttpResponse("true")
+            user=User.objects.get(uid=payload["id"])
+            print(user.name)
+            return JsonResponse({"name":user.name,"email":user.user_email})
 
 
 # class changeAddress(Vie):

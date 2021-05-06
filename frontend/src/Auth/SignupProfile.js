@@ -1,8 +1,9 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { BsCheck } from "react-icons/bs";
 import styled from "styled-components"
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
+import axios from "axios"
 
 export const Title = styled.div`
     width: 440px;
@@ -85,6 +86,23 @@ function reducer(state, action) {
 }
 
 export default function SignupProfile() {
+
+    useEffect(()=>{
+        test()
+    },[])
+    
+    const test=async()=>{
+        console.log("come")
+        let response=await axios.get(
+            "http://localhost:8000/test/",
+            { withCredentials: true }
+        )
+        console.log(response.data.name)
+        setNickname(response.data.name)
+        setemail(response.data.email)
+
+    }
+    
     const [number, dispatch] = useReducer(reducer, 0)
     const onStudent = () => {
         dispatch({ type: "STUDENT" })

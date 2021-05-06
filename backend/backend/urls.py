@@ -33,6 +33,7 @@ urlpatterns = [
     path('review/', review_all),
     path('order/', order_all),
     path('rest-auth/kakao/', KakaoLogin.as_view(), name='kakao_login'),
+    path('test/', test.as_view(), name='test'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
