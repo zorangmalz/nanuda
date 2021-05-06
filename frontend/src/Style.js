@@ -516,12 +516,11 @@ export function BottomTag({ marginTop, marginBottom }) {
                 alignItems: "center",
                 marginTop: 32
             }}>
-                <div style={{
+                <img src={logoS} alt="로고" style={{
                     width: 30,
                     height: 30,
-                    backgroundColor: "#000000",
                     color: "#ffffff"
-                }}>로고</div>
+                }} />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 21,
@@ -747,12 +746,11 @@ export function MBottomTag({ marginTop, marginBottom }) {
                 alignItems: "center",
                 marginTop: 24
             }}>
-                <div style={{
+                <img src={logoS} alt="로고" style={{
                     width: 26,
                     height: 26,
-                    backgroundColor: "#000000",
                     color: "#ffffff"
-                }}>로고</div>
+                }} />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 18,
@@ -993,3 +991,19 @@ export function MStandardButton({marginTop, text, route}) {
         }}>{text}</div>
     )
 }
+
+//이름 중간 마스킹하기
+export function NameMask(strName) {
+    if (strName.length > 2) {
+        var originName = strName.split('');
+        originName.forEach(function (name, i) {
+            if (i === 0 || i === originName.length - 1) return;
+            originName[i] = '*';
+        });
+        var joinName = originName.join();
+        return joinName.replace(/,/g, '');
+    } else {
+        var pattern = /.$/; // 정규식
+        return strName.replace(pattern, '*');
+    }
+};

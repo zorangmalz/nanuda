@@ -84,12 +84,14 @@ class Review(models.Model):
     id = models.BigAutoField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.PROTECT)
     product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
+    review_score = models.FloatField(default=5.0, blank=True)
     review_date = models.DateTimeField(auto_now_add=True)
-    review_content = models.TextField(default="내용", blank=True)
+    review_like = models.TextField(default="내용", blank=True)
+    review_dislike = models.TextField(default="내용", blank=True)
     review_image = models.URLField()
     review_alert = models.IntegerField(default=0)
-    review_rating = models.IntegerField(default=0)
-    review_follower = models.IntegerField(default=0)
+    review_likeNum = models.IntegerField(default=0)
+    review_dislikeNum = models.IntegerField(default=0)
 
     def user_nickname(self):
         return self.user_id.nickname
@@ -98,7 +100,7 @@ class Review(models.Model):
         return self.user_id.profile
 
     def __str__(self):
-        return "{}".format(self.user_nickname)
+        return "{}".format(self.user_id)
 
     class Meta:
         ordering=["id", "review_date"]

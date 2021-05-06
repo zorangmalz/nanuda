@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BsFillStarFill } from "react-icons/bs"
@@ -39,6 +39,48 @@ export default function Write() {
     const onFive = () => {
         dispatch({ type: 'FIVE' });
     };
+    
+    //이용후기 및 의견 작성
+    const [inputs, setInputs] = useState({
+        after: "",
+        opinion: "",
+    })
+    const { after, opinion } = inputs
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setInputs({
+            ...inputs,
+            [name]: value
+        })
+    }
+
+    async function putServiceReview () {
+        await fetch("http://127.0.0.1:8000/servicereview/", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Accept": "application/json",
+                'Content-type': 'application/json',
+                "Authrization": localStorage.getItem("access_token"),
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+                service_score: number,
+                service_content: after,
+                service_opinion: opinion
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.token) {
+                    localStorage.setItem("wtw-token", response.token);
+                    history.push("/servicereview")
+                } else if (!response.token) {
+                    alert("올바른 회원이 아닙니다")
+                }
+            })
+    }
+
     return (
         <>
             <Default>
@@ -106,7 +148,7 @@ export default function Write() {
                                     marginLeft: 20,
                                     fontFamily: "NotoSansCJKkr"
                                 }}>나누다 서비스 이용 후기를 작성해주세요!</div>
-                                <textarea cols="10" rows="5" value="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
+                                <textarea onChange={onChange} name="after" value={after} cols="10" rows="5" placeholder="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
                                     outline: 0,
                                     border: 0,
                                     width: 408,
@@ -127,7 +169,7 @@ export default function Write() {
                                     marginLeft: 20,
                                     fontFamily: "NotoSansCJKkr"
                                 }}>더 나은 서비스를 위한 의견을 말씀해주세요.</div>
-                                <textarea cols="10" rows="5" value="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
+                                <textarea onChange={onChange} name="opinion" value={opinion} cols="10" rows="5" placeholder="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
                                     outline: 0,
                                     border: 0,
                                     width: 408,
@@ -141,7 +183,7 @@ export default function Write() {
                                     fontFamily: "NotoSansCJKkr"
                                 }} />
                             </div>
-                            <div onClick={() => history.push("/servicereview")} style={{
+                            <div onClick={putServiceReview} style={{
                                 width: 440,
                                 marginLeft: 20,
                                 paddingTop: 15,
@@ -208,7 +250,7 @@ export default function Write() {
                             marginLeft: "5%",
                             fontFamily: "NotoSansCJKkr"
                         }}>나누다 서비스 이용 후기를 작성해주세요!</div>
-                        <textarea cols="10" rows="5" value="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
+                        <textarea onChange={onChange} name="after" value={after} cols="10" rows="5" placeholder="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
                             outline: 0,
                             border: 0,
                             width: "82%",
@@ -229,7 +271,7 @@ export default function Write() {
                             marginLeft: "5%",
                             fontFamily: "NotoSansCJKkr"
                         }}>더 나은 서비스를 위한 의견을 말씀해주세요.</div>
-                        <textarea cols="10" rows="5" value="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
+                        <textarea onChange={onChange} name="opinion" value={opinion} cols="10" rows="5" placeholder="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
                             outline: 0,
                             border: 0,
                             width: "82%",

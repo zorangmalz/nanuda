@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { BottomTag, Header, HomeHeader, MBottomTag, MHeader, MHomeHeader } from "../Style";
+import WebIntro, { BottomTag, HomeHeader, MBottomTag, MHomeHeader, NameMask } from "../Style";
 import Slider from "react-slick";
 import { BsBookmark, BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
@@ -9,7 +9,8 @@ import { useHistory } from "react-router";
 export default function Home() {
     let history = useHistory()
 
-    const reviewData = [
+    //nanuda data
+    const nanudaData = [
         {
             id: "CVIANAN_123",
             pic: "#f2f3f8",
@@ -25,6 +26,35 @@ export default function Home() {
             money: 70000
         },
     ]
+
+    //Get Review Data
+    const [reviewData, setReviewData] = useState([])
+    useEffect(() => {
+        setReviewData([])
+        fetch("http://127.0.0.1:8000/servicereview", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                var array = []
+                for (var i = 0; i < 2; i++) {
+                    const data = {
+                        service_score: response[i].service_score,
+                        user_name: response[i].user_name,
+                        user_age: response[i].user_age,
+                        user_gender: response[i].user_gender,
+                        service_date: response[i].service_date,
+                        service_content: response[i].service_content,
+                    }
+                    array.push(data)
+                }
+                setReviewData(reviewData.concat(array))
+            })
+    }, [])
 
     return (
         <>
@@ -130,7 +160,7 @@ export default function Home() {
                                 width: 440,
                                 alignSelf: "center",
                             }}>
-                                {reviewData.map(item =>
+                                {nanudaData.map(item =>
                                     <div onClick={() => history.push("/reviewpost")} style={{
                                         cursor: "pointer"
                                     }}>
@@ -316,20 +346,11 @@ export default function Home() {
                                 flexDirection: "row",
                                 padding: 16,
                             }}>
-                                <Review
-                                    num="5.0"
-                                    name="김*명"
-                                    property="(20대 남자)"
-                                    date="2021.03.16"
-                                    content="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-                                />
-                                <Review
-                                    num="5.0"
-                                    name="김*명"
-                                    property="(20대 남자)"
-                                    date="2021.03.16"
-                                    content="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-                                />
+                                {reviewData.map(item =>
+                                    <Review
+                                        item={item}
+                                    />
+                                )}
                             </div>
                             <BottomTag marginTop={200} marginBottom={100} />
                             <div onClick={() => history.push("/wishdealdefault")} style={{
@@ -438,7 +459,7 @@ export default function Home() {
                         width: "90%",
                         alignSelf: "center",
                     }}>
-                        {reviewData.map(item =>
+                        {nanudaData.map(item =>
                             <div onClick={() => history.push("/reviewpost")} style={{
                                 cursor: "pointer",
                                 width: "42.5vw",
@@ -560,20 +581,11 @@ export default function Home() {
                         padding: "4%",
                         overflow: "auto",
                     }}>
-                        <MReview
-                            num="5.0"
-                            name="김*명"
-                            property="(20대 남자)"
-                            date="2021.03.16"
-                            content="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-                        />
-                        <MReview
-                            num="5.0"
-                            name="김*명"
-                            property="(20대 남자)"
-                            date="2021.03.16"
-                            content="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-                        />
+                        {reviewData.map(item =>
+                            <MReview
+                                item={item}
+                            />
+                        )}
                     </div>
                     <MBottomTag marginTop={100} marginBottom={70} />
                     <div onClick={() => history.push("/wishdealdefault")} style={{
@@ -845,13 +857,20 @@ function MTimeShop({ title, sub, price, currentPrice, stock, time }) {
     )
 }
 
-function Review({ num, name, property, date, content }) {
+function Review({ item }) {
     let history = useHistory()
+    var maskingName = NameMask(item.user_name)
+    var age = parseInt(item.user_age/10)
+    var gender = item.user_gender === 0 ? "남성" : "여성"
+    var score = item.service_score
+    var content = item.service_content
+    var date = item.service_date.slice(0, 10)
     return (
         <>
             <div onClick={() => history.push("/servicereview")} style={{
                 minWidth: 330,
                 padding: 16,
+                height: 138,
                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
                 display: "flex",
                 flexDirection: "column",
@@ -867,7 +886,7 @@ function Review({ num, name, property, date, content }) {
                     color: "#26c1f0",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
-                }}>{num}/5.0</div>
+                }}>{score}/5.0</div>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
@@ -882,7 +901,7 @@ function Review({ num, name, property, date, content }) {
                         color: "#202426",
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr"
-                    }}>{name}({property})</div>
+                    }}>{maskingName}({age}0대 {gender})</div>
                     <div style={{
                         opacity: 0.4,
                         color: "#202426",
@@ -901,12 +920,19 @@ function Review({ num, name, property, date, content }) {
     )
 }
 
-function MReview({ num, name, property, date, content }) {
+function MReview({ item }) {
+    var maskingName = NameMask(item.user_name)
+    var age = parseInt(item.user_age/10)
+    var gender = item.user_gender === 0 ? "남성" : "여성"
+    var score = item.service_score
+    var content = item.service_content
+    var date = item.service_date.slice(0, 10)
     return (
         <div>
             <div style={{
                 width: "82vw",
                 padding: "4vw",
+                height: "32vw",
                 paddingBottom: "10%",
                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
                 display: "flex",
@@ -922,7 +948,7 @@ function MReview({ num, name, property, date, content }) {
                     color: "#26c1f0",
                     marginBottom: 6,
                     fontFamily: "NotoSansCJKkr"
-                }}>{num}/5.0</div>
+                }}>{score}/5.0</div>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
@@ -937,7 +963,7 @@ function MReview({ num, name, property, date, content }) {
                         color: "#202426",
                         fontSize: 12,
                         fontFamily: "NotoSansCJKkr"
-                    }}>{name}({property})</div>
+                    }}>{maskingName}({age}0대 {gender})</div>
                     <div style={{
                         opacity: 0.4,
                         color: "#202426",

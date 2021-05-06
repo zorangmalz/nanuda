@@ -1,56 +1,59 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
-import { BsFillStarFill, BsUpload } from "react-icons/bs"
-import { useHistory } from "react-router";
+import { BsFillStarFill } from "react-icons/bs"
+import { useHistory, useRouteMatch } from "react-router";
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { Product, MProduct } from "./ReviewSelect";
 
-function reducer(state, action) {
-    switch (action.type) {
-        case 'ONE':
-            return 1;
-        case 'TWO':
-            return 2;
-        case 'THREE':
-            return 3;
-        case 'FOUR':
-            return 4;
-        case 'FIVE':
-            return 5;
-        default:
-            return state;
-    }
-}
-
-export default function ReviewPost() {
-    const [number, dispatch] = useReducer(reducer, 0);
-    const onOne = () => {
-        dispatch({ type: 'ONE' });
-    };
-    const onTwo = () => {
-        dispatch({ type: 'TWO' });
-    };
-    const onThree = () => {
-        dispatch({ type: 'THREE' });
-    };
-    const onFour = () => {
-        dispatch({ type: 'FOUR' });
-    };
-    const onFive = () => {
-        dispatch({ type: 'FIVE' });
-    };
-
+export default function ReviewPost(props) {
     let history = useHistory()
+    const [data, setData] = useState({
+        user_profile: "",
+        user_nickname: "",
+        review_image: "",
+        review_date: "",
+        review_score: 5,
+        review_like: "",
+        review_dislike: "",
+        review_likeNum: 0,
+        review_dislikeNum: 0,
+    })
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/review", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                setData({...data, 
+                    user_profile: response[0].user_profile,
+                    user_nickname: response[0].user_nickname,
+                    review_image: response[0].review_image,
+                    review_date: response[0].review_date.slice(0, 10),
+                    review_score: response[0].review_score,
+                    review_like: response[0].review_like,
+                    review_dislike: response[0].review_dislike,
+                    review_likeNum: response[0].review_likeNum,
+                    review_dislikeNum: response[0].review_dislikeNum
+                })
+            })
+        console.log(data)
+    }, [])
 
     const [mine, setMine] = useState(false)
     const [like, setLike] = useState(0)
     function onLike() {
         setLike(1)
     }
+
     function onDislike() {
         setLike(2)
     }
+    
     function onReset() {
         setLike(0)
     }
@@ -81,7 +84,6 @@ export default function ReviewPost() {
                             width: 480,
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
-                            paddingBottom: 40,
                         }}>
                             <Header content="나눠산 사람들" goBack={true} />
                             <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 32 }}>
@@ -90,20 +92,19 @@ export default function ReviewPost() {
                                     flexDirection: "row",
                                     alignItems: "center",
                                 }}>
-                                    <div style={{
+                                    <img alt="프로필" src={data.user_profile} style={{
                                         width: 32,
                                         height: 32,
                                         backgroundColor: "#f2f3f8",
                                         marginLeft: 20,
                                         borderRadius: 16
-                                    }}>
-                                    </div>
+                                    }} />
                                     <div style={{
                                         marginLeft: 8,
                                         fontFamily: "AvenirNext",
                                         fontWeight: "bold",
                                         fontSize: 14
-                                    }}>나누다홀릭</div>
+                                    }}>{data.user_nickname}</div>
                                 </div>
                                 {mine ?
                                     <div style={{
@@ -128,7 +129,11 @@ export default function ReviewPost() {
                                 }
                             </div>
 
-                            <div style={{ width: 480, height: 500, backgroundColor: "#2dd9d3", marginTop: 8 }}></div>
+                            <img alt="제품 사진" src={data.review_image}  style={{ 
+                                width: 480, 
+                                backgroundColor: "#2dd9d3", 
+                                marginTop: 8,
+                            }} />
 
                             <Product
                                 name="삼배옷 컬랙션, White, 95"
@@ -149,7 +154,7 @@ export default function ReviewPost() {
                                 opacity: 0.6,
                                 fontFamily: "NotoSansCJKkr",
                                 color: "#202426",
-                            }}> 2021.03.30 </div>
+                            }}>{data.review_date}</div>
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
@@ -157,11 +162,11 @@ export default function ReviewPost() {
                                 marginLeft: 20,
                                 marginTop: 8
                             }}>
-                                <BsFillStarFill onClick={onOne} color={number > 0 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                <BsFillStarFill onClick={onTwo} color={number > 1 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                <BsFillStarFill onClick={onThree} color={number > 2 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                <BsFillStarFill onClick={onFour} color={number > 3 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                <BsFillStarFill onClick={onFive} color={number > 4 ? "#fad94f" : "#dfdfdf"} size={28} style={{ cursor: "pointer" }} />
+                                <BsFillStarFill color={data.review_score > 0 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5 }} />
+                                <BsFillStarFill color={data.review_score > 1 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5 }} />
+                                <BsFillStarFill color={data.review_score > 2 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5 }} />
+                                <BsFillStarFill color={data.review_score > 3 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5 }} />
+                                <BsFillStarFill color={data.review_score > 4 ? "#fad94f" : "#dfdfdf"} size={28} />
                             </div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
@@ -177,7 +182,7 @@ export default function ReviewPost() {
                                 width: 440,
                                 fontSize: 14,
                                 lineHeight: 1.5
-                            }}> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</div>
+                            }}>{data.review_like}</div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
@@ -192,7 +197,7 @@ export default function ReviewPost() {
                                 width: 440,
                                 fontSize: 14,
                                 lineHeight: 1.5
-                            }}> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</div>
+                            }}>{data.review_dislike}</div>
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
@@ -207,14 +212,14 @@ export default function ReviewPost() {
                                     color: "#202426",
                                     marginLeft: 8,
                                     marginRight: 12,
-                                }}>100</div>
+                                }}>{data.review_likeNum}</div>
                                 {like === 0 ? <AiOutlineDislike onClick={onDislike} size={24} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={onReset} size={24} color="#051a1a" /> : <AiOutlineDislike onClick={onDislike} size={24} color="#051a1a" />}
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 14,
                                     color: "#202426",
                                     marginLeft: 8,
-                                }}>100</div>
+                                }}>{data.review_dislikeNum}</div>
                             </div>
                             <StandardButton 
                                 marginTop={30}
@@ -309,11 +314,11 @@ export default function ReviewPost() {
                         marginLeft: "5vw",
                         marginTop: 12
                     }}>
-                        <BsFillStarFill onClick={onOne} color={number > 0 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5, cursor: "pointer" }} />
-                        <BsFillStarFill onClick={onTwo} color={number > 1 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5, cursor: "pointer" }} />
-                        <BsFillStarFill onClick={onThree} color={number > 2 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5, cursor: "pointer" }} />
-                        <BsFillStarFill onClick={onFour} color={number > 3 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5, cursor: "pointer" }} />
-                        <BsFillStarFill onClick={onFive} color={number > 4 ? "#fad94f" : "#dfdfdf"} size={20} style={{ cursor: "pointer" }} />
+                        <BsFillStarFill color={data.review_score > 0 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5 }} />
+                        <BsFillStarFill color={data.review_score > 1 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5 }} />
+                        <BsFillStarFill color={data.review_score > 2 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5 }} />
+                        <BsFillStarFill color={data.review_score > 3 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5 }} />
+                        <BsFillStarFill color={data.review_score > 4 ? "#fad94f" : "#dfdfdf"} size={20} />
                     </div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
