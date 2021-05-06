@@ -15,25 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include, re_path
-from nanuda.views import GoogleLogin,FacebookLogin,KakaoLogin,test
+from nanuda.views import GoogleLogin, KakaoLogin,test
 
 #API 제작
 from rest_framework.urlpatterns import format_suffix_patterns
-from nanuda import views
+from nanuda.views import KakaoLogin, GoogleLogin
+from data.views import user_list, service_review_all, product_all, review_all, order_all
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    path('rest-auth/facebook/', FacebookLogin.as_view(), name='fb_login'),
     path('rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
-    path('user/', views.user_list),
-    path('servicereview/', views.service_review_all),
-    path('product/', views.product_all),
-    path('review/', views.review_all),
-    path('order/', views.order_all),
+    path('user/', user_list),
+    path('servicereview/', service_review_all),
+    path('product/', product_all),
+    path('review/', review_all),
+    path('order/', order_all),
     path('rest-auth/kakao/', KakaoLogin.as_view(), name='kakao_login'),
-    path("test/",test.as_view(),name="test")
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

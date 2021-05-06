@@ -43,6 +43,7 @@ class ServiceReview(models.Model):
     service_date = models.DateTimeField(auto_now_add=True)
     service_score = models.FloatField(default=5.0, blank=True)
     service_content = models.CharField(max_length=300, blank=True, null=True)
+    service_opinion = models.CharField(max_length=300, blank=True, null=True)
 
     def user_name(self):
         return self.user_id.name

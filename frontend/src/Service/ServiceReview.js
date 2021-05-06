@@ -1,69 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 
 export default function ServiceReview() {
+    //Get Review Data
+    const [reviewData, setReviewData] = useState([])
+    useEffect(() => {
+        setReviewData([])
+        fetch("http://127.0.0.1:8000/servicereview", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                var array = []
+                for (var i = 0; i < response.length; i++) {
+                    const data = {
+                        service_score: response[i].service_score,
+                        user_name: response[i].user_name,
+                        user_age: response[i].user_age,
+                        user_gender: response[i].user_gender,
+                        service_date: response[i].service_date,
+                        service_content: response[i].service_content,
+                    }
+                    array.push(data)
+                }
+                setReviewData(reviewData.concat(array))
+            })
+    }, [])
+
     let history = useHistory()
-    const reviewData = [
-        {
-            num: "5.0",
-            name: "김*명",
-            property: "20대 남자",
-            date: "2021.03.16",
-            content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-        },
-        {
-            num: "5.0",
-            name: "김*명",
-            property: "20대 남자",
-            date: "2021.03.16",
-            content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-        },
-        {
-            num: "5.0",
-            name: "김*명",
-            property: "20대 남자",
-            date: "2021.03.16",
-            content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-        },
-        {
-            num: "5.0",
-            name: "김*명",
-            property: "20대 남자",
-            date: "2021.03.16",
-            content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-        },
-        {
-            num: "5.0",
-            name: "김*명",
-            property: "20대 남자",
-            date: "2021.03.16",
-            content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-        },
-        {
-            num: "5.0",
-            name: "김*명",
-            property: "20대 남자",
-            date: "2021.03.16",
-            content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-        },
-        {
-            num: "5.0",
-            name: "김*명",
-            property: "20대 남자",
-            date: "2021.03.16",
-            content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-        },
-        {
-            num: "5.0",
-            name: "김*명",
-            property: "20대 남자",
-            date: "2021.03.16",
-            content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
-        },
-    ]
     const [noReview, setNoReview] = useState(true)
+
     return (
         <>
             <Default>
@@ -93,7 +65,7 @@ export default function ServiceReview() {
                             width: 480,
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
-                            paddingBottom: 150,
+                            paddingBottom: reviewData.length > 3 ? 150 : 0,
                         }}>
                             <Header content="나눠본 사람들" goBack={true} />
                             <div style={{
@@ -125,11 +97,7 @@ export default function ServiceReview() {
                             </div>
                             {reviewData.map(item =>
                                 <Review
-                                    num={item.num}
-                                    name={item.name}
-                                    property={item.property}
-                                    date={item.date}
-                                    content={item.content}
+                                    item={item}
                                 />
                             )}
                             <div onClick={() => history.push("/servicewrite")} style={{
@@ -162,7 +130,7 @@ export default function ServiceReview() {
                     width: "100%",
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
-                    paddingBottom: 120,
+                    paddingBottom: reviewData.length > 3 ? 120 : 0,
                 }}>
                     <MHeader content="나눠본 사람들" goBack={true} />
                     <div style={{
@@ -193,11 +161,7 @@ export default function ServiceReview() {
                     </div>
                     {reviewData.map(item =>
                         <MReview
-                            num={item.num}
-                            name={item.name}
-                            property={item.property}
-                            date={item.date}
-                            content={item.content}
+                            item={item}
                         />
                     )}
                     <div onClick={() => history.push("/servicewrite")} style={{
@@ -224,7 +188,13 @@ export default function ServiceReview() {
     )
 }
 
-function Review({ num, name, property, date, content }) {
+function Review({ item }) {
+    var maskingName = NameMask(item.user_name)
+    var age = parseInt(item.user_age/10)
+    var gender = item.user_gender === 0 ? "남성" : "여성"
+    var score = item.service_score
+    var content = item.service_content
+    var date = item.service_date.slice(0, 10)
     return (
         <>
             <div style={{
@@ -245,7 +215,7 @@ function Review({ num, name, property, date, content }) {
                     color: "#26c1f0",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
-                }}>{num}/5.0</div>
+                }}>{score}/5.0</div>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
@@ -260,7 +230,7 @@ function Review({ num, name, property, date, content }) {
                         color: "#202426",
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr"
-                    }}>{name}({property})</div>
+                    }}>{maskingName}({age}0대 {gender})</div>
                     <div style={{
                         opacity: 0.4,
                         color: "#202426",
@@ -279,7 +249,13 @@ function Review({ num, name, property, date, content }) {
     )
 }
 
-function MReview({ num, name, property, date, content }) {
+function MReview({ item }) {
+    var maskingName = NameMask(item.user_name)
+    var age = parseInt(item.user_age/10)
+    var gender = item.user_gender === 0 ? "남성" : "여성"
+    var score = item.service_score
+    var content = item.service_content
+    var date = item.service_date.slice(0, 10)
     return (
         <>
             <div style={{
@@ -300,7 +276,7 @@ function MReview({ num, name, property, date, content }) {
                     color: "#26c1f0",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
-                }}>{num}/5.0</div>
+                }}>{score}/5.0</div>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
@@ -315,7 +291,7 @@ function MReview({ num, name, property, date, content }) {
                         color: "#202426",
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr"
-                    }}>{name}({property})</div>
+                    }}>{maskingName}({age}0대 {gender})</div>
                     <div style={{
                         opacity: 0.4,
                         color: "#202426",
@@ -333,3 +309,19 @@ function MReview({ num, name, property, date, content }) {
         </>
     )
 }
+
+//이름 중간 마스킹하기
+function NameMask(strName) {
+    if (strName.length > 2) {
+        var originName = strName.split('');
+        originName.forEach(function (name, i) {
+            if (i === 0 || i === originName.length - 1) return;
+            originName[i] = '*';
+        });
+        var joinName = originName.join();
+        return joinName.replace(/,/g, '');
+    } else {
+        var pattern = /.$/; // 정규식
+        return strName.replace(pattern, '*');
+    }
+};
