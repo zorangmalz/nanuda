@@ -13,6 +13,7 @@ class User(models.Model):
     user_email = models.EmailField(unique=True)
     nickname = models.TextField(unique=True,blank=True) 
     name = models.TextField(default="나누다")
+    job = models.CharField(max_length=30, default="",blank=True)
     gender = models.IntegerField(choices=GENDER_CHOICE, default=2,blank=True)
     age = models.PositiveIntegerField(blank=True, default=0)
     joinday = models.DateTimeField(auto_now_add=True)
