@@ -5,6 +5,8 @@ import Slider from "react-slick";
 import { BsBookmark, BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { AiFillStar } from "react-icons/ai";
 
 export default function Home() {
     let history = useHistory()
@@ -86,18 +88,31 @@ export default function Home() {
                             width: 480,
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
-                            paddingBottom: 20,
                         }}>
                             <HomeHeader />
                             {/* 배너 넣어야됨 */}
                             <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
                                 marginTop: 32,
                                 marginLeft: 20,
-                                fontWeight: "bold",
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 21,
-                                color: "#202426",
-                            }}>오늘의 타임딜</div>
+                            }}>
+                                <div style={{
+                                    fontWeight: "bold",
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 21,
+                                    color: "#202426",
+                                    marginRight: 4,
+                                }}>나누다딜</div>
+                                <MdKeyboardArrowRight 
+                                    size={24}
+                                    color="rgba(5, 26, 26, 0.6)"
+                                    style={{
+                                        cursor: "pointer"
+                                    }}
+                                />
+                            </div>
                             <div style={{
                                 fontSizeAdjust: 16,
                                 fontFamily: "NotoSansCJKkr",
@@ -107,7 +122,7 @@ export default function Home() {
                                 marginTop: 4,
                                 marginLeft: 20,
                                 marginBottom: 16,
-                            }}>최소 25%만 결제하세요.</div>
+                            }}>할인된 상품을 BNPL하세요!</div>
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
@@ -134,13 +149,28 @@ export default function Home() {
                                 />
                             </div>
                             <div style={{
-                                marginTop: 69,
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginTop: 32,
                                 marginLeft: 20,
-                                fontWeight: "bold",
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 21,
-                                color: "#202426",
-                            }}>나눠산 사람들</div>
+                            }}>
+                                <div style={{
+                                    fontWeight: "bold",
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 21,
+                                    color: "#202426",
+                                    marginRight: 4,
+                                }}>나눠산 사람들</div>
+                                <MdKeyboardArrowRight 
+                                    onClick={() => history.push("/review")}
+                                    size={24}
+                                    color="rgba(5, 26, 26, 0.6)"
+                                    style={{
+                                        cursor: "pointer"
+                                    }}
+                                />
+                            </div>
                             <div style={{
                                 fontSizeAdjust: 16,
                                 fontFamily: "NotoSansCJKkr",
@@ -150,7 +180,7 @@ export default function Home() {
                                 marginTop: 4,
                                 marginLeft: 20,
                                 marginBottom: 16,
-                            }}>다른사람들은 어떤걸 샀을까?</div>
+                            }}>다른 사람들은 어떤걸 샀을까?</div>
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
@@ -160,51 +190,65 @@ export default function Home() {
                                 width: 440,
                                 alignSelf: "center",
                             }}>
-                                {nanudaData.map(item =>
-                                    <div onClick={() => history.push("/reviewpost")} style={{
-                                        cursor: "pointer"
+                                {nanudaData.map(item => <div style={{
+                                    cursor: "pointer"
+                                }}>
+                                    <div style={{
+                                        display: "flex",
+                                        flexDirection: "row",
                                     }}>
                                         <div style={{
-                                            display: "flex",
-                                            flexDirection: "row",
-
-                                        }}> <div style={{
                                             width: 32,
                                             height: 32,
                                             borderRadius: 16,
                                             backgroundColor: item.pic
                                         }}>
-                                            </div>
-                                            <div style={{
-                                                fontSize: 14,
-                                                fontWeight: "bold",
-                                                marginLeft: 8,
-                                                marginTop: 6
-                                            }}>{item.id} </div>
                                         </div>
                                         <div style={{
-                                            width: 210,
-                                            height: 210,
-                                            borderRadius: 6,
-                                            backgroundColor: "#f2f3f8",
-                                            marginTop: 8
-                                        }} />
-                                        <div style={{ marginTop: 8, fontSize: 16, fontWeight: "bold", width: 210, }}>{item.title}</div>
-                                        <div style={{
                                             fontSize: 14,
-                                            opacity: 0.8,
-                                            marginTop: 8,
-                                            width: 210,
-                                        }}>{item.content}</div>
-                                        <div style={{
-                                            color: "#26c1f0",
-                                            marginTop: 16,
-                                            fontSize: 18,
                                             fontWeight: "bold",
-                                            width: 210,
-                                        }}>{item.money}원에 획득!</div>
+                                            marginLeft: 8,
+                                            marginTop: 6
+                                        }}>{item.id} </div>
                                     </div>
-                                )}
+                                    <div onClick={() => history.push("/reviewpost")} style={{
+                                        width: 210,
+                                        height: 210,
+                                        borderRadius: 6,
+                                        backgroundColor: "#f2f3f8",
+                                        marginTop: 8
+                                    }} />
+                                    <div style={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        justifyContent: "flex-start",
+                                        marginTop: 8,
+                                    }}>
+                                        <AiFillStar size={16} color="#fad94f" />
+                                        <div style={{
+                                            fontFamily: "NotoSansCJKkr",
+                                            fontSize: 14,
+                                            fontWeight: "bold",
+                                            color: "#051a1a",
+                                            marginLeft: 4,
+                                        }}>4.5</div>
+                                    </div>
+                                    <div style={{
+                                        fontSize: 14,
+                                        opacity: 0.8,
+                                        marginTop: 8,
+                                        width: 210,
+                                        fontFamily: "NotoSansCJKkr"
+                                    }}>{item.content}</div>
+                                    <div style={{
+                                        color: "#26c1f0",
+                                        marginTop: 4,
+                                        fontSize: 14,
+                                        fontWeight: "bold",
+                                        fontFamily: "NotoSansCJKkr"
+                                    }}>{item.follow}원에 획득 완료</div>
+                                </div>)}
                             </div>
                             <div style={{
                                 width: 440,
@@ -324,21 +368,35 @@ export default function Home() {
                                 </Slider>
                             </div>
                             <div style={{
-                                marginTop: 72,
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginTop: 32,
                                 marginLeft: 20,
-                                fontWeight: "bold",
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 21,
-                                color: "#202426",
-                                marginBottom: 8,
-                            }}>나눠본 사람들</div>
+                            }}>
+                                <div style={{
+                                    fontWeight: "bold",
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 21,
+                                    color: "#202426",
+                                    marginRight: 4,
+                                }}>나눠본 사람들</div>
+                                <MdKeyboardArrowRight 
+                                    onClick={() => history.push("/servicereview")}
+                                    size={24}
+                                    color="rgba(5, 26, 26, 0.6)"
+                                    style={{
+                                        cursor: "pointer"
+                                    }}
+                                />
+                            </div>
                             <div style={{
                                 fontSizeAdjust: 16,
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 color: "#202426",
                                 marginLeft: 20,
-                            }}>첫 후기를 작성하면 2천 포인트를 드려요~</div>
+                            }}>아직도 나누다 이용을 망설이시나요?</div>
                             <div style={{
                                 marginLeft: 4,
                                 overflowX: "scroll",
@@ -352,7 +410,7 @@ export default function Home() {
                                     />
                                 )}
                             </div>
-                            <BottomTag marginTop={200} marginBottom={100} />
+                            <BottomTag marginTop={200} marginBottom={0} />
                             <div onClick={() => history.push("/wishdealdefault")} style={{
                                 width: 440,
                                 marginLeft: 20,
@@ -385,18 +443,31 @@ export default function Home() {
                     width: "100%",
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
-                    paddingBottom: 20,
                 }}>
                     <MHomeHeader />
                     {/* 배너 넣어야됨 */}
                     <div style={{
-                        marginTop: 32,
-                        marginLeft: "5%",
-                        fontWeight: "bold",
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 18,
-                        color: "#202426",
-                    }}>오늘의 타임딜</div>
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginTop: "8vw",
+                        marginLeft: "5vw",
+                    }}>
+                        <div style={{
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            color: "#202426",
+                            marginRight: 4,
+                        }}>나누다딜</div>
+                        <MdKeyboardArrowRight
+                            size={20}
+                            color="rgba(5, 26, 26, 0.6)"
+                            style={{
+                                cursor: "pointer"
+                            }}
+                        />
+                    </div>
                     <div style={{
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr",
@@ -405,8 +476,8 @@ export default function Home() {
 
                         marginTop: 4,
                         marginLeft: "5%",
-                        marginBottom: 16,
-                    }}>최소 25%만 결제하세요.</div>
+                        marginBottom: "4vw",
+                    }}>할인된 상품을 BNPL하세요!</div>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -433,13 +504,28 @@ export default function Home() {
                         />
                     </div>
                     <div style={{
-                        marginTop: 50,
-                        marginLeft: "5%",
-                        fontWeight: "bold",
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 18,
-                        color: "#202426",
-                    }}>나눠산 사람들</div>
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginTop: "8vw",
+                        marginLeft: "5vw",
+                    }}>
+                        <div style={{
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            color: "#202426",
+                            marginRight: 4,
+                        }}>나눠산 사람들</div>
+                        <MdKeyboardArrowRight
+                            onClick={() => history.push("/review")}
+                            size={20}
+                            color="rgba(5, 26, 26, 0.6)"
+                            style={{
+                                cursor: "pointer"
+                            }}
+                        />
+                    </div>
                     <div style={{
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr",
@@ -448,14 +534,14 @@ export default function Home() {
 
                         marginTop: 4,
                         marginLeft: "5%",
-                        marginBottom: 16,
-                    }}>다른사람들은 어떤걸 샀을까?</div>
+                        marginBottom: "4vw",
+                    }}>다른 사람들은 어떤걸 샀을까?</div>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "flex-start",
                         justifyContent: "space-between",
-                        marginBottom: 32,
+                        marginBottom: "8vw",
                         width: "90%",
                         alignSelf: "center",
                     }}>
@@ -559,21 +645,36 @@ export default function Home() {
                         </Slider>
                     </div>
                     <div style={{
-                        marginTop: 50,
-                        marginLeft: '5%',
-                        fontWeight: "bold",
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 18,
-                        color: "#202426",
-                        marginBottom: 8,
-                    }}>나눠본 사람들</div>
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginTop: "8vw",
+                        marginLeft: "5vw",
+                    }}>
+                        <div style={{
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            color: "#202426",
+                            marginRight: 4,
+                        }}>나눠본 사람들</div>
+                        <MdKeyboardArrowRight
+                            onClick={() => history.push("/servicereview")}
+                            size={20}
+                            color="rgba(5, 26, 26, 0.6)"
+                            style={{
+                                cursor: "pointer"
+                            }}
+                        />
+                    </div>
                     <div style={{
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr",
                         opacity: 0.6,
                         color: "#202426",
                         marginLeft: "5%",
-                    }}>첫 후기를 작성하면 2천 포인트를 드려요~</div>
+                        marginTop: "2vw"
+                    }}>아직도 나누다 이용을 망설이시나요?</div>
                     <div style={{
                         marginLeft: 4,
                         display: "flex",
@@ -587,7 +688,7 @@ export default function Home() {
                             />
                         )}
                     </div>
-                    <MBottomTag marginTop={100} marginBottom={70} />
+                    <MBottomTag marginTop={100} marginBottom={0} />
                     <div onClick={() => history.push("/wishdealdefault")} style={{
                         width: "90%",
                         marginLeft: "5%",
@@ -858,7 +959,6 @@ function MTimeShop({ title, sub, price, currentPrice, stock, time }) {
 }
 
 function Review({ item }) {
-    let history = useHistory()
     var maskingName = NameMask(item.user_name)
     var age = parseInt(item.user_age/10)
     var gender = item.user_gender === 0 ? "남성" : "여성"
@@ -867,7 +967,7 @@ function Review({ item }) {
     var date = item.service_date.slice(0, 10)
     return (
         <>
-            <div onClick={() => history.push("/servicereview")} style={{
+            <div style={{
                 minWidth: 330,
                 padding: 16,
                 height: 138,
@@ -878,7 +978,6 @@ function Review({ item }) {
                 alignSelf: "center",
                 marginRight: 20,
                 borderRadius: 6,
-                cursor: "pointer",
             }}>
                 <div style={{
                     fontSize: 21,
