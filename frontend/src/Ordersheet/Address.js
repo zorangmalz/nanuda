@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BsCheck } from "react-icons/bs"
@@ -78,19 +78,52 @@ function AddressInput() {
     const [number, dispatch] = useReducer(reducer, 0);
     const onOne = () => {
         dispatch({ type: 'ONE' });
+        setInputs({
+            ...inputs,
+            claim: "문 앞"
+        })
     };
     const onTwo = () => {
         dispatch({ type: 'TWO' });
+        setInputs({
+            ...inputs,
+            claim: "직접 받고 부재시 문앞"
+        })
     };
     const onThree = () => {
         dispatch({ type: 'THREE' });
+        setInputs({
+            ...inputs,
+            claim: "경비실"
+        })
     };
     const onFour = () => {
         dispatch({ type: 'FOUR' });
+        setInputs({
+            ...inputs,
+            claim: "택배함"
+        })
     };
     const onFive = () => {
         dispatch({ type: 'FIVE' });
     };
+
+    const [inputs, setInputs] = useState({
+        name: "",
+        addressNum: "",
+        address: "",
+        addressDetail: "",
+        phoneNumber: "",
+        claim: "",
+    })
+    const { name, addressNum, address, addressDetail, phoneNumber, claim } = inputs
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setInputs({
+            ...inputs,
+            [name]: value
+        })
+    }
     return (
         <>
             <div style={{
@@ -102,7 +135,7 @@ function AddressInput() {
                 marginBottom: 16,
                 fontFamily: "NotoSansCJKkr"
             }}>받는 사람</div>
-            <input placeholder="이름 혹은 별명" style={{
+            <input name="name" value={name} onChange={onChange} placeholder="이름 혹은 별명" style={{
                 outline: 0,
                 borderTop: 0,
                 borderLeft: 0,
@@ -132,7 +165,7 @@ function AddressInput() {
                 alignItems: "center",
                 marginLeft: 20,
             }}>
-                <input placeholder="우편번호" style={{
+                <input name="addressNum" value={addressNum} onChange={onChange} placeholder="우편번호" style={{
                     outline: 0,
                     borderTop: 0,
                     borderLeft: 0,
@@ -161,7 +194,7 @@ function AddressInput() {
                     fontFamily: "NotoSansCJKkr"
                 }}>우편번호 찾기</div>
             </div>
-            <input placeholder="주소" style={{
+            <input name="address" value={address} onChange={onChange} placeholder="주소" style={{
                 outline: 0,
                 borderTop: 0,
                 borderLeft: 0,
@@ -177,7 +210,7 @@ function AddressInput() {
                 marginLeft: 20,
                 fontFamily: "NotoSansCJKkr"
             }} />
-            <input placeholder="상세주소" style={{
+            <input name="addressDetail" value={addressDetail} onChange={onChange} placeholder="상세주소" style={{
                 outline: 0,
                 borderTop: 0,
                 borderLeft: 0,
@@ -202,7 +235,7 @@ function AddressInput() {
                 marginBottom: 16,
                 fontFamily: "NotoSansCJKkr"
             }}>연락처</div>
-            <input placeholder="핸드폰 번호 11자리" style={{
+            <input name="phoneNumber" value={phoneNumber} onChange={onChange} placeholder="핸드폰 번호 11자리" style={{
                 outline: 0,
                 borderTop: 0,
                 borderLeft: 0,
@@ -316,7 +349,7 @@ function AddressInput() {
                     fontFamily: "NotoSansCJKkr"
                 }}>기타</div>
             </div>
-            <input placeholder="장소 입력 (필수)" style={{
+            {number === 5 ? <><input name="claim" value={claim} onChange={onChange} placeholder="장소 입력 (필수)" style={{
                 outline: 0,
                 borderTop: 0,
                 borderLeft: 0,
@@ -330,13 +363,13 @@ function AddressInput() {
                 color: "#202426",
                 marginLeft: 52,
             }} />
-            {number === 5 ? <div style={{
+            <div style={{
                 fontSize: 14,
                 color: "#f72b2b",
                 marginTop: 8,
                 marginLeft: 52,
                 fontFamily: "NotoSansCJKkr"
-            }}>필수 입력 정보입니다.</div> : <></>}
+            }}>필수 입력 정보입니다.</div></> : <></>}
             <div style={{
                 width: 440,
                 borderRadius: 6,
@@ -361,19 +394,52 @@ function MAddressInput() {
     const [number, dispatch] = useReducer(reducer, 0);
     const onOne = () => {
         dispatch({ type: 'ONE' });
+        setInputs({
+            ...inputs,
+            claim: "문 앞"
+        })
     };
     const onTwo = () => {
         dispatch({ type: 'TWO' });
+        setInputs({
+            ...inputs,
+            claim: "직접 받고 부재시 문앞"
+        })
     };
     const onThree = () => {
         dispatch({ type: 'THREE' });
+        setInputs({
+            ...inputs,
+            claim: "경비실"
+        })
     };
     const onFour = () => {
         dispatch({ type: 'FOUR' });
+        setInputs({
+            ...inputs,
+            claim: "택배함"
+        })
     };
     const onFive = () => {
         dispatch({ type: 'FIVE' });
     };
+
+    const [inputs, setInputs] = useState({
+        name: "",
+        addressNum: "",
+        address: "",
+        addressDetail: "",
+        phoneNumber: "",
+        claim: "",
+    })
+    const { name, addressNum, address, addressDetail, phoneNumber, claim } = inputs
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setInputs({
+            ...inputs,
+            [name]: value
+        })
+    }
     return (
         <>
             <div style={{
@@ -385,7 +451,7 @@ function MAddressInput() {
                 marginBottom: 16,
                 fontFamily: "NotoSansCJKkr"
             }}>받는 사람</div>
-            <input placeholder="이름 혹은 별명" style={{
+            <input name="name" value={name} onChange={onChange} placeholder="이름 혹은 별명" style={{
                 outline: 0,
                 borderTop: 0,
                 borderLeft: 0,
@@ -415,7 +481,7 @@ function MAddressInput() {
                 alignItems: "center",
                 marginLeft: "5%",
             }}>
-                <input placeholder="우편번호" style={{
+                <input name="addressNum" value={addressNum} onChange={onChange} placeholder="우편번호" style={{
                     outline: 0,
                     borderTop: 0,
                     borderLeft: 0,
@@ -444,7 +510,7 @@ function MAddressInput() {
                     fontFamily: "NotoSansCJKkr"
                 }}>우편번호 찾기</div>
             </div>
-            <input placeholder="주소" style={{
+            <input name="address" value={address} onChange={onChange} placeholder="주소" style={{
                 outline: 0,
                 borderTop: 0,
                 borderLeft: 0,
@@ -460,7 +526,7 @@ function MAddressInput() {
                 alignSelf: "center",
                 fontFamily: "NotoSansCJKkr"
             }} />
-            <input placeholder="상세주소" style={{
+            <input name="addressDetail" value={addressDetail} onChange={onChange} placeholder="상세주소" style={{
                 outline: 0,
                 borderTop: 0,
                 borderLeft: 0,
@@ -485,7 +551,7 @@ function MAddressInput() {
                 marginBottom: 16,
                 fontFamily: "NotoSansCJKkr"
             }}>연락처</div>
-            <input placeholder="핸드폰 번호 11자리" style={{
+            <input name="phoneNumber" value={phoneNumber} onChange={onChange} placeholder="핸드폰 번호 11자리" style={{
                 outline: 0,
                 borderTop: 0,
                 borderLeft: 0,
@@ -599,7 +665,7 @@ function MAddressInput() {
                     fontFamily: "NotoSansCJKkr"
                 }}>기타</div>
             </div>
-            <input placeholder="장소 입력 (필수)" style={{
+            {number === 5 ? <><input name="claim" value={claim} onChange={onChange} placeholder="장소 입력 (필수)" style={{
                 outline: 0,
                 borderTop: 0,
                 borderLeft: 0,
@@ -614,13 +680,13 @@ function MAddressInput() {
                 marginLeft: "13%",
                 fontFamily: "NotoSansCJKkr"
             }} />
-            {number === 5 ? <div style={{
+            <div style={{
                 fontSize: 14,
                 color: "#f72b2b",
                 marginTop: 8,
                 marginLeft: "13%",
                 fontFamily: "NotoSansCJKkr"
-            }}>필수 입력 정보입니다.</div> : <></>}
+            }}>필수 입력 정보입니다.</div></> : <></>}
             <div style={{
                 width: "90%",
                 borderRadius: 6,

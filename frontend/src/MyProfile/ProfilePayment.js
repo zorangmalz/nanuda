@@ -136,7 +136,7 @@ function BNPLForm({ state, title, num, date, payback }) {
                         }}>{state === 0 ? "결제 완료" : num + "차 결제 예정"}</div>
                     </div>
                 </div>
-                <MdKeyboardArrowRight size={32} color="rgba(5, 26, 26, 0.4)" />
+                <MdKeyboardArrowRight size={40} color="rgba(5, 26, 26, 0.4)" />
             </div>
             {state === 0 ? <></> :
                 <div style={{
@@ -323,7 +323,7 @@ function MBNPLForm({ state, title, num, date, payback }) {
                         }}>{state === 0 ? "결제 완료" : num + "차 결제 예정"}</div>
                     </div>
                 </div>
-                <MdKeyboardArrowRight size={24} color="rgba(5, 26, 26, 0.4)" />
+                <MdKeyboardArrowRight size={32} color="rgba(5, 26, 26, 0.4)" />
             </div>
             {state === 0 ? <></> :
                 <div style={{

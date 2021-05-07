@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsCheck } from "react-icons/bs";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
@@ -6,6 +6,7 @@ import WebIntro, { Header, MHeader, StandardButton, MStandardButton } from "../S
 
 export default function ProfileDelete() {
     let history = useHistory()
+    const [agree, setAgree] = useState(false)
     return (
         <>
             <Default>
@@ -93,8 +94,12 @@ export default function ProfileDelete() {
                                 marginTop: 32,
                             }}>
                                 <BsCheck 
+                                    onClick={() => setAgree(!agree)}
+                                    style={{
+                                        cursor: "pointer",
+                                    }}
                                     size={24}
-                                    color="#2dd9d3"
+                                    color={agree ? "#2dd9d3" : "#dbdbdb"}
                                 />
                                 <div style={{
                                     fontSize: 18,
@@ -179,8 +184,12 @@ export default function ProfileDelete() {
                         marginTop: "8vw",
                     }}>
                         <BsCheck
+                            onClick={() => setAgree(!agree)}
+                            style={{
+                                cursor: "pointer",
+                            }}
                             size={20}
-                            color="#2dd9d3"
+                            color={agree ? "#2dd9d3" : "#dbdbdb"}
                         />
                         <div style={{
                             fontSize: 16,

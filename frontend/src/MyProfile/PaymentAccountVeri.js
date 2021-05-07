@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { BiPlusCircle } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { useHistory } from "react-router";
@@ -32,6 +32,10 @@ export default function PaymentAccountVeri() {
     const onSKA = () => {dispatch({type: "SKA"})}
     const onKTA = () => {dispatch({type: "KTA"})}
     const onLGA = () => {dispatch({type: "LGA"})}
+
+    //약관 동의
+    const [self, setSelf] = useState(false)
+    const [pay, setPay] = useState(false)
     return (
         <>
             <Default>
@@ -154,8 +158,17 @@ export default function PaymentAccountVeri() {
                                 borderRadius: 6,
                             }}>
                                 <BsCheck 
+                                    onClick={() => {
+                                        if (self || pay) {
+                                            setSelf(false)
+                                            setPay(false)
+                                        } else {
+                                            setSelf(true)
+                                            setPay(true)
+                                        }
+                                    }}
                                     size={24}
-                                    color="#2dd9d3"
+                                    color={self && pay ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         marginLeft: 8,
                                         cursor: "pointer",
@@ -177,8 +190,9 @@ export default function PaymentAccountVeri() {
                                 marginTop: 16,
                             }}>
                                 <BsCheck 
+                                    onClick={() => setSelf(!self)}
                                     size={24}
-                                    color="rgba(5, 26, 26, 0.6)"
+                                    color={self ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         cursor: "pointer"
                                     }}
@@ -200,8 +214,9 @@ export default function PaymentAccountVeri() {
                                 marginTop: 8,
                             }}>
                                 <BsCheck 
+                                    onClick={() => setPay(!pay)}
                                     size={24}
-                                    color="rgba(5, 26, 26, 0.6)"
+                                    color={pay ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         cursor: "pointer"
                                     }}
@@ -324,8 +339,17 @@ export default function PaymentAccountVeri() {
                         borderRadius: 6,
                     }}>
                         <BsCheck
+                            onClick={() => {
+                                if (self || pay) {
+                                    setSelf(false)
+                                    setPay(false)
+                                } else {
+                                    setSelf(true)
+                                    setPay(true)
+                                }
+                            }}
                             size={16}
-                            color="#2dd9d3"
+                            color={self && pay ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                             style={{
                                 marginLeft: 8,
                                 cursor: "pointer",
@@ -347,8 +371,9 @@ export default function PaymentAccountVeri() {
                         marginTop: "4vw",
                     }}>
                         <BsCheck
+                            onClick={() => setSelf(!self)}
                             size={16}
-                            color="rgba(5, 26, 26, 0.6)"
+                            color={self ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                             style={{
                                 cursor: "pointer"
                             }}
@@ -370,8 +395,9 @@ export default function PaymentAccountVeri() {
                         marginTop: "2vw",
                     }}>
                         <BsCheck
+                            onClick={() => setPay(!pay)}
                             size={16}
-                            color="rgba(5, 26, 26, 0.6)"
+                            color={pay ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                             style={{
                                 cursor: "pointer"
                             }}

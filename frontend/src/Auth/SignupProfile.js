@@ -98,8 +98,6 @@ export default function SignupProfile() {
             { withCredentials: true }
         )
         console.log(response.data.name)
-        setNickname(response.data.name)
-        setemail(response.data.email)
 
     }
     
@@ -123,42 +121,27 @@ export default function SignupProfile() {
         dispatch({ type: "ETC" })
     }
 
-    //닉네임 변경
-    const [nickname, setNickname] = useState("")
-    const onNickname = (e) => {
-        setNickname(e.target.value)
-    }
-    const [cellPhone, setcellPhone] = useState("")
-    const oncellPhone = (e) => {
-        setcellPhone(e.target.value)
-    }
-    const [email, setemail] = useState("")
-    const onemail = (e) => {
-        setemail(e.target.value)
-    }
-    //직업 입력
-    const [job, setJob] = useState("")
-    const onJob = (e) => {
-        setJob(e.target.value)
+    //input요소
+    const [inputs, setInputs] = useState({
+        name: "",
+        cellPhone: "",
+        email: "",
+        job: ""
+    })
+    const { name, cellPhone, email, job } = inputs
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setInputs({
+            ...inputs,
+            [name]: value
+        })
     }
 
-    //우편번호 입력
-    const [addressNum, setAddressNum] = useState("")
-    const onAddressNum = (e) => {
-        setAddressNum(e.target.value)
-    }
-
-    //주소 입력
-    const [address, setAddress] = useState("")
-    const onAddress = (e) => {
-        setAddress(e.target.value)
-    }
-
-    //상세주소 입력
-    const [addressDetatil, setAddressDetail] = useState("")
-    const onAddressDetail = (e) => {
-        setAddressDetail(e.target.value)
-    }
+    //약관 동의
+    const [personal, setPersonal] = useState(false)
+    const [service, setService] = useState(false)
+    const [veri, setVeri] = useState(false)
+    const [market, setMarket] = useState(false)
     return (
         <>
             <Default>
@@ -192,8 +175,9 @@ export default function SignupProfile() {
                             <Header content="회원정보" goBack={true} />
                             <Title>이름</Title>
                             <InputModule
-                                input={nickname}
-                                onChange={onNickname}
+                                name="name"
+                                value={name}
+                                onChange={onChange}
                                 placeholder="당신의 이름은 무엇인가요?"
                                 width={440}
                                 marginLeft={20}
@@ -202,8 +186,9 @@ export default function SignupProfile() {
                             />
                             <Title>휴대폰번호</Title>
                             <InputModule
-                                input={cellPhone}
-                                onChange={oncellPhone}
+                                name="cellPhone"
+                                value={cellPhone}
+                                onChange={onChange}
                                 placeholder="휴대폰 번호를 입력해주세요."
                                 width={440}
                                 marginLeft={20}
@@ -212,8 +197,9 @@ export default function SignupProfile() {
                             />
                             <Title>이메일 주소(선택)</Title>
                             <InputModule
-                                input={email}
-                                onChange={onemail}
+                                name="email"
+                                value={email}
+                                onChange={onChange}
                                 placeholder="이메일 주소를 입력해주세요."
                                 width={440}
                                 marginLeft={20}
@@ -267,8 +253,9 @@ export default function SignupProfile() {
                                 />
                             </div>
                             <InputModule
-                                input={job}
-                                onChange={onJob}
+                                name="job"
+                                value={job}
+                                onChange={onChange}
                                 placeholder="현재 직업을 입력해주세요."
                                 width={440}
                                 marginLeft={20}
@@ -289,8 +276,21 @@ export default function SignupProfile() {
                                 borderRadius: 6,
                             }}>
                                 <BsCheck
+                                    onClick={() => {
+                                        if (personal || service || veri || market) {
+                                            setPersonal(false)
+                                            setService(false)
+                                            setVeri(false)
+                                            setMarket(false)
+                                        } else {
+                                            setPersonal(true)
+                                            setService(true)
+                                            setVeri(true)
+                                            setMarket(true)
+                                        }
+                                    }}
                                     size={24}
-                                    color="#2dd9d3"
+                                    color={personal && service && veri && market ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         marginLeft: 8,
                                         cursor: "pointer",
@@ -312,8 +312,9 @@ export default function SignupProfile() {
                                 marginTop: 16,
                             }}>
                                 <BsCheck
+                                    onClick={() => setPersonal(!personal)}
                                     size={24}
-                                    color="rgba(5, 26, 26, 0.6)"
+                                    color={personal ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         cursor: "pointer"
                                     }}
@@ -337,8 +338,9 @@ export default function SignupProfile() {
                                 marginTop: 8,
                             }}>
                                 <BsCheck
+                                    onClick={() => setService(!service)}
                                     size={24}
-                                    color="rgba(5, 26, 26, 0.6)"
+                                    color={service ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         cursor: "pointer"
                                     }}
@@ -362,8 +364,9 @@ export default function SignupProfile() {
                                 marginTop: 8,
                             }}>
                                 <BsCheck
+                                    onClick={() => setVeri(!veri)}
                                     size={24}
-                                    color="rgba(5, 26, 26, 0.6)"
+                                    color={veri ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         cursor: "pointer"
                                     }}
@@ -389,8 +392,9 @@ export default function SignupProfile() {
                                 marginTop: 8,
                             }}>
                                 <BsCheck
+                                    onClick={() => setMarket(!market)}
                                     size={24}
-                                    color="rgba(5, 26, 26, 0.6)"
+                                    color={market ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         cursor: "pointer"
                                     }}
@@ -435,8 +439,9 @@ export default function SignupProfile() {
                     <MHeader content="회원정보" goBack={true} />
                     <MTitle>이름</MTitle>
                     <InputModule
-                        input={nickname}
-                        onChange={onNickname}
+                        name="name"
+                        value={name}
+                        onChange={onChange}
                         placeholder="당신의 이름은 무엇인가요?"
                         width={"90vw"}
                         marginLeft={"5vw"}
@@ -445,8 +450,9 @@ export default function SignupProfile() {
                     />
                     <MTitle>휴대폰번호</MTitle>
                     <InputModule
-                        input={cellPhone}
-                        onChange={oncellPhone}
+                        name="cellPhone"
+                        value={cellPhone}
+                        onChange={onChange}
                         placeholder="휴대폰 번호를 입력해주세요"
                         width={"90vw"}
                         marginLeft={"5vw"}
@@ -455,8 +461,9 @@ export default function SignupProfile() {
                     />
                     <MTitle>이메일 주소(선택)</MTitle>
                     <InputModule
-                        input={email}
-                        onChange={onemail}
+                        name="email"
+                        value={email}
+                        onChange={onChange}
                         placeholder="이메일 주소를 입력해주세요."
                         width={"90vw"}
                         marginLeft={"5vw"}
@@ -510,8 +517,9 @@ export default function SignupProfile() {
                         />
                     </div>
                     <InputModule
-                        input={job}
-                        onChange={onJob}
+                        name="job"
+                        value={job}
+                        onChange={onChange}
                         placeholder="현재 직업을 입력해주세요."
                         width={"90vw"}
                         marginLeft={"5vw"}
@@ -532,8 +540,21 @@ export default function SignupProfile() {
                         borderRadius: 6,
                     }}>
                         <BsCheck
+                            onClick={() => {
+                                if (personal || service || veri || market) {
+                                    setPersonal(false)
+                                    setService(false)
+                                    setVeri(false)
+                                    setMarket(false)
+                                } else {
+                                    setPersonal(true)
+                                    setService(true)
+                                    setVeri(true)
+                                    setMarket(true)
+                                }
+                            }}
+                            color={personal && service && veri && market ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                             size={16}
-                            color="#2dd9d3"
                             style={{
                                 marginLeft: 8,
                                 cursor: "pointer",
@@ -555,8 +576,9 @@ export default function SignupProfile() {
                         marginTop: "4vw",
                     }}>
                         <BsCheck
+                            onClick={() => setPersonal(!personal)}
+                            color={personal ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                             size={16}
-                            color="rgba(5, 26, 26, 0.6)"
                             style={{
                                 cursor: "pointer"
                             }}
@@ -580,8 +602,9 @@ export default function SignupProfile() {
                         marginTop: "2vw",
                     }}>
                         <BsCheck
+                            onClick={() => setService(!service)}
+                            color={service ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                             size={16}
-                            color="rgba(5, 26, 26, 0.6)"
                             style={{
                                 cursor: "pointer"
                             }}
@@ -595,7 +618,7 @@ export default function SignupProfile() {
                         }}>나누다 <span style={{
                             textDecorationLine: "underline",
                             marginRight: 2,
-                        }}>서비스 이용약관</span> 동의 (필수)</div>
+                            }}>서비스 이용약관</span> 동의 (필수)</div>
                     </div>
                     <div style={{
                         display: "flex",
@@ -605,8 +628,9 @@ export default function SignupProfile() {
                         marginTop: "2vw",
                     }}>
                         <BsCheck
+                            onClick={() => setVeri(!veri)}
+                            color={veri ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                             size={16}
-                            color="rgba(5, 26, 26, 0.6)"
                             style={{
                                 cursor: "pointer"
                             }}
@@ -630,8 +654,9 @@ export default function SignupProfile() {
                         marginTop: "2vw",
                     }}>
                         <BsCheck
+                            onClick={() => setMarket(!market)}
+                            color={market ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
                             size={16}
-                            color="rgba(5, 26, 26, 0.6)"
                             style={{
                                 cursor: "pointer"
                             }}
@@ -666,11 +691,12 @@ export default function SignupProfile() {
     )
 }
 
-export function InputModule({ input, onChange, placeholder, width, marginLeft, marginTop, fontSize }) {
+export function InputModule({ name, value, onChange, placeholder, width, marginLeft, marginTop, fontSize }) {
     return (
         <>
             <input
-                value={input}
+                name={name}
+                value={value}
                 onChange={onChange}
                 placeholder={placeholder}
                 style={{
