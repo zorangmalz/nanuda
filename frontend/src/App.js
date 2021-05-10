@@ -38,6 +38,11 @@ import WishDealDefault from './Wishdeal/WishDealDefault';
 import WishDealNotURL from "./Wishdeal/WishDealNotURL";
 import ProfileDelete from './MyProfile/ProfileDelete';
 import Signup from './Auth/Signup';
+import Login from './Auth/Login';
+import PaymentAccountVeri from './MyProfile/PaymentAccountVeri';
+import PaymentARS from './MyProfile/PaymentARS';
+import AlarmPost from './Alarm/AlarmPost';
+import PaymentAddAccount from './MyProfile/PaymentAddAccount';
 
 
 export const Default = ({ children }) => {
@@ -64,7 +69,7 @@ function App() {
         <Route path="/paymentfail" component={PaymentFail} />
         <Route path="/paymentsuccess" component={PaymentSuccess} />
         <Route path="/review" component={ReviewMain} />
-        <Route path="/reviewpost" component={ReviewPost} />
+        <Route path="/reviewpost/:pk" component={ReviewPost} />
         <Route path="/reviewselect" component={ReviewSelect} />
         <Route path="/reviewwrite" component={ReviewWrite} />
         <Route path="/reviewsuccess" component={ReviewSuccess} />
@@ -91,6 +96,10 @@ function App() {
         <Route path="/profileproduct" component={ProfileProduct} />
         <Route path="/profileproductinfo" component={ProfileProductInfo} />
         <Route path="/profiledelete" component={ProfileDelete} />
+        <Route path="/paymentaccountveri" component={PaymentAccountVeri} />
+        <Route path="/paymentars" component={PaymentARS} />
+        <Route path="/alarmpost" component={AlarmPost} />
+        <Route path="/addaccount" component={PaymentAddAccount} />
       </Switch>
     </Router>
   );
