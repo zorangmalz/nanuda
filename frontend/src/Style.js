@@ -159,7 +159,7 @@ export function MHeader({ content, goBack, goX }) {
 
 export function HomeHeader() {
     let history = useHistory()
-    const [log,setLog]=useState("")
+    const [log,setLog]=useState(false)
     useEffect(()=>{
         test()
     },[])
@@ -170,8 +170,9 @@ export function HomeHeader() {
             { withCredentials: true }
         )
 
-        console.log(response.data)
-        setLog(response.data)
+        console.log(response.data.data,"hererere")
+        
+        setLog(response.data.data)
     }
     function noticeClick(){
         if(log==true){
@@ -183,8 +184,10 @@ export function HomeHeader() {
     function profileClick(){
         if(log==true){
             history.push("/profilemain")
+            console.log("here",log)
         }else{
             history.push("/signup")
+            console.log("there")
         }
     }
     return (

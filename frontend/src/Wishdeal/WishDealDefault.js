@@ -4,6 +4,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header } from "../Style";
 import axios from "axios"
 // import ogs from "open-graph-scraper-lite"
+import ogs from "open-graph-scraper-lite"
 
 export default function WishDealDefault() {
     let history = useHistory();
@@ -31,7 +32,7 @@ export default function WishDealDefault() {
         );
         console.log(res)
         if (res.data.error == true) {
-            history.push("/wishdealurl")
+            // history.push("/wishdealurl")
         } else {
             setLinkOrNot(true)
             setImage(res.data.results.ogImage.url)
@@ -41,6 +42,19 @@ export default function WishDealDefault() {
         }
     }
 
+//     useEffect(()=>{
+// og()
+
+//     },[])
+//     async function og(){
+//         const options = { url: 'https://store.musinsa.com/app/goods/1149329?loc=goods_rank',timeout:2000 };
+//         ogs(options, (error, results, response) => {
+//             console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+//             console.log('results:', results); // This contains all of the Open Graph results
+//             console.log('response:', response); // This contains the HTML of page
+//           });
+          
+//     }
     return (
         <>
             <Default>

@@ -97,8 +97,13 @@ export default function SignupProfile() {
             "http://localhost:8000/userInfoName/",
             { withCredentials: true }
         )
-        console.log(response.data.name)
-
+        
+        setInputs({
+            ...inputs,
+            name: response.data.name,
+            email:response.data.email
+        })
+       
     }
     
     const [number, dispatch] = useReducer(reducer, 0)

@@ -30,7 +30,7 @@ from datetime import date
 class userInfoName(View):
     def get(self, request):
         if not request.COOKIES.get("access_token"):
-            return HttpResponse("false")
+            return JsonResponse({"data":False})
         else:
             load_dotenv(verbose=True)
             SECRET_KEY=os.getenv("SECRET_KEY")
@@ -39,7 +39,7 @@ class userInfoName(View):
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
             user=User.objects.get(uid=payload["id"])
             print(user.name)
-            return JsonResponse({"name":user.name,"email":user.user_email})
+            return JsonResponse({"data":True,"name":user.name,"email":user.user_email})
 
 
 # class changeAddress(Vie):
