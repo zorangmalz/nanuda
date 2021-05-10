@@ -166,7 +166,7 @@ export function HomeHeader() {
     const test=async()=>{
         console.log("come")
         let response=await axios.get(
-            "http://localhost:8000/test/",
+            "http://localhost:8000/userInfoName/",
             { withCredentials: true }
         )
 
@@ -253,7 +253,7 @@ export function MHomeHeader() {
     const test=async()=>{
         console.log("come")
         let response=await axios.get(
-            "http://localhost:8000/test/",
+            "http://localhost:8000/userInfoName/",
             { withCredentials: true }
         )
 

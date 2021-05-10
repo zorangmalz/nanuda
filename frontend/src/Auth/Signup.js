@@ -67,7 +67,7 @@ export default function Signup() {
     const test=async()=>{
         console.log("come")
         let response=await axios.get(
-            "http://localhost:8000/test/",
+            "http://localhost:8000/userInfoName/",
             { withCredentials: true }
         )
         console.log(response)
