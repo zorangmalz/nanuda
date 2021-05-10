@@ -7,7 +7,8 @@ import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
 import { useHistory } from "react-router";
 
-const MyInfoList = ({ standard, current, limit }) => {
+const MyInfoList = ({ standard, current, limit, path }) => {
+    let history = useHistory()
     return (
         <div style={{
             display: "flex",
@@ -39,18 +40,20 @@ const MyInfoList = ({ standard, current, limit }) => {
                     opacity: 0.6,
                 }}>{standard}</div>
             }
-            <div style={{
+            <div onClick={() => history.push(path)} style={{
                 marginTop: 8,
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 21,
                 fontWeight: "bold",
-                color: "#202426"
+                color: "#202426",
+                cursor: "pointer"
             }}>{current}</div>
         </div>
     )
 }
 
-const MMyInfoList = ({ standard, current, limit }) => {
+const MMyInfoList = ({ standard, current, limit, path }) => {
+    let history = useHistory()
     return (
         <div style={{
             display: "flex",
@@ -82,12 +85,13 @@ const MMyInfoList = ({ standard, current, limit }) => {
                     opacity: 0.6,
                 }}>{standard}</div>
             }
-            <div style={{
+            <div onClick={() => history.push(path)} style={{
                 marginTop: 8,
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426"
+                color: "#202426",
+                cursor: "pointer"
             }}>{current}</div>
         </div>
     )
@@ -303,10 +307,10 @@ export default function ProfileMain() {
 
                                     width: 440,
                                 }}>
-                                    <MyInfoList standard="나누다 한도" current={300000} limit={true} />
-                                    <MyInfoList standard="나누다 포인트" current={100} limit={false} />
-                                    <MyInfoList standard="내 리뷰" current={10} limit={false} />
-                                    <MyInfoList standard="내가 구매한 상품" current={10} limit={false} />
+                                    <MyInfoList standard="나누다 한도" current={300000} limit={true} path="/profilelimit" />
+                                    <MyInfoList standard="나누다 포인트" current={100} limit={false} path="profilepoint" />
+                                    <MyInfoList standard="내 리뷰" current={10} limit={false} path="/profilereview" />
+                                    <MyInfoList standard="내가 구매한 상품" current={10} limit={false} path="/profileproduct" />
                                 </div>
                             </div>
                             <div style={{
@@ -430,10 +434,10 @@ export default function ProfileMain() {
 
                             width: "90vw",
                         }}>
-                            <MMyInfoList standard="나누다 한도" current={300000} limit={true} />
-                            <MMyInfoList standard="나누다 포인트" current={100} limit={false} />
-                            <MMyInfoList standard="내 리뷰" current={10} limit={false} />
-                            <MMyInfoList standard="내가 구매한 상품" current={10} limit={false} />
+                            <MMyInfoList standard="나누다 한도" current={300000} limit={true} path="/profilelimit" />
+                            <MMyInfoList standard="나누다 포인트" current={100} limit={false} path="profilepoint" />
+                            <MMyInfoList standard="내 리뷰" current={10} limit={false} path="/profilereview" />
+                            <MMyInfoList standard="내가 구매한 상품" current={10} limit={false} path="/profileproduct" />
                         </div>
                     </div>
                     <div style={{

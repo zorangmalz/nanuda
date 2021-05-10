@@ -6,8 +6,9 @@ import { useHistory, useRouteMatch } from "react-router";
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { Product, MProduct } from "./ReviewSelect";
 
-export default function ReviewPost(props) {
+export default function ReviewPost({match}) {
     let history = useHistory()
+    const { pk } = match.params
     const [data, setData] = useState({
         user_profile: "",
         user_nickname: "",
@@ -20,7 +21,7 @@ export default function ReviewPost(props) {
         review_dislikeNum: 0,
     })
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/review", {
+        fetch(`http://127.0.0.1:8000/review/${pk}`, {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -29,16 +30,17 @@ export default function ReviewPost(props) {
         })
             .then(response => response.json())
             .then(response => {
-                setData({...data, 
-                    user_profile: response[0].user_profile,
-                    user_nickname: response[0].user_nickname,
-                    review_image: response[0].review_image,
-                    review_date: response[0].review_date.slice(0, 10),
-                    review_score: response[0].review_score,
-                    review_like: response[0].review_like,
-                    review_dislike: response[0].review_dislike,
-                    review_likeNum: response[0].review_likeNum,
-                    review_dislikeNum: response[0].review_dislikeNum
+                setData({
+                    ...data,
+                    user_profile: response.user_profile,
+                    user_nickname: response.user_nickname,
+                    review_image: response.review_image,
+                    review_date: response.review_date.slice(0, 10),
+                    review_score: response.review_score,
+                    review_like: response.review_like,
+                    review_dislike: response.review_dislike,
+                    review_likeNum: response.review_likeNum,
+                    review_dislikeNum: response.review_dislikeNum
                 })
             })
         console.log(data)

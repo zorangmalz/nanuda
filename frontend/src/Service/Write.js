@@ -55,30 +55,31 @@ export default function Write() {
     }
 
     async function putServiceReview () {
-        await fetch("http://127.0.0.1:8000/servicereview/", {
+        var data = {
+            service_score: number, service_content: after, service_opinion: opinion
+        }
+        console.log(data)
+        const proxy = "https://cors-anywhere.herokuapp.com/"
+        await fetch(proxy + "http://127.0.0.1:8000/servicereview/", {
             method: "POST",
-            credentials: "include",
             headers: {
                 "Accept": "application/json",
                 'Content-type': 'application/json',
                 "Authrization": localStorage.getItem("access_token"),
                 "Access-Control-Allow-Origin": "*",
             },
-            body: JSON.stringify({
-                service_score: number,
-                service_content: after,
-                service_opinion: opinion
-            })
+            body: JSON.stringify(data)
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 if (response.token) {
                     localStorage.setItem("wtw-token", response.token);
                     history.push("/servicereview")
                 } else if (!response.token) {
                     alert("올바른 회원이 아닙니다")
                 }
-            })
+            }).catch(err => console.log(err))
     }
 
     return (

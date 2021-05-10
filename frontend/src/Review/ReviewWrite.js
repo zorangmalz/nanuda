@@ -91,7 +91,13 @@ export default function ReviewWrite() {
     //여러 이미지 경로 저장
     const handelFileInput = (e) => {
         const files = e.target.files;
-        for (let i = 0; i < files.length; i++) {
+        let length;
+        if (files.length > 2) {
+            length = 3;
+        } else {
+            length = files.length
+        }
+        for (let i = 0; i < length; i++) {
             setSelectedFile(selectedFile => [...selectedFile, files[i]])
             setFilePath(filePath => [...filePath, URL.createObjectURL(files[i])])
         }
@@ -114,19 +120,13 @@ export default function ReviewWrite() {
                     history.push("/reviewsuccess")
                 })
                 .send((err) => {
-                    if (err) console.log(err)
-                    history.push("/reviewfail")
+                    if (err) {
+                        console.log(err)
+                        history.push("/reviewfail")
+                    }
                 })
         }
     }
-
-    useEffect(() => {
-        console.log(selectedFile)
-        if (selectedFile.length > 3) {
-            setSelectedFile(item => item.filter((selectedFile, i) => i > 3))
-            setFilePath(item => item.filter((filePath, i) => i > 3))
-        }
-    }, [selectedFile])
 
     return (
         <>
@@ -268,7 +268,7 @@ export default function ReviewWrite() {
                                 marginTop: 16,
                                 resize: "none",
                             }} />
-                            <div onClick={() => history.push("/reviewsuccess")} style={{
+                            <div onClick={uploadFile} style={{
                                 borderRadius: 6,
                                 width: 440,
                                 paddingTop: 15,
@@ -406,7 +406,7 @@ export default function ReviewWrite() {
                         resize: "none",
                         alignSelf: "center",
                     }} />
-                    <div onClick={() => history.push("/reviewsuccess")} style={{
+                    <div onClick={uploadFile} style={{
                         borderRadius: 6,
                         width: "90vw",
                         paddingTop: "4vw",

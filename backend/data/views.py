@@ -52,7 +52,7 @@ def user_list(request):
 @permission_classes([IsAuthenticatedOrReadOnly])
 def service_review_all(request):
     if request.method == "GET":
-        service_review = ServiceReview.objects.all()
+        service_review = ServiceReview.objects.all().order_by("-service_date")
         service_review_serializer = ServicReviewAllSerializer(service_review, many=True)
         return Response(service_review_serializer.data)
     
@@ -99,6 +99,32 @@ def review_all(request):
             review_serializer.save()
             return Response(review_serializer.data, status=status.HTTP_201_CREATED)
         return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# Review 수정
+@api_view(["GET", "PUT", "DELETE"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def review_one(request, pk):
+    try:
+        review = Review.objects.get(pk=pk)
+    except Review.DoesNotExist():
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == "GET":
+        review_serializer = ReviewAllSerializer(review)
+        return Response(review_serializer.data)
+    
+    elif request.method == "PUT":
+        review_serializer = ReviewAllSerializer(review, data=request.data)
+        if request.user.is_authenticated and review_serializer.is_valid():
+            review_serializer.save()
+            return Response(review_serializer.data)
+        return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == 'DELETE':
+        review.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 # Order
 @api_view(["GET", "POST"])

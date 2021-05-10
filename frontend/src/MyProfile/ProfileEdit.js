@@ -106,6 +106,12 @@ export default function ProfileEdit() {
                                     buttonText="인증하기"
                                     onClick={onJobVerify}
                                 />
+                                <Profile
+                                    title="이메일 주소"
+                                    content="hyunmyung137@gmail.com"
+                                    marginRight={0}
+                                    width={440}
+                                />
                                 <div style={{
                                     fontSize: 16,
                                     opacity: 0.6,
@@ -215,6 +221,12 @@ export default function ProfileEdit() {
                             width={"90vw"}
                             buttonText="인증하기"
                             onClick={onJobVerify}
+                        />
+                        <MProfile
+                            title="이메일 주소"
+                            content="hyunmyung137@gmail.com"
+                            marginRight={0}
+                            width={"90vw"}
                         />
                         <div style={{
                             fontSize: 14,
