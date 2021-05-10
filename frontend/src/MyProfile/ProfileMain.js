@@ -356,7 +356,7 @@ export default function ProfileMain() {
                             </div>
                             <ManageList name="내 정보 관리" path="profileedit" />
                             <ManageList name="분할결제 스케쥴" path="profilepayment" />
-                            <ManageList name="결제 수단 관리" />
+                            <ManageList name="결제 수단 관리" path="addaccount" />
                             <BottomTag marginTop={120} marginBottom={0} />
                         </div>
                     </div>
@@ -483,7 +483,7 @@ export default function ProfileMain() {
                     </div>
                     <MManageList name="내 정보 관리" path="profileedit" />
                     <MManageList name="분할결제 스케쥴" path="profilepayment" />
-                    <MManageList name="결제 수단 관리" />
+                    <MManageList name="결제 수단 관리" path="addaccount" />
                     <MBottomTag marginTop={60} marginBottom={0} />
                 </div>
             </Mobile>

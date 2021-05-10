@@ -1,9 +1,25 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useRef, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BsFillStarFill, BsPlusCircle } from "react-icons/bs"
 import { useHistory } from "react-router";
 import { Product, MProduct } from "./ReviewSelect";
+import AWS from "aws-sdk";
+
+const AWS_ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
+const AWS_SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
+const S3_BUCKET = process.env.REACT_APP_S3_IMAGE_BUCKET
+const REGION = process.env.REACT_APP_REGION
+
+AWS.config.update({
+    accessKeyId: AWS_ACCESS_KEY,
+    secretAccessKey: AWS_SECRET_KEY
+})
+
+const imageBucket = new AWS.S3({
+    params: { Bucket: S3_BUCKET },
+    region: REGION
+})
 
 function reducer(state, action) {
     switch (action.type) {
@@ -56,6 +72,62 @@ export default function ReviewWrite() {
             [name]: value
         })
     }
+
+    //ImageToS3
+    //이미지 진행상황
+    const [progress, setProgress] = useState(0)
+
+    //이미지 컴포넌트
+    const inputFile = useRef(null)
+
+    //이미지 저장 및 경로
+    const [selectedFile, setSelectedFile] = useState([])
+    const [filePath, setFilePath] = useState([])
+
+    const onButtonclick = () => {
+        inputFile.current.click()
+    }
+
+    //여러 이미지 경로 저장
+    const handelFileInput = (e) => {
+        const files = e.target.files;
+        for (let i = 0; i < files.length; i++) {
+            setSelectedFile(selectedFile => [...selectedFile, files[i]])
+            setFilePath(filePath => [...filePath, URL.createObjectURL(files[i])])
+        }
+    }
+
+    //s3로 업로드 그러나 cors 에러로 보류
+    const uploadFile = () => {
+        for (let i = 0; i < selectedFile.length; i++) {
+            const params = {
+                ACL: "public-read",
+                Body: selectedFile[i],
+                Bucket: S3_BUCKET,
+                Key: selectedFile[i].name
+            }
+
+            imageBucket.putObject(params)
+                .on("httpUploadProgress", (evt) => {
+                    setProgress(Math.round((evt.loaded / evt.total) * 100))
+                    console.log(progress)
+                    history.push("/reviewsuccess")
+                })
+                .send((err) => {
+                    if (err) console.log(err)
+                    history.push("/reviewfail")
+                })
+        }
+    }
+
+    useEffect(() => {
+        console.log(selectedFile)
+        if (selectedFile.length > 3) {
+            setSelectedFile(item => item.filter((selectedFile, i) => i > 3))
+            setFilePath(item => item.filter((filePath, i) => i > 3))
+        }
+    }, [selectedFile])
+
     return (
         <>
             <Default>
@@ -123,11 +195,42 @@ export default function ReviewWrite() {
                             }}>사진을 첨부해주세요.(최대 3장)</div>
                             <div style={{
                                 display: "flex",
-                                flexDirection: "row"
+                                flexDirection: "row",
+                                paddingTop: 16,
                             }}>
-                                <ImagePut />
-                                <ImagePut />
-                                <ImagePut />
+                                {filePath.length < 3 ?
+                                    <div onClick={onButtonclick} style={{
+                                        marginLeft: 20,
+                                        width: 120,
+                                        height: 120,
+                                        borderRadius: 6,
+                                        backgroundColor: "#f2f3f8",
+                                        cursor: "pointer",
+
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center"
+                                    }}>
+                                        <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
+                                            display: "none"
+                                        }} />
+                                        <BsPlusCircle size={24} color="#051a1a" />
+                                    </div>
+                                    :
+                                    <></>
+                                }
+                                {filePath.length > 0 ?
+                                    filePath.map(item =>
+                                        <img src={item} style={{
+                                            width: 120,
+                                            height: 120,
+                                            resize: "cover",
+                                            marginLeft: 20,
+                                        }} />
+                                    )
+                                    :
+                                    <></>
+                                }
                             </div>
                             <div style={{
                                 marginTop: 32,
@@ -230,11 +333,42 @@ export default function ReviewWrite() {
                     }}>사진을 첨부해주세요.(최대 3장)</div>
                     <div style={{
                         display: "flex",
-                        flexDirection: "row"
+                        flexDirection: "row",
+                        paddingTop: "4vw",
                     }}>
-                        <MImagePut />
-                        <MImagePut />
-                        <MImagePut />
+                        {filePath.length < 3 ?
+                            <div onClick={onButtonclick} style={{
+                                marginLeft: "5vw",
+                                width: "25vw",
+                                height: "25vw",
+                                borderRadius: 6,
+                                backgroundColor: "#f2f3f8",
+                                cursor: "pointer",
+
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }}>
+                                <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
+                                    display: "none"
+                                }} />
+                                <BsPlusCircle size={20} color="#051a1a" />
+                            </div>
+                            :
+                            <></>
+                        }
+                        {filePath.length > 0 ?
+                            filePath.map(item =>
+                                <img src={item} style={{
+                                    width: "25vw",
+                                    height: "25vw",
+                                    resize: "cover",
+                                    marginLeft: "5vw",
+                                }} />
+                            )
+                            :
+                            <></>
+                        }
                     </div>
                     <div style={{
                         marginTop: "8vw",
@@ -295,23 +429,45 @@ export default function ReviewWrite() {
 }
 
 function ImagePut() {
+    //ImageToS3
+    const [progress, setProgress] = useState(0)
+    const [selectedFile, setSelectedFile] = useState(null)
+
+    const handelFileInput = (e) => {
+        setSelectedFile(e.target.files[0])
+        console.log(selectedFile)
+    }
+
+    const uploadFile = (file) => {
+        const params = {
+            ACL: "public-read",
+            Body: file,
+            Bucket: S3_BUCKET,
+            Key: file.name
+        }
+
+        imageBucket.putObject(params)
+            .on("httpUploadProgress", (evt) => {
+                setProgress(Math.round((evt.loaded / evt.total) * 100))
+                console.log(progress)
+            })
+            .send((err) => {
+                if (err) console.log(err)
+            })
+    }
     return (
-        <div style={{
+        <input onChange={selectedFile === null ? handelFileInput : () => console.log(selectedFile)} onClick={() => selectedFile === null ? console.log("이미지 없어") : uploadFile(selectedFile)} type="file" style={{
             marginLeft: 20,
             marginTop: 16,
             width: 120,
             height: 120,
             borderRadius: 6,
             backgroundColor: "#f2f3f8",
+            cursor: "pointer",
 
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-
-            cursor: "pointer"
         }}>
-            <BsPlusCircle size={24} color="#051a1a" />
-        </div>
+            {/* <BsPlusCircle size={24} color="#051a1a" /> */}
+        </input>
     )
 }
 
