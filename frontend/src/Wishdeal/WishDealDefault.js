@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header } from "../Style";
+import WebIntro, { Header,MHeader } from "../Style";
 import axios from "axios"
-// import ogs from "open-graph-scraper-lite"
-import ogs from "open-graph-scraper-lite"
 
 export default function WishDealDefault() {
     let history = useHistory();
@@ -32,8 +30,9 @@ export default function WishDealDefault() {
         );
         console.log(res)
         if (res.data.error == true) {
-            // history.push("/wishdealurl")
+            history.push("wishdealnoturl")
         } else {
+            history.push("wishdeal",{info:res.data.results})
             setLinkOrNot(true)
             setImage(res.data.results.ogImage.url)
             setTitle(res.data.results.ogTitle)
@@ -86,7 +85,7 @@ export default function WishDealDefault() {
                             height: "100vh",
                             backgroundColor: "#ffffff",
                         }}>
-                            <Header content="위시딜" />
+                            <Header content="위시딜" goBack={true}/>
                             <div style={{
                                 marginLeft: 20,
                                 marginTop: 32,
@@ -257,7 +256,7 @@ export default function WishDealDefault() {
                         height: "100vh",
                         backgroundColor: "#ffffff",
                     }}>
-                        <Header content="위시딜" />
+                        <MHeader content="위시딜" goBack={true}/>
                         <div style={{
                             marginLeft: "5vw",
                             marginTop: "8vw",
@@ -284,7 +283,7 @@ export default function WishDealDefault() {
                                 <div style={{ width: "90vw", marginTop: 8, height: 1, backgroundColor: "#f2f3f8" }}></div>
                             </div>
                         </div>
-                        <div onClick={() => history.push("/wishdealurl")} style={{
+                        <div onClick={ogtag} style={{
                             borderRadius: 8,
                             width: "90vw",
                             paddingTop: "4vw",

@@ -1,5 +1,5 @@
-import React, { useReducer, useState } from "react";
-import { useHistory } from "react-router";
+import React, { useReducer, useState, useEffect } from "react";
+import { useHistory ,useLocation} from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 
@@ -71,6 +71,7 @@ const MButton = ({ onClick, state, number, content }) => {
 }
 
 export default function WishDealURL() {
+  
     const [number, dispatch] = useReducer(reducerA, 0);
     const onYES = () => {
         dispatch({ type: 'YES' });

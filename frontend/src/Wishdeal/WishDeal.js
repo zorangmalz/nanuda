@@ -1,5 +1,5 @@
-import React, { useEffect, useReducer } from "react";
-import { useHistory } from "react-router";
+import React, { useEffect, useReducer, useState } from "react";
+import { useHistory,useLocation } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import axios from "axios"
@@ -66,7 +66,18 @@ function reducer(state, action) {
 
 export default function WishDeal() {
     let history = useHistory();
+    const [image,setImage]=useState("")
+    const [url,setUrl]=useState("                                        ")
+    const [title,setTitle]=useState("")
 
+    const location=useLocation()
+    useEffect(()=>{
+        const myparam=location.state.info
+        console.log(myparam)
+        setImage(myparam.ogImage.url)
+        setUrl(myparam.ogUrl)
+        setTitle(myparam.ogTitle)
+    },[])
     // useEffect(()=>{
     //     const options = { url: 'https://www.gucci.com/kr/ko/pr/women/womens-handbags/womens-hobos-shoulder-bags/gucci-horsebit-1955-small-shoulder-bag-p-6454541DB0G1000/' };
     //     ogs(options, (error, results, response) => {
@@ -145,30 +156,41 @@ export default function WishDeal() {
                                 fontSize: 18,
                                 fontFamily: "NotoSansCJKkr",
                                 color: "#202426",
-                            }}>사고싶은 상품 링크를 입력해주세요!</div>
-                            <input
-                                name="link"
-                                placeholder="링크"
-                                style={{
-                                    paddingBottom: 8,
-                                    marginTop: 16,
-                                    width: 440,
-                                    outline: 0,
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                                    borderTop: 0,
-                                    borderLeft: 0,
-                                    borderRight: 0,
-                                    alignSelf: "center"
-                                }}
-                            />
-                            <div style={{
-                                width: 440,
-                                height: 212,
-                                marginLeft: 20,
-                                marginRight: 20,
-                                marginTop: 16,
-                                backgroundColor: "#f2f3f8",
-                            }} />
+                            }}>상품 정보를 가져왔습니다</div>
+                           <div style={{
+                                        width: 440,
+                                        height: 140,
+                                        marginLeft: 20,
+                                        marginRight: 20,
+                                        marginTop: 32,
+
+                                    }}>
+                                        <img style={{
+                                            width: 440,
+                                            height: 200,
+                                            objectFit: "cover"
+                                        }} src={image}></img>
+                                    </div>
+                                    <div style={{
+                                        width: 440,
+                                        marginLeft: 20,
+                                        marginRight: 20,
+                                        marginTop: 32,
+                                        backgroundColor: "#f2f3f8",
+                                    }}>
+                                        <div stlye={{
+                                            fontSize: 14,
+                                            opacity: 0.6,
+                                            color: "#202426",
+
+                                        }}>{url.substr(0, 20)}...</div>
+                                        <div style={{
+                                            fontWeight: "bold",
+                                            marginTop: 8,
+                                            fontSize: 14
+                                        }}>{title}</div>
+
+                                    </div>
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
@@ -262,7 +284,7 @@ export default function WishDeal() {
                     height: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <Header content="위시딜" goBack={true} />
+                    <MHeader content="위시딜" goBack={true} />
                     <div style={{
                         marginLeft: "5vw",
                         marginTop: "8vw",
@@ -270,29 +292,42 @@ export default function WishDeal() {
                         fontSize: 16,
                         fontFamily: "NotoSansCJKkr",
                         color: "#202426",
-                    }}>사고싶은 상품 링크를 입력해주세요!</div>
-                    <input
-                        name="link"
-                        placeholder="링크"
-                        style={{
-                            paddingBottom: "2vw",
-                            marginTop: "4vw",
-                            width: "90vw",
-                            outline: 0,
-                            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                            borderTop: 0,
-                            borderLeft: 0,
-                            borderRight: 0,
-                            alignSelf: "center"
-                        }}
-                    />
-                    <div style={{
-                        width: "90vw",
-                        height: "50vw",
-                        marginTop: "4vw",
-                        alignSelf: "center",
-                        backgroundColor: "#f2f3f8",
-                    }} />
+                    }}>상품 정보를 가져왔습니다.</div>
+                   <div style={{
+                                        width: "90%",
+                                        height: 140,
+                                        marginLeft: 20,
+                                        marginRight: 20,
+                                        marginTop: 32,
+
+                                    }}>
+                                        <img style={{
+                                            width: "100%",
+                                            height: 200,
+                                            objectFit: "cover"
+                                        }} src={image}></img>
+                                    </div>
+                                    <div style={{
+                                        width: "90%",
+                                        marginLeft: 20,
+                                        marginRight: 20,
+                                        marginTop: 32,
+                                        backgroundColor: "#f2f3f8",
+                                    }}>
+                                        <div stlye={{
+                                            fontSize: 14,
+                                            opacity: 0.6,
+                                            color: "#202426",
+
+                                        }}>{url.substr(0, 20)}...</div>
+                                        <div style={{
+                                            fontWeight: "bold",
+                                            marginTop: 8,
+                                            fontSize: 14
+                                        }}>{title}</div>
+
+                                    </div>
+                
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
