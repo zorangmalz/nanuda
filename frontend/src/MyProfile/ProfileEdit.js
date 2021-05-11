@@ -112,20 +112,6 @@ export default function ProfileEdit() {
                                     marginRight={0}
                                     width={440}
                                 />
-                                <div style={{
-                                    fontSize: 16,
-                                    opacity: 0.6,
-                                    fontFamily: "NotoSansCJKkr",
-                                    color: "#202426",
-                                    marginLeft: 20,
-                                }}>기본 배송지</div>
-                                {basicAddress ? 
-                                    <BasicAddress 
-                                        item={item}
-                                    />
-                                    :
-                                    <NoAddress />
-                                }
                             </div>
                             <div style={{
                                 display: "flex",
@@ -228,18 +214,6 @@ export default function ProfileEdit() {
                             marginRight={0}
                             width={"90vw"}
                         />
-                        <div style={{
-                            fontSize: 14,
-                            opacity: 0.6,
-                            fontFamily: "NotoSansCJKkr",
-                            color: "#202426",
-                            marginLeft: "5vw",
-                        }}>기본 배송지</div>
-                        {basicAddress ?
-                            <MBasicAddress item={item} />
-                            :
-                            <MNoAddress />
-                        }
                     </div>
                     <div style={{
                         display: "flex",

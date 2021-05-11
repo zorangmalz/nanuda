@@ -189,18 +189,7 @@ export default function SignupProfile() {
                                 marginTop={16}
                                 fontSize={16}
                             />
-                            <Title>휴대폰번호</Title>
-                            <InputModule
-                                name="cellPhone"
-                                value={cellPhone}
-                                onChange={onChange}
-                                placeholder="휴대폰 번호를 입력해주세요."
-                                width={440}
-                                marginLeft={20}
-                                marginTop={16}
-                                fontSize={16}
-                            />
-                            <Title>이메일 주소(선택)</Title>
+                            <Title>이메일 주소</Title>
                             <InputModule
                                 name="email"
                                 value={email}
@@ -453,18 +442,7 @@ export default function SignupProfile() {
                         marginTop={12}
                         fontSize={12}
                     />
-                    <MTitle>휴대폰번호</MTitle>
-                    <InputModule
-                        name="cellPhone"
-                        value={cellPhone}
-                        onChange={onChange}
-                        placeholder="휴대폰 번호를 입력해주세요"
-                        width={"90vw"}
-                        marginLeft={"5vw"}
-                        marginTop={12}
-                        fontSize={12}
-                    />
-                    <MTitle>이메일 주소(선택)</MTitle>
+                    <MTitle>이메일 주소</MTitle>
                     <InputModule
                         name="email"
                         value={email}

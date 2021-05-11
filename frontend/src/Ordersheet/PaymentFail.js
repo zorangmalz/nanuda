@@ -75,6 +75,7 @@ export default function PaymentFail() {
                                 title="PRADA Model 23-9 limited edition berry expensive"
                                 price="460,000"
                                 name="김현명"
+                                orderNum="20200413137223-00-01"
                                 number="03770"
                                 address="서울 특별시 서대문구 북아현로 1길 17"
                                 addressDetail="e편한세상 203동 2104호"
@@ -150,6 +151,7 @@ export default function PaymentFail() {
                         title="PRADA Model 23-9 limited edition berry expensive"
                         price="460,000"
                         name="김현명"
+                        orderNum="20200413137223-00-01"
                         number="03770"
                         address="서울 특별시 서대문구 북아현로 1길 17"
                         addressDetail="e편한세상 203동 2104호"
@@ -183,7 +185,7 @@ export default function PaymentFail() {
     )
 }
 
-export function OrderDetail({wishTime, img, title, price, name, number, address, addressDetail, phoneNumber, deliveryClaim}) {
+export function OrderDetail({wishTime, img, title, price, name, orderNum, number, address, addressDetail, phoneNumber, deliveryClaim}) {
     return (
         <>
             {wishTime ?
@@ -250,6 +252,7 @@ export function OrderDetail({wishTime, img, title, price, name, number, address,
                         fontSize: 16,
                     }}>
                         받는사람 : {name} <br />
+                        주문번호 : {orderNum} <br />
                         우편번호 : {number} <br />
                         주소: {address} <br />
                         상세주소 : {addressDetail} <br />
@@ -264,7 +267,7 @@ export function OrderDetail({wishTime, img, title, price, name, number, address,
     )
 }
 
-export function MOrderDetail({wishTime, img, title, price, name, number, address, addressDetail, phoneNumber, deliveryClaim}) {
+export function MOrderDetail({wishTime, img, title, price, name, orderNum, number, address, addressDetail, phoneNumber, deliveryClaim}) {
     return (
         <>
             {wishTime ?
@@ -331,6 +334,7 @@ export function MOrderDetail({wishTime, img, title, price, name, number, address
                         fontSize: 14,
                     }}>
                         받는사람 : {name} <br />
+                        주문번호 : {orderNum} <br />
                         우편번호 : {number} <br />
                         주소: {address} <br />
                         상세주소 : {addressDetail} <br />
