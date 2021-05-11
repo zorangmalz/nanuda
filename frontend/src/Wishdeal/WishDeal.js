@@ -69,41 +69,20 @@ export default function WishDeal() {
     const [image,setImage]=useState("")
     const [url,setUrl]=useState("                                        ")
     const [title,setTitle]=useState("")
-
     const location=useLocation()
+    const myparam=location.state.info
+    
     useEffect(()=>{
-        const myparam=location.state.info
+        
         console.log(myparam)
         setImage(myparam.ogImage.url)
         setUrl(myparam.ogUrl)
         setTitle(myparam.ogTitle)
+        
     },[])
-    // useEffect(()=>{
-    //     const options = { url: 'https://www.gucci.com/kr/ko/pr/women/womens-handbags/womens-hobos-shoulder-bags/gucci-horsebit-1955-small-shoulder-bag-p-6454541DB0G1000/' };
-    //     ogs(options, (error, results, response) => {
-    //       console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-    //       console.log('results:', results); // This contains all of the Open Graph results
-    //       console.log('response:', response); // This contains the HTML of page
-    //     });
-    // },[])
-
-    const ogtag = async (url) => {
-        let res = await axios.post(
-            "http://localhost:3001/api",
-            {
-                params:
-                {
-                    code: url
-                },
-            }
-        );
-        console.log(res)
-    }
-    useEffect(() => {
-        ogtag("https://store.musinsa.com/app/goods/1149329?loc=goods_rank")
-    }, [])
-
+ 
     const [type, dispatch] = useReducer(reducer, 0)
+    
     const onElectronic = () => {
         dispatch({ type: "ELECTRONIC" })
     }
@@ -116,7 +95,29 @@ export default function WishDeal() {
     const onETC = () => {
         dispatch({ type: "ETC" })
     }
+    const [text, setText] = useState('')  
 
+    const onChange = (e) => {
+    	console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
+        console.log(e.target.value)	//이벤트가 발생한 타겟의 Value를 출력
+    	setText(e.target.value)		//이벤트 발생한 value값으로 {text} 변경
+}
+
+
+    function move(){
+        console.log(type)
+        if(type===0){
+            console.log("0")
+        }else if(type==1){
+            history.push("/wishdealurl",{param:myparam,code:1,des:text})
+        }else if(type==2){
+            history.push("/wishdealurl",{param:myparam,code:2,des:text})
+        }else if(type==3){
+            history.push("/wishdealurl",{param:myparam,code:3,des:text})
+        }else if(type==4){
+            history.push("/wishdealurl",{code:4,param:myparam,des:text})
+        }
+    }
     return (
         <>
             <Default>
@@ -247,6 +248,8 @@ export default function WishDeal() {
                                 />
                             </div>
                             {type === 4 ? <input
+                            onChange={onChange}
+                            
                                 placeholder="기타 항목을 입력해주세요. (필수)"
                                 style={{
                                     paddingBottom: 8,
@@ -264,11 +267,22 @@ export default function WishDeal() {
                                     color: "#202426"
                                 }}
                             /> : <></>}
-                            <StandardButton
-                                text="다음"
-                                route="/wishdealurl"
-                                marginTop={32}
-                            />
+                            <div onClick={move} style={{
+                width: 440,
+                paddingTop: 16,
+                paddingBottom: 16,
+                borderRadius: 6,
+                backgroundColor: "#2dd9d3",
+                alignSelf: "center",
+                cursor: "pointer",
+                marginTop: 32,
+
+                fontSize: 18,
+                fontWeight: "bold",
+                fontFamily: "NotoSansCJKkr",
+                color: "#ffffff",
+                textAlign: "center"
+            }}>다음</div>
                         </div>
                     </div>
                 </div>
@@ -384,6 +398,7 @@ export default function WishDeal() {
                         />
                     </div>
                     {type === 4 ? <input
+                        onChange={onChange}
                         placeholder="기타 항목을 입력해주세요. (필수)"
                         style={{
                             paddingBottom: "2vw",
@@ -401,11 +416,22 @@ export default function WishDeal() {
                             color: "#202426"
                         }}
                     /> : <></>}
-                    <MStandardButton
-                        text="다음"
-                        route="/wishdealurl"
-                        marginTop={"8vw"}
-                    />
+                   <div onClick={move} style={{
+            width: "90vw",
+            paddingTop: "4vw",
+            paddingBottom: "4vw",
+            backgroundColor: "#2dd9d3",
+            alignSelf: "center",
+            cursor: "pointer",
+            marginTop: 32,
+            borderRadius: 6,
+
+            fontSize: 16,
+            fontWeight: "bold",
+            fontFamily: "NotoSansCJKkr",
+            color: "#ffffff",
+            textAlign: "center"
+        }}>다음</div>
                 </div>
             </Mobile>
         </>

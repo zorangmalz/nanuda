@@ -71,7 +71,13 @@ const MButton = ({ onClick, state, number, content }) => {
 }
 
 export default function WishDealURL() {
-  
+    const location=useLocation()
+    const myparam=location.state.param
+    const code=location.state.code
+    const des=location.state.des
+    useEffect(()=>{
+        console.log(myparam,code,des)
+    },[])
     const [number, dispatch] = useReducer(reducerA, 0);
     const onYES = () => {
         dispatch({ type: 'YES' });
