@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
@@ -38,8 +39,8 @@ class User(models.Model):
     
 
 class ServiceReview(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.PROTECT)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user_id = models.ForeignKey(User, on_delete=models.PROTECT, blank=True, null=True)
     service_date = models.DateTimeField(auto_now_add=True)
     service_score = models.FloatField(default=5.0, blank=True)
     service_content = models.CharField(max_length=300, blank=True, null=True)
@@ -62,7 +63,7 @@ class ServiceReview(models.Model):
         ordering = ["id", "service_date"]
     
 class Product(models.Model):
-    id = models.BigAutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     product_type = models.CharField(blank=True, default="제품 종류", max_length=10)
     product_source = models.URLField()
     product_name = models.CharField(blank=True, default="제품 이름", max_length=10)
@@ -81,7 +82,7 @@ class Product(models.Model):
 
 
 class Review(models.Model):
-    id = models.BigAutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.PROTECT)
     product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
     review_score = models.FloatField(default=5.0, blank=True)
@@ -106,7 +107,7 @@ class Review(models.Model):
         ordering=["id", "review_date"]
 
 class Order(models.Model):
-    id = models.BigAutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.PROTECT)
     product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
     order_date = models.DateTimeField(auto_now_add=True)
