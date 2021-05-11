@@ -1,15 +1,5 @@
-from django.shortcuts import render, redirect
-from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
-from rest_auth.registration.views import SocialLoginView
-from django.views.generic import View
-from django.http import HttpResponse,JsonResponse
-import requests
-import json
-
 #보안
-import jwt
 from dotenv import load_dotenv
-import os
 
 # API 제작 - 상태, 기능, 인증, 권한, Header(JSON)
 from rest_framework import status

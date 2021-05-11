@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { AiOutlineClose } from "react-icons/ai";
-import { useHistory } from "react-router";
 
 export default function PaymentFail() {
     //타임딜 여부
     const [timeDeal, setTimeDeal] = useState(true)
-
-    //화면 변경
-    let history = useHistory()
     return (
         <>
             <Default>
@@ -82,27 +78,11 @@ export default function PaymentFail() {
                                 phoneNumber="010-4337-6607"
                                 deliveryClaim="집 앞"
                             />
-                            <div onClick={() => timeDeal ? history.push("/ordersheet") : history.push("/")} style={{
-                                borderRadius: 8,
-                                width: 440,
-                                height: 56,
-                                marginLeft: 20,
-                                marginRight: 20,
-                                marginTop: 32,
-                                backgroundColor: "#2dd9d3",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                fontFamily: "NotoSansCJKkr",
-                                cursor: "pointer",
-                            }}><div style={{
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                            }}>{timeDeal ? "주문서로 돌아가기" : "홈으로"}</div></div>
+                            <StandardButton 
+                                text={timeDeal ? "주문서로 돌아가기" : "홈으로"}
+                                route={timeDeal ? "/ordersheet" : "/"}
+                                marginTop={32}
+                            />
                         </div>
                     </div>
                 </div>
@@ -117,6 +97,7 @@ export default function PaymentFail() {
                     width: "100%",
                     height: "100vh",
                     backgroundColor: "#ffffff",
+                    paddingBottom: "5vw"
                 }}>
                     <MHeader content={timeDeal ? "작성 실패" : "주문 결과"} goX={true} />
                     <div style={{
@@ -158,27 +139,11 @@ export default function PaymentFail() {
                         phoneNumber="010-4337-6607"
                         deliveryClaim="집 앞"
                     />
-                    <div onClick={() => timeDeal ? history.push("/ordersheet") : history.push("/")} style={{
-                        borderRadius: 8,
-                        width: "90%",
-                        height: 56,
-                        marginLeft: 20,
-                        marginRight: 20,
-                        marginTop: 32,
-                        backgroundColor: "#2dd9d3",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        color: "#ffffff",
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        fontFamily: "NotoSansCJKkr",
-                        cursor: "pointer",
-                    }}><div style={{
-                        color: "#ffffff",
-                        fontSize: 18,
-                        fontWeight: "bold",
-                    }}>{timeDeal ? "주문서로 돌아가기" : "홈으로"}</div></div>
+                    <MStandardButton
+                        text={timeDeal ? "주문서로 돌아가기" : "홈으로"}
+                        route={timeDeal ? "/ordersheet" : "/"}
+                        marginTop={"8vw"}
+                    />
                 </div>
             </Mobile>
         </>

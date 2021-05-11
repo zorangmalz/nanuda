@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
 import { MOrderDetail, OrderDetail } from "./PaymentFail";
 import { useHistory } from "react-router";
@@ -84,21 +84,11 @@ export default function PaymentSuccess() {
                                 phoneNumber="010-4337-6607"
                                 deliveryClaim="집 앞"
                             />
-                            <div onClick={goHome} style={{
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                backgroundColor: "#2dd9d3",
-                                borderRadius: 6,
-                                marginTop: 32,
-
-                                textAlign: "center",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                cursor: "pointer",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>홈으로</div>
+                            <StandardButton 
+                                text="홈으로"
+                                marginTop={32}
+                                route="/"
+                            />
                             <div onClick={goReview} style={{
                                 width: 440,
                                 paddingTop: 15,
@@ -165,36 +155,28 @@ export default function PaymentSuccess() {
                         phoneNumber="010-4337-6607"
                         deliveryClaim="집 앞"
                     />
-                    <div onClick={goHome} style={{
-                        width: "90%",
-                        paddingTop: 8,
-                        paddingBottom: 8,
-                        backgroundColor: "#2dd9d3",
-                        borderRadius: 6,
-                        marginTop: 32,
-
-                        textAlign: "center",
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        color: "#ffffff",
-                        cursor: "pointer",
-                        fontFamily: "NotoSansCJKkr"
-                    }}>홈으로</div>
-                    <div onClick={goReview} style={{
-                        width: "90%",
-                        paddingTop: 8,
-                        paddingBottom: 8,
+                    <MStandardButton 
+                        text="홈으로"
+                        route="/"
+                        marginTop={"8vw"}
+                    />
+                    <div onClick={() => history.push("/review")} style={{
+                        width: "90vw",
+                        paddingTop: "4vw",
+                        paddingBottom: "4vw",
                         backgroundColor: "#ffffff",
+                        alignSelf: "center",
+                        cursor: "pointer",
+                        marginTop: "4vw",
+                        marginBottom: "4vw",
                         borderRadius: 6,
-                        marginTop: 8,
                         border: "1px solid #dfdfdf",
 
-                        textAlign: "center",
                         fontSize: 16,
                         opacity: 0.6,
-                        color: "#051a1a",
-                        cursor: "pointer",
                         fontFamily: "NotoSansCJKkr",
+                        color: "#051a1a",
+                        textAlign: "center"
                     }}>내 리뷰 확인하기</div>
                 </div>
             </Mobile>
