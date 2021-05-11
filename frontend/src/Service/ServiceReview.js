@@ -200,7 +200,7 @@ function Review({ item }) {
             <div style={{
                 width: 408,
                 padding: 16,
-                paddingBottom: 40,
+                height: 138,
                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
                 display: "flex",
                 flexDirection: "column",
@@ -259,15 +259,15 @@ function MReview({ item }) {
     return (
         <>
             <div style={{
-                width: "82%",
-                padding: "4%",
-                paddingBottom: "10%",
+                width: "82vw",
+                padding: "4vw",
+                height: "32vw",
                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
                 alignSelf: "center",
-                marginTop: 32,
+                marginTop: "8vw",
                 borderRadius: 6,
             }}>
                 <div style={{
@@ -284,7 +284,7 @@ function MReview({ item }) {
                     justifyContent: "space-between",
 
                     width: "100%",
-                    marginBottom: 8,
+                    marginBottom: "2vw",
                 }}>
                     <div style={{
                         opacity: 0.4,

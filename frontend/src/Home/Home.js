@@ -31,32 +31,32 @@ export default function Home() {
 
     //Get Review Data
     const [reviewData, setReviewData] = useState([])
-    // useEffect(() => {
-    //     setReviewData([])
-    //     fetch("http://127.0.0.1:8000/servicereview", {
-    //         method: "GET",
-    //         headers: {
-    //             'Content-type': 'application/json',
-    //             'Accept': 'application/json'
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(response => {
-    //             var array = []
-    //             for (var i = 0; i < 2; i++) {
-    //                 const data = {
-    //                     service_score: response[i].service_score,
-    //                     user_name: response[i].user_name,
-    //                     user_age: response[i].user_age,
-    //                     user_gender: response[i].user_gender,
-    //                     service_date: response[i].service_date,
-    //                     service_content: response[i].service_content,
-    //                 }
-    //                 array.push(data)
-    //             }
-    //             setReviewData(reviewData.concat(array))
-    //         })
-    // }, [])
+    useEffect(() => {
+        setReviewData([])
+        fetch("http://127.0.0.1:8000/servicereview", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                var array = []
+                for (var i = 0; i < 2; i++) {
+                    const data = {
+                        service_score: response[i].service_score,
+                        user_name: response[i].user_name,
+                        user_age: response[i].user_age,
+                        user_gender: response[i].user_gender,
+                        service_date: response[i].service_date,
+                        service_content: response[i].service_content,
+                    }
+                    array.push(data)
+                }
+                setReviewData(reviewData.concat(array))
+            })
+    }, [])
 
     return (
         <>
@@ -1032,7 +1032,6 @@ function MReview({ item }) {
                 width: "82vw",
                 padding: "4vw",
                 height: "32vw",
-                paddingBottom: "10%",
                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
                 display: "flex",
                 flexDirection: "column",

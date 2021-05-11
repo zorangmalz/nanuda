@@ -26,11 +26,15 @@ from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, Pro
 #Python 내장함수
 from datetime import date
 
+
+# 추후에 View에 추가할 요소
+# @permission_classes([IsAuthenticatedOrReadOnly])
+# 이 Decorator를 사용하는 것이 중요
+
 # User Information
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
-@permission_classes([IsAuthenticated])
 def user_list(request):
     if request.method == "GET":
         users = User.objects.all()
@@ -49,7 +53,6 @@ def user_list(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
-@permission_classes([IsAuthenticatedOrReadOnly])
 def service_review_all(request):
     if request.method == "GET":
         service_review = ServiceReview.objects.all().order_by("-service_date")
@@ -58,7 +61,7 @@ def service_review_all(request):
     
     elif request.method == "POST":
         service_review_serializer = ServicReviewAllSerializer(data=request.data)
-        if request.user.is_authenticated and service_review_serializer.is_valid():
+        if service_review_serializer.is_valid():
             service_review_serializer.save()
             return Response(service_review_serializer.data, status=status.HTTP_201_CREATED)
         return Response(service_review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -68,7 +71,6 @@ def service_review_all(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
-@permission_classes([IsAuthenticatedOrReadOnly])
 def product_all(request):
     if request.method == "GET":
         product = Product.objects.all()
@@ -86,7 +88,6 @@ def product_all(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
-@permission_classes([IsAuthenticatedOrReadOnly])
 def review_all(request):
     if request.method == "GET":
         review = Review.objects.all()
@@ -95,7 +96,7 @@ def review_all(request):
     
     elif request.method == "POST":
         review_serializer = ReviewAllSerializer(data=request.data)
-        if request.user.is_authenticated and review_serializer.is_valid():
+        if review_serializer.is_valid():
             review_serializer.save()
             return Response(review_serializer.data, status=status.HTTP_201_CREATED)
         return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -104,7 +105,6 @@ def review_all(request):
 @api_view(["GET", "PUT", "DELETE"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
-@permission_classes([IsAuthenticatedOrReadOnly])
 def review_one(request, pk):
     try:
         review = Review.objects.get(pk=pk)
@@ -117,7 +117,7 @@ def review_one(request, pk):
     
     elif request.method == "PUT":
         review_serializer = ReviewAllSerializer(review, data=request.data)
-        if request.user.is_authenticated and review_serializer.is_valid():
+        if review_serializer.is_valid():
             review_serializer.save()
             return Response(review_serializer.data)
         return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -130,7 +130,6 @@ def review_one(request, pk):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
-@permission_classes([IsAuthenticatedOrReadOnly])
 def order_all(request):
     if request.method == "GET":
         order = Order.objects.all()

@@ -56,16 +56,15 @@ export default function Write() {
 
     async function putServiceReview () {
         var data = {
-            service_score: number, service_content: after, service_opinion: opinion
+            service_score: number, service_content: after, service_opinion: opinion, user_id: 7
         }
         console.log(data)
         const proxy = "https://cors-anywhere.herokuapp.com/"
-        await fetch(proxy + "http://127.0.0.1:8000/servicereview/", {
+        await fetch("/servicereview/", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
                 'Content-type': 'application/json',
-                "Authrization": localStorage.getItem("access_token"),
                 "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify(data)
@@ -78,6 +77,7 @@ export default function Write() {
                     history.push("/servicereview")
                 } else if (!response.token) {
                     alert("올바른 회원이 아닙니다")
+                    history.replace("/servicereview")
                 }
             }).catch(err => console.log(err))
     }
@@ -286,22 +286,22 @@ export default function Write() {
                             fontFamily: "NotoSansCJKkr"
                         }} />
                     </div>
-                    <div onClick={() => history.push("/servicereview")} style={{
-                        width: "90%",
-                        marginLeft: "5%",
-                        paddingTop: 8,
-                        paddingBottom: 8,
-                        backgroundColor: "#2dd8d3",
-                        borderRadius: 6,
+                    <div onClick={putServiceReview} style={{
+                        width: "90vw",
+                        paddingTop: "4vw",
+                        paddingBottom: "4vw",
+                        backgroundColor: "#2dd9d3",
+                        alignSelf: "center",
                         cursor: "pointer",
+                        marginTop: "7vw",
+                        marginBottom: "5vw",
+                        borderRadius: 6,
 
                         fontSize: 16,
                         fontWeight: "bold",
-                        textAlign: "center",
+                        fontFamily: "NotoSansCJKkr",
                         color: "#ffffff",
-                        marginTop: 24,
-                        marginBottom: 20,
-                        fontFamily: "NotoSansCJKkr"
+                        textAlign: "center"
                     }}>작성 완료</div>
                 </div>
             </Mobile>
