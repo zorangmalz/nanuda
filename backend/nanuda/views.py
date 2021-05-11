@@ -4,6 +4,7 @@ from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
 from django.views.generic import View
 from django.http import HttpResponse,JsonResponse
+from django.db.models import Count
 import requests
 import json
 
@@ -26,6 +27,9 @@ from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, Pro
 
 #Python 내장함수
 from datetime import date
+
+# class JobPhone(View):
+#     def get(self, request):
 
 class userInfoName(View):
     def get(self, request):
@@ -96,11 +100,11 @@ class KakaoLogin(View):
         }
         kakao_response=requests.post(url,headers=headers)
         kakao_response=json.loads(kakao_response.text)
-        print(kakao_response)
+        # print(kakao_response)
         if User.objects.filter(uid=kakao_response['id']).exists():
             user    = User.objects.get(uid=kakao_response['id'])
             jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY,ALGORITHM)
-            print(jwt_token)
+            # print(jwt_token)
            
             
             res=HttpResponse({"success":True})
@@ -109,7 +113,8 @@ class KakaoLogin(View):
             return res
 
         else: 
-            
+            q=User.objects.annotate(Count("name"))
+            print(q.count())
             print(kakao_response['kakao_account']['gender'])
             if kakao_response['kakao_account']['gender']=="male":
                 gender=0
@@ -121,6 +126,7 @@ class KakaoLogin(View):
                 user_email=kakao_response['kakao_account'].get('email',None),
                 name=kakao_response['properties']['nickname'],
                 gender=gender,
+                nickname="나누다"+str(q.count()+1)
                 
             ).save()
             user    = User.objects.get(uid=kakao_response['id'])
