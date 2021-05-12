@@ -112,7 +112,8 @@ export default function ProfileDelete() {
                             <StandardButton
                                 marginTop={32}
                                 text="탈퇴하기"
-                                route={"/"}
+                                onClick={() => history.replace("/")}
+                                state={true}
                             />
                         </div>
                     </div>
@@ -202,7 +203,8 @@ export default function ProfileDelete() {
                     <MStandardButton
                         marginTop={"8vw"}
                         text="탈퇴하기"
-                        route="/"
+                        onClick={() => history.replace("/")}
+                        state={true}
                     />
                 </div>
             </Mobile>

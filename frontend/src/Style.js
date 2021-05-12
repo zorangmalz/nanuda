@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import logoS from "./images/logoS.png"
 import bell from "./images/bell.png"
 import user from "./images/users.png"
@@ -159,33 +159,33 @@ export function MHeader({ content, goBack, goX }) {
 
 export function HomeHeader() {
     let history = useHistory()
-    const [log,setLog]=useState(false)
-    useEffect(()=>{
+    const [log, setLog] = useState(false)
+    useEffect(() => {
         test()
-    },[])
-    const test=async()=>{
+    }, [])
+    const test = async () => {
         console.log("come")
-        let response=await axios.get(
+        let response = await axios.get(
             "http://localhost:8000/userInfoName/",
             { withCredentials: true }
         )
 
-        console.log(response.data.data,"hererere")
-        
+        console.log(response.data.data, "hererere")
+
         setLog(response.data.data)
     }
-    function noticeClick(){
-        if(log==true){
+    function noticeClick() {
+        if (log == true) {
             history.push("/notice")
-        }else{
+        } else {
             history.push("/signup")
         }
-    }   
-    function profileClick(){
-        if(log==true){
+    }
+    function profileClick() {
+        if (log == true) {
             history.push("/profilemain")
-            console.log("here",log)
-        }else{
+            console.log("here", log)
+        } else {
             history.push("/signup")
             console.log("there")
         }
@@ -211,7 +211,7 @@ export function HomeHeader() {
             }}>
                 <img alt="" src={logoS} onClick={() => history.replace("/")} style={{
                     width: 24,
-                    height: 24, 
+                    height: 24,
                     cursor: "pointer"
                 }} />
                 <div style={{
@@ -233,12 +233,12 @@ export function HomeHeader() {
             }}>
                 <img onClick={noticeClick} alt="" src={bell} style={{
                     width: 28,
-                    height: 28, 
+                    height: 28,
                     cursor: "pointer"
                 }} />
                 <img onClick={profileClick} alt="" src={user} style={{
                     width: 28,
-                    height: 28, 
+                    height: 28,
                     marginLeft: 8,
                     cursor: "pointer"
                 }} />
@@ -249,13 +249,13 @@ export function HomeHeader() {
 
 export function MHomeHeader() {
     let history = useHistory()
-    const [log,setLog]=useState("")
-    useEffect(()=>{
+    const [log, setLog] = useState("")
+    useEffect(() => {
         test()
-    },[])
-    const test=async()=>{
+    }, [])
+    const test = async () => {
         console.log("come")
-        let response=await axios.get(
+        let response = await axios.get(
             "http://localhost:8000/userInfoName/",
             { withCredentials: true }
         )
@@ -263,17 +263,17 @@ export function MHomeHeader() {
         console.log(response.data)
         setLog(response.data)
     }
-    function noticeClick(){
-        if(log==true){
+    function noticeClick() {
+        if (log == true) {
             history.push("/notice")
-        }else{
+        } else {
             history.push("/signup")
         }
-    }   
-    function profileClick(){
-        if(log==true){
+    }
+    function profileClick() {
+        if (log == true) {
             history.push("/profilemain")
-        }else{
+        } else {
             history.push("/signup")
         }
     }
@@ -949,16 +949,16 @@ export function LimitBox() {
     )
 }
 
-export function StandardButton({ marginTop, text, route }) {
+export function StandardButton({ marginTop, text, onClick, state }) {
     let history = useHistory()
     return (
         <>
-            <div onClick={() => route === "goback" ? history.goBack() : history.push(route)} style={{
+            <div onClick={onClick} style={{
                 width: 440,
                 paddingTop: 16,
                 paddingBottom: 16,
                 borderRadius: 6,
-                backgroundColor: "#2dd9d3",
+                backgroundColor: state ? "#2dd9d3" : "#dbdbdb",
                 alignSelf: "center",
                 cursor: "pointer",
                 marginTop: marginTop,
@@ -973,14 +973,14 @@ export function StandardButton({ marginTop, text, route }) {
     )
 }
 
-export function MStandardButton({marginTop, text, route}) {
+export function MStandardButton({ marginTop, text, onClick, state }) {
     let history = useHistory()
     return (
-        <div onClick={() => route === "goback" ? history.goBack() : history.push(route)} style={{
+        <div onClick={onClick} style={{
             width: "90vw",
             paddingTop: "4vw",
             paddingBottom: "4vw",
-            backgroundColor: "#2dd9d3",
+            backgroundColor: state ? "#2dd9d3" : "#dbdbdb",
             alignSelf: "center",
             cursor: "pointer",
             marginTop: marginTop,

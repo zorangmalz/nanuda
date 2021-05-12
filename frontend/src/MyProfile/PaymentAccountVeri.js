@@ -36,6 +36,8 @@ export default function PaymentAccountVeri() {
     //약관 동의
     const [self, setSelf] = useState(false)
     const [pay, setPay] = useState(false)
+
+    let history = useHistory()
     return (
         <>
             <Default>
@@ -232,7 +234,8 @@ export default function PaymentAccountVeri() {
                             <StandardButton 
                                 text="다음"
                                 marginTop={32}
-                                route="/paymentars"
+                                onClick={() => history.push("/paymentars")}
+                                state={true}
                             />
                         </div>
                     </div>
@@ -413,7 +416,8 @@ export default function PaymentAccountVeri() {
                     <MStandardButton
                         text="다음"
                         marginTop={"8vw"}
-                        route="/paymentars"
+                        onClick={() => history.push("/paymentars")}
+                        state={true}
                     />
                 </div>
             </Mobile>

@@ -5,6 +5,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 
 export default function PaymentAddAccount() {
+    let history = useHistory()
     return (
         <>
             <Default>
@@ -64,7 +65,8 @@ export default function PaymentAddAccount() {
                             <StandardButton 
                                 marginTop={32}
                                 text="다음"
-                                route="/paymentaccountveri"
+                                onClick={() => history.push("/paymentaccountveri")}
+                                state={true}
                             />
                         </div>
                     </div>
@@ -108,7 +110,8 @@ export default function PaymentAddAccount() {
                     <MStandardButton
                         marginTop={16}
                         text="다음"
-                        route="/paymentaccountveri"
+                        onClick={() => history.push("/paymentaccountveri")}
+                        state={true}
                     />
                 </div>
             </Mobile>

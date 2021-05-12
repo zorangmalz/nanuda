@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { AiOutlineClose } from "react-icons/ai";
+import { useHistory } from "react-router";
 
 export default function PaymentFail() {
     //타임딜 여부
     const [timeDeal, setTimeDeal] = useState(true)
+
+    let history = useHistory()
     return (
         <>
             <Default>
@@ -80,7 +83,8 @@ export default function PaymentFail() {
                             />
                             <StandardButton 
                                 text={timeDeal ? "주문서로 돌아가기" : "홈으로"}
-                                route={timeDeal ? "/ordersheet" : "/"}
+                                onClick={timeDeal ? () => history.push("/ordersheet") : () => history.replace("/")}
+                                state={true}
                                 marginTop={32}
                             />
                         </div>
@@ -141,7 +145,8 @@ export default function PaymentFail() {
                     />
                     <MStandardButton
                         text={timeDeal ? "주문서로 돌아가기" : "홈으로"}
-                        route={timeDeal ? "/ordersheet" : "/"}
+                        onClick={timeDeal ? () => history.push("/ordersheet") : () => history.replace("/")}
+                        state={true}
                         marginTop={"8vw"}
                     />
                 </div>

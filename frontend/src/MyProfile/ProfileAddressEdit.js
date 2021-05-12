@@ -203,7 +203,8 @@ export default function ProfileAddressEdit() {
                             <StandardButton 
                                 marginTop={32}
                                 text="수정 완료"
-                                route="goback"
+                                onClick={() => history.goBack()}
+                                state={true}
                             />
                         </div>
                     </div>
@@ -273,7 +274,8 @@ export default function ProfileAddressEdit() {
                     <MStandardButton
                         marginTop={32}
                         text="수정 완료"
-                        route="goback"
+                        onClick={() => history.goBack()}
+                        state={true}
                     />
                 </div>
             </Mobile>

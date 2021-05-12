@@ -20,7 +20,7 @@ export default function ServiceReview() {
                 var array = []
                 for (var i = 0; i < response.length; i++) {
                     const data = {
-                        service_score: response[i].service_score,
+                        service_score: response[i].service_score.toFixed(1),
                         user_name: response[i].user_name,
                         user_age: response[i].user_age,
                         user_gender: response[i].user_gender,

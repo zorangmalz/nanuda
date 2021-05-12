@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
+import WebIntro, { Header, MHeader } from "../Style";
 import point from "../images/point.png"
 
 export default function Alarm() {

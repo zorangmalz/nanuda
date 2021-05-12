@@ -87,7 +87,8 @@ export default function PaymentSuccess() {
                             <StandardButton 
                                 text="홈으로"
                                 marginTop={32}
-                                route="/"
+                                onClick={() => history.replace("/")}
+                                state={true}
                             />
                             <div onClick={goReview} style={{
                                 width: 440,
@@ -155,9 +156,10 @@ export default function PaymentSuccess() {
                         phoneNumber="010-4337-6607"
                         deliveryClaim="집 앞"
                     />
-                    <MStandardButton 
+                    <MStandardButton
                         text="홈으로"
-                        route="/"
+                        onClick={() => history.replace("/")}
+                        state={true}
                         marginTop={"8vw"}
                     />
                     <div onClick={() => history.push("/review")} style={{

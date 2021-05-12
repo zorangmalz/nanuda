@@ -2,8 +2,10 @@ import React from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import point from "../images/point.png"
+import { useHistory } from "react-router";
 
 export default function SingupComplete() {
+    let history = useHistory()
     return (
         <>
             <Default>
@@ -58,7 +60,8 @@ export default function SingupComplete() {
                             <StandardButton
                                 text="나누다 시작하기"
                                 marginTop={32}
-                                route="/"
+                                onClick={() => history.replace("/")}
+                                state={true}
                             />
                         </div>
                     </div>
@@ -100,7 +103,8 @@ export default function SingupComplete() {
                     <MStandardButton
                         text="나누다 시작하기"
                         marginTop={"8vw"}
-                        route="/"
+                        onClick={() => history.replace("/")}
+                        state={true}
                     />
                 </div>
             </Mobile>
