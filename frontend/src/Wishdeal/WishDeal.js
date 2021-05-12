@@ -69,6 +69,7 @@ export default function WishDeal() {
     const [image,setImage]=useState("")
     const [url,setUrl]=useState("                                        ")
     const [title,setTitle]=useState("")
+    const [state,setState]=useState(false)
     const location=useLocation()
     const myparam=location.state.info
     
@@ -85,12 +86,15 @@ export default function WishDeal() {
     
     const onElectronic = () => {
         dispatch({ type: "ELECTRONIC" })
+        setState(true)
     }
     const onFashion = () => {
         dispatch({ type: "FASHION" })
+        setState(true)
     }
     const onLuxury = () => {
         dispatch({ type: "LUXURY" })
+        setState(true)
     }
     const onETC = () => {
         dispatch({ type: "ETC" })
@@ -100,7 +104,8 @@ export default function WishDeal() {
     const onChange = (e) => {
     	console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
         console.log(e.target.value)	//이벤트가 발생한 타겟의 Value를 출력
-    	setText(e.target.value)		//이벤트 발생한 value값으로 {text} 변경
+        setText(e.target.value)		//이벤트 발생한 value값으로 {text} 변경
+        setState(true)
 }
 
 
@@ -229,16 +234,10 @@ export default function WishDeal() {
                                     onClick={onElectronic}
                                 />
                                 <TypeButton
-                                    text="패션"
+                                    text="명품&패션"
                                     variable={type}
                                     number={2}
                                     onClick={onFashion}
-                                />
-                                <TypeButton
-                                    text="명품"
-                                    variable={type}
-                                    number={3}
-                                    onClick={onLuxury}
                                 />
                                 <TypeButton
                                     text="기타"
@@ -267,22 +266,42 @@ export default function WishDeal() {
                                     color: "#202426"
                                 }}
                             /> : <></>}
+                            {state?
                             <div onClick={move} style={{
-                width: 440,
-                paddingTop: 16,
-                paddingBottom: 16,
-                borderRadius: 6,
-                backgroundColor: "#2dd9d3",
-                alignSelf: "center",
-                cursor: "pointer",
-                marginTop: 32,
-
-                fontSize: 18,
-                fontWeight: "bold",
-                fontFamily: "NotoSansCJKkr",
-                color: "#ffffff",
-                textAlign: "center"
-            }}>다음</div>
+                                width: 440,
+                                paddingTop: 16,
+                                paddingBottom: 16,
+                                borderRadius: 6,
+                                backgroundColor: "#2dd9d3",
+                                alignSelf: "center",
+                                cursor: "pointer",
+                                marginTop: 32,
+                
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                fontFamily: "NotoSansCJKkr",
+                                color: "#ffffff",
+                                textAlign: "center"
+                            }}>다음</div>
+                            :
+                            <div  style={{
+                                width: 440,
+                                paddingTop: 16,
+                                paddingBottom: 16,
+                                borderRadius: 6,
+                                backgroundColor: "#dbdbdb",
+                                alignSelf: "center",
+                                
+                                marginTop: 32,
+                
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                fontFamily: "NotoSansCJKkr",
+                                color: "#ffffff",
+                                textAlign: "center"
+                            }}>다음</div>
+                            }
+                            
                         </div>
                     </div>
                 </div>
@@ -379,16 +398,10 @@ export default function WishDeal() {
                             onClick={onElectronic}
                         />
                         <MTypeButton
-                            text="패션"
+                            text="명품&패션"
                             variable={type}
                             number={2}
                             onClick={onFashion}
-                        />
-                        <MTypeButton
-                            text="명품"
-                            variable={type}
-                            number={3}
-                            onClick={onLuxury}
                         />
                         <MTypeButton
                             text="기타"
