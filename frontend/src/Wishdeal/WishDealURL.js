@@ -75,8 +75,11 @@ export default function WishDealURL() {
     const myparam=location.state.param
     const code=location.state.code
     const des=location.state.des
+    const [stats,setStats]=useState("")
     useEffect(()=>{
         console.log(myparam,code,des)
+        setStats(code)
+
     },[])
     const [number, dispatch] = useReducer(reducerA, 0);
     const onYES = () => {
@@ -134,11 +137,46 @@ export default function WishDealURL() {
                             backgroundColor: "#ffffff",
                         }}>
                             <Header content="상품 정보 작성" goBack={true} />
-                            <ETCForm
-                                brand="PRADA"
-                                name="PRADA Model 23-9 limited edition berry expensive"
-                                price={480000}
-                            />
+                            {stats===1?
+                            <>
+                            <ElectronicForm 
+                            name={myparam.ogTitle}
+                            image={myparam.ogImage.url}
+                            ></ElectronicForm>
+                            </>
+                            :
+                            <></>
+                            }
+                            {stats===2?
+                            <>
+                            <FashionForm 
+                            name={myparam.ogTitle}
+                            image={myparam.ogImage.url}
+                            ></FashionForm>
+                            </>
+                            :
+                            <></>
+                            }
+                            {stats===3?
+                            <>
+                            <FoodForm 
+                            name={myparam.ogTitle}
+                            image={myparam.ogImage.url}
+                            ></FoodForm>
+                            </>
+                            :
+                            <></>
+                            }
+                            {stats===4?
+                            <>
+                             <ETCForm
+                                name={myparam.ogTitle}
+                                image={myparam.ogImage.url}
+                            /></>
+                            :
+                            <></>
+                            }
+                           
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 18,
@@ -341,11 +379,45 @@ export default function WishDealURL() {
                         backgroundColor: "#ffffff",
                     }}>
                         <MHeader content="상품 정보 작성" goBack={true} />
-                        <METCForm
-                            brand="PRADA"
-                            name="PRADA Model 23-9 limited edition berry expensive"
-                            price={480000}
-                        />
+                        {stats===1?
+                            <>
+                            <MElectronicForm 
+                            name={myparam.ogTitle}
+                            image={myparam.ogImage.url}
+                            ></MElectronicForm>
+                            </>
+                            :
+                            <></>
+                            }
+                            {stats===2?
+                            <>
+                            <MFashionForm 
+                            name={myparam.ogTitle}
+                            image={myparam.ogImage.url}
+                            ></MFashionForm>
+                            </>
+                            :
+                            <></>
+                            }
+                            {stats===3?
+                            <>
+                            <MFoodForm 
+                            name={myparam.ogTitle}
+                            image={myparam.ogImage.url}
+                            ></MFoodForm>
+                            </>
+                            :
+                            <></>
+                            }
+                            {stats===4?
+                            <>
+                             <METCForm
+                                name={myparam.ogTitle}
+                                image={myparam.ogImage.url}
+                            /></>
+                            :
+                            <></>
+                            }
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
@@ -531,16 +603,18 @@ export default function WishDealURL() {
 }
 
 function FashionForm({ image, brand, name, price, color, size, etc }) {
-    const [differ, setDiffer] = useState(false)
+    
     return (
         <>
             <div style={{
                 width: 480,
                 height: 212,
-                backgroundColor: "#cbd5ff"
-            }} />
-            {differ ?
-                <>
+                
+            }}><img style={{
+                                            width: 480,
+                                            height: 212,
+                                            objectFit: "cover"
+                                        }} src={image}></img></div>
                     <div style={{
                         marginTop: 16,
                         marginLeft: 20,
@@ -597,39 +671,8 @@ function FashionForm({ image, brand, name, price, color, size, etc }) {
                             color: "#202426"
                         }}>원</div>
                     </div>
-                </>
-                :
-                <>
-                    <div style={{
-                        marginTop: 16,
-                        marginLeft: 20,
-                        fontsize: 18,
-                        fontWeight: "normal",
-                        fontFamily: "AvenirNext",
-                        opacity: 0.8
-                    }}>{name}</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 24,
-                        fontWeight: "bold",
-                        color: "#051a1a",
-
-                        marginTop: 16,
-                        marginLeft: 20,
-                    }}>{price} 원</div>
-                    <div onClick={() => setDiffer(!differ)} style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
-                        opacity: 0.8,
-                        color: "#202426",
-                        textDecorationLine: "underline",
-
-                        marginTop: 8,
-                        marginLeft: 20,
-                        cursor: "pointer"
-                    }}>가격이 다른가요?</div>
-                </>
-            }
+                    
+            
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
@@ -710,16 +753,18 @@ function FashionForm({ image, brand, name, price, color, size, etc }) {
 }
 
 function MFashionForm({ image, brand, name, price, color, size, etc }) {
-    const [differ, setDiffer] = useState(false)
+    
     return (
         <>
             <div style={{
                 width: "100vw",
                 height: "45vw",
-                backgroundColor: "#cbd5ff"
-            }} />
-            {differ ?
-                <>
+                
+            }}><img style={{
+                                            width: "100vw",
+                                            height: "45vw",
+                                            objectFit: "cover"
+                                        }} src={image}></img></div>
                     <div style={{
                         marginTop: "4vw",
                         marginLeft: "5vw",
@@ -776,39 +821,8 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
                             color: "#202426"
                         }}>원</div>
                     </div>
-                </>
-                :
-                <>
-                    <div style={{
-                        marginTop: "4vw",
-                        marginLeft: "5vw",
-                        fontsize: 16,
-                        fontWeight: "normal",
-                        fontFamily: "AvenirNext",
-                        opacity: 0.8
-                    }}>{name}</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 21,
-                        fontWeight: "bold",
-                        color: "#051a1a",
-
-                        marginTop: "4vw",
-                        marginLeft: "5vw",
-                    }}>{price} 원</div>
-                    <div onClick={() => setDiffer(!differ)} style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 12,
-                        opacity: 0.8,
-                        color: "#202426",
-                        textDecorationLine: "underline",
-
-                        marginTop: "2vw",
-                        marginLeft: "5vw",
-                        cursor: "pointer"
-                    }}>가격이 다른가요?</div>
-                </>
-            }
+                
+                
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
@@ -889,16 +903,18 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
 }
 
 function ElectronicForm({ image, brand, name, price, count, etc }) {
-    const [differ, setDiffer] = useState(false)
+    
     return (
         <>
             <div style={{
                 width: 480,
                 height: 212,
-                backgroundColor: "#cbd5ff"
-            }} />
-            {differ ?
-                <>
+                
+            }}><img style={{
+                                            width: 480,
+                                            height: 212,
+                                            objectFit: "cover"
+                                        }} src={image}></img></div>
                     <div style={{
                         marginTop: 16,
                         marginLeft: 20,
@@ -955,39 +971,6 @@ function ElectronicForm({ image, brand, name, price, count, etc }) {
                             color: "#202426"
                         }}>원</div>
                     </div>
-                </>
-                :
-                <>
-                    <div style={{
-                        marginTop: 16,
-                        marginLeft: 20,
-                        fontsize: 18,
-                        fontWeight: "normal",
-                        fontFamily: "AvenirNext",
-                        opacity: 0.8
-                    }}>{name}</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 24,
-                        fontWeight: "bold",
-                        color: "#051a1a",
-
-                        marginTop: 16,
-                        marginLeft: 20,
-                    }}>{price} 원</div>
-                    <div onClick={() => setDiffer(!differ)} style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
-                        opacity: 0.8,
-                        color: "#202426",
-                        textDecorationLine: "underline",
-
-                        marginTop: 8,
-                        marginLeft: 20,
-                        cursor: "pointer"
-                    }}>가격이 다른가요?</div>
-                </>
-            }
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
@@ -1043,16 +1026,18 @@ function ElectronicForm({ image, brand, name, price, count, etc }) {
 }
 
 function MElectronicForm({ image, brand, name, price, count, etc }) {
-    const [differ, setDiffer] = useState(false)
+    
     return (
         <>
             <div style={{
                 width: "100vw",
                 height: "45vw",
-                backgroundColor: "#cbd5ff"
-            }} />
-            {differ ?
-                <>
+                
+            }}><img style={{
+                                            width: "100vw",
+                                            height: "45vw",
+                                            objectFit: "cover"
+                                        }} src={image}></img></div>
                     <div style={{
                         marginTop: "4vw",
                         marginLeft: "5vw",
@@ -1109,39 +1094,8 @@ function MElectronicForm({ image, brand, name, price, count, etc }) {
                             color: "#202426"
                         }}>원</div>
                     </div>
-                </>
-                :
-                <>
-                    <div style={{
-                        marginTop: "4vw",
-                        marginLeft: "5vw",
-                        fontsize: 16,
-                        fontWeight: "normal",
-                        fontFamily: "AvenirNext",
-                        opacity: 0.8
-                    }}>{name}</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 21,
-                        fontWeight: "bold",
-                        color: "#051a1a",
-
-                        marginTop: "4vw",
-                        marginLeft: "5vw",
-                    }}>{price} 원</div>
-                    <div onClick={() => setDiffer(!differ)} style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 12,
-                        opacity: 0.8,
-                        color: "#202426",
-                        textDecorationLine: "underline",
-
-                        marginTop: "2vw",
-                        marginLeft: "5vw",
-                        cursor: "pointer"
-                    }}>가격이 다른가요?</div>
-                </>
-            }
+                
+                
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
@@ -1197,16 +1151,18 @@ function MElectronicForm({ image, brand, name, price, count, etc }) {
 }
 
 function FoodForm({ image, brand, name, price, count, etc }) {
-    const [differ, setDiffer] = useState(false)
+    
     return (
         <>
             <div style={{
                 width: 480,
                 height: 212,
-                backgroundColor: "#cbd5ff"
-            }} />
-            {differ ?
-                <>
+                
+            }}><img style={{
+                                            width: 480,
+                                            height: 212,
+                                            objectFit: "cover"
+                                        }} src={image}></img></div>
                     <div style={{
                         marginTop: 16,
                         marginLeft: 20,
@@ -1263,39 +1219,8 @@ function FoodForm({ image, brand, name, price, count, etc }) {
                             color: "#202426"
                         }}>원</div>
                     </div>
-                </>
-                :
-                <>
-                    <div style={{
-                        marginTop: 16,
-                        marginLeft: 20,
-                        fontsize: 18,
-                        fontWeight: "normal",
-                        fontFamily: "AvenirNext",
-                        opacity: 0.8
-                    }}>{name}</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 24,
-                        fontWeight: "bold",
-                        color: "#051a1a",
-
-                        marginTop: 16,
-                        marginLeft: 20,
-                    }}>{price} 원</div>
-                    <div onClick={() => setDiffer(!differ)} style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
-                        opacity: 0.8,
-                        color: "#202426",
-                        textDecorationLine: "underline",
-
-                        marginTop: 8,
-                        marginLeft: 20,
-                        cursor: "pointer"
-                    }}>가격이 다른가요?</div>
-                </>
-            }
+                
+                
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
@@ -1351,16 +1276,18 @@ function FoodForm({ image, brand, name, price, count, etc }) {
 }
 
 function MFoodForm({ image, brand, name, price, count, etc }) {
-    const [differ, setDiffer] = useState(false)
+    
     return (
         <>
             <div style={{
                 width: "100vw",
                 height: "45vw",
-                backgroundColor: "#cbd5ff"
-            }} />
-            {differ ?
-                <>
+                
+            }}><img style={{
+                                            width: "100vw",
+                                            height: "45vw",
+                                            objectFit: "cover"
+                                        }} src={image}></img></div>
                     <div style={{
                         marginTop: "4vw",
                         marginLeft: "5vw",
@@ -1417,39 +1344,8 @@ function MFoodForm({ image, brand, name, price, count, etc }) {
                             color: "#202426"
                         }}>원</div>
                     </div>
-                </>
-                :
-                <>
-                    <div style={{
-                        marginTop: "4vw",
-                        marginLeft: "5vw",
-                        fontsize: 16,
-                        fontWeight: "normal",
-                        fontFamily: "AvenirNext",
-                        opacity: 0.8
-                    }}>{name}</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 21,
-                        fontWeight: "bold",
-                        color: "#051a1a",
-
-                        marginTop: "4vw",
-                        marginLeft: "5vw",
-                    }}>{price} 원</div>
-                    <div onClick={() => setDiffer(!differ)} style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 12,
-                        opacity: 0.8,
-                        color: "#202426",
-                        textDecorationLine: "underline",
-
-                        marginTop: "2vw",
-                        marginLeft: "5vw",
-                        cursor: "pointer"
-                    }}>가격이 다른가요?</div>
-                </>
-            }
+                
+                
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
@@ -1505,16 +1401,18 @@ function MFoodForm({ image, brand, name, price, count, etc }) {
 }
 
 function ETCForm({ image, brand, name, price, etc }) {
-    const [differ, setDiffer] = useState(false)
+    
     return (
         <>
             <div style={{
                 width: 480,
                 height: 212,
-                backgroundColor: "#cbd5ff"
-            }} />
-            {differ ?
-                <>
+                
+            }}><img style={{
+                                            width: 480,
+                                            height: 212,
+                                            objectFit: "cover"
+                                        }} src={image}></img></div>
                     <div style={{
                         marginTop: 16,
                         marginLeft: 20,
@@ -1571,39 +1469,7 @@ function ETCForm({ image, brand, name, price, etc }) {
                             color: "#202426"
                         }}>원</div>
                     </div>
-                </>
-                :
-                <>
-                    <div style={{
-                        marginTop: 16,
-                        marginLeft: 20,
-                        fontsize: 18,
-                        fontWeight: "normal",
-                        fontFamily: "AvenirNext",
-                        opacity: 0.8
-                    }}>{name}</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 24,
-                        fontWeight: "bold",
-                        color: "#051a1a",
-
-                        marginTop: 16,
-                        marginLeft: 20,
-                    }}>{price} 원</div>
-                    <div onClick={() => setDiffer(!differ)} style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
-                        opacity: 0.8,
-                        color: "#202426",
-                        textDecorationLine: "underline",
-
-                        marginTop: 8,
-                        marginLeft: 20,
-                        cursor: "pointer"
-                    }}>가격이 다른가요?</div>
-                </>
-            }
+               
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
@@ -1634,16 +1500,18 @@ function ETCForm({ image, brand, name, price, etc }) {
 }
 
 function METCForm({ image, brand, name, price, etc }) {
-    const [differ, setDiffer] = useState(false)
+    
     return (
         <>
             <div style={{
                 width: "100vw",
                 height: "45vw",
-                backgroundColor: "#cbd5ff"
-            }} />
-            {differ ?
-                <>
+                
+            }}><img style={{
+                                            width: "100vw",
+                                            height: "45vw",
+                                            objectFit: "cover"
+                                        }} src={image}></img></div>
                     <div style={{
                         marginTop: "4vw",
                         marginLeft: "5vw",
@@ -1700,39 +1568,8 @@ function METCForm({ image, brand, name, price, etc }) {
                             color: "#202426"
                         }}>원</div>
                     </div>
-                </>
-                :
-                <>
-                    <div style={{
-                        marginTop: "4vw",
-                        marginLeft: "5vw",
-                        fontsize: 16,
-                        fontWeight: "normal",
-                        fontFamily: "AvenirNext",
-                        opacity: 0.8
-                    }}>{name}</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 21,
-                        fontWeight: "bold",
-                        color: "#051a1a",
-
-                        marginTop: "4vw",
-                        marginLeft: "5vw",
-                    }}>{price} 원</div>
-                    <div onClick={() => setDiffer(!differ)} style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 12,
-                        opacity: 0.8,
-                        color: "#202426",
-                        textDecorationLine: "underline",
-
-                        marginTop: "2vw",
-                        marginLeft: "5vw",
-                        cursor: "pointer"
-                    }}>가격이 다른가요?</div>
-                </>
-            }
+                
+                
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
