@@ -8,7 +8,7 @@ export default function ServiceReview() {
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {
         setReviewData([])
-        fetch("http://127.0.0.1:8000/servicereview", {
+        fetch("/servicereview/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
