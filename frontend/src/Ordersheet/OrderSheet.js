@@ -1,5 +1,5 @@
-import React, { useState, useReducer } from "react";
-import { useHistory } from "react-router";
+import React, { useState, useReducer , useEffect} from "react";
+import { useHistory,useLocation } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BiPlusCircle } from "react-icons/bi";
@@ -19,6 +19,7 @@ function reducer(state, action) {
 }
 
 export default function OrderSheet() {
+
     const [number, dispatch] = useReducer(reducer, 2);
 
     //기본 배송지 존재 여부
@@ -73,6 +74,31 @@ export default function OrderSheet() {
 
     //계좌 등록 여부
     const [register, setRegister] = useState(true);
+
+    //파라미터 받기
+    const location = useLocation()
+    const myparam = location.state.param
+    
+    const [image,setImage]=useState("")
+    const [itemDes,setItemDes]=useState("")
+    const [orderDes,setOrderDes]=useState("")
+    const [price,setPrice]=useState("")
+    useEffect(()=>{
+        console.log(myparam)
+        setImage(myparam[0].ogImage.url)
+        setItemDes(myparam[0].ogTitle)
+        if(myparam[1]===1){
+            setOrderDes(myparam[3].ELcolor+"   "+myparam[3].ELetc)
+            setPrice(myparam[3].ELprice)
+        }else if(myparam[1]===2){
+            setOrderDes(myparam[3].Fcolor+"   "+myparam[3].Fsize+"   "+myparam[3].Fetc)
+            setPrice(myparam[3].Fprice)
+        }else{
+            setOrderDes(myparam[3].Eetc)
+            setPrice(myparam[3].Eprice)
+        }
+
+    },[])
     return (
         <>
             <Default>
@@ -118,14 +144,14 @@ export default function OrderSheet() {
                                 marginRight: 20,
                                 marginLeft: 20,
                             }}>
-                                <div style={{
-                                    width: 120,
-                                    height: 120,
-                                    borderRadius: 6,
-                                    marginRight: 16,
-                                    backgroundColor: "#000000",
-                                    color: "#ffffff"
-                                }}>상품 그림</div>
+                               
+                                <img src={image} style={{
+                                    width:120,
+                                    heigh:120,
+                                    borderRadius:6,
+                                    marginRight:16,
+                                    objectFit:"cover"
+                                }}></img>
                                 <div style={{
                                     display: "flex",
                                     flexDirection: "column",
@@ -136,15 +162,15 @@ export default function OrderSheet() {
                                         fontSize: 16,
                                         color: "#202426",
                                         fontFamily: "AvenirNext"
-                                    }}>PRADA Model 23-9 limited… <br />
-                                    WHITE, 270mm</div>
+                                    }}>{itemDes} <br />
+                                    {orderDes}</div>
                                     <div style={{
                                         marginTop: 8,
                                         fontSize: 18,
                                         fontWeight: "bold",
                                         color: "#051a1a",
                                         fontFamily: "NotoSansCJKkr"
-                                    }}>480,000원</div>
+                                    }}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</div>
                                 </div>
                             </div>
                             <div style={{

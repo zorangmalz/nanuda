@@ -1,7 +1,7 @@
 import React, { useReducer, useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import WebIntro, { Header, MHeader, StandardButton,MStandardButton } from "../Style";
 
 function reducerA(state, action) {
     switch (action.type) {
@@ -105,11 +105,11 @@ export default function WishDealURL() {
     };
 
     let history = useHistory();
-    useEffect(() => {
-        console.log(ELinputs)
-        console.log(Einputs)
-        console.log(Finputs)
-    })
+    // useEffect(() => {
+    //     console.log(ELinputs)
+    //     console.log(Einputs)
+    //     console.log(Finputs)
+    // })
 
     const [Finputs, setFInputs] = useState({
         Fprice: "",
@@ -128,6 +128,135 @@ export default function WishDealURL() {
         Eprice: "",
         Eetc: "",
     })
+
+    const [next, setNext] = useState(false)
+    const [inp, setInp] = useState({
+        option: "",
+        ship: "",
+    })
+    const { option, ship } = inp
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setInp({
+            ...inp,
+            [name]: value
+        })
+    }
+
+    useEffect(() => {
+        if(stats===1){
+            if (ELinputs.ELcolor && ELinputs.ELprice  !=""  ){
+                if(number&&numberB>1){
+                    if(number===2 && numberB===5){
+                        if(option&&ship!=""){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                    }
+                    if(number===2 &&numberB<5){
+                        if(option!=""){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                    }
+                    if(number===3 &&numberB===5){
+                        if(ship!=""){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                    }
+                    if(number===3 && numberB<5){
+                        setNext(true)
+                    }
+                }
+                
+            }else{
+                setNext(false)
+            }
+        }else if(stats===2){
+            if (Finputs.Fcolor &&Finputs.Fsize && Finputs.Fprice  !=""  ){
+                if(number&&numberB>1){
+                    if(number===2 && numberB===5){
+                        if(option&&ship!=""){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                    }
+                    if(number===2 &&numberB<5){
+                        if(option!=""){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                    }
+                    if(number===3 &&numberB===5){
+                        if(ship!=""){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                    }
+                    if(number===3 && numberB<5){
+                        setNext(true)
+                    }
+                }
+                
+            }else{
+                setNext(false)
+            }
+        }else{
+            if (Einputs.Eprice  !=""  ){
+                if(number&&numberB>1){
+                    if(number===2 && numberB===5){
+                        if(option&&ship!=""){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                    }
+                    if(number===2 &&numberB<5){
+                        if(option!=""){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                    }
+                    if(number===3 &&numberB===5){
+                        if(ship!=""){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                    }
+                    if(number===3 && numberB<5){
+                        setNext(true)
+                    }
+                }
+                
+            }else{
+                setNext(false)
+            }
+        }
+        
+    }, [Finputs,Einputs,ELinputs,number,numberB,option,ship])
+    
+    function NextPage(){
+        const lst=[]
+        if(stats===1){
+            lst.push(myparam,code,des,ELinputs,number,option,numberB,ship)
+            history.push("/ordersheet",{param:lst})
+        }else if(stats===2){
+            lst.push(myparam,code,des,Finputs,number,option,numberB,ship)
+            history.push("/ordersheet",{param:lst})
+        }else{
+            lst.push(myparam,code,des,Einputs,number,option,numberB,ship)
+            history.push("/ordersheet",{param:lst})
+        }
+    }
     return (
         <>
             <Default>
@@ -153,7 +282,7 @@ export default function WishDealURL() {
                             flexDirection: "column",
 
                             justifyContent: "flex-start",
-
+                            paddingBottom:50,
                             width: 480,
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
@@ -243,6 +372,10 @@ export default function WishDealURL() {
                                     }}>
                                         <input
                                             placeholder="추가 비용을 입력해주세요."
+                                            type="number"
+                                            name="option"
+                                            value={option}
+                                            onChange={onChange}
                                             style={{
                                                 width: 210,
                                                 outline: 0,
@@ -322,6 +455,10 @@ export default function WishDealURL() {
                                     }}>
                                         <input
                                             placeholder="배송비용을 입력해주세요"
+                                            type="number"
+                                            name="ship"
+                                            value={ship}
+                                            onChange={onChange}
                                             style={{
                                                 width: 220,
                                                 outline: 0,
@@ -358,22 +495,12 @@ export default function WishDealURL() {
                                 <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                                 <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                             </div>
-                            <div onClick={() => history.push("/ordersheet")} style={{
-                                borderRadius: 8,
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                alignSelf: "center",
-                                marginTop: 32,
-                                backgroundColor: "#2dd9d3",
-
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                textAlign: "center",
-                                marginBottom: 150,
-                                cursor: "pointer",
-                            }}>다음</div>
+                            <StandardButton 
+                                marginTop={32}
+                                text="다음"
+                                onClick={NextPage}
+                                state={next}
+                            />
                         </div>
                     </div>
                 </div>
@@ -482,6 +609,9 @@ export default function WishDealURL() {
                                 }}>
                                     <input
                                         placeholder="추가 비용을 입력해주세요."
+                                        name="option"
+                                            value={option}
+                                            onChange={onChange}
                                         style={{
                                             width: "45vw",
                                             outline: 0,
@@ -561,6 +691,9 @@ export default function WishDealURL() {
                                 }}>
                                     <input
                                         placeholder="배송비용을 입력해주세요"
+                                        name="ship"
+                                            value={ship}
+                                            onChange={onChange}
                                         style={{
                                             width: "45vw",
                                             outline: 0,
@@ -597,22 +730,12 @@ export default function WishDealURL() {
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                         </div>
-                        <div onClick={() => history.push("/ordersheet")} style={{
-                            borderRadius: 8,
-                            width: "90vw",
-                            paddingTop: "4vw",
-                            paddingBottom: "4vw",
-                            alignSelf: "center",
-                            marginTop: "8vw",
-                            backgroundColor: "#2dd9d3",
-
-                            color: "#ffffff",
-                            fontSize: 16,
-                            fontWeight: "bold",
-                            textAlign: "center",
-                            marginBottom: 80,
-                            cursor: "pointer",
-                        }}>다음</div>
+                        <MStandardButton 
+                                marginTop={32}
+                                text="다음"
+                                onClick={NextPage}
+                                state={next}
+                            />
                     </div>
                 </div>
             </Mobile>
@@ -622,6 +745,7 @@ export default function WishDealURL() {
 
 function FashionForm({ image, brand, name, input, setInput }) {
     const { Fprice, Fcolor, Fsize, Fetc } = input
+    
     const onChange = (e) => {
         const { value, name } = e.target
         setInput({
@@ -629,6 +753,7 @@ function FashionForm({ image, brand, name, input, setInput }) {
             [name]: value
         })
     }
+    
     return (
         <>
             <div style={{
@@ -679,6 +804,7 @@ function FashionForm({ image, brand, name, input, setInput }) {
             }}>
                 <input
                     placeholder="상품 가격"
+                    type="number"
                     name="Fprice"
                     value={Fprice}
                     onChange={onChange}
@@ -848,6 +974,7 @@ function MFashionForm({ image, brand, name, input, setInput }) {
             }}>
                 <input
                     placeholder="상품 가격"
+                    type="number"
                     name="Fprice"
                     value={Fprice}
                     onChange={onChange}
@@ -1017,6 +1144,7 @@ function ElectronicForm({ image, brand, name, input, setInput }) {
             }}>
                 <input
                     placeholder="상품 가격"
+                    type="number"
                     name="ELprice"
                     value={ELprice}
                     onChange={onChange}
@@ -1156,6 +1284,7 @@ function MElectronicForm({ image, brand, name, input, setInput }) {
             }}>
                 <input
                     placeholder="상품 가격"
+                    type="number"
                     name="ELprice"
                     value={ELprice}
                     onChange={onChange}
@@ -1297,6 +1426,7 @@ function ETCForm({ image, brand, name, input, setInput }) {
             }}>
                 <input
                     placeholder="상품 가격"
+                    type="number"
                     name="Eprice"
                     value={Eprice}
                     onChange={onChange}
@@ -1409,6 +1539,7 @@ function METCForm({ image, brand, name, input, setInput }) {
             }}>
                 <input
                     placeholder="상품 가격"
+                    type="number"
                     name="Eprice"
                     value={Eprice}
                     onChange={onChange}

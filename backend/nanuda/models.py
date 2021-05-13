@@ -24,6 +24,7 @@ class User(models.Model):
     address_number = models.TextField(blank=True, default="우편번호")
     address = models.TextField(blank=True, default="주소")
     address_detail = models.TextField(blank=True, default="상세주소")
+    address_claim = models.CharField(max_length=30,default="문 앞")
     point = models.IntegerField(default=0)
     platform = models.CharField(max_length=30, default="0")
     uid = models.CharField(max_length=300, default="")
