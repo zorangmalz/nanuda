@@ -64,34 +64,12 @@ export default function ProfileDelete() {
                                 <div>2. 더이상 자유로운 분할결제가 불가능해요.</div>
                             </div>
                             <div style={{
-                                marginTop: 32,
-                                marginLeft: 20,
-
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 21,
-                                fontWeight: "bold",
-                                color: "#051a1a",
-                            }}>회원탈퇴를 해도 분할결제는 진행됩니다.</div>
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                opacity: 0.8,
-                                color: "#202426",
-
-                                marginTop: 16,
-                                marginLeft: 20,
-                            }}>
-                                <div style={{ marginBottom: 8 }}>1. 진행중인 분할결제는 사라지지 않습니다.</div>
-                                <div style={{ marginBottom: 8 }}>2. 연체하는 경우, 연체료과 부과됩니다.</div>
-                                <div>3. 분할결제가 완료될때 까지 개인정보는 보관됩니다.</div>
-                            </div>
-                            <div style={{
                                 display: "flex",
                                 flexDirection: "row",
                                 alignItems: "center",
 
                                 marginLeft: 20,
-                                marginTop: 32,
+                                marginTop: 16,
                             }}>
                                 <BsCheck 
                                     onClick={() => setAgree(!agree)}
@@ -112,8 +90,8 @@ export default function ProfileDelete() {
                             <StandardButton
                                 marginTop={32}
                                 text="탈퇴하기"
-                                onClick={() => history.replace("/")}
-                                state={true}
+                                onClick={agree ? () => history.replace("/") : () => console.log("동의해주세요")}
+                                state={agree}
                             />
                         </div>
                     </div>
@@ -155,34 +133,12 @@ export default function ProfileDelete() {
                         <div>2. 더이상 자유로운 분할결제가 불가능해요.</div>
                     </div>
                     <div style={{
-                        marginTop: "8vw",
-                        marginLeft: "5vw",
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        color: "#051a1a",
-                    }}>회원탈퇴를 해도 분할결제는 진행됩니다.</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 16,
-                        opacity: 0.8,
-                        color: "#202426",
-
-                        marginTop: "4vw",
-                        marginLeft: "5vw",
-                    }}>
-                        <div style={{ marginBottom: 4 }}>1. 진행중인 분할결제는 사라지지 않습니다.</div>
-                        <div style={{ marginBottom: 4 }}>2. 연체하는 경우, 연체료과 부과됩니다.</div>
-                        <div>3. 분할결제가 완료될때 까지 개인정보는 보관됩니다.</div>
-                    </div>
-                    <div style={{
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
 
                         marginLeft: "5vw",
-                        marginTop: "8vw",
+                        marginTop: "4vw",
                     }}>
                         <BsCheck
                             onClick={() => setAgree(!agree)}
@@ -203,8 +159,8 @@ export default function ProfileDelete() {
                     <MStandardButton
                         marginTop={"8vw"}
                         text="탈퇴하기"
-                        onClick={() => history.replace("/")}
-                        state={true}
+                        onClick={agree ? () => history.replace("/") : () => console.log("동의해주세요")}
+                        state={agree}
                     />
                 </div>
             </Mobile>

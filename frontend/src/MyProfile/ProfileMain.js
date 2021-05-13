@@ -257,7 +257,7 @@ export default function ProfileMain() {
                                 paddingRight: 20,
 
                                 width: 440,
-                                backgroundColor: "rgba(45, 217, 211, 0.2)",
+                                backgroundColor: "rgba(38, 193, 240, 0.2)",
 
                                 display: "flex",
                                 flexDirection: "column",
@@ -361,6 +361,7 @@ export default function ProfileMain() {
                             <ManageList name="내 정보 관리" path="profileedit" />
                             <ManageList name="분할결제 스케쥴" path="profilepayment" />
                             <ManageList name="결제 수단 관리" path="addaccount" />
+                            <ManageList name="상품 구매 내역" path="profileproduct" />
                             <BottomTag marginTop={120} marginBottom={0} />
                         </div>
                     </div>
@@ -384,7 +385,7 @@ export default function ProfileMain() {
                         paddingRight: "5vw",
 
                         width: "90vw",
-                        backgroundColor: "rgba(45, 217, 211, 0.2)",
+                        backgroundColor: "rgba(38, 193, 240, 0.2)",
 
                         display: "flex",
                         flexDirection: "column",
@@ -488,6 +489,7 @@ export default function ProfileMain() {
                     <MManageList name="내 정보 관리" path="profileedit" />
                     <MManageList name="분할결제 스케쥴" path="profilepayment" />
                     <MManageList name="결제 수단 관리" path="addaccount" />
+                    <MManageList name="상품 구매 내역" path="profileproduct" />
                     <MBottomTag marginTop={60} marginBottom={0} />
                 </div>
             </Mobile>

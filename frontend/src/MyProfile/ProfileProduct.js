@@ -39,6 +39,7 @@ export default function ProfileProduct() {
                             paddingBottom: 40,
                         }}>
                             <Header content="상품 구매 내역" goBack={true} />
+                            <div style={{ marginTop: 16 }} />
                             <ProductState 
                                 date="2021.04.13"
                                 title="PRADA Model 23-9 limited WHITE, 270mm"
@@ -79,6 +80,7 @@ export default function ProfileProduct() {
                     paddingBottom: 20,
                 }}>
                     <MHeader content="상품 구매 내역" goBack={true} />
+                    <div style={{ marginTop: "4vw" }} />
                     <MProductState
                         date="2021.04.13"
                         title="PRADA Model 23-9 limited WHITE, 270mm"
@@ -116,8 +118,8 @@ function ProductState({date, title, price, state}) {
             <div style={{
                 display: "flex",
                 flexDirection: "column",
-                marginTop: 32,
-                paddingBottom: 32,
+                marginTop: 16,
+                paddingBottom: 16,
                 width: 440,
                 borderBottom: "1px solid rgba(5, 26, 26, 0.2)"
             }}>
@@ -171,7 +173,7 @@ function ProductState({date, title, price, state}) {
                     </div>
                     <MdKeyboardArrowRight size={32} color="rgba(5, 26, 26, 0.4)" />
                 </div>
-                <div style={{
+                {/* <div style={{
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -261,7 +263,7 @@ function ProductState({date, title, price, state}) {
                             textAlign: "center",
                         }}>배송완료</div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     )
@@ -274,8 +276,8 @@ function MProductState({date, title, price, state}) {
             <div style={{
                 display: "flex",
                 flexDirection: "column",
-                marginTop: "8vw",
-                paddingBottom: "8vw",
+                marginTop: "4vw",
+                paddingBottom: "4vw",
                 width: "90vw",
                 alignSelf: "center",
                 borderBottom: "1px solid rgba(5, 26, 26, 0.2)"
@@ -330,7 +332,7 @@ function MProductState({date, title, price, state}) {
                     </div>
                     <MdKeyboardArrowRight size={24} color="rgba(5, 26, 26, 0.4)" />
                 </div>
-                <div style={{
+                {/* <div style={{
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -420,7 +422,7 @@ function MProductState({date, title, price, state}) {
                             textAlign: "center",
                         }}>배송완료</div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     )

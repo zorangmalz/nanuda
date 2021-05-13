@@ -39,6 +39,7 @@ export default function ProfileProductInfo() {
                                 title="PRADA Model 23-9 limited edition berry expensive"
                                 price="460,000"
                                 name="김현명"
+                                orderNum="20200413137223-00-01"
                                 number="03770"
                                 address="서울 특별시 서대문구 북아현로 1길 17"
                                 addressDetail="e편한세상 203동 2104호"
@@ -64,6 +65,7 @@ export default function ProfileProductInfo() {
                         title="PRADA Model 23-9 limited edition berry expensive"
                         price="460,000"
                         name="김현명"
+                        orderNum="20200413137223-00-01"
                         number="03770"
                         address="서울 특별시 서대문구 북아현로 1길 17"
                         addressDetail="e편한세상 203동 2104호"
@@ -76,7 +78,7 @@ export default function ProfileProductInfo() {
     )
 }
 
-function ProductInfo({ img, title, price, name, number, address, addressDetail, phoneNumber, deliveryClaim }) {
+function ProductInfo({ img, title, price, name, number, orderNum, address, addressDetail, phoneNumber, deliveryClaim }) {
     return (
         <>
             <div style={{
@@ -142,6 +144,7 @@ function ProductInfo({ img, title, price, name, number, address, addressDetail, 
                     fontSize: 16,
                 }}>
                     받는사람 : {name} <br />
+                    주문번호 : {orderNum} <br />
                         우편번호 : {number} <br />
                         주소: {address} <br />
                         상세주소 : {addressDetail} <br />
@@ -153,7 +156,7 @@ function ProductInfo({ img, title, price, name, number, address, addressDetail, 
     )
 }
 
-function MProductInfo({ img, title, price, name, number, address, addressDetail, phoneNumber, deliveryClaim }) {
+function MProductInfo({ img, title, price, name, number, orderNum, address, addressDetail, phoneNumber, deliveryClaim }) {
     return (
         <>
             <div style={{
@@ -219,6 +222,7 @@ function MProductInfo({ img, title, price, name, number, address, addressDetail,
                     fontSize: 14,
                 }}>
                     받는사람 : {name} <br />
+                    주문번호 : {orderNum} <br />
                         우편번호 : {number} <br />
                         주소: {address} <br />
                         상세주소 : {addressDetail} <br />
