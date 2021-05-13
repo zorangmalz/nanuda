@@ -89,7 +89,7 @@ class Review(models.Model):
     review_date = models.DateTimeField(auto_now_add=True)
     review_like = models.TextField(default="내용", blank=True)
     review_dislike = models.TextField(default="내용", blank=True)
-    review_image = models.URLField()
+    review_image = models.JSONField(default=list)
     review_alert = models.IntegerField(default=0)
     review_likeNum = models.IntegerField(default=0)
     review_dislikeNum = models.IntegerField(default=0)

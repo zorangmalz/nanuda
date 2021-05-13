@@ -10,6 +10,8 @@ export default function ReviewPost({match}) {
     let history = useHistory()
     const { pk } = match.params
     const [data, setData] = useState({
+        user_id: "",
+        product_id: "",
         user_profile: "",
         user_nickname: "",
         review_image: "",
@@ -19,7 +21,11 @@ export default function ReviewPost({match}) {
         review_dislike: "",
         review_likeNum: 0,
         review_dislikeNum: 0,
+        review_alert: 0,
     })
+
+    //좋아요 싫어요 버튼 
+    const [like, setLike] = useState(0)
     useEffect(() => {
         fetch(`http://127.0.0.1:8000/review/${pk}`, {
             method: "GET",
@@ -32,33 +38,134 @@ export default function ReviewPost({match}) {
             .then(response => {
                 setData({
                     ...data,
+                    user_id: response.user_id,
+                    product_id: response.product_id,
                     user_profile: response.user_profile,
                     user_nickname: response.user_nickname,
-                    review_image: response.review_image,
+                    review_image: response.review_image[0],
                     review_date: response.review_date.slice(0, 10),
                     review_score: response.review_score,
                     review_like: response.review_like,
                     review_dislike: response.review_dislike,
                     review_likeNum: response.review_likeNum,
-                    review_dislikeNum: response.review_dislikeNum
+                    review_dislikeNum: response.review_dislikeNum,
+                    review_alert: response.review_alert
                 })
-            })
-        console.log(data)
-    }, [])
+            }).catch(error => console.log(error))
+    }, [like])
 
-    const [mine, setMine] = useState(false)
-    const [like, setLike] = useState(0)
-    function onLike() {
-        setLike(1)
+    const putAlert = async () => {
+        var body = {
+            id: pk, user_id: data.user_id, 
+            product_id: data.product_id, review_image: data.review_image,
+            review_alert: data.review_alert + 1
+        }
+        await fetch(`http://127.0.0.1:8000/review/${pk}`, {
+            method: "PUT",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(response => response.json())
+            .then(response => {
+                setMine(false)
+            }).catch(err => console.log(err))
     }
 
-    function onDislike() {
-        setLike(2)
+    const putLike = async () => {
+        var body;
+        if (like == 0) {
+            body = {
+                id: pk, review_likeNum: data.review_likeNum + 1,
+                user_id: data.user_id, product_id: data.product_id,
+                review_image: data.review_image
+            }
+        } else if (like == 2) {
+            body = {
+                id: pk, review_dislikeNum: data.review_dislikeNum - 1,
+                review_likeNum: data.review_likeNum,
+                user_id: data.user_id, product_id: data.product_id,
+                review_image: data.review_image
+            }
+        }
+        
+        await fetch(`http://127.0.0.1:8000/review/${pk}`, {
+            method: "PUT",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(response => response.json())
+            .then(response => {
+                setLike(1)
+            }).catch(err => console.log(err))
+    }
+
+    const putReset = async () => {
+        var body;
+        if (like == 1) {
+            body = {
+                id: pk, review_likeNum: data.review_likeNum - 1,
+                user_id: data.user_id, product_id: data.product_id,
+                review_image: data.review_image
+            }
+        } else if (like == 2) {
+            body = {
+                id: pk, review_dislikeNum: data.review_dislikeNum - 1,
+                user_id: data.user_id, product_id: data.product_id,
+                review_image: data.review_image
+            }
+        }
+        await fetch(`http://127.0.0.1:8000/review/${pk}`, {
+            method: "PUT",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(response => response.json())
+            .then(response => {
+                setLike(0)
+            }).catch(err => console.log(err))
+    }
+
+    const putDisLike = async () => {
+        var body;
+        if (like == 0) {
+            body = {
+                id: pk, review_dislikeNum: data.review_dislikeNum + 1,
+                user_id: data.user_id, product_id: data.product_id,
+                review_image: data.review_image
+            }
+        } else if (like == 1) {
+            body = {
+                id: pk, review_likeNum: data.review_likeNum - 1,
+                review_dislikeNum: data.review_dislikeNum + 1,
+                user_id: data.user_id, product_id: data.product_id,
+                review_image: data.review_image
+            }
+        }
+        await fetch(`http://127.0.0.1:8000/review/${pk}`, {
+            method: "PUT",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(response => response.json())
+            .then(response => {
+                setLike(2)
+            }).catch(err => console.log(err))
     }
     
-    function onReset() {
-        setLike(0)
-    }
+
+    const [mine, setMine] = useState(false)
     return (
         <>
             <Default>
@@ -119,7 +226,7 @@ export default function ReviewPost({match}) {
                                         cursor: "pointer",
                                     }}>삭제하기</div>
                                     :
-                                    <div style={{
+                                    <div onClick={putAlert} style={{
                                         fontFamily: "NotoSansCJKkr",
                                         opacity: 0.6,
                                         fontSize: 14,
@@ -207,7 +314,7 @@ export default function ReviewPost({match}) {
                                 marginTop: 16,
                                 marginLeft: 20,
                             }}>
-                                {like === 0 ? <AiOutlineLike onClick={onLike} size={24} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={onReset} size={24} color="#051a1a" /> : <AiOutlineLike onClick={onLike} size={24} color="#051a1a" />}
+                                {like === 0 ? <AiOutlineLike onClick={putLike} size={24} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={putReset} size={24} color="#051a1a" /> : <AiOutlineLike onClick={putLike} size={24} color="#051a1a" />}
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 14,
@@ -215,7 +322,7 @@ export default function ReviewPost({match}) {
                                     marginLeft: 8,
                                     marginRight: 12,
                                 }}>{data.review_likeNum}</div>
-                                {like === 0 ? <AiOutlineDislike onClick={onDislike} size={24} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={onReset} size={24} color="#051a1a" /> : <AiOutlineDislike onClick={onDislike} size={24} color="#051a1a" />}
+                                {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={24} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={putReset} size={24} color="#051a1a" /> : <AiOutlineDislike onClick={putDisLike} size={24} color="#051a1a" />}
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 14,
@@ -276,7 +383,7 @@ export default function ReviewPost({match}) {
                                 cursor: "pointer",
                             }}>삭제하기</div>
                             :
-                            <div style={{
+                            <div onClick={putAlert} style={{
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 12,
@@ -360,7 +467,7 @@ export default function ReviewPost({match}) {
                         marginTop: "4vw",
                         marginLeft: "5vw",
                     }}>
-                        {like === 0 ? <AiOutlineLike onClick={onLike} size={20} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={onReset} size={20} color="#051a1a" /> : <AiOutlineLike onClick={onLike} size={20} color="#051a1a" />}
+                        {like === 0 ? <AiOutlineLike onClick={putLike} size={20} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={putReset} size={20} color="#051a1a" /> : <AiOutlineLike onClick={putLike} size={20} color="#051a1a" />}
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
@@ -368,7 +475,7 @@ export default function ReviewPost({match}) {
                             marginLeft: 4,
                             marginRight: 8,
                         }}>100</div>
-                        {like === 0 ? <AiOutlineDislike onClick={onDislike} size={20} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={onReset} size={20} color="#051a1a" /> : <AiOutlineDislike onClick={onDislike} size={20} color="#051a1a" />}
+                        {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={20} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={putReset} size={20} color="#051a1a" /> : <AiOutlineDislike onClick={putDisLike} size={20} color="#051a1a" />}
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,

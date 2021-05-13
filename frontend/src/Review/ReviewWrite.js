@@ -1,10 +1,10 @@
 import React, { useReducer, useState, useRef, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { BsFillStarFill, BsPlusCircle } from "react-icons/bs"
 import { useHistory } from "react-router";
 import { Product, MProduct } from "./ReviewSelect";
-import AWS from "aws-sdk";
+import AWS, { S3Client } from "aws-sdk";
 
 const AWS_ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
 const AWS_SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
@@ -103,8 +103,9 @@ export default function ReviewWrite() {
         }
     }
 
-    //s3로 업로드 그러나 cors 에러로 보류
-    const uploadFile = () => {
+    //s3로 업로드 후 URL을 RDS에 삽입 + user_id, product_id는 추후에 수정
+    const uploadFile = async () => {
+        var imageArray = []
         for (let i = 0; i < selectedFile.length; i++) {
             const params = {
                 ACL: "public-read",
@@ -117,15 +118,39 @@ export default function ReviewWrite() {
                 .on("httpUploadProgress", (evt) => {
                     setProgress(Math.round((evt.loaded / evt.total) * 100))
                     console.log(progress)
-                    history.push("/reviewsuccess")
                 })
                 .send((err) => {
                     if (err) {
                         console.log(err)
-                        history.push("/reviewfail")
                     }
                 })
+            imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[i].name}`)
         }
+        console.log(imageArray)
+        var data = {
+            user_id: 7,
+            product_id: "c9a89bd5-e65d-4183-b453-5ec3987507f0",
+            review_score: numberB,
+            review_like: inputs.like,
+            review_dislike: inputs.dislike,
+            review_image: imageArray
+        }
+        await fetch("http://127.0.0.1:8000/review/", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                history.push("/reviewsuccess")
+            }).catch(err => {
+                console.log(err)
+                history.push("/reviewfail")
+            })
     }
 
     return (
@@ -158,6 +183,7 @@ export default function ReviewWrite() {
                             width: 480,
                             minHeight: "100vh",
                             backgroundColor: "#ffffff",
+                            paddingBottom: 50,
                         }}>
                             <Header content="리뷰 작성" goBack={true} />
                             <Product
@@ -268,22 +294,12 @@ export default function ReviewWrite() {
                                 marginTop: 16,
                                 resize: "none",
                             }} />
-                            <div onClick={uploadFile} style={{
-                                borderRadius: 6,
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                marginTop: 40,
-                                marginBottom: 50,
-                                backgroundColor: "#2dd9d3",
-                                alignSelf: "center",
-
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                cursor: "pointer",
-                                textAlign: "center"
-                            }}>다음</div>
+                            <StandardButton 
+                                onClick={uploadFile}
+                                marginTop={40}
+                                text="다음"
+                                state={true}
+                            />
                         </div>
                     </div>
                 </div>
@@ -297,6 +313,7 @@ export default function ReviewWrite() {
                     width: "100%",
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
+                    paddingBottom: 20
                 }}>
                     <MHeader content="리뷰 작성" goBack={true} />
                     <MProduct
@@ -406,22 +423,12 @@ export default function ReviewWrite() {
                         resize: "none",
                         alignSelf: "center",
                     }} />
-                    <div onClick={uploadFile} style={{
-                        borderRadius: 6,
-                        width: "90vw",
-                        paddingTop: "4vw",
-                        paddingBottom: "4vw",
-                        marginTop: 20,
-                        marginBottom: 20,
-                        backgroundColor: "#2dd9d3",
-                        alignSelf: "center",
-
-                        color: "#ffffff",
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        cursor: "pointer",
-                        textAlign: "center"
-                    }}>다음</div>
+                    <MStandardButton 
+                        onClick={uploadFile}
+                        marginTop={20}
+                        text="다음"
+                        state={true}
+                    />
                 </div>
             </Mobile>
         </>

@@ -32,14 +32,13 @@ export default function ReviewMain() {
             .then(response => response.json())
             .then(response => {
                 console.log(response)
-                console.log(response[0].review_like.length)
                 var array = []
                 for (var i = 0; i < response.length; i++) {
                     const dict = {
                         id: response[i].id,
                         user_profile: response[i].user_profile,
                         user_nickname: response[i].user_nickname,
-                        review_image: response[i].review_image,
+                        review_image: response[i].review_image[0],
                         review_score: response[i].review_score.toFixed(1),
                         review_like: response[i].review_like.slice(0, 39) + "...",
                         product_price: 10000,
