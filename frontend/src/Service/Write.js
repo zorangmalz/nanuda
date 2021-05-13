@@ -1,44 +1,12 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
-import { BsFillStarFill } from "react-icons/bs"
+import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { useHistory } from "react-router";
-
-function reducer(state, action) {
-    switch (action.type) {
-        case 'ONE':
-            return 1;
-        case 'TWO':
-            return 2;
-        case 'THREE':
-            return 3;
-        case 'FOUR':
-            return 4;
-        case 'FIVE':
-            return 5;
-        default:
-            return state;
-    }
-}
+import ReactStars from "react-rating-stars-component";
 
 export default function Write() {
     let history = useHistory()
-    const [number, dispatch] = useReducer(reducer, 0);
-    const onOne = () => {
-        dispatch({ type: 'ONE' });
-    };
-    const onTwo = () => {
-        dispatch({ type: 'TWO' });
-    };
-    const onThree = () => {
-        dispatch({ type: 'THREE' });
-    };
-    const onFour = () => {
-        dispatch({ type: 'FOUR' });
-    };
-    const onFive = () => {
-        dispatch({ type: 'FIVE' });
-    };
+    const [number, setNumber] = useState(0);
     
     //이용후기 및 의견 작성
     const [inputs, setInputs] = useState({
@@ -74,6 +42,10 @@ export default function Write() {
             }).catch(err => console.log(err))
     }
 
+    const ratingChanged = (newRating) => {
+        console.log(newRating);
+        setNumber(newRating)
+    };
     return (
         <>
             <Default>
@@ -125,13 +97,19 @@ export default function Write() {
                                     flexDirection: "row",
                                     alignItems: "center",
                                     marginLeft: 20,
-                                    marginTop: 18,
+                                    marginTop: 12,
                                 }}>
-                                    <BsFillStarFill onClick={onOne} color={number > 0 ? "#fad94f" : "#dfdfdf"} size={42} style={{ marginRight: 5, cursor: "pointer" }} />
-                                    <BsFillStarFill onClick={onTwo} color={number > 1 ? "#fad94f" : "#dfdfdf"} size={42} style={{ marginRight: 5, cursor: "pointer" }} />
-                                    <BsFillStarFill onClick={onThree} color={number > 2 ? "#fad94f" : "#dfdfdf"} size={42} style={{ marginRight: 5, cursor: "pointer" }} />
-                                    <BsFillStarFill onClick={onFour} color={number > 3 ? "#fad94f" : "#dfdfdf"} size={42} style={{ marginRight: 5, cursor: "pointer" }} />
-                                    <BsFillStarFill onClick={onFive} color={number > 4 ? "#fad94f" : "#dfdfdf"} size={42} style={{ cursor: "pointer" }} />
+                                    <ReactStars
+                                        color="#dbdbdb"
+                                        count={5}
+                                        onChange={ratingChanged}
+                                        size={42}
+                                        isHalf={true}
+                                        emptyIcon={<i className="far fa-star"></i>}
+                                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                        fullIcon={<i className="fa fa-star"></i>}
+                                        activeColor="#ffd700"
+                                    />
                                 </div>
                                 <div style={{
                                     fontSize: 18,
@@ -176,23 +154,13 @@ export default function Write() {
                                     fontFamily: "NotoSansCJKkr"
                                 }} />
                             </div>
-                            <div onClick={putServiceReview} style={{
-                                width: 440,
-                                marginLeft: 20,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                backgroundColor: "#2dd8d3",
-                                borderRadius: 6,
-                                cursor: "pointer",
-
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                textAlign: "center",
-                                color: "#ffffff",
-                                marginTop: 32,
-                                marginBottom: 40,
-                                fontFamily: "NotoSansCJKkr"
-                            }}>작성 완료</div>
+                            <StandardButton
+                                onClick={putServiceReview}
+                                marginTop={32}
+                                text="작성 완료"
+                                state={inputs.after.length > 0 && inputs.opinion.length > 0 ? true : false}
+                            />
+                            <div style={{ marginBottom: 40 }} />
                         </div>
                     </div>
                 </div>
@@ -227,13 +195,19 @@ export default function Write() {
                             flexDirection: "row",
                             alignItems: "center",
                             marginLeft: "5%",
-                            marginTop: 18,
+                            marginTop: 8,
                         }}>
-                            <BsFillStarFill onClick={onOne} color={number > 0 ? "#fad94f" : "#dfdfdf"} size={32} style={{ marginRight: 5, cursor: "pointer" }} />
-                            <BsFillStarFill onClick={onTwo} color={number > 1 ? "#fad94f" : "#dfdfdf"} size={32} style={{ marginRight: 5, cursor: "pointer" }} />
-                            <BsFillStarFill onClick={onThree} color={number > 2 ? "#fad94f" : "#dfdfdf"} size={32} style={{ marginRight: 5, cursor: "pointer" }} />
-                            <BsFillStarFill onClick={onFour} color={number > 3 ? "#fad94f" : "#dfdfdf"} size={32} style={{ marginRight: 5, cursor: "pointer" }} />
-                            <BsFillStarFill onClick={onFive} color={number > 4 ? "#fad94f" : "#dfdfdf"} size={32} style={{ cursor: "pointer" }} />
+                            <ReactStars
+                                color="#dbdbdb"
+                                count={5}
+                                onChange={ratingChanged}
+                                size={32}
+                                isHalf={true}
+                                emptyIcon={<i className="far fa-star"></i>}
+                                halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                fullIcon={<i className="fa fa-star"></i>}
+                                activeColor="#ffd700"
+                            />
                         </div>
                         <div style={{
                             fontSize: 16,
@@ -278,23 +252,13 @@ export default function Write() {
                             fontFamily: "NotoSansCJKkr"
                         }} />
                     </div>
-                    <div onClick={putServiceReview} style={{
-                        width: "90vw",
-                        paddingTop: "4vw",
-                        paddingBottom: "4vw",
-                        backgroundColor: "#2dd9d3",
-                        alignSelf: "center",
-                        cursor: "pointer",
-                        marginTop: "7vw",
-                        marginBottom: "5vw",
-                        borderRadius: 6,
-
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        fontFamily: "NotoSansCJKkr",
-                        color: "#ffffff",
-                        textAlign: "center"
-                    }}>작성 완료</div>
+                    <MStandardButton
+                        onClick={putServiceReview}
+                        marginTop={32}
+                        text="작성 완료"
+                        state={inputs.after.length > 0 && inputs.opinion.length > 0 ? true : false}
+                    />
+                    <div style={{ marginBottom: "10vw" }} />
                 </div>
             </Mobile>
         </>

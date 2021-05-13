@@ -1,10 +1,11 @@
 import React, { useReducer, useState, useRef, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
-import { BsFillStarFill, BsPlusCircle } from "react-icons/bs"
+import { BsPlusCircle } from "react-icons/bs"
 import { useHistory } from "react-router";
 import { Product, MProduct } from "./ReviewSelect";
-import AWS, { S3Client } from "aws-sdk";
+import AWS from "aws-sdk";
+import ReactStars from "react-rating-stars-component"
 
 const AWS_ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
 const AWS_SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
@@ -21,41 +22,8 @@ const imageBucket = new AWS.S3({
     region: REGION
 })
 
-function reducer(state, action) {
-    switch (action.type) {
-        case 'ONEB':
-            return 1;
-        case 'TWOB':
-            return 2;
-        case 'THREEB':
-            return 3;
-        case 'FOURB':
-            return 4;
-        case 'FIVEB':
-            return 5;
-        default:
-            return state;
-    }
-}
-
-
 export default function ReviewWrite() {
-    const [numberB, dispatchB] = useReducer(reducer, 0);
-    const onOneB = () => {
-        dispatchB({ type: 'ONEB' });
-    };
-    const onTwoB = () => {
-        dispatchB({ type: 'TWOB' });
-    };
-    const onThreeB = () => {
-        dispatchB({ type: 'THREEB' });
-    };
-    const onFourB = () => {
-        dispatchB({ type: 'FOURB' });
-    };
-    const onFiveB = () => {
-        dispatchB({ type: 'FIVEB' });
-    };
+    const [number, setNumber] = useState(0);
 
     let history = useHistory()
 
@@ -130,7 +98,7 @@ export default function ReviewWrite() {
         var data = {
             user_id: 7,
             product_id: "c9a89bd5-e65d-4183-b453-5ec3987507f0",
-            review_score: numberB,
+            review_score: number,
             review_like: inputs.like,
             review_dislike: inputs.dislike,
             review_image: imageArray
@@ -152,6 +120,11 @@ export default function ReviewWrite() {
                 history.push("/reviewfail")
             })
     }
+
+    const ratingChanged = (newRating) => {
+        console.log(newRating);
+        setNumber(newRating)
+    };
 
     return (
         <>
@@ -205,13 +178,19 @@ export default function ReviewWrite() {
                                 flexDirection: "row",
                                 alignItems: "center",
                                 marginLeft: 20,
-                                marginTop: 18,
+                                marginTop: 12,
                             }}>
-                                <BsFillStarFill onClick={onOneB} color={numberB > 0 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                <BsFillStarFill onClick={onTwoB} color={numberB > 1 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                <BsFillStarFill onClick={onThreeB} color={numberB > 2 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                <BsFillStarFill onClick={onFourB} color={numberB > 3 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5, cursor: "pointer" }} />
-                                <BsFillStarFill onClick={onFiveB} color={numberB > 4 ? "#fad94f" : "#dfdfdf"} size={28} style={{ cursor: "pointer" }} />
+                                <ReactStars
+                                    color="#dbdbdb"
+                                    count={5}
+                                    onChange={ratingChanged}
+                                    size={28}
+                                    isHalf={true}
+                                    emptyIcon={<i className="far fa-star"></i>}
+                                    halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                    fullIcon={<i className="fa fa-star"></i>}
+                                    activeColor="#ffd700"
+                                />
                             </div>
                             <div style={{
                                 marginTop: 32,
@@ -298,7 +277,7 @@ export default function ReviewWrite() {
                                 onClick={uploadFile}
                                 marginTop={40}
                                 text="다음"
-                                state={true}
+                                state={inputs.like.length > 0 && inputs.dislike.length > 0 && filePath.length > 0 && number > 0 ? true : false}
                             />
                         </div>
                     </div>
@@ -334,13 +313,19 @@ export default function ReviewWrite() {
                         flexDirection: "row",
                         alignItems: "center",
                         marginLeft: "5vw",
-                        marginTop: "3vw",
+                        marginTop: "2vw",
                     }}>
-                        <BsFillStarFill onClick={onOneB} color={numberB > 0 ? "#fad94f" : "#dfdfdf"} size={24} style={{ marginRight: 5, cursor: "pointer" }} />
-                        <BsFillStarFill onClick={onTwoB} color={numberB > 1 ? "#fad94f" : "#dfdfdf"} size={24} style={{ marginRight: 5, cursor: "pointer" }} />
-                        <BsFillStarFill onClick={onThreeB} color={numberB > 2 ? "#fad94f" : "#dfdfdf"} size={24} style={{ marginRight: 5, cursor: "pointer" }} />
-                        <BsFillStarFill onClick={onFourB} color={numberB > 3 ? "#fad94f" : "#dfdfdf"} size={24} style={{ marginRight: 5, cursor: "pointer" }} />
-                        <BsFillStarFill onClick={onFiveB} color={numberB > 4 ? "#fad94f" : "#dfdfdf"} size={24} style={{ cursor: "pointer" }} />
+                        <ReactStars
+                            color="#dbdbdb"
+                            count={5}
+                            onChange={ratingChanged}
+                            size={24}
+                            isHalf={true}
+                            emptyIcon={<i className="far fa-star"></i>}
+                            halfIcon={<i className="fa fa-star-half-alt"></i>}
+                            fullIcon={<i className="fa fa-star"></i>}
+                            activeColor="#ffd700"
+                        />
                     </div>
                     <div style={{
                         marginTop: "8vw",
@@ -427,7 +412,7 @@ export default function ReviewWrite() {
                         onClick={uploadFile}
                         marginTop={20}
                         text="다음"
-                        state={true}
+                        state={inputs.like.length > 0 && inputs.dislike.length > 0 && filePath.length > 0 && number > 0 ? true : false}
                     />
                 </div>
             </Mobile>

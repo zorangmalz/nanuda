@@ -1,10 +1,10 @@
-import React, { useReducer, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
-import { BsFillStarFill } from "react-icons/bs"
-import { useHistory, useRouteMatch } from "react-router";
+import { useHistory } from "react-router";
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { Product, MProduct } from "./ReviewSelect";
+import { FaStar, FaStarHalf } from "react-icons/fa";
 
 export default function ReviewPost({match}) {
     let history = useHistory()
@@ -16,7 +16,7 @@ export default function ReviewPost({match}) {
         user_nickname: "",
         review_image: "",
         review_date: "",
-        review_score: 5,
+        review_score: 0,
         review_like: "",
         review_dislike: "",
         review_likeNum: 0,
@@ -27,6 +27,7 @@ export default function ReviewPost({match}) {
     //좋아요 싫어요 버튼 
     const [like, setLike] = useState(0)
     useEffect(() => {
+        const { pk } = match.params
         fetch(`http://127.0.0.1:8000/review/${pk}`, {
             method: "GET",
             headers: {
@@ -57,8 +58,7 @@ export default function ReviewPost({match}) {
     const putAlert = async () => {
         var body = {
             id: pk, user_id: data.user_id, 
-            product_id: data.product_id, review_image: data.review_image,
-            review_alert: data.review_alert + 1
+            product_id: data.product_id, review_alert: data.review_alert + 1
         }
         await fetch(`http://127.0.0.1:8000/review/${pk}`, {
             method: "PUT",
@@ -80,14 +80,12 @@ export default function ReviewPost({match}) {
             body = {
                 id: pk, review_likeNum: data.review_likeNum + 1,
                 user_id: data.user_id, product_id: data.product_id,
-                review_image: data.review_image
             }
         } else if (like == 2) {
             body = {
                 id: pk, review_dislikeNum: data.review_dislikeNum - 1,
-                review_likeNum: data.review_likeNum,
+                review_likeNum: data.review_likeNum + 1,
                 user_id: data.user_id, product_id: data.product_id,
-                review_image: data.review_image
             }
         }
         
@@ -110,14 +108,12 @@ export default function ReviewPost({match}) {
         if (like == 1) {
             body = {
                 id: pk, review_likeNum: data.review_likeNum - 1,
-                user_id: data.user_id, product_id: data.product_id,
-                review_image: data.review_image
+                user_id: data.user_id, product_id: data.product_id
             }
         } else if (like == 2) {
             body = {
                 id: pk, review_dislikeNum: data.review_dislikeNum - 1,
-                user_id: data.user_id, product_id: data.product_id,
-                review_image: data.review_image
+                user_id: data.user_id, product_id: data.product_id
             }
         }
         await fetch(`http://127.0.0.1:8000/review/${pk}`, {
@@ -139,15 +135,13 @@ export default function ReviewPost({match}) {
         if (like == 0) {
             body = {
                 id: pk, review_dislikeNum: data.review_dislikeNum + 1,
-                user_id: data.user_id, product_id: data.product_id,
-                review_image: data.review_image
+                user_id: data.user_id, product_id: data.product_id
             }
         } else if (like == 1) {
             body = {
                 id: pk, review_likeNum: data.review_likeNum - 1,
                 review_dislikeNum: data.review_dislikeNum + 1,
-                user_id: data.user_id, product_id: data.product_id,
-                review_image: data.review_image
+                user_id: data.user_id, product_id: data.product_id
             }
         }
         await fetch(`http://127.0.0.1:8000/review/${pk}`, {
@@ -271,11 +265,11 @@ export default function ReviewPost({match}) {
                                 marginLeft: 20,
                                 marginTop: 8
                             }}>
-                                <BsFillStarFill color={data.review_score > 0 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5 }} />
-                                <BsFillStarFill color={data.review_score > 1 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5 }} />
-                                <BsFillStarFill color={data.review_score > 2 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5 }} />
-                                <BsFillStarFill color={data.review_score > 3 ? "#fad94f" : "#dfdfdf"} size={28} style={{ marginRight: 5 }} />
-                                <BsFillStarFill color={data.review_score > 4 ? "#fad94f" : "#dfdfdf"} size={28} />
+                                <CustomStar score={data.review_score} num={1} size={28} />
+                                <CustomStar score={data.review_score} num={2} size={28} />
+                                <CustomStar score={data.review_score} num={3} size={28} />
+                                <CustomStar score={data.review_score} num={4} size={28} />
+                                <CustomStar score={data.review_score} num={5} size={28} />
                             </div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
@@ -424,11 +418,11 @@ export default function ReviewPost({match}) {
                         marginLeft: "5vw",
                         marginTop: 12
                     }}>
-                        <BsFillStarFill color={data.review_score > 0 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5 }} />
-                        <BsFillStarFill color={data.review_score > 1 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5 }} />
-                        <BsFillStarFill color={data.review_score > 2 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5 }} />
-                        <BsFillStarFill color={data.review_score > 3 ? "#fad94f" : "#dfdfdf"} size={20} style={{ marginRight: 5 }} />
-                        <BsFillStarFill color={data.review_score > 4 ? "#fad94f" : "#dfdfdf"} size={20} />
+                        <CustomStar score={data.review_score} num={1} size={20} />
+                        <CustomStar score={data.review_score} num={2} size={20} />
+                        <CustomStar score={data.review_score} num={3} size={20} />
+                        <CustomStar score={data.review_score} num={4} size={20} />
+                        <CustomStar score={data.review_score} num={5} size={20} />
                     </div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -491,6 +485,25 @@ export default function ReviewPost({match}) {
                     />
                 </div>
             </Mobile>
+        </>
+    )
+}
+
+function CustomStar({ score, num, size }) {
+    var zero = parseFloat(num.toFixed(1) - score.toFixed(1))
+    return (
+        <>
+            {num.toFixed(1) <= score.toFixed(1) ?
+                <FaStar size={size} color="#ffd700" style={{ marginRight: 5 }} />
+                :
+                zero > 0 && zero < 1 ?
+                    <div style={{position: "relative", marginRight: 5, width: size, height: size}}>
+                        <FaStarHalf size={size} color="#ffd700" style={{ position: "absolute", top: 0, zIndex: 1 }} />
+                        <FaStar size={size} color="#dbdbdb" style={{ position: "absolute", top: 0, zIndex: 0 }} />
+                    </div>
+                    :
+                    <FaStar size={size} color="#dbdbdb" style={{ marginRight: 5 }} />
+            }
         </>
     )
 }
