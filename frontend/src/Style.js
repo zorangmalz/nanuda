@@ -12,11 +12,12 @@ export default function WebIntro() {
         <>
             <div style={{
                 width: "50%",
-                minWidth: 500,
+                minWidth: 480,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-end",
                 justifyContent: "center",
+                position: "relative"
             }}>
                 <div style={{
                     position: "fixed",
@@ -28,7 +29,7 @@ export default function WebIntro() {
 
                     width: 440,
                     marginRight: 20,
-                    height: "100%",
+                    height: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
                     <img onClick={() => history.replace("/")} alt="" src={logoS} style={{
