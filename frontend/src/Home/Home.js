@@ -95,7 +95,7 @@ export default function Home() {
                                 fontSize: 21,
                                 color: "#202426",
                                 marginRight: 4,
-                            }}>나누다딜</div>
+                            }}>하울딜</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/timedeal")}
                                 size={24}
@@ -153,7 +153,7 @@ export default function Home() {
                                 fontSize: 21,
                                 color: "#202426",
                                 marginRight: 4,
-                            }}>나눠산 사람들</div>
+                            }}>하울한 사람들</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/review")}
                                 size={24}
@@ -372,7 +372,7 @@ export default function Home() {
                                 fontSize: 21,
                                 color: "#202426",
                                 marginRight: 4,
-                            }}>나눠본 사람들</div>
+                            }}>하울프리 이용후기</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/servicereview")}
                                 size={24}
@@ -450,7 +450,7 @@ export default function Home() {
                             fontSize: 18,
                             color: "#202426",
                             marginRight: 4,
-                        }}>나누다딜</div>
+                        }}>하울딜</div>
                         <MdKeyboardArrowRight
                             onClick={() => history.push("/timedeal")}
                             size={20}
@@ -508,7 +508,7 @@ export default function Home() {
                             fontSize: 18,
                             color: "#202426",
                             marginRight: 4,
-                        }}>나눠산 사람들</div>
+                        }}>하울한 사람들</div>
                         <MdKeyboardArrowRight
                             onClick={() => history.push("/review")}
                             size={20}
@@ -649,7 +649,7 @@ export default function Home() {
                             fontSize: 18,
                             color: "#202426",
                             marginRight: 4,
-                        }}>나눠본 사람들</div>
+                        }}>하울프리 이용후기</div>
                         <MdKeyboardArrowRight
                             onClick={() => history.push("/servicereview")}
                             size={20}
