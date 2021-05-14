@@ -49,76 +49,66 @@ export default function ServiceReview() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                            paddingBottom: reviewData.length > 3 ? 150 : 0,
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                        paddingBottom: reviewData.length > 3 ? 150 : 0,
+                    }}>
+                        <Header content="나눠본 사람들" goBack={true} />
+                        <div style={{
+                            width: 440,
+                            height: 150,
+                            alignSelf: "center",
+                            marginTop: 32,
+
+                            backgroundColor: "#051a1a",
+                            borderRadius: 6,
                         }}>
-                            <Header content="나눠본 사람들" goBack={true} />
                             <div style={{
-                                width: 440,
-                                height: 150,
-                                alignSelf: "center",
+                                marginLeft: 32,
                                 marginTop: 32,
 
-                                backgroundColor: "#051a1a",
-                                borderRadius: 6,
-                            }}>
-                                <div style={{
-                                    marginLeft: 32,
-                                    marginTop: 32,
-
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 18,
-                                    color: "#ffffff"
-                                }}>아직도 나누다 사용을 망설이시나요?</div>
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 24,
-                                    fontWeight: "bold",
-                                    color: "#ffffff",
-
-                                    marginTop: 16,
-                                    marginLeft: 32,
-                                }}>실제 후기를 확인해보세요.</div>
-                            </div>
-                            {reviewData.map(item =>
-                                <Review
-                                    item={item}
-                                />
-                            )}
-                            <div onClick={() => history.push("/servicewrite")} style={{
-                                position: "fixed",
-                                bottom: 40,
-                                width: 440,
-                                alignSelf: "center",
-                                paddingTop: 21,
-                                paddingBottom: 21,
-                                backgroundColor: "#26c1f0",
-                                borderRadius: 6,
-                                boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
-
-                                color: "#ffffff",
-                                fontSize: 21,
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 18,
+                                color: "#ffffff"
+                            }}>아직도 나누다 사용을 망설이시나요?</div>
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 24,
                                 fontWeight: "bold",
-                                textAlign: "center",
-                                cursor: "pointer",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>{noReview ? "첫 후기 작성하고 2천 포인트 받기" : "나누다 사용후기 작성하기"}</div>
+                                color: "#ffffff",
+
+                                marginTop: 16,
+                                marginLeft: 32,
+                            }}>실제 후기를 확인해보세요.</div>
                         </div>
+                        {reviewData.map(item =>
+                            <Review
+                                item={item}
+                            />
+                        )}
+                        <div onClick={() => history.push("/servicewrite")} style={{
+                            position: "fixed",
+                            bottom: 40,
+                            width: 440,
+                            alignSelf: "center",
+                            paddingTop: 21,
+                            paddingBottom: 21,
+                            backgroundColor: "#26c1f0",
+                            borderRadius: 6,
+                            boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
+
+                            color: "#ffffff",
+                            fontSize: 21,
+                            fontWeight: "bold",
+                            textAlign: "center",
+                            cursor: "pointer",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>{noReview ? "첫 후기 작성하고 2천 포인트 받기" : "나누다 사용후기 작성하기"}</div>
                     </div>
                 </div>
             </Default>
@@ -190,7 +180,7 @@ export default function ServiceReview() {
 
 function Review({ item }) {
     var maskingName = NameMask(item.user_name)
-    var age = parseInt(item.user_age/10)
+    var age = parseInt(item.user_age / 10)
     var gender = item.user_gender === 0 ? "남성" : "여성"
     var score = item.service_score
     var content = item.service_content
@@ -251,7 +241,7 @@ function Review({ item }) {
 
 function MReview({ item }) {
     var maskingName = NameMask(item.user_name)
-    var age = parseInt(item.user_age/10)
+    var age = parseInt(item.user_age / 10)
     var gender = item.user_gender === 0 ? "남성" : "여성"
     var score = item.service_score
     var content = item.service_content

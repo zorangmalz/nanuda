@@ -23,7 +23,7 @@ const Container = styled.div`
     align-items: flex-end;
 `
 
-const Title = ({text, state, onClick}) => {
+const Title = ({ text, state, onClick }) => {
     return (
         <div onClick={onClick} style={{
             position: "relative",
@@ -44,14 +44,14 @@ const Title = ({text, state, onClick}) => {
 }
 
 function tab(state, action) {
-    switch (action.type){
+    switch (action.type) {
         case "ENTIRE":
             return 0;
         case "ELECTRONIC":
             return 1;
         case "FASHION":
             return 2;
-        default: 
+        default:
             return 0;
     }
 }
@@ -68,7 +68,7 @@ export default function TimeDeal() {
     const onFASHION = () => {
         dispatch({ type: "FASHION" })
     }
-    
+
     return (
         <>
             <Default>
@@ -82,35 +82,25 @@ export default function TimeDeal() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                        }}>
-                            <Header content="나누다딜" goBack={true} />
-                            <Container>
-                                <Title onClick={onENTIRE} text="전체 상품" state={tabNum == 0} />
-                                <Title onClick={onELECTRONIC} text="전자제품" state={tabNum == 1} />
-                                <Title onClick={onFASHION} text="패션" state={tabNum == 2} />
-                                <Title text="카테1" state={tabNum == 3} />
-                                <Title text="카테2" state={tabNum == 4} />
-                            </Container>
-                            <Switch>
-                                <Route exact path="/timedeal/entire" />
-                            </Switch>
-                        </div>
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                    }}>
+                        <Header content="나누다딜" goBack={true} />
+                        <Container>
+                            <Title onClick={onENTIRE} text="전체 상품" state={tabNum == 0} />
+                            <Title onClick={onELECTRONIC} text="전자제품" state={tabNum == 1} />
+                            <Title onClick={onFASHION} text="패션" state={tabNum == 2} />
+                            <Title text="카테1" state={tabNum == 3} />
+                            <Title text="카테2" state={tabNum == 4} />
+                        </Container>
+                        <Switch>
+                            <Route exact path="/timedeal/entire" />
+                        </Switch>
                     </div>
                 </div>
             </Default>

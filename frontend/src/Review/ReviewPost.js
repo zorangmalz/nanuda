@@ -6,7 +6,7 @@ import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "reac
 import { Product, MProduct } from "./ReviewSelect";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
-export default function ReviewPost({match}) {
+export default function ReviewPost({ match }) {
     let history = useHistory()
     const { pk } = match.params
     const [data, setData] = useState({
@@ -57,7 +57,7 @@ export default function ReviewPost({match}) {
 
     const putAlert = async () => {
         var body = {
-            id: pk, user_id: data.user_id, 
+            id: pk, user_id: data.user_id,
             product_id: data.product_id, review_alert: data.review_alert + 1
         }
         await fetch(`http://127.0.0.1:8000/review/${pk}`, {
@@ -88,7 +88,7 @@ export default function ReviewPost({match}) {
                 user_id: data.user_id, product_id: data.product_id,
             }
         }
-        
+
         await fetch(`http://127.0.0.1:8000/review/${pk}`, {
             method: "PUT",
             headers: {
@@ -157,7 +157,7 @@ export default function ReviewPost({match}) {
                 setLike(2)
             }).catch(err => console.log(err))
     }
-    
+
 
     const [mine, setMine] = useState(false)
     return (
@@ -171,166 +171,156 @@ export default function ReviewPost({match}) {
                     width: "100%",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="나눠산 사람들" goBack={true} />
+                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 32 }}>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                            }}>
+                                <img alt="프로필" src={data.user_profile} style={{
+                                    width: 32,
+                                    height: 32,
+                                    backgroundColor: "#f2f3f8",
+                                    marginLeft: 20,
+                                    borderRadius: 16
+                                }} />
+                                <div style={{
+                                    marginLeft: 8,
+                                    fontFamily: "AvenirNext",
+                                    fontWeight: "bold",
+                                    fontSize: 14
+                                }}>{data.user_nickname}</div>
+                            </div>
+                            {mine ?
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 14,
+                                    color: "#202426",
+                                    textDecorationLine: "underline",
+                                    marginRight: 20,
+                                    cursor: "pointer",
+                                }}>삭제하기</div>
+                                :
+                                <div onClick={putAlert} style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 14,
+                                    color: "#202426",
+                                    textDecorationLine: "underline",
+                                    marginRight: 20,
+                                    cursor: "pointer"
+                                }}>신고하기</div>
+                            }
+                        </div>
+
+                        <img alt="제품 사진" src={data.review_image} style={{
+                            width: 480,
+                            backgroundColor: "#26c1f0",
+                            marginTop: 8,
+                        }} />
+
+                        <Product
+                            name="삼배옷 컬랙션, White, 95"
+                            current={210000}
+                            sale={70000}
+                            border={false}
+                        />
+                        <div style={{
+                            marginTop: 16,
+                            width: 480,
+                            border: "0.5px solid #051a1a",
+                            opacity: 0.2
+                        }}></div>
+                        <div style={{
+                            marginLeft: 20,
+                            marginTop: 16,
+                            fontSize: 12,
+                            opacity: 0.6,
+                            fontFamily: "NotoSansCJKkr",
+                            color: "#202426",
+                        }}>{data.review_date}</div>
                         <div style={{
                             display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginLeft: 20,
+                            marginTop: 8
                         }}>
-                            <Header content="나눠산 사람들" goBack={true} />
-                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 32 }}>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                }}>
-                                    <img alt="프로필" src={data.user_profile} style={{
-                                        width: 32,
-                                        height: 32,
-                                        backgroundColor: "#f2f3f8",
-                                        marginLeft: 20,
-                                        borderRadius: 16
-                                    }} />
-                                    <div style={{
-                                        marginLeft: 8,
-                                        fontFamily: "AvenirNext",
-                                        fontWeight: "bold",
-                                        fontSize: 14
-                                    }}>{data.user_nickname}</div>
-                                </div>
-                                {mine ?
-                                    <div style={{
-                                        fontFamily: "NotoSansCJKkr",
-                                        opacity: 0.6,
-                                        fontSize: 14,
-                                        color: "#202426",
-                                        textDecorationLine: "underline",
-                                        marginRight: 20,
-                                        cursor: "pointer",
-                                    }}>삭제하기</div>
-                                    :
-                                    <div onClick={putAlert} style={{
-                                        fontFamily: "NotoSansCJKkr",
-                                        opacity: 0.6,
-                                        fontSize: 14,
-                                        color: "#202426",
-                                        textDecorationLine: "underline",
-                                        marginRight: 20,
-                                        cursor: "pointer"
-                                    }}>신고하기</div>
-                                }
-                            </div>
-
-                            <img alt="제품 사진" src={data.review_image}  style={{ 
-                                width: 480, 
-                                backgroundColor: "#26c1f0", 
-                                marginTop: 8,
-                            }} />
-
-                            <Product
-                                name="삼배옷 컬랙션, White, 95"
-                                current={210000}
-                                sale={70000}
-                                border={false}
-                            />
-                            <div style={{
-                                marginTop: 16,
-                                width: 480,
-                                border: "0.5px solid #051a1a",
-                                opacity: 0.2
-                            }}></div>
-                            <div style={{
-                                marginLeft: 20,
-                                marginTop: 16,
-                                fontSize: 12,
-                                opacity: 0.6,
-                                fontFamily: "NotoSansCJKkr",
-                                color: "#202426",
-                            }}>{data.review_date}</div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginLeft: 20,
-                                marginTop: 8
-                            }}>
-                                <CustomStar score={data.review_score} num={1} size={28} />
-                                <CustomStar score={data.review_score} num={2} size={28} />
-                                <CustomStar score={data.review_score} num={3} size={28} />
-                                <CustomStar score={data.review_score} num={4} size={28} />
-                                <CustomStar score={data.review_score} num={5} size={28} />
-                            </div>
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 14,
-                                fontWeight: "bold",
-                                color: "#26c1f0",
-                                marginLeft: 20,
-                                marginTop: 32,
-                            }}>좋았어요!</div>
-                            <div style={{
-                                marginTop: 8,
-                                marginLeft: 20,
-                                width: 440,
-                                fontSize: 14,
-                                lineHeight: 1.5
-                            }}>{data.review_like}</div>
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 14,
-                                fontWeight: "bold",
-                                color: "#f72b2b",
-                                marginLeft: 20,
-                                marginTop: 32,
-                            }}>별로였어요.</div>
-                            <div style={{
-                                marginTop: 8,
-                                marginLeft: 20,
-                                width: 440,
-                                fontSize: 14,
-                                lineHeight: 1.5
-                            }}>{data.review_dislike}</div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginTop: 16,
-                                marginLeft: 20,
-                            }}>
-                                {like === 0 ? <AiOutlineLike onClick={putLike} size={24} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={putReset} size={24} color="#051a1a" /> : <AiOutlineLike onClick={putLike} size={24} color="#051a1a" />}
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 14,
-                                    color: "#202426",
-                                    marginLeft: 8,
-                                    marginRight: 12,
-                                }}>{data.review_likeNum}</div>
-                                {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={24} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={putReset} size={24} color="#051a1a" /> : <AiOutlineDislike onClick={putDisLike} size={24} color="#051a1a" />}
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 14,
-                                    color: "#202426",
-                                    marginLeft: 8,
-                                }}>{data.review_dislikeNum}</div>
-                            </div>
-                            <StandardButton 
-                                marginTop={30}
-                                text="위시딜 신청하기"
-                                onClick={() => history.push("/wishdeal")}
-                                state={true}
-                            />
+                            <CustomStar score={data.review_score} num={1} size={28} />
+                            <CustomStar score={data.review_score} num={2} size={28} />
+                            <CustomStar score={data.review_score} num={3} size={28} />
+                            <CustomStar score={data.review_score} num={4} size={28} />
+                            <CustomStar score={data.review_score} num={5} size={28} />
                         </div>
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 14,
+                            fontWeight: "bold",
+                            color: "#26c1f0",
+                            marginLeft: 20,
+                            marginTop: 32,
+                        }}>좋았어요!</div>
+                        <div style={{
+                            marginTop: 8,
+                            marginLeft: 20,
+                            width: 440,
+                            fontSize: 14,
+                            lineHeight: 1.5
+                        }}>{data.review_like}</div>
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 14,
+                            fontWeight: "bold",
+                            color: "#f72b2b",
+                            marginLeft: 20,
+                            marginTop: 32,
+                        }}>별로였어요.</div>
+                        <div style={{
+                            marginTop: 8,
+                            marginLeft: 20,
+                            width: 440,
+                            fontSize: 14,
+                            lineHeight: 1.5
+                        }}>{data.review_dislike}</div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginTop: 16,
+                            marginLeft: 20,
+                        }}>
+                            {like === 0 ? <AiOutlineLike onClick={putLike} size={24} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={putReset} size={24} color="#051a1a" /> : <AiOutlineLike onClick={putLike} size={24} color="#051a1a" />}
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 14,
+                                color: "#202426",
+                                marginLeft: 8,
+                                marginRight: 12,
+                            }}>{data.review_likeNum}</div>
+                            {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={24} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={putReset} size={24} color="#051a1a" /> : <AiOutlineDislike onClick={putDisLike} size={24} color="#051a1a" />}
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 14,
+                                color: "#202426",
+                                marginLeft: 8,
+                            }}>{data.review_dislikeNum}</div>
+                        </div>
+                        <StandardButton
+                            marginTop={30}
+                            text="위시딜 신청하기"
+                            onClick={() => history.push("/wishdeal")}
+                            state={true}
+                        />
                     </div>
                 </div>
             </Default>
@@ -497,7 +487,7 @@ function CustomStar({ score, num, size }) {
                 <FaStar size={size} color="#ffd700" style={{ marginRight: 5 }} />
                 :
                 zero > 0 && zero < 1 ?
-                    <div style={{position: "relative", marginRight: 5, width: size, height: size}}>
+                    <div style={{ position: "relative", marginRight: 5, width: size, height: size }}>
                         <FaStarHalf size={size} color="#ffd700" style={{ position: "absolute", top: 0, zIndex: 1 }} />
                         <FaStar size={size} color="#dbdbdb" style={{ position: "absolute", top: 0, zIndex: 0 }} />
                     </div>

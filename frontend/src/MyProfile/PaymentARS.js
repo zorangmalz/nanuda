@@ -20,101 +20,91 @@ export default function PaymentARS() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="결제 계좌 등록" goBack={true} />
                         <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            marginTop: 32,
+                            marginLeft: 20,
+                        }}>입력하신 핸드폰 번호로 ARS인증을 진행합니다.</div>
+                        <div onClick={() => setCall(!call)} style={{
+                            width: 440,
+                            paddingTop: 16,
+                            paddingBottom: 16,
+                            backgroundColor: call ? "#dbdbdb" : "#051a1a",
+                            marginTop: 16,
+                            borderRadius: 6,
+                            alignSelf: "center",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            textAlign: "center",
+                            cursor: "pointer"
+                        }}>{call ? "인증 진행중" : "인증 전화 받기"}</div>
+                        <div style={{
+                            width: 440,
+                            paddingTop: 53,
+                            paddingBottom: 53,
+                            backgroundColor: "#f2f3f8",
+                            marginTop: 16,
+                            alignSelf: "center",
+                            borderRadius: 6,
+
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 32,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            textAlign: "center",
+                        }}>1228</div>
+                        <div style={{
+                            width: 440,
+                            alignSelf: "center",
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 16,
+                            opacity: 0.8,
+                            color: "#202426",
+                            lineHeight: 1.5,
+                            marginTop: 16,
                         }}>
-                            <Header content="결제 계좌 등록" goBack={true} />
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
+                            <span>통화 시작시 ARS안내를 끝까지 듣고 </span>
+                            <span style={{
                                 fontWeight: "bold",
-                                color: "#202426",
-                                marginTop: 32,
-                                marginLeft: 20,
-                            }}>입력하신 핸드폰 번호로 ARS인증을 진행합니다.</div>
-                            <div onClick={() => setCall(!call)} style={{
-                                width: 440,
-                                paddingTop: 16,
-                                paddingBottom: 16,
-                                backgroundColor: call ? "#dbdbdb" : "#051a1a",
-                                marginTop: 16,
-                                borderRadius: 6,
-                                alignSelf: "center",
-
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
+                            }}>"인증번호를 입력해주세요"</span>
+                            <span>라고할 때 고객님의 </span>
+                            <span style={{
                                 fontWeight: "bold",
-                                color: "#ffffff",
-                                textAlign: "center",
-                                cursor: "pointer"
-                            }}>{call ? "인증 진행중" : "인증 전화 받기"}</div>
-                            <div style={{
-                                width: 440,
-                                paddingTop: 53,
-                                paddingBottom: 53,
-                                backgroundColor: "#f2f3f8",
-                                marginTop: 16,
-                                alignSelf: "center",
-                                borderRadius: 6,
-
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 32,
-                                fontWeight: "bold",
-                                color: "#202426",
-                                textAlign: "center",
-                            }}>1228</div>
-                            <div style={{
-                                width: 440,
-                                alignSelf: "center",
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 16,
-                                opacity: 0.8,
-                                color: "#202426",
-                                lineHeight: 1.5,
-                                marginTop: 16,
-                            }}>
-                                <span>통화 시작시 ARS안내를 끝까지 듣고 </span>
-                                <span style={{
-                                    fontWeight: "bold",
-                                }}>"인증번호를 입력해주세요"</span>
-                                <span>라고할 때 고객님의 </span>
-                                <span style={{
-                                    fontWeight: "bold",
-                                }}>생일 4자리</span>
-                                <span>를 입력해주세요.</span>
-                            </div>
-                            <div style={{
-                                width: 440,
-                                paddingTop: 16,
-                                paddingBottom: 16,
-                                marginTop: 32,
-                                alignSelf: "center",
-                                backgroundColor: call ? veri ? "#26c1f0" : "#dbdbdb" : "#dbdbdb",
-                                cursor: "pointer",
-                                borderRadius: 6,
-
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                textAlign: "center",
-                            }}>인증완료</div>
+                            }}>생일 4자리</span>
+                            <span>를 입력해주세요.</span>
                         </div>
+                        <div style={{
+                            width: 440,
+                            paddingTop: 16,
+                            paddingBottom: 16,
+                            marginTop: 32,
+                            alignSelf: "center",
+                            backgroundColor: call ? veri ? "#26c1f0" : "#dbdbdb" : "#dbdbdb",
+                            cursor: "pointer",
+                            borderRadius: 6,
+
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            textAlign: "center",
+                        }}>인증완료</div>
                     </div>
                 </div>
             </Default>

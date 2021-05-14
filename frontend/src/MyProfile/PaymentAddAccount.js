@@ -19,56 +19,46 @@ export default function PaymentAddAccount() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="결제 계좌 등록" goBack={true} />
                         <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#202426",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                        }}>
-                            <Header content="결제 계좌 등록" goBack={true} />
-                            <div style={{
+                            marginTop: 32,
+                            marginLeft: 20,
+                        }}>계좌번호를 입력해주세요.</div>
+                        <input placeholder="계좌번호를 입력해주세요 (-제외)"
+                            style={{
+                                marginTop: 16,
+                                alignSelf: "center",
+                                outline: 0,
+                                border: 0,
+                                paddingBottom: 8,
+                                width: 440,
+                                borderBottom: "1px solid rgba(5, 26, 26, 0.4)",
+
                                 fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
+                                fontSize: 16,
                                 color: "#202426",
-
-                                marginTop: 32,
-                                marginLeft: 20,
-                            }}>계좌번호를 입력해주세요.</div>
-                            <input placeholder="계좌번호를 입력해주세요 (-제외)" 
-                                style={{
-                                    marginTop: 16,
-                                    alignSelf: "center",
-                                    outline: 0,
-                                    border: 0,
-                                    paddingBottom: 8,
-                                    width: 440,
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.4)",
-
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 16,
-                                    color: "#202426",
-                                }}
-                            />
-                            <StandardButton 
-                                marginTop={32}
-                                text="다음"
-                                onClick={() => history.push("/paymentaccountveri")}
-                                state={true}
-                            />
-                        </div>
+                            }}
+                        />
+                        <StandardButton
+                            marginTop={32}
+                            text="다음"
+                            onClick={() => history.push("/paymentaccountveri")}
+                            state={true}
+                        />
                     </div>
                 </div>
             </Default>

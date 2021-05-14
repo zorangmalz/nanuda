@@ -138,148 +138,138 @@ export default function ReviewWrite() {
 
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                        paddingBottom: 50,
                     }}>
+                        <Header content="리뷰 작성" goBack={true} />
+                        <Product
+                            name="삼배옷 컬랙션, White, 95"
+                            current={210000}
+                            sale={70000}
+                            border={true}
+                        />
+
+                        <div style={{
+                            marginTop: 16,
+                            marginLeft: 20,
+                            fontWeight: "bold",
+                            fontSize: 18
+                        }}>만족도를 표시해주세요! </div>
+
                         <div style={{
                             display: "flex",
-                            flexDirection: "column",
-
-                            justifyContent: "flex-start",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                            paddingBottom: 50,
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginLeft: 20,
+                            marginTop: 12,
                         }}>
-                            <Header content="리뷰 작성" goBack={true} />
-                            <Product
-                                name="삼배옷 컬랙션, White, 95"
-                                current={210000}
-                                sale={70000}
-                                border={true}
-                            />
-
-                            <div style={{
-                                marginTop: 16,
-                                marginLeft: 20,
-                                fontWeight: "bold",
-                                fontSize: 18
-                            }}>만족도를 표시해주세요! </div>
-
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginLeft: 20,
-                                marginTop: 12,
-                            }}>
-                                <ReactStars
-                                    color="#dbdbdb"
-                                    count={5}
-                                    onChange={ratingChanged}
-                                    size={28}
-                                    isHalf={true}
-                                    emptyIcon={<i className="far fa-star"></i>}
-                                    halfIcon={<i className="fa fa-star-half-alt"></i>}
-                                    fullIcon={<i className="fa fa-star"></i>}
-                                    activeColor="#ffd700"
-                                />
-                            </div>
-                            <div style={{
-                                marginTop: 32,
-                                marginLeft: 20,
-                                fontWeight: "bold",
-                                fontSize: 18
-                            }}>사진을 첨부해주세요.(최대 3장)</div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                paddingTop: 16,
-                            }}>
-                                {filePath.length < 3 ?
-                                    <div onClick={onButtonclick} style={{
-                                        marginLeft: 20,
-                                        width: 120,
-                                        height: 120,
-                                        borderRadius: 6,
-                                        backgroundColor: "#f2f3f8",
-                                        cursor: "pointer",
-
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center"
-                                    }}>
-                                        <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
-                                            display: "none"
-                                        }} />
-                                        <BsPlusCircle size={24} color="#051a1a" />
-                                    </div>
-                                    :
-                                    <></>
-                                }
-                                {filePath.length > 0 ?
-                                    filePath.map(item =>
-                                        <img src={item} style={{
-                                            width: 120,
-                                            height: 120,
-                                            resize: "cover",
-                                            marginLeft: 20,
-                                        }} />
-                                    )
-                                    :
-                                    <></>
-                                }
-                            </div>
-                            <div style={{
-                                marginTop: 32,
-                                marginLeft: 20,
-                                fontWeight: "bold",
-                                fontSize: 18
-                            }}>제품 사용 후 좋았던 점은 무엇인가요?</div>
-                            <textarea onChange={onChange} name="like" value={like} cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
-                                outline: 0,
-                                border: 0,
-                                width: 408,
-                                padding: 16,
-                                borderRadius: 6,
-                                backgroundColor: "#f2f3f8",
-                                minHeight: 100,
-                                marginLeft: 20,
-                                marginTop: 16,
-                                resize: "none",
-                            }} />
-                            <div style={{
-                                marginTop: 16,
-                                marginLeft: 20,
-                                fontWeight: "bold",
-                                fontSize: 18
-                            }}>제품 사용 후 안좋았던 점은 무엇인가요?</div>
-                            <textarea onChange={onChange} name="dislike" value={dislike} cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
-                                outline: 0,
-                                border: 0,
-                                width: 408,
-                                padding: 16,
-                                borderRadius: 6,
-                                backgroundColor: "#f2f3f8",
-                                minHeight: 100,
-                                marginLeft: 20,
-                                marginTop: 16,
-                                resize: "none",
-                            }} />
-                            <StandardButton 
-                                onClick={uploadFile}
-                                marginTop={40}
-                                text="다음"
-                                state={inputs.like.length > 0 && inputs.dislike.length > 0 && filePath.length > 0 && number > 0 ? true : false}
+                            <ReactStars
+                                color="#dbdbdb"
+                                count={5}
+                                onChange={ratingChanged}
+                                size={28}
+                                isHalf={true}
+                                emptyIcon={<i className="far fa-star"></i>}
+                                halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                fullIcon={<i className="fa fa-star"></i>}
+                                activeColor="#ffd700"
                             />
                         </div>
+                        <div style={{
+                            marginTop: 32,
+                            marginLeft: 20,
+                            fontWeight: "bold",
+                            fontSize: 18
+                        }}>사진을 첨부해주세요.(최대 3장)</div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            paddingTop: 16,
+                        }}>
+                            {filePath.length < 3 ?
+                                <div onClick={onButtonclick} style={{
+                                    marginLeft: 20,
+                                    width: 120,
+                                    height: 120,
+                                    borderRadius: 6,
+                                    backgroundColor: "#f2f3f8",
+                                    cursor: "pointer",
+
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center"
+                                }}>
+                                    <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
+                                        display: "none"
+                                    }} />
+                                    <BsPlusCircle size={24} color="#051a1a" />
+                                </div>
+                                :
+                                <></>
+                            }
+                            {filePath.length > 0 ?
+                                filePath.map(item =>
+                                    <img src={item} style={{
+                                        width: 120,
+                                        height: 120,
+                                        resize: "cover",
+                                        marginLeft: 20,
+                                    }} />
+                                )
+                                :
+                                <></>
+                            }
+                        </div>
+                        <div style={{
+                            marginTop: 32,
+                            marginLeft: 20,
+                            fontWeight: "bold",
+                            fontSize: 18
+                        }}>제품 사용 후 좋았던 점은 무엇인가요?</div>
+                        <textarea onChange={onChange} name="like" value={like} cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
+                            outline: 0,
+                            border: 0,
+                            width: 408,
+                            padding: 16,
+                            borderRadius: 6,
+                            backgroundColor: "#f2f3f8",
+                            minHeight: 100,
+                            marginLeft: 20,
+                            marginTop: 16,
+                            resize: "none",
+                        }} />
+                        <div style={{
+                            marginTop: 16,
+                            marginLeft: 20,
+                            fontWeight: "bold",
+                            fontSize: 18
+                        }}>제품 사용 후 안좋았던 점은 무엇인가요?</div>
+                        <textarea onChange={onChange} name="dislike" value={dislike} cols="10" rows="5" placeholder="상품에 대한 품질, 사용 후 만족도를 말씀해주세요!" style={{
+                            outline: 0,
+                            border: 0,
+                            width: 408,
+                            padding: 16,
+                            borderRadius: 6,
+                            backgroundColor: "#f2f3f8",
+                            minHeight: 100,
+                            marginLeft: 20,
+                            marginTop: 16,
+                            resize: "none",
+                        }} />
+                        <StandardButton
+                            onClick={uploadFile}
+                            marginTop={40}
+                            text="다음"
+                            state={inputs.like.length > 0 && inputs.dislike.length > 0 && filePath.length > 0 && number > 0 ? true : false}
+                        />
                     </div>
                 </div>
             </Default>
@@ -408,7 +398,7 @@ export default function ReviewWrite() {
                         resize: "none",
                         alignSelf: "center",
                     }} />
-                    <MStandardButton 
+                    <MStandardButton
                         onClick={uploadFile}
                         marginTop={20}
                         text="다음"

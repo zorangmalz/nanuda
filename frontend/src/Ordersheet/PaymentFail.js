@@ -22,72 +22,62 @@ export default function PaymentFail() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "flex-start",
+                        alignItems: "center",
+                        justifyContent: "flex-start",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                    }}>
+                        <Header content={timeDeal ? "작성 실패" : "주문 결과"} goX={true} />
+                        <div style={{
+                            width: 80,
+                            height: 80,
+                            borderRadius: 40,
+                            marginTop: 32,
+                            backgroundColor: "#f72b2b",
+
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
                         }}>
-                            <Header content={timeDeal ? "작성 실패" : "주문 결과"} goX={true} />
-                            <div style={{
-                                width: 80,
-                                height: 80,
-                                borderRadius: 40,
-                                marginTop: 32,
-                                backgroundColor: "#f72b2b",
-                                
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center"
-                            }}>
-                                <AiOutlineClose color="#ffffff" size={50} />
-                            </div>
-                            <div style={{
-                                marginTop: 32,
-                                fontSize: 21,
-                                fontWeight: "bold",
-                                color: "#f72b2b",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>작성에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
-                            <div style={{
-                                fontSize: 16,
-                                color: "#051a1a",
-                                opacity: 0.6,
-                                marginTop: 16,
-                                fontFamily: "NotoSansCJKkr"
-                            }}>실패 사유 : {timeDeal ? "잔액부족" : "Invalid Number"}</div>
-                            <OrderDetail 
-                                wishTime={timeDeal}
-                                title="PRADA Model 23-9 limited edition berry expensive"
-                                price="460,000"
-                                name="김현명"
-                                orderNum="20200413137223-00-01"
-                                number="03770"
-                                address="서울 특별시 서대문구 북아현로 1길 17"
-                                addressDetail="e편한세상 203동 2104호"
-                                phoneNumber="010-4337-6607"
-                                deliveryClaim="집 앞"
-                            />
-                            <StandardButton 
-                                text={timeDeal ? "주문서로 돌아가기" : "홈으로"}
-                                onClick={timeDeal ? () => history.push("/ordersheet") : () => history.replace("/")}
-                                state={true}
-                                marginTop={32}
-                            />
+                            <AiOutlineClose color="#ffffff" size={50} />
                         </div>
+                        <div style={{
+                            marginTop: 32,
+                            fontSize: 21,
+                            fontWeight: "bold",
+                            color: "#f72b2b",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>작성에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
+                        <div style={{
+                            fontSize: 16,
+                            color: "#051a1a",
+                            opacity: 0.6,
+                            marginTop: 16,
+                            fontFamily: "NotoSansCJKkr"
+                        }}>실패 사유 : {timeDeal ? "잔액부족" : "Invalid Number"}</div>
+                        <OrderDetail
+                            wishTime={timeDeal}
+                            title="PRADA Model 23-9 limited edition berry expensive"
+                            price="460,000"
+                            name="김현명"
+                            orderNum="20200413137223-00-01"
+                            number="03770"
+                            address="서울 특별시 서대문구 북아현로 1길 17"
+                            addressDetail="e편한세상 203동 2104호"
+                            phoneNumber="010-4337-6607"
+                            deliveryClaim="집 앞"
+                        />
+                        <StandardButton
+                            text={timeDeal ? "주문서로 돌아가기" : "홈으로"}
+                            onClick={timeDeal ? () => history.push("/ordersheet") : () => history.replace("/")}
+                            state={true}
+                            marginTop={32}
+                        />
                     </div>
                 </div>
             </Default>
@@ -155,7 +145,7 @@ export default function PaymentFail() {
     )
 }
 
-export function OrderDetail({wishTime, img, title, price, name, orderNum, number, address, addressDetail, phoneNumber, deliveryClaim}) {
+export function OrderDetail({ wishTime, img, title, price, name, orderNum, number, address, addressDetail, phoneNumber, deliveryClaim }) {
     return (
         <>
             {wishTime ?
@@ -237,7 +227,7 @@ export function OrderDetail({wishTime, img, title, price, name, orderNum, number
     )
 }
 
-export function MOrderDetail({wishTime, img, title, price, name, orderNum, number, address, addressDetail, phoneNumber, deliveryClaim}) {
+export function MOrderDetail({ wishTime, img, title, price, name, orderNum, number, address, addressDetail, phoneNumber, deliveryClaim }) {
     return (
         <>
             {wishTime ?

@@ -63,139 +63,129 @@ export default function ProfileVerification() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "space-between",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
-                            justifyContent: "space-between",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
                         }}>
+                            <Header content="미션" goBack={true} />
+                            <Title>현재 직업은 무엇인가요?</Title>
+                            <div style={{
+                                display: "grid",
+                                gridTemplateColumns: "repeat(4, 1fr)",
+                                width: 440,
+                                alignSelf: "center",
+                                marginTop: 16,
+                                rowGap: 16,
+                            }}>
+                                <Button
+                                    text="대학생"
+                                    number={number}
+                                    standard={1}
+                                    onClick={onStudent}
+                                />
+                                <Button
+                                    text="직장인"
+                                    number={number}
+                                    standard={2}
+                                    onClick={onEmploy}
+                                />
+                                <Button
+                                    text="주부"
+                                    number={number}
+                                    standard={3}
+                                    onClick={onHouse}
+                                />
+                                <Button
+                                    text="취준생"
+                                    number={number}
+                                    standard={4}
+                                    onClick={onReady}
+                                />
+                                <Button
+                                    text="자영업"
+                                    number={number}
+                                    standard={5}
+                                    onClick={onSelf}
+                                />
+                                <Button
+                                    text="기타"
+                                    number={number}
+                                    standard={6}
+                                    onClick={onEtc}
+                                />
+                            </div>
+                            <InputModule
+                                input={job}
+                                onChange={onJob}
+                                placeholder="현재 직업을 입력해주세요."
+                                width={440}
+                                marginLeft={20}
+                                marginTop={16}
+                                fontSize={16}
+                            />
+                            <Title>직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요. (최대 두장)</Title>
                             <div style={{
                                 display: "flex",
-                                flexDirection: "column",
+                                flexDirection: "row",
+                                alignItems: "center",
+
+                                width: 440,
+                                marginLeft: 20,
+                                marginTop: 16,
                             }}>
-                                <Header content="미션" goBack={true} />
-                                <Title>현재 직업은 무엇인가요?</Title>
-                                <div style={{
-                                    display: "grid",
-                                    gridTemplateColumns: "repeat(4, 1fr)",
-                                    width: 440,
-                                    alignSelf: "center",
-                                    marginTop: 16,
-                                    rowGap: 16,
-                                }}>
-                                    <Button
-                                        text="대학생"
-                                        number={number}
-                                        standard={1}
-                                        onClick={onStudent}
-                                    />
-                                    <Button
-                                        text="직장인"
-                                        number={number}
-                                        standard={2}
-                                        onClick={onEmploy}
-                                    />
-                                    <Button
-                                        text="주부"
-                                        number={number}
-                                        standard={3}
-                                        onClick={onHouse}
-                                    />
-                                    <Button
-                                        text="취준생"
-                                        number={number}
-                                        standard={4}
-                                        onClick={onReady}
-                                    />
-                                    <Button
-                                        text="자영업"
-                                        number={number}
-                                        standard={5}
-                                        onClick={onSelf}
-                                    />
-                                    <Button
-                                        text="기타"
-                                        number={number}
-                                        standard={6}
-                                        onClick={onEtc}
-                                    />
-                                </div>
-                                <InputModule
-                                    input={job}
-                                    onChange={onJob}
-                                    placeholder="현재 직업을 입력해주세요."
-                                    width={440}
-                                    marginLeft={20}
-                                    marginTop={16}
-                                    fontSize={16}
-                                />
-                                <Title>직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요. (최대 두장)</Title>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-
-                                    width: 440,
-                                    marginLeft: 20,
-                                    marginTop: 16,
-                                }}>
-                                    <PictureButton />
-                                    <PictureButton />
-                                </div>
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 14,
-                                    fontWeight: "bold",
-                                    color: "#202426",
-
-                                    marginTop: 16,
-                                    width: 440,
-                                    alignSelf: "center"
-                                }}>나누다 팁!</div>
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 14,
-                                    opacity: 0.8,
-                                    color: "#202426",
-
-                                    marginTop: 4,
-                                    width: 440,
-                                    alignSelf: "center",
-                                }}>학생증, 사원증, 아르바이트 월급 인증, 고무장갑 인증 등 다양하게
-                                    자신의 직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요!
-                            사용자님의 소중한 개인정보는 확인용도외에 일절 사용 되지 않습니다.</div>
+                                <PictureButton />
+                                <PictureButton />
                             </div>
                             <div style={{
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                backgroundColor: "#26c1f0",
-                                cursor: "pointer",
-                                borderRadius: 6,
-
                                 fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
+                                fontSize: 14,
                                 fontWeight: "bold",
-                                color: "#ffffff",
-                                textAlign: "center",
+                                color: "#202426",
 
-                                marginTop: 40,
+                                marginTop: 16,
+                                width: 440,
+                                alignSelf: "center"
+                            }}>나누다 팁!</div>
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 14,
+                                opacity: 0.8,
+                                color: "#202426",
+
+                                marginTop: 4,
+                                width: 440,
                                 alignSelf: "center",
-                                marginBottom: 40,
-                            }}>인증 완료</div>
+                            }}>학생증, 사원증, 아르바이트 월급 인증, 고무장갑 인증 등 다양하게
+                                자신의 직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요!
+                            사용자님의 소중한 개인정보는 확인용도외에 일절 사용 되지 않습니다.</div>
                         </div>
+                        <div style={{
+                            width: 440,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            backgroundColor: "#26c1f0",
+                            cursor: "pointer",
+                            borderRadius: 6,
+
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            textAlign: "center",
+
+                            marginTop: 40,
+                            alignSelf: "center",
+                            marginBottom: 40,
+                        }}>인증 완료</div>
                     </div>
                 </div>
             </Default>

@@ -59,169 +59,159 @@ export default function ReviewMain() {
 
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="나눠산 사람들" goBack={true} />
                         <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-
-                            justifyContent: "flex-start",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            width: 440,
+                            height: 150,
+                            marginTop: 32,
+                            marginLeft: 20,
+                            backgroundColor: "#cb1a86",
+                            borderRadius: 6
                         }}>
-                            <Header content="나눠산 사람들" goBack={true} />
                             <div style={{
-                                width: 440,
-                                height: 150,
-                                marginTop: 32,
-                                marginLeft: 20,
-                                backgroundColor: "#cb1a86",
-                                borderRadius: 6
+                                fontSize: 18,
+                                color: "#ffffff",
+                                marginLeft: 32,
+                                marginTop: 32
+                            }}>다른 사람들은 어떤걸 샀을까?</div>
+                            <div style={{
+                                fontSize: 24,
+                                fontWeight: "bold",
+                                color: "#ffffff",
+                                marginTop: 16,
+                                marginLeft: 32
+                            }}>뽐뿌가 왔다면 위시딜!</div>
+                        </div>
+                        {data.length === 0 ?
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                minHeight: "60vh",
+                                width: "100%",
                             }}>
+                                <img
+                                    src={nodata}
+                                />
                                 <div style={{
-                                    fontSize: 18,
-                                    color: "#ffffff",
-                                    marginLeft: 32,
-                                    marginTop: 32
-                                }}>다른 사람들은 어떤걸 샀을까?</div>
-                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
                                     fontSize: 24,
                                     fontWeight: "bold",
-                                    color: "#ffffff",
-                                    marginTop: 16,
-                                    marginLeft: 32
-                                }}>뽐뿌가 왔다면 위시딜!</div>
+                                    marginTop: 32,
+                                    marginBottom: 8,
+                                    color: "#202426"
+                                }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 18,
+                                    opacity: 0.6,
+                                    color: "#202426"
+                                }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
                             </div>
-                            {data.length === 0 ?
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    minHeight: "60vh",
-                                    width: "100%",
-                                }}>
-                                    <img
-                                        src={nodata}
-                                    />
+                            :
+                            <div style={{
+                                display: "grid",
+                                flexDirection: "row",
+                                width: 240,
+                                alignItems: "flex-start",
+                                justifyContent: "flex-start",
+                                gridTemplateColumns: "1fr 1fr",
+                                marginBottom: 100,
+                            }}>
+                                {data.map(item =>
                                     <div style={{
-                                        fontFamily: "NotoSansCJKkr",
-                                        fontSize: 24,
-                                        fontWeight: "bold",
+                                        marginLeft: 20,
                                         marginTop: 32,
-                                        marginBottom: 8,
-                                        color: "#202426"
-                                    }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
-                                    <div style={{
-                                        fontFamily: "NotoSansCJKkr",
-                                        fontSize: 18,
-                                        opacity: 0.6,
-                                        color: "#202426"
-                                    }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
-                                </div>
-                                :
-                                <div style={{
-                                    display: "grid",
-                                    flexDirection: "row",
-                                    width: 240,
-                                    alignItems: "flex-start",
-                                    justifyContent: "flex-start",
-                                    gridTemplateColumns: "1fr 1fr",
-                                    marginBottom: 100,
-                                }}>
-                                    {data.map(item =>
+                                        cursor: "pointer"
+                                    }}>
                                         <div style={{
-                                            marginLeft: 20,
-                                            marginTop: 32,
-                                            cursor: "pointer"
+                                            display: "flex",
+                                            flexDirection: "row",
                                         }}>
-                                            <div style={{
-                                                display: "flex",
-                                                flexDirection: "row",
-                                            }}>
-                                                <img alt="프로필" src={item.user_profile} style={{
-                                                    width: 32,
-                                                    height: 32,
-                                                    borderRadius: 16,
-                                                }} />
-                                                <div style={{
-                                                    fontSize: 14,
-                                                    fontWeight: "bold",
-                                                    marginLeft: 8,
-                                                    marginTop: 6
-                                                }}>{item.user_nickname} </div>
-                                            </div>
-                                            <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
-                                                width: 210,
-                                                height: 160,
-                                                borderRadius: 6,
-                                                backgroundColor: "#051a1a",
-                                                marginTop: 8,
-                                                objectFit: "cover",
-                                                border: "1px solid #ebebeb"
+                                            <img alt="프로필" src={item.user_profile} style={{
+                                                width: 32,
+                                                height: 32,
+                                                borderRadius: 16,
                                             }} />
                                             <div style={{
-                                                display: "flex",
-                                                flexDirection: "row",
-                                                alignItems: "center",
-                                                justifyContent: "flex-start",
-                                                marginTop: 8,
-                                            }}>
-                                                <AiFillStar size={16} color="#fad94f" />
-                                                <div style={{
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    fontSize: 14,
-                                                    fontWeight: "bold",
-                                                    color: "#051a1a",
-                                                    marginLeft: 4,
-                                                }}>{item.review_score}</div>
-                                            </div>
-                                            <div style={{
-                                                fontSize: 14,
-                                                opacity: 0.8,
-                                                marginTop: 8,
-                                                width: 210,
-                                                fontFamily: "NotoSansCJKkr"
-                                            }}>{item.review_like}</div>
-                                            <div style={{
-                                                color: "#26c1f0",
-                                                marginTop: 4,
                                                 fontSize: 14,
                                                 fontWeight: "bold",
-                                                fontFamily: "NotoSansCJKkr"
-                                            }}>{item.product_price}원에 획득 완료</div>
+                                                marginLeft: 8,
+                                                marginTop: 6
+                                            }}>{item.user_nickname} </div>
                                         </div>
-                                    )}
-                                </div>
-                            }
-                            <div onClick={() => history.push("/reviewselect")} style={{
-                                position: "fixed",
-                                zIndex: 5,
-                                bottom: 0,
-                                borderRadius: 8,
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                alignSelf: "center",
-                                backgroundColor: "#26c1f0",
+                                        <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                            width: 210,
+                                            height: 160,
+                                            borderRadius: 6,
+                                            backgroundColor: "#051a1a",
+                                            marginTop: 8,
+                                            objectFit: "cover",
+                                            border: "1px solid #ebebeb"
+                                        }} />
+                                        <div style={{
+                                            display: "flex",
+                                            flexDirection: "row",
+                                            alignItems: "center",
+                                            justifyContent: "flex-start",
+                                            marginTop: 8,
+                                        }}>
+                                            <AiFillStar size={16} color="#fad94f" />
+                                            <div style={{
+                                                fontFamily: "NotoSansCJKkr",
+                                                fontSize: 14,
+                                                fontWeight: "bold",
+                                                color: "#051a1a",
+                                                marginLeft: 4,
+                                            }}>{item.review_score}</div>
+                                        </div>
+                                        <div style={{
+                                            fontSize: 14,
+                                            opacity: 0.8,
+                                            marginTop: 8,
+                                            width: 210,
+                                            fontFamily: "NotoSansCJKkr"
+                                        }}>{item.review_like}</div>
+                                        <div style={{
+                                            color: "#26c1f0",
+                                            marginTop: 4,
+                                            fontSize: 14,
+                                            fontWeight: "bold",
+                                            fontFamily: "NotoSansCJKkr"
+                                        }}>{item.product_price}원에 획득 완료</div>
+                                    </div>
+                                )}
+                            </div>
+                        }
+                        <div onClick={() => history.push("/reviewselect")} style={{
+                            position: "fixed",
+                            zIndex: 5,
+                            bottom: 0,
+                            borderRadius: 8,
+                            width: 440,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            alignSelf: "center",
+                            backgroundColor: "#26c1f0",
 
-                                textAlign: "center",
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                cursor: "pointer",
-                                marginBottom: 30,
-                            }}>리뷰 작성하기</div>
-                        </div>
+                            textAlign: "center",
+                            color: "#ffffff",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            cursor: "pointer",
+                            marginBottom: 30,
+                        }}>리뷰 작성하기</div>
                     </div>
                 </div>
             </Default>

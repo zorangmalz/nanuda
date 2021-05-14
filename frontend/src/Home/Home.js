@@ -71,367 +71,357 @@ export default function Home() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <HomeHeader />
+                        {/* 배너 넣어야됨 */}
                         <div style={{
                             display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginTop: 32,
+                            marginLeft: 20,
                         }}>
-                            <HomeHeader />
-                            {/* 배너 넣어야됨 */}
                             <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginTop: 32,
-                                marginLeft: 20,
-                            }}>
-                                <div style={{
-                                    fontWeight: "bold",
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 21,
-                                    color: "#202426",
-                                    marginRight: 4,
-                                }}>나누다딜</div>
-                                <MdKeyboardArrowRight 
-                                    onClick={() => history.push("/timedeal")}
-                                    size={24}
-                                    color="rgba(5, 26, 26, 0.6)"
-                                    style={{
-                                        cursor: "pointer"
-                                    }}
-                                />
-                            </div>
-                            <div style={{
-                                fontSizeAdjust: 16,
+                                fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
-                                opacity: 0.6,
+                                fontSize: 21,
                                 color: "#202426",
-
-                                marginTop: 4,
-                                marginLeft: 20,
-                                marginBottom: 16,
-                            }}>할인된 상품을 BNPL하세요!</div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                marginLeft: 20,
-                                marginRight: 20,
-                                width: 440,
-                                alignItems: "flex-start",
-                                justifyContent: "space-between"
-                            }}>
-                                <TimeShop
-                                    title="PRADA"
-                                    sub="PRADA Model 23-9 limited edition berry expensive"
-                                    price="600000"
-                                    currentPrice="480000"
-                                    stock={2}
-                                />
-                                <TimeShop
-                                    title="PRADA"
-                                    sub="PRADA Model 23-9 limited edition berry expensive"
-                                    price="600000"
-                                    currentPrice="480000"
-                                    stock={0}
-                                    time="내일 오전 9:00 오픈"
-                                />
-                            </div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginTop: 32,
-                                marginLeft: 20,
-                            }}>
-                                <div style={{
-                                    fontWeight: "bold",
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 21,
-                                    color: "#202426",
-                                    marginRight: 4,
-                                }}>나눠산 사람들</div>
-                                <MdKeyboardArrowRight 
-                                    onClick={() => history.push("/review")}
-                                    size={24}
-                                    color="rgba(5, 26, 26, 0.6)"
-                                    style={{
-                                        cursor: "pointer"
-                                    }}
-                                />
-                            </div>
-                            <div style={{
-                                fontSizeAdjust: 16,
-                                fontFamily: "NotoSansCJKkr",
-                                opacity: 0.6,
-                                color: "#202426",
-
-                                marginTop: 4,
-                                marginLeft: 20,
-                                marginBottom: 16,
-                            }}>다른 사람들은 어떤걸 샀을까?</div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "flex-start",
-                                justifyContent: "space-between",
-                                marginBottom: 32,
-                                width: 440,
-                                alignSelf: "center",
-                            }}>
-                                {nanudaData.map(item => <div style={{
+                                marginRight: 4,
+                            }}>나누다딜</div>
+                            <MdKeyboardArrowRight
+                                onClick={() => history.push("/timedeal")}
+                                size={24}
+                                color="rgba(5, 26, 26, 0.6)"
+                                style={{
                                     cursor: "pointer"
+                                }}
+                            />
+                        </div>
+                        <div style={{
+                            fontSizeAdjust: 16,
+                            fontFamily: "NotoSansCJKkr",
+                            opacity: 0.6,
+                            color: "#202426",
+
+                            marginTop: 4,
+                            marginLeft: 20,
+                            marginBottom: 16,
+                        }}>할인된 상품을 BNPL하세요!</div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            marginLeft: 20,
+                            marginRight: 20,
+                            width: 440,
+                            alignItems: "flex-start",
+                            justifyContent: "space-between"
+                        }}>
+                            <TimeShop
+                                title="PRADA"
+                                sub="PRADA Model 23-9 limited edition berry expensive"
+                                price="600000"
+                                currentPrice="480000"
+                                stock={2}
+                            />
+                            <TimeShop
+                                title="PRADA"
+                                sub="PRADA Model 23-9 limited edition berry expensive"
+                                price="600000"
+                                currentPrice="480000"
+                                stock={0}
+                                time="내일 오전 9:00 오픈"
+                            />
+                        </div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginTop: 32,
+                            marginLeft: 20,
+                        }}>
+                            <div style={{
+                                fontWeight: "bold",
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 21,
+                                color: "#202426",
+                                marginRight: 4,
+                            }}>나눠산 사람들</div>
+                            <MdKeyboardArrowRight
+                                onClick={() => history.push("/review")}
+                                size={24}
+                                color="rgba(5, 26, 26, 0.6)"
+                                style={{
+                                    cursor: "pointer"
+                                }}
+                            />
+                        </div>
+                        <div style={{
+                            fontSizeAdjust: 16,
+                            fontFamily: "NotoSansCJKkr",
+                            opacity: 0.6,
+                            color: "#202426",
+
+                            marginTop: 4,
+                            marginLeft: 20,
+                            marginBottom: 16,
+                        }}>다른 사람들은 어떤걸 샀을까?</div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "flex-start",
+                            justifyContent: "space-between",
+                            marginBottom: 32,
+                            width: 440,
+                            alignSelf: "center",
+                        }}>
+                            {nanudaData.map(item => <div style={{
+                                cursor: "pointer"
+                            }}>
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "row",
                                 }}>
                                     <div style={{
-                                        display: "flex",
-                                        flexDirection: "row",
+                                        width: 32,
+                                        height: 32,
+                                        borderRadius: 16,
+                                        backgroundColor: item.pic
                                     }}>
-                                        <div style={{
-                                            width: 32,
-                                            height: 32,
-                                            borderRadius: 16,
-                                            backgroundColor: item.pic
-                                        }}>
-                                        </div>
-                                        <div style={{
-                                            fontSize: 14,
-                                            fontWeight: "bold",
-                                            marginLeft: 8,
-                                            marginTop: 6
-                                        }}>{item.id} </div>
                                     </div>
-                                    <div onClick={() => history.push("/reviewpost")} style={{
-                                        width: 210,
-                                        height: 210,
-                                        borderRadius: 6,
-                                        backgroundColor: "#f2f3f8",
-                                        marginTop: 8
-                                    }} />
                                     <div style={{
+                                        fontSize: 14,
+                                        fontWeight: "bold",
+                                        marginLeft: 8,
+                                        marginTop: 6
+                                    }}>{item.id} </div>
+                                </div>
+                                <div onClick={() => history.push("/reviewpost")} style={{
+                                    width: 210,
+                                    height: 210,
+                                    borderRadius: 6,
+                                    backgroundColor: "#f2f3f8",
+                                    marginTop: 8
+                                }} />
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "flex-start",
+                                    marginTop: 8,
+                                }}>
+                                    <AiFillStar size={16} color="#fad94f" />
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 14,
+                                        fontWeight: "bold",
+                                        color: "#051a1a",
+                                        marginLeft: 4,
+                                    }}>4.5</div>
+                                </div>
+                                <div style={{
+                                    fontSize: 14,
+                                    opacity: 0.8,
+                                    marginTop: 8,
+                                    width: 210,
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>{item.content}</div>
+                                <div style={{
+                                    color: "#26c1f0",
+                                    marginTop: 4,
+                                    fontSize: 14,
+                                    fontWeight: "bold",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>{item.follow}원에 획득 완료</div>
+                            </div>)}
+                        </div>
+                        <div style={{
+                            width: 440,
+                            marginLeft: 20,
+                            borderRadius: 6,
+                        }}>
+                            <Slider dotsClass="desktop-slick-dots"
+                                dots={true}
+                                slidesToShow={1}
+                                slidesToScroll={1}
+                                adaptiveHeight={true}
+                                arrows={false}
+                            >
+                                <div>
+                                    <div style={{
+                                        width: 364,
+                                        paddingTop: 32,
+                                        paddingBottom: 32,
+                                        paddingLeft: 32,
+                                        paddingRight: 44,
+                                        backgroundColor: "#cb1a86",
                                         display: "flex",
                                         flexDirection: "row",
                                         alignItems: "center",
-                                        justifyContent: "flex-start",
-                                        marginTop: 8,
+                                        justifyContent: "space-between",
+                                        outline: 0,
+                                        borderRadius: 6,
                                     }}>
-                                        <AiFillStar size={16} color="#fad94f" />
                                         <div style={{
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontSize: 14,
-                                            fontWeight: "bold",
-                                            color: "#051a1a",
-                                            marginLeft: 4,
-                                        }}>4.5</div>
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "flex-start"
+                                        }}>
+                                            <div style={{
+                                                fontSize: 18,
+                                                fontFamily: "NotoSansCJKkr",
+                                                color: "#ffffff",
+                                            }}>자주 물어보는 질문들을 정리해봤어요!</div>
+                                            <div style={{
+                                                fontSize: 24,
+                                                fontWeight: "bold",
+                                                fontFamily: "NotoSansCJKkr",
+                                                color: "#ffffff",
+                                                marginTop: 16,
+                                            }}>나누다 FAQ 총정리!</div>
+                                        </div>
                                     </div>
+                                </div>
+                                <div>
                                     <div style={{
-                                        fontSize: 14,
-                                        opacity: 0.8,
-                                        marginTop: 8,
-                                        width: 210,
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>{item.content}</div>
+                                        width: 364,
+                                        paddingTop: 32,
+                                        paddingBottom: 32,
+                                        paddingLeft: 32,
+                                        paddingRight: 44,
+                                        backgroundColor: "#cb1a86",
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        justifyContent: "space-between",
+                                        borderRadius: 6,
+                                    }}>
+                                        <div style={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "flex-start"
+                                        }}>
+                                            <div style={{
+                                                fontSize: 18,
+                                                fontFamily: "NotoSansCJKkr",
+                                                color: "#ffffff",
+                                            }}>자주 물어보는 질문들을 정리해봤어요!</div>
+                                            <div style={{
+                                                fontSize: 24,
+                                                fontWeight: "bold",
+                                                fontFamily: "NotoSansCJKkr",
+                                                color: "#ffffff",
+                                                marginTop: 16,
+                                            }}>나누다 FAQ 총정리!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
                                     <div style={{
-                                        color: "#26c1f0",
-                                        marginTop: 4,
-                                        fontSize: 14,
-                                        fontWeight: "bold",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>{item.follow}원에 획득 완료</div>
-                                </div>)}
-                            </div>
-                            <div style={{
-                                width: 440,
-                                marginLeft: 20,
-                                borderRadius: 6,
-                            }}>
-                                <Slider dotsClass="desktop-slick-dots"
-                                    dots={true}
-                                    slidesToShow={1}
-                                    slidesToScroll={1}
-                                    adaptiveHeight={true}
-                                    arrows={false}
-                                >
-                                    <div>
+                                        width: 364,
+                                        paddingTop: 32,
+                                        paddingBottom: 32,
+                                        paddingLeft: 32,
+                                        paddingRight: 44,
+                                        backgroundColor: "#cb1a86",
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        justifyContent: "space-between",
+                                        borderRadius: 6,
+                                    }}>
                                         <div style={{
-                                            width: 364,
-                                            paddingTop: 32,
-                                            paddingBottom: 32,
-                                            paddingLeft: 32,
-                                            paddingRight: 44,
-                                            backgroundColor: "#cb1a86",
                                             display: "flex",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            justifyContent: "space-between",
-                                            outline: 0,
-                                            borderRadius: 6,
+                                            flexDirection: "column",
+                                            alignItems: "flex-start"
                                         }}>
                                             <div style={{
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                alignItems: "flex-start"
-                                            }}>
-                                                <div style={{
-                                                    fontSize: 18,
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    color: "#ffffff",
-                                                }}>자주 물어보는 질문들을 정리해봤어요!</div>
-                                                <div style={{
-                                                    fontSize: 24,
-                                                    fontWeight: "bold",
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    color: "#ffffff",
-                                                    marginTop: 16,
-                                                }}>나누다 FAQ 총정리!</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div style={{
-                                            width: 364,
-                                            paddingTop: 32,
-                                            paddingBottom: 32,
-                                            paddingLeft: 32,
-                                            paddingRight: 44,
-                                            backgroundColor: "#cb1a86",
-                                            display: "flex",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            justifyContent: "space-between",
-                                            borderRadius: 6,
-                                        }}>
+                                                fontSize: 18,
+                                                fontFamily: "NotoSansCJKkr",
+                                                color: "#ffffff",
+                                            }}>자주 물어보는 질문들을 정리해봤어요!</div>
                                             <div style={{
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                alignItems: "flex-start"
-                                            }}>
-                                                <div style={{
-                                                    fontSize: 18,
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    color: "#ffffff",
-                                                }}>자주 물어보는 질문들을 정리해봤어요!</div>
-                                                <div style={{
-                                                    fontSize: 24,
-                                                    fontWeight: "bold",
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    color: "#ffffff",
-                                                    marginTop: 16,
-                                                }}>나누다 FAQ 총정리!</div>
-                                            </div>
+                                                fontSize: 24,
+                                                fontWeight: "bold",
+                                                fontFamily: "NotoSansCJKkr",
+                                                color: "#ffffff",
+                                                marginTop: 16,
+                                            }}>나누다 FAQ 총정리!</div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div style={{
-                                            width: 364,
-                                            paddingTop: 32,
-                                            paddingBottom: 32,
-                                            paddingLeft: 32,
-                                            paddingRight: 44,
-                                            backgroundColor: "#cb1a86",
-                                            display: "flex",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            justifyContent: "space-between",
-                                            borderRadius: 6,
-                                        }}>
-                                            <div style={{
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                alignItems: "flex-start"
-                                            }}>
-                                                <div style={{
-                                                    fontSize: 18,
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    color: "#ffffff",
-                                                }}>자주 물어보는 질문들을 정리해봤어요!</div>
-                                                <div style={{
-                                                    fontSize: 24,
-                                                    fontWeight: "bold",
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    color: "#ffffff",
-                                                    marginTop: 16,
-                                                }}>나누다 FAQ 총정리!</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Slider>
-                            </div>
+                                </div>
+                            </Slider>
+                        </div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginTop: 32,
+                            marginLeft: 20,
+                        }}>
                             <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginTop: 32,
-                                marginLeft: 20,
-                            }}>
-                                <div style={{
-                                    fontWeight: "bold",
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 21,
-                                    color: "#202426",
-                                    marginRight: 4,
-                                }}>나눠본 사람들</div>
-                                <MdKeyboardArrowRight 
-                                    onClick={() => history.push("/servicereview")}
-                                    size={24}
-                                    color="rgba(5, 26, 26, 0.6)"
-                                    style={{
-                                        cursor: "pointer"
-                                    }}
-                                />
-                            </div>
-                            <div style={{
-                                fontSizeAdjust: 16,
-                                fontFamily: "NotoSansCJKkr",
-                                opacity: 0.6,
-                                color: "#202426",
-                                marginLeft: 20,
-                            }}>아직도 나누다 이용을 망설이시나요?</div>
-                            <div style={{
-                                marginLeft: 4,
-                                overflowX: "scroll",
-                                display: "flex",
-                                flexDirection: "row",
-                                padding: 16,
-                            }}>
-                                {reviewData.map(item =>
-                                    <Review
-                                        item={item}
-                                    />
-                                )}
-                            </div>
-                            <BottomTag marginTop={200} marginBottom={0} />
-                            <div onClick={() => history.push("/wishdealdefault")} style={{
-                                width: 440,
-                                marginLeft: 20,
-                                marginRight: 20,
-                                paddingTop: 21,
-                                paddingBottom: 21,
-                                textAlign: "center",
-                                backgroundColor: "#26c1f0",
-                                boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
-                                borderRadius: 6,
-
-                                fontSize: 21,
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
-                                color: "#ffffff",
-                                cursor: "pointer",
-                                position: "fixed",
-                                bottom: 40,
-                            }}>필요한건 위시딜</div>
+                                fontSize: 21,
+                                color: "#202426",
+                                marginRight: 4,
+                            }}>나눠본 사람들</div>
+                            <MdKeyboardArrowRight
+                                onClick={() => history.push("/servicereview")}
+                                size={24}
+                                color="rgba(5, 26, 26, 0.6)"
+                                style={{
+                                    cursor: "pointer"
+                                }}
+                            />
                         </div>
+                        <div style={{
+                            fontSizeAdjust: 16,
+                            fontFamily: "NotoSansCJKkr",
+                            opacity: 0.6,
+                            color: "#202426",
+                            marginLeft: 20,
+                        }}>아직도 나누다 이용을 망설이시나요?</div>
+                        <div style={{
+                            marginLeft: 4,
+                            overflowX: "scroll",
+                            display: "flex",
+                            flexDirection: "row",
+                            padding: 16,
+                        }}>
+                            {reviewData.map(item =>
+                                <Review
+                                    item={item}
+                                />
+                            )}
+                        </div>
+                        <BottomTag marginTop={200} marginBottom={0} />
+                        <div onClick={() => history.push("/wishdealdefault")} style={{
+                            width: 440,
+                            marginLeft: 20,
+                            marginRight: 20,
+                            paddingTop: 21,
+                            paddingBottom: 21,
+                            textAlign: "center",
+                            backgroundColor: "#26c1f0",
+                            boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
+                            borderRadius: 6,
+
+                            fontSize: 21,
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr",
+                            color: "#ffffff",
+                            cursor: "pointer",
+                            position: "fixed",
+                            bottom: 40,
+                        }}>필요한건 위시딜</div>
                     </div>
                 </div>
             </Default>
@@ -962,7 +952,7 @@ function MTimeShop({ title, sub, price, currentPrice, stock, time }) {
 
 function Review({ item }) {
     var maskingName = NameMask(item.user_name)
-    var age = parseInt(item.user_age/10)
+    var age = parseInt(item.user_age / 10)
     var gender = item.user_gender === 0 ? "남성" : "여성"
     var score = item.service_score
     var content = item.service_content
@@ -1023,7 +1013,7 @@ function Review({ item }) {
 
 function MReview({ item }) {
     var maskingName = NameMask(item.user_name)
-    var age = parseInt(item.user_age/10)
+    var age = parseInt(item.user_age / 10)
     var gender = item.user_gender === 0 ? "남성" : "여성"
     var score = item.service_score
     var content = item.service_content

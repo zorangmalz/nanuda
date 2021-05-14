@@ -7,7 +7,7 @@ import ReactStars from "react-rating-stars-component";
 export default function Write() {
     let history = useHistory()
     const [number, setNumber] = useState(0);
-    
+
     //이용후기 및 의견 작성
     const [inputs, setInputs] = useState({
         after: "",
@@ -22,7 +22,7 @@ export default function Write() {
         })
     }
 
-    async function putServiceReview () {
+    async function putServiceReview() {
         var data = {
             service_score: number, service_content: after, service_opinion: opinion, user_id: 7
         }
@@ -59,109 +59,99 @@ export default function Write() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "space-between",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
-                            justifyContent: "space-between",
 
                             width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
                         }}>
+                            <Header content="나눠본 사람들" goBack={true} />
+                            <div style={{
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                color: "#202426",
+                                marginTop: 32,
+                                marginLeft: 20,
+                                fontFamily: "NotoSansCJKkr"
+                            }}>나누다 서비스 만족도는 어느정도인가요?</div>
                             <div style={{
                                 display: "flex",
-                                flexDirection: "column",
-
-                                width: 480,
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginLeft: 20,
+                                marginTop: 12,
                             }}>
-                                <Header content="나눠본 사람들" goBack={true} />
-                                <div style={{
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    color: "#202426",
-                                    marginTop: 32,
-                                    marginLeft: 20,
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>나누다 서비스 만족도는 어느정도인가요?</div>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    marginLeft: 20,
-                                    marginTop: 12,
-                                }}>
-                                    <ReactStars
-                                        color="#dbdbdb"
-                                        count={5}
-                                        onChange={ratingChanged}
-                                        size={42}
-                                        isHalf={true}
-                                        emptyIcon={<i className="far fa-star"></i>}
-                                        halfIcon={<i className="fa fa-star-half-alt"></i>}
-                                        fullIcon={<i className="fa fa-star"></i>}
-                                        activeColor="#ffd700"
-                                    />
-                                </div>
-                                <div style={{
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    color: "#202426",
-                                    marginTop: 36,
-                                    marginLeft: 20,
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>나누다 서비스 이용 후기를 작성해주세요!</div>
-                                <textarea onChange={onChange} name="after" value={after} cols="10" rows="5" placeholder="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
-                                    outline: 0,
-                                    border: 0,
-                                    width: 408,
-                                    padding: 16,
-                                    borderRadius: 6,
-                                    backgroundColor: "#f2f3f8",
-                                    minHeight: 180,
-                                    marginLeft: 20,
-                                    marginTop: 16,
-                                    resize: "none",
-                                    fontFamily: "NotoSansCJKkr"
-                                }} />
-                                <div style={{
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    color: "#202426",
-                                    marginTop: 32,
-                                    marginLeft: 20,
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>더 나은 서비스를 위한 의견을 말씀해주세요.</div>
-                                <textarea onChange={onChange} name="opinion" value={opinion} cols="10" rows="5" placeholder="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
-                                    outline: 0,
-                                    border: 0,
-                                    width: 408,
-                                    padding: 16,
-                                    borderRadius: 6,
-                                    backgroundColor: "#f2f3f8",
-                                    minHeight: 180,
-                                    marginLeft: 20,
-                                    marginTop: 16,
-                                    resize: "none",
-                                    fontFamily: "NotoSansCJKkr"
-                                }} />
+                                <ReactStars
+                                    color="#dbdbdb"
+                                    count={5}
+                                    onChange={ratingChanged}
+                                    size={42}
+                                    isHalf={true}
+                                    emptyIcon={<i className="far fa-star"></i>}
+                                    halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                    fullIcon={<i className="fa fa-star"></i>}
+                                    activeColor="#ffd700"
+                                />
                             </div>
-                            <StandardButton
-                                onClick={putServiceReview}
-                                marginTop={32}
-                                text="작성 완료"
-                                state={inputs.after.length > 0 && inputs.opinion.length > 0 ? true : false}
-                            />
-                            <div style={{ marginBottom: 40 }} />
+                            <div style={{
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                color: "#202426",
+                                marginTop: 36,
+                                marginLeft: 20,
+                                fontFamily: "NotoSansCJKkr"
+                            }}>나누다 서비스 이용 후기를 작성해주세요!</div>
+                            <textarea onChange={onChange} name="after" value={after} cols="10" rows="5" placeholder="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
+                                outline: 0,
+                                border: 0,
+                                width: 408,
+                                padding: 16,
+                                borderRadius: 6,
+                                backgroundColor: "#f2f3f8",
+                                minHeight: 180,
+                                marginLeft: 20,
+                                marginTop: 16,
+                                resize: "none",
+                                fontFamily: "NotoSansCJKkr"
+                            }} />
+                            <div style={{
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                color: "#202426",
+                                marginTop: 32,
+                                marginLeft: 20,
+                                fontFamily: "NotoSansCJKkr"
+                            }}>더 나은 서비스를 위한 의견을 말씀해주세요.</div>
+                            <textarea onChange={onChange} name="opinion" value={opinion} cols="10" rows="5" placeholder="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
+                                outline: 0,
+                                border: 0,
+                                width: 408,
+                                padding: 16,
+                                borderRadius: 6,
+                                backgroundColor: "#f2f3f8",
+                                minHeight: 180,
+                                marginLeft: 20,
+                                marginTop: 16,
+                                resize: "none",
+                                fontFamily: "NotoSansCJKkr"
+                            }} />
                         </div>
+                        <StandardButton
+                            onClick={putServiceReview}
+                            marginTop={32}
+                            text="작성 완료"
+                            state={inputs.after.length > 0 && inputs.opinion.length > 0 ? true : false}
+                        />
+                        <div style={{ marginBottom: 40 }} />
                     </div>
                 </div>
             </Default>

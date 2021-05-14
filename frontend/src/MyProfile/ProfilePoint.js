@@ -16,50 +16,40 @@ export default function ProfilePoint() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="나누다 포인트" goBack={true} />
                         <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#202426",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                        }}>
-                            <Header content="나누다 포인트" goBack={true} />
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#202426",
+                            marginTop: 32,
+                            marginLeft: 20,
+                        }}>나누다 포인트</div>
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 32,
+                            fontWeight: "bold",
+                            color: "#202426",
 
-                                marginTop: 32,
-                                marginLeft: 20,
-                            }}>나누다 포인트</div>
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 32,
-                                fontWeight: "bold",
-                                color: "#202426",
-                                
-                                width: 440,
-                                marginTop: 16,
-                                paddingBottom: 32,
-                                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                                alignSelf: "center",
-                            }}>100 원</div>
-                            <PointList date="2021.04.13" content="결제시 사용" price={-10000} />
-                            <PointList date="2021.04.13" content="따라사기 보상 적립" price={200} />
-                            <PointList date="2021.04.13" content="가입보상 적립" price={10000} />
-                        </div>
+                            width: 440,
+                            marginTop: 16,
+                            paddingBottom: 32,
+                            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                            alignSelf: "center",
+                        }}>100 원</div>
+                        <PointList date="2021.04.13" content="결제시 사용" price={-10000} />
+                        <PointList date="2021.04.13" content="따라사기 보상 적립" price={200} />
+                        <PointList date="2021.04.13" content="가입보상 적립" price={10000} />
                     </div>
                 </div>
             </Default>

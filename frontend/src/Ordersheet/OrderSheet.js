@@ -1,5 +1,5 @@
-import React, { useState, useReducer , useEffect} from "react";
-import { useHistory,useLocation } from "react-router";
+import React, { useState, useReducer, useEffect } from "react";
+import { useHistory, useLocation } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BiPlusCircle } from "react-icons/bi";
@@ -78,27 +78,27 @@ export default function OrderSheet() {
     //파라미터 받기
     const location = useLocation()
     const myparam = location.state.param
-    
-    const [image,setImage]=useState("")
-    const [itemDes,setItemDes]=useState("")
-    const [orderDes,setOrderDes]=useState("")
-    const [price,setPrice]=useState("")
-    useEffect(()=>{
+
+    const [image, setImage] = useState("")
+    const [itemDes, setItemDes] = useState("")
+    const [orderDes, setOrderDes] = useState("")
+    const [price, setPrice] = useState("")
+    useEffect(() => {
         console.log(myparam)
         setImage(myparam[0].ogImage.url)
         setItemDes(myparam[0].ogTitle)
-        if(myparam[1]===1){
-            setOrderDes(myparam[3].ELcolor+"   "+myparam[3].ELetc)
+        if (myparam[1] === 1) {
+            setOrderDes(myparam[3].ELcolor + "   " + myparam[3].ELetc)
             setPrice(myparam[3].ELprice)
-        }else if(myparam[1]===2){
-            setOrderDes(myparam[3].Fcolor+"   "+myparam[3].Fsize+"   "+myparam[3].Fetc)
+        } else if (myparam[1] === 2) {
+            setOrderDes(myparam[3].Fcolor + "   " + myparam[3].Fsize + "   " + myparam[3].Fetc)
             setPrice(myparam[3].Fprice)
-        }else{
+        } else {
             setOrderDes(myparam[3].Eetc)
             setPrice(myparam[3].Eprice)
         }
 
-    },[])
+    }, [])
     return (
         <>
             <Default>
@@ -110,482 +110,472 @@ export default function OrderSheet() {
                     width: "100%",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="주문서" goBack={true} />
+                        <div style={{
+                            fontSize: 18,
+                            marginLeft: 20,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            marginTop: 32,
+                            marginBottom: 16,
+                            fontFamily: "NotoSansCJKkr"
+                        }}>상품정보</div>
                         <div style={{
                             display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
-
-                            width: 480,
-                            backgroundColor: "#ffffff",
+                            flexDirection: "row",
+                            alignItems: "flex-start",
+                            marginRight: 20,
+                            marginLeft: 20,
                         }}>
-                            <Header content="주문서" goBack={true} />
-                            <div style={{
-                                fontSize: 18,
-                                marginLeft: 20,
-                                fontWeight: "bold",
-                                color: "#202426",
-                                marginTop: 32,
-                                marginBottom: 16,
-                                fontFamily: "NotoSansCJKkr"
-                            }}>상품정보</div>
+
+                            <img src={image} style={{
+                                width: 120,
+                                heigh: 120,
+                                borderRadius: 6,
+                                marginRight: 16,
+                                objectFit: "cover"
+                            }}></img>
                             <div style={{
                                 display: "flex",
-                                flexDirection: "row",
+                                flexDirection: "column",
                                 alignItems: "flex-start",
-                                marginRight: 20,
-                                marginLeft: 20,
+                                justifyContent: "flex-start"
                             }}>
-                               
-                                <img src={image} style={{
-                                    width:120,
-                                    heigh:120,
-                                    borderRadius:6,
-                                    marginRight:16,
-                                    objectFit:"cover"
-                                }}></img>
                                 <div style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "flex-start",
-                                    justifyContent: "flex-start"
-                                }}>
-                                    <div style={{
-                                        fontSize: 16,
-                                        color: "#202426",
-                                        fontFamily: "AvenirNext"
-                                    }}>{itemDes} <br />
+                                    fontSize: 16,
+                                    color: "#202426",
+                                    fontFamily: "AvenirNext"
+                                }}>{itemDes} <br />
                                     {orderDes}</div>
-                                    <div style={{
-                                        marginTop: 8,
-                                        fontSize: 18,
-                                        fontWeight: "bold",
-                                        color: "#051a1a",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</div>
-                                </div>
-                            </div>
-                            <div style={{
-                                height: 1,
-                                width: 480,
-                                backgroundColor: "#dfdfdf",
-                                marginTop: 16,
-                                marginBottom: 16,
-                            }} />
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "flex-end",
-                                justifyContent: "space-between",
-                                width: 440,
-                                marginLeft: 20,
-                                marginRight: 20,
-                            }}>
                                 <div style={{
+                                    marginTop: 8,
                                     fontSize: 18,
                                     fontWeight: "bold",
-                                    color: "#202426",
+                                    color: "#051a1a",
                                     fontFamily: "NotoSansCJKkr"
-                                }}>배송 정보</div>
-                                <div style={{
-                                    fontSize: 14,
-                                    opacity: 0.8,
-                                    color: "#202426",
-                                    textDecorationLine: "underline",
-                                    cursor: "pointer",
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>배송지 수정</div>
+                                }}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</div>
                             </div>
-                            {basicAddress ?
-                                <BasicAddress item={item} />
-                                :
-                                <NoAddress />
-                            }
+                        </div>
+                        <div style={{
+                            height: 1,
+                            width: 480,
+                            backgroundColor: "#dfdfdf",
+                            marginTop: 16,
+                            marginBottom: 16,
+                        }} />
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "flex-end",
+                            justifyContent: "space-between",
+                            width: 440,
+                            marginLeft: 20,
+                            marginRight: 20,
+                        }}>
                             <div style={{
                                 fontSize: 18,
-                                marginLeft: 20,
                                 fontWeight: "bold",
                                 color: "#202426",
-                                marginTop: 16,
                                 fontFamily: "NotoSansCJKkr"
-                            }}>결제 수단</div>
-                            {register ?
+                            }}>배송 정보</div>
+                            <div style={{
+                                fontSize: 14,
+                                opacity: 0.8,
+                                color: "#202426",
+                                textDecorationLine: "underline",
+                                cursor: "pointer",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>배송지 수정</div>
+                        </div>
+                        {basicAddress ?
+                            <BasicAddress item={item} />
+                            :
+                            <NoAddress />
+                        }
+                        <div style={{
+                            fontSize: 18,
+                            marginLeft: 20,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            marginTop: 16,
+                            fontFamily: "NotoSansCJKkr"
+                        }}>결제 수단</div>
+                        {register ?
+                            <div style={{
+                                width: 408,
+                                alignSelf: "center",
+                                padding: 16,
+                                borderRadius: 6,
+                                border: "1px solid #26c1f0",
+                                marginTop: 16,
+
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                            }}>
                                 <div style={{
-                                    width: 408,
-                                    alignSelf: "center",
-                                    padding: 16,
-                                    borderRadius: 6,
-                                    border: "1px solid #26c1f0",
-                                    marginTop: 16,
+                                    fontSize: 16,
+                                    opacity: 0.8,
+                                    color: "#202426",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>우리 1002-550-5**544</div>
+                            </div>
+                            :
+                            <div onClick={() => history.push("/paymentaddbank")} style={{
+                                width: 440,
+                                height: 136,
+                                border: "1px solid rgba(5, 26, 26, 0.2)",
+                                borderRadius: 6,
+                                cursor: "pointer",
+                                marginTop: 16,
+
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                alignSelf: "center",
+                            }}>
+                                <BiPlusCircle size={32} color="rgba(5, 26, 26, 0.6)" />
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 16,
+                                    color: "#202426",
+                                    marginTop: 8,
+                                }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
+                            </div>
+                        }
+                        <div style={{
+                            fontSize: 18,
+                            marginLeft: 20,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            marginTop: 16,
+                            fontFamily: "NotoSansCJKkr"
+                        }}>분할결제 옵션 선택</div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+
+                            marginLeft: 20,
+                            marginTop: 16
+                        }}>
+                            <div onClick={onTwo} style={{
+                                width: 95,
+                                marginRight: 20,
+                                borderRadius: 6,
+                                border: number === 2 ? "1px solid #051a1a" : "1px solid #dfdfdf",
+                                backgroundColor: number === 2 ? "#051a1a" : "#ffffff",
+                                paddingTop: 10,
+                                paddingBottom: 10,
+
+                                fontSize: 16,
+                                fontWeight: number === 2 ? "bold" : "normal",
+                                color: number === 2 ? "#ffffff" : "#051a1a",
+                                opacity: number === 2 ? 1 : 0.8,
+                                textAlign: "center",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>2회</div>
+                            <div onClick={onThree} style={{
+                                width: 95,
+                                marginRight: 20,
+                                borderRadius: 6,
+                                border: number === 3 ? "1px solid #051a1a" : "1px solid #dfdfdf",
+                                backgroundColor: number === 3 ? "#051a1a" : "#ffffff",
+                                paddingTop: 10,
+                                paddingBottom: 10,
+
+                                fontSize: 16,
+                                fontWeight: number === 3 ? "bold" : "normal",
+                                color: number === 3 ? "#ffffff" : "#051a1a",
+                                opacity: number === 3 ? 1 : 0.8,
+                                textAlign: "center",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>3회</div>
+                            <div onClick={onFour} style={{
+                                width: 95,
+                                borderRadius: 6,
+                                border: number === 4 ? "1px solid #051a1a" : "1px solid #dfdfdf",
+                                backgroundColor: number === 4 ? "#051a1a" : "#ffffff",
+                                paddingTop: 10,
+                                paddingBottom: 10,
+
+                                fontSize: 16,
+                                fontWeight: number === 4 ? "bold" : "normal",
+                                color: number === 4 ? "#ffffff" : "#051a1a",
+                                opacity: number === 4 ? 1 : 0.8,
+                                textAlign: "center",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>4회</div>
+                        </div>
+                        <div style={{
+                            padding: 16,
+                            width: 408,
+                            marginTop: 16,
+                            marginLeft: 20,
+                            backgroundColor: "#f2f3f8",
+                            borderRadius: 6,
+
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                        }}>
+                            {paymentDate.map(item =>
+                                <div style={{
+                                    width: "100%",
 
                                     display: "flex",
                                     flexDirection: "row",
                                     alignItems: "center",
                                     justifyContent: "space-between",
+
+                                    marginBottom: 8,
                                 }}>
                                     <div style={{
                                         fontSize: 16,
-                                        opacity: 0.8,
+                                        color: "#051a1a",
+                                        fontFamily: "NotoSansCJKkr"
+                                    }}>
+                                        {item.num}차 결제
+                                    <span style={{
+                                            fontWeight: "bold",
+                                            color: "#26c1f0"
+                                        }}>({item.date})</span>
+                                    </div>
+                                    <div style={{
+                                        fontSize: 16,
+                                        fontWeight: "bold",
                                         color: "#202426",
                                         fontFamily: "NotoSansCJKkr"
-                                    }}>우리 1002-550-5**544</div>
+                                    }}>{item.money} 원</div>
                                 </div>
-                                :
-                                <div onClick={() => history.push("/paymentaddbank")} style={{
-                                    width: 440,
-                                    height: 136,
-                                    border: "1px solid rgba(5, 26, 26, 0.2)",
-                                    borderRadius: 6,
-                                    cursor: "pointer",
-                                    marginTop: 16,
-    
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    alignSelf: "center",
-                                }}>
-                                    <BiPlusCircle size={32} color="rgba(5, 26, 26, 0.6)" />
-                                    <div style={{
-                                        fontFamily: "NotoSansCJKkr",
-                                        opacity: 0.6,
-                                        fontSize: 16,
-                                        color: "#202426",
-                                        marginTop: 8,
-                                    }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
-                                </div>
-                            }
-                            <div style={{
-                                fontSize: 18,
-                                marginLeft: 20,
-                                fontWeight: "bold",
-                                color: "#202426",
-                                marginTop: 16,
-                                fontFamily: "NotoSansCJKkr"
-                            }}>분할결제 옵션 선택</div>
+                            )}
+                        </div>
+                        <div style={{
+                            marginTop: 8,
+                            fontSize: 14,
+                            marginLeft: 20,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            marginBottom: 4,
+                            alignSelf: "flex-start",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>나누다 팁!</div>
+                        <div style={{
+                            opacity: 0.8,
+                            fontSize: 14,
+                            color: "#202426",
+                            alignSelf: "flex-start",
+                            lineHeight: 1.5,
+                            fontFamily: "NotoSansCJKkr",
+                            marginLeft: 20,
+                        }}>
+                            첫 결제 이후 결제 금액들은 자동결제 됩니다. <br />
+                                분할결제 한도에 따라 분할 결제 금액이 바뀔 수 있습니다. <br />
+                            <span style={{ textDecorationLine: "underline" }}>더 알아보기</span>
+                        </div>
+                        <div style={{
+                            height: 1,
+                            width: 480,
+                            backgroundColor: "#dfdfdf",
+                            marginTop: 16,
+                            marginBottom: 16,
+                        }} />
+                        <div style={{
+                            fontSize: 21,
+                            marginLeft: 20,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            marginBottom: 12,
+                            fontFamily: "NotoSansCJKkr"
+                        }}>최종 결제</div>
+                        <div style={{
+                            marginLeft: 20,
+                            marginRight: 20,
+                            width: 440,
+
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                        }}>
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
                                 alignItems: "center",
+                                justifyContent: "space-between",
 
-                                marginLeft: 20,
-                                marginTop: 16
+                                width: "100%",
+                                marginBottom: 8,
                             }}>
-                                <div onClick={onTwo} style={{
-                                    width: 95,
-                                    marginRight: 20,
-                                    borderRadius: 6,
-                                    border: number === 2 ? "1px solid #051a1a" : "1px solid #dfdfdf",
-                                    backgroundColor: number === 2 ? "#051a1a" : "#ffffff",
-                                    paddingTop: 10,
-                                    paddingBottom: 10,
-
+                                <div style={{
                                     fontSize: 16,
-                                    fontWeight: number === 2 ? "bold" : "normal",
-                                    color: number === 2 ? "#ffffff" : "#051a1a",
-                                    opacity: number === 2 ? 1 : 0.8,
-                                    textAlign: "center",
+                                    opacity: 0.6,
+                                    color: "#202426",
                                     fontFamily: "NotoSansCJKkr"
-                                }}>2회</div>
-                                <div onClick={onThree} style={{
-                                    width: 95,
-                                    marginRight: 20,
-                                    borderRadius: 6,
-                                    border: number === 3 ? "1px solid #051a1a" : "1px solid #dfdfdf",
-                                    backgroundColor: number === 3 ? "#051a1a" : "#ffffff",
-                                    paddingTop: 10,
-                                    paddingBottom: 10,
-
+                                }}>첫 분할결제 금액 : </div>
+                                <div style={{
                                     fontSize: 16,
-                                    fontWeight: number === 3 ? "bold" : "normal",
-                                    color: number === 3 ? "#ffffff" : "#051a1a",
-                                    opacity: number === 3 ? 1 : 0.8,
-                                    textAlign: "center",
+                                    opacity: 0.6,
+                                    color: "#202426",
                                     fontFamily: "NotoSansCJKkr"
-                                }}>3회</div>
-                                <div onClick={onFour} style={{
-                                    width: 95,
-                                    borderRadius: 6,
-                                    border: number === 4 ? "1px solid #051a1a" : "1px solid #dfdfdf",
-                                    backgroundColor: number === 4 ? "#051a1a" : "#ffffff",
-                                    paddingTop: 10,
-                                    paddingBottom: 10,
-
-                                    fontSize: 16,
-                                    fontWeight: number === 4 ? "bold" : "normal",
-                                    color: number === 4 ? "#ffffff" : "#051a1a",
-                                    opacity: number === 4 ? 1 : 0.8,
-                                    textAlign: "center",
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>4회</div>
+                                }}> +240,000 원</div>
                             </div>
                             <div style={{
-                                padding: 16,
-                                width: 408,
-                                marginTop: 16,
-                                marginLeft: 20,
-                                backgroundColor: "#f2f3f8",
-                                borderRadius: 6,
-
                                 display: "flex",
-                                flexDirection: "column",
+                                flexDirection: "row",
                                 alignItems: "center",
+                                justifyContent: "space-between",
+
+                                width: "100%",
+                                marginBottom: 8,
                             }}>
-                                {paymentDate.map(item =>
-                                    <div style={{
-                                        width: "100%",
-
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-
-                                        marginBottom: 8,
-                                    }}>
-                                        <div style={{
-                                            fontSize: 16,
-                                            color: "#051a1a",
-                                            fontFamily: "NotoSansCJKkr"
-                                        }}>
-                                            {item.num}차 결제
-                                    <span style={{
-                                                fontWeight: "bold",
-                                                color: "#26c1f0"
-                                            }}>({item.date})</span>
-                                        </div>
-                                        <div style={{
-                                            fontSize: 16,
-                                            fontWeight: "bold",
-                                            color: "#202426",
-                                            fontFamily: "NotoSansCJKkr"
-                                        }}>{item.money} 원</div>
-                                    </div>
-                                )}
+                                <div style={{
+                                    fontSize: 16,
+                                    opacity: 0.6,
+                                    color: "#202426",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>배송비 : </div>
+                                <div style={{
+                                    fontSize: 16,
+                                    opacity: 0.6,
+                                    color: "#202426",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}> + 0 원</div>
                             </div>
                             <div style={{
-                                marginTop: 8,
-                                fontSize: 14,
-                                marginLeft: 20,
-                                fontWeight: "bold",
-                                color: "#202426",
-                                marginBottom: 4,
-                                alignSelf: "flex-start",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>나누다 팁!</div>
-                            <div style={{
-                                opacity: 0.8,
-                                fontSize: 14,
-                                color: "#202426",
-                                alignSelf: "flex-start",
-                                lineHeight: 1.5,
-                                fontFamily: "NotoSansCJKkr",
-                                marginLeft: 20,
-                            }}>
-                                첫 결제 이후 결제 금액들은 자동결제 됩니다. <br />
-                                분할결제 한도에 따라 분할 결제 금액이 바뀔 수 있습니다. <br />
-                                <span style={{ textDecorationLine: "underline" }}>더 알아보기</span>
-                            </div>
-                            <div style={{
-                                height: 1,
-                                width: 480,
-                                backgroundColor: "#dfdfdf",
-                                marginTop: 16,
-                                marginBottom: 16,
-                            }} />
-                            <div style={{
-                                fontSize: 21,
-                                marginLeft: 20,
-                                fontWeight: "bold",
-                                color: "#202426",
-                                marginBottom: 12,
-                                fontFamily: "NotoSansCJKkr"
-                            }}>최종 결제</div>
-                            <div style={{
-                                marginLeft: 20,
-                                marginRight: 20,
-                                width: 440,
-
                                 display: "flex",
-                                flexDirection: "column",
+                                flexDirection: "row",
                                 alignItems: "center",
+                                justifyContent: "space-between",
+
+                                width: "100%",
+                                marginBottom: 8,
                             }}>
                                 <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-
-                                    width: "100%",
-                                    marginBottom: 8,
-                                }}>
-                                    <div style={{
-                                        fontSize: 16,
-                                        opacity: 0.6,
-                                        color: "#202426",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>첫 분할결제 금액 : </div>
-                                    <div style={{
-                                        fontSize: 16,
-                                        opacity: 0.6,
-                                        color: "#202426",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}> +240,000 원</div>
-                                </div>
+                                    fontSize: 16,
+                                    opacity: 0.6,
+                                    color: "#202426",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>나누다 포인트 : </div>
                                 <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-
-                                    width: "100%",
-                                    marginBottom: 8,
-                                }}>
-                                    <div style={{
-                                        fontSize: 16,
-                                        opacity: 0.6,
-                                        color: "#202426",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>배송비 : </div>
-                                    <div style={{
-                                        fontSize: 16,
-                                        opacity: 0.6,
-                                        color: "#202426",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}> + 0 원</div>
-                                </div>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-
-                                    width: "100%",
-                                    marginBottom: 8,
-                                }}>
-                                    <div style={{
-                                        fontSize: 16,
-                                        opacity: 0.6,
-                                        color: "#202426",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>나누다 포인트 : </div>
-                                    <div style={{
-                                        fontSize: 16,
-                                        opacity: 0.6,
-                                        color: "#202426",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>- 0 P</div>
-                                </div>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-
-                                    width: "100%",
-                                }}>
-                                    <div style={{
-                                        fontSize: 14,
-                                        color: "#26c1f0",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>사용가능 : 2,000 P</div>
-                                    <div style={{
-                                        fontSize: 14,
-                                        color: "#26c1f0",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>전액사용</div>
-                                </div>
+                                    fontSize: 16,
+                                    opacity: 0.6,
+                                    color: "#202426",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>- 0 P</div>
                             </div>
                             <div style={{
-                                fontSize: 24,
-                                fontWeight: "bold",
-                                color: "#202426",
-                                marginTop: 16,
-                                marginLeft: 20,
-                                fontFamily: "NotoSansCJKkr"
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+
+                                width: "100%",
                             }}>
-                                이번 달은
+                                <div style={{
+                                    fontSize: 14,
+                                    color: "#26c1f0",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>사용가능 : 2,000 P</div>
+                                <div style={{
+                                    fontSize: 14,
+                                    color: "#26c1f0",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>전액사용</div>
+                            </div>
+                        </div>
+                        <div style={{
+                            fontSize: 24,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            marginTop: 16,
+                            marginLeft: 20,
+                            fontFamily: "NotoSansCJKkr"
+                        }}>
+                            이번 달은
                                 <span style={{
-                                    color: "#26c1f0"
-                                }}>  240,000 원</span>
+                                color: "#26c1f0"
+                            }}>  240,000 원</span>
                                  만 결제하세요.
                             </div>
-                            <div style={{
-                                height: 1,
-                                width: 480,
-                                backgroundColor: "#dfdfdf",
-                                marginTop: 32,
-                                marginBottom: 16,
-                            }} />
-                            <div style={{
-                                fontSize: 14,
-                                opacity: 0.6,
-                                color: "#202426",
-                                textDecorationLine: "underline",
-                                marginBottom: 8,
-                                marginLeft: 20,
-                                fontFamily: "NotoSansCJKkr",
-                                cursor: "pointer"
-                            }}>구매조건 확인 및 결제대행 서비스 약관 동의</div>
-                            <div style={{
-                                fontSize: 14,
-                                opacity: 0.6,
-                                color: "#202426",
-                                textDecorationLine: "underline",
-                                marginBottom: 8,
-                                marginLeft: 20,
-                                fontFamily: "NotoSansCJKkr",
-                                cursor: "pointer"
-                            }}>개인정보 제공안내</div>
-                            <div style={{
-                                width: 440,
-                                fontSize: 12,
-                                opacity: 0.4,
-                                color: "#202426",
-                                marginLeft: 20,
-                                fontFamily: "NotoSansCJKkr"
-                            }}>* 개별 판매자가 등록한 나누다 딜 상품에 대한 광고, 상품주문, 배송 및 환불의 의무와 책임은 각 판매자가 부담하고, 이에 대하여 나누다는 통신판매중개자로서 통신판매의 당사자가 아니므로 일체 책임을 지지 않습니다.</div>
-                            <div style={{
-                                height: 1,
-                                width: 480,
-                                backgroundColor: "#dfdfdf",
-                                marginTop: 16,
-                                marginBottom: 12,
-                            }} />
-                            <div style={{
-                                fontSize: 14,
-                                opacity: 0.4,
-                                color: "#202426",
-                                alignSelf: "center",
-                                marginBottom: 32,
-                                fontFamily: "NotoSansCJKkr",
-                                textAlign: "center",
-                            }}>위 주문 내용을 확인 하였으며, 회원은 본인의 결제에 동의합니다.</div>
-                            <div onClick={() => payment ? history.push("/paymentsuccess") : history.push("/paymentfail")} style={{
-                                alignSelf: "center",
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                backgroundColor: "#26c1f0",
-                                borderRadius: 6,
-                                marginBottom: 120,
+                        <div style={{
+                            height: 1,
+                            width: 480,
+                            backgroundColor: "#dfdfdf",
+                            marginTop: 32,
+                            marginBottom: 16,
+                        }} />
+                        <div style={{
+                            fontSize: 14,
+                            opacity: 0.6,
+                            color: "#202426",
+                            textDecorationLine: "underline",
+                            marginBottom: 8,
+                            marginLeft: 20,
+                            fontFamily: "NotoSansCJKkr",
+                            cursor: "pointer"
+                        }}>구매조건 확인 및 결제대행 서비스 약관 동의</div>
+                        <div style={{
+                            fontSize: 14,
+                            opacity: 0.6,
+                            color: "#202426",
+                            textDecorationLine: "underline",
+                            marginBottom: 8,
+                            marginLeft: 20,
+                            fontFamily: "NotoSansCJKkr",
+                            cursor: "pointer"
+                        }}>개인정보 제공안내</div>
+                        <div style={{
+                            width: 440,
+                            fontSize: 12,
+                            opacity: 0.4,
+                            color: "#202426",
+                            marginLeft: 20,
+                            fontFamily: "NotoSansCJKkr"
+                        }}>* 개별 판매자가 등록한 나누다 딜 상품에 대한 광고, 상품주문, 배송 및 환불의 의무와 책임은 각 판매자가 부담하고, 이에 대하여 나누다는 통신판매중개자로서 통신판매의 당사자가 아니므로 일체 책임을 지지 않습니다.</div>
+                        <div style={{
+                            height: 1,
+                            width: 480,
+                            backgroundColor: "#dfdfdf",
+                            marginTop: 16,
+                            marginBottom: 12,
+                        }} />
+                        <div style={{
+                            fontSize: 14,
+                            opacity: 0.4,
+                            color: "#202426",
+                            alignSelf: "center",
+                            marginBottom: 32,
+                            fontFamily: "NotoSansCJKkr",
+                            textAlign: "center",
+                        }}>위 주문 내용을 확인 하였으며, 회원은 본인의 결제에 동의합니다.</div>
+                        <div onClick={() => payment ? history.push("/paymentsuccess") : history.push("/paymentfail")} style={{
+                            alignSelf: "center",
+                            width: 440,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            backgroundColor: "#26c1f0",
+                            borderRadius: 6,
+                            marginBottom: 120,
 
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                textAlign: "center",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            textAlign: "center",
 
-                                cursor: "pointer",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>결제하기</div>
-                        </div>
+                            cursor: "pointer",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>결제하기</div>
                     </div>
                 </div>
             </Default>

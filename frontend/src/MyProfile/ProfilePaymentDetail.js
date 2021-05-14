@@ -21,131 +21,121 @@ export default function ProfilePaymentDetail() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                        paddingBottom: 56,
                     }}>
+                        <Header content="결제 결과" goBack={true} />
                         <div style={{
                             display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                            paddingBottom: 56,
+                            flexDirection: "row",
+                            alignItems: "flex-start",
+                            marginRight: 20,
+                            marginLeft: 20,
+                            marginTop: 32,
+                            marginBottom: 32,
                         }}>
-                            <Header content="결제 결과" goBack={true} />
+                            <div style={{
+                                width: 120,
+                                height: 120,
+                                borderRadius: 6,
+                                marginRight: 16,
+                                backgroundColor: "#000000",
+                                color: "#ffffff"
+                            }}>상품 그림</div>
                             <div style={{
                                 display: "flex",
-                                flexDirection: "row",
+                                flexDirection: "column",
                                 alignItems: "flex-start",
-                                marginRight: 20,
-                                marginLeft: 20,
-                                marginTop: 32,
-                                marginBottom: 32,
+                                justifyContent: "space-between",
+                                height: 120,
                             }}>
                                 <div style={{
-                                    width: 120,
-                                    height: 120,
-                                    borderRadius: 6,
-                                    marginRight: 16,
-                                    backgroundColor: "#000000",
-                                    color: "#ffffff"
-                                }}>상품 그림</div>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "flex-start",
-                                    justifyContent: "space-between",
-                                    height: 120,
-                                }}>
-                                    <div style={{
-                                        fontSize: 16,
-                                        fontFamily: "NotoSansCJKkr",
-                                        color: "#202426",
-                                        opacity: 0.6,
-                                    }}>2021.03.13</div>
-                                    <div style={{
-                                        fontSize: 16,
-                                        color: "#202426",
-                                        fontFamily: "AvenirNext",
-                                        lineHeight: 1.5,
-                                    }}>PRADA Model 23-9 limited… <br />
-                                    WHITE, 270mm</div>
-                                    <div style={{
-                                        fontSize: 18,
-                                        fontWeight: "bold",
-                                        color: "#051a1a",
-                                        fontFamily: "NotoSansCJKkr"
-                                    }}>480,000원</div>
-                                </div>
-                            </div>
-                            <div style={{
-                                width: 440,
-                                height: 1,
-                                backgroundColor: "rgba(5, 26, 26, 0.2)",
-                                alignSelf: "center",
-                            }} />
-                            <PayInfo
-                                num={1}
-                                date={"3 / 29"}
-                                state={0}
-                                payback={180000}
-                            />
-                            <PayInfo
-                                num={2}
-                                date={"4 / 29"}
-                                state={2}
-                                payback={0}
-                            />
-                            <PayInfo
-                                num={3}
-                                date={"5 / 29"}
-                                state={1}
-                                payback={310000}
-                            />
-                            {complete ? <></> :
-                                <div style={{
+                                    fontSize: 16,
                                     fontFamily: "NotoSansCJKkr",
-                                    fontSize: 14,
-                                    color: "#f72b2b",
-                                    alignSelf: "center",
-                                    marginTop: 8,
-                                }}>7-29일까지 결제를 완료하지 않으면 추심이 진행됩니다. 결제를 서둘러주세요.</div>}
-                            <div onClick={() => history.push("/profilepaymentsuccess")} style={{
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                backgroundColor: complete ? "#dbdbdb" : "#26c1f0",
-                                borderRadius: 6,
-                                marginTop: 32,
-                                alignSelf: "center",
-
-                                textAlign: "center",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                cursor: "pointer",
-                                fontFamily: "NotoSansCJKkr",
-                            }}>{complete ? "모든 결제가 완료되었습니다." : "전체 결제하기"}</div>
+                                    color: "#202426",
+                                    opacity: 0.6,
+                                }}>2021.03.13</div>
+                                <div style={{
+                                    fontSize: 16,
+                                    color: "#202426",
+                                    fontFamily: "AvenirNext",
+                                    lineHeight: 1.5,
+                                }}>PRADA Model 23-9 limited… <br />
+                                    WHITE, 270mm</div>
+                                <div style={{
+                                    fontSize: 18,
+                                    fontWeight: "bold",
+                                    color: "#051a1a",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>480,000원</div>
+                            </div>
+                        </div>
+                        <div style={{
+                            width: 440,
+                            height: 1,
+                            backgroundColor: "rgba(5, 26, 26, 0.2)",
+                            alignSelf: "center",
+                        }} />
+                        <PayInfo
+                            num={1}
+                            date={"3 / 29"}
+                            state={0}
+                            payback={180000}
+                        />
+                        <PayInfo
+                            num={2}
+                            date={"4 / 29"}
+                            state={2}
+                            payback={0}
+                        />
+                        <PayInfo
+                            num={3}
+                            date={"5 / 29"}
+                            state={1}
+                            payback={310000}
+                        />
+                        {complete ? <></> :
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
-                                opacity: 0.6,
-                                color: "#202426",
-                                textDecorationLine: "underline",
+                                color: "#f72b2b",
+                                alignSelf: "center",
+                                marginTop: 8,
+                            }}>7-29일까지 결제를 완료하지 않으면 추심이 진행됩니다. 결제를 서둘러주세요.</div>}
+                        <div onClick={() => history.push("/profilepaymentsuccess")} style={{
+                            width: 440,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            backgroundColor: complete ? "#dbdbdb" : "#26c1f0",
+                            borderRadius: 6,
+                            marginTop: 32,
+                            alignSelf: "center",
 
-                                marginTop: 16,
-                                marginLeft: 20,
-                                cursor: "pointer",
-                            }}>미결제 금액과 연체료는 무엇인가요?</div>
-                        </div>
+                            textAlign: "center",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            cursor: "pointer",
+                            fontFamily: "NotoSansCJKkr",
+                        }}>{complete ? "모든 결제가 완료되었습니다." : "전체 결제하기"}</div>
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 14,
+                            opacity: 0.6,
+                            color: "#202426",
+                            textDecorationLine: "underline",
+
+                            marginTop: 16,
+                            marginLeft: 20,
+                            cursor: "pointer",
+                        }}>미결제 금액과 연체료는 무엇인가요?</div>
                     </div>
                 </div>
             </Default>

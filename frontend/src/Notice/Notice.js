@@ -39,35 +39,25 @@ export default function Notice() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        alignItems: "center",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="공지사항" goBack={true} />
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
-                            justifyContent: "flex-start",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            width: 440,
+                            marginTop: 32,
                         }}>
-                            <Header content="공지사항" goBack={true} />
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center",
-                                width: 440,
-                                marginTop: 32,
-                            }}>
-                                {NoticeData.map(item => (<NoticeList tag={item.tag} title={item.title} date={item.date} />))}
-                            </div>
+                            {NoticeData.map(item => (<NoticeList tag={item.tag} title={item.title} date={item.date} />))}
                         </div>
                     </div>
                 </div>
@@ -99,7 +89,7 @@ export default function Notice() {
     )
 }
 
-function NoticeList({tag, title, date}) {
+function NoticeList({ tag, title, date }) {
     const history = useHistory()
     return (
         <div onClick={() => history.push("/noticepost")} style={{
@@ -142,7 +132,7 @@ function NoticeList({tag, title, date}) {
     )
 }
 
-function MNoticeList({tag, title, date}) {
+function MNoticeList({ tag, title, date }) {
     const history = useHistory()
     return (
         <div onClick={() => history.push("/noticepost")} style={{

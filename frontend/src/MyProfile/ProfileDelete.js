@@ -20,80 +20,70 @@ export default function ProfileDelete() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="회원탈퇴" goBack={true} />
                         <div style={{
-                            display: "flex",
-                            flexDirection: "column",
+                            marginTop: 32,
+                            marginLeft: 20,
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 21,
+                            fontWeight: "bold",
+                            color: "#051a1a",
+                            lineHeight: 1.43,
                         }}>
-                            <Header content="회원탈퇴" goBack={true} />
-                            <div style={{
-                                marginTop: 32,
-                                marginLeft: 20,
-
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 21,
-                                fontWeight: "bold",
-                                color: "#051a1a",
-                                lineHeight: 1.43,
-                            }}>
-                                잠깐! 회원탈퇴하면 다음과 같은 <br />
+                            잠깐! 회원탈퇴하면 다음과 같은 <br />
                                 혜택이 사라져요
                             </div>
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                opacity: 0.8,
-                                color: "#202426",
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            opacity: 0.8,
+                            color: "#202426",
 
-                                marginTop: 16,
-                                marginLeft: 20,
-                            }}>
-                                <div style={{ marginBottom: 8 }}>1. 나누다 포인트가 사라져요.</div>
-                                <div>2. 더이상 자유로운 분할결제가 불가능해요.</div>
-                            </div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-
-                                marginLeft: 20,
-                                marginTop: 16,
-                            }}>
-                                <BsCheck 
-                                    onClick={() => setAgree(!agree)}
-                                    style={{
-                                        cursor: "pointer",
-                                    }}
-                                    size={24}
-                                    color={agree ? "#26c1f0" : "#dbdbdb"}
-                                />
-                                <div style={{
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    fontFamily: "NotoSansCJKkr",
-                                    color: "#202426",
-                                    marginLeft: 8,
-                                }}>위 내용에 동의합니다.</div>
-                            </div>
-                            <StandardButton
-                                marginTop={32}
-                                text="탈퇴하기"
-                                onClick={agree ? () => history.replace("/") : () => console.log("동의해주세요")}
-                                state={agree}
-                            />
+                            marginTop: 16,
+                            marginLeft: 20,
+                        }}>
+                            <div style={{ marginBottom: 8 }}>1. 나누다 포인트가 사라져요.</div>
+                            <div>2. 더이상 자유로운 분할결제가 불가능해요.</div>
                         </div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+
+                            marginLeft: 20,
+                            marginTop: 16,
+                        }}>
+                            <BsCheck
+                                onClick={() => setAgree(!agree)}
+                                style={{
+                                    cursor: "pointer",
+                                }}
+                                size={24}
+                                color={agree ? "#26c1f0" : "#dbdbdb"}
+                            />
+                            <div style={{
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                fontFamily: "NotoSansCJKkr",
+                                color: "#202426",
+                                marginLeft: 8,
+                            }}>위 내용에 동의합니다.</div>
+                        </div>
+                        <StandardButton
+                            marginTop={32}
+                            text="탈퇴하기"
+                            onClick={agree ? () => history.replace("/") : () => console.log("동의해주세요")}
+                            state={agree}
+                        />
                     </div>
                 </div>
             </Default>

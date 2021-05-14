@@ -18,63 +18,53 @@ export default function Login() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="로그인" goBack={true} />
+                        {/* 배너 넣어야됨 */}
                         <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                            marginLeft: 20,
+                            marginTop: 32,
+                            width: 440,
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            backgroundColor: "#f4e34d",
+                            borderRadius: 6,
+                            textAlign: "center",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr"
                         }}>
-                            <Header content="로그인" goBack={true} />
-                            {/* 배너 넣어야됨 */}
-                            <div style={{
-                                marginLeft: 20,
-                                marginTop: 32,
-                                width: 440,
-
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                backgroundColor: "#f4e34d",
-                                borderRadius: 6,
-                                textAlign: "center",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>
-                                카카오톡으로 로그인하기
+                            카카오톡으로 로그인하기
                               </div>
-                            <div style={{
-                                marginLeft: 20,
-                                marginTop: 16,
-                                width: 440,
+                        <div style={{
+                            marginLeft: 20,
+                            marginTop: 16,
+                            width: 440,
 
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                backgroundColor: "#c45545",
-                                borderRadius: 6,
-                                textAlign: "center",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>
-                                구글로 로그인하기
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            backgroundColor: "#c45545",
+                            borderRadius: 6,
+                            textAlign: "center",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>
+                            구글로 로그인하기
                               </div>
-                            <BottomTag
-                                marginTop={140}
-                                marginBottom={0}
-                            />
-                        </div>
+                        <BottomTag
+                            marginTop={140}
+                            marginBottom={0}
+                        />
                     </div>
                 </div>
             </Default>
@@ -122,7 +112,7 @@ export default function Login() {
                     }}>
                         구글로 로그인하기
                               </div>
-                    <MBottomTag 
+                    <MBottomTag
                         marginTop={70}
                         marginBottom={0}
                     />

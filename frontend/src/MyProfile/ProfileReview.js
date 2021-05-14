@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 import { AiFillStar } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-function PostThumb({item}) {
+function PostThumb({ item }) {
     let history = useHistory()
     return (
         <div style={{
@@ -71,7 +71,7 @@ function PostThumb({item}) {
     )
 }
 
-function MPostThumb({item}) {
+function MPostThumb({ item }) {
     let history = useHistory()
     return (
         <div style={{
@@ -224,42 +224,42 @@ function MProductList() {
 }
 
 export default function ProfileReview() {
-     //Get Review Data
-     const [data, setData] = useState([])
-     useEffect(() => {
-         setData([])
-         fetch("http://127.0.0.1:8000/review", {
-             method: "GET",
-             headers: {
-                 'Content-type': 'application/json',
-                 'Accept': 'application/json'
-             }
-         })
-             .then(response => response.json())
-             .then(response => {
-                 var array = []
-                 var len;
-                 if (response.length > 4) {
-                     len = 4
-                 } else {
-                     len = response.length
-                 }
-                 for (var i = 0; i < len; i++) {
-                     const dict = {
-                         id: response[i].id,
-                         user_profile: response[i].user_profile,
-                         user_nickname: response[i].user_nickname,
-                         review_image: response[i].review_image[0],
-                         review_score: response[i].review_score.toFixed(1),
-                         review_like: response[i].review_like.length < 39 ? response[i].review_like : response[i].review_like.slice(0, 39) + "...",
-                         product_price: 10000,
-                     }
-                     array.push(dict)
-                 }
-                 setData(data.concat(array))
-             })
-     }, [])
-    
+    //Get Review Data
+    const [data, setData] = useState([])
+    useEffect(() => {
+        setData([])
+        fetch("http://127.0.0.1:8000/review", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                var array = []
+                var len;
+                if (response.length > 4) {
+                    len = 4
+                } else {
+                    len = response.length
+                }
+                for (var i = 0; i < len; i++) {
+                    const dict = {
+                        id: response[i].id,
+                        user_profile: response[i].user_profile,
+                        user_nickname: response[i].user_nickname,
+                        review_image: response[i].review_image[0],
+                        review_score: response[i].review_score.toFixed(1),
+                        review_like: response[i].review_like.length < 39 ? response[i].review_like : response[i].review_like.slice(0, 39) + "...",
+                        product_price: 10000,
+                    }
+                    array.push(dict)
+                }
+                setData(data.concat(array))
+            })
+    }, [])
+
     return (
         <>
             <Default>
@@ -273,50 +273,40 @@ export default function ProfileReview() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                        justifyContent: "flex-start",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            paddingBottom: 40,
-                            backgroundColor: "#ffffff",
+                        width: 480,
+                        minHeight: "100vh",
+                        paddingBottom: 40,
+                        backgroundColor: "#ffffff",
+                    }}>
+                        <Header content="내 리뷰" goBack={true} />
+                        <div style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr",
+                            width: 440,
+                            columnGap: 20,
+                            alignSelf: "center",
                         }}>
-                            <Header content="내 리뷰" goBack={true} />
-                            <div style={{
-                                display: "grid",
-                                gridTemplateColumns: "1fr 1fr",
-                                width: 440,
-                                columnGap: 20,
-                                alignSelf: "center",
-                            }}>
-                                {data.map(item => (
-                                    <PostThumb item={item} />
-                                ))}
-                            </div>
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#202426",
-                                marginLeft: 20,
-                                marginTop: 32,
-                                marginBottom: 16,
-                            }}>아직 리뷰를 작성하지 않았어요!</div>
-                            <ProductList />
-                            <ProductList />
-                            <ProductList />
+                            {data.map(item => (
+                                <PostThumb item={item} />
+                            ))}
                         </div>
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            marginLeft: 20,
+                            marginTop: 32,
+                            marginBottom: 16,
+                        }}>아직 리뷰를 작성하지 않았어요!</div>
+                        <ProductList />
+                        <ProductList />
+                        <ProductList />
                     </div>
                 </div>
             </Default>

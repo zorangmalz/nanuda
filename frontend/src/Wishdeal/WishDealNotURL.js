@@ -109,208 +109,199 @@ export default function WishDealNotURL() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="상품 정보 작성" goBack={true} />
+                        <FashionForm
+                            brand="PRADA"
+                            name="PRADA Model 23-9 limited edition berry expensive"
+                            price={480000}
+                        />
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#202426",
+
+                            marginTop: 32,
+                            marginLeft: 20,
+                        }}>옵션 선택에 따른 추가 비용이 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
                         <div style={{
                             display: "flex",
-                            flexDirection: "column",
+                            flexDirection: "row",
+                            alignItems: "center",
 
-                            justifyContent: "flex-start",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            marginLeft: 20,
+                            marginTop: 16
                         }}>
-                            <Header content="상품 정보 작성" goBack={true} />
-                            <FashionForm
-                                brand="PRADA"
-                                name="PRADA Model 23-9 limited edition berry expensive"
-                                price={480000}
+                            <Button
+                                onClick={onYES}
+                                state={number}
+                                number={2}
+                                content="있음"
                             />
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#202426",
-
-                                marginTop: 32,
-                                marginLeft: 20,
-                            }}>옵션 선택에 따른 추가 비용이 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-
-                                marginLeft: 20,
-                                marginTop: 16
-                            }}>
-                                <Button
-                                    onClick={onYES}
-                                    state={number}
-                                    number={2}
-                                    content="있음"
-                                />
-                                <Button
-                                    onClick={onNO}
-                                    state={number}
-                                    number={3}
-                                    content="없음"
-                                />
-                            </div>
-                            {number === 2 ?
-                                <>
-                                    <div style={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-
-                                        marginTop: 16,
-                                        marginLeft: 20,
-                                        paddingBottom: 8,
-                                        borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                                        width: 240,
-                                    }}>
-                                        <input
-                                            placeholder="추가 비용을 입력해주세요."
-                                            style={{
-                                                width: 210,
-                                                outline: 0,
-                                                border: 0,
-
-                                                fontFamily: "NotoSansCJKkr",
-                                                fontSize: 16,
-                                                color: "#202426"
-                                            }}
-                                        />
-                                        <div style={{
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontSize: 16,
-                                            fontWeight: "bold",
-                                            color: "#202426"
-                                        }}>원</div>
-                                    </div>
-                                </>
-                                :
-                                <></>
-                            }
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#202426",
-
-                                marginTop: 32,
-                                marginLeft: 20,
-                            }}>배송비가 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-
-                                marginLeft: 20,
-                                marginTop: 16
-                            }}>
-                                <Button
-                                    onClick={onX}
-                                    state={numberB}
-                                    number={2}
-                                    content="없음"
-                                />
-                                <Button
-                                    onClick={onTWO}
-                                    state={numberB}
-                                    number={3}
-                                    content="2,500"
-                                />
-                                <Button
-                                    onClick={onFIVE}
-                                    state={numberB}
-                                    number={4}
-                                    content="5,000"
-                                />
-                                <Button
-                                    onClick={onEXT}
-                                    state={numberB}
-                                    number={5}
-                                    content="기타"
-                                />
-                            </div>
-                            {numberB === 5 ?
-                                <>
-                                    <div style={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-
-                                        marginTop: 16,
-                                        marginLeft: 20,
-                                        paddingBottom: 8,
-                                        borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                                        width: 240,
-                                    }}>
-                                        <input
-                                            placeholder="배송비용을 입력해주세요"
-                                            style={{
-                                                width: 220,
-                                                outline: 0,
-                                                border: 0,
-
-                                                fontFamily: "NotoSansCJKkr",
-                                                fontSize: 16,
-                                                color: "#202426"
-                                            }}
-                                        />
-                                        <div style={{
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontSize: 16,
-                                            fontWeight: "bold",
-                                            color: "#202426"
-                                        }}>원</div>
-                                    </div>
-                                </>
-                                :
-                                <></>
-                            }
-                            <div style={{
-                                marginTop: 32,
-                                marginLeft: 20,
-                                width: 440,
-
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 14,
-                                opacity: 0.4,
-                                color: "#202426",
-                            }}>
-                                <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
-                                <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
-                                <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
-                                <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
-                            </div>
-                            <div onClick={() => history.push("/ordersheet")} style={{
-                                borderRadius: 8,
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                alignSelf: "center",
-                                marginTop: 32,
-                                backgroundColor: "#26c1f0",
-
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                textAlign: "center",
-                                marginBottom: 150,
-                                cursor: "pointer",
-                            }}>다음</div>
+                            <Button
+                                onClick={onNO}
+                                state={number}
+                                number={3}
+                                content="없음"
+                            />
                         </div>
+                        {number === 2 ?
+                            <>
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+
+                                    marginTop: 16,
+                                    marginLeft: 20,
+                                    paddingBottom: 8,
+                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    width: 240,
+                                }}>
+                                    <input
+                                        placeholder="추가 비용을 입력해주세요."
+                                        style={{
+                                            width: 210,
+                                            outline: 0,
+                                            border: 0,
+
+                                            fontFamily: "NotoSansCJKkr",
+                                            fontSize: 16,
+                                            color: "#202426"
+                                        }}
+                                    />
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 16,
+                                        fontWeight: "bold",
+                                        color: "#202426"
+                                    }}>원</div>
+                                </div>
+                            </>
+                            :
+                            <></>
+                        }
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#202426",
+
+                            marginTop: 32,
+                            marginLeft: 20,
+                        }}>배송비가 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+
+                            marginLeft: 20,
+                            marginTop: 16
+                        }}>
+                            <Button
+                                onClick={onX}
+                                state={numberB}
+                                number={2}
+                                content="없음"
+                            />
+                            <Button
+                                onClick={onTWO}
+                                state={numberB}
+                                number={3}
+                                content="2,500"
+                            />
+                            <Button
+                                onClick={onFIVE}
+                                state={numberB}
+                                number={4}
+                                content="5,000"
+                            />
+                            <Button
+                                onClick={onEXT}
+                                state={numberB}
+                                number={5}
+                                content="기타"
+                            />
+                        </div>
+                        {numberB === 5 ?
+                            <>
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+
+                                    marginTop: 16,
+                                    marginLeft: 20,
+                                    paddingBottom: 8,
+                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    width: 240,
+                                }}>
+                                    <input
+                                        placeholder="배송비용을 입력해주세요"
+                                        style={{
+                                            width: 220,
+                                            outline: 0,
+                                            border: 0,
+
+                                            fontFamily: "NotoSansCJKkr",
+                                            fontSize: 16,
+                                            color: "#202426"
+                                        }}
+                                    />
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 16,
+                                        fontWeight: "bold",
+                                        color: "#202426"
+                                    }}>원</div>
+                                </div>
+                            </>
+                            :
+                            <></>
+                        }
+                        <div style={{
+                            marginTop: 32,
+                            marginLeft: 20,
+                            width: 440,
+
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 14,
+                            opacity: 0.4,
+                            color: "#202426",
+                        }}>
+                            <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
+                            <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
+                            <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
+                            <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
+                        </div>
+                        <div onClick={() => history.push("/ordersheet")} style={{
+                            borderRadius: 8,
+                            width: 440,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            alignSelf: "center",
+                            marginTop: 32,
+                            backgroundColor: "#26c1f0",
+
+                            color: "#ffffff",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            textAlign: "center",
+                            marginBottom: 150,
+                            cursor: "pointer",
+                        }}>다음</div>
                     </div>
                 </div>
             </Default>

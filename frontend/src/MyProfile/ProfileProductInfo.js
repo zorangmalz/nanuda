@@ -16,37 +16,27 @@ export default function ProfileProductInfo() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                        justifyContent: "flex-start",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                        }}>
-                            <Header content="상품 상세 구매 내역" goBack={true} />
-                            <ProductInfo 
-                                title="PRADA Model 23-9 limited edition berry expensive"
-                                price="460,000"
-                                name="김현명"
-                                orderNum="20200413137223-00-01"
-                                number="03770"
-                                address="서울 특별시 서대문구 북아현로 1길 17"
-                                addressDetail="e편한세상 203동 2104호"
-                                phoneNumber="010-4337-6607"
-                                deliveryClaim="집 앞"
-                            />
-                        </div>
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                    }}>
+                        <Header content="상품 상세 구매 내역" goBack={true} />
+                        <ProductInfo
+                            title="PRADA Model 23-9 limited edition berry expensive"
+                            price="460,000"
+                            name="김현명"
+                            orderNum="20200413137223-00-01"
+                            number="03770"
+                            address="서울 특별시 서대문구 북아현로 1길 17"
+                            addressDetail="e편한세상 203동 2104호"
+                            phoneNumber="010-4337-6607"
+                            deliveryClaim="집 앞"
+                        />
                     </div>
                 </div>
             </Default>

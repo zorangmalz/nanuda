@@ -19,53 +19,43 @@ export default function ProfilePaymentMethod() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
-                        <div style={{
+                        <Header content="결제 계좌 관리" goBack={true} />
+                        <RegisterForm
+                            bank="우리"
+                            account="1002-550-568544"
+                            marginBottom={16}
+                            marginTop={0}
+                        />
+                        <div onClick={() => history.push("/paymentaddbank")} style={{
+                            width: 440,
+                            height: 136,
+                            border: "1px solid rgba(5, 26, 26, 0.2)",
+                            borderRadius: 6,
+                            cursor: "pointer",
+
                             display: "flex",
                             flexDirection: "column",
-                            justifyContent: "flex-start",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            alignSelf: "center",
                         }}>
-                            <Header content="결제 계좌 관리" goBack={true} />
-                            <RegisterForm 
-                                bank="우리"
-                                account="1002-550-568544"
-                                marginBottom={16}
-                                marginTop={0}
-                            />
-                            <div onClick={() => history.push("/paymentaddbank")} style={{
-                                width: 440,
-                                height: 136,
-                                border: "1px solid rgba(5, 26, 26, 0.2)",
-                                borderRadius: 6,
-                                cursor: "pointer",
-
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                alignSelf: "center",
-                            }}>
-                                <BiPlusCircle size={64} color="rgba(5, 26, 26, 0.6)" />
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    opacity: 0.6,
-                                    fontSize: 16,
-                                    color: "#202426",
-                                    marginTop: 8,
-                                }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
-                            </div>
+                            <BiPlusCircle size={64} color="rgba(5, 26, 26, 0.6)" />
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                opacity: 0.6,
+                                fontSize: 16,
+                                color: "#202426",
+                                marginTop: 8,
+                            }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
                         </div>
                     </div>
                 </div>
@@ -115,7 +105,7 @@ export default function ProfilePaymentMethod() {
     )
 }
 
-export const RegisterForm = ({bank, account, marginBottom, marginTop}) => {
+export const RegisterForm = ({ bank, account, marginBottom, marginTop }) => {
     return (
         <>
             <div style={{
@@ -152,7 +142,7 @@ export const RegisterForm = ({bank, account, marginBottom, marginTop}) => {
     )
 }
 
-export const MRegisterForm = ({bank, account, marginBottom, marginTop}) => {
+export const MRegisterForm = ({ bank, account, marginBottom, marginTop }) => {
     return (
         <>
             <div style={{

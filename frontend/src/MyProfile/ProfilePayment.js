@@ -18,30 +18,20 @@ export default function ProfilePayment() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                        justifyContent: "flex-start",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                        }}>
-                            <Header content="분할결제 스케쥴" goBack={true} />
-                            <BNPLForm state={1} date="2021.03.13" title="PRADA Model 23-9 limited… 
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                    }}>
+                        <Header content="분할결제 스케쥴" goBack={true} />
+                        <BNPLForm state={1} date="2021.03.13" title="PRADA Model 23-9 limited… 
 WHITE, 270mm" num={3} payback={310000} />
-                            <BNPLForm state={0} date="2021.03.13" title="PRADA Model 23-9 limited… 
+                        <BNPLForm state={0} date="2021.03.13" title="PRADA Model 23-9 limited… 
 WHITE, 270mm" num={0} payback={0} />
-                        </div>
                     </div>
                 </div>
             </Default>

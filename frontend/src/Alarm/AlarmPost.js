@@ -35,32 +35,22 @@ export default function AlarmPost() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                        justifyContent: "flex-start",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                        }}>
-                            <Header content="알림" goBack={true} />
-                            <Post 
-                                title="미션에 성공했습니다."
-                                date="2020.12.28"
-                                content="(결제) 4-29일 회원님의 우리은행계좌에서 100,000원이 자동이체되었습니다."
-                                type={<Mission />}
-                            />
-                        </div>
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                    }}>
+                        <Header content="알림" goBack={true} />
+                        <Post
+                            title="미션에 성공했습니다."
+                            date="2020.12.28"
+                            content="(결제) 4-29일 회원님의 우리은행계좌에서 100,000원이 자동이체되었습니다."
+                            type={<Mission />}
+                        />
                     </div>
                 </div>
             </Default>
@@ -153,7 +143,7 @@ const Post = ({ title, date, content, type }) => {
                 color: "#202426",
                 lineHeight: 1.5
             }}>
-                <span>{content}</span> 
+                <span>{content}</span>
                 {type}
             </div>
         </>

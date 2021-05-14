@@ -526,12 +526,12 @@ export function BottomTag({ marginTop, marginBottom }) {
                     color: "#ffffff"
                 }} />
                 <div style={{
-                    fontFamily: "NotoSansCJKkr",
+                    fontFamily: "AvenirNext",
                     fontSize: 21,
                     fontWeight: "bold",
                     color: "#202426",
                     marginLeft: 16
-                }}>나누다</div>
+                }}>Haul Free</div>
             </div>
             <div style={{
                 fontSize: 14,
@@ -540,7 +540,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                 opacity: 0.6,
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 12
-            }}>(주) 나누다 홀딩스</div>
+            }}>(주) 라텔</div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 14,
@@ -756,12 +756,12 @@ export function MBottomTag({ marginTop, marginBottom }) {
                     color: "#ffffff"
                 }} />
                 <div style={{
-                    fontFamily: "NotoSansCJKkr",
+                    fontFamily: "AvenirNext",
                     fontSize: 18,
                     fontWeight: "bold",
                     color: "#202426",
                     marginLeft: 12
-                }}>나누다</div>
+                }}>Haul Free</div>
             </div>
             <div style={{
                 fontSize: 12,
@@ -770,7 +770,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                 opacity: 0.6,
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 10
-            }}>(주) 나누다 홀딩스</div>
+            }}>(주) 라텔</div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 12,

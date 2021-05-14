@@ -6,11 +6,11 @@ import WebIntro, { Header, MHeader } from "../Style";
 
 export default function PaymentAddBank() {
     const bank = [
-        {name: "농협"},{name: "농협"},{name: "농협"},
-        {name: "농협"},{name: "농협"},{name: "농협"},
-        {name: "농협"},{name: "농협"},{name: "농협"},
-        {name: "농협"},{name: "농협"},{name: "농협"},
-        {name: "농협"},{name: "농협"},{name: "농협"},
+        { name: "농협" }, { name: "농협" }, { name: "농협" },
+        { name: "농협" }, { name: "농협" }, { name: "농협" },
+        { name: "농협" }, { name: "농협" }, { name: "농협" },
+        { name: "농협" }, { name: "농협" }, { name: "농협" },
+        { name: "농협" }, { name: "농협" }, { name: "농협" },
     ]
     return (
         <>
@@ -25,46 +25,36 @@ export default function PaymentAddBank() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                        justifyContent: "flex-start",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                    }}>
+                        <Header content="결제 계좌 등록" goBack={true} />
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#202426",
+                            marginTop: 32,
+                            marginLeft: 20,
+                            marginBottom: 16,
+                        }}>은행을 선택해주세요.</div>
+                        <div style={{
+                            width: 440,
+                            display: "grid",
+                            gridTemplateColumns: "136px 136px 136px",
+                            rowGap: 16,
+                            columnGap: 16,
+                            alignSelf: "center",
                         }}>
-                            <Header content="결제 계좌 등록" goBack={true} />
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#202426",
-                                marginTop: 32,
-                                marginLeft: 20,
-                                marginBottom: 16,
-                            }}>은행을 선택해주세요.</div>
-                            <div style={{
-                                width: 440,
-                                display: "grid",
-                                gridTemplateColumns: "136px 136px 136px",
-                                rowGap: 16,
-                                columnGap: 16,
-                                alignSelf: "center",
-                            }}>
-                                {bank.map(item => <Bank 
-                                    name={item.name}
-                                />)}
-                            </div>
+                            {bank.map(item => <Bank
+                                name={item.name}
+                            />)}
                         </div>
                     </div>
                 </div>
@@ -107,7 +97,7 @@ export default function PaymentAddBank() {
     )
 }
 
-const Bank = ({name}) => {
+const Bank = ({ name }) => {
     let history = useHistory()
     return (
         <div onClick={() => history.push("/paymentaddaccount")} style={{
@@ -137,7 +127,7 @@ const Bank = ({name}) => {
     )
 }
 
-const MBank = ({name}) => {
+const MBank = ({ name }) => {
     let history = useHistory()
     return (
         <div onClick={() => history.push("/paymentaddaccount")} style={{

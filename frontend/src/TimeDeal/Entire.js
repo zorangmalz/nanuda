@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 
 export default function TimeDeal() {
     let history = useHistory()
-    
+
     return (
         <>
             <Default>
@@ -19,35 +19,25 @@ export default function TimeDeal() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="나누다딜" goBack={true} />
                         <div style={{
+                            marginTop: 16,
+                            width: 440,
+                            paddingLeft: 20,
+                            paddingRight: 20,
+
                             display: "flex",
-                            flexDirection: "column",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                        }}>
-                            <Header content="나누다딜" goBack={true} />
-                            <div style={{
-                                marginTop: 16,
-                                width: 440,
-                                paddingLeft: 20,
-                                paddingRight: 20,
-
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                            }}></div>
-                        </div>
+                            flexDirection: "row",
+                            alignItems: "center",
+                        }}></div>
                     </div>
                 </div>
             </Default>

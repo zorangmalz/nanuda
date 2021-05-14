@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { useHistory,useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import axios from "axios"
@@ -66,24 +66,24 @@ function reducer(state, action) {
 
 export default function WishDeal() {
     let history = useHistory();
-    const [image,setImage]=useState("")
-    const [url,setUrl]=useState("                                        ")
-    const [title,setTitle]=useState("")
-    const [state,setState]=useState(false)
-    const location=useLocation()
-    const myparam=location.state.info
-    
-    useEffect(()=>{
-        
+    const [image, setImage] = useState("")
+    const [url, setUrl] = useState("                                        ")
+    const [title, setTitle] = useState("")
+    const [state, setState] = useState(false)
+    const location = useLocation()
+    const myparam = location.state.info
+
+    useEffect(() => {
+
         console.log(myparam)
         setImage(myparam.ogImage.url)
         setUrl(myparam.ogUrl)
         setTitle(myparam.ogTitle)
-        
-    },[])
- 
+
+    }, [])
+
     const [type, dispatch] = useReducer(reducer, 0)
-    
+
     const onElectronic = () => {
         dispatch({ type: "ELECTRONIC" })
         setState(true)
@@ -99,28 +99,28 @@ export default function WishDeal() {
     const onETC = () => {
         dispatch({ type: "ETC" })
     }
-    const [text, setText] = useState('')  
+    const [text, setText] = useState('')
 
     const onChange = (e) => {
-    	console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
+        console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
         console.log(e.target.value)	//이벤트가 발생한 타겟의 Value를 출력
         setText(e.target.value)		//이벤트 발생한 value값으로 {text} 변경
         setState(true)
-}
+    }
 
 
-    function move(){
+    function move() {
         console.log(type)
-        if(type===0){
+        if (type === 0) {
             console.log("0")
-        }else if(type==1){
-            history.push("/wishdealurl",{param:myparam,code:1,des:text})
-        }else if(type==2){
-            history.push("/wishdealurl",{param:myparam,code:2,des:text})
-        }else if(type==3){
-            history.push("/wishdealurl",{param:myparam,code:3,des:text})
-        }else if(type==4){
-            history.push("/wishdealurl",{code:4,param:myparam,des:text})
+        } else if (type == 1) {
+            history.push("/wishdealurl", { param: myparam, code: 1, des: text })
+        } else if (type == 2) {
+            history.push("/wishdealurl", { param: myparam, code: 2, des: text })
+        } else if (type == 3) {
+            history.push("/wishdealurl", { param: myparam, code: 3, des: text })
+        } else if (type == 4) {
+            history.push("/wishdealurl", { code: 4, param: myparam, des: text })
         }
     }
     return (
@@ -135,138 +135,129 @@ export default function WishDeal() {
                     height: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        height: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="위시딜" goBack={true} />
+                        <div style={{
+                            marginLeft: 20,
+                            marginTop: 32,
+                            fontWeight: "bold",
+                            fontSize: 18,
+                            fontFamily: "NotoSansCJKkr",
+                            color: "#202426",
+                        }}>상품 정보를 가져왔습니다</div>
+                        <div style={{
+                            width: 440,
+                            height: 140,
+                            marginLeft: 20,
+                            marginRight: 20,
+                            marginTop: 32,
+
+                        }}>
+                            <img style={{
+                                width: 440,
+                                height: 200,
+                                objectFit: "cover"
+                            }} src={image}></img>
+                        </div>
+                        <div style={{
+                            width: 440,
+                            marginLeft: 20,
+                            marginRight: 20,
+                            marginTop: 32,
+                            backgroundColor: "#f2f3f8",
+                        }}>
+                            <div stlye={{
+                                fontSize: 14,
+                                opacity: 0.6,
+                                color: "#202426",
+
+                            }}>{url.substr(0, 20)}...</div>
+                            <div style={{
+                                fontWeight: "bold",
+                                marginTop: 8,
+                                fontSize: 14
+                            }}>{title}</div>
+
+                        </div>
                         <div style={{
                             display: "flex",
-                            flexDirection: "column",
-
-                            justifyContent: "flex-start",
-
-                            width: 480,
-                            height: "100vh",
-                            backgroundColor: "#ffffff",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginLeft: 20,
+                            marginTop: 16,
                         }}>
-                            <Header content="위시딜" goBack={true} />
+                            <AiOutlineExclamationCircle size={16} color="#202426" />
                             <div style={{
-                                marginLeft: 20,
-                                marginTop: 32,
-                                fontWeight: "bold",
-                                fontSize: 18,
-                                fontFamily: "NotoSansCJKkr",
+                                marginLeft: 8,
+                                fontSize: 14,
                                 color: "#202426",
-                            }}>상품 정보를 가져왔습니다</div>
-                           <div style={{
-                                        width: 440,
-                                        height: 140,
-                                        marginLeft: 20,
-                                        marginRight: 20,
-                                        marginTop: 32,
-
-                                    }}>
-                                        <img style={{
-                                            width: 440,
-                                            height: 200,
-                                            objectFit: "cover"
-                                        }} src={image}></img>
-                                    </div>
-                                    <div style={{
-                                        width: 440,
-                                        marginLeft: 20,
-                                        marginRight: 20,
-                                        marginTop: 32,
-                                        backgroundColor: "#f2f3f8",
-                                    }}>
-                                        <div stlye={{
-                                            fontSize: 14,
-                                            opacity: 0.6,
-                                            color: "#202426",
-
-                                        }}>{url.substr(0, 20)}...</div>
-                                        <div style={{
-                                            fontWeight: "bold",
-                                            marginTop: 8,
-                                            fontSize: 14
-                                        }}>{title}</div>
-
-                                    </div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginLeft: 20,
-                                marginTop: 16,
-                            }}>
-                                <AiOutlineExclamationCircle size={16} color="#202426" />
-                                <div style={{
-                                    marginLeft: 8,
-                                    fontSize: 14,
-                                    color: "#202426",
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>이 상품이 맞는지 한번 더 확인해주세요.</div>
-                            </div>
-                            <div style={{
-                                marginTop: 32,
-                                marginLeft: 20,
-                                fontWeight: "bold",
-                                fontSize: 18,
-                                fontFamily: "NotoSansCJKkr",
-                                color: "#202426",
-                            }}>상품 카테고리를 알려주세요!</div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginTop: 16,
-                                marginLeft: 20,
-                            }}>
-                                <TypeButton
-                                    text="전자기기"
-                                    variable={type}
-                                    number={1}
-                                    onClick={onElectronic}
-                                />
-                                <TypeButton
-                                    text="명품&패션"
-                                    variable={type}
-                                    number={2}
-                                    onClick={onFashion}
-                                />
-                                <TypeButton
-                                    text="기타"
-                                    variable={type}
-                                    number={4}
-                                    onClick={onETC}
-                                />
-                            </div>
-                            {type === 4 ? <input
+                                fontFamily: "NotoSansCJKkr"
+                            }}>이 상품이 맞는지 한번 더 확인해주세요.</div>
+                        </div>
+                        <div style={{
+                            marginTop: 32,
+                            marginLeft: 20,
+                            fontWeight: "bold",
+                            fontSize: 18,
+                            fontFamily: "NotoSansCJKkr",
+                            color: "#202426",
+                        }}>상품 카테고리를 알려주세요!</div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginTop: 16,
+                            marginLeft: 20,
+                        }}>
+                            <TypeButton
+                                text="전자기기"
+                                variable={type}
+                                number={1}
+                                onClick={onElectronic}
+                            />
+                            <TypeButton
+                                text="명품&패션"
+                                variable={type}
+                                number={2}
+                                onClick={onFashion}
+                            />
+                            <TypeButton
+                                text="기타"
+                                variable={type}
+                                number={4}
+                                onClick={onETC}
+                            />
+                        </div>
+                        {type === 4 ? <input
                             onChange={onChange}
-                            
-                                placeholder="기타 항목을 입력해주세요. (필수)"
-                                style={{
-                                    paddingBottom: 8,
-                                    marginTop: 16,
-                                    width: 440,
-                                    outline: 0,
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                                    borderTop: 0,
-                                    borderLeft: 0,
-                                    borderRight: 0,
-                                    alignSelf: "center",
 
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 16,
-                                    color: "#202426"
-                                }}
-                            /> : <></>}
-                            {state?
+                            placeholder="기타 항목을 입력해주세요. (필수)"
+                            style={{
+                                paddingBottom: 8,
+                                marginTop: 16,
+                                width: 440,
+                                outline: 0,
+                                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                borderTop: 0,
+                                borderLeft: 0,
+                                borderRight: 0,
+                                alignSelf: "center",
+
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 16,
+                                color: "#202426"
+                            }}
+                        /> : <></>}
+                        {state ?
                             <div onClick={move} style={{
                                 width: 440,
                                 paddingTop: 16,
@@ -276,7 +267,7 @@ export default function WishDeal() {
                                 alignSelf: "center",
                                 cursor: "pointer",
                                 marginTop: 32,
-                
+
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
@@ -284,25 +275,24 @@ export default function WishDeal() {
                                 textAlign: "center"
                             }}>다음</div>
                             :
-                            <div  style={{
+                            <div style={{
                                 width: 440,
                                 paddingTop: 16,
                                 paddingBottom: 16,
                                 borderRadius: 6,
                                 backgroundColor: "#dbdbdb",
                                 alignSelf: "center",
-                                
+
                                 marginTop: 32,
-                
+
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
                                 color: "#ffffff",
                                 textAlign: "center"
                             }}>다음</div>
-                            }
-                            
-                        </div>
+                        }
+
                     </div>
                 </div>
             </Default>
@@ -326,41 +316,41 @@ export default function WishDeal() {
                         fontFamily: "NotoSansCJKkr",
                         color: "#202426",
                     }}>상품 정보를 가져왔습니다.</div>
-                   <div style={{
-                                        width: "90%",
-                                        height: 140,
-                                        marginLeft: 20,
-                                        marginRight: 20,
-                                        marginTop: 32,
+                    <div style={{
+                        width: "90%",
+                        height: 140,
+                        marginLeft: 20,
+                        marginRight: 20,
+                        marginTop: 32,
 
-                                    }}>
-                                        <img style={{
-                                            width: "100%",
-                                            height: 200,
-                                            objectFit: "cover"
-                                        }} src={image}></img>
-                                    </div>
-                                    <div style={{
-                                        width: "90%",
-                                        marginLeft: 20,
-                                        marginRight: 20,
-                                        marginTop: 32,
-                                        backgroundColor: "#f2f3f8",
-                                    }}>
-                                        <div stlye={{
-                                            fontSize: 14,
-                                            opacity: 0.6,
-                                            color: "#202426",
+                    }}>
+                        <img style={{
+                            width: "100%",
+                            height: 200,
+                            objectFit: "cover"
+                        }} src={image}></img>
+                    </div>
+                    <div style={{
+                        width: "90%",
+                        marginLeft: 20,
+                        marginRight: 20,
+                        marginTop: 32,
+                        backgroundColor: "#f2f3f8",
+                    }}>
+                        <div stlye={{
+                            fontSize: 14,
+                            opacity: 0.6,
+                            color: "#202426",
 
-                                        }}>{url.substr(0, 20)}...</div>
-                                        <div style={{
-                                            fontWeight: "bold",
-                                            marginTop: 8,
-                                            fontSize: 14
-                                        }}>{title}</div>
+                        }}>{url.substr(0, 20)}...</div>
+                        <div style={{
+                            fontWeight: "bold",
+                            marginTop: 8,
+                            fontSize: 14
+                        }}>{title}</div>
 
-                                    </div>
-                
+                    </div>
+
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -429,22 +419,22 @@ export default function WishDeal() {
                             color: "#202426"
                         }}
                     /> : <></>}
-                   <div onClick={move} style={{
-            width: "90vw",
-            paddingTop: "4vw",
-            paddingBottom: "4vw",
-            backgroundColor: "#26c1f0",
-            alignSelf: "center",
-            cursor: "pointer",
-            marginTop: 32,
-            borderRadius: 6,
+                    <div onClick={move} style={{
+                        width: "90vw",
+                        paddingTop: "4vw",
+                        paddingBottom: "4vw",
+                        backgroundColor: "#26c1f0",
+                        alignSelf: "center",
+                        cursor: "pointer",
+                        marginTop: 32,
+                        borderRadius: 6,
 
-            fontSize: 16,
-            fontWeight: "bold",
-            fontFamily: "NotoSansCJKkr",
-            color: "#ffffff",
-            textAlign: "center"
-        }}>다음</div>
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#ffffff",
+                        textAlign: "center"
+                    }}>다음</div>
                 </div>
             </Mobile>
         </>

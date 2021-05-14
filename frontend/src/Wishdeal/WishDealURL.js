@@ -1,7 +1,7 @@
 import React, { useReducer, useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, StandardButton,MStandardButton } from "../Style";
+import WebIntro, { Header, MHeader, StandardButton, MStandardButton } from "../Style";
 
 function reducerA(state, action) {
     switch (action.type) {
@@ -144,117 +144,117 @@ export default function WishDealURL() {
     }
 
     useEffect(() => {
-        if(stats===1){
-            if (ELinputs.ELcolor && ELinputs.ELprice  !=""  ){
-                if(number&&numberB>1){
-                    if(number===2 && numberB===5){
-                        if(option&&ship!=""){
+        if (stats === 1) {
+            if (ELinputs.ELcolor && ELinputs.ELprice != "") {
+                if (number && numberB > 1) {
+                    if (number === 2 && numberB === 5) {
+                        if (option && ship != "") {
                             setNext(true)
-                        }else{
+                        } else {
                             setNext(false)
                         }
                     }
-                    if(number===2 &&numberB<5){
-                        if(option!=""){
+                    if (number === 2 && numberB < 5) {
+                        if (option != "") {
                             setNext(true)
-                        }else{
+                        } else {
                             setNext(false)
                         }
                     }
-                    if(number===3 &&numberB===5){
-                        if(ship!=""){
+                    if (number === 3 && numberB === 5) {
+                        if (ship != "") {
                             setNext(true)
-                        }else{
+                        } else {
                             setNext(false)
                         }
                     }
-                    if(number===3 && numberB<5){
+                    if (number === 3 && numberB < 5) {
                         setNext(true)
                     }
                 }
-                
-            }else{
+
+            } else {
                 setNext(false)
             }
-        }else if(stats===2){
-            if (Finputs.Fcolor &&Finputs.Fsize && Finputs.Fprice  !=""  ){
-                if(number&&numberB>1){
-                    if(number===2 && numberB===5){
-                        if(option&&ship!=""){
+        } else if (stats === 2) {
+            if (Finputs.Fcolor && Finputs.Fsize && Finputs.Fprice != "") {
+                if (number && numberB > 1) {
+                    if (number === 2 && numberB === 5) {
+                        if (option && ship != "") {
                             setNext(true)
-                        }else{
+                        } else {
                             setNext(false)
                         }
                     }
-                    if(number===2 &&numberB<5){
-                        if(option!=""){
+                    if (number === 2 && numberB < 5) {
+                        if (option != "") {
                             setNext(true)
-                        }else{
+                        } else {
                             setNext(false)
                         }
                     }
-                    if(number===3 &&numberB===5){
-                        if(ship!=""){
+                    if (number === 3 && numberB === 5) {
+                        if (ship != "") {
                             setNext(true)
-                        }else{
+                        } else {
                             setNext(false)
                         }
                     }
-                    if(number===3 && numberB<5){
+                    if (number === 3 && numberB < 5) {
                         setNext(true)
                     }
                 }
-                
-            }else{
+
+            } else {
                 setNext(false)
             }
-        }else{
-            if (Einputs.Eprice  !=""  ){
-                if(number&&numberB>1){
-                    if(number===2 && numberB===5){
-                        if(option&&ship!=""){
+        } else {
+            if (Einputs.Eprice != "") {
+                if (number && numberB > 1) {
+                    if (number === 2 && numberB === 5) {
+                        if (option && ship != "") {
                             setNext(true)
-                        }else{
+                        } else {
                             setNext(false)
                         }
                     }
-                    if(number===2 &&numberB<5){
-                        if(option!=""){
+                    if (number === 2 && numberB < 5) {
+                        if (option != "") {
                             setNext(true)
-                        }else{
+                        } else {
                             setNext(false)
                         }
                     }
-                    if(number===3 &&numberB===5){
-                        if(ship!=""){
+                    if (number === 3 && numberB === 5) {
+                        if (ship != "") {
                             setNext(true)
-                        }else{
+                        } else {
                             setNext(false)
                         }
                     }
-                    if(number===3 && numberB<5){
+                    if (number === 3 && numberB < 5) {
                         setNext(true)
                     }
                 }
-                
-            }else{
+
+            } else {
                 setNext(false)
             }
         }
-        
-    }, [Finputs,Einputs,ELinputs,number,numberB,option,ship])
-    
-    function NextPage(){
-        const lst=[]
-        if(stats===1){
-            lst.push(myparam,code,des,ELinputs,number,option,numberB,ship)
-            history.push("/ordersheet",{param:lst})
-        }else if(stats===2){
-            lst.push(myparam,code,des,Finputs,number,option,numberB,ship)
-            history.push("/ordersheet",{param:lst})
-        }else{
-            lst.push(myparam,code,des,Einputs,number,option,numberB,ship)
-            history.push("/ordersheet",{param:lst})
+
+    }, [Finputs, Einputs, ELinputs, number, numberB, option, ship])
+
+    function NextPage() {
+        const lst = []
+        if (stats === 1) {
+            lst.push(myparam, code, des, ELinputs, number, option, numberB, ship)
+            history.push("/ordersheet", { param: lst })
+        } else if (stats === 2) {
+            lst.push(myparam, code, des, Finputs, number, option, numberB, ship)
+            history.push("/ordersheet", { param: lst })
+        } else {
+            lst.push(myparam, code, des, Einputs, number, option, numberB, ship)
+            history.push("/ordersheet", { param: lst })
         }
     }
     return (
@@ -269,239 +269,230 @@ export default function WishDealURL() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+
+                        justifyContent: "flex-start",
+                        paddingBottom: 50,
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="상품 정보 작성" goBack={true} />
+                        {stats === 1 ?
+                            <>
+                                <ElectronicForm
+                                    name={myparam.ogTitle}
+                                    image={myparam.ogImage.url}
+                                    input={ELinputs}
+                                    setInput={setELInputs}
+                                />
+                            </>
+                            :
+                            <></>
+                        }
+                        {stats === 2 ?
+                            <>
+                                <FashionForm
+                                    name={myparam.ogTitle}
+                                    image={myparam.ogImage.url}
+                                    input={Finputs}
+                                    setInput={setFInputs}
+                                />
+                            </>
+                            :
+                            <></>
+                        }
+
+                        {stats === 4 ?
+                            <>
+                                <ETCForm
+                                    name={myparam.ogTitle}
+                                    image={myparam.ogImage.url}
+                                    input={Einputs}
+                                    setInput={setEInputs}
+                                />
+                            </>
+                            :
+                            <></>
+                        }
+
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#202426",
+
+                            marginTop: 32,
+                            marginLeft: 20,
+                        }}>옵션 선택에 따른 추가 비용이 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
                         <div style={{
                             display: "flex",
-                            flexDirection: "column",
+                            flexDirection: "row",
+                            alignItems: "center",
 
-                            justifyContent: "flex-start",
-                            paddingBottom:50,
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            marginLeft: 20,
+                            marginTop: 16
                         }}>
-                            <Header content="상품 정보 작성" goBack={true} />
-                            {stats === 1 ?
-                                <>
-                                    <ElectronicForm
-                                        name={myparam.ogTitle}
-                                        image={myparam.ogImage.url}
-                                        input={ELinputs}
-                                        setInput={setELInputs}
-                                    />
-                                </>
-                                :
-                                <></>
-                            }
-                            {stats === 2 ?
-                                <>
-                                    <FashionForm
-                                        name={myparam.ogTitle}
-                                        image={myparam.ogImage.url}
-                                        input={Finputs}
-                                        setInput={setFInputs}
-                                    />
-                                </>
-                                :
-                                <></>
-                            }
-
-                            {stats === 4 ?
-                                <>
-                                    <ETCForm
-                                        name={myparam.ogTitle}
-                                        image={myparam.ogImage.url}
-                                        input={Einputs}
-                                        setInput={setEInputs}
-                                    />
-                                </>
-                                :
-                                <></>
-                            }
-
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#202426",
-
-                                marginTop: 32,
-                                marginLeft: 20,
-                            }}>옵션 선택에 따른 추가 비용이 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-
-                                marginLeft: 20,
-                                marginTop: 16
-                            }}>
-                                <Button
-                                    onClick={onYES}
-                                    state={number}
-                                    number={2}
-                                    content="있음"
-                                />
-                                <Button
-                                    onClick={onNO}
-                                    state={number}
-                                    number={3}
-                                    content="없음"
-                                />
-                            </div>
-                            {number === 2 ?
-                                <>
-                                    <div style={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-
-                                        marginTop: 16,
-                                        marginLeft: 20,
-                                        paddingBottom: 8,
-                                        borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                                        width: 240,
-                                    }}>
-                                        <input
-                                            placeholder="추가 비용을 입력해주세요."
-                                            type="number"
-                                            name="option"
-                                            value={option}
-                                            onChange={onChange}
-                                            style={{
-                                                width: 210,
-                                                outline: 0,
-                                                border: 0,
-
-                                                fontFamily: "NotoSansCJKkr",
-                                                fontSize: 16,
-                                                color: "#202426"
-                                            }}
-                                        />
-                                        <div style={{
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontSize: 16,
-                                            fontWeight: "bold",
-                                            color: "#202426"
-                                        }}>원</div>
-                                    </div>
-                                </>
-                                :
-                                <></>
-                            }
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#202426",
-
-                                marginTop: 32,
-                                marginLeft: 20,
-                            }}>배송비가 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-
-                                marginLeft: 20,
-                                marginTop: 16
-                            }}>
-                                <Button
-                                    onClick={onX}
-                                    state={numberB}
-                                    number={2}
-                                    content="없음"
-                                />
-                                <Button
-                                    onClick={onTWO}
-                                    state={numberB}
-                                    number={3}
-                                    content="2,500"
-                                />
-                                <Button
-                                    onClick={onFIVE}
-                                    state={numberB}
-                                    number={4}
-                                    content="5,000"
-                                />
-                                <Button
-                                    onClick={onEXT}
-                                    state={numberB}
-                                    number={5}
-                                    content="기타"
-                                />
-                            </div>
-                            {numberB === 5 ?
-                                <>
-                                    <div style={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-
-                                        marginTop: 16,
-                                        marginLeft: 20,
-                                        paddingBottom: 8,
-                                        borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                                        width: 240,
-                                    }}>
-                                        <input
-                                            placeholder="배송비용을 입력해주세요"
-                                            type="number"
-                                            name="ship"
-                                            value={ship}
-                                            onChange={onChange}
-                                            style={{
-                                                width: 220,
-                                                outline: 0,
-                                                border: 0,
-
-                                                fontFamily: "NotoSansCJKkr",
-                                                fontSize: 16,
-                                                color: "#202426"
-                                            }}
-                                        />
-                                        <div style={{
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontSize: 16,
-                                            fontWeight: "bold",
-                                            color: "#202426"
-                                        }}>원</div>
-                                    </div>
-                                </>
-                                :
-                                <></>
-                            }
-                            <div style={{
-                                marginTop: 32,
-                                marginLeft: 20,
-                                width: 440,
-
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 14,
-                                opacity: 0.4,
-                                color: "#202426",
-                            }}>
-                                <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
-                                <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
-                                <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
-                                <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
-                            </div>
-                            <StandardButton 
-                                marginTop={32}
-                                text="다음"
-                                onClick={NextPage}
-                                state={next}
+                            <Button
+                                onClick={onYES}
+                                state={number}
+                                number={2}
+                                content="있음"
+                            />
+                            <Button
+                                onClick={onNO}
+                                state={number}
+                                number={3}
+                                content="없음"
                             />
                         </div>
+                        {number === 2 ?
+                            <>
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+
+                                    marginTop: 16,
+                                    marginLeft: 20,
+                                    paddingBottom: 8,
+                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    width: 240,
+                                }}>
+                                    <input
+                                        placeholder="추가 비용을 입력해주세요."
+                                        type="number"
+                                        name="option"
+                                        value={option}
+                                        onChange={onChange}
+                                        style={{
+                                            width: 210,
+                                            outline: 0,
+                                            border: 0,
+
+                                            fontFamily: "NotoSansCJKkr",
+                                            fontSize: 16,
+                                            color: "#202426"
+                                        }}
+                                    />
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 16,
+                                        fontWeight: "bold",
+                                        color: "#202426"
+                                    }}>원</div>
+                                </div>
+                            </>
+                            :
+                            <></>
+                        }
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#202426",
+
+                            marginTop: 32,
+                            marginLeft: 20,
+                        }}>배송비가 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+
+                            marginLeft: 20,
+                            marginTop: 16
+                        }}>
+                            <Button
+                                onClick={onX}
+                                state={numberB}
+                                number={2}
+                                content="없음"
+                            />
+                            <Button
+                                onClick={onTWO}
+                                state={numberB}
+                                number={3}
+                                content="2,500"
+                            />
+                            <Button
+                                onClick={onFIVE}
+                                state={numberB}
+                                number={4}
+                                content="5,000"
+                            />
+                            <Button
+                                onClick={onEXT}
+                                state={numberB}
+                                number={5}
+                                content="기타"
+                            />
+                        </div>
+                        {numberB === 5 ?
+                            <>
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+
+                                    marginTop: 16,
+                                    marginLeft: 20,
+                                    paddingBottom: 8,
+                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    width: 240,
+                                }}>
+                                    <input
+                                        placeholder="배송비용을 입력해주세요"
+                                        type="number"
+                                        name="ship"
+                                        value={ship}
+                                        onChange={onChange}
+                                        style={{
+                                            width: 220,
+                                            outline: 0,
+                                            border: 0,
+
+                                            fontFamily: "NotoSansCJKkr",
+                                            fontSize: 16,
+                                            color: "#202426"
+                                        }}
+                                    />
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 16,
+                                        fontWeight: "bold",
+                                        color: "#202426"
+                                    }}>원</div>
+                                </div>
+                            </>
+                            :
+                            <></>
+                        }
+                        <div style={{
+                            marginTop: 32,
+                            marginLeft: 20,
+                            width: 440,
+
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 14,
+                            opacity: 0.4,
+                            color: "#202426",
+                        }}>
+                            <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
+                            <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
+                            <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
+                            <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
+                        </div>
+                        <StandardButton
+                            marginTop={32}
+                            text="다음"
+                            onClick={NextPage}
+                            state={next}
+                        />
                     </div>
                 </div>
             </Default>
@@ -610,8 +601,8 @@ export default function WishDealURL() {
                                     <input
                                         placeholder="추가 비용을 입력해주세요."
                                         name="option"
-                                            value={option}
-                                            onChange={onChange}
+                                        value={option}
+                                        onChange={onChange}
                                         style={{
                                             width: "45vw",
                                             outline: 0,
@@ -692,8 +683,8 @@ export default function WishDealURL() {
                                     <input
                                         placeholder="배송비용을 입력해주세요"
                                         name="ship"
-                                            value={ship}
-                                            onChange={onChange}
+                                        value={ship}
+                                        onChange={onChange}
                                         style={{
                                             width: "45vw",
                                             outline: 0,
@@ -730,12 +721,12 @@ export default function WishDealURL() {
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                         </div>
-                        <MStandardButton 
-                                marginTop={32}
-                                text="다음"
-                                onClick={NextPage}
-                                state={next}
-                            />
+                        <MStandardButton
+                            marginTop={32}
+                            text="다음"
+                            onClick={NextPage}
+                            state={next}
+                        />
                     </div>
                 </div>
             </Mobile>
@@ -745,7 +736,7 @@ export default function WishDealURL() {
 
 function FashionForm({ image, brand, name, input, setInput }) {
     const { Fprice, Fcolor, Fsize, Fetc } = input
-    
+
     const onChange = (e) => {
         const { value, name } = e.target
         setInput({
@@ -753,7 +744,7 @@ function FashionForm({ image, brand, name, input, setInput }) {
             [name]: value
         })
     }
-    
+
     return (
         <>
             <div style={{

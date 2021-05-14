@@ -32,112 +32,102 @@ export default function ProfileEdit() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "space-between",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
-                            justifyContent: "space-between",
+                            width: "100%",
+                        }}>
+                            <Header content="내 정보 관리" goBack={true} />
+                            <FaUserCircle
+                                size={72}
+                                color="#dbdbdb"
+                                style={{
+                                    marginTop: 32,
+                                    marginBottom: 32,
+                                    alignSelf: "center",
+                                    cursor: "pointer"
+                                }}
+                            />
+                            <div style={{
+                                marginLeft: 20,
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "flex-start",
+                            }}>
+                                <Profile
+                                    title="이름"
+                                    content="김현명"
+                                    marginRight={20}
+                                    width={90}
+                                />
+                                <Profile
+                                    title="성별"
+                                    content="남자"
+                                    marginRight={0}
+                                    width={90}
+                                />
+                            </div>
+                            <Profile
+                                title="생년월일"
+                                content="1995-12-28"
+                                marginRight={0}
+                                width={440}
+                            />
+                            <ProfileWithButton
+                                title="핸드폰 번호"
+                                content="010-4337-6607"
+                                width={440}
+                                buttonText="재인증"
+                                onClick={onPhoneVerify}
+                            />
+                            <ProfileWithButton
+                                title="직업"
+                                content="대학생"
+                                width={440}
+                                buttonText="인증하기"
+                                onClick={onJobVerify}
+                            />
+                            <Profile
+                                title="이메일 주소"
+                                content="hyunmyung137@gmail.com"
+                                marginRight={0}
+                                width={440}
+                            />
+                        </div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "flex-start",
+                            marginBottom: 40,
+                            marginLeft: 20,
                         }}>
                             <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                width: "100%",
-                            }}>
-                                <Header content="내 정보 관리" goBack={true} />
-                                <FaUserCircle
-                                    size={72}
-                                    color="#dbdbdb"
-                                    style={{
-                                        marginTop: 32,
-                                        marginBottom: 32,
-                                        alignSelf: "center",
-                                        cursor: "pointer"
-                                    }}
-                                />
-                                <div style={{
-                                    marginLeft: 20,
-
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "flex-start",
-                                }}>
-                                    <Profile
-                                        title="이름"
-                                        content="김현명"
-                                        marginRight={20}
-                                        width={90}
-                                    />
-                                    <Profile
-                                        title="성별"
-                                        content="남자"
-                                        marginRight={0}
-                                        width={90}
-                                    />
-                                </div>
-                                <Profile
-                                    title="생년월일"
-                                    content="1995-12-28"
-                                    marginRight={0}
-                                    width={440}
-                                />
-                                <ProfileWithButton
-                                    title="핸드폰 번호"
-                                    content="010-4337-6607"
-                                    width={440}
-                                    buttonText="재인증"
-                                    onClick={onPhoneVerify}
-                                />
-                                <ProfileWithButton
-                                    title="직업"
-                                    content="대학생"
-                                    width={440}
-                                    buttonText="인증하기"
-                                    onClick={onJobVerify}
-                                />
-                                <Profile
-                                    title="이메일 주소"
-                                    content="hyunmyung137@gmail.com"
-                                    marginRight={0}
-                                    width={440}
-                                />
-                            </div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "flex-start",
-                                marginBottom: 40,
-                                marginLeft: 20,
-                            }}>
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    opacity: 0.6,
-                                    fontSize: 14,
-                                    color: "#202426",
-                                    marginBottom: 8,
-                                    cursor: "pointer",
-                                    textDecorationLine: "underline"
-                                }}>로그아웃</div>
-                                <div onClick={() => history.push("/profiledelete")} style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    opacity: 0.6,
-                                    fontSize: 14,
-                                    color: "#202426",
-                                    cursor: "pointer",
-                                    textDecorationLine: "underline"
-                                }}>회원 탈퇴</div>
-                            </div>
+                                fontFamily: "NotoSansCJKkr",
+                                opacity: 0.6,
+                                fontSize: 14,
+                                color: "#202426",
+                                marginBottom: 8,
+                                cursor: "pointer",
+                                textDecorationLine: "underline"
+                            }}>로그아웃</div>
+                            <div onClick={() => history.push("/profiledelete")} style={{
+                                fontFamily: "NotoSansCJKkr",
+                                opacity: 0.6,
+                                fontSize: 14,
+                                color: "#202426",
+                                cursor: "pointer",
+                                textDecorationLine: "underline"
+                            }}>회원 탈퇴</div>
                         </div>
                     </div>
                 </div>
@@ -457,7 +447,7 @@ export const BasicAddress = ({ item }) => {
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.request}</div>
             </div>
-            <MdKeyboardArrowRight 
+            <MdKeyboardArrowRight
                 size={24}
                 color="rgba(5, 26, 26, 0.2)"
             />
@@ -520,7 +510,7 @@ export const MBasicAddress = ({ item }) => {
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.request}</div>
             </div>
-            <MdKeyboardArrowRight 
+            <MdKeyboardArrowRight
                 size={20}
                 color="rgba(5, 26, 26, 0.2)"
             />
@@ -545,7 +535,7 @@ export const NoAddress = () => {
             borderRadius: 6,
             marginTop: 16,
         }}>
-            <BiPlusCircle 
+            <BiPlusCircle
                 size={32}
                 color="rgba(5, 26, 26, 0.6)"
             />
@@ -577,7 +567,7 @@ export const MNoAddress = () => {
             borderRadius: 6,
             marginTop: "4vw",
         }}>
-            <BiPlusCircle 
+            <BiPlusCircle
                 size={28}
                 color="rgba(5, 26, 26, 0.6)"
             />

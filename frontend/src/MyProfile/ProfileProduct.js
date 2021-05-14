@@ -18,53 +18,43 @@ export default function ProfileProduct() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8",
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "flex-start",
+                        alignItems: "center",
+                        justifyContent: "flex-start",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                            paddingBottom: 40,
-                        }}>
-                            <Header content="상품 구매 내역" goBack={true} />
-                            <div style={{ marginTop: 16 }} />
-                            <ProductState 
-                                date="2021.04.13"
-                                title="PRADA Model 23-9 limited WHITE, 270mm"
-                                price={480000}
-                                state={1}
-                            />
-                            <ProductState 
-                                date="2021.04.13"
-                                title="PRADA Model 23-9 limited WHITE, 270mm"
-                                price={480000}
-                                state={2}
-                            />
-                            <ProductState 
-                                date="2021.04.13"
-                                title="PRADA Model 23-9 limited WHITE, 270mm"
-                                price={480000}
-                                state={2}
-                            />
-                            <ProductState 
-                                date="2021.04.13"
-                                title="PRADA Model 23-9 limited WHITE, 270mm"
-                                price={480000}
-                                state={3}
-                            />
-                        </div>
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                        paddingBottom: 40,
+                    }}>
+                        <Header content="상품 구매 내역" goBack={true} />
+                        <div style={{ marginTop: 16 }} />
+                        <ProductState
+                            date="2021.04.13"
+                            title="PRADA Model 23-9 limited WHITE, 270mm"
+                            price={480000}
+                            state={1}
+                        />
+                        <ProductState
+                            date="2021.04.13"
+                            title="PRADA Model 23-9 limited WHITE, 270mm"
+                            price={480000}
+                            state={2}
+                        />
+                        <ProductState
+                            date="2021.04.13"
+                            title="PRADA Model 23-9 limited WHITE, 270mm"
+                            price={480000}
+                            state={2}
+                        />
+                        <ProductState
+                            date="2021.04.13"
+                            title="PRADA Model 23-9 limited WHITE, 270mm"
+                            price={480000}
+                            state={3}
+                        />
                     </div>
                 </div>
             </Default>
@@ -111,7 +101,7 @@ export default function ProfileProduct() {
     )
 }
 
-function ProductState({date, title, price, state}) {
+function ProductState({ date, title, price, state }) {
     const history = useHistory()
     return (
         <>
@@ -269,7 +259,7 @@ function ProductState({date, title, price, state}) {
     )
 }
 
-function MProductState({date, title, price, state}) {
+function MProductState({ date, title, price, state }) {
     const history = useHistory()
     return (
         <>

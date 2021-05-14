@@ -17,53 +17,43 @@ export default function SingupComplete() {
                     width: "100%",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="회원가입 완료" goBack={true} />
                         <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 24,
+                            fontWeight: "bold",
+                            color: "#202426",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            marginTop: 32,
+                            lineHeight: 1.5,
+                            alignSelf: "center",
+                            marginBottom: 32,
                         }}>
-                            <Header content="회원가입 완료" goBack={true} />
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 24,
-                                fontWeight: "bold",
-                                color: "#202426",
-
-                                marginTop: 32,
-                                lineHeight: 1.5,
-                                alignSelf: "center",
-                                marginBottom: 32,
-                            }}>
-                                회원가입을 축하합니다! <br />
+                            회원가입을 축하합니다! <br />
                                 작은 선물을 준비했어요.
                             </div>
-                            <img
-                                src={point}
-                                alt="포인트"
-                                style={{
-                                    alignSelf: "center",
-                                }}
-                            />
-                            <StandardButton
-                                text="나누다 시작하기"
-                                marginTop={32}
-                                onClick={() => history.replace("/")}
-                                state={true}
-                            />
-                        </div>
+                        <img
+                            src={point}
+                            alt="포인트"
+                            style={{
+                                alignSelf: "center",
+                            }}
+                        />
+                        <StandardButton
+                            text="나누다 시작하기"
+                            marginTop={32}
+                            onClick={() => history.replace("/")}
+                            state={true}
+                        />
                     </div>
                 </div>
             </Default>

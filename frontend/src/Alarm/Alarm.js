@@ -47,71 +47,61 @@ export default function Alarm() {
                     width: "100%",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="알림" goBack={true} />
                         <div style={{
                             display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-start",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            alignSelf: "center",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            width: 440,
+                            marginTop: 32,
+                            marginBottom: 32,
                         }}>
-                            <Header content="알림" goBack={true} />
                             <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                justifyContent: "space-between",
-                                alignSelf: "center",
+                                width: 210,
+                                paddingTop: 12,
+                                paddingBottom: 12,
+                                border: "1px solid rgba(5, 26, 26, 0.2)",
+                                cursor: "pointer",
+                                borderRadius: 6,
 
-                                width: 440,
-                                marginTop: 32,
-                                marginBottom: 32,
-                            }}>
-                                <div style={{
-                                    width: 210,
-                                    paddingTop: 12,
-                                    paddingBottom: 12,
-                                    border: "1px solid rgba(5, 26, 26, 0.2)",
-                                    cursor: "pointer",
-                                    borderRadius: 6,
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 16,
+                                color: "rgba(5, 26, 26, 0.8)",
+                                textAlign: "center"
+                            }}>전체 삭제</div>
+                            <div style={{
+                                width: 210,
+                                paddingTop: 12,
+                                paddingBottom: 12,
+                                backgroundColor: "#051a1a",
+                                cursor: "pointer",
+                                borderRadius: 6,
 
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 16,
-                                    color: "rgba(5, 26, 26, 0.8)",
-                                    textAlign: "center"
-                                }}>전체 삭제</div>
-                                <div style={{
-                                    width: 210,
-                                    paddingTop: 12,
-                                    paddingBottom: 12,
-                                    backgroundColor: "#051a1a",
-                                    cursor: "pointer",
-                                    borderRadius: 6,
-
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 16,
-                                    color: "#ffffff",
-                                    textAlign: "center",
-                                    fontWeight: "bold",
-                                }}>전체 읽음</div>
-                            </div>
-                            {data.map(item => <AlarmButton 
-                                read={item.read}
-                                title={item.title}
-                                content={item.content}
-                                date={item.date}
-                            />)}
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 16,
+                                color: "#ffffff",
+                                textAlign: "center",
+                                fontWeight: "bold",
+                            }}>전체 읽음</div>
                         </div>
+                        {data.map(item => <AlarmButton
+                            read={item.read}
+                            title={item.title}
+                            content={item.content}
+                            date={item.date}
+                        />)}
                     </div>
                 </div>
             </Default>

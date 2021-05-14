@@ -9,12 +9,12 @@ import axios from "axios"
 export default function ProfileAddressEdit() {
 
     //API call
-    
 
 
 
 
-    const [modal,setModal]=useState(false)
+
+    const [modal, setModal] = useState(false)
     let history = useHistory()
 
     //우편번호 입력
@@ -37,34 +37,34 @@ export default function ProfileAddressEdit() {
 
     const [isAddress, setIsAddress] = useState("");
     const [isZoneCode, setIsZoneCode] = useState();
-    useEffect(()=>{
+    useEffect(() => {
         console.log(isAddress)
         console.log(isZoneCode)
-    },[isZoneCode])
+    }, [isZoneCode])
 
 
-    function Daum({setVisible}){
-    const handleComplete = (data) => {
-        console.log(data)
-        let fullAddress = data.address;
-        let extraAddress = "";
-    
-        if (data.addressType === "R") {
-          if (data.bname !== "") {
-            extraAddress += data.bname;
-          }
-          if (data.buildingName !== "") {
-            extraAddress +=
-              extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
-          }
-          fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
-        }
-        setIsZoneCode(data.zonecode);
-        setIsAddress(fullAddress);
-        setVisible(false)
-      };
-    
-        return(
+    function Daum({ setVisible }) {
+        const handleComplete = (data) => {
+            console.log(data)
+            let fullAddress = data.address;
+            let extraAddress = "";
+
+            if (data.addressType === "R") {
+                if (data.bname !== "") {
+                    extraAddress += data.bname;
+                }
+                if (data.buildingName !== "") {
+                    extraAddress +=
+                        extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+                }
+                fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
+            }
+            setIsZoneCode(data.zonecode);
+            setIsAddress(fullAddress);
+            setVisible(false)
+        };
+
+        return (
             <div style={{
                 position: "absolute",
                 display: "flex",
@@ -96,117 +96,104 @@ export default function ProfileAddressEdit() {
                     flexDirection: "column",
                     alignItems: "center"
                 }}>
-                    <DaumPostCode onComplete={handleComplete}/>
-    </div>
-    </div>
-    
+                    <DaumPostCode onComplete={handleComplete} />
+                </div>
+            </div>
         )
     }
-    
-
     return (
         <>
             <Default>
                 {modal ?
-                <Daum setVisible={setModal} ></Daum>
-                :
-                <></>
+                    <Daum setVisible={setModal} ></Daum>
+                    :
+                    <></>
                 }
-                
+
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "center",
-                    zIndex:0,
+                    zIndex: 0,
                     width: "100%",
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="주소 수정" goX={true} />
+                        <div style={{
+                            marginTop: 32,
+                            marginLeft: 20,
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#202426"
+                        }}>거주지 주소를 입력해주세요.</div>
                         <div style={{
                             display: "flex",
-                            flexDirection: "column",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginTop: 16,
+                            marginLeft: 20,
                         }}>
-                            <Header content="주소 수정" goX={true} />
-                            <div style={{
-                                marginTop: 32,
-                                marginLeft: 20,
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#202426"
-                            }}>거주지 주소를 입력해주세요.</div>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginTop: 16,
-                                marginLeft: 20,
-                            }}>
-                                <InputModule
-                                    input={isZoneCode}
-                                    
-                                    placeholder="우편번호"
-                                    width={90}
-                                    marginLeft={0}
-                                    marginTop={0}
-                                    fontSize={16}
-                                />
-                                
-                                <div onClick={()=>setModal(true)} style={{
-                                    paddingTop: 7,
-                                    paddingBottom: 7,
-                                    paddingLeft: 10,
-                                    paddingRight: 10,
-                                    marginLeft: 20,
-                                    borderRadius: 6,
-                                    backgroundColor: "#051a1a",
+                            <InputModule
+                                input={isZoneCode}
 
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 12,
-                                    fontWeight: "bold",
-                                    color: "#ffffff",
-                                    cursor: "pointer"
-                                }}>우편번호 찾기</div>
-                            </div>
-                            <InputModule
-                                input={isAddress}
-                                
-                                placeholder="주소"
-                                width={440}
-                                marginLeft={20}
-                                marginTop={16}
+                                placeholder="우편번호"
+                                width={90}
+                                marginLeft={0}
+                                marginTop={0}
                                 fontSize={16}
                             />
-                            <InputModule
-                                input={addressDetatil}
-                                onChange={onAddressDetail}
-                                placeholder="상세주소"
-                                width={440}
-                                marginLeft={20}
-                                marginTop={16}
-                                fontSize={16}
-                            />
-                            <StandardButton 
-                                marginTop={32}
-                                text="수정 완료"
-                                onClick={() => history.goBack()}
-                                state={true}
-                            />
+
+                            <div onClick={() => setModal(true)} style={{
+                                paddingTop: 7,
+                                paddingBottom: 7,
+                                paddingLeft: 10,
+                                paddingRight: 10,
+                                marginLeft: 20,
+                                borderRadius: 6,
+                                backgroundColor: "#051a1a",
+
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 12,
+                                fontWeight: "bold",
+                                color: "#ffffff",
+                                cursor: "pointer"
+                            }}>우편번호 찾기</div>
                         </div>
+                        <InputModule
+                            input={isAddress}
+
+                            placeholder="주소"
+                            width={440}
+                            marginLeft={20}
+                            marginTop={16}
+                            fontSize={16}
+                        />
+                        <InputModule
+                            input={addressDetatil}
+                            onChange={onAddressDetail}
+                            placeholder="상세주소"
+                            width={440}
+                            marginLeft={20}
+                            marginTop={16}
+                            fontSize={16}
+                        />
+                        <StandardButton
+                            marginTop={32}
+                            text="수정 완료"
+                            onClick={() => history.goBack()}
+                            state={true}
+                        />
                     </div>
                 </div>
             </Default>

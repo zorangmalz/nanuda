@@ -34,41 +34,31 @@ export default function ReviewSelect() {
 
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "space-between",
+                        justifyContent: "space-between",
 
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
-                        }}>
-                            <div>
-                                <Header content="리뷰 작성" goBack={true} />
-                                <div style={{
-                                    marginTop: 32,
-                                    marginLeft: 20,
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    color: "#202426",
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>리뷰를 작성할 상품을 골라주세요.</div>
-                                <Product
-                                    name="삼배옷 컬랙션, White, 95"
-                                    current={210000}
-                                    sale={70000}
-                                    border={true}
-                                />
-                            </div>
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
+                    }}>
+                        <div>
+                            <Header content="리뷰 작성" goBack={true} />
+                            <div style={{
+                                marginTop: 32,
+                                marginLeft: 20,
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                color: "#202426",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>리뷰를 작성할 상품을 골라주세요.</div>
+                            <Product
+                                name="삼배옷 컬랙션, White, 95"
+                                current={210000}
+                                sale={70000}
+                                border={true}
+                            />
                         </div>
                     </div>
                 </div>

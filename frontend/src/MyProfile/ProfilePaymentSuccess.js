@@ -23,64 +23,54 @@ export default function ProfilePaymentSuccess() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    <WebIntro />
-                    {/* 절반을 나눔 */}
                     <div style={{
-                        width: "50%",
-                        minWidth: 480,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
+                        alignItems: "center",
+                        justifyContent: "flex-start",
+
+                        width: 480,
+                        minHeight: "100vh",
+                        backgroundColor: "#ffffff",
                     }}>
+                        <Header content="결제 결과" goX={true} />
                         <div style={{
+                            width: 80,
+                            height: 80,
+                            borderRadius: 40,
+                            marginTop: 32,
+                            backgroundColor: "#26c1f0",
+
                             display: "flex",
-                            flexDirection: "column",
                             alignItems: "center",
-                            justifyContent: "flex-start",
-
-                            width: 480,
-                            minHeight: "100vh",
-                            backgroundColor: "#ffffff",
+                            justifyContent: "center"
                         }}>
-                            <Header content="결제 결과" goX={true} />
-                            <div style={{
-                                width: 80,
-                                height: 80,
-                                borderRadius: 40,
-                                marginTop: 32,
-                                backgroundColor: "#26c1f0",
-
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center"
-                            }}>
-                                <AiOutlineCheck color="#ffffff" size={50} />
-                            </div>
-                            <div style={{
-                                marginTop: 32,
-                                fontSize: 21,
-                                fontWeight: "bold",
-                                color: "#26c1f0",
-                                fontFamily: "NotoSansCJKkr",
-                            }}>결제가 완료
-                                <span style={{ color: "#051a1a" }}>되었습니다!</span>
-                            </div>
-                            <div onClick={goHome} style={{
-                                width: 440,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                backgroundColor: "#26c1f0",
-                                borderRadius: 6,
-                                marginTop: 72,
-
-                                textAlign: "center",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                cursor: "pointer",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>홈으로 돌아가기</div>
+                            <AiOutlineCheck color="#ffffff" size={50} />
                         </div>
+                        <div style={{
+                            marginTop: 32,
+                            fontSize: 21,
+                            fontWeight: "bold",
+                            color: "#26c1f0",
+                            fontFamily: "NotoSansCJKkr",
+                        }}>결제가 완료
+                                <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                        </div>
+                        <div onClick={goHome} style={{
+                            width: 440,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            backgroundColor: "#26c1f0",
+                            borderRadius: 6,
+                            marginTop: 72,
+
+                            textAlign: "center",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            cursor: "pointer",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>홈으로 돌아가기</div>
                     </div>
                 </div>
             </Default>
