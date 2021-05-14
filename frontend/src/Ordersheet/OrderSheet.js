@@ -4,6 +4,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BiPlusCircle } from "react-icons/bi";
 import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile/ProfileEdit";
+import axios from "axios"
 
 function reducer(state, action) {
     switch (action.type) {
@@ -19,19 +20,47 @@ function reducer(state, action) {
 }
 
 export default function OrderSheet() {
-
+   
     const [number, dispatch] = useReducer(reducer, 2);
 
     //기본 배송지 존재 여부
-    const [basicAddress, setBasicAddress] = useState(false)
+    const[a,setA]=useState("")
+    const[b,setB]=useState("")
+    const[c,setC]=useState("")
+    const[d,setD]=useState("")
+    const[e,setE]=useState("")
+    const[f,setF]=useState("")
     const item = {
-        name: "김현명",
-        addressNum: "03770",
-        address: "서울 특별시 서대문구 북아현로 1길 17",
-        addressDetail: "e편한세상 203동 2104호",
-        phoneNumber: "010-4337-6607",
-        request: "배송 요청사항: 집앞"
+        name: a,
+        addressNum: b,
+        address: c,
+        addressDetail: d,
+        phoneNumber: e,
+        request:f
     }
+    async function addressCheck(){
+        let res = await axios.get(
+            "http://localhost:8000/checkAddress/",
+            { withCredentials: true }
+        )
+        console.log(res)
+        if(res.data.data===false){
+            setBasicAddress(false)
+        }else{
+            setBasicAddress(true)
+            setA(res.data.address_name)
+            setB(res.data.address_number)
+            setC(res.data.address)
+            setD(res.data.address_detail)
+            setE(res.data.address_phone)
+            setF(res.data.address_claim)
+        }
+    }
+    useEffect(()=>{
+        addressCheck()
+    },[])
+    const [basicAddress, setBasicAddress] = useState(false)
+    
 
     //분할결제 기간 선택
     const onTwo = () => {
@@ -186,7 +215,7 @@ export default function OrderSheet() {
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
                             }}>배송 정보</div>
-                            <div style={{
+                            <div onClick={()=>history.push("/address")} style={{
                                 fontSize: 14,
                                 opacity: 0.8,
                                 color: "#202426",

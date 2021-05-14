@@ -21,6 +21,7 @@ class User(models.Model):
     limit =  models.IntegerField(blank=True, default=0)
     profile = models.URLField(blank=True, default="")
     phone_number = PhoneNumberField(blank=True, default="+821090373600")
+    address_exist=models.BooleanField(blank=True,default=False)
     address_number = models.TextField(blank=True, default="우편번호")
     address = models.TextField(blank=True, default="주소")
     address_detail = models.TextField(blank=True, default="상세주소")

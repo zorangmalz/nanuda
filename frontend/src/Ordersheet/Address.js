@@ -4,6 +4,7 @@ import WebIntro, { Header, MHeader, StandardButton, MStandardButton } from "../S
 import { BsCheck } from "react-icons/bs"
 import DaumPostCode from 'react-daum-postcode';
 import axios from "axios"
+import { useHistory } from "react-router-dom";
 function reducer(state, action) {
     switch (action.type) {
         case 'ONE':
@@ -22,6 +23,7 @@ function reducer(state, action) {
 }
 
 export default function Address() {
+    const history=useHistory()
     const [modal, setModal] = useState(false)
     //우편번호 입력
 
@@ -182,7 +184,11 @@ export default function Address() {
             },
             { withCredentials: true }
         )
-        console.log(res)
+        console.log(res.data.data)
+        if(res.data.data===true){
+            console.log("goback")
+            history.goBack()
+        }
     }
     return (
         <>

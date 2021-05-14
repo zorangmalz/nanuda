@@ -64,10 +64,28 @@ class uploadAddress(View):
             user.address_claim=user_info["params"]["address_claim"]
             user.address_phone=user_info["params"]["address_phone"]
             user.address_name=user_info['params']['address_name']
+            user.address_exist=True
             user.save()
 
             return JsonResponse({"data":True})
+class checkAddress(View):
+    def get(self,request):
+        if not request.COOKIES.get("access_token"):
+            return JsonResponse({"data":False})
+        else:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+            if user.address_exist==False :
+                return JsonResponse({"data":False})
+            else:
+                return JsonResponse({"data":True,"address_name":user.address_name,"address_phone":user.address_phone,"address_claim":user.address_claim,"address_detail":user.address_detail,"address":user.address,"address_number":user.address_number})
+            
 
+            
 # class changeAddress(Vie):
 #     def get(self,request):
 
