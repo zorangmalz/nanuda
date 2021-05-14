@@ -1,22 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { useHistory } from "react-router";
-import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike, AiFillStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 function PostThumb({item}) {
     let history = useHistory()
-    const [like, setLike] = useState(0)
-    function onLike() {
-        setLike(1)
-    }
-    function onDislike() {
-        setLike(2)
-    }
-    function onReset() {
-        setLike(0)
-    }
     return (
         <div style={{
             marginTop: 32,
@@ -26,26 +16,26 @@ function PostThumb({item}) {
                 display: "flex",
                 flexDirection: "row",
             }}>
-                <div style={{
+                <img alt="프로필" src={item.user_profile} style={{
                     width: 32,
                     height: 32,
                     borderRadius: 16,
-                    backgroundColor: item.pic
-                }}>
-                </div>
+                }} />
                 <div style={{
                     fontSize: 14,
                     fontWeight: "bold",
                     marginLeft: 8,
                     marginTop: 6
-                }}>{item.id} </div>
+                }}>{item.user_nickname} </div>
             </div>
-            <div onClick={() => history.push("/reviewpost")} style={{
+            <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
                 width: 210,
-                height: 210,
+                height: 160,
                 borderRadius: 6,
-                backgroundColor: "#f2f3f8",
-                marginTop: 8
+                backgroundColor: "#051a1a",
+                marginTop: 8,
+                objectFit: "cover",
+                border: "1px solid #ebebeb"
             }} />
             <div style={{
                 display: "flex",
@@ -61,7 +51,7 @@ function PostThumb({item}) {
                     fontWeight: "bold",
                     color: "#051a1a",
                     marginLeft: 4,
-                }}>4.5</div>
+                }}>{item.review_score}</div>
             </div>
             <div style={{
                 fontSize: 14,
@@ -69,89 +59,80 @@ function PostThumb({item}) {
                 marginTop: 8,
                 width: 210,
                 fontFamily: "NotoSansCJKkr"
-            }}>{item.content}</div>
+            }}>{item.review_like}</div>
             <div style={{
                 color: "#26c1f0",
                 marginTop: 4,
                 fontSize: 14,
                 fontWeight: "bold",
                 fontFamily: "NotoSansCJKkr"
-            }}>{item.price}원에 획득 완료</div>
+            }}>{item.product_price}원에 획득 완료</div>
         </div>
     )
 }
 
 function MPostThumb({item}) {
     let history = useHistory()
-    const [like, setLike] = useState(0)
-    function onLike() {
-        setLike(1)
-    }
-    function onDislike() {
-        setLike(2)
-    }
-    function onReset() {
-        setLike(0)
-    }
     return (
         <div style={{
-            marginTop: 16,
+            marginTop: "8vw",
             cursor: "pointer"
         }}>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
             }}>
-                <div style={{
-                    width: 28,
-                    height: 28,
-                    borderRadius: 14,
-                    backgroundColor: item.pic
-                }}>
-                </div>
+                <img alt="프로필" src={item.user_profile} style={{
+                    width: "8vw",
+                    height: "8vw",
+                    borderRadius: "4vw",
+                }} />
                 <div style={{
                     fontSize: 12,
                     fontWeight: "bold",
                     marginLeft: 8,
                     marginTop: 6
-                }}>{item.id} </div>
+                }}>{item.user_nickname} </div>
             </div>
-            <div onClick={() => history.push("/reviewpost")} style={{
+            <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
                 width: "42vw",
-                height: "42vw",
+                height: "32vw",
                 borderRadius: 6,
-                backgroundColor: "#f2f3f8",
-                marginTop: 8
+                backgroundColor: "#051a1a",
+                marginTop: "2vw",
+                objectFit: "cover",
+                border: "1px solid #ebebeb"
             }} />
             <div style={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "flex-start",
-                marginTop: 8,
+                marginTop: "2vw",
             }}>
                 <AiFillStar size={12} color="#fad94f" />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
+                    fontSize: 11,
                     fontWeight: "bold",
                     color: "#051a1a",
                     marginLeft: 4,
-                }}>4.5</div>
+                }}>{item.review_score}</div>
             </div>
             <div style={{
                 fontSize: 12,
                 opacity: 0.8,
                 marginTop: 8,
+                width: "42vw",
                 fontFamily: "NotoSansCJKkr"
-            }}>{item.content}</div>
+            }}>{item.review_like}</div>
             <div style={{
                 color: "#26c1f0",
                 marginTop: 4,
                 fontSize: 12,
                 fontWeight: "bold",
                 fontFamily: "NotoSansCJKkr"
-            }}>{item.price}원에 획득 완료</div>
+            }}>{item.product_price}원에 획득 완료</div>
         </div>
     )
 }
@@ -243,37 +224,41 @@ function MProductList() {
 }
 
 export default function ProfileReview() {
-    const reviewData = [
-        {
-            id: "CVIANAN_123",
-            pic: "#f2f3f8",
-            like: 100,
-            reply: 100,
-            content: "타임딜로 빠르게 구매했어요!! 여자친구가 진짜 좋아해요",
-            price: 70000
-        }, {
-            id: "CVIANAN_123",
-            pic: "#f2f3f8",
-            like: 100,
-            reply: 100,
-            content: "타임딜로 빠르게 구매했어요!! 여자친구가 진짜 좋아해요",
-            price: 70000
-        }, {
-            id: "CVIANAN_123",
-            pic: "#f2f3f8",
-            like: 100,
-            reply: 100,
-            content: "타임딜로 빠르게 구매했어요!! 여자친구가 진짜 좋아해요",
-            price: 70000
-        }, {
-            id: "CVIANAN_123",
-            pic: "#f2f3f8",
-            like: 100,
-            reply: 100,
-            content: "타임딜로 빠르게 구매했어요!! 여자친구가 진짜 좋아해요",
-            price: 70000
-        },
-    ]
+     //Get Review Data
+     const [data, setData] = useState([])
+     useEffect(() => {
+         setData([])
+         fetch("http://127.0.0.1:8000/review", {
+             method: "GET",
+             headers: {
+                 'Content-type': 'application/json',
+                 'Accept': 'application/json'
+             }
+         })
+             .then(response => response.json())
+             .then(response => {
+                 var array = []
+                 var len;
+                 if (response.length > 4) {
+                     len = 4
+                 } else {
+                     len = response.length
+                 }
+                 for (var i = 0; i < len; i++) {
+                     const dict = {
+                         id: response[i].id,
+                         user_profile: response[i].user_profile,
+                         user_nickname: response[i].user_nickname,
+                         review_image: response[i].review_image[0],
+                         review_score: response[i].review_score.toFixed(1),
+                         review_like: response[i].review_like.length < 39 ? response[i].review_like : response[i].review_like.slice(0, 39) + "...",
+                         product_price: 10000,
+                     }
+                     array.push(dict)
+                 }
+                 setData(data.concat(array))
+             })
+     }, [])
     
     return (
         <>
@@ -315,7 +300,7 @@ export default function ProfileReview() {
                                 columnGap: 20,
                                 alignSelf: "center",
                             }}>
-                                {reviewData.map(item => (
+                                {data.map(item => (
                                     <PostThumb item={item} />
                                 ))}
                             </div>
@@ -354,7 +339,7 @@ export default function ProfileReview() {
                         columnGap: "5vw",
                         alignSelf: "center",
                     }}>
-                        {reviewData.map(item => (
+                        {data.map(item => (
                             <MPostThumb item={item} />
                         ))}
                     </div>

@@ -74,7 +74,7 @@ def product_all(request):
             return Response(product_serializer.data, status=status.HTTP_201_CREATED)
         return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# Review
+# Review 전체를 보여줌
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
@@ -91,7 +91,7 @@ def review_all(request):
             return Response(review_serializer.data, status=status.HTTP_201_CREATED)
         return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# Review 수정
+# Review 하나만 보여줌
 @api_view(["GET", "PUT", "DELETE"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])

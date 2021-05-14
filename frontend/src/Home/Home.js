@@ -106,6 +106,7 @@ export default function Home() {
                                     marginRight: 4,
                                 }}>나누다딜</div>
                                 <MdKeyboardArrowRight 
+                                    onClick={() => history.push("/timedeal")}
                                     size={24}
                                     color="rgba(5, 26, 26, 0.6)"
                                     style={{
@@ -461,6 +462,7 @@ export default function Home() {
                             marginRight: 4,
                         }}>나누다딜</div>
                         <MdKeyboardArrowRight
+                            onClick={() => history.push("/timedeal")}
                             size={20}
                             color="rgba(5, 26, 26, 0.6)"
                             style={{
