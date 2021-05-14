@@ -1,9 +1,9 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState,useEffect } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import WebIntro, { Header, MHeader,StandardButton,MStandardButton } from "../Style";
 import { BsCheck } from "react-icons/bs"
 import DaumPostCode from 'react-daum-postcode';
-
+import axios from "axios"
 function reducer(state, action) {
     switch (action.type) {
         case 'ONE':
@@ -30,65 +30,7 @@ export default function Address() {
       const [isZoneCode, setIsZoneCode] = useState();
   
   
-      function Daum({setVisible}){
-      const handleComplete = (data) => {
-          console.log(data)
-          let fullAddress = data.address;
-          let extraAddress = "";
-      
-          if (data.addressType === "R") {
-            if (data.bname !== "") {
-              extraAddress += data.bname;
-            }
-            if (data.buildingName !== "") {
-              extraAddress +=
-                extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
-            }
-            fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
-          }
-          setIsZoneCode(data.zonecode);
-          setIsAddress(fullAddress);
-          setVisible(false)
-        };
-      
-          return(
-              <div style={{
-                  position: "absolute",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "100vw",
-                  height: "100vh",
-              }}>
-                  <div onClick={() => setVisible(false)} style={{
-                      position: "absolute",
-                      top: 0,
-                      width: "100vw",
-                      height: "100vh",
-                      backgroundColor: "#000000",
-                      opacity: 0.4,
-                      zIndex: 5,
-                  }} />
-                  <div style={{
-                      zIndex: 7,
-                      width: 340,
-                      height: 376,
-                      paddingTop: 30,
-                      paddingBottom: 40,
-                      paddingRight: 30,
-                      paddingLeft: 30,
-                      backgroundColor: "#ffffff",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center"
-                  }}>
-                      <DaumPostCode onComplete={handleComplete}/>
-      </div>
-      </div>
-      
-          )
-      }
+     
 
       
 
@@ -141,7 +83,107 @@ export default function Address() {
             [name]: value
         })
     }
-    
+
+    function Daum({setVisible}){
+        const handleComplete = (data) => {
+            console.log(data)
+            let fullAddress = data.address;
+            let extraAddress = "";
+        
+            if (data.addressType === "R") {
+              if (data.bname !== "") {
+                extraAddress += data.bname;
+              }
+              if (data.buildingName !== "") {
+                extraAddress +=
+                  extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+              }
+              fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
+            }
+            // setIsZoneCode(data.zonecode);
+            // setIsAddress(fullAddress);
+            setInputs({
+                ...inputs,
+                addressNum:data.zonecode,
+                address:fullAddress
+            })
+            // setInputs({
+            //     ...inputs,
+            //     address:fullAddress
+            // })
+          
+            setVisible(false)
+          };
+        
+            return(
+                <div style={{
+                    position: "absolute",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "100vw",
+                    height: "100vh",
+                }}>
+                    <div onClick={() => setVisible(false)} style={{
+                        position: "absolute",
+                        top: 0,
+                        width: "100vw",
+                        height: "100vh",
+                        backgroundColor: "#000000",
+                        opacity: 0.4,
+                        zIndex: 5,
+                    }} />
+                    <div style={{
+                        zIndex: 7,
+                        width: 340,
+                        height: 376,
+                        paddingTop: 30,
+                        paddingBottom: 40,
+                        paddingRight: 30,
+                        paddingLeft: 30,
+                        backgroundColor: "#ffffff",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center"
+                    }}>
+                        <DaumPostCode onComplete={handleComplete}/>
+        </div>
+        </div>
+        
+            )
+        }
+        const [next,setNext]=useState(false)
+    function check(){
+        if(inputs.address&&inputs.addressDetail&&inputs.addressNum&&inputs.claim&&inputs.name&&inputs.phoneNumber !=""){
+            setNext(true)
+        }else{
+            setNext(false)
+        }
+    }
+    useEffect(()=>{
+        check()
+    },[inputs.address,inputs.addressDetail,inputs.addressNum,inputs.claim,inputs.name,inputs.phoneNumber])
+    async function send(){
+        console.log(inputs.address,inputs.addressDetail,inputs.addressNum,inputs.claim,inputs.name,inputs.phoneNumber)
+        let res=await axios.post(
+            "http://localhost:8000/uploadAddress/",
+            {
+                params:
+                {
+                    address:inputs.address ,
+                    address_claim: inputs.claim,
+                    address_code:inputs.addressNum ,
+                    address_detail:inputs.addressDetail,
+                    address_name:inputs.name,
+                    address_phone:inputs.phoneNumber,
+                },
+             
+            },
+            {withCredentials:true}
+        )
+        console.log(res)
+    }
     return (
         <>
             <Default>
@@ -321,7 +363,7 @@ export default function Address() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 1 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 1 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -339,7 +381,7 @@ export default function Address() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 2 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 2 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -357,7 +399,7 @@ export default function Address() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 3 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 3 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -375,7 +417,7 @@ export default function Address() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 4 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 4 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -393,7 +435,7 @@ export default function Address() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 5 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 5 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -423,22 +465,13 @@ export default function Address() {
                 marginLeft: 52,
                 fontFamily: "NotoSansCJKkr"
             }}>필수 입력 정보입니다.</div></> : <></>}
-            <div onClick={} style={{
-                width: 440,
-                borderRadius: 6,
-                alignSelf: "center",
-                marginTop: 32,
-                paddingTop: 15,
-                paddingBottom: 15,
-                backgroundColor: "#2dd9d3",
-                cursor: "pointer",
-                textAlign: "center",
-
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#ffffff",
-                fontFamily: "NotoSansCJKkr"
-            }}>수정완료</div>
+            <StandardButton 
+            marginTop={32}
+            onClick={send}
+            state={next}
+            text={"수정완료"}
+            ></StandardButton>
+           
                         </div>
                     </div>
                 </div>
@@ -601,7 +634,7 @@ export default function Address() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 1 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 1 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -619,7 +652,7 @@ export default function Address() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 2 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 2 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -637,7 +670,7 @@ export default function Address() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 3 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 3 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -655,7 +688,7 @@ export default function Address() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 4 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 4 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -673,7 +706,7 @@ export default function Address() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 5 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 5 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -704,22 +737,12 @@ export default function Address() {
                 marginLeft: "13%",
                 fontFamily: "NotoSansCJKkr"
             }}>필수 입력 정보입니다.</div></> : <></>}
-            <div style={{
-                width: "90%",
-                borderRadius: 6,
-                alignSelf: "center",
-                marginTop: 32,
-                paddingTop: 8,
-                paddingBottom: 8,
-                backgroundColor: "#2dd9d3",
-                cursor: "pointer",
-                textAlign: "center",
-
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#ffffff",
-                fontFamily: "NotoSansCJKkr"
-            }}>수정완료</div>
+                 <MStandardButton 
+            marginTop={32}
+            onClick={send}
+            state={next}
+            text={"수정완료"}
+            ></MStandardButton>
                 </div>
             </Mobile>
         </>
@@ -920,7 +943,7 @@ function AddressInput() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 1 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 1 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -938,7 +961,7 @@ function AddressInput() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 2 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 2 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -956,7 +979,7 @@ function AddressInput() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 3 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 3 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -974,7 +997,7 @@ function AddressInput() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 4 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 4 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -992,7 +1015,7 @@ function AddressInput() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 5 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 5 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -1029,7 +1052,7 @@ function AddressInput() {
                 marginTop: 32,
                 paddingTop: 15,
                 paddingBottom: 15,
-                backgroundColor: "#2dd9d3",
+                backgroundColor: "#26c1f0",
                 cursor: "pointer",
                 textAlign: "center",
 
@@ -1236,7 +1259,7 @@ function MAddressInput() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 1 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 1 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -1254,7 +1277,7 @@ function MAddressInput() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 2 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 2 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -1272,7 +1295,7 @@ function MAddressInput() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 3 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 3 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -1290,7 +1313,7 @@ function MAddressInput() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 4 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 4 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -1308,7 +1331,7 @@ function MAddressInput() {
                 cursor: "pointer",
                 marginBottom: 16,
             }}>
-                <BsCheck size={24} color={number === 5 ? "#2dd9d3" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck size={24} color={number === 5 ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
                 <div style={{
                     fontSize: 16,
                     opacity: 0.6,
@@ -1346,7 +1369,7 @@ function MAddressInput() {
                 marginTop: 32,
                 paddingTop: 8,
                 paddingBottom: 8,
-                backgroundColor: "#2dd9d3",
+                backgroundColor: "#26c1f0",
                 cursor: "pointer",
                 textAlign: "center",
 

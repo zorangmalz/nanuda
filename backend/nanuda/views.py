@@ -45,6 +45,28 @@ class userInfoName(View):
             print(user.name)
             return JsonResponse({"data":True,"name":user.name,"email":user.user_email})
 
+class uploadAddress(View):
+    def post(self,request):
+        if not request.COOKIES.get("access_token"):
+            return JsonResponse({"data":False})
+        else:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+            user_info=json.loads(request.body)
+            print(user_info)
+            user.address_number=user_info["params"]["address_code"]
+            user.address=user_info["params"]["address"]
+            user.address_detail=user_info["params"]["address_detail"]
+            user.address_claim=user_info["params"]["address_claim"]
+            user.address_phone=user_info["params"]["address_phone"]
+            user.address_name=user_info['params']['address_name']
+            user.save()
+
+            return JsonResponse({"data":True})
 
 # class changeAddress(Vie):
 #     def get(self,request):

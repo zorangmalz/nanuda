@@ -474,7 +474,7 @@ function Progressbar({width, percent}) {
                 width: percent + "%",
                 height: 8,
                 borderRadius: 12,
-                backgroundColor: "#2dd9d3"
+                backgroundColor: "#26c1f0"
             }} />
         </div>
     )

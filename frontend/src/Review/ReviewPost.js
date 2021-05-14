@@ -234,7 +234,7 @@ export default function ReviewPost({match}) {
 
                             <img alt="제품 사진" src={data.review_image}  style={{ 
                                 width: 480, 
-                                backgroundColor: "#2dd9d3", 
+                                backgroundColor: "#26c1f0", 
                                 marginTop: 8,
                             }} />
 
@@ -389,7 +389,7 @@ export default function ReviewPost({match}) {
                         }
                     </div>
 
-                    <div style={{ width: "100vw", height: "105vw", backgroundColor: "#2dd9d3", marginTop: 8 }}></div>
+                    <div style={{ width: "100vw", height: "105vw", backgroundColor: "#26c1f0", marginTop: 8 }}></div>
 
                     <MProduct
                         name="삼배옷 컬랙션, White, 95"

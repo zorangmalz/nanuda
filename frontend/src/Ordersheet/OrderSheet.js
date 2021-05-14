@@ -223,7 +223,7 @@ export default function OrderSheet() {
                                     alignSelf: "center",
                                     padding: 16,
                                     borderRadius: 6,
-                                    border: "1px solid #2dd9d3",
+                                    border: "1px solid #26c1f0",
                                     marginTop: 16,
 
                                     display: "flex",
@@ -513,7 +513,7 @@ export default function OrderSheet() {
                             }}>
                                 이번 달은
                                 <span style={{
-                                    color: "#2dd9d3"
+                                    color: "#26c1f0"
                                 }}>  240,000 원</span>
                                  만 결제하세요.
                             </div>
@@ -573,7 +573,7 @@ export default function OrderSheet() {
                                 width: 440,
                                 paddingTop: 15,
                                 paddingBottom: 15,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
                                 borderRadius: 6,
                                 marginBottom: 120,
 
@@ -677,7 +677,7 @@ export default function OrderSheet() {
                             alignSelf: "center",
                             padding: "4vw",
                             borderRadius: 6,
-                            border: "1px solid #2dd9d3",
+                            border: "1px solid #26c1f0",
                             marginTop: 16,
 
                             display: "flex",
@@ -967,7 +967,7 @@ export default function OrderSheet() {
                     }}>
                         이번달은
                                 <span style={{
-                            color: "#2dd9d3"
+                            color: "#26c1f0"
                         }}> 240,000 원 </span>
                                  만 결제하세요.
                             </div>
@@ -1026,7 +1026,7 @@ export default function OrderSheet() {
                         width: "90vw",
                         paddingTop: "4vw",
                         paddingBottom: "4vw",
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
                         borderRadius: 6,
                         marginBottom: 80,
 

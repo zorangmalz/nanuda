@@ -181,7 +181,7 @@ export default function ProfileVerification() {
                                 width: 440,
                                 paddingTop: 15,
                                 paddingBottom: 15,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
                                 cursor: "pointer",
                                 borderRadius: 6,
 
@@ -309,7 +309,7 @@ export default function ProfileVerification() {
                         width: "90vw",
                         paddingTop: 8,
                         paddingBottom: 8,
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
                         cursor: "pointer",
                         borderRadius: 6,
 

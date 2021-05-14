@@ -73,7 +73,7 @@ export default function ProfilePaymentFail() {
                                 paddingTop: 15,
                                 paddingBottom: 15,
                                 marginTop: 32,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
                                 alignSelf: "center",
 
                                 textAlign: "center",
@@ -148,7 +148,7 @@ export default function ProfilePaymentFail() {
                         paddingTop: 12,
                         paddingBottom: 12,
                         marginTop: 28,
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
 
                         color: "#ffffff",
                         fontSize: 16,

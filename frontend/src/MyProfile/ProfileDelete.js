@@ -77,7 +77,7 @@ export default function ProfileDelete() {
                                         cursor: "pointer",
                                     }}
                                     size={24}
-                                    color={agree ? "#2dd9d3" : "#dbdbdb"}
+                                    color={agree ? "#26c1f0" : "#dbdbdb"}
                                 />
                                 <div style={{
                                     fontSize: 18,
@@ -146,7 +146,7 @@ export default function ProfileDelete() {
                                 cursor: "pointer",
                             }}
                             size={20}
-                            color={agree ? "#2dd9d3" : "#dbdbdb"}
+                            color={agree ? "#26c1f0" : "#dbdbdb"}
                         />
                         <div style={{
                             fontSize: 16,

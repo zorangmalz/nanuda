@@ -301,7 +301,7 @@ export default function WishDealNotURL() {
                                 paddingBottom: 15,
                                 alignSelf: "center",
                                 marginTop: 32,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
 
                                 color: "#ffffff",
                                 fontSize: 18,
@@ -508,7 +508,7 @@ export default function WishDealNotURL() {
                             paddingBottom: "4vw",
                             alignSelf: "center",
                             marginTop: "8vw",
-                            backgroundColor: "#2dd9d3",
+                            backgroundColor: "#26c1f0",
 
                             color: "#ffffff",
                             fontSize: 16,

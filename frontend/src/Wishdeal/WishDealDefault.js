@@ -180,7 +180,7 @@ export default function WishDealDefault() {
                                         alignSelf: "center",
 
                                         marginTop: 32,
-                                        backgroundColor: "#2dd9d3",
+                                        backgroundColor: "#26c1f0",
 
                                         color: "#ffffff",
                                         fontSize: 18,
@@ -220,7 +220,7 @@ export default function WishDealDefault() {
                                         alignSelf: "center",
 
                                         marginTop: 32,
-                                        backgroundColor: "#2dd9d3",
+                                        backgroundColor: "#26c1f0",
 
                                         color: "#ffffff",
                                         fontSize: 18,
@@ -291,7 +291,7 @@ export default function WishDealDefault() {
                             alignSelf: "center",
 
                             marginTop: 24,
-                            backgroundColor: "#2dd9d3",
+                            backgroundColor: "#26c1f0",
 
                             textAlign: "center",
                             color: "#ffffff",

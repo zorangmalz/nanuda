@@ -419,7 +419,7 @@ export default function Home() {
                                 paddingTop: 21,
                                 paddingBottom: 21,
                                 textAlign: "center",
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
                                 boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
                                 borderRadius: 6,
 
@@ -698,7 +698,7 @@ export default function Home() {
                         paddingTop: "3%",
                         paddingBottom: "3%",
                         textAlign: "center",
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
                         boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
                         borderRadius: 6,
 

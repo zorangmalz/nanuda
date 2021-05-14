@@ -107,7 +107,7 @@ export default function ServiceReview() {
                                 alignSelf: "center",
                                 paddingTop: 21,
                                 paddingBottom: 21,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
                                 borderRadius: 6,
                                 boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
 
@@ -171,7 +171,7 @@ export default function ServiceReview() {
                         alignSelf: "center",
                         paddingTop: 12,
                         paddingBottom: 12,
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
                         borderRadius: 6,
                         boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
 

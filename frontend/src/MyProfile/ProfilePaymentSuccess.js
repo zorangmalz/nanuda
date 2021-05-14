@@ -48,7 +48,7 @@ export default function ProfilePaymentSuccess() {
                                 height: 80,
                                 borderRadius: 40,
                                 marginTop: 32,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
 
                                 display: "flex",
                                 alignItems: "center",
@@ -60,7 +60,7 @@ export default function ProfilePaymentSuccess() {
                                 marginTop: 32,
                                 fontSize: 21,
                                 fontWeight: "bold",
-                                color: "#2dd9d3",
+                                color: "#26c1f0",
                                 fontFamily: "NotoSansCJKkr",
                             }}>결제가 완료
                                 <span style={{ color: "#051a1a" }}>되었습니다!</span>
@@ -69,7 +69,7 @@ export default function ProfilePaymentSuccess() {
                                 width: 440,
                                 paddingTop: 15,
                                 paddingBottom: 15,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
                                 borderRadius: 6,
                                 marginTop: 72,
 
@@ -101,7 +101,7 @@ export default function ProfilePaymentSuccess() {
                         height: 80,
                         borderRadius: 40,
                         marginTop: 32,
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
 
                         display: "flex",
                         alignItems: "center",
@@ -113,7 +113,7 @@ export default function ProfilePaymentSuccess() {
                         marginTop: 32,
                         fontSize: 21,
                         fontWeight: "bold",
-                        color: "#2dd9d3",
+                        color: "#26c1f0",
                         fontFamily: "NotoSansCJKkr"
                     }}>결제가 완료
                         <span style={{ color: "#051a1a" }}>되었습니다!</span>
@@ -122,7 +122,7 @@ export default function ProfilePaymentSuccess() {
                         width: "90%",
                         paddingTop: "4vw",
                         paddingBottom: "4vw",
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
                         borderRadius: 6,
                         marginTop: 32,
 

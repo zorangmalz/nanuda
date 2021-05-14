@@ -104,7 +104,7 @@ export default function PaymentARS() {
                                 paddingBottom: 16,
                                 marginTop: 32,
                                 alignSelf: "center",
-                                backgroundColor: call ? veri ? "#2dd9d3" : "#dbdbdb" : "#dbdbdb",
+                                backgroundColor: call ? veri ? "#26c1f0" : "#dbdbdb" : "#dbdbdb",
                                 cursor: "pointer",
                                 borderRadius: 6,
 
@@ -193,7 +193,7 @@ export default function PaymentARS() {
                         paddingBottom: "4vw",
                         marginTop: "8vw",
                         alignSelf: "center",
-                        backgroundColor: call ? veri ? "#2dd9d3" : "#dbdbdb" : "#dbdbdb",
+                        backgroundColor: call ? veri ? "#26c1f0" : "#dbdbdb" : "#dbdbdb",
                         cursor: "pointer",
                         borderRadius: 6,
 

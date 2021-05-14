@@ -51,7 +51,7 @@ export default function ReviewSuccess() {
                                 height: 80,
                                 borderRadius: 40,
                                 marginTop: 32,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
 
                                 display: "flex",
                                 alignItems: "center",
@@ -63,7 +63,7 @@ export default function ReviewSuccess() {
                                 marginTop: 32,
                                 fontSize: 21,
                                 fontWeight: "bold",
-                                color: "#2dd9d3",
+                                color: "#26c1f0",
                                 fontFamily: "NotoSansCJKkr",
                             }}>작성이 완료
                                 <span style={{ color: "#051a1a" }}>되었습니다!</span>
@@ -75,7 +75,7 @@ export default function ReviewSuccess() {
                                 paddingBottom: 15,
                                 alignSelf: "center",
                                 marginTop: 32,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
 
                                 color: "#ffffff",
                                 fontSize: 18,
@@ -122,7 +122,7 @@ export default function ReviewSuccess() {
                         height: 80,
                         borderRadius: 40,
                         marginTop: 32,
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
 
                         display: "flex",
                         alignItems: "center",
@@ -134,7 +134,7 @@ export default function ReviewSuccess() {
                         marginTop: 32,
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: "#2dd9d3",
+                        color: "#26c1f0",
                         fontFamily: "NotoSansCJKkr"
                     }}>작성이 완료
                         <span style={{ color: "#051a1a" }}>되었습니다!</span>
@@ -146,7 +146,7 @@ export default function ReviewSuccess() {
                         paddingBottom: "4vw",
                         alignSelf: "center",
                         marginTop: "8vw",
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
 
                         color: "#ffffff",
                         fontSize: 16,

@@ -54,7 +54,7 @@ export default function Landing() {
                                         <div style={{
                                             fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr"
                                         }}>사고싶은게 있는데</div>
-                                        <div style={{ marginLeft: 5, color: "#2dd9d3", fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>너무 큰 금액</div>
+                                        <div style={{ marginLeft: 5, color: "#26c1f0", fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>너무 큰 금액</div>
                                     </div>
                                     <div style={{
                                         marginLeft: 20,
@@ -62,7 +62,7 @@ export default function Landing() {
                                         flexDirection: "row"
                                     }}>
                                         <div style={{
-                                            fontSize: 24, fontWeight: "bold", color: "#2dd9d3", fontFamily: "NotoSansCJKkr"
+                                            fontSize: 24, fontWeight: "bold", color: "#26c1f0", fontFamily: "NotoSansCJKkr"
                                         }}>때문에 고민</div>
                                         <div style={{ fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>한 경험이 있나요?</div>
                                     </div>
@@ -149,10 +149,10 @@ export default function Landing() {
                                         fontWeight: "bold", 
                                         fontFamily: "NotoSansCJKkr",
                                         color: "#202426"
-                                    }}>누다에서<span style={{ color: "#2dd9d3", marginLeft: 4, }}>원하는 기간을 선택</span>하고</div>
+                                    }}>누다에서<span style={{ color: "#26c1f0", marginLeft: 4, }}>원하는 기간을 선택</span>하고</div>
                                     <div style={{
                                         marginLeft: 20,
-                                        fontSize: 24, fontWeight: "bold", color: "#2dd9d3", fontFamily: "NotoSansCJKkr"
+                                        fontSize: 24, fontWeight: "bold", color: "#26c1f0", fontFamily: "NotoSansCJKkr"
                                     }}>간편하게 분할결제하세요<span style={{ color: "#202426" }}>!</span></div>
                                     <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", color: "#202426", fontFamily: "NotoSansCJKkr" }}>1. 원하는 상품을 고르고!</div>
                                     <div style={{
@@ -214,7 +214,7 @@ export default function Landing() {
                                         <div style={{
                                             fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr"
                                         }}>누다와 함께</div>
-                                        <div style={{ marginLeft: 5, color: "#2dd9d3", fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>똑똑한 소비생활</div>
+                                        <div style={{ marginLeft: 5, color: "#26c1f0", fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>똑똑한 소비생활</div>
                                     </div>
                                     <div style={{
                                         marginLeft: 20,
@@ -246,7 +246,7 @@ export default function Landing() {
                                 width: 440,
                                 marginLeft: 20,
                                 marginRight: 20,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
                                 paddingTop: 15,
                                 paddingBottom: 15,
                                 cursor: "pointer",
@@ -281,7 +281,7 @@ export default function Landing() {
                         }}>
                             사고싶은게 있는데
                             </div>
-                        <div style={{ marginLeft: 5, color: "#2dd9d3", fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>너무 큰 금액</div>
+                        <div style={{ marginLeft: 5, color: "#26c1f0", fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>너무 큰 금액</div>
                     </div>
                     <div style={{
                         marginLeft: 20,
@@ -289,7 +289,7 @@ export default function Landing() {
                         flexDirection: "row"
                     }}>
                         <div style={{
-                            fontSize: 24, fontWeight: "bold", color: "#2dd9d3", fontFamily: "NotoSansCJKkr"
+                            fontSize: 24, fontWeight: "bold", color: "#26c1f0", fontFamily: "NotoSansCJKkr"
                         }}>
                             때문에 고민
                             </div>
@@ -324,7 +324,7 @@ export default function Landing() {
                         marginLeft: 20,
                         marginRight: 20,
                         marginTop: 52,
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",

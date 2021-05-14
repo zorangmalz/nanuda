@@ -195,7 +195,7 @@ const AlarmButton = ({ read, title, content, date }) => {
                     width: 8,
                     height: 8,
                     borderRadius: 4,
-                    backgroundColor: read ? "#ffffff" : "#2dd9d3",
+                    backgroundColor: read ? "#ffffff" : "#26c1f0",
                     marginTop: 8,
                     marginRight: 16,
                 }} />
@@ -248,7 +248,7 @@ const MAlarmButton = ({ read, title, content, date }) => {
                     width: 8,
                     height: 8,
                     borderRadius: 4,
-                    backgroundColor: read ? "#ffffff" : "#2dd9d3",
+                    backgroundColor: read ? "#ffffff" : "#26c1f0",
                     marginTop: 8,
                     marginRight: 16,
                 }} />

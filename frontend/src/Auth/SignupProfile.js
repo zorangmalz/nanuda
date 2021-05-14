@@ -284,7 +284,7 @@ export default function SignupProfile() {
                                         }
                                     }}
                                     size={24}
-                                    color={personal && service && veri && market ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
+                                    color={personal && service && veri && market ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         marginLeft: 8,
                                         cursor: "pointer",
@@ -308,7 +308,7 @@ export default function SignupProfile() {
                                 <BsCheck
                                     onClick={() => setPersonal(!personal)}
                                     size={24}
-                                    color={personal ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
+                                    color={personal ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         cursor: "pointer"
                                     }}
@@ -334,7 +334,7 @@ export default function SignupProfile() {
                                 <BsCheck
                                     onClick={() => setService(!service)}
                                     size={24}
-                                    color={service ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
+                                    color={service ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         cursor: "pointer"
                                     }}
@@ -360,7 +360,7 @@ export default function SignupProfile() {
                                 <BsCheck
                                     onClick={() => setVeri(!veri)}
                                     size={24}
-                                    color={veri ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
+                                    color={veri ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         cursor: "pointer"
                                     }}
@@ -388,7 +388,7 @@ export default function SignupProfile() {
                                 <BsCheck
                                     onClick={() => setMarket(!market)}
                                     size={24}
-                                    color={market ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
+                                    color={market ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
                                     style={{
                                         cursor: "pointer"
                                     }}
@@ -407,7 +407,7 @@ export default function SignupProfile() {
                                 paddingBottom: 15,
                                 marginTop: 32,
                                 borderRadius: 6,
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
                                 alignSelf: "center",
 
                                 fontFamily: "NotoSansCJKkr",
@@ -536,7 +536,7 @@ export default function SignupProfile() {
                                     setMarket(true)
                                 }
                             }}
-                            color={personal && service && veri && market ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
+                            color={personal && service && veri && market ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
                             size={16}
                             style={{
                                 marginLeft: 8,
@@ -560,7 +560,7 @@ export default function SignupProfile() {
                     }}>
                         <BsCheck
                             onClick={() => setPersonal(!personal)}
-                            color={personal ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
+                            color={personal ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
                             size={16}
                             style={{
                                 cursor: "pointer"
@@ -586,7 +586,7 @@ export default function SignupProfile() {
                     }}>
                         <BsCheck
                             onClick={() => setService(!service)}
-                            color={service ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
+                            color={service ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
                             size={16}
                             style={{
                                 cursor: "pointer"
@@ -612,7 +612,7 @@ export default function SignupProfile() {
                     }}>
                         <BsCheck
                             onClick={() => setVeri(!veri)}
-                            color={veri ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
+                            color={veri ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
                             size={16}
                             style={{
                                 cursor: "pointer"
@@ -638,7 +638,7 @@ export default function SignupProfile() {
                     }}>
                         <BsCheck
                             onClick={() => setMarket(!market)}
-                            color={market ? "#2dd9d3" : "rgba(5, 26, 26, 0.6)"}
+                            color={market ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
                             size={16}
                             style={{
                                 cursor: "pointer"
@@ -658,7 +658,7 @@ export default function SignupProfile() {
                         paddingBottom: 12,
                         marginTop: 24,
                         borderRadius: 6,
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
                         alignSelf: "center",
 
                         fontFamily: "NotoSansCJKkr",

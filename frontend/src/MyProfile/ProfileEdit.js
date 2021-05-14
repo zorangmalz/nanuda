@@ -417,7 +417,7 @@ export const BasicAddress = ({ item }) => {
             justifyContent: "space-between",
 
             borderRadius: 6,
-            border: "1px solid #2dd9d3"
+            border: "1px solid #26c1f0"
         }}>
             <div>
                 <div style={{
@@ -480,7 +480,7 @@ export const MBasicAddress = ({ item }) => {
             justifyContent: "space-between",
 
             borderRadius: 6,
-            border: "1px solid #2dd9d3"
+            border: "1px solid #26c1f0"
         }}>
             <div>
                 <div style={{

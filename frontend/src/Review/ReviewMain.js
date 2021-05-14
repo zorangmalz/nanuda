@@ -212,7 +212,7 @@ export default function ReviewMain() {
                                 paddingTop: 15,
                                 paddingBottom: 15,
                                 alignSelf: "center",
-                                backgroundColor: "#2dd9d3",
+                                backgroundColor: "#26c1f0",
 
                                 textAlign: "center",
                                 color: "#ffffff",
@@ -370,7 +370,7 @@ export default function ReviewMain() {
                         paddingTop: "4vw",
                         paddingBottom: "4vw",
                         alignSelf: "center",
-                        backgroundColor: "#2dd9d3",
+                        backgroundColor: "#26c1f0",
 
                         textAlign: "center",
                         color: "#ffffff",

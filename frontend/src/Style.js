@@ -53,11 +53,11 @@ export default function WebIntro() {
                         fontFamily: "NotoSansCJKkr"
                     }}>
                         <span style={{
-                            color: "#2dd9d3"
+                            color: "#26c1f0"
                         }}>똑똑한 소비</span>
                     를 하는 <br />당신을 위한
                     <span style={{
-                            color: "#2dd9d3"
+                            color: "#26c1f0"
                         }}> 분할결제 서비스</span>
                     </div>
                     <div style={{
@@ -959,7 +959,7 @@ export function StandardButton({ marginTop, text, onClick, state }) {
                 paddingTop: 16,
                 paddingBottom: 16,
                 borderRadius: 6,
-                backgroundColor: state ? "#2dd9d3" : "#dbdbdb",
+                backgroundColor: state ? "#26c1f0" : "#dbdbdb",
                 alignSelf: "center",
                 cursor: "pointer",
                 marginTop: marginTop,
@@ -981,7 +981,7 @@ export function MStandardButton({ marginTop, text, onClick, state }) {
             width: "90vw",
             paddingTop: "4vw",
             paddingBottom: "4vw",
-            backgroundColor: state ? "#2dd9d3" : "#dbdbdb",
+            backgroundColor: state ? "#26c1f0" : "#dbdbdb",
             alignSelf: "center",
             cursor: "pointer",
             marginTop: marginTop,
