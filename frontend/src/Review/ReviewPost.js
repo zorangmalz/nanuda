@@ -341,20 +341,19 @@ export default function ReviewPost({ match }) {
                             flexDirection: "row",
                             alignItems: "center",
                         }}>
-                            <div style={{
+                            <img alt="프로필" src={data.user_profile} style={{
                                 width: 28,
                                 height: 28,
                                 backgroundColor: "#f2f3f8",
                                 marginLeft: "5vw",
                                 borderRadius: 14
-                            }}>
-                            </div>
+                            }} />
                             <div style={{
                                 marginLeft: 5,
                                 fontFamily: "AvenirNext",
                                 fontWeight: "bold",
                                 fontSize: 12
-                            }}>나누다홀릭</div>
+                            }}>{data.user_nickname}</div>
                         </div>
                         {mine ?
                             <div style={{
@@ -379,7 +378,7 @@ export default function ReviewPost({ match }) {
                         }
                     </div>
 
-                    <div style={{ width: "100vw", height: "105vw", backgroundColor: "#26c1f0", marginTop: 8 }}></div>
+                    <img alt="사진" src={data.review_image} style={{ width: "100vw", backgroundColor: "#26c1f0", marginTop: 8 }} />
 
                     <MProduct
                         name="삼배옷 컬랙션, White, 95"
@@ -400,7 +399,7 @@ export default function ReviewPost({ match }) {
                         opacity: 0.6,
                         fontFamily: "NotoSansCJKkr",
                         color: "#202426",
-                    }}> 2021.03.30 </div>
+                    }}>{data.review_date}</div>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -428,7 +427,7 @@ export default function ReviewPost({ match }) {
                         width: "90vw",
                         fontSize: 12,
                         lineHeight: 1.5
-                    }}> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</div>
+                    }}>{data.review_like}</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 12,
@@ -443,7 +442,7 @@ export default function ReviewPost({ match }) {
                         width: "90vw",
                         fontSize: 12,
                         lineHeight: 1.5
-                    }}> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</div>
+                    }}>{data.review_dislike}</div>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -458,14 +457,14 @@ export default function ReviewPost({ match }) {
                             color: "#202426",
                             marginLeft: 4,
                             marginRight: 8,
-                        }}>100</div>
+                        }}>{data.review_likeNum}</div>
                         {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={20} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={putReset} size={20} color="#051a1a" /> : <AiOutlineDislike onClick={putDisLike} size={20} color="#051a1a" />}
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             color: "#202426",
                             marginLeft: 4,
-                        }}>100</div>
+                        }}>{data.review_dislikeNum}</div>
                     </div>
                     <MStandardButton
                         marginTop={20}
