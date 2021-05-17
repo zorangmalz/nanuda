@@ -84,22 +84,12 @@ def product_all(request):
         return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Review 전체를 보여줌
-@api_view(["GET"])
+@api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 def review_all(request):
     if request.method == "GET":
-        review = Review.objects.all()
-        review_serializer = ReviewAllSerializer(review, many=True)
-        return Response(review_serializer.data)
-
-# Review_Home 2개만 조회
-@api_view(["GET", "POST"])
-@parser_classes([JSONParser])
-@authentication_classes([SessionAuthentication, BasicAuthentication])
-def review_home(request):
-    if request.method == "GET":
-        review = Review.objects.all().order_by("-review_date")[0:2]
+        review = Review.objects.all().order_by("-review_date")
         review_serializer = ReviewAllSerializer(review, many=True)
         return Response(review_serializer.data)
     
@@ -109,6 +99,16 @@ def review_home(request):
             review_serializer.save()
             return Response(review_serializer.data, status=status.HTTP_201_CREATED)
         return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# Review_Home 2개만 조회
+@api_view(["GET"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+def review_home(request):
+    if request.method == "GET":
+        review = Review.objects.all().order_by("-review_date")[0:2]
+        review_serializer = ReviewAllSerializer(review, many=True)
+        return Response(review_serializer.data)
 
 # Review 하나만 보여줌
 @api_view(["GET", "PUT", "DELETE"])

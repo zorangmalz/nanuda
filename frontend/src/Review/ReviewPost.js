@@ -227,7 +227,7 @@ export default function ReviewPost({ match }) {
                                         cursor: "pointer",
                                     }}>삭제하기</div>
                                     {modal ?
-                                        <div style={{
+                                        <div onClick={() => setModal(false)} style={{
                                             position: "fixed",
                                             top: 0,
                                             width: 480,
@@ -237,7 +237,7 @@ export default function ReviewPost({ match }) {
                                             display: "flex",
                                             alignItems: "center",
                                             justifyContent: "center",
-                                            zIndex: 1,
+                                            zIndex: 2,
                                         }}>
                                             <div style={{
                                                 width: 300,
@@ -468,7 +468,7 @@ export default function ReviewPost({ match }) {
                                     cursor: "pointer",
                                 }}>삭제하기</div>
                                 {modal ?
-                                    <div style={{
+                                    <div onClick={() => setModal(false)} style={{
                                         position: "fixed",
                                         top: 0,
                                         width: "100vw",
@@ -478,7 +478,7 @@ export default function ReviewPost({ match }) {
                                         display: "flex",
                                         alignItems: "center",
                                         justifyContent: "center",
-                                        zIndex: 1,
+                                        zIndex: 2,
                                     }}>
                                         <div style={{
                                             width: "75vw",
