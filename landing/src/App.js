@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import landing from "./image/landing.jpeg"
+import mobile from "./image/mobile.png"
 import { BsCheck } from "react-icons/bs"
+import { AiOutlineClose } from "react-icons/ai"
 import { useMediaQuery } from "react-responsive";
 import firebase from "firebase/app"
 import "firebase/firestore"
+import ReactGA from "react-ga"
 
 const firebaseConfig = {
   apiKey: "AIzaSyArWcW0DI-nS2sz_5DqGztVmmklLBYH_Dk",
@@ -67,6 +70,16 @@ function App() {
 
     setComplete(true)
   }
+
+  const [personal, setPersonal] = useState(false)
+  const [market, setMarket] = useState(false)
+
+  useEffect(() => {
+    ReactGA.initialize("G-7SBH01QPTQ", { debug: true })
+    const pathName = window.location.pathname;
+    ReactGA.set({ page: pathName });
+    ReactGA.pageview(pathName);
+  }, [])
   return (
     <>
       <Mobile>
@@ -74,7 +87,6 @@ function App() {
           width: "100vw",
           height: "100vh",
         }}>
-          <img alt="배경이미지" src={landing} style={{ width: "100vw", height: "70vh" }} />
           {modal ?
             <div style={{
               width: "100vw",
@@ -104,11 +116,19 @@ function App() {
                 {!complete ?
                   <>
                     <div style={{
-                      fontSize: 16,
-                      fontWeight: "bold",
-                      color: "#051a1a",
-                      marginTop: "3vw",
-                    }}>하울 프리 사전등록</div>
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      width: "95vw",
+                    }}>
+                      <AiOutlineClose onClick={() => setModal(false)} style={{ cursor: "pointer", marginRight: "25vw", marginLeft: "5vw" }} size={16} color="#051a1a" />
+                      <div style={{
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        color: "#051a1a",
+                        marginTop: "3vw",
+                      }}>하울 프리 사전등록</div>
+                    </div>
                     <input onChange={onChange} name="name" value={name} placeholder="이름을 알려주세요!" style={{
                       width: "72vw",
                       paddingLeft: "4vw",
@@ -144,7 +164,7 @@ function App() {
                       width: "80vw",
                       marginTop: "5vw",
                     }}>
-                      <BsCheck size={16} color="#2dd9d3" />
+                      <BsCheck onClick={() => setPersonal(!personal)} style={{ cursor: "pointer" }} size={16} color={personal ? "#2dd9d3" : "#dbdbdb"} />
                       <div style={{
                         fontSize: 12,
                         color: "#202426",
@@ -158,18 +178,18 @@ function App() {
                       width: "80vw",
                       marginTop: "2vw",
                     }}>
-                      <BsCheck size={16} color="#2dd9d3" />
+                      <BsCheck onClick={() => setMarket(!market)} style={{ cursor: "pointer" }} size={16} color={market ? "#2dd9d3" : "#dbdbdb"} />
                       <div style={{
                         fontSize: 12,
                         color: "#202426",
                         marginLeft: 8,
                       }}>마케팅 정보 수신에 동의합니다.</div>
                     </div>
-                    <div onClick={inputs.name.length > 0 && inputs.phone.length > 0 ? addMember : () => alert("이름과 휴대폰 번호를 입력해주세요")} style={{
+                    <div onClick={inputs.name.length > 0 && inputs.phone.length > 0 && personal && market ? addMember : () => alert("이름과 휴대폰 번호를 입력해주세요")} style={{
                       width: "85vw",
                       paddingTop: "5vw",
                       paddingBottom: "5vw",
-                      backgroundColor: inputs.name.length > 0 && inputs.phone.length > 0 ? "#051a1a" : "#dbdbdb",
+                      backgroundColor: inputs.name.length > 0 && inputs.phone.length > 0 && personal && market ? "#051a1a" : "#dbdbdb",
 
                       textAlign: "center",
                       fontSize: 14,
@@ -216,75 +236,95 @@ function App() {
           }
           <div style={{
             width: "100vw",
-            paddingTop: "4vw",
-            paddingBottom: "4vw",
-            zIndex: 1,
-            position: "absolute",
-            top: 0,
+            position: "relative",
           }}>
             <div style={{
-              fontSize: 20,
-              color: "#ffffff",
-              marginLeft: "5vw",
-            }}>Haul Free</div>
+              width: "100vw",
+              paddingTop: "4vw",
+              paddingBottom: "4vw",
+              zIndex: 1,
+              position: "absolute",
+              top: 0,
+            }}>
+              <div style={{
+                fontSize: 18,
+                color: "#ffffff",
+                marginLeft: "9vw",
+              }}>Haul Free</div>
+            </div>
+            <img alt="배경이미지" src={mobile} style={{ width: "100vw" }} />
           </div>
           <div style={{
-            marginLeft: "5vw",
-            top: "10vh",
-            position: "absolute",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginTop: "12vw",
           }}>
             <div style={{
-              width: "70vw",
-              fontSize: 28,
+              fontSize: 21,
               fontWeight: "bold",
-              color: "#ffffff",
+              color: "#051a1a",
             }}>#Experience Now #Pay Later</div>
             <div style={{
-              width: "90vw",
+              width: "82vw",
               fontSize: 16,
-              color: "#ffffff",
+              color: "#051a1a",
               marginTop: "4vw",
-              lineHeight: 1.5
+              lineHeight: 1.5,
+              marginBottom: "4vw",
             }}>너무 높은 가격 때문에 망설이지 마세요! 하울프리가 도와줄게요!
       무이자 분할결제를 통해 당신의 소비생활에 자유를 선사하세요.</div>
-            <div onClick={() => setModal(true)} style={{
-              width: "85vw",
-              paddingTop: "5vw",
-              paddingBottom: "5vw",
+            <button id="track" onClick={() => {
+              ReactGA.event({
+                category: "User",
+                action: "Click Button",
+                label: "Home_Page"
+              })
+              setModal(true)
+            }} style={{
+              width: "82vw",
+              paddingTop: "3vw",
+              paddingBottom: "3vw",
               backgroundColor: "#051a1a",
               cursor: "pointer",
-              marginTop: "8vw",
+              
               textAlign: "center",
               color: "#ffffff",
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: "bold",
               borderRadius: 16,
-              marginLeft: "2.5vw",
-            }}>사전등록하고 1만원 쿠폰받기</div>
+              outline: 0,
+            }}>사전등록하고 1만원 쿠폰받기</button>
           </div>
           <div style={{
-            width: "90vw",
-            paddingLeft: "5vw",
-            paddingRight: "5vw",
+            marginTop: "20vw",
+            width: "82vw",
+            paddingLeft: "9vw",
+            paddingRight: "9vw",
+            borderTop: "1px solid rgba(5, 26, 26, 0.2)",
             paddingTop: "4vw",
-            paddingBottom: "4vw",
+            paddingBottom: "8vw",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             backgroundColor: "#ffffff",
+            alignSelf: "center",
           }}>
             <div style={{
               fontSize: 12,
               fontWeight: "bold",
               color: "#051a1a",
+              marginBottom: "2vw"
             }}>(주) 라텔</div>
             <div style={{
               fontSize: 12,
               color: "#051a1a",
+              marginBottom: "2vw"
             }}>대표자: 김현명, 이지행</div>
             <div style={{
               fontSize: 12,
               color: "#051a1a",
+              marginBottom: "2vw"
             }}>법인 등록번호 : 110111-7882784</div>
             <div style={{
               fontSize: 12,
@@ -296,9 +336,7 @@ function App() {
       <Default>
         <div style={{
           width: "100vw",
-          minHeight: "100vh",
         }}>
-          <img alt="배경이미지" src={landing} style={{ width: "100vw", height: "90vh" }} />
           {modal ?
             <div style={{
               width: "100vw",
@@ -325,12 +363,21 @@ function App() {
                 alignItems: "center",
                 zIndex: 3,
               }}>
-                {!complete ? <><div style={{
-                  fontSize: 21,
-                  fontWeight: "bold",
-                  color: "#051a1a",
-                  marginTop: 12,
-                }}>하울 프리 사전등록</div>
+                {!complete ? <>
+                  <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    width: 420,
+                  }}>
+                    <AiOutlineClose onClick={() => setModal(false)} style={{cursor: "pointer", marginRight: 110}} size={24} color="#051a1a" />
+                    <div style={{
+                      fontSize: 21,
+                      fontWeight: "bold",
+                      color: "#051a1a",
+                      marginTop: 12,
+                    }}>하울 프리 사전등록</div>
+                  </div>
                   <input onChange={onChange} name="name" value={name} placeholder="이름을 알려주세요!" style={{
                     width: 308,
                     paddingLeft: 16,
@@ -366,7 +413,7 @@ function App() {
                     width: 320,
                     marginTop: 20,
                   }}>
-                    <BsCheck size={24} color="#2dd9d3" />
+                    <BsCheck onClick={() => setPersonal(!personal)} style={{ cursor: "pointer" }} size={24} color={personal ? "#2dd9d3" : "#dbdbdb"} />
                     <div style={{
                       fontSize: 14,
                       color: "#202426",
@@ -380,18 +427,18 @@ function App() {
                     width: 320,
                     marginTop: 8,
                   }}>
-                    <BsCheck size={24} color="#2dd9d3" />
+                    <BsCheck onClick={() => setMarket(!market)} style={{ cursor: "pointer" }} size={24} color={market ? "#2dd9d3" : "#dbdbdb"} />
                     <div style={{
                       fontSize: 14,
                       color: "#202426",
                       marginLeft: 8,
                     }}>마케팅 정보 수신에 동의합니다.</div>
                   </div>
-                  <div onClick={inputs.name.length > 0 && inputs.phone.length > 0 ? addMember : () => alert("이름과 휴대폰 번호를 입력해주세요")} style={{
+                  <div onClick={inputs.name.length > 0 && inputs.phone.length > 0 && personal && market ? addMember : () => alert("이름과 휴대폰 번호를 입력해주세요")} style={{
                     width: 340,
                     paddingTop: 20,
                     paddingBottom: 20,
-                    backgroundColor: inputs.name.length > 0 && inputs.phone.length > 0 ? "#051a1a" : "#dbdbdb",
+                    backgroundColor: inputs.name.length > 0 && inputs.phone.length > 0 && personal && market ? "#051a1a" : "#dbdbdb",
 
                     textAlign: "center",
                     fontSize: 18,
@@ -399,6 +446,7 @@ function App() {
                     color: "#ffffff",
                     borderRadius: 16,
                     marginTop: 32,
+                    cursor: "pointer"
                   }}>완료</div>
                 </>
                   :
@@ -428,6 +476,7 @@ function App() {
                       color: "#ffffff",
                       borderRadius: 16,
                       marginTop: 32,
+                      cursor: "pointer"
                     }}>완료</div>
                   </>
                 }
@@ -437,49 +486,73 @@ function App() {
             <></>
           }
           <div style={{
-            width: "100vw",
-            paddingTop: 12,
-            paddingBottom: 12,
-            zIndex: 1,
-            position: "absolute",
-            top: 0,
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100vw"
           }}>
             <div style={{
-              fontSize: 24,
-              color: "#ffffff",
-              marginLeft: "16vw",
-            }}>Haul Free</div>
-          </div>
-          <div style={{
-            marginLeft: "16vw",
-            top: "16vh",
-            position: "absolute",
-          }}>
+              width: "50vw",
+            }}>
+              <img alt="배경이미지" src={landing} style={{ width: "50vw" }} />
+              <div style={{
+                width: "100vw",
+                paddingTop: 12,
+                paddingBottom: 12,
+                zIndex: 1,
+                position: "absolute",
+                top: 0,
+              }}>
+                <div style={{
+                  fontSize: 24,
+                  color: "#ffffff",
+                  marginLeft: "16vw",
+                }}>Haul Free</div>
+              </div>
+            </div>
             <div style={{
-              fontSize: 48,
-              fontWeight: "bold",
-              color: "#ffffff",
-            }}>#Experience Now #Pay Later</div>
-            <div style={{
-              fontSize: 24,
-              color: "#ffffff",
-              marginTop: 16,
-              lineHeight: 1.5
-            }}>너무 높은 가격 때문에 망설이지 마세요! 하울프리가 도와줄게요! <br />
+              display: "flex",
+              flexDirection: "column",
+              width: "40vw",
+              paddingLeft: "10vw",
+              backgroundColor: "#ffffff"
+            }}>
+              <div style={{
+                fontSize: 36,
+                fontWeight: "bold",
+                color: "#051a1a",
+              }}>#Experience Now #Pay Later</div>
+              <div style={{
+                fontSize: 21,
+                color: "#051a1a",
+                marginTop: 32,
+                lineHeight: 1.5,
+                marginBottom: 48,
+              }}>너무 높은 가격 때문에 망설이지 마세요! 하울프리가 도와줄게요! <br />
       무이자 분할결제를 통해 당신의 소비생활에 자유를 선사하세요.</div>
-            <div onClick={() => setModal(true)} style={{
-              width: 340,
-              paddingTop: 22,
-              paddingBottom: 22,
-              backgroundColor: "#051a1a",
-              cursor: "pointer",
-              marginTop: 32,
-              textAlign: "center",
-              color: "#ffffff",
-              fontSize: 21,
-              fontWeight: "bold",
-              borderRadius: 16,
-            }}>사전등록하고 1만원 쿠폰받기</div>
+              <button id="track" onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Click Button",
+                  label: "Home_Page"
+                })
+                setModal(true)
+              }} style={{
+                width: 340,
+                paddingTop: 22,
+                paddingBottom: 22,
+                backgroundColor: "#051a1a",
+                cursor: "pointer",
+                
+                textAlign: "center",
+                color: "#ffffff",
+                fontSize: 21,
+                fontWeight: "bold",
+                borderRadius: 16,
+                outline: 0,
+              }}>사전등록하고 1만원 쿠폰받기</button>
+            </div>
           </div>
           <div style={{
             width: "100vw",

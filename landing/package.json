@@ -9,6 +9,7 @@
     "firebase": "^8.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-ga": "^3.3.0",
     "react-icons": "^4.2.0",
     "react-responsive": "^8.2.0",
     "react-scripts": "4.0.3",
@@ -19,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync ./build s3://nanuda-landing --profile=landing-nanuda"
+    "deploy": "aws s3 sync ./build s3://haulfree-landing --profile=landing-nanuda"
   },
   "eslintConfig": {
     "extends": [
