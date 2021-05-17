@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { BannerContainer, BottomTag, HomeHeader, MBottomTag, MHomeHeader, NameMask } from "../Style";
+import WebIntro, { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask } from "../Style";
 import Slider from "react-slick";
 import { BsBookmark, BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
@@ -183,7 +183,6 @@ export default function Home() {
                             flexDirection: "row",
                             alignItems: "flex-start",
                             justifyContent: "space-between",
-                            marginBottom: 32,
                             width: 440,
                             alignSelf: "center",
                         }}>
@@ -246,123 +245,6 @@ export default function Home() {
                                     fontFamily: "NotoSansCJKkr"
                                 }}>{item.follow}원에 획득 완료</div>
                             </div>)}
-                        </div>
-                        <div style={{
-                            width: 440,
-                            marginLeft: 20,
-                            borderRadius: 6,
-                        }}>
-                            <Slider dotsClass="desktop-slick-dots"
-                                dots={true}
-                                slidesToShow={1}
-                                slidesToScroll={1}
-                                adaptiveHeight={true}
-                                arrows={false}
-                            >
-                                <div>
-                                    <div style={{
-                                        width: 364,
-                                        paddingTop: 32,
-                                        paddingBottom: 32,
-                                        paddingLeft: 32,
-                                        paddingRight: 44,
-                                        backgroundColor: "#cb1a86",
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-                                        outline: 0,
-                                        borderRadius: 6,
-                                    }}>
-                                        <div style={{
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "flex-start"
-                                        }}>
-                                            <div style={{
-                                                fontSize: 18,
-                                                fontFamily: "NotoSansCJKkr",
-                                                color: "#ffffff",
-                                            }}>자주 물어보는 질문들을 정리해봤어요!</div>
-                                            <div style={{
-                                                fontSize: 24,
-                                                fontWeight: "bold",
-                                                fontFamily: "NotoSansCJKkr",
-                                                color: "#ffffff",
-                                                marginTop: 16,
-                                            }}>나누다 FAQ 총정리!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div style={{
-                                        width: 364,
-                                        paddingTop: 32,
-                                        paddingBottom: 32,
-                                        paddingLeft: 32,
-                                        paddingRight: 44,
-                                        backgroundColor: "#cb1a86",
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-                                        borderRadius: 6,
-                                    }}>
-                                        <div style={{
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "flex-start"
-                                        }}>
-                                            <div style={{
-                                                fontSize: 18,
-                                                fontFamily: "NotoSansCJKkr",
-                                                color: "#ffffff",
-                                            }}>자주 물어보는 질문들을 정리해봤어요!</div>
-                                            <div style={{
-                                                fontSize: 24,
-                                                fontWeight: "bold",
-                                                fontFamily: "NotoSansCJKkr",
-                                                color: "#ffffff",
-                                                marginTop: 16,
-                                            }}>나누다 FAQ 총정리!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div style={{
-                                        width: 364,
-                                        paddingTop: 32,
-                                        paddingBottom: 32,
-                                        paddingLeft: 32,
-                                        paddingRight: 44,
-                                        backgroundColor: "#cb1a86",
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-                                        borderRadius: 6,
-                                    }}>
-                                        <div style={{
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "flex-start"
-                                        }}>
-                                            <div style={{
-                                                fontSize: 18,
-                                                fontFamily: "NotoSansCJKkr",
-                                                color: "#ffffff",
-                                            }}>자주 물어보는 질문들을 정리해봤어요!</div>
-                                            <div style={{
-                                                fontSize: 24,
-                                                fontWeight: "bold",
-                                                fontFamily: "NotoSansCJKkr",
-                                                color: "#ffffff",
-                                                marginTop: 16,
-                                            }}>나누다 FAQ 총정리!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Slider>
                         </div>
                         <div style={{
                             display: "flex",
@@ -499,6 +381,10 @@ export default function Home() {
                             stock={0}
                         />
                     </div>
+                    <MBannerContainer>
+                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" />
+                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" />
+                    </MBannerContainer>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -537,7 +423,6 @@ export default function Home() {
                         flexDirection: "row",
                         alignItems: "flex-start",
                         justifyContent: "space-between",
-                        marginBottom: "8vw",
                         width: "90%",
                         alignSelf: "center",
                     }}>
@@ -590,55 +475,6 @@ export default function Home() {
                                 }}>{item.money}원에 획득!</div>
                             </div>
                         )}
-                    </div>
-                    <div style={{
-                        width: "90%",
-                        marginLeft: "5%",
-                        borderRadius: 6,
-                    }}>
-                        <Slider dotsClass="desktop-slick-dots"
-                            dots={true}
-                            slidesToShow={1}
-                            slidesToScroll={1}
-                            adaptiveHeight={true}
-                            arrows={false}
-                        >
-                            <div>
-                                <div style={{
-                                    width: "77%",
-                                    paddingTop: "10%",
-                                    paddingBottom: "10%",
-                                    paddingLeft: "10%",
-                                    paddingRight: "13%",
-                                    backgroundColor: "#cb1a86",
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-                                    outline: 0,
-                                    borderRadius: 6,
-                                }}>
-                                    <div style={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        alignItems: "flex-start"
-                                    }}>
-                                        <div style={{
-                                            fontSize: 16,
-                                            fontFamily: "NotoSansCJKkr",
-                                            color: "#ffffff",
-                                        }}>자주 물어보는 질문들을 정리해봤어요!</div>
-                                        <div style={{
-                                            fontSize: 22,
-                                            fontWeight: "bold",
-                                            fontFamily: "NotoSansCJKkr",
-                                            color: "#ffffff",
-                                            marginTop: 12,
-                                        }}>나누다 FAQ 총정리!</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </Slider>
                     </div>
                     <div style={{
                         display: "flex",
