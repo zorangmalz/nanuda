@@ -32,6 +32,7 @@ class User(models.Model):
     platform = models.CharField(max_length=30, default="0")
     uid = models.CharField(max_length=300, default="")
     # 은행에 대한 choice 필요
+    bank_exist=models.BooleanField(blank=True,default=False)
     bank = models.CharField(max_length=30, blank=True, default="은행")
     account = models.CharField(max_length=30, blank=True, default="계좌")
 

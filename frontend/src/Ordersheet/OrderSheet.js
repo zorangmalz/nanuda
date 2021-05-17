@@ -74,26 +74,35 @@ export default function OrderSheet() {
     };
 
     //결제 일정 제공
+    const [oneDate,setOneDate]=useState("")
+    const [oneMoney,setOneMoney]=useState("")
+    const [twoDate,setTwoDate]=useState("")
+    const [twoMoney,setTwoMoney]=useState("")
+    const [threeDate,setThreeDate]=useState("")
+    const [threeMoney,setThreeMoney]=useState("")
+    const [fourDate,setFourDate]=useState("")
+    const [fourMoney,setFourMoney]=useState("")
+    
     const paymentDate = [
         {
             num: "1",
-            date: "3/29",
-            money: "240000",
+            date: oneDate,
+            money: oneMoney,
         },
         {
             num: "2",
-            date: "4/29",
-            money: "240000",
+            date: twoDate,
+            money: twoMoney,
         },
         {
             num: "3",
-            date: "5/29",
-            money: "-",
+            date: threeDate,
+            money: threeMoney,
         },
         {
             num: "4",
-            date: "6/29",
-            money: "-",
+            date: fourDate,
+            money: fourMoney,
         },
     ]
 
@@ -104,6 +113,62 @@ export default function OrderSheet() {
     //계좌 등록 여부
     const [register, setRegister] = useState(true);
 
+
+    //날짜 계산해보기!!
+    useEffect(()=>{
+        let today=new Date()
+        console.log(today.getFullYear(),today.getMonth(),today.getDate())
+        if(today.getMonth()===11){
+            if(today.getDate()>=28){
+                setOneDate((today.getMonth()+1)+"/"+today.getDate())
+                setTwoDate("1/28")
+                setThreeDate("2/28")
+                setFourDate("3/28")
+            }else{
+                setOneDate((today.getMonth()+1)+"/"+today.getDate())
+                setTwoDate("1/"+today.getDate())
+                setThreeDate("2/"+today.getDate())
+                setFourDate("3/"+today.getDate())
+            }
+        }else if(today.getMonth()===10){
+            if(today.getDate()>=28){
+                setOneDate((today.getMonth()+1)+"/"+today.getDate())
+                setTwoDate(((today.getMonth()+1)+1)+"/28")
+                setThreeDate("1/28")
+                setFourDate("2/28")
+            }else{
+                setOneDate((today.getMonth()+1)+"/"+today.getDate())
+                setTwoDate(((today.getMonth()+1)+1)+"/"+today.getDate())
+                setThreeDate("1/"+today.getDate())
+                setFourDate("2/"+today.getDate())
+            }
+        }else if(today.getMonth()===9){
+            if(today.getDate()>=28){
+                setOneDate((today.getMonth()+1)+"/"+today.getDate())
+                setTwoDate(((today.getMonth()+1)+1)+"/28")
+                setThreeDate(((today.getMonth()+1)+2)+"/28")
+                setFourDate("1/28")
+            }else{
+                setOneDate((today.getMonth()+1)+"/"+today.getDate())
+                setTwoDate(((today.getMonth()+1)+2)+"/"+today.getDate())
+                setThreeDate(((today.getMonth()+1)+3)+"/"+today.getDate())
+                setFourDate("1/"+today.getDate())
+            }
+        }else{
+            if(today.getDate()>=28){
+                setOneDate((today.getMonth()+1)+"/"+today.getDate())
+                setTwoDate(((today.getMonth()+1)+1)+"/28")
+                setThreeDate(((today.getMonth()+1)+2)+"/28")
+                setFourDate(((today.getMonth()+1)+3)+"/28")
+            }else{
+                setOneDate((today.getMonth()+1)+"/"+today.getDate())
+                setTwoDate(((today.getMonth()+1)+2)+"/"+today.getDate())
+                setThreeDate(((today.getMonth()+1)+3)+"/"+today.getDate())
+                setFourDate(((today.getMonth()+1)+4)+"/"+today.getDate())
+            }
+        }
+    },[])
+
     //파라미터 받기
     const location = useLocation()
     const myparam = location.state.param
@@ -112,22 +177,92 @@ export default function OrderSheet() {
     const [itemDes, setItemDes] = useState("")
     const [orderDes, setOrderDes] = useState("")
     const [price, setPrice] = useState("")
+    const [ship,setShip]=useState(0)
+
     useEffect(() => {
         console.log(myparam)
         setImage(myparam[0].ogImage.url)
         setItemDes(myparam[0].ogTitle)
+        setShip(myparam[7])
         if (myparam[1] === 1) {
             setOrderDes(myparam[3].ELcolor + "   " + myparam[3].ELetc)
-            setPrice(myparam[3].ELprice)
+            setPrice(Number(myparam[3].ELprice)+Number(myparam[5]))
+            
+            if(number===2){
+                var res=parseInt(parseInt((myparam[3].ELprice)/100)/2)
+                var left=parseInt((myparam[3].ELprice)/100)%2
+                setOneMoney(res*100+left*100)
+                setTwoMoney(res*100)
+                setThreeMoney("-")
+                setFourMoney("-")
+            }else if(number===3){
+                var res=parseInt(parseInt((myparam[3].ELprice)/100)/3)
+                var left=parseInt((myparam[3].ELprice)/100)%3
+                setOneMoney(res*100+left*100)
+                setTwoMoney(res*100)
+                setThreeMoney(res*100)
+                setFourMoney("-")
+            }else{
+                var res=parseInt(parseInt((myparam[3].ELprice)/100)/4)
+                var left=parseInt((myparam[3].ELprice)/100)%4
+                setOneMoney(res*100+left*100)
+                setTwoMoney(res*100)
+                setThreeMoney(res*100)
+                setFourMoney(res*100)
+            }
         } else if (myparam[1] === 2) {
             setOrderDes(myparam[3].Fcolor + "   " + myparam[3].Fsize + "   " + myparam[3].Fetc)
-            setPrice(myparam[3].Fprice)
+            setPrice(Number(myparam[3].Fprice)+Number(myparam[5]))
+            if(number===2){
+                var res=parseInt(parseInt((myparam[3].Fprice)/100)/2)
+                var left=parseInt((myparam[3].Fprice)/100)%2
+                setOneMoney(res*100+left*100)
+                setTwoMoney(res*100)
+                setThreeMoney("-")
+                setFourMoney("-")
+            }else if(number===3){
+                var res=parseInt(parseInt((myparam[3].Fprice)/100)/3)
+                var left=parseInt((myparam[3].Fprice)/100)%3
+                setOneMoney(res*100+left*100)
+                setTwoMoney(res*100)
+                setThreeMoney(res*100)
+                setFourMoney("-")
+            }else{
+                var res=parseInt(parseInt((myparam[3].Fprice)/100)/4)
+                var left=parseInt((myparam[3].Fprice)/100)%4
+                setOneMoney(res*100+left*100)
+                setTwoMoney(res*100)
+                setThreeMoney(res*100)
+                setFourMoney(res*100)
+            }
         } else {
             setOrderDes(myparam[3].Eetc)
-            setPrice(myparam[3].Eprice)
+            setPrice(Number(myparam[3].Eprice)+Number(myparam[5]))
+            if(number===2){
+                var res=parseInt(parseInt((myparam[3].Eprice)/100)/2)
+                var left=parseInt((myparam[3].Eprice)/100)%2
+                setOneMoney(res*100+left*100)
+                setTwoMoney(res*100)
+                setThreeMoney("-")
+                setFourMoney("-")
+            }else if(number===3){
+                var res=parseInt(parseInt((myparam[3].Eprice)/100)/3)
+                var left=parseInt((myparam[3].Eprice)/100)%3
+                setOneMoney(res*100+left*100)
+                setTwoMoney(res*100)
+                setThreeMoney(res*100)
+                setFourMoney("-")
+            }else{
+                var res=parseInt(parseInt((myparam[3].Eprice)/100)/4)
+                var left=parseInt((myparam[3].Eprice)/100)%4
+                setOneMoney(res*100+left*100)
+                setTwoMoney(res*100)
+                setThreeMoney(res*100)
+                setFourMoney(res*100)
+            }
         }
 
-    }, [])
+    }, [number])
     return (
         <>
             <Default>
@@ -457,7 +592,7 @@ export default function OrderSheet() {
                                     opacity: 0.6,
                                     color: "#202426",
                                     fontFamily: "NotoSansCJKkr"
-                                }}> +240,000 원</div>
+                                }}> +{oneMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</div>
                             </div>
                             <div style={{
                                 display: "flex",
@@ -479,7 +614,7 @@ export default function OrderSheet() {
                                     opacity: 0.6,
                                     color: "#202426",
                                     fontFamily: "NotoSansCJKkr"
-                                }}> + 0 원</div>
+                                }}> + {ship} 원</div>
                             </div>
                             <div style={{
                                 display: "flex",
@@ -534,7 +669,7 @@ export default function OrderSheet() {
                             이번 달은
                                 <span style={{
                                 color: "#26c1f0"
-                            }}>  240,000 원</span>
+                            }}>  {(Number(oneMoney)+Number(ship)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</span>
                                  만 결제하세요.
                             </div>
                         <div style={{
@@ -987,7 +1122,7 @@ export default function OrderSheet() {
                         이번달은
                                 <span style={{
                             color: "#26c1f0"
-                        }}> 240,000 원 </span>
+                        }}> {(Number(oneMoney)+Number(ship)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 </span>
                                  만 결제하세요.
                             </div>
                     <div style={{
