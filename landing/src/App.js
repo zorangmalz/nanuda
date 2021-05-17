@@ -3,6 +3,27 @@ import './App.css';
 import landing from "./image/landing.jpeg"
 import { BsCheck } from "react-icons/bs"
 import { useMediaQuery } from "react-responsive";
+import firebase from "firebase/app"
+import "firebase/firestore"
+
+const firebaseConfig = {
+  apiKey: "AIzaSyArWcW0DI-nS2sz_5DqGztVmmklLBYH_Dk",
+  authDomain: "nanuda-5cebc.firebaseapp.com",
+  projectId: "nanuda-5cebc",
+  storageBucket: "nanuda-5cebc.appspot.com",
+  messagingSenderId: "342342892771",
+  appId: "1:342342892771:web:0dc6ab81ae5da1bf4d19d6",
+  measurementId: "G-MSNQ317X9L"
+}
+
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app();
+}
+
+const db = firebase.firestore()
 
 const Default = ({ children }) => {
   const isNotMobile = useMediaQuery({ minWidth: 451 })
@@ -19,10 +40,10 @@ function App() {
   const [complete, setComplete] = useState(false)
   const [inputs, setInputs] = useState({
     name: "",
-    password: "",
+    phone: "",
   })
 
-  const { name, password } = inputs
+  const { name, phone } = inputs
 
   const onChange = (e) => {
     const { value, name } = e.target
@@ -30,7 +51,21 @@ function App() {
       ...inputs,
       [name]: value
     })
-    console.log(inputs)
+  }
+
+  const addMember = () => {
+    db.collection("Landing").add({
+      name: name,
+      phone: phone
+    })
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+
+    setComplete(true)
   }
   return (
     <>
@@ -88,7 +123,7 @@ function App() {
                       fontSize: 12,
                       color: "#202426",
                     }} />
-                    <input onChange={onChange} name="password" value={password} placeholder="휴대폰 번호를 입력해주세요!" style={{
+                    <input onChange={onChange} name="phone" value={phone} placeholder="휴대폰 번호를 입력해주세요!" style={{
                       width: "72vw",
                       paddingLeft: "4vw",
                       paddingRight: "4vw",
@@ -130,11 +165,11 @@ function App() {
                         marginLeft: 8,
                       }}>마케팅 정보 수신에 동의합니다.</div>
                     </div>
-                    <div onClick={() => setComplete(true)} style={{
+                    <div onClick={inputs.name.length > 0 && inputs.phone.length > 0 ? addMember : () => alert("이름과 휴대폰 번호를 입력해주세요")} style={{
                       width: "85vw",
                       paddingTop: "5vw",
                       paddingBottom: "5vw",
-                      backgroundColor: inputs.name.length > 0 && inputs.password.length > 0 ? "#051a1a" : "#dbdbdb",
+                      backgroundColor: inputs.name.length > 0 && inputs.phone.length > 0 ? "#051a1a" : "#dbdbdb",
 
                       textAlign: "center",
                       fontSize: 14,
@@ -310,7 +345,7 @@ function App() {
                     fontSize: 16,
                     color: "#202426",
                   }} />
-                  <input onChange={onChange} name="password" value={password} placeholder="휴대폰 번호를 입력해주세요!" style={{
+                  <input onChange={onChange} name="phone" value={phone} placeholder="휴대폰 번호를 입력해주세요!" style={{
                     width: 308,
                     paddingLeft: 16,
                     paddingRight: 16,
@@ -352,13 +387,11 @@ function App() {
                       marginLeft: 8,
                     }}>마케팅 정보 수신에 동의합니다.</div>
                   </div>
-                  <div onClick={() => {
-                    setComplete(true)
-                  }} style={{
+                  <div onClick={inputs.name.length > 0 && inputs.phone.length > 0 ? addMember : () => alert("이름과 휴대폰 번호를 입력해주세요")} style={{
                     width: 340,
                     paddingTop: 20,
                     paddingBottom: 20,
-                    backgroundColor: inputs.name.length > 0 && inputs.password.length > 0 ? "#051a1a" : "#dbdbdb",
+                    backgroundColor: inputs.name.length > 0 && inputs.phone.length > 0 ? "#051a1a" : "#dbdbdb",
 
                     textAlign: "center",
                     fontSize: 18,
