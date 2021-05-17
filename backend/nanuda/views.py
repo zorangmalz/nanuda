@@ -144,8 +144,10 @@ class KakaoLogin(View):
         if User.objects.filter(uid=kakao_response['id']).exists():
             user    = User.objects.get(uid=kakao_response['id'])
             jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY,ALGORITHM)
-            # print(jwt_token)
-           
+            print(jwt_token,type(jwt_token))
+            if type(jwt_token) is bytes : 
+                jwt_token=jwt_token.decode('utf-8')
+                print(jwt_token,"fixed")
             
             res=HttpResponse({"success":True})
            
@@ -171,8 +173,10 @@ class KakaoLogin(View):
             ).save()
             user    = User.objects.get(uid=kakao_response['id'])
             jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY, ALGORITHM)
-            print(jwt_token)
-          
+            print(jwt_token,type(jwt_token))
+            if type(jwt_token) is bytes : 
+                jwt_token=jwt_token.decode('utf-8')
+                print(jwt_token,"fixed")
             res=HttpResponse({"success":True})
           
             res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True)
