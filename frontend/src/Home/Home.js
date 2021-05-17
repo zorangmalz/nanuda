@@ -1,14 +1,45 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import WebIntro, { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask } from "../Style";
-import Slider from "react-slick";
-import { BsBookmark, BsUpload } from "react-icons/bs";
+import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask } from "../Style";
+import { BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
-
 import smallbanner from "../images/smallbanner.png";
+
+const AfterContainer = styled.div`
+    width: 432px;
+    margin-left: 20px;
+    padding-left: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    overflow: auto;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+
+const MAfterContainer = styled.div`
+    width: 88vw;
+    margin-left: 5vw;
+    padding-left: 2vw;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+    overflow: auto;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
 
 export default function Home() {
     let history = useHistory()
@@ -270,25 +301,19 @@ export default function Home() {
                             />
                         </div>
                         <div style={{
-                            fontSizeAdjust: 16,
+                            fontSize: 16,
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             color: "#202426",
                             marginLeft: 20,
                         }}>아직도 나누다 이용을 망설이시나요?</div>
-                        <div style={{
-                            marginLeft: 4,
-                            overflowX: "scroll",
-                            display: "flex",
-                            flexDirection: "row",
-                            padding: 16,
-                        }}>
+                        <AfterContainer>
                             {reviewData.map(item =>
                                 <Review
                                     item={item}
                                 />
                             )}
-                        </div>
+                        </AfterContainer>
                         <BottomTag marginTop={200} marginBottom={0} />
                         <div onClick={() => history.push("/wishdealdefault")} style={{
                             width: 440,
@@ -507,19 +532,13 @@ export default function Home() {
                         marginLeft: "5%",
                         marginTop: "2vw"
                     }}>아직도 나누다 이용을 망설이시나요?</div>
-                    <div style={{
-                        marginLeft: 4,
-                        display: "flex",
-                        flexDirection: "row",
-                        padding: "4%",
-                        overflow: "auto",
-                    }}>
+                    <MAfterContainer>
                         {reviewData.map(item =>
                             <MReview
                                 item={item}
                             />
                         )}
-                    </div>
+                    </MAfterContainer>
                     <MBottomTag marginTop={100} marginBottom={0} />
                     <div onClick={() => history.push("/wishdealdefault")} style={{
                         width: "90%",

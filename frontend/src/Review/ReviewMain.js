@@ -4,6 +4,7 @@ import WebIntro, { Header, MHeader } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillStar } from "react-icons/ai";
 import nodata from "../images/nodata.png";
+import bigbanner from "../images/bigbanner.png"
 
 export default function ReviewMain() {
     let history = useHistory()
@@ -70,28 +71,11 @@ export default function ReviewMain() {
                         backgroundColor: "#ffffff",
                     }}>
                         <Header content="나눠산 사람들" goBack={true} />
-                        <div style={{
+                        <img src={bigbanner} alt="큰 배너" style={{
                             width: 440,
-                            height: 150,
                             marginTop: 32,
-                            marginLeft: 20,
-                            backgroundColor: "#cb1a86",
-                            borderRadius: 6
-                        }}>
-                            <div style={{
-                                fontSize: 18,
-                                color: "#ffffff",
-                                marginLeft: 32,
-                                marginTop: 32
-                            }}>다른 사람들은 어떤걸 샀을까?</div>
-                            <div style={{
-                                fontSize: 24,
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                marginTop: 16,
-                                marginLeft: 32
-                            }}>뽐뿌가 왔다면 위시딜!</div>
-                        </div>
+                            alignSelf: "center",
+                        }} />
                         {data.length === 0 ?
                             <div style={{
                                 display: "flex",
@@ -227,28 +211,11 @@ export default function ReviewMain() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="나눠산 사람들" goBack={true} />
-                    <div style={{
+                    <img src={bigbanner} alt="큰 배너" style={{
                         width: "90vw",
-                        height: "30vw",
                         marginTop: "8vw",
-                        marginLeft: "5vw",
-                        backgroundColor: "#cb1a86",
-                        borderRadius: 6
-                    }}>
-                        <div style={{
-                            fontSize: 16,
-                            color: "#ffffff",
-                            marginLeft: "8vw",
-                            marginTop: "8vw"
-                        }}>다른 사람들은 어떤걸 샀을까?</div>
-                        <div style={{
-                            fontSize: 20,
-                            fontWeight: "bold",
-                            color: "#ffffff",
-                            marginTop: "4vw",
-                            marginLeft: "8vw"
-                        }}>뽐뿌가 왔다면 위시딜!</div>
-                    </div>
+                        alignSelf: "center",
+                    }} />
                     {data.length === 0 ?
                         <div style={{
                             display: "flex",

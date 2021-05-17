@@ -27,7 +27,7 @@ export default function Write() {
             service_score: number, service_content: after, service_opinion: opinion, user_id: 7
         }
         console.log(data)
-        await fetch("http://127.0.0.1:8000/servicereview/", {
+        await fetch("servicereview/", {
             method: "POST",
             headers: {
                 "Accept": "application/json",

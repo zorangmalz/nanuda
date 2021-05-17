@@ -43,6 +43,8 @@ import PaymentAccountVeri from './MyProfile/PaymentAccountVeri';
 import PaymentARS from './MyProfile/PaymentARS';
 import AlarmPost from './Alarm/AlarmPost';
 import PaymentAddAccount from './MyProfile/PaymentAddAccount';
+import TimeDeal from './TimeDeal/TimeDeal';
+import Alarm from './Alarm/Alarm';
 
 
 export const Default = ({ children }) => {
@@ -98,8 +100,10 @@ function App() {
         <Route path="/profiledelete" component={ProfileDelete} />
         <Route path="/paymentaccountveri" component={PaymentAccountVeri} />
         <Route path="/paymentars" component={PaymentARS} />
+        <Route path="/alarm" component={Alarm} />
         <Route path="/alarmpost" component={AlarmPost} />
         <Route path="/addaccount" component={PaymentAddAccount} />
+        <Route path="/timedeal" component={TimeDeal} />
       </Switch>
     </Router>
   );

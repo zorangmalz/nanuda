@@ -158,8 +158,23 @@ export default function ReviewPost({ match }) {
             }).catch(err => console.log(err))
     }
 
+    const deletePost = async () => {
+        await fetch(`http://127.0.0.1:8000/review/${pk}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => {
+                history.goBack()
+                console.log(response)
+            })
+            .catch(err => console.log(err))
+    }
 
-    const [mine, setMine] = useState(false)
+    const [mine, setMine] = useState(true)
+    const [modal, setModal] = useState(false)
     return (
         <>
             <Default>
@@ -201,15 +216,101 @@ export default function ReviewPost({ match }) {
                                 }}>{data.user_nickname}</div>
                             </div>
                             {mine ?
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    opacity: 0.6,
-                                    fontSize: 14,
-                                    color: "#202426",
-                                    textDecorationLine: "underline",
-                                    marginRight: 20,
-                                    cursor: "pointer",
-                                }}>삭제하기</div>
+                                <>
+                                    <div onClick={() => setModal(true)} style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        opacity: 0.6,
+                                        fontSize: 14,
+                                        color: "#202426",
+                                        textDecorationLine: "underline",
+                                        marginRight: 20,
+                                        cursor: "pointer",
+                                    }}>삭제하기</div>
+                                    {modal ?
+                                        <div style={{
+                                            position: "fixed",
+                                            top: 0,
+                                            width: 480,
+                                            height: "100vh",
+                                            backgroundColor: "rgba(0, 0, 0, 0.4)",
+
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            zIndex: 1,
+                                        }}>
+                                            <div style={{
+                                                width: 300,
+                                                height: 162,
+                                                borderRadius: 6,
+                                                backgroundColor: "#ffffff",
+
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                alignItems: "center",
+                                                justifyContent: "space-between",
+                                            }}>
+                                                <div style={{
+                                                    display: "flex",
+                                                    flexDirection: "column",
+                                                    alignItems: "center",
+                                                }}>
+                                                    <div style={{
+                                                        fontFamily: "NotoSansCJKkr",
+                                                        fontSize: 16,
+                                                        fontWeight: "bold",
+                                                        color: "#051a1a",
+                                                        marginTop: 16,
+                                                    }}>삭제하시겠습니까?</div>
+                                                    <div style={{
+                                                        fontFamily: "NotoSansCJKkr",
+                                                        fontSize: 14,
+                                                        color: "#051a1a",
+                                                        textAlign: "center",
+                                                        height: 42,
+                                                        marginTop: 16,
+                                                    }}>삭제한 게시물은 되돌릴 수 없습니다.</div>
+                                                </div>
+                                                <div style={{
+                                                    display: "flex",
+                                                    flexDirection: "row",
+                                                    alignItems: "center",
+                                                    width: 300,
+                                                }}>
+                                                    <div onClick={() => setModal(false)} style={{
+                                                        width: 150,
+                                                        paddingTop: 14,
+                                                        paddingBottom: 14,
+                                                        textAlign: "center",
+                                                        backgroundColor: "#f2f3f8",
+
+                                                        fontFamily: "NotoSansCJKkr",
+                                                        fontSize: 14,
+                                                        color: "rgba(5, 26, 26, 0.6)",
+                                                        cursor: "pointer",
+                                                        borderBottomLeftRadius: 6,
+                                                    }}>취소</div>
+                                                    <div onClick={deletePost} style={{
+                                                        width: 150,
+                                                        paddingTop: 14,
+                                                        paddingBottom: 14,
+                                                        textAlign: "center",
+                                                        backgroundColor: "#2dd9d3",
+
+                                                        fontFamily: "NotoSansCJKkr",
+                                                        fontSize: 14,
+                                                        fontWeight: "bold",
+                                                        color: "#ffffff",
+                                                        cursor: "pointer",
+                                                        borderBottomRightRadius: 6,
+                                                    }}>삭제하기</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        :
+                                        <></>
+                                    }
+                                </>
                                 :
                                 <div onClick={putAlert} style={{
                                     fontFamily: "NotoSansCJKkr",
@@ -356,15 +457,101 @@ export default function ReviewPost({ match }) {
                             }}>{data.user_nickname}</div>
                         </div>
                         {mine ?
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                opacity: 0.6,
-                                fontSize: 12,
-                                color: "#202426",
-                                textDecorationLine: "underline",
-                                marginRight: "5vw",
-                                cursor: "pointer",
-                            }}>삭제하기</div>
+                            <>
+                                <div onClick={() => setModal(true)} style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 12,
+                                    color: "#202426",
+                                    textDecorationLine: "underline",
+                                    marginRight: "5vw",
+                                    cursor: "pointer",
+                                }}>삭제하기</div>
+                                {modal ?
+                                    <div style={{
+                                        position: "fixed",
+                                        top: 0,
+                                        width: "100vw",
+                                        height: "100vh",
+                                        backgroundColor: "rgba(0, 0, 0, 0.4)",
+
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        zIndex: 1,
+                                    }}>
+                                        <div style={{
+                                            width: "75vw",
+                                            height: "40vw",
+                                            borderRadius: 6,
+                                            backgroundColor: "#ffffff",
+
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                            justifyContent: "space-between",
+                                        }}>
+                                            <div style={{
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                alignItems: "center",
+                                            }}>
+                                                <div style={{
+                                                    fontFamily: "NotoSansCJKkr",
+                                                    fontSize: 14,
+                                                    fontWeight: "bold",
+                                                    color: "#051a1a",
+                                                    marginTop: "4vw",
+                                                }}>삭제하시겠습니까?</div>
+                                                <div style={{
+                                                    fontFamily: "NotoSansCJKkr",
+                                                    fontSize: 12,
+                                                    color: "#051a1a",
+                                                    textAlign: "center",
+                                                    height: "10vw",
+                                                    marginTop: "4vw",
+                                                }}>삭제한 게시물은 되돌릴 수 없습니다.</div>
+                                            </div>
+                                            <div style={{
+                                                display: "flex",
+                                                flexDirection: "row",
+                                                alignItems: "center",
+                                                width: "75vw",
+                                            }}>
+                                                <div onClick={() => setModal(false)} style={{
+                                                    width: "37.5vw",
+                                                    paddingTop: "3.5vw",
+                                                    paddingBottom: "3.5vw",
+                                                    textAlign: "center",
+                                                    backgroundColor: "#f2f3f8",
+
+                                                    fontFamily: "NotoSansCJKkr",
+                                                    fontSize: 12,
+                                                    color: "rgba(5, 26, 26, 0.6)",
+                                                    cursor: "pointer",
+                                                    borderBottomLeftRadius: 6,
+                                                }}>취소</div>
+                                                <div onClick={deletePost} style={{
+                                                    width: "37.5vw",
+                                                    paddingTop: "3.5vw",
+                                                    paddingBottom: "3.5vw",
+                                                    textAlign: "center",
+                                                    backgroundColor: "#2dd9d3",
+
+                                                    fontFamily: "NotoSansCJKkr",
+                                                    fontSize: 12,
+                                                    fontWeight: "bold",
+                                                    color: "#ffffff",
+                                                    cursor: "pointer",
+                                                    borderBottomRightRadius: 6,
+                                                }}>삭제하기</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    :
+                                    <></>
+                                }
+                            </>
                             :
                             <div onClick={putAlert} style={{
                                 fontFamily: "NotoSansCJKkr",
