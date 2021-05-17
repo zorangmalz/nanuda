@@ -1,9 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { BannerContainer, MBannerContainer } from "../Style";
 import { useHistory } from "react-router";
+import smallbanner from "../images/smallbanner.png";
+import { MTimeShop, TimeShop } from "../Home/Home";
 
-export default function TimeDeal() {
+export default function Entire() {
     let history = useHistory()
 
     return (
@@ -11,33 +14,38 @@ export default function TimeDeal() {
             <Default>
                 <div style={{
                     display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    flexDirection: "column",
 
-                    width: "100%",
-                    minHeight: "100vh",
-                    backgroundColor: "#f2f3f8"
+                    width: 480,
+                    minHeight: "90vh",
+                    backgroundColor: "#ffffff",
                 }}>
+                    <BannerContainer marginTop="16px" >
+                        <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" />
+                        <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" />
+                    </BannerContainer>
                     <div style={{
-                        display: "flex",
-                        flexDirection: "column",
-
-                        width: 480,
-                        minHeight: "100vh",
-                        backgroundColor: "#ffffff",
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        width: 440,
+                        columnGap: 20,
+                        alignSelf: "center",
+                        marginTop: 32,
                     }}>
-                        <Header content="나누다딜" goBack={true} />
-                        <div style={{
-                            marginTop: 16,
-                            width: 440,
-                            paddingLeft: 20,
-                            paddingRight: 20,
-
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                        }}></div>
+                        <TimeShop
+                            title="PRADA"
+                            sub="PRADA Model 23-9 limited edition berry expensive"
+                            price="600000"
+                            currentPrice="480000"
+                            stock={2}
+                        />
+                        <TimeShop
+                            title="PRADA"
+                            sub="PRADA Model 23-9 limited edition berry expensive"
+                            price="600000"
+                            currentPrice="480000"
+                            stock={0}
+                        />
                     </div>
                 </div>
             </Default>
@@ -50,8 +58,33 @@ export default function TimeDeal() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="나누다딜" goBack={true} />
-
+                    <MBannerContainer marginTop="4vw" >
+                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" />
+                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" />
+                    </MBannerContainer>
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        width: "90vw",
+                        columnGap: "5vw",
+                        alignSelf: "center",
+                        marginTop: "8vw",
+                    }}>
+                        <MTimeShop
+                            title="PRADA"
+                            sub="PRADA Model 23-9 limited edition berry expensive"
+                            price="600000"
+                            currentPrice="480000"
+                            stock={2}
+                        />
+                        <MTimeShop
+                            title="PRADA"
+                            sub="PRADA Model 23-9 limited edition berry expensive"
+                            price="600000"
+                            currentPrice="480000"
+                            stock={0}
+                        />
+                    </div>
                 </div>
             </Mobile>
         </>

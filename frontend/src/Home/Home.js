@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { BottomTag, HomeHeader, MBottomTag, MHomeHeader, NameMask } from "../Style";
+import WebIntro, { BannerContainer, BottomTag, HomeHeader, MBottomTag, MHomeHeader, NameMask } from "../Style";
 import Slider from "react-slick";
 import { BsBookmark, BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
+
+import smallbanner from "../images/smallbanner.png";
 
 export default function Home() {
     let history = useHistory()
@@ -97,7 +99,7 @@ export default function Home() {
                                 marginRight: 4,
                             }}>하울딜</div>
                             <MdKeyboardArrowRight
-                                onClick={() => history.push("/timedeal")}
+                                onClick={() => history.push("/timedeal/entire")}
                                 size={24}
                                 color="rgba(5, 26, 26, 0.6)"
                                 style={{
@@ -137,9 +139,12 @@ export default function Home() {
                                 price="600000"
                                 currentPrice="480000"
                                 stock={0}
-                                time="내일 오전 9:00 오픈"
                             />
                         </div>
+                        <BannerContainer>
+                            <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" />
+                            <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" />
+                        </BannerContainer>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -205,7 +210,7 @@ export default function Home() {
                                 </div>
                                 <div onClick={() => history.push("/reviewpost")} style={{
                                     width: 210,
-                                    height: 210,
+                                    height: 160,
                                     borderRadius: 6,
                                     backgroundColor: "#f2f3f8",
                                     marginTop: 8
@@ -452,7 +457,7 @@ export default function Home() {
                             marginRight: 4,
                         }}>하울딜</div>
                         <MdKeyboardArrowRight
-                            onClick={() => history.push("/timedeal")}
+                            onClick={() => history.push("/timedeal/entire")}
                             size={20}
                             color="rgba(5, 26, 26, 0.6)"
                             style={{
@@ -492,7 +497,6 @@ export default function Home() {
                             price="600000"
                             currentPrice="480000"
                             stock={0}
-                            time="내일 오전 9:00 오픈"
                         />
                     </div>
                     <div style={{
@@ -540,7 +544,7 @@ export default function Home() {
                         {nanudaData.map(item =>
                             <div onClick={() => history.push("/reviewpost")} style={{
                                 cursor: "pointer",
-                                width: "42.5vw",
+                                width: "42vw",
                             }}>
                                 <div style={{
                                     display: "flex",
@@ -562,8 +566,8 @@ export default function Home() {
                                     }}>{item.id} </div>
                                 </div>
                                 <div style={{
-                                    width: "42.5vw",
-                                    height: "42.5vw",
+                                    width: "42vw",
+                                    height: "32vw",
                                     borderRadius: 6,
                                     backgroundColor: "#f2f3f8",
                                     marginTop: 8
@@ -573,7 +577,7 @@ export default function Home() {
                                     fontSize: 12,
                                     opacity: 0.8,
                                     marginTop: 8,
-                                    width: "42.5vw",
+                                    width: "42vw",
                                     fontFamily: "NotoSansCJKkr"
                                 }}>{item.content}</div>
                                 <div style={{
@@ -581,7 +585,7 @@ export default function Home() {
                                     marginTop: 12,
                                     fontSize: 16,
                                     fontWeight: "bold",
-                                    width: "42.5vw",
+                                    width: "42vw",
                                     fontFamily: "NotoSansCJKkr"
                                 }}>{item.money}원에 획득!</div>
                             </div>
@@ -706,7 +710,7 @@ export default function Home() {
     )
 }
 
-function TimeShop({ title, sub, price, currentPrice, stock, time }) {
+export function TimeShop({ title, sub, price, currentPrice, stock }) {
     return (
         <>
             <div style={{
@@ -714,57 +718,45 @@ function TimeShop({ title, sub, price, currentPrice, stock, time }) {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 width: 210,
+                marginBottom: 32,
             }}>
                 <div style={{
                     width: "100%",
-                    height: 210,
+                    height: 160,
                     borderRadius: 6,
-                    marginBottom: 16,
-                    backgroundColor: "#000000",
+                    marginBottom: 8,
+                    backgroundColor: "#ffffff",
                     color: "#ffffff",
                     position: "relative",
+                    border: "1px solid rgba(5, 26, 26, 0.2)"
                 }}>
                     {stock > 0 ?
                         <div style={{
-                            borderRadius: 6,
-                            backgroundColor: "#f2f3f8",
+                            borderBottomLeftRadius: 6,
+                            borderBottomRightRadius: 6,
+                            backgroundColor: "rgba(5, 26, 26, 0.8)",
                             position: "absolute",
-                            top: 10,
-                            left: 10,
+                            bottom: 0,
+
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
-                            padding: 8,
+                            justifyContent: "center",
+                            width: "100%",
+                            paddingTop: 8,
+                            paddingBottom: 8,
                         }}>
-                            <BiTime size={16} color="#f72b2b" />
+                            <BiTime size={16} color="#ffffff" />
                             <div style={{
                                 fontSize: 14,
                                 fontWeight: "bold",
-                                color: "#f72b2b",
+                                color: "#ffffff",
                                 fontFamily: "NotoSansCJKkr",
                                 marginLeft: 4,
                             }}>{stock}개 남았어요!</div>
                         </div>
                         :
-                        <div style={{
-                            top: 0,
-                            width: 210,
-                            height: 210,
-                            opacity: 0.4,
-                            borderRadius: 6,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            backgroundColor: "#000000"
-                        }}>
-                            <div style={{
-                                fontSize: 21,
-                                fontFamily: "NotoSansCJKkr",
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                opacity: 1,
-                            }}>{time}</div>
-                        </div>
+                        <></>
                     }
                 </div>
                 <div style={{
@@ -776,23 +768,15 @@ function TimeShop({ title, sub, price, currentPrice, stock, time }) {
                     marginBottom: 8,
                 }}>
                     <div style={{
-                        fontFamily: "AvenirNext",
-                        fontSize: 18,
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 16,
                         color: "#202426",
+                        fontWeight: "bold",
                     }}>{title}</div>
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                    }}>
-                        <BsUpload size={20} style={{
-                            marginRight: 4,
-                            cursor: "pointer"
-                        }} />
-                        <BsBookmark size={20} style={{
-                            cursor: "pointer"
-                        }} />
-                    </div>
+                    <BsUpload size={18} style={{
+                        marginRight: 4,
+                        cursor: "pointer"
+                    }} />
                 </div>
                 <div style={{
                     fontSize: 14,
@@ -828,65 +812,53 @@ function TimeShop({ title, sub, price, currentPrice, stock, time }) {
     )
 }
 
-function MTimeShop({ title, sub, price, currentPrice, stock, time }) {
+export function MTimeShop({ title, sub, price, currentPrice, stock }) {
     return (
         <>
             <div style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
-                width: "42.5vw",
+                width: "42vw",
+                marginBottom: "8vw"
             }}>
                 <div style={{
                     width: "100%",
-                    height: "42.5vw",
+                    height: "32vw",
                     borderRadius: 6,
-                    marginBottom: 12,
-                    backgroundColor: "#000000",
+                    marginBottom: "2vw",
+                    backgroundColor: "#ffffff",
                     color: "#ffffff",
                     position: "relative",
+                    border: "1px solid rgba(5, 26, 26, 0.2)"
                 }}>
                     {stock > 0 ?
                         <div style={{
-                            borderRadius: 6,
-                            backgroundColor: "#f2f3f8",
+                            borderBottomLeftRadius: 6,
+                            borderBottomRightRadius: 6,
+                            backgroundColor: "rgba(5, 26, 26, 0.8)",
                             position: "absolute",
-                            top: 8,
-                            left: 8,
+                            bottom: 0,
+
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
-                            padding: 8,
+                            justifyContent: "center",
+                            width: "100%",
+                            paddingTop: "2vw",
+                            paddingBottom: "2vw",
                         }}>
-                            <BiTime size={14} color="#f72b2b" />
+                            <BiTime size={12} color="#ffffff" />
                             <div style={{
                                 fontSize: 10,
                                 fontWeight: "bold",
-                                color: "#f72b2b",
+                                color: "#ffffff",
                                 fontFamily: "NotoSansCJKkr",
                                 marginLeft: 4,
                             }}>{stock}개 남았어요!</div>
                         </div>
                         :
-                        <div style={{
-                            top: 0,
-                            width: "42.5vw",
-                            height: "42.5vw",
-                            opacity: 0.4,
-                            borderRadius: 6,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            backgroundColor: "#000000"
-                        }}>
-                            <div style={{
-                                fontSize: 16,
-                                fontFamily: "NotoSansCJKkr",
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                opacity: 1,
-                            }}>{time}</div>
-                        </div>
+                        <></>
                     }
                 </div>
                 <div style={{
@@ -898,23 +870,15 @@ function MTimeShop({ title, sub, price, currentPrice, stock, time }) {
                     marginBottom: 8,
                 }}>
                     <div style={{
-                        fontFamily: "AvenirNext",
-                        fontSize: 16,
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 14,
                         color: "#202426",
+                        fontWeight: "bold"
                     }}>{title}</div>
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                    }}>
-                        <BsUpload size={18} style={{
-                            marginRight: 4,
-                            cursor: "pointer"
-                        }} />
-                        <BsBookmark size={18} style={{
-                            cursor: "pointer"
-                        }} />
-                    </div>
+                    <BsUpload size={18} style={{
+                        marginRight: 4,
+                        cursor: "pointer"
+                    }} />
                 </div>
                 <div style={{
                     fontSize: 12,

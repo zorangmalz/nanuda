@@ -6,6 +6,8 @@ import { IoIosArrowBack } from "react-icons/io";
 import { BsX } from "react-icons/bs"
 import { useHistory } from "react-router";
 import axios from "axios"
+import styled from "styled-components";
+
 export default function WebIntro() {
     let history = useHistory()
     return (
@@ -1011,3 +1013,35 @@ export function NameMask(strName) {
         return strName.replace(pattern, '*');
     }
 };
+
+export const BannerContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: "center";
+    align-self: "center";
+
+    width: 440px;
+    margin-top: ${props => props.marginTop || 0};
+    overflow: auto;
+    margin-left: 20px;
+
+    ::-webkit-scrollbar{
+        display: none;
+    }
+`
+
+export const MBannerContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: "center";
+    align-self: "center";
+
+    width: 90vw;
+    margin-top: ${props => props.marginTop || 0};
+    overflow: auto;
+    margin-left: 5vw;
+
+    ::-webkit-scrollbar{
+        display: none;
+    }
+`
