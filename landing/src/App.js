@@ -37,7 +37,7 @@ function App() {
       <Mobile>
         <div style={{
           width: "100vw",
-          minHeight: "100vh",
+          height: "100vh",
         }}>
           <img alt="배경이미지" src={landing} style={{ width: "100vw", height: "70vh" }} />
           {modal ?
@@ -242,17 +242,14 @@ function App() {
               fontSize: 12,
               fontWeight: "bold",
               color: "#051a1a",
-              marginRight: "5vw",
             }}>(주) 라텔</div>
             <div style={{
               fontSize: 12,
               color: "#051a1a",
-              marginRight: "5vw",
             }}>대표자: 김현명, 이지행</div>
             <div style={{
               fontSize: 12,
               color: "#051a1a",
-              marginRight: "5vw",
             }}>법인 등록번호 : 110111-7882784</div>
             <div style={{
               fontSize: 12,
