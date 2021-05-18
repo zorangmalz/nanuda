@@ -115,6 +115,7 @@ class Order(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.PROTECT)
     product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
+    order_id=models.CharField(default="01210413135901010000", blank=False, max_length=30)
     order_date = models.DateTimeField(auto_now_add=True)
     order_price = models.PositiveIntegerField()
     order_amount = models.PositiveIntegerField()
@@ -125,8 +126,13 @@ class Order(models.Model):
     order_address_number = models.TextField(default="우편번호")
     order_address = models.TextField(default="주소")
     order_address_detail = models.TextField(default="상세주소")
-    order_phone_number = PhoneNumberField()
+    order_phone_number = models.CharField(default="", max_length=30)
     order_request = models.TextField(default="주문 요청사항")
+    wish_haul=models.CharField(default="" ,blank=True, max_length=30)
+    wish_url=models.CharField(default="http://" ,blank=True, max_length=30)
+    wish_title=models.CharField(default="" ,blank=True, max_length=30)
+    wish_des=models.CharField(default="" ,blank=True, max_length=30)
+    wish_image=models.CharField(default="" ,blank=True, max_length=30)
     
     def product_name(self):
         return self.product_id.product_name

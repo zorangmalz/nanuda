@@ -263,6 +263,32 @@ export default function OrderSheet() {
         }
 
     }, [number])
+    async function orderSuccess(){
+
+        let res = await axios.post(
+            "http://localhost:8000/orderupload/",{
+                params:{
+                    myparam:myparam,
+                    ship:item,
+                    payment:"",
+                    option:number,
+                    schedule:paymentDate
+                }
+            },         
+            { withCredentials: true }
+        )
+        console.log(res)
+    }
+    async function order(){
+        if(basicAddress&&payment){
+            // history.push("paymentsuccess",{myparam:myparam})
+            orderSuccess()
+        }else{
+            console.log("no")
+        }
+    }
+
+
     return (
         <>
             <Default>
@@ -723,7 +749,7 @@ export default function OrderSheet() {
                             fontFamily: "NotoSansCJKkr",
                             textAlign: "center",
                         }}>위 주문 내용을 확인 하였으며, 회원은 본인의 결제에 동의합니다.</div>
-                        <div onClick={() => payment ? history.push("/paymentsuccess") : history.push("/paymentfail")} style={{
+                        <div onClick={order} style={{
                             alignSelf: "center",
                             width: 440,
                             paddingTop: 15,
@@ -1175,7 +1201,7 @@ export default function OrderSheet() {
                         fontFamily: "NotoSansCJKkr",
                         textAlign: "center",
                     }}>위 주문 내용을 확인 하였으며, 회원은 본인의 결제에 동의합니다.</div>
-                    <div onClick={() => payment ? history.push("/paymentsuccess") : history.push("/paymentfail")} style={{
+                    <div onClick={order} style={{
                         alignSelf: "center",
                         width: "90vw",
                         paddingTop: "4vw",

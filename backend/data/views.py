@@ -48,7 +48,7 @@ def service_review_all(request):
         service_review = ServiceReview.objects.all().order_by("-service_date")
         service_review_serializer = ServicReviewAllSerializer(service_review, many=True)
         return Response(service_review_serializer.data)
-    
+     
     elif request.method == "POST":
         service_review_serializer = ServicReviewAllSerializer(data=request.data)
         if service_review_serializer.is_valid():

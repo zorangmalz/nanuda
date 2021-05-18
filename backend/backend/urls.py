@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include, re_path
-from nanuda.views import GoogleLogin, KakaoLogin,userInfoName,uploadAddress,checkAddress,serviceReviewOrNOt
+from nanuda.views import GoogleLogin, KakaoLogin,userInfoName,uploadAddress,checkAddress,serviceReviewOrNOt,orderUpload
 
 #API 제작
 from rest_framework.urlpatterns import format_suffix_patterns
@@ -39,7 +39,8 @@ urlpatterns = [
     path('userInfoName/', userInfoName.as_view(), name='test'),
     path('uploadAddress/', uploadAddress.as_view(), name='address'),
     path('checkAddress/', checkAddress.as_view(), name='address'),
-    path('servicereviewornot/', serviceReviewOrNOt.as_view(), name='address'),
+    path('servicereviewornot/', serviceReviewOrNOt.as_view(), name='service'),
+    path('orderupload/', orderUpload.as_view(), name='orderupload'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

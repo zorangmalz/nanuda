@@ -26,8 +26,56 @@ from nanuda.models import User, ServiceReview, Product, Review, Order
 from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
 
 #Python 내장함수
-from datetime import date
+from datetime import date,datetime
 
+
+#WishDeal Order
+class orderUpload(View):
+    def post(self, request):
+        if not request.COOKIES.get("access_token"):
+            return JsonResponse({"data":False})
+        else:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+            user_info=json.loads(request.body)
+            print(user_info["params"]["myparam"][3]["Fprice"])
+            print(user_info["params"]["ship"])
+            print(user_info["params"]["payment"])
+            print(user_info["params"]["option"])
+            print(user_info["params"]["schedule"])
+            year=str(datetime.today().year%100)
+            if datetime.today().month<10:
+                month="0"+str(datetime.today().month)
+            else:
+                month=str(datetime.today().month)
+            
+            day=str(datetime.today().day)
+            hour=str(datetime.today().hour)
+            minute=str(datetime.today().minute)
+            second=str(datetime.today().second)
+            print(year+month+day+hour+minute+second)
+            print(user.id)
+            #??외않되?
+            Order(
+                # user_id=user.id,
+                order_id="01",
+                order_price=int(user_info["params"]["myparam"][3]["Fprice"])+int(user_info["params"]["myparam"][7]),
+                order_amount=1,
+                order_expected_date=user_info["params"]["schedule"],
+                order_address_number=user_info["params"]["ship"]["addressNum"],
+                order_address=user_info["params"]["ship"]["address"],
+                order_address_detail=user_info["params"]["ship"]["addressDetail"],
+                order_phone_number=user_info["params"]["ship"]["phoneNumber"],
+                order_request=user_info["params"]["ship"]["request"],
+                order_receiver=user_info["params"]["ship"]["name"]
+                
+            ).save()
+            return JsonResponse({"data":True})
+            
 #서비스 리뷰 조회(작성 or not)
 class serviceReviewOrNOt(View):
     def get(self, request):
