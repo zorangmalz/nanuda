@@ -73,7 +73,7 @@ export default function OrderSheet() {
         dispatch({ type: 'FOUR' });
     };
 
-    //결제 일정 제공
+    //결제 일정,가격 제공
     const [oneDate,setOneDate]=useState("")
     const [oneMoney,setOneMoney]=useState("")
     const [twoDate,setTwoDate]=useState("")

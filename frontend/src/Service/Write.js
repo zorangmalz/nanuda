@@ -3,7 +3,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { useHistory } from "react-router";
 import ReactStars from "react-rating-stars-component";
-
+import axios from "axios"
 export default function Write() {
     let history = useHistory()
     const [number, setNumber] = useState(0);
@@ -21,18 +21,24 @@ export default function Write() {
             [name]: value
         })
     }
-
+    const [userId,setUserId]=useState("")    
     async function putServiceReview() {
+        let res = await axios.get(
+            "http://localhost:8000/servicereviewornot/",
+         
+            { withCredentials: true }
+        )
+        setUserId(res.data.id)
+   
         var data = {
-            service_score: number, service_content: after, service_opinion: opinion, user_id: 7
+            service_score: number, service_content: after, service_opinion: opinion, user_id: res.data.id
         }
         console.log(data)
-        await fetch("servicereview/", {
+        await fetch("http://127.0.0.1:8000/servicereview/", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
                 'Content-type': 'application/json',
-                "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify(data)
         })

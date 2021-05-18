@@ -2,11 +2,28 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, NameMask } from "../Style";
+import axios from "axios"
 
 export default function ServiceReview() {
     //Get Review Data
     const [reviewData, setReviewData] = useState([])
+    const [noReview, setNoReview] = useState(false)
+    async function checkReview(){
+        let res = await axios.get(
+            "http://localhost:8000/servicereviewornot/",
+         
+            { withCredentials: true }
+        )
+        console.log(res)
+        if(res.data.data===true){
+            setNoReview(true)
+        }else{
+            setNoReview(false)
+        }
+        
+    }
     useEffect(() => {
+        checkReview()
         setReviewData([])
         fetch("/servicereview/", {
             method: "GET",
@@ -34,7 +51,7 @@ export default function ServiceReview() {
     }, [])
 
     let history = useHistory()
-    const [noReview, setNoReview] = useState(true)
+    
 
     return (
         <>
@@ -91,6 +108,7 @@ export default function ServiceReview() {
                                 item={item}
                             />
                         )}
+                        {noReview?
                         <div onClick={() => history.push("/servicewrite")} style={{
                             position: "fixed",
                             bottom: 40,
@@ -108,7 +126,28 @@ export default function ServiceReview() {
                             textAlign: "center",
                             cursor: "pointer",
                             fontFamily: "NotoSansCJKkr"
-                        }}>{noReview ? "첫 후기 작성하고 2천 포인트 받기" : "나누다 사용후기 작성하기"}</div>
+                        }}>첫 후기 작성하고 2천 포인트 받기</div>
+                        :
+                        <div style={{
+                            position: "fixed",
+                            bottom: 40,
+                            width: 440,
+                            alignSelf: "center",
+                            paddingTop: 21,
+                            paddingBottom: 21,
+                            backgroundColor: "#dbdbdb",
+                            borderRadius: 6,
+                            boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
+
+                            color: "#ffffff",
+                            fontSize: 21,
+                            fontWeight: "bold",
+                            textAlign: "center",
+                            cursor: "pointer",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>첫 후기 작성하고 2천 포인트 받기</div>
+                        }
+                       
                     </div>
                 </div>
             </Default>
@@ -154,6 +193,7 @@ export default function ServiceReview() {
                             item={item}
                         />
                     )}
+                    {noReview?
                     <div onClick={() => history.push("/servicewrite")} style={{
                         position: "fixed",
                         bottom: 40,
@@ -171,7 +211,28 @@ export default function ServiceReview() {
                         textAlign: "center",
                         cursor: "pointer",
                         fontFamily: "NotoSansCJKkr"
-                    }}>{noReview ? "첫 후기 작성하고 2천 포인트 받기" : "나누다 사용후기 작성하기"}</div>
+                    }}>첫 후기 작성하고 2천 포인트 받기</div>
+                    :
+                    <div style={{
+                        position: "fixed",
+                        bottom: 40,
+                        width: "90%",
+                        alignSelf: "center",
+                        paddingTop: 12,
+                        paddingBottom: 12,
+                        backgroundColor: "#dbdbdb",
+                        borderRadius: 6,
+                        boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
+
+                        color: "#ffffff",
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        cursor: "pointer",
+                        fontFamily: "NotoSansCJKkr"
+                    }}>첫 후기 작성하고 2천 포인트 받기</div>
+                    }
+                    
                 </div>
             </Mobile>
         </>

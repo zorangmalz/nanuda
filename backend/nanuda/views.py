@@ -28,8 +28,25 @@ from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, Pro
 #Python 내장함수
 from datetime import date
 
-# class JobPhone(View):
-#     def get(self, request):
+#서비스 리뷰 조회(작성 or not)
+class serviceReviewOrNOt(View):
+    def get(self, request):
+        if not request.COOKIES.get("access_token"):
+            return JsonResponse({"data":False})
+        else:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+            print(user.name)
+            if ServiceReview.objects.filter(user_id=user.id).exists():
+                return JsonResponse({"data":False,"id":user.id})
+            else:
+                return JsonResponse({"data":True,"id":user.id})
+            
+
 
 class userInfoName(View):
     def get(self, request):
