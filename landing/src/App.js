@@ -264,6 +264,7 @@ function App() {
               fontSize: 21,
               fontWeight: "bold",
               color: "#051a1a",
+              width: "82vw",
             }}>#Experience Now #Pay Later</div>
             <div style={{
               width: "82vw",
