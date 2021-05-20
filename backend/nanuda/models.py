@@ -11,7 +11,7 @@ class User(models.Model):
         (WOMAN, "여성"),
     ]
     id = models.BigAutoField(primary_key=True)
-    user_email = models.EmailField(default="")
+    user_email = models.EmailField(unique=True)
     nickname = models.TextField(unique=True,blank=True) 
     name = models.TextField(default="나누다")
     job = models.CharField(max_length=30, default="",blank=True)
@@ -114,14 +114,14 @@ class Review(models.Model):
 class Order(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.PROTECT)
-    product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
+    # product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
     order_id=models.CharField(default="01210413135901010000", blank=False, max_length=30)
     order_date = models.DateTimeField(auto_now_add=True)
     order_price = models.PositiveIntegerField()
     order_amount = models.PositiveIntegerField()
     order_method = models.CharField(default="배달", max_length=10)
     order_expected_date = models.JSONField(default=dict)
-    order_upfront_date = models.DateTimeField(blank=True)
+    # order_upfront_date = models.DateTimeField(blank=True,default="")
     order_receiver = models.CharField(default="수령인", max_length=30)
     order_address_number = models.TextField(default="우편번호")
     order_address = models.TextField(default="주소")

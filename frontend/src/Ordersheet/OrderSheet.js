@@ -263,26 +263,27 @@ export default function OrderSheet() {
         }
 
     }, [number])
-    async function orderSuccess(){
-
-        let res = await axios.post(
-            "http://localhost:8000/orderupload/",{
-                params:{
-                    myparam:myparam,
-                    ship:item,
-                    payment:"",
-                    option:number,
-                    schedule:paymentDate
-                }
-            },         
-            { withCredentials: true }
-        )
-        console.log(res)
-    }
     async function order(){
         if(basicAddress&&payment){
             // history.push("paymentsuccess",{myparam:myparam})
-            orderSuccess()
+            let res = await axios.post(
+                "http://localhost:8000/orderupload/",{
+                    params:{
+                        myparam:myparam,
+                        ship:item,
+                        payment:"",
+                        option:number,
+                        schedule:paymentDate
+                    }
+                },         
+                { withCredentials: true }
+            )
+            console.log(res)
+            if(res.data.data===true){
+                history.push("paymentsuccess")
+            }else{
+                history.push("paymentfail",{myparam:myparam,ship:item})
+            }
         }else{
             console.log("no")
         }
