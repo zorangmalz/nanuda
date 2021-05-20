@@ -10,12 +10,32 @@ import GoogleLogin from 'react-google-login';
 import KakaoLogin from "react-kakao-login";
 import axios from "axios"
 import dotenv from "dotenv"
-
+import styled from "styled-components"
 
 export default function Signup() {
     const GOOGLE_APP_KEY = process.env.REACT_APP_KEY_GOOGLE
     const My_App_Key = process.env.REACT_APP_KEY
-
+    
+    const KaKaoBtn = styled(KakaoLogin)`
+    display: inline-block;
+    padding: 0;
+    width: 440px;
+    height: 56px;
+    line-height: 44px;
+    color: #783c00;
+    background-color: #f4e34d;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    margin-top:32px;
+    margin-bottom:492px;
+    &:hover {
+      box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2);
+    }
+  `;
 
     const responseGoogle = async (response) => {
         console.log("come")
@@ -94,6 +114,7 @@ export default function Signup() {
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <div style={{
                             display: "flex",
@@ -103,12 +124,13 @@ export default function Signup() {
                         }}>
                             <Header content="회원가입" goBack={true} />
                             {/* 배너 넣어야됨 */}
-                            <KakaoLogin
+                            <KaKaoBtn
+                            style={{width:440, fontSize:18,height:56,color:"#051a1a"}}
                                 token={My_App_Key}
                                 onSuccess={kakaoResponse}
                                 onFailure={kakaoFail}
-                                className="KakaoLogin"
-                            >카카오톡으로 시작하기</KakaoLogin>
+                                className="KaKaoBtn"
+                            >카카오톡으로 시작하기</KaKaoBtn>
                         </div>
                         <BottomTag marginBottom={0} />
                     </div>
@@ -141,12 +163,12 @@ export default function Signup() {
                             width: "100%"
                         }}>
                             <MHeader content="회원가입" goBack={true} />
-                            <KakaoLogin
+                            <KaKaoBtn
                                 token={My_App_Key}
                                 onSuccess={kakaoResponse}
                                 onFailure={kakaoFail}
-                                className="KakaoLogin"
-                            >카카오톡으로 시작하기</KakaoLogin>
+                                className="KaKaoBtn"
+                            >카카오톡으로 시작하기</KaKaoBtn>
                         </div>
                         <MBottomTag marginBottom={0} />
                     </div>
