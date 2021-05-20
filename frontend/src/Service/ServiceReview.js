@@ -74,6 +74,7 @@ export default function ServiceReview() {
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
                         paddingBottom: reviewData.length > 3 ? 150 : 0,
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="나눠본 사람들" goBack={true} />
                         <div style={{

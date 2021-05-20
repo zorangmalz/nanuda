@@ -75,6 +75,7 @@ export default function WishDealDefault() {
                         width: 480,
                         height: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="위시딜" goBack={true} />
                         <div style={{

@@ -48,6 +48,7 @@ export default function Notice() {
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="공지사항" goBack={true} />
                         <div style={{

@@ -28,6 +28,7 @@ export default function ProfileProduct() {
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
                         paddingBottom: 40,
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="상품 구매 내역" goBack={true} />
                         <div style={{ marginTop: 16 }} />

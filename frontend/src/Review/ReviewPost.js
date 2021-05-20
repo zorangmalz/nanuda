@@ -193,6 +193,7 @@ export default function ReviewPost({ match }) {
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="나눠산 사람들" goBack={true} />
                         <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 32 }}>

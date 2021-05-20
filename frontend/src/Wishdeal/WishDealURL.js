@@ -278,6 +278,7 @@ export default function WishDealURL() {
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="상품 정보 작성" goBack={true} />
                         {stats === 1 ?

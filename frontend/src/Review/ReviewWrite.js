@@ -147,6 +147,7 @@ export default function ReviewWrite() {
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)",
                         paddingBottom: 50,
                     }}>
                         <Header content="리뷰 작성" goBack={true} />

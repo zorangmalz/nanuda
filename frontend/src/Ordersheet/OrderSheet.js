@@ -308,6 +308,7 @@ export default function OrderSheet() {
 
                         width: 480,
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="주문서" goBack={true} />
                         <div style={{

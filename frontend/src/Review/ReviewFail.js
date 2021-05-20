@@ -29,6 +29,7 @@ export default function ReviewFail() {
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="작성 실패" goX={true} />
                         <div style={{

@@ -71,6 +71,7 @@ export default function ProfileVerification() {
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <div style={{
                             display: "flex",

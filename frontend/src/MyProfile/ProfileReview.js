@@ -282,6 +282,7 @@ export default function ProfileReview() {
                         minHeight: "100vh",
                         paddingBottom: 40,
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="내 리뷰" goBack={true} />
                         <div style={{
