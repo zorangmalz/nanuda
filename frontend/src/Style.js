@@ -206,33 +206,24 @@ export function HomeHeader() {
             paddingBottom: 15,
         }}>
             <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-
-                marginLeft: 20,
-            }}>
-                <img alt="" src={logoS} onClick={() => history.replace("/")} style={{
-                    width: 24,
-                    height: 24,
-                    cursor: "pointer"
-                }} />
-                <div style={{
-                    marginLeft: 8,
-                    fontSize: 18,
-                    fontWeight: "bold",
-                    color: "#051a1a",
-                    alignSelf: "center",
-                    justifyContent: "center",
-                    fontFamily: "NotoSansCJKkr"
-                }}>나누다</div>
-            </div>
+                width: 100,
+                height: 28,
+            }} />
+            <div style={{
+                fontSize: 24,
+                color: "#051a1a",
+                fontFamily: "AvenirNext",
+                textAlign: "center",
+                width: 120
+            }}>Haul Free</div>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
+                justifyContent: "flex-end",
 
-                marginRight: 20,
+                paddingRight: 20,
+                width: 80,
             }}>
                 <img onClick={noticeClick} alt="" src={bell} style={{
                     width: 28,
@@ -293,33 +284,23 @@ export function MHomeHeader() {
             paddingBottom: 15,
         }}>
             <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-
-                marginLeft: "5vw",
-            }}>
-                <img alt="" src={logoS} onClick={() => history.replace("/")} style={{
-                    width: 20,
-                    height: 20,
-                    cursor: "pointer"
-                }} />
-                <div style={{
-                    marginLeft: 4,
-                    fontSize: 16,
-                    fontWeight: "bold",
-                    color: "#051a1a",
-                    alignSelf: "center",
-                    justifyContent: "center",
-                    fontFamily: "NotoSansCJKkr"
-                }}>나누다</div>
-            </div>
+                width: "30vw",
+            }} />
+            <div style={{
+                fontSize: 18,
+                color: "#051a1a",
+                fontFamily: "AvenirNext",
+                textAlign: "center",
+                width: "30vw"
+            }}>Haul Free</div>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
+                justifyContent: "flex-end",
 
-                marginRight: "5vw",
+                paddingRight: "5vw",
+                width: "25vw"
             }}>
                 <img onClick={noticeClick} alt="" src={bell} style={{
                     width: 24,
