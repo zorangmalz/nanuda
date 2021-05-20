@@ -167,6 +167,7 @@ export default function SignupProfile() {
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="회원정보" goBack={true} />
                         <Title>이름</Title>
