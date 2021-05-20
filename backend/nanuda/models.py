@@ -11,7 +11,7 @@ class User(models.Model):
         (WOMAN, "여성"),
     ]
     id = models.BigAutoField(primary_key=True)
-    user_email = models.EmailField(unique=True)
+    user_email = models.EmailField(default="")
     nickname = models.TextField(unique=True,blank=True) 
     name = models.TextField(default="나누다")
     job = models.CharField(max_length=30, default="",blank=True)

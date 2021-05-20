@@ -38,6 +38,30 @@ def user_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# User 하나만 보여줌
+@api_view(["GET", "PATCH", "DELETE"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+def user_one(request, pk):
+    try:
+        user = User.objects.get(pk=pk)
+    except User.DoesNotExist():
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == "GET":
+        user_serializer = UserAllSerializer(user)
+        return Response(user_serializer.data)
+    
+    elif request.method == "PATCH":
+        user_serializer = UserAllSerializer(user, data=request.data)
+        if user_serializer.is_valid():
+            user_serializer.save()
+            return Response(user_serializer.data)
+        return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == 'DELETE':
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 # ServiceReview
 @api_view(["GET", "POST"])

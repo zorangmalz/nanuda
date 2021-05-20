@@ -236,7 +236,7 @@ export default function ProfileMain() {
     const pk = 7
     async function NicknameChange() {
         await fetch(`http://127.0.0.1:8000/user/${pk}`, {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'

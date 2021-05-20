@@ -20,7 +20,7 @@ from nanuda.views import GoogleLogin, KakaoLogin,userInfoName,uploadAddress,chec
 #API 제작
 from rest_framework.urlpatterns import format_suffix_patterns
 from nanuda.views import KakaoLogin, GoogleLogin
-from data.views import user_list, service_review_all, product_all, review_all, order_all, review_one, review_home, service_review_home
+from data.views import user_list, service_review_all, product_all, review_all, order_all, review_one, review_home, service_review_home, user_one
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +28,7 @@ urlpatterns = [
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
     path('user/', user_list),
+    path('user/<int:pk>', user_one),
     path('servicereview/', service_review_all),
     path('servicereview/home', service_review_home),
     path('product/', product_all),
