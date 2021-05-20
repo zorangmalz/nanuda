@@ -50,11 +50,12 @@ export default function Alarm() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "flex-start",
+                        justifyContent: "space-between",
 
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="알림" goBack={true} />
                         <div style={{

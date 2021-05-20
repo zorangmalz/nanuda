@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { BottomTag, Header, MBottomTag, MHeader } from "../Style";
 import { IoPersonCircle } from "react-icons/io5";
@@ -6,7 +6,22 @@ import { BsPencil } from "react-icons/bs";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
 import { useHistory } from "react-router";
-import axios from "axios"
+import AWS from "aws-sdk";
+
+const AWS_ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
+const AWS_SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
+const S3_BUCKET = process.env.REACT_APP_S3_IMAGE_BUCKET
+const REGION = process.env.REACT_APP_REGION
+
+AWS.config.update({
+    accessKeyId: AWS_ACCESS_KEY,
+    secretAccessKey: AWS_SECRET_KEY
+})
+
+const imageBucket = new AWS.S3({
+    params: { Bucket: "haulfree-user" },
+    region: REGION
+})
 
 const MyInfoList = ({ standard, current, limit, path }) => {
     let history = useHistory()
@@ -241,7 +256,10 @@ export default function ProfileMain() {
         point: 0,
         review: 0,
         product: 0,
+        uid: "",
+        profile: ""
     })
+
     useEffect(() => {
         fetch('userinfo/', {
             method: "GET",
@@ -252,13 +270,14 @@ export default function ProfileMain() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 setUser({
                     ...user,
                     nickname: response.nickname,
                     user_email: response.user_email,
                     limit: response.limit,
-                    point: response.point
+                    point: response.point,
+                    uid: response.uid,
+                    profile: response.profile
                 })
             })
             .catch(err => console.log(err))
@@ -289,6 +308,77 @@ export default function ProfileMain() {
                 setNickModal(false)
             })
     }
+
+    //ImageToS3
+    //이미지 진행상황
+    const [progress, setProgress] = useState(0)
+
+    //이미지 컴포넌트
+    const inputFile = useRef(null)
+
+    //이미지 저장 및 경로
+    const [selectedFile, setSelectedFile] = useState([])
+    const [filePath, setFilePath] = useState([])
+
+    const onButtonclick = () => {
+        inputFile.current.click()
+    }
+
+    //이미지 경로 저장
+    const handelFileInput = (e) => {
+        const files = e.target.files;
+        setSelectedFile(selectedFile => [...selectedFile, files[0]])
+        setFilePath(filePath => [...filePath, URL.createObjectURL(files[0])])
+    }
+
+    useEffect(() => {
+        if (filePath.length > 0) {
+            uploadFile()
+        }
+    }, [filePath])
+
+    //s3로 업로드 후 URL을 RDS에 삽입 + user_id, product_id는 추후에 수정
+    const uploadFile = async () => {
+        console.log(selectedFile)
+        var image;
+        const params = {
+            ACL: "public-read",
+            Body: selectedFile[0],
+            Bucket: "haulfree-user",
+            Key: `${user.uid}/${selectedFile[0].name}`
+        }
+
+        imageBucket.putObject(params)
+            .on("httpUploadProgress", (evt) => {
+                setProgress(Math.round((evt.loaded / evt.total) * 100))
+            })
+            .send((err) => {
+                if (err) {
+                    console.log(err)
+                }
+            })
+        image = `https://haulfree-user.s3.ap-northeast-2.amazonaws.com/${user.uid}/${selectedFile[0].name}`
+        await fetch('userinfo/', {
+            method: "PUT",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                profile: image,
+                user_email: "jinsung1048@nate.com"
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                setUser({
+                    ...user,
+                    profile: response.profile
+                })
+            }).catch(err => {
+                console.log(err)
+            })
+    }
     return (
         <>
             <Default>
@@ -305,11 +395,12 @@ export default function ProfileMain() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "flex-start",
+                        justifyContent: "space-between",
 
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         {nickModal ?
                             <>
@@ -407,7 +498,31 @@ export default function ProfileMain() {
                                 alignItems: "center",
                                 marginBottom: 16
                             }}>
-                                <IoPersonCircle size={72} color="#dbdbdb" style={{ objectFit: "contain" }} />
+                                {user.profile.length > 0 ?
+                                    <>
+                                        <img src={user.profile} alt="프로필 사진" style={{
+                                            width: 72,
+                                            height: 72,
+                                            borderRadius: 36,
+                                        }} />
+                                    </>
+                                    :
+                                    <>
+                                        <div onClick={onButtonclick} style={{
+                                            borderRadius: 6,
+                                            cursor: "pointer",
+
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center"
+                                        }}>
+                                            <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
+                                                display: "none"
+                                            }} />
+                                            <IoPersonCircle size={72} color="#dbdbdb" style={{ objectFit: "contain" }} />
+                                        </div>
+                                    </>
+                                }
                                 <div style={{
                                     display: "flex",
                                     flexDirection: "column",
@@ -612,7 +727,31 @@ export default function ProfileMain() {
                             alignItems: "center",
                             marginBottom: 12
                         }}>
-                            <IoPersonCircle size={60} color="#dbdbdb" style={{ objectFit: "contain" }} />
+                            {user.profile.length > 0 ?
+                                <>
+                                    <img src={user.profile} alt="프로필 사진" style={{
+                                        width: 60,
+                                        height: 60,
+                                        borderRadius: 30,
+                                    }} />
+                                </>
+                                :
+                                <>
+                                    <div onClick={onButtonclick} style={{
+                                        borderRadius: 6,
+                                        cursor: "pointer",
+
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center"
+                                    }}>
+                                        <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
+                                            display: "none"
+                                        }} />
+                                        <IoPersonCircle size={60} color="#dbdbdb" style={{ objectFit: "contain" }} />
+                                    </div>
+                                </>
+                            }
                             <div style={{
                                 display: "flex",
                                 flexDirection: "column",

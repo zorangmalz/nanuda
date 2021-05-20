@@ -22,11 +22,12 @@ export default function ProfilePaymentMethod() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "flex-start",
+                        justifyContent: "space-between",
 
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="결제 계좌 관리" goBack={true} />
                         <RegisterForm

@@ -19,7 +19,7 @@ class User(models.Model):
     age = models.PositiveIntegerField(blank=True, default=0)
     joinday = models.DateTimeField(auto_now_add=True)
     limit =  models.IntegerField(blank=True, default=0)
-    profile = models.URLField(blank=True, default="")
+    profile = models.TextField(blank=True, default="")
     phone_number = PhoneNumberField(blank=True, default="+821090373600")
     address_exist=models.BooleanField(blank=True,default=False)
     address_number = models.TextField(blank=True, default="우편번호")

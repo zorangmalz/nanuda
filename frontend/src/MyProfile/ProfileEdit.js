@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
@@ -19,6 +19,41 @@ export default function ProfileEdit() {
         phoneNumber: "010-4337-6607",
         request: "배송 요청사항: 집앞"
     }
+
+    //현재 유저 정보
+    const [user, setUser] = useState({
+        name: "",
+        gender: 0,
+        user_email: "",
+        profile: "",
+        job: "",
+        phone_number: ""
+    })
+
+    useEffect(() => {
+        fetch('userinfo/', {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                setUser({
+                    ...user,
+                    name: response.name,
+                    gender: response.gender,
+                    user_email: response.user_email,
+                    profile: response.profile,
+                    job: response.job,
+                    phone_number: response.phone_number
+                })
+            })
+            .catch(err => console.log(err))
+    }, [])
+
     return (
         <>
             <Default>
@@ -40,6 +75,7 @@ export default function ProfileEdit() {
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <div style={{
                             display: "flex",
@@ -47,16 +83,30 @@ export default function ProfileEdit() {
                             width: "100%",
                         }}>
                             <Header content="내 정보 관리" goBack={true} />
-                            <FaUserCircle
-                                size={72}
-                                color="#dbdbdb"
-                                style={{
-                                    marginTop: 32,
-                                    marginBottom: 32,
-                                    alignSelf: "center",
-                                    cursor: "pointer"
-                                }}
-                            />
+                            {user.profile.length > 0 ?
+                                <>
+                                    <img src={user.profile} alt="프로필 사진" style={{
+                                        width: 72,
+                                        height: 72,
+                                        borderRadius: 36,
+                                        marginTop: 32,
+                                        marginBottom: 32,
+                                        alignSelf: "center",
+                                    }} />
+                                </>
+                                :
+                                <>
+                                    <FaUserCircle
+                                        size={72}
+                                        color="#dbdbdb"
+                                        style={{
+                                            marginTop: 32,
+                                            marginBottom: 32,
+                                            alignSelf: "center",
+                                        }}
+                                    />
+                                </>
+                            }
                             <div style={{
                                 marginLeft: 20,
 
@@ -66,13 +116,13 @@ export default function ProfileEdit() {
                             }}>
                                 <Profile
                                     title="이름"
-                                    content="김현명"
+                                    content={user.name}
                                     marginRight={20}
                                     width={90}
                                 />
                                 <Profile
                                     title="성별"
-                                    content="남자"
+                                    content={user.gender == 0 ? "남자" : "여자"}
                                     marginRight={0}
                                     width={90}
                                 />
@@ -85,21 +135,21 @@ export default function ProfileEdit() {
                             />
                             <ProfileWithButton
                                 title="핸드폰 번호"
-                                content="010-4337-6607"
+                                content={user.phone_number}
                                 width={440}
                                 buttonText="재인증"
                                 onClick={onPhoneVerify}
                             />
                             <ProfileWithButton
                                 title="직업"
-                                content="대학생"
+                                content={user.job}
                                 width={440}
                                 buttonText="인증하기"
                                 onClick={onJobVerify}
                             />
                             <Profile
                                 title="이메일 주소"
-                                content="hyunmyung137@gmail.com"
+                                content={user.user_email}
                                 marginRight={0}
                                 width={440}
                             />
@@ -148,16 +198,30 @@ export default function ProfileEdit() {
                         width: "100%",
                     }}>
                         <MHeader content="내 정보 관리" goBack={true} />
-                        <FaUserCircle
-                            size={60}
-                            color="#dbdbdb"
-                            style={{
-                                marginTop: 28,
-                                marginBottom: 28,
-                                alignSelf: "center",
-                                cursor: "pointer"
-                            }}
-                        />
+                        {user.profile.length > 0 ?
+                            <>
+                                <img src={user.profile} alt="프로필 사진" style={{
+                                    width: 60,
+                                    height: 60,
+                                    borderRadius: 30,
+                                    marginTop: "7vw",
+                                    marginBottom: "7vw",
+                                    alignSelf: "center",
+                                }} />
+                            </>
+                            :
+                            <>
+                                <FaUserCircle
+                                    size={60}
+                                    color="#dbdbdb"
+                                    style={{
+                                        objectFit: "contain",
+                                        marginTop: "7vw",
+                                        marginBottom: "7vw",
+                                        alignSelf: "center",
+                                    }} />
+                            </>
+                        }
                         <div style={{
                             marginLeft: "5vw",
 
@@ -167,15 +231,15 @@ export default function ProfileEdit() {
                         }}>
                             <MProfile
                                 title="이름"
-                                content="김현명"
+                                content={user.name}
                                 marginRight={10}
-                                width={80}
+                                width={"20vw"}
                             />
                             <MProfile
                                 title="성별"
-                                content="남자"
+                                content={user.gender == 0 ? "남자" : "여자"}
                                 marginRight={0}
-                                width={80}
+                                width={"20vw"}
                             />
                         </div>
                         <MProfile
@@ -186,21 +250,21 @@ export default function ProfileEdit() {
                         />
                         <MProfileWithButton
                             title="핸드폰 번호"
-                            content="010-4337-6607"
+                            content={user.phone_number}
                             width={"90vw"}
                             buttonText="재인증"
                             onClick={onPhoneVerify}
                         />
                         <MProfileWithButton
                             title="직업"
-                            content="대학생"
+                            content={user.job}
                             width={"90vw"}
                             buttonText="인증하기"
                             onClick={onJobVerify}
                         />
                         <MProfile
                             title="이메일 주소"
-                            content="hyunmyung137@gmail.com"
+                            content={user.user_email}
                             marginRight={0}
                             width={"90vw"}
                         />

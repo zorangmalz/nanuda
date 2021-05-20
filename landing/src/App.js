@@ -273,7 +273,7 @@ function App() {
               marginTop: "4vw",
               lineHeight: 1.5,
               marginBottom: "4vw",
-            }}>너무 높은 가격 때문에 망설이지 마세요! 하울프리가 도와줄게요!
+            }}>높은 가격 때문에 망설이지 마세요! 하울프리가 도와줄게요!
       무이자 분할결제를 통해 당신의 소비생활에 자유를 선사하세요.</div>
             <button id="track" onClick={() => {
               ReactGA.event({
@@ -530,7 +530,7 @@ function App() {
                 marginTop: 32,
                 lineHeight: 1.5,
                 marginBottom: 48,
-              }}>너무 높은 가격 때문에 망설이지 마세요! 하울프리가 도와줄게요! <br />
+              }}>높은 가격 때문에 망설이지 마세요! 하울프리가 도와줄게요! <br />
       무이자 분할결제를 통해 당신의 소비생활에 자유를 선사하세요.</div>
               <button id="track" onClick={() => {
                 ReactGA.event({

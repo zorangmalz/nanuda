@@ -21,11 +21,12 @@ export default function ProfilePayment() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "flex-start",
+                        justifyContent: "space-between",
 
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="분할결제 스케쥴" goBack={true} />
                         <BNPLForm state={1} date="2021.03.13" title="PRADA Model 23-9 limited… 
