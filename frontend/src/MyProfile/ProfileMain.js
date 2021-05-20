@@ -248,8 +248,11 @@ export default function ProfileMain() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
-            }).catch(err => console.log(err))
+                setNickModal(false)
+            }).catch(err => {
+                console.log(err)
+                setNickModal(false)
+            })
     }
     return (
         <>
