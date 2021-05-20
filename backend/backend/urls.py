@@ -28,7 +28,7 @@ urlpatterns = [
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
     path('user/', user_list),
-    path('user/<int:pk>', user_one),
+    path('userinfo/', user_one),
     path('servicereview/', service_review_all),
     path('servicereview/home', service_review_home),
     path('product/', product_all),

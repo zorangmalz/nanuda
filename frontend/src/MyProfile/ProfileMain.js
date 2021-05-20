@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { BottomTag, Header, MBottomTag, MHeader } from "../Style";
 import { IoPersonCircle } from "react-icons/io5";
@@ -233,10 +233,41 @@ export default function ProfileMain() {
         })
     }
 
-    const pk = 7
+    //현재 유저 정보
+    const [user, setUser] = useState({
+        nickname: "",
+        user_email: "",
+        limit: 0,
+        point: 0,
+        review: 0,
+        product: 0,
+    })
+    useEffect(() => {
+        fetch('userinfo/', {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                setUser({
+                    ...user,
+                    nickname: response.nickname,
+                    user_email: response.user_email,
+                    limit: response.limit,
+                    point: response.point
+                })
+            })
+            .catch(err => console.log(err))
+    }, [])
+
+    //닉네임 변경
     async function NicknameChange() {
-        await fetch(`http://127.0.0.1:8000/user/${pk}`, {
-            method: "PATCH",
+        await fetch('userinfo/', {
+            method: "PUT",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
@@ -248,6 +279,10 @@ export default function ProfileMain() {
         })
             .then(response => response.json())
             .then(response => {
+                setUser({
+                    ...user,
+                    nickname: input.nickname
+                })
                 setNickModal(false)
             }).catch(err => {
                 console.log(err)
@@ -391,7 +426,7 @@ export default function ProfileMain() {
                                             fontWeight: "bold",
                                             color: "#202426",
                                             marginRight: 4,
-                                        }}>나누다 1</div>
+                                        }}>{user.nickname}</div>
                                         <BsPencil onClick={() => setNickModal(true)} style={{
                                             cursor: "pointer"
                                         }} size={15} color="rgba(5, 26, 26, 0.6)" />
@@ -401,7 +436,7 @@ export default function ProfileMain() {
                                         fontSize: 16,
                                         opacity: 0.6,
                                         color: "#202426",
-                                    }}>hyunmyung137@gmail.com</div>
+                                    }}>{user.user_email}</div>
                                 </div>
                             </div>
                             <div style={{
@@ -412,10 +447,10 @@ export default function ProfileMain() {
 
                                 width: 440,
                             }}>
-                                <MyInfoList standard="나누다 한도" current={300000} limit={true} path="/profilelimit" />
-                                <MyInfoList standard="나누다 포인트" current={100} limit={false} path="profilepoint" />
-                                <MyInfoList standard="내 리뷰" current={10} limit={false} path="/profilereview" />
-                                <MyInfoList standard="내가 구매한 상품" current={10} limit={false} path="/profileproduct" />
+                                <MyInfoList standard="나누다 한도" current={user.limit} limit={true} path="/profilelimit" />
+                                <MyInfoList standard="나누다 포인트" current={user.point} limit={false} path="profilepoint" />
+                                <MyInfoList standard="내 리뷰" current={user.review} limit={false} path="/profilereview" />
+                                <MyInfoList standard="내가 구매한 상품" current={user.product} limit={false} path="/profileproduct" />
                             </div>
                         </div>
                         <div style={{
@@ -481,6 +516,82 @@ export default function ProfileMain() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
+                    {nickModal ?
+                        <>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: "100vw",
+                                height: "100vh",
+                                position: "fixed",
+                                top: 0,
+                                zIndex: 2,
+                            }}>
+                                <div style={{
+                                    width: "75vw",
+                                    paddingTop: "4vw",
+                                    borderRadius: 6,
+                                    backgroundColor: "#ffffff",
+
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    zIndex: 2,
+                                }}>
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKKR",
+                                        fontSize: 12,
+                                        fontWeight: "bold",
+                                        color: "#051a1a",
+                                        marginBottom: "4vw",
+                                    }}>변경할 닉네임을 입력해주세요.</div>
+                                    <input value={nickname} name="nickname" onChange={onChange} placeholder="영문, 한글, 숫자 포함 8자리 이내" style={{
+                                        width: "60vw",
+                                        paddingTop: "2vw",
+                                        paddingBottom: "2vw",
+                                        paddingLeft: "2vw",
+                                        paddingRight: "2vw",
+                                        borderRadius: 10,
+
+                                        fontFamily: "NotoSansCJKKR",
+                                        fontSize: 12,
+                                        color: "#202426",
+                                        marginBottom: "5vw",
+                                        backgroundColor: "rgba(118, 118, 128, 0.12)",
+                                        outline: 0,
+                                        border: 0,
+                                    }} />
+                                    <div onClick={NicknameChange} style={{
+                                        cursor: "pointer",
+                                        width: "75vw",
+                                        paddingTop: "3vw",
+                                        paddingBottom: "3vw",
+                                        backgroundColor: "#26c1f0",
+                                        textAlign: "center",
+                                        borderBottomLeftRadius: 6,
+                                        borderBottomRightRadius: 6,
+
+                                        fontFamily: "NotoSansCJKKR",
+                                        fontSize: 12,
+                                        fontWeight: "bold",
+                                        color: "#ffffff"
+                                    }}>확인</div>
+                                </div>
+                            </div>
+                            <div style={{
+                                width: "100vw",
+                                height: "100vh",
+                                position: "fixed",
+                                top: 0,
+                                backgroundColor: "rgba(5, 26, 26, 0.4)",
+                                zIndex: 1
+                            }} />
+                        </>
+                        :
+                        <></>
+                    }
                     <MHeader content="마이페이지" goBack={true} />
                     <div style={{
                         paddingTop: "8vw",
@@ -520,15 +631,15 @@ export default function ProfileMain() {
                                         fontWeight: "bold",
                                         color: "#202426",
                                         marginRight: 4,
-                                    }}>나누다 1</div>
-                                    <BsPencil size={12} color="rgba(5, 26, 26, 0.6)" />
+                                    }}>{user.nickname}</div>
+                                    <BsPencil onClick={() => setNickModal(true)} size={12} color="rgba(5, 26, 26, 0.6)" />
                                 </div>
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 14,
                                     opacity: 0.6,
                                     color: "#202426",
-                                }}>hyunmyung137@gmail.com</div>
+                                }}>{user.user_email}</div>
                             </div>
                         </div>
                         <div style={{
@@ -539,10 +650,10 @@ export default function ProfileMain() {
 
                             width: "90vw",
                         }}>
-                            <MMyInfoList standard="나누다 한도" current={300000} limit={true} path="/profilelimit" />
-                            <MMyInfoList standard="나누다 포인트" current={100} limit={false} path="profilepoint" />
-                            <MMyInfoList standard="내 리뷰" current={10} limit={false} path="/profilereview" />
-                            <MMyInfoList standard="내가 구매한 상품" current={10} limit={false} path="/profileproduct" />
+                            <MMyInfoList standard="나누다 한도" current={user.limit} limit={true} path="/profilelimit" />
+                            <MMyInfoList standard="나누다 포인트" current={user.point} limit={false} path="profilepoint" />
+                            <MMyInfoList standard="내 리뷰" current={user.review} limit={false} path="/profilereview" />
+                            <MMyInfoList standard="내가 구매한 상품" current={user.product} limit={false} path="/profileproduct" />
                         </div>
                     </div>
                     <div style={{
@@ -597,73 +708,6 @@ export default function ProfileMain() {
                     <MBottomTag marginTop={60} marginBottom={0} />
                 </div>
             </Mobile>
-        </>
-    )
-}
-
-const ChangeNickname = ({}) => {
-    return (
-        <>
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                height: "100vh",
-                position: "fixed",
-                top: 0,
-                zIndex: 2,
-            }}>
-                <div style={{
-                    width: 300,
-                    paddingTop: 16,
-                    borderRadius: 6,
-                    backgroundColor: "#ffffff",
-
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                }}>
-                    <div style={{
-                        fontFamily: "NotoSansCJKKR",
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        color: "#051a1a",
-                        marginBottom: 16,
-                    }}>변경할 닉네임을 입력해주세요.</div>
-                    <input placeholder="영문, 한글, 숫자 포함 8자리 이내" style={{
-                        width: 252,
-                        padding: "7px 8px",
-                        borderRadius: 10,
-
-                        fontFamily: "NotoSansCJKKR",
-                        fontSize: 14,
-                        color: "#202426",
-                        marginBottom: 22,
-                    }} />
-                    <div style={{
-                        cursor: "pointer",
-                        width: 300,
-                        paddingTop: 14,
-                        paddingBottom: 14,
-                        backgroundColor: "#26c1f0",
-
-                        fontFamily: "NotoSansCJKKR",
-                        fontSize: 14,
-                        fontWeight: "bold",
-                        color: "#ffffff"
-                    }}>확인</div>
-                </div>
-            </div>
-            <div style={{
-                width: "100%",
-                height: "100vh",
-                position: "fixed",
-                top: 0,
-                backgroundColor: "rgba(5, 26, 26, 0.4)",
-                zIndex: 1
-            }} />
         </>
     )
 }
