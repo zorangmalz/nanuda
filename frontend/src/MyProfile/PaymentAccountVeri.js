@@ -54,7 +54,6 @@ export default function PaymentAccountVeri() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between",
 
                         width: 480,
                         minHeight: "100vh",
