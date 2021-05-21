@@ -96,8 +96,15 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'latel-haulfree-1',
+        'USER': 'admin',
+        'PASSWORD': 'wlstjdtjsdnd1!',
+        'HOST': 'latel-haulfree-1.cfsgt49znyoo.ap-northeast-2.rds.amazonaws.com',
+        'POST': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
