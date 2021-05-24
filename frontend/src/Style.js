@@ -504,17 +504,9 @@ export function BottomTag({ marginTop, marginBottom }) {
                 marginTop: 32
             }}>
                 <img src={logoS} alt="로고" style={{
-                    width: 30,
-                    height: 30,
+                    width: 120,
                     color: "#ffffff"
                 }} />
-                <div style={{
-                    fontFamily: "AvenirNext",
-                    fontSize: 21,
-                    fontWeight: "bold",
-                    color: "#202426",
-                    marginLeft: 16
-                }}>Haul Free</div>
             </div>
             <div style={{
                 fontSize: 14,
@@ -532,10 +524,10 @@ export function BottomTag({ marginTop, marginBottom }) {
                 color: "#051a1a",
                 marginTop: 8
             }}>
-                사업자 등록번호 123-12-12345 <br />
+                사업자 등록번호 278-88-02031 <br />
                 대표자 : 김현명, 이지행 <br />
                 통신판매업 신고번호 : 제2021-서울종로-2302호 <br />
-                주소 : 서울특별시 종로구 성균관로 35길 38  킹고 스타트업 스페이스 306호 <br />
+                주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
             </div>
             <div style={{
                 width: 440,
@@ -734,17 +726,9 @@ export function MBottomTag({ marginTop, marginBottom }) {
                 marginTop: 24
             }}>
                 <img src={logoS} alt="로고" style={{
-                    width: 26,
-                    height: 26,
+                    width: "30vw",
                     color: "#ffffff"
                 }} />
-                <div style={{
-                    fontFamily: "AvenirNext",
-                    fontSize: 18,
-                    fontWeight: "bold",
-                    color: "#202426",
-                    marginLeft: 12
-                }}>Haul Free</div>
             </div>
             <div style={{
                 fontSize: 12,
@@ -762,10 +746,10 @@ export function MBottomTag({ marginTop, marginBottom }) {
                 color: "#051a1a",
                 marginTop: 6
             }}>
-                사업자 등록번호 123-12-12345 <br />
+                사업자 등록번호 278-88-02031 <br />
                         대표자 : 김현명, 이지행 <br />
                         통신판매업 신고번호 : 제2021-서울종로-2302호 <br />
-                        주소 : 서울특별시 종로구 성균관로 35길 38  킹고 스타트업 스페이스 306호 <br />
+                        주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
             </div>
             <div style={{
                 width: "90%",
