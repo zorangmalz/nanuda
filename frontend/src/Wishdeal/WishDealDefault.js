@@ -20,7 +20,7 @@ export default function WishDealDefault() {
     }
     const ogtag = async () => {
         let res = await axios.post(
-            "http://localhost:3001/api",
+            "http://15.164.94.36:3001/api",
             {
                 params:
                 {

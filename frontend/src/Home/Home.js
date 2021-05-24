@@ -180,7 +180,7 @@ export default function Home() {
                             marginTop: 4,
                             marginLeft: 20,
                             marginBottom: 16,
-                        }}>할인된 상품을 BNPL하세요!</div>
+                        }}>할인된 상품을 분할결제 하세요!</div>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -417,7 +417,7 @@ export default function Home() {
                         marginTop: 4,
                         marginLeft: "5%",
                         marginBottom: "4vw",
-                    }}>할인된 상품을 BNPL하세요!</div>
+                    }}>할인된 상품을 분할결제 하세요!</div>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
