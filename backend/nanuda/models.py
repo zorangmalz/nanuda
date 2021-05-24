@@ -12,7 +12,7 @@ class User(models.Model):
     ]
     id = models.BigAutoField(primary_key=True)
     user_email = models.EmailField()
-    nickname = models.TextField(unique=True,blank=True) 
+    nickname = models.CharField(unique=True,blank=True, max_length=30) 
     name = models.TextField(default="나누다")
     job = models.CharField(max_length=30, default="",blank=True)
     gender = models.IntegerField(choices=GENDER_CHOICE, default=2,blank=True)
@@ -36,11 +36,12 @@ class User(models.Model):
     bank = models.CharField(max_length=30, blank=True, default="은행")
     account = models.CharField(max_length=30, blank=True, default="계좌")
 
-    class Meta:
-        ordering = ["id", "joinday"]
-
     def __str__(self):
         return "{}".format(self.user_email)
+
+    class Meta:
+        ordering = ["id", "joinday"]
+        managed=True
     
 
 class ServiceReview(models.Model):
@@ -66,6 +67,7 @@ class ServiceReview(models.Model):
 
     class Meta:
         ordering = ["id", "service_date"]
+        managed=True
     
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -84,6 +86,7 @@ class Product(models.Model):
     
     class Meta:
         ordering = ["id", "product_type", "product_price"]
+        managed=True
 
 
 class Review(models.Model):
@@ -110,6 +113,7 @@ class Review(models.Model):
 
     class Meta:
         ordering=["id", "review_date"]
+        managed=True
 
 class Order(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -148,3 +152,4 @@ class Order(models.Model):
     
     class Meta:
         ordering = ["id", "order_date"]
+        managed=True

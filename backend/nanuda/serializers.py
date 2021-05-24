@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, ServiceReview, Product, Review, Order
+from nanuda.models import User, ServiceReview, Product, Review, Order
 
 class UserAllSerializer(serializers.ModelSerializer):
     class Meta:
