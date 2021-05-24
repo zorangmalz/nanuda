@@ -45,25 +45,7 @@ const MAfterContainer = styled.div`
 
 export default function Home() {
     let history = useHistory()
-
-    //nanuda data
-    const nanudaData = [
-        {
-            id: "CVIANAN_123",
-            pic: "#f2f3f8",
-            title: "Prada Berry Expensive 123",
-            content: "타임딜로 빠르게 구매했어요!! 여자친구가 진짜 좋아해요",
-            money: 70000
-        }, {
-            id: "CVIANAN_123",
-            pic: "#f2f3f8",
-            like: 100,
-            title: "Prada Berry Expensive 123",
-            content: "타임딜로 빠르게 구매했어요!! 여자친구가 진짜 좋아해요",
-            money: 70000
-        },
-    ]
-
+    
     //Get Service Review Data
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {
@@ -78,7 +60,7 @@ export default function Home() {
             .then(response => response.json())
             .then(response => {
                 var array = []
-                for (var i = 0; i < 2; i++) {
+                for (var i = 0; i < response.length; i++) {
                     const data = {
                         service_score: response[i].service_score.toFixed(1),
                         user_name: response[i].user_name,
