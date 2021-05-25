@@ -230,7 +230,7 @@ class KakaoLogin(View):
             
             res=HttpResponse({"success":True})
            
-            res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True,domain=".haulfree.io")
+            res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True,domain=".haulfree.io")
             return res
 
         else: 
@@ -258,7 +258,7 @@ class KakaoLogin(View):
                 print(jwt_token,"fixed")
             res=HttpResponse({"success":True})
           
-            res.set_cookie(key="access_token",value=jwt_token,httponly=True,secure=True,domain=".haulfree.io")
+            res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True,domain=".haulfree.io")
             return res
 
 
