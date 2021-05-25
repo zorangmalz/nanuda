@@ -24,7 +24,7 @@ export default function Write() {
     const [userId,setUserId]=useState("")    
     async function putServiceReview() {
         let res = await axios.get(
-            "http://localhost:8000/servicereviewornot/",
+            "http://15.164.94.36:8000/servicereviewornot/",
          
             { withCredentials: true }
         )
@@ -34,7 +34,7 @@ export default function Write() {
             service_score: number, service_content: after, service_opinion: opinion, user_id: res.data.id
         }
         console.log(data)
-        await fetch("http://127.0.0.1:8000/servicereview/", {
+        await fetch("http://15.164.94.36:8000/servicereview/", {
             method: "POST",
             headers: {
                 "Accept": "application/json",

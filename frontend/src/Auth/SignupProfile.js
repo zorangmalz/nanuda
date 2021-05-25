@@ -94,7 +94,7 @@ export default function SignupProfile() {
     const test = async () => {
         console.log("come")
         let response = await axios.get(
-            "http://localhost:8000/userInfoName/",
+            "http://15.164.94.36:8000/userInfoName/",
             { withCredentials: true }
         )
 

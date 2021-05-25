@@ -103,7 +103,7 @@ export default function ReviewWrite() {
             review_dislike: inputs.dislike,
             review_image: imageArray
         }
-        await fetch("http://127.0.0.1:8000/review/", {
+        await fetch("http://15.164.94.36:8000/review/", {
             method: "POST",
             headers: {
                 "Accept": "application/json",

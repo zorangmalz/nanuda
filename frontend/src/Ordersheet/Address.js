@@ -169,7 +169,7 @@ export default function Address() {
     async function send() {
         console.log(inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber)
         let res = await axios.post(
-            "http://localhost:8000/uploadAddress/",
+            "http://15.164.94.36:8000/uploadAddress/",
             {
                 params:
                 {

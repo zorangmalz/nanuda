@@ -42,7 +42,7 @@ export default function Signup() {
         console.log(response, "here")
 
         let res = await axios.post(
-            "http://localhost:8000/rest-auth/google/",
+            "http://15.164.94.36:8000/rest-auth/google/",
             {
                 params:
                 {
@@ -65,7 +65,7 @@ export default function Signup() {
         // console.log("fullResponse",response)
         // console.log(response.response.access_token)
         let res = await axios.post(
-            "http://localhost:8000/rest-auth/kakao/",
+            "http://15.164.94.36:8000/rest-auth/kakao/",
             {
                 params:
                 {
@@ -87,7 +87,7 @@ export default function Signup() {
     const test = async () => {
         console.log("come")
         let response = await axios.get(
-            "http://localhost:8000/userInfoName/",
+            "http://15.164.94.36:8000/userInfoName/",
             { withCredentials: true }
         )
         console.log(response)

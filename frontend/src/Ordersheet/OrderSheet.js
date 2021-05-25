@@ -40,7 +40,7 @@ export default function OrderSheet() {
     }
     async function addressCheck(){
         let res = await axios.get(
-            "http://localhost:8000/checkAddress/",
+            "http://15.164.94.36:8000/checkAddress/",
             { withCredentials: true }
         )
         console.log(res)
@@ -267,7 +267,7 @@ export default function OrderSheet() {
         if(basicAddress&&payment){
             // history.push("paymentsuccess",{myparam:myparam})
             let res = await axios.post(
-                "http://localhost:8000/orderupload/",{
+                "http://15.164.94.36:8000/orderupload/",{
                     params:{
                         myparam:myparam,
                         ship:item,

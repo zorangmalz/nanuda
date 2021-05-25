@@ -23,7 +23,7 @@ export default function ReviewMain() {
     const [data, setData] = useState([])
     useEffect(() => {
         setData([])
-        fetch("http://127.0.0.1:8000/review", {
+        fetch("http://15.164.94.36:8000/review", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

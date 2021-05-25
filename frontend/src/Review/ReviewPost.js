@@ -28,7 +28,7 @@ export default function ReviewPost({ match }) {
     const [like, setLike] = useState(0)
     useEffect(() => {
         const { pk } = match.params
-        fetch(`http://127.0.0.1:8000/review/${pk}`, {
+        fetch(`http://15.164.94.36:8000/review/${pk}`, {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -60,7 +60,7 @@ export default function ReviewPost({ match }) {
             id: pk, user_id: data.user_id,
             product_id: data.product_id, review_alert: data.review_alert + 1
         }
-        await fetch(`http://127.0.0.1:8000/review/${pk}`, {
+        await fetch(`http://15.164.94.36:8000/review/${pk}`, {
             method: "PUT",
             headers: {
                 'Content-type': 'application/json',
@@ -89,7 +89,7 @@ export default function ReviewPost({ match }) {
             }
         }
 
-        await fetch(`http://127.0.0.1:8000/review/${pk}`, {
+        await fetch(`http://15.164.94.36:8000/review/${pk}`, {
             method: "PUT",
             headers: {
                 'Content-type': 'application/json',
@@ -116,7 +116,7 @@ export default function ReviewPost({ match }) {
                 user_id: data.user_id, product_id: data.product_id
             }
         }
-        await fetch(`http://127.0.0.1:8000/review/${pk}`, {
+        await fetch(`http://15.164.94.36:8000/review/${pk}`, {
             method: "PUT",
             headers: {
                 'Content-type': 'application/json',
@@ -144,7 +144,7 @@ export default function ReviewPost({ match }) {
                 user_id: data.user_id, product_id: data.product_id
             }
         }
-        await fetch(`http://127.0.0.1:8000/review/${pk}`, {
+        await fetch(`http://15.164.94.36:8000/review/${pk}`, {
             method: "PUT",
             headers: {
                 'Content-type': 'application/json',
@@ -159,7 +159,7 @@ export default function ReviewPost({ match }) {
     }
 
     const deletePost = async () => {
-        await fetch(`http://127.0.0.1:8000/review/${pk}`, {
+        await fetch(`http://15.164.94.36:8000/review/${pk}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',

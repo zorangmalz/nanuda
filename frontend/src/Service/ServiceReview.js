@@ -10,7 +10,7 @@ export default function ServiceReview() {
     const [noReview, setNoReview] = useState(false)
     async function checkReview(){
         let res = await axios.get(
-            "http://localhost:8000/servicereviewornot/",
+            "http://15.164.94.36:8000/servicereviewornot/",
          
             { withCredentials: true }
         )
@@ -25,7 +25,7 @@ export default function ServiceReview() {
     useEffect(() => {
         checkReview()
         setReviewData([])
-        fetch("/servicereview/", {
+        fetch("http://15.164.94.36:8000/servicereview/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
