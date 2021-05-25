@@ -50,7 +50,7 @@ export default function Home() {
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {
         setReviewData([])
-        fetch("http://127.0.0.1:8000/servicereview/home", {
+        fetch("http://15.164.94.36:8000/servicereview/home", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -79,7 +79,7 @@ export default function Home() {
     const [review, setReview] = useState([])
     useEffect(() => {
         setReview([])
-        fetch("http://127.0.0.1:8000/review/home", {
+        fetch("http://15.164.94.36:8000/review/home", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

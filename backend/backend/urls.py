@@ -24,9 +24,6 @@ from data.views import user_list, service_review_all, product_all, review_all, o
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    path('rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
     path('user/', user_list),
     path('userinfo/', user_one),
     path('servicereview/', service_review_all),

@@ -42,17 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rest_framework",
     'rest_framework.authtoken',
-    'rest_auth',
     "nanuda.apps.NanudaConfig",
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-  	'allauth.socialaccount.providers.naver',
-    'rest_auth.registration',
-    'allauth.socialaccount.providers.auth0',
-    'allauth.socialaccount.providers.kakao',
-    'allauth.socialaccount.providers.facebook',
     "phonenumber_field",
     
 ]
@@ -167,9 +157,6 @@ REST_FRAMEWORK = {
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
 )
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True

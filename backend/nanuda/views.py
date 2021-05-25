@@ -1,7 +1,4 @@
 from django.shortcuts import render, redirect
-from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
-from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
-from rest_auth.registration.views import SocialLoginView
 from django.views.generic import View
 from django.http import HttpResponse,JsonResponse
 from django.db.models import Count
