@@ -230,6 +230,7 @@ class KakaoLogin(View):
             
             res=HttpResponse({"success":True})
             res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+            res["Access-Control-Allow-Credentials"]="True"
             res["Access-Control-Allow-Origin"] = "*"
             res["Acess-Control-Max-Age"] = "1000"
             res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
@@ -261,6 +262,7 @@ class KakaoLogin(View):
                 print(jwt_token,"fixed")
             res=HttpResponse({"success":True})
             res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+            res["Access-Control-Allow-Credentials"]="True"
             res["Access-Control-Allow-Origin"] = "*"
             res["Acess-Control-Max-Age"] = "1000"
             res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
