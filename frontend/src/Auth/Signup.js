@@ -62,46 +62,46 @@ export default function Signup() {
     }, [])
 
     const kakaoResponse = async (response) => {
-        // console.log("fullResponse",response)
-        // console.log(response.response.access_token)
-        // fetch("http://localhost:8000/rest-auth/kakao/", {
-        //     method: "POST",
-        //     headers: {
-        //         'Content-type': 'application/json',
-        //         'Accept': 'application/json'
-        //     },
-        //     body:JSON.stringify({
-        //         params:
-        //         {
-        //             code: response.response.access_token
-        //         },
-        //     })
-
-        // })
-            
-        //     .then(response => {
-        //         console.log(response)
-        //       if(response.data==="success"){
-        //           history.replace("/signupprofile")
-        //       }
-              
-        //     }).catch(err=>{
-        //         console.log(err)
-        //     })
-        let res = await axios.post(
-            "http://15.164.94.36:8000/rest-auth/kakao/",
-            {
+        console.log("fullResponse",response)
+        console.log(response.response.access_token)
+        fetch("http://15.164.94.36:8000/rest-auth/kakao/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body:JSON.stringify({
                 params:
                 {
                     code: response.response.access_token
                 },
-            },
-            { withCredentials: true }
-        );
-        console.log(res)
-        if (res.data === "success") {
-            history.replace("/signupprofile")
-        }
+            })
+
+        })
+            
+            .then(response => {
+                console.log(response)
+              if(response.data==="success"){
+                  history.replace("/signupprofile")
+              }
+              
+            }).catch(err=>{
+                console.log(err)
+            })
+        // let res = await axios.post(
+        //     "http://15.164.94.36:8000/rest-auth/kakao/",
+        //     {
+        //         params:
+        //         {
+        //             code: response.response.access_token
+        //         },
+        //     },
+        //     { withCredentials: true }
+        // );
+        // console.log(res)
+        // if (res.data === "success") {
+        //     history.replace("/signupprofile")
+        // }
     }
     const kakaoFail = async (res) => {
         console.log("failed")
