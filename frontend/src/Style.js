@@ -526,7 +526,7 @@ export function BottomTag({ marginTop, marginBottom }) {
             }}>
                 사업자 등록번호 278-88-02031 <br />
                 대표자 : 김현명, 이지행 <br />
-                통신판매업 신고번호 : 제2021-서울종로-2302호 <br />
+                
                 주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
             </div>
             <div style={{
@@ -748,7 +748,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
             }}>
                 사업자 등록번호 278-88-02031 <br />
                         대표자 : 김현명, 이지행 <br />
-                        통신판매업 신고번호 : 제2021-서울종로-2302호 <br />
+                       
                         주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
             </div>
             <div style={{

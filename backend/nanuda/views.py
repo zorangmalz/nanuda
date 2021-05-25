@@ -229,7 +229,10 @@ class KakaoLogin(View):
                 print(jwt_token,"fixed")
             
             res=HttpResponse({"success":True})
-           
+            res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+            res["Access-Control-Allow-Origin"] = "*"
+            res["Acess-Control-Max-Age"] = "1000"
+            res["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
             res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True,domain=".haulfree.io")
             return res
 
@@ -257,7 +260,10 @@ class KakaoLogin(View):
                 jwt_token=jwt_token.decode('utf-8')
                 print(jwt_token,"fixed")
             res=HttpResponse({"success":True})
-          
+            res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+            res["Access-Control-Allow-Origin"] = "*"
+            res["Acess-Control-Max-Age"] = "1000"
+            res["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
             res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True,domain=".haulfree.io")
             return res
 

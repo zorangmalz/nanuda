@@ -64,6 +64,8 @@ export default function Signup() {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
+            mode:"cors",
+            credentials:"include",
             body:JSON.stringify({
                 params:
                 {
