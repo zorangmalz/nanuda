@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { BottomTag, Header, MBottomTag, MHeader } from "../Style";
-import Slider from "react-slick";
-import { BsBookmark, BsUpload } from "react-icons/bs";
-import { BiTime } from "react-icons/bi";
+import { BottomTag, Header, MBottomTag, MHeader } from "../Style";
 import { useHistory } from "react-router";
-import googleLogin from "./googleLogin"
-import GoogleLogin from 'react-google-login';
 import KakaoLogin from "react-kakao-login";
 import axios from "axios"
-import dotenv from "dotenv"
 import styled from "styled-components"
 
-export default function Signup() {
-    const GOOGLE_APP_KEY = process.env.REACT_APP_KEY_GOOGLE
-    const My_App_Key = process.env.REACT_APP_KEY
-    
-    const KaKaoBtn = styled(KakaoLogin)`
+const GOOGLE_APP_KEY = process.env.REACT_APP_KEY_GOOGLE
+const My_App_Key = process.env.REACT_APP_KEY
+
+const KaKaoBtn = styled(KakaoLogin)`
     display: inline-block;
     padding: 0;
     width: 440px;
@@ -25,7 +18,7 @@ export default function Signup() {
     color: #783c00;
     background-color: #f4e34d;
     border: 1px solid transparent;
-    border-radius: 3px;
+    border-radius: 6px;
     
     font-weight: bold;
     text-align: center;
@@ -35,8 +28,9 @@ export default function Signup() {
     &:hover {
       box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2);
     }
-  `;
+`;
 
+export default function Signup() {
     const responseGoogle = async (response) => {
         console.log("come")
         console.log(response, "here")
@@ -187,14 +181,28 @@ export default function Signup() {
                             width: "100%"
                         }}>
                             <MHeader content="회원가입" goBack={true} />
-                            <KaKaoBtn
+                            <KakaoLogin
+                                style={{
+                                    width: "90vw",
+                                    minHeight: 60,
+                                    paddingTop: 16,
+                                    paddingBottom: 16,
+                                    backgroundColor: "#f4e34d",
+                                    color: "#051a1a",
+                                    border: "1px solid transparent",
+                                    fontWeight: "bold",
+                                    fontSize: 16,
+                                    marginTop: "8vw",
+                                    fontFamily: "NotoSansCJKkr",
+                                    WebkitAppearance: "none",
+                                    borderRadius: 6,
+                                }}
                                 token={My_App_Key}
                                 onSuccess={kakaoResponse}
-                                onFailure={kakaoFail}
-                                className="KaKaoBtn"
-                            >카카오톡으로 시작하기</KaKaoBtn>
+                                onFail={kakaoFail}
+                            >카카오톡으로 시작하기</KakaoLogin>
                         </div>
-                        <MBottomTag marginBottom={0} />
+                        <MBottomTag marginBottom={0} marginTop={"40vw"} />
                     </div>
                 </div>
             </Mobile>
