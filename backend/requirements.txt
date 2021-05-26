@@ -16,6 +16,7 @@ django-mysql==3.9.0
 django-phonenumber-field==5.1.0
 django-rest-auth==0.9.5
 django-rest-knox==4.1.0
+django-sslserver==0.22
 djangorestframework==3.11.1
 djangorestframework-simplejwt==4.4.0
 firebase-admin==4.4.0
