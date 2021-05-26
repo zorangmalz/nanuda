@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     "nanuda.apps.NanudaConfig",
     "phonenumber_field",
+    'sslserver'
     
 ]
 SITE_ID = 2
