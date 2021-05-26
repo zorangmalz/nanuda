@@ -234,7 +234,7 @@ class KakaoLogin(View):
             res["Access-Control-Allow-Origin"] = "http://haulfree.io"
             res["Acess-Control-Max-Age"] = "1000"
             res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
-            res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True,domain=".haulfree.io")
+            res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True)
             return res
 
         else: 
@@ -266,7 +266,7 @@ class KakaoLogin(View):
             res["Access-Control-Allow-Origin"] = "http://haulfree.io"
             res["Acess-Control-Max-Age"] = "1000"
             res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
-            res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True,domain=".haulfree.io")
+            res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True)
             return res
 
 

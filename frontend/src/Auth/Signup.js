@@ -56,7 +56,7 @@ export default function Signup() {
     }, [])
 
     const kakaoResponse = async (response) => {
-        console.log("fullResponse",response)
+        console.log("fullResponsㄴe",response)
         console.log(response.response.access_token)
         fetch("http://15.164.94.36:8000/rest-auth/kakao/", {
             method: "POST",
@@ -64,7 +64,6 @@ export default function Signup() {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
-            mode:"cors",
             credentials:"include",
             body:JSON.stringify({
                 params:
