@@ -8,25 +8,24 @@ export default function ServiceReview() {
     //Get Review Data
     const [reviewData, setReviewData] = useState([])
     const [noReview, setNoReview] = useState(false)
-    async function checkReview(){
-        fetch("https://haulfree.link/servicereviewornot/", {
+    async function checkReview() {
+        await fetch("https://haulfree.link/servicereviewornot/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
-            credentials:"include",
-
+            credentials: "include",
         })
-            
-           .then(response => response.json())
- .then(response => {
-                if(response.data.data===true){
+            .then(response => {
+                console.log(response)
+                if (response.data.data === true) {
                     setNoReview(true)
-                }else{
+                } else {
                     setNoReview(false)
                 }
-            }).catch(err=>{
+            }).catch(err => {
+                console.log("여기야")
                 console.log(err)
             })
     }
@@ -42,8 +41,8 @@ export default function ServiceReview() {
             credentials: "include",
         })
             .then(response => response.json())
-           .then(response => response.json())
- .then(response => {
+            .then(response => {
+                console.log(response)
                 var array = []
                 for (var i = 0; i < response.length; i++) {
                     const data = {
