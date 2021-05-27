@@ -399,7 +399,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         color: "#051a1a",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 이용안내</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/8bd2f5a8861f4a72a3af30f160257055', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -408,7 +408,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 8,
                     }}>공지사항</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -417,7 +417,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 8,
                     }}>나누다는 어떤 서비스인가요?</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -426,7 +426,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 8,
                     }}>자주 묻는 질문</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/c2c73887bb154e9abd312ed70a6cc6f4', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -447,7 +447,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         color: "#051a1a",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 정책</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/2fe90eeb1865441fb0a741cc9a860b0a', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -456,7 +456,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 8,
                     }}>이용약관</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/8917843ebfe54b88a8912949d7fd7bc7', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -465,7 +465,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 8,
                     }}>개인정보 처리약관</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/65497c24ee6b4d4ab2b63b3830a790f0', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -474,7 +474,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 8,
                     }}>마케팅수신 약관</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/77771c4f099d457d99366bdc0e0f2e2d', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -621,7 +621,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         color: "#051a1a",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 이용안내</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/8bd2f5a8861f4a72a3af30f160257055', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -630,7 +630,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 6,
                     }}>공지사항</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -639,7 +639,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 6,
                     }}>나누다는 어떤 서비스인가요?</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -648,7 +648,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 6,
                     }}>자주 묻는 질문</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/c2c73887bb154e9abd312ed70a6cc6f4', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -669,7 +669,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         color: "#051a1a",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 정책</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/2fe90eeb1865441fb0a741cc9a860b0a', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -678,7 +678,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 6,
                     }}>이용약관</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/8917843ebfe54b88a8912949d7fd7bc7', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -687,7 +687,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 6,
                     }}>개인정보 처리약관</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/65497c24ee6b4d4ab2b63b3830a790f0', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
@@ -696,7 +696,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         cursor: "pointer",
                         marginTop: 6,
                     }}>마케팅수신 약관</div>
-                    <div style={{
+                    <div onClick={() => window.open('https://www.notion.so/77771c4f099d457d99366bdc0e0f2e2d', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
