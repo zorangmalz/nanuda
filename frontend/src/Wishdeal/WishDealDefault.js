@@ -35,16 +35,17 @@ export default function WishDealDefault() {
 
         })
             
-            .then(response => {
-                if (res.data.error == true) {
+           .then(response => response.json())
+ .then(response => {
+                if (response.data.error == true) {
                     history.push("wishdealnoturl")
                 } else {
-                    history.push("wishdeal", { info: res.data.results })
+                    history.push("wishdeal", { info: response.data.results })
                     setLinkOrNot(true)
-                    setImage(res.data.results.ogImage.url)
-                    setTitle(res.data.results.ogTitle)
-                    setDes(res.data.results.ogDescription)
-                    setUrl(res.data.results.ogUrl)
+                    setImage(response.data.results.ogImage.url)
+                    setTitle(response.data.results.ogTitle)
+                    setDes(response.data.results.ogDescription)
+                    setUrl(response.data.results.ogUrl)
                 }
             }).catch(err=>{
                 console.log(err)

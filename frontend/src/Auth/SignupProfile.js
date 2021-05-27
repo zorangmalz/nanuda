@@ -104,7 +104,8 @@ export default function SignupProfile() {
 
         })
             
-            .then(response => {
+           .then(response => response.json())
+ .then(response => {
                 setInputs({
                     ...inputs,
                     name: response.data.name,

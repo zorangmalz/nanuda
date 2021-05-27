@@ -74,7 +74,8 @@ export default function Signup() {
 
         })
             
-            .then(response => {
+           .then(response => response.json())
+ .then(response => {
                 console.log(response)
               if(response.data==="success"){
                   history.replace("/signupprofile")

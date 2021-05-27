@@ -19,8 +19,9 @@ export default function ServiceReview() {
 
         })
             
-            .then(response => {
-                if(res.data.data===true){
+           .then(response => response.json())
+ .then(response => {
+                if(response.data.data===true){
                     setNoReview(true)
                 }else{
                     setNoReview(false)
@@ -40,7 +41,8 @@ export default function ServiceReview() {
             }
         })
             .then(response => response.json())
-            .then(response => {
+           .then(response => response.json())
+ .then(response => {
                 var array = []
                 for (var i = 0; i < response.length; i++) {
                     const data = {

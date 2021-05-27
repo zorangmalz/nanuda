@@ -190,9 +190,10 @@ export default function Address() {
 
         })
             
-            .then(response => {
+           .then(response => response.json())
+ .then(response => {
                 console.log(response)
-                if(res.data.data===true){
+                if(response.data.data===true){
                     console.log("goback")
                     history.goBack()
                 }

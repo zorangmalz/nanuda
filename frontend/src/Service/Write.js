@@ -23,6 +23,9 @@ export default function Write() {
     }
     const [userId,setUserId]=useState("")    
     async function putServiceReview() {
+        var data = {
+            service_score: number, service_content: after, service_opinion: opinion, user_id:""
+        }
         fetch("https://haulfree.link/servicereviewornot/",{
             method: "POST",
             headers: {
@@ -32,16 +35,14 @@ export default function Write() {
             credentials:"include",
 
         })
-            
+            .then(response => response.json())
             .then(response => {
-                setUserId(response.data.id)
+                data[user_id]=response.data.id
             }).catch(err=>{
                 console.log(err)
             })
     
-        var data = {
-            service_score: number, service_content: after, service_opinion: opinion, user_id: res.data.id
-        }
+        
         console.log(data)
         await fetch("https://haulfree.link/servicereview/", {
             method: "POST",

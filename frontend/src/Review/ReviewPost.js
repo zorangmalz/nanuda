@@ -166,7 +166,8 @@ export default function ReviewPost({ match }) {
                 'Accept': 'application/json'
             }
         })
-            .then(response => {
+        .then(response => response.json())    
+        .then(response => {
                 history.goBack()
                 console.log(response)
             })

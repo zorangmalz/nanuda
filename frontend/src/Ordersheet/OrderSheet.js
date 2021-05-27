@@ -47,7 +47,7 @@ export default function OrderSheet() {
             },
             credentials:"include",
         })
-            .then(response => {
+            .then(res => {
                 if(res.data.data===false){
                     setBasicAddress(false)
                 }else{
@@ -292,8 +292,9 @@ export default function OrderSheet() {
                 }
             })
         })
-            .then(response => {
-                if(res.data.data===true){
+           .then(response => response.json())
+ .then(response => {
+                if(response.data.data===true){
                     history.push("paymentsuccess")
                 }else{
                     history.push("paymentfail",{myparam:myparam,ship:item})
