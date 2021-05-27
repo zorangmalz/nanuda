@@ -58,7 +58,7 @@ export default function Signup() {
     const kakaoResponse = async (response) => {
         console.log("fullResponsㄴe",response)
         console.log(response.response.access_token)
-        fetch("https://15.164.94.36:8000/rest-auth/kakao/", {
+        fetch("https://haulfree.link/rest-auth/kakao/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
