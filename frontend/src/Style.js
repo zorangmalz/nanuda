@@ -5,7 +5,7 @@ import user from "./images/users.png"
 import { IoIosArrowBack } from "react-icons/io";
 import { BsX } from "react-icons/bs"
 import { useHistory } from "react-router";
-import axios from "axios"
+
 import styled from "styled-components";
 
 export default function WebIntro() {
@@ -168,14 +168,22 @@ export function HomeHeader() {
     }, [])
     const test = async () => {
         console.log("come")
-        let response = await axios.get(
-            "http://15.164.94.36:8000/userInfoName/",
-            { withCredentials: true }
-        )
-
-        console.log(response.data.data, "hererere")
-
-        setLog(response.data.data)
+        fetch("https://haulfree.link/userInfoName/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials:"include",
+        })
+            
+            .then(response => {
+                setLog(response.data.data)
+              
+            }).catch(err=>{
+                console.log(err)
+            })
+      
     }
     function noticeClick() {
         if (log == true) {
@@ -249,13 +257,21 @@ export function MHomeHeader() {
     }, [])
     const test = async () => {
         console.log("come")
-        let response = await axios.get(
-            "http://15.164.94.36:8000/userInfoName/",
-            { withCredentials: true }
-        )
-
-        console.log(response.data)
-        setLog(response.data)
+        fetch("https://haulfree.link/userInfoName/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials:"include",
+        })
+            
+            .then(response => {
+                setLog(response.data.data)
+              
+            }).catch(err=>{
+                console.log(err)
+            })
     }
     function noticeClick() {
         if (log == true) {

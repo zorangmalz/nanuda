@@ -23,7 +23,7 @@ export default function ReviewMain() {
     const [data, setData] = useState([])
     useEffect(() => {
         setData([])
-        fetch("http://15.164.94.36:8000/review", {
+        fetch("https://haulfree.link/review", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

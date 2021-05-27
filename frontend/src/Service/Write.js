@@ -3,7 +3,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { useHistory } from "react-router";
 import ReactStars from "react-rating-stars-component";
-import axios from "axios"
+
 export default function Write() {
     let history = useHistory()
     const [number, setNumber] = useState(0);
@@ -23,18 +23,27 @@ export default function Write() {
     }
     const [userId,setUserId]=useState("")    
     async function putServiceReview() {
-        let res = await axios.get(
-            "http://15.164.94.36:8000/servicereviewornot/",
-         
-            { withCredentials: true }
-        )
-        setUserId(res.data.id)
-   
+        fetch("https://haulfree.link/servicereviewornot/",{
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials:"include",
+
+        })
+            
+            .then(response => {
+                setUserId(response.data.id)
+            }).catch(err=>{
+                console.log(err)
+            })
+    
         var data = {
             service_score: number, service_content: after, service_opinion: opinion, user_id: res.data.id
         }
         console.log(data)
-        await fetch("http://15.164.94.36:8000/servicereview/", {
+        await fetch("https://haulfree.link/servicereview/", {
             method: "POST",
             headers: {
                 "Accept": "application/json",

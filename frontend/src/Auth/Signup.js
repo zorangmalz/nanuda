@@ -36,7 +36,7 @@ export default function Signup() {
         console.log(response, "here")
 
         let res = await axios.post(
-            "http://15.164.94.36:8000/rest-auth/google/",
+            "https://haulfree.link/rest-auth/google/",
             {
                 params:
                 {
@@ -84,7 +84,7 @@ export default function Signup() {
                 console.log(err)
             })
         // let res = await axios.post(
-        //     "http://15.164.94.36:8000/rest-auth/kakao/",
+        //     "https://haulfree.link/rest-auth/kakao/",
         //     {
         //         params:
         //         {
@@ -106,7 +106,7 @@ export default function Signup() {
     const test = async () => {
         console.log("come")
         let response = await axios.get(
-            "http://15.164.94.36:8000/userInfoName/",
+            "https://haulfree.link/userInfoName/",
             { withCredentials: true }
         )
         console.log(response)

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-import axios from "axios"
+
 
 export default function WishDealDefault() {
     let history = useHistory();
@@ -19,26 +19,37 @@ export default function WishDealDefault() {
         console.log(text)
     }
     const ogtag = async () => {
-        let res = await axios.post(
-            "http://15.164.94.36:3001/api",
-            {
+        fetch("https://haulfree.link/api", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials:"include",
+            body:JSON.stringify({
                 params:
                 {
                     code: text
                 },
-            }
-        );
-        console.log(res)
-        if (res.data.error == true) {
-            history.push("wishdealnoturl")
-        } else {
-            history.push("wishdeal", { info: res.data.results })
-            setLinkOrNot(true)
-            setImage(res.data.results.ogImage.url)
-            setTitle(res.data.results.ogTitle)
-            setDes(res.data.results.ogDescription)
-            setUrl(res.data.results.ogUrl)
-        }
+            })
+
+        })
+            
+            .then(response => {
+                if (res.data.error == true) {
+                    history.push("wishdealnoturl")
+                } else {
+                    history.push("wishdeal", { info: res.data.results })
+                    setLinkOrNot(true)
+                    setImage(res.data.results.ogImage.url)
+                    setTitle(res.data.results.ogTitle)
+                    setDes(res.data.results.ogDescription)
+                    setUrl(res.data.results.ogUrl)
+                }
+            }).catch(err=>{
+                console.log(err)
+            })
+      
     }
 
     //     useEffect(()=>{

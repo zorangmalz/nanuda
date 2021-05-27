@@ -2,30 +2,37 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, NameMask } from "../Style";
-import axios from "axios"
+
 
 export default function ServiceReview() {
     //Get Review Data
     const [reviewData, setReviewData] = useState([])
     const [noReview, setNoReview] = useState(false)
     async function checkReview(){
-        let res = await axios.get(
-            "http://15.164.94.36:8000/servicereviewornot/",
-         
-            { withCredentials: true }
-        )
-        console.log(res)
-        if(res.data.data===true){
-            setNoReview(true)
-        }else{
-            setNoReview(false)
-        }
-        
+        fetch("https://haulfree.link/servicereviewornot/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials:"include",
+
+        })
+            
+            .then(response => {
+                if(res.data.data===true){
+                    setNoReview(true)
+                }else{
+                    setNoReview(false)
+                }
+            }).catch(err=>{
+                console.log(err)
+            })
     }
     useEffect(() => {
         checkReview()
         setReviewData([])
-        fetch("http://15.164.94.36:8000/servicereview/", {
+        fetch("https://haulfree.link/servicereview/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

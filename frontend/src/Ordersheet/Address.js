@@ -3,7 +3,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, StandardButton, MStandardButton } from "../Style";
 import { BsCheck } from "react-icons/bs"
 import DaumPostCode from 'react-daum-postcode';
-import axios from "axios"
+
 import { useHistory } from "react-router-dom";
 function reducer(state, action) {
     switch (action.type) {
@@ -168,9 +168,15 @@ export default function Address() {
     }, [inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber])
     async function send() {
         console.log(inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber)
-        let res = await axios.post(
-            "http://15.164.94.36:8000/uploadAddress/",
-            {
+        
+        fetch("https://haulfree.link/uploadAddress/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials:"include",
+            body:JSON.stringify({
                 params:
                 {
                     address: inputs.address,
@@ -180,15 +186,22 @@ export default function Address() {
                     address_name: inputs.name,
                     address_phone: inputs.phoneNumber,
                 },
+            })
 
-            },
-            { withCredentials: true }
-        )
-        console.log(res.data.data)
-        if(res.data.data===true){
-            console.log("goback")
-            history.goBack()
-        }
+        })
+            
+            .then(response => {
+                console.log(response)
+                if(res.data.data===true){
+                    console.log("goback")
+                    history.goBack()
+                }
+              
+            }).catch(err=>{
+                console.log(err)
+            })
+
+       
     }
     return (
         <>

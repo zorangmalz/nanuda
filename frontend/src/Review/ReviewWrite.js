@@ -103,7 +103,7 @@ export default function ReviewWrite() {
             review_dislike: inputs.dislike,
             review_image: imageArray
         }
-        await fetch("http://15.164.94.36:8000/review/", {
+        await fetch("https://haulfree.link/review/", {
             method: "POST",
             headers: {
                 "Accept": "application/json",

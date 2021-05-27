@@ -3,7 +3,7 @@ import { BsCheck } from "react-icons/bs";
 import styled from "styled-components"
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-import axios from "axios"
+
 
 export const Title = styled.div`
     width: 440px;
@@ -93,17 +93,28 @@ export default function SignupProfile() {
 
     const test = async () => {
         console.log("come")
-        let response = await axios.get(
-            "http://15.164.94.36:8000/userInfoName/",
-            { withCredentials: true }
-        )
+        fetch("https://haulfree.link/userInfoName/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials:"include",
+           
 
-        setInputs({
-            ...inputs,
-            name: response.data.name,
-            email: response.data.email
         })
-
+            
+            .then(response => {
+                setInputs({
+                    ...inputs,
+                    name: response.data.name,
+                    email: response.data.email
+                })
+              
+            }).catch(err=>{
+                console.log(err)
+            })
+     
     }
 
     const [number, dispatch] = useReducer(reducer, 0)

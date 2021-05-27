@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
-import axios from "axios"
+
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 // import ogs from "open-graph-scraper-lite"
 

@@ -4,17 +4,13 @@ import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../S
 import { AiOutlineCheck } from "react-icons/ai";
 import { MOrderDetail, OrderDetail } from "./PaymentFail";
 import { useHistory } from "react-router";
-import axios from "axios"
+
 
 export default function PaymentSuccess() {
     //WishDeal인지 여부
     const [wish, setWish] = useState(true)
 
-    async function getOrder(){
-        let res = await axios.get()(
-            
-        )
-    }
+
 
     //화면 변경
     let history = useHistory()

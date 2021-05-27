@@ -4,7 +4,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BiPlusCircle } from "react-icons/bi";
 import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile/ProfileEdit";
-import axios from "axios"
+
 
 function reducer(state, action) {
     switch (action.type) {
@@ -39,22 +39,30 @@ export default function OrderSheet() {
         request:f
     }
     async function addressCheck(){
-        let res = await axios.get(
-            "http://15.164.94.36:8000/checkAddress/",
-            { withCredentials: true }
-        )
-        console.log(res)
-        if(res.data.data===false){
-            setBasicAddress(false)
-        }else{
-            setBasicAddress(true)
-            setA(res.data.address_name)
-            setB(res.data.address_number)
-            setC(res.data.address)
-            setD(res.data.address_detail)
-            setE(res.data.address_phone)
-            setF(res.data.address_claim)
-        }
+        fetch("https://haulfree.link/checkAddress/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials:"include",
+        })
+            .then(response => {
+                if(res.data.data===false){
+                    setBasicAddress(false)
+                }else{
+                    setBasicAddress(true)
+                    setA(res.data.address_name)
+                    setB(res.data.address_number)
+                    setC(res.data.address)
+                    setD(res.data.address_detail)
+                    setE(res.data.address_phone)
+                    setF(res.data.address_claim)
+                }
+            }).catch(err=>{
+                console.log(err)
+            })
+      
     }
     useEffect(()=>{
         addressCheck()
@@ -265,25 +273,34 @@ export default function OrderSheet() {
     }, [number])
     async function order(){
         if(basicAddress&&payment){
-            // history.push("paymentsuccess",{myparam:myparam})
-            let res = await axios.post(
-                "http://15.164.94.36:8000/orderupload/",{
-                    params:{
-                        myparam:myparam,
-                        ship:item,
-                        payment:"",
-                        option:number,
-                        schedule:paymentDate
-                    }
-                },         
-                { withCredentials: true }
-            )
-            console.log(res)
-            if(res.data.data===true){
-                history.push("paymentsuccess")
-            }else{
-                history.push("paymentfail",{myparam:myparam,ship:item})
-            }
+            // history.push("paymentsuccess",{myparam:myparam})'
+
+            fetch("https://haulfree.link/checkAddress/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials:"include",
+            body:JSON.stringify({
+                params:{
+                    myparam:myparam,
+                    ship:item,
+                    payment:"",
+                    option:number,
+                    schedule:paymentDate
+                }
+            })
+        })
+            .then(response => {
+                if(res.data.data===true){
+                    history.push("paymentsuccess")
+                }else{
+                    history.push("paymentfail",{myparam:myparam,ship:item})
+                }
+            }).catch(err=>{
+                console.log(err)
+            })
         }else{
             console.log("no")
         }
