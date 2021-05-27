@@ -55,7 +55,8 @@ export default function Home() {
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            credentials: "include",
         })
             .then(response => response.json())
             .then(response => {
@@ -84,7 +85,8 @@ export default function Home() {
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            credentials: "include",
         })
             .then(response => response.json())
             .then(response => {

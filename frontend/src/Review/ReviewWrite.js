@@ -109,6 +109,7 @@ export default function ReviewWrite() {
                 "Accept": "application/json",
                 'Content-type': 'application/json',
             },
+            credentials: "include",
             body: JSON.stringify(data)
         })
             .then(response => response.json())

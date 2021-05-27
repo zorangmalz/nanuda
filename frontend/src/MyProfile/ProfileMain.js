@@ -266,7 +266,8 @@ export default function ProfileMain() {
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            credentials: "include",
         })
             .then(response => response.json())
             .then(response => {
@@ -291,6 +292,7 @@ export default function ProfileMain() {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify({
                 nickname: input.nickname,
                 user_email: "jinsung1048@nate.com"
@@ -364,6 +366,7 @@ export default function ProfileMain() {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify({
                 profile: image,
                 user_email: "jinsung1048@nate.com"

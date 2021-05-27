@@ -36,7 +36,8 @@ export default function ProfileEdit() {
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            credentials: "include",
         })
             .then(response => response.json())
             .then(response => {

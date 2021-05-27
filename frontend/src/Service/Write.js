@@ -52,6 +52,7 @@ export default function Write() {
                 "Accept": "application/json",
                 'Content-type': 'application/json',
             },
+            credentials: "include",
             body: JSON.stringify(data)
         })
             .then(response => response.json())

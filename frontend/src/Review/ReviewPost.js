@@ -33,7 +33,8 @@ export default function ReviewPost({ match }) {
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            credentials: "include",
         })
             .then(response => response.json())
             .then(response => {
@@ -66,6 +67,7 @@ export default function ReviewPost({ match }) {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify(body)
         })
             .then(response => response.json())
@@ -95,6 +97,7 @@ export default function ReviewPost({ match }) {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify(body)
         })
             .then(response => response.json())
@@ -122,6 +125,7 @@ export default function ReviewPost({ match }) {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify(body)
         })
             .then(response => response.json())
@@ -150,6 +154,7 @@ export default function ReviewPost({ match }) {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify(body)
         })
             .then(response => response.json())
@@ -164,7 +169,8 @@ export default function ReviewPost({ match }) {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            credentials: "include",
         })
         .then(response => response.json())    
         .then(response => {

@@ -233,7 +233,8 @@ export default function ProfileReview() {
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            credentials: "include",
         })
             .then(response => response.json())
             .then(response => {
