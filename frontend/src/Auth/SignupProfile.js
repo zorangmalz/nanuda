@@ -94,7 +94,7 @@ export default function SignupProfile() {
     const test = async () => {
         console.log("come")
         fetch("https://haulfree.link/userInfoName/", {
-            method: "POST",
+            method: "GET",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
@@ -103,13 +103,13 @@ export default function SignupProfile() {
            
 
         })
-            
-           .then(response => response.json())
+    .then((response)=>(response.json()))
  .then(response => {
+     console.log(response)
                 setInputs({
                     ...inputs,
-                    name: response.data.name,
-                    email: response.data.email
+                    name: response.name,
+                    email: response.email
                 })
               
             }).catch(err=>{

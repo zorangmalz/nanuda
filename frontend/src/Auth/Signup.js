@@ -73,10 +73,13 @@ export default function Signup() {
             })
 
         })
+        
             .then(response => {
                 console.log(response)
-              if(response.data==="success"){
+              if(response.status===200){
                   history.replace("/signupprofile")
+              }else{
+                  console.log("nonononono")
               }
               
             }).catch(err=>{
