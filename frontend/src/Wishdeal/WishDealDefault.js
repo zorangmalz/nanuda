@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-
+import axios from "axios"
 
 export default function WishDealDefault() {
     let history = useHistory();
@@ -19,53 +19,64 @@ export default function WishDealDefault() {
         console.log(text)
     }
     const ogtag = async () => {
-        fetch("https://haulfree.link/api", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials:"include",
-            body:JSON.stringify({
+
+         let response = await axios.post(
+            "https://haulfree.link:3001/api",
+            {
                 params:
                 {
                     code: text
                 },
-            })
+            },
+            { withCredentials: true }
+        );
+        console.log(response)
+        if (response.data.error == true) {
+            history.push("wishdealnoturl")
+        } else {
+            history.push("wishdeal", { info: response.data.results })
+            setLinkOrNot(true)
+            setImage(response.data.results.ogImage.url)
+            setTitle(response.data.results.ogTitle)
+            setDes(response.data.results.ogDescription)
+            setUrl(response.data.results.ogUrl)
+        }
 
-        })
+//         fetch("https://haulfree.link/api", {
+//             method: "POST",
+//             headers: {
+//                 'Content-type': 'application/json',
+//                 'Accept': 'application/json'
+//             },
+//             credentials:"include",
+//             body:JSON.stringify({
+//                 params:
+//                 {
+//                     code: text
+//                 },
+//             })
+
+//         })
             
-           .then(response => response.json())
- .then(response => {
-                if (response.data.error == true) {
-                    history.push("wishdealnoturl")
-                } else {
-                    history.push("wishdeal", { info: response.data.results })
-                    setLinkOrNot(true)
-                    setImage(response.data.results.ogImage.url)
-                    setTitle(response.data.results.ogTitle)
-                    setDes(response.data.results.ogDescription)
-                    setUrl(response.data.results.ogUrl)
-                }
-            }).catch(err=>{
-                console.log(err)
-            })
+//            .then(response => response.json())
+//  .then(response => {
+//                 if (response.data.error == true) {
+//                     history.push("wishdealnoturl")
+//                 } else {
+//                     history.push("wishdeal", { info: response.data.results })
+//                     setLinkOrNot(true)
+//                     setImage(response.data.results.ogImage.url)
+//                     setTitle(response.data.results.ogTitle)
+//                     setDes(response.data.results.ogDescription)
+//                     setUrl(response.data.results.ogUrl)
+//                 }
+//             }).catch(err=>{
+//                 console.log(err)
+//             })
       
     }
 
-    //     useEffect(()=>{
-    // og()
-
-    //     },[])
-    //     async function og(){
-    //         const options = { url: 'https://store.musinsa.com/app/goods/1149329?loc=goods_rank',timeout:2000 };
-    //         ogs(options, (error, results, response) => {
-    //             console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-    //             console.log('results:', results); // This contains all of the Open Graph results
-    //             console.log('response:', response); // This contains the HTML of page
-    //           });
-
-    //     }
+    
     return (
         <>
             <Default>

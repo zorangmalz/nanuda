@@ -13,6 +13,7 @@ import sampleone from "../images/sampleone.png"
 import sampletwo from "../images/sampletwo.png"
 import profile from "../images/profile.png"
 import topbanner from "../images/topbanner.png"
+import {firestore} from "../firebase"
 
 const AfterContainer = styled.div`
     width: 424px;
@@ -96,7 +97,7 @@ export default function Home() {
             user_nickname: "정*웅",
             review_image: sampleone,
             review_score: "4.0",
-            review_like: "노이즈 켄슬링이 최고에요. 안사면 곤란해지는 것이에요.",
+            review_like: "노이즈 캔슬링이 최고에요. 안사면 곤란해지는 것이에요.",
             product_price: "120,000",
         }
     ])
@@ -129,6 +130,11 @@ export default function Home() {
     //         })
     // }, [])
 
+    useEffect(()=>{
+        firestore.collection("test").doc("test").get().then((doc)=>{
+            console.log(doc.data().read)
+        })
+    },[])
     const [modal, setModal] = useState(false)
     return (
         <div>
@@ -234,7 +240,7 @@ export default function Home() {
                                 width: 480,
                             }}
                         />
-                        <div style={{
+                        <div onClick={() => setModal(true)} style={{
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
@@ -482,7 +488,7 @@ export default function Home() {
                             width: "100vw",
                         }}
                     />
-                    <div style={{
+                    <div onClick={() => setModal(true)} style={{
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",

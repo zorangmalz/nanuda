@@ -248,13 +248,13 @@ export default function WishDealURL() {
         const lst = []
         if (stats === 1) {
             lst.push(myparam, code, des, ELinputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst })
+            history.push("/ordersheet", { param: lst ,addre:""})
         } else if (stats === 2) {
             lst.push(myparam, code, des, Finputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst })
+            history.push("/ordersheet", { param: lst,addre:"" })
         } else {
             lst.push(myparam, code, des, Einputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst })
+            history.push("/ordersheet", { param: lst,addre:"" })
         }
     }
     return (

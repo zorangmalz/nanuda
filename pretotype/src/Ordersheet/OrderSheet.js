@@ -4,7 +4,7 @@ import { Default, Mobile } from "../App";
 import { Header, MHeader } from "../Style";
 import { BiPlusCircle } from "react-icons/bi";
 import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile/ProfileEdit";
-
+import {firestore} from "../firebase"
 
 function reducer(state, action) {
     switch (action.type) {
@@ -39,30 +39,21 @@ export default function OrderSheet() {
         request:f
     }
     async function addressCheck(){
-        fetch("https://haulfree.link/checkAddress/", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials:"include",
-        })
-            .then(res => {
-                if(res.data.data===false){
-                    setBasicAddress(false)
-                }else{
-                    setBasicAddress(true)
-                    setA(res.data.address_name)
-                    setB(res.data.address_number)
-                    setC(res.data.address)
-                    setD(res.data.address_detail)
-                    setE(res.data.address_phone)
-                    setF(res.data.address_claim)
-                }
-            }).catch(err=>{
-                console.log(err)
-            })
-      
+
+        try{
+            
+            console.log(addre)
+            setBasicAddress(true)
+                    setA(addre.name)
+                    setB(addre.addressNum)
+                    setC(addre.address)
+                    setD(addre.addressDetail)
+                    setE(addre.phoneNumber)
+                    setF(addre.claim)
+        }catch(err){
+            setBasicAddress(false)
+        }
+        
     }
     useEffect(()=>{
         addressCheck()
@@ -180,7 +171,7 @@ export default function OrderSheet() {
     //파라미터 받기
     const location = useLocation()
     const myparam = location.state.param
-
+    const addre=location.state.addInfo
     const [image, setImage] = useState("")
     const [itemDes, setItemDes] = useState("")
     const [orderDes, setOrderDes] = useState("")
@@ -188,7 +179,9 @@ export default function OrderSheet() {
     const [ship,setShip]=useState(0)
 
     useEffect(() => {
-        console.log(myparam)
+        
+        try
+        {
         setImage(myparam[0].ogImage.url)
         setItemDes(myparam[0].ogTitle)
         setShip(myparam[7])
@@ -269,44 +262,105 @@ export default function OrderSheet() {
                 setFourMoney(res*100)
             }
         }
+        } catch(err){
+            setImage(myparam.myparam[0].ogImage.url)
+            setItemDes(myparam.myparam[0].ogTitle)
+            setShip(myparam.myparam[7])
+            if (myparam.myparam[1] === 1) {
+                setOrderDes(myparam.myparam[3].ELcolor + "   " + myparam.myparam[3].ELetc)
+                setPrice(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
+                
+                if(number===2){
+                    var res=parseInt(parseInt((myparam.myparam[3].ELprice)/100)/2)
+                    var left=parseInt((myparam.myparam[3].ELprice)/100)%2
+                    setOneMoney(res*100+left*100)
+                    setTwoMoney(res*100)
+                    setThreeMoney("-")
+                    setFourMoney("-")
+                }else if(number===3){
+                    var res=parseInt(parseInt((myparam.myparam[3].ELprice)/100)/3)
+                    var left=parseInt((myparam.myparam[3].ELprice)/100)%3
+                    setOneMoney(res*100+left*100)
+                    setTwoMoney(res*100)
+                    setThreeMoney(res*100)
+                    setFourMoney("-")
+                }else{
+                    var res=parseInt(parseInt((myparam.myparam[3].ELprice)/100)/4)
+                    var left=parseInt((myparam.myparam[3].ELprice)/100)%4
+                    setOneMoney(res*100+left*100)
+                    setTwoMoney(res*100)
+                    setThreeMoney(res*100)
+                    setFourMoney(res*100)
+                }
+            } else if (myparam.myparam[1] === 2) {
+                setOrderDes(myparam.myparam[3].Fcolor + "   " + myparam.myparam[3].Fsize + "   " + myparam.myparam[3].Fetc)
+                setPrice(Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))
+                if(number===2){
+                    var res=parseInt(parseInt((myparam.myparam[3].Fprice)/100)/2)
+                    var left=parseInt((myparam.myparam[3].Fprice)/100)%2
+                    setOneMoney(res*100+left*100)
+                    setTwoMoney(res*100)
+                    setThreeMoney("-")
+                    setFourMoney("-")
+                }else if(number===3){
+                    var res=parseInt(parseInt((myparam.myparam[3].Fprice)/100)/3)
+                    var left=parseInt((myparam.myparam[3].Fprice)/100)%3
+                    setOneMoney(res*100+left*100)
+                    setTwoMoney(res*100)
+                    setThreeMoney(res*100)
+                    setFourMoney("-")
+                }else{
+                    var res=parseInt(parseInt((myparam.myparam[3].Fprice)/100)/4)
+                    var left=parseInt((myparam.myparam[3].Fprice)/100)%4
+                    setOneMoney(res*100+left*100)
+                    setTwoMoney(res*100)
+                    setThreeMoney(res*100)
+                    setFourMoney(res*100)
+                }
+            } else {
+                setOrderDes(myparam.myparam[3].Eetc)
+                setPrice(Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))
+                if(number===2){
+                    var res=parseInt(parseInt((myparam.myparam[3].Eprice)/100)/2)
+                    var left=parseInt((myparam.myparam[3].Eprice)/100)%2
+                    setOneMoney(res*100+left*100)
+                    setTwoMoney(res*100)
+                    setThreeMoney("-")
+                    setFourMoney("-")
+                }else if(number===3){
+                    var res=parseInt(parseInt((myparam.myparam[3].Eprice)/100)/3)
+                    var left=parseInt((myparam.myparam[3].Eprice)/100)%3
+                    setOneMoney(res*100+left*100)
+                    setTwoMoney(res*100)
+                    setThreeMoney(res*100)
+                    setFourMoney("-")
+                }else{
+                    var res=parseInt(parseInt((myparam.myparam[3].Eprice)/100)/4)
+                    var left=parseInt((myparam.myparam[3].Eprice)/100)%4
+                    setOneMoney(res*100+left*100)
+                    setTwoMoney(res*100)
+                    setThreeMoney(res*100)
+                    setFourMoney(res*100)
+                }
+            }
+    }
 
     }, [number])
     async function order(){
         if(basicAddress&&payment){
             // history.push("paymentsuccess",{myparam:myparam})'
-
-            fetch("https://haulfree.link/checkAddress/", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials:"include",
-            body:JSON.stringify({
-                params:{
-                    myparam:myparam,
-                    ship:item,
-                    payment:"",
-                    option:number,
-                    schedule:paymentDate
-                }
+            firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
+                myparam:myparam,
+                ship:item,
+                option:number,
+                schedule:paymentDate
             })
-        })
-           .then(response => response.json())
- .then(response => {
-                if(response.data.data===true){
-                    history.push("paymentsuccess")
-                }else{
-                    history.push("paymentfail",{myparam:myparam,ship:item})
-                }
-            }).catch(err=>{
-                console.log(err)
-            })
-        }else{
-            console.log("no")
+            history.push("paymentsuccess",{myparam:myparam,ship:item})
         }
     }
-
+    function fix(){
+        history.push("/address",{param:myparam})
+    }
 
     return (
         <div>
@@ -396,7 +450,7 @@ export default function OrderSheet() {
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
                             }}>배송 정보</div>
-                            <div onClick={()=>history.push("/address")} style={{
+                            <div onClick={fix} style={{
                                 fontSize: 14,
                                 opacity: 0.8,
                                 color: "#202426",
@@ -408,62 +462,10 @@ export default function OrderSheet() {
                         {basicAddress ?
                             <BasicAddress item={item} />
                             :
-                            <NoAddress />
+                            <NoAddress myparam={myparam} />
                         }
-                        <div style={{
-                            fontSize: 18,
-                            marginLeft: 20,
-                            fontWeight: "bold",
-                            color: "#202426",
-                            marginTop: 16,
-                            fontFamily: "NotoSansCJKkr"
-                        }}>결제 수단</div>
-                        {register ?
-                            <div style={{
-                                width: 408,
-                                alignSelf: "center",
-                                padding: 16,
-                                borderRadius: 6,
-                                border: "1px solid #26c1f0",
-                                marginTop: 16,
-
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                justifyContent: "space-between",
-                            }}>
-                                <div style={{
-                                    fontSize: 16,
-                                    opacity: 0.8,
-                                    color: "#202426",
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>우리 1002-550-5**544</div>
-                            </div>
-                            :
-                            <div onClick={() => history.push("/paymentaddbank")} style={{
-                                width: 440,
-                                height: 136,
-                                border: "1px solid rgba(5, 26, 26, 0.2)",
-                                borderRadius: 6,
-                                cursor: "pointer",
-                                marginTop: 16,
-
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                alignSelf: "center",
-                            }}>
-                                <BiPlusCircle size={32} color="rgba(5, 26, 26, 0.6)" />
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    opacity: 0.6,
-                                    fontSize: 16,
-                                    color: "#202426",
-                                    marginTop: 8,
-                                }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
-                            </div>
-                        }
+                       
+                        
                         <div style={{
                             fontSize: 18,
                             marginLeft: 20,
@@ -580,7 +582,7 @@ export default function OrderSheet() {
                             marginBottom: 4,
                             alignSelf: "flex-start",
                             fontFamily: "NotoSansCJKkr"
-                        }}>나누다 팁!</div>
+                        }}>하울프리 팁</div>
                         <div style={{
                             opacity: 0.8,
                             fontSize: 14,
@@ -590,9 +592,9 @@ export default function OrderSheet() {
                             fontFamily: "NotoSansCJKkr",
                             marginLeft: 20,
                         }}>
-                            첫 결제 이후 결제 금액들은 자동결제 됩니다. <br />
-                                분할결제 한도에 따라 분할 결제 금액이 바뀔 수 있습니다. <br />
-                            <span style={{ textDecorationLine: "underline" }}>더 알아보기</span>
+                            주문서를 접수한 이후 카카오톡을 통해 입금 및 주문 확인이 진행됩니다.  <br />
+                            결제일로부터 한달 뒤 두번째 결제 금액을 입력해주세요!<br />
+                            
                         </div>
                         <div style={{
                             height: 1,
@@ -682,7 +684,7 @@ export default function OrderSheet() {
                                     opacity: 0.6,
                                     color: "#202426",
                                     fontFamily: "NotoSansCJKkr"
-                                }}>- 0 P</div>
+                                }}>- 10,000 P</div>
                             </div>
                             <div style={{
                                 display: "flex",
@@ -694,14 +696,10 @@ export default function OrderSheet() {
                             }}>
                                 <div style={{
                                     fontSize: 14,
-                                    color: "#26c1f0",
+                                    color: "#f72b2b",
                                     fontFamily: "NotoSansCJKkr"
-                                }}>사용가능 : 2,000 P</div>
-                                <div style={{
-                                    fontSize: 14,
-                                    color: "#26c1f0",
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>전액사용</div>
+                                }}>첫만남 기념 1만원 무조건 할인!</div>
+                            
                             </div>
                         </div>
                         <div style={{
@@ -715,7 +713,7 @@ export default function OrderSheet() {
                             이번 달은
                                 <span style={{
                                 color: "#26c1f0"
-                            }}>  {(Number(oneMoney)+Number(ship)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</span>
+                            }}>  {(Number(oneMoney)+Number(ship)-10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</span>
                                  만 결제하세요.
                             </div>
                         <div style={{
@@ -734,7 +732,7 @@ export default function OrderSheet() {
                             marginLeft: 20,
                             fontFamily: "NotoSansCJKkr",
                             cursor: "pointer"
-                        }}>구매조건 확인 및 결제대행 서비스 약관 동의</div>
+                        }}>분할 결제 약관</div>
                         <div style={{
                             fontSize: 14,
                             opacity: 0.6,
@@ -744,7 +742,7 @@ export default function OrderSheet() {
                             marginLeft: 20,
                             fontFamily: "NotoSansCJKkr",
                             cursor: "pointer"
-                        }}>개인정보 제공안내</div>
+                        }}>구매 위탁 이용약관</div>
                         <div style={{
                             width: 440,
                             fontSize: 12,
@@ -752,7 +750,7 @@ export default function OrderSheet() {
                             color: "#202426",
                             marginLeft: 20,
                             fontFamily: "NotoSansCJKkr"
-                        }}>* 개별 판매자가 등록한 나누다 딜 상품에 대한 광고, 상품주문, 배송 및 환불의 의무와 책임은 각 판매자가 부담하고, 이에 대하여 나누다는 통신판매중개자로서 통신판매의 당사자가 아니므로 일체 책임을 지지 않습니다.</div>
+                        }}>* 교환, 반품 및 환불은 구매한 상점의 정책을 따릅니다</div>
                         <div style={{
                             height: 1,
                             width: 480,
@@ -768,7 +766,7 @@ export default function OrderSheet() {
                             marginBottom: 32,
                             fontFamily: "NotoSansCJKkr",
                             textAlign: "center",
-                        }}>위 주문 내용을 확인 하였으며, 회원은 본인의 결제에 동의합니다.</div>
+                        }}>위 주문 내용을 확인 하였으며, 본인의 결제와 약관에 동의합니다.</div>
                         <div onClick={order} style={{
                             alignSelf: "center",
                             width: 440,
@@ -785,7 +783,7 @@ export default function OrderSheet() {
 
                             cursor: "pointer",
                             fontFamily: "NotoSansCJKkr"
-                        }}>결제하기</div>
+                        }}>주문 신청하기</div>
                     </div>
                 </div>
             </Default>
@@ -815,35 +813,34 @@ export default function OrderSheet() {
 
                         marginLeft: "5%"
                     }}>
-                        <div style={{
-                            width: "25vw",
-                            height: "25vw",
-                            borderRadius: 6,
-                            marginRight: "4vw",
-                            backgroundColor: "#000000",
-                            color: "#ffffff"
-                        }}>상품 그림</div>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "flex-start",
-                            justifyContent: "flex-start"
-                        }}>
+                          <img src={image} style={{
+                                width: "25vw",
+                                heigh: "25vw",
+                                borderRadius: 6,
+                                marginRight: "4vw",
+                                objectFit: "cover"
+                            }}></img>
                             <div style={{
-                                fontSize: 14,
-                                color: "#202426",
-                                fontFamily: "AvenirNext"
-                            }}>PRADA Model 23-9 limited… <br />
-                                    WHITE, 270mm</div>
-                            <div style={{
-                                marginTop: 8,
-                                fontSize: 16,
-                                fontWeight: "bold",
-                                color: "#051a1a",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>480,000원</div>
-                        </div>
-                    </div>
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "flex-start",
+                                justifyContent: "flex-start"
+                            }}>
+                                <div style={{
+                                    fontSize: 14,
+                                    color: "#202426",
+                                    fontFamily: "AvenirNext"
+                                }}>{itemDes} <br />
+                                    {orderDes}</div>
+                                <div style={{
+                                    marginTop: 8,
+                                    fontSize: 18,
+                                    fontWeight: "bold",
+                                    color: "#051a1a",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</div>
+                            </div>
+                                            </div>
                     <div style={{
                         height: 1,
                         width: "100%",
@@ -863,60 +860,7 @@ export default function OrderSheet() {
                         :
                         <MNoAddress />
                     }
-                    <div style={{
-                        fontSize: 16,
-                        marginLeft: "5%",
-                        fontWeight: "bold",
-                        color: "#202426",
-                        marginTop: "8vw",
-                        fontFamily: "NotoSansCJKkr"
-                    }}>결제 수단</div>
-                    {register ?
-                        <div style={{
-                            width: "82vw",
-                            alignSelf: "center",
-                            padding: "4vw",
-                            borderRadius: 6,
-                            border: "1px solid #26c1f0",
-                            marginTop: 16,
-
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                        }}>
-                            <div style={{
-                                fontSize: 14,
-                                opacity: 0.8,
-                                color: "#202426",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>우리 1002-550-5**544</div>
-                        </div>
-                        :
-                        <div onClick={() => history.push("/paymentaddbank")} style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            alignSelf: "center",
-
-                            width: "90vw",
-                            height: "30vw",
-                            border: "1px solid rgba(5, 26, 26, 0.2)",
-                            cursor: "pointer",
-                            borderRadius: 6,
-                            marginTop: "4vw",
-                        }}>
-                            <BiPlusCircle size={28} color="rgba(5, 26, 26, 0.6)" />
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                opacity: 0.6,
-                                fontSize: 14,
-                                color: "#202426",
-                                marginTop: "2vw",
-                            }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
-                        </div>
-                    }
+                    
                     <div style={{
                         fontSize: 16,
                         marginLeft: "5%",
@@ -1033,7 +977,7 @@ export default function OrderSheet() {
                         marginBottom: 4,
                         alignSelf: "flex-start",
                         fontFamily: "NotoSansCJKkr"
-                    }}>나누다 팁!</div>
+                    }}>하울프리 팁</div>
                     <div style={{
                         opacity: 0.8,
                         fontSize: 12,
@@ -1043,9 +987,9 @@ export default function OrderSheet() {
                         lineHeight: 1.5,
                         fontFamily: "NotoSansCJKkr"
                     }}>
-                        첫 결제 이후 결제 금액들은 자동결제 됩니다. <br />
+                        주문서를 접수한 이후 카카오톡을 통해 입금 및 주문 확인이 진행됩니다.  <br />
                         분할결제 한도에 따라 분할 결제 금액이 바뀔 수 있습니다. <br />
-                        <span style={{ textDecorationLine: "underline" }}>더 알아보기</span>
+                       
                     </div>
                     <div style={{
                         height: 1,
@@ -1146,14 +1090,10 @@ export default function OrderSheet() {
                         }}>
                             <div style={{
                                 fontSize: 12,
-                                color: "#26c1f0",
+                                color: "#f72b2b",
                                 fontFamily: "NotoSansCJKkr"
-                            }}>사용가능 : 2,000 P</div>
-                            <div style={{
-                                fontSize: 12,
-                                color: "#26c1f0",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>전액사용</div>
+                            }}>첫만남 기념 1만원 무조건 할인!</div>
+                    
                         </div>
                     </div>
                     <div style={{
@@ -1168,7 +1108,7 @@ export default function OrderSheet() {
                         이번달은
                                 <span style={{
                             color: "#26c1f0"
-                        }}> {(Number(oneMoney)+Number(ship)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 </span>
+                        }}> {(Number(oneMoney)+Number(ship)-10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 </span>
                                  만 결제하세요.
                             </div>
                     <div style={{
@@ -1186,7 +1126,7 @@ export default function OrderSheet() {
                         marginBottom: 8,
                         marginLeft: "5%",
                         fontFamily: "NotoSansCJKkr"
-                    }}>구매조건 확인 및 결제대행 서비스 약관 동의</div>
+                    }}>분할 결제 약관</div>
                     <div style={{
                         fontSize: 12,
                         opacity: 0.6,
@@ -1195,7 +1135,7 @@ export default function OrderSheet() {
                         marginBottom: 8,
                         marginLeft: "5%",
                         fontFamily: "NotoSansCJKkr"
-                    }}>개인정보 제공안내</div>
+                    }}>구매 위탁 이용약관</div>
                     <div style={{
                         width: "90%",
                         fontSize: 10,
@@ -1203,7 +1143,7 @@ export default function OrderSheet() {
                         color: "#202426",
                         alignSelf: "center",
                         fontFamily: "NotoSansCJKkr"
-                    }}>* 개별 판매자가 등록한 나누다 딜 상품에 대한 광고, 상품주문, 배송 및 환불의 의무와 책임은 각 판매자가 부담하고, 이에 대하여 나누다는 통신판매중개자로서 통신판매의 당사자가 아니므로 일체 책임을 지지 않습니다.</div>
+                    }}>* 교환, 반품 및 환불은 구매한 상점의 정책을 따릅니다</div>
                     <div style={{
                         height: 1,
                         width: "100%",
@@ -1220,7 +1160,7 @@ export default function OrderSheet() {
                         marginBottom: "8vw",
                         fontFamily: "NotoSansCJKkr",
                         textAlign: "center",
-                    }}>위 주문 내용을 확인 하였으며, 회원은 본인의 결제에 동의합니다.</div>
+                    }}>위 주문 내용을 확인 하였으며, 본인의 결제와 약관에 동의합니다.</div>
                     <div onClick={order} style={{
                         alignSelf: "center",
                         width: "90vw",
@@ -1237,7 +1177,7 @@ export default function OrderSheet() {
 
                         cursor: "pointer",
                         fontFamily: "NotoSansCJKkr"
-                    }}>결제하기</div>
+                    }}>주문 신청하기</div>
                 </div>
             </Mobile>
         </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-
+import axios from "axios"
 
 export default function WishDealDefault() {
     let history = useHistory();
@@ -19,24 +19,16 @@ export default function WishDealDefault() {
         console.log(text)
     }
     const ogtag = async () => {
-        fetch("https://haulfree.link/api", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                params:
+        let response = await axios.post(
+            "http://3.35.166.77:3001/api",
+            {  params:
                 {
                     code: text
                 },
-            })
-
-        })
-
-            .then(response => response.json())
-            .then(response => {
+            }
+            );
+            console.log(response)
+       
                 if (response.data.error == true) {
                     history.push("wishdealnoturl")
                 } else {
@@ -47,9 +39,7 @@ export default function WishDealDefault() {
                     setDes(response.data.results.ogDescription)
                     setUrl(response.data.results.ogUrl)
                 }
-            }).catch(err => {
-                console.log(err)
-            })
+            
 
     }
 
