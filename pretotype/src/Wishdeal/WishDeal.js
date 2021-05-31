@@ -76,9 +76,9 @@ export default function WishDeal() {
     useEffect(() => {
 
         console.log(myparam)
-        setImage(myparam.ogImage.url)
-        setUrl(myparam.ogUrl)
-        setTitle(myparam.ogTitle)
+        setImage(myparam.image.url)
+        setUrl(myparam.url)
+        setTitle(myparam.title)
 
     }, [])
 

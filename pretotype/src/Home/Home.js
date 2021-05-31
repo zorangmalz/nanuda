@@ -234,6 +234,37 @@ export default function Home() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <HomeHeader />
+                        <div style={{
+                            width:480,
+                            height:48,
+                            backgroundColor:"#051a1a"
+                        }}>
+                            <div style={{
+                                 display: "flex",
+                                 flexDirection: "row",
+                                 justifyContent: "flex-start",
+                                 
+                            }}>
+                            <div style={{
+                                fontSize:16,
+                                color:"#ffffff",
+                                marginTop:12,
+                                marginLeft:69
+                            }}>
+                                스타트업 대표님이신가요? 
+                            </div>
+                            <div style={{
+                                marginLeft:5,
+                                fontSize:16,
+                                color:"#ffffff",
+                                marginTop:12,
+                                textDecorationLine:"underline",
+                                fontWeight:"bold"
+                            }}>
+                                첫 구매 수수료 50% 할인
+                            </div>
+                            </div>
+                        </div>
                         <img 
                             src={topbanner}
                             style={{
@@ -449,7 +480,7 @@ export default function Home() {
                             />
                         </AfterContainer>
                         <BottomTag marginTop={200} marginBottom={0} />
-                        <div onClick={() => setModal(true)} style={{
+                        <div onClick={() => history.push("/wishdealdefault")} style={{
                             width: 440,
                             marginLeft: 20,
                             marginRight: 20,
@@ -698,7 +729,7 @@ export default function Home() {
                         />
                     </MAfterContainer>
                     <MBottomTag marginTop={100} marginBottom={0} />
-                    <div onClick={() => setModal(true)} style={{
+                    <div onClick={() => history.push("/wishdealdefault")} style={{
                         width: "90%",
                         marginLeft: "5%",
                         marginRight: "5%",

@@ -3,41 +3,64 @@ import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import axios from "axios"
+import Loader from "react-loader-spinner"
+import OpengraphReactComponent from "opengraph-react"
 
 export default function WishDealDefault() {
+
+    const [loading,setLoading]=useState(false)
+    function Loading(){
+        return(
+            
+                <Loader
+                type="Oval"
+                color="#ffffff"
+                height={20}
+                width={20}
+                timeout={10000}
+                >
+
+                </Loader>
+            
+        )
+    }
     let history = useHistory();
     const [linkOrNot, setLinkOrNot] = useState(false)
     const [text, setText] = useState("")
     const [image, setImage] = useState("")
     const [title, setTitle] = useState("")
     const [des, setDes] = useState("")
-    const [url, setUrl] = useState("")
+    const [url, setUrl] = useState("                                    ")
     const onChange = (e) => {
         console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
         console.log(e.target.value)	//이벤트가 발생한 타겟의 Value를 출력
         setText(e.target.value)		//이벤트 발생한 value값으로 {text} 변경
         console.log(text)
     }
+
     const ogtag = async () => {
-        let response = await axios.post(
-            "http://3.35.166.77:3001/api",
+        setLoading(true)
+        let response = await axios.get(
+            "http://3.35.166.77:3002/api",
             {  params:
                 {
                     code: text
                 },
             }
             );
-            console.log(response)
-       
+            console.log(response.data.openGraph)
+            
                 if (response.data.error == true) {
+                    setLoading(false)
                     history.push("wishdealnoturl")
                 } else {
-                    history.push("wishdeal", { info: response.data.results })
-                    setLinkOrNot(true)
-                    setImage(response.data.results.ogImage.url)
-                    setTitle(response.data.results.ogTitle)
-                    setDes(response.data.results.ogDescription)
-                    setUrl(response.data.results.ogUrl)
+                    setLoading(false)
+                    history.push("wishdeal", { info: response.data.openGraph })
+                    // setLinkOrNot(true)
+                    // setImage(response.data.results.ogImage.url)
+                    // setTitle(response.data.results.ogTitle)
+                    // setDes(response.data.results.ogDescription)
+                    // setUrl(response.data.results.ogUrl)
                 }
             
 
@@ -68,6 +91,11 @@ export default function WishDealDefault() {
                     height: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
+                        {/* <OpengraphReactComponent  
+  site={'https://store.musinsa.com/app/goods/1744581/0'}  
+  appId={"92813a8d-7ec4-4348-8849-cee098e11317"}  
+  size={'small'}    
+/> */}
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
@@ -222,7 +250,7 @@ export default function WishDealDefault() {
                                     fontWeight: "bold",
                                     cursor: "pointer",
                                     textAlign: "center",
-                                }}>확인</div>
+                                }}>{loading? <Loading></Loading>:"확인"}</div>
                             </div>
                         }
                     </div>
