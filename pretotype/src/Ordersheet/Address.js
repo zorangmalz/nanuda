@@ -27,6 +27,7 @@ function reducer(state, action) {
 export default function Address() {
     const location = useLocation()
     const myparam = location.state.myparam
+    const getUrl=location.state.url
     const history=useHistory()
     const [modal, setModal] = useState(false)
     //우편번호 입력
@@ -168,10 +169,10 @@ export default function Address() {
         }
     }
     useEffect(() => {
-        console.log(myparam)
+        console.log(myparam,getUrl)
         check()
     }, [inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber])
-
+    
     async function send() {
         console.log(inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber)
 
@@ -183,7 +184,7 @@ export default function Address() {
                     address_name: inputs.name,
                     address_phone: inputs.phoneNumber,
         })
-        history.push("/ordersheet",{param:myparam, addInfo:inputs})
+        history.push("/ordersheet",{param:myparam, addInfo:inputs,url:getUrl})
     }
     return (
         <div>

@@ -43,13 +43,18 @@ export default function OrderSheet() {
         try{
             
             console.log(addre)
-            setBasicAddress(true)
-                    setA(addre.name)
-                    setB(addre.addressNum)
-                    setC(addre.address)
-                    setD(addre.addressDetail)
-                    setE(addre.phoneNumber)
-                    setF(addre.claim)
+            if(addre==""){
+                setBasicAddress(false)
+            }else{
+                setBasicAddress(true)
+                setA(addre.name)
+                setB(addre.addressNum)
+                setC(addre.address)
+                setD(addre.addressDetail)
+                setE(addre.phoneNumber)
+                setF(addre.claim)
+            }
+            
         }catch(err){
             setBasicAddress(false)
         }
@@ -172,6 +177,7 @@ export default function OrderSheet() {
     const location = useLocation()
     const myparam = location.state.param
     const addre=location.state.addInfo
+    const getUrl=location.state.url
     const [image, setImage] = useState("")
     const [itemDes, setItemDes] = useState("")
     const [orderDes, setOrderDes] = useState("")
@@ -179,11 +185,11 @@ export default function OrderSheet() {
     const [ship,setShip]=useState(0)
 
     useEffect(() => {
-        
+        console.log(myparam,addre,getUrl)
         try
         {
-        setImage(myparam[0].ogImage.url)
-        setItemDes(myparam[0].ogTitle)
+        setImage(myparam[0].image.url)
+        setItemDes(myparam[0].title)
         setShip(myparam[7])
         if (myparam[1] === 1) {
             setOrderDes(myparam[3].ELcolor + "   " + myparam[3].ELetc)
@@ -263,8 +269,10 @@ export default function OrderSheet() {
             }
         }
         } catch(err){
-            setImage(myparam.myparam[0].ogImage.url)
-            setItemDes(myparam.myparam[0].ogTitle)
+            console.log(err)
+            console.log(myparam,addre)
+            setImage(myparam.myparam[0].image.url)
+            setItemDes(myparam.myparam[0].title)
             setShip(myparam.myparam[7])
             if (myparam.myparam[1] === 1) {
                 setOrderDes(myparam.myparam[3].ELcolor + "   " + myparam.myparam[3].ELetc)
@@ -353,13 +361,14 @@ export default function OrderSheet() {
                 myparam:myparam,
                 ship:item,
                 option:number,
-                schedule:paymentDate
+                schedule:paymentDate,
+                url:getUrl
             })
             history.push("paymentsuccess",{myparam:myparam,ship:item})
         }
     }
     function fix(){
-        history.push("/address",{param:myparam})
+        history.push("address",{param:myparam, url:getUrl})
     }
 
     return (
@@ -462,7 +471,7 @@ export default function OrderSheet() {
                         {basicAddress ?
                             <BasicAddress item={item} />
                             :
-                            <NoAddress myparam={myparam} />
+                            <NoAddress myparam={myparam} url={getUrl} />
                         }
                        
                         
@@ -767,6 +776,7 @@ export default function OrderSheet() {
                             fontFamily: "NotoSansCJKkr",
                             textAlign: "center",
                         }}>위 주문 내용을 확인 하였으며, 본인의 결제와 약관에 동의합니다.</div>
+                        {basicAddress? 
                         <div onClick={order} style={{
                             alignSelf: "center",
                             width: 440,
@@ -784,6 +794,26 @@ export default function OrderSheet() {
                             cursor: "pointer",
                             fontFamily: "NotoSansCJKkr"
                         }}>주문 신청하기</div>
+                        : 
+                        <div style={{
+                            alignSelf: "center",
+                            width: 440,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            backgroundColor: "#dbdbdb",
+                            borderRadius: 6,
+                            marginBottom: 120,
+
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            textAlign: "center",
+
+                            cursor: "pointer",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>주문 신청하기</div>
+                        }
+                        
                     </div>
                 </div>
             </Default>
@@ -858,7 +888,7 @@ export default function OrderSheet() {
                     {basicAddress ?
                         <MBasicAddress item={item} />
                         :
-                        <MNoAddress />
+                        <MNoAddress myparam={myparam} url={getUrl}/>
                     }
                     
                     <div style={{
@@ -1034,7 +1064,7 @@ export default function OrderSheet() {
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
-                            }}> +240,000 원</div>
+                            }}> +{oneMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</div>
                         </div>
                         <div style={{
                             display: "flex",
@@ -1056,7 +1086,7 @@ export default function OrderSheet() {
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
-                            }}> + 0 원</div>
+                            }}> + {ship} 원</div>
                         </div>
                         <div style={{
                             display: "flex",
@@ -1078,7 +1108,7 @@ export default function OrderSheet() {
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
-                            }}>- 0 P</div>
+                            }}>- 10,000 P</div>
                         </div>
                         <div style={{
                             display: "flex",
@@ -1161,6 +1191,7 @@ export default function OrderSheet() {
                         fontFamily: "NotoSansCJKkr",
                         textAlign: "center",
                     }}>위 주문 내용을 확인 하였으며, 본인의 결제와 약관에 동의합니다.</div>
+                    {basicAddress? 
                     <div onClick={order} style={{
                         alignSelf: "center",
                         width: "90vw",
@@ -1178,6 +1209,26 @@ export default function OrderSheet() {
                         cursor: "pointer",
                         fontFamily: "NotoSansCJKkr"
                     }}>주문 신청하기</div>
+                    : 
+                    <div style={{
+                        alignSelf: "center",
+                        width: "90vw",
+                        paddingTop: "4vw",
+                        paddingBottom: "4vw",
+                        backgroundColor: "#dbdbdb",
+                        borderRadius: 6,
+                        marginBottom: 80,
+
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        color: "#ffffff",
+                        textAlign: "center",
+
+                        cursor: "pointer",
+                        fontFamily: "NotoSansCJKkr"
+                    }}>주문 신청하기</div>
+                    }
+                    
                 </div>
             </Mobile>
         </div>

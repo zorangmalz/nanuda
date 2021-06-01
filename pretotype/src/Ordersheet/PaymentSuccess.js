@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
 import { MOrderDetail, OrderDetail } from "./PaymentFail";
-import { useHistory } from "react-router";
+import { useHistory,useLocation } from "react-router";
 
 
 export default function PaymentSuccess() {
     //WishDeal인지 여부
     const [wish, setWish] = useState(true)
-
+    const location = useLocation()
+    const myparam=location.state.myparam
+    const ship = location.state.ship
+    useEffect(()=>{
+        console.log(myparam,ship)
+    },[])
 
 
     //화면 변경
@@ -67,20 +72,51 @@ export default function PaymentSuccess() {
                         }}>{wish ? "주문" : "작성"}이 완료
                                 <span style={{ color: "#051a1a" }}>되었습니다!</span>
                         </div>
-                        <OrderDetail
+                        {myparam.myparam[1]==1 ?
+                            <OrderDetail
+                            img={myparam.myparam[0].image.url}
                             wishTime={wish}
-                            title="PRADA Model 23-9 limited edition berry expensive"
-                            price="460,000"
-                            name="김현명"
-                            orderNum="20200413137223-00-01"
-                            number="03770"
-                            address="서울 특별시 서대문구 북아현로 1길 17"
-                            addressDetail="e편한세상 203동 2104호"
-                            phoneNumber="010-4337-6607"
-                            deliveryClaim="집 앞"
+                            title={myparam.myparam[0].title}
+                            price={myparam.myparam[3].ELprice}
+                            name={ship.name}
+                            number={ship.addressNum}
+                            address={ship.address}
+                            addressDetail={ship.addressDetail}
+                            phoneNumber={ship.phoneNumber}
+                            deliveryClaim={ship.request}
                         />
+                        : 
+                       
+                        (myparam.myparma[1]===2 ? 
+                            <OrderDetail
+                            img={myparam.myparam[0].image.url}
+                            wishTime={wish}
+                            title={myparam.myparam[0].title}
+                            price={myparam.myparam[3].Fprice}
+                            name={ship.name}
+                            number={ship.addressNum}
+                            address={ship.address}
+                            addressDetail={ship.addressDetail}
+                            phoneNumber={ship.phoneNumber}
+                            deliveryClaim={ship.request}
+                        />
+                        :
+                        <OrderDetail
+                        img={myparam.myparam[0].image.url}
+                            wishTime={wish}
+                            title={myparam.myparam[0].title}
+                            price={myparam.myparam[3].Eprice}
+                            name={ship.name}
+                            number={ship.addressNum}
+                            address={ship.address}
+                            addressDetail={ship.addressDetail}
+                            phoneNumber={ship.phoneNumber}
+                            deliveryClaim={ship.request}
+                        />)
+                        }
+                        
                         <StandardButton
-                            text="홈으로"
+                            text="홈으로 돌아가기"
                             marginTop={32}
                             onClick={() => history.replace("/")}
                             state={true}
@@ -138,42 +174,55 @@ export default function PaymentSuccess() {
                     }}>{wish ? "주문" : "작성"}이 완료
                         <span style={{ color: "#051a1a" }}>되었습니다!</span>
                     </div>
-                    <MOrderDetail
-                        wishTime={wish}
-                        title="PRADA Model 23-9 limited edition berry expensive"
-                        price="460,000"
-                        name="김현명"
-                        orderNum="20200413137223-00-01"
-                        number="03770"
-                        address="서울 특별시 서대문구 북아현로 1길 17"
-                        addressDetail="e편한세상 203동 2104호"
-                        phoneNumber="010-4337-6607"
-                        deliveryClaim="집 앞"
-                    />
+                    {myparam.myparam[1]==1 ?
+                            <MOrderDetail
+                            img={myparam.myparam[0].image.url}
+                            wishTime={wish}
+                            title={myparam.myparam[0].title}
+                            price={myparam.myparam[3].ELprice}
+                            name={ship.name}
+                            number={ship.addressNum}
+                            address={ship.address}
+                            addressDetail={ship.addressDetail}
+                            phoneNumber={ship.phoneNumber}
+                            deliveryClaim={ship.request}
+                        />
+                        : 
+                       
+                        (myparam.myparma[1]===2 ? 
+                            <MOrderDetail
+                            img={myparam.myparam[0].image.url}
+                            wishTime={wish}
+                            title={myparam.myparam[0].title}
+                            price={myparam.myparam[3].Fprice}
+                            name={ship.name}
+                            number={ship.addressNum}
+                            address={ship.address}
+                            addressDetail={ship.addressDetail}
+                            phoneNumber={ship.phoneNumber}
+                            deliveryClaim={ship.request}
+                        />
+                        :
+                        <MOrderDetail
+                        img={myparam.myparam[0].image.url}
+                            wishTime={wish}
+                            title={myparam.myparam[0].title}
+                            price={myparam.myparam[3].Eprice}
+                            name={ship.name}
+                            number={ship.addressNum}
+                            address={ship.address}
+                            addressDetail={ship.addressDetail}
+                            phoneNumber={ship.phoneNumber}
+                            deliveryClaim={ship.request}
+                        />)
+                        }
                     <MStandardButton
-                        text="홈으로"
+                        text="홈으로 돌아가기"
                         onClick={() => history.replace("/")}
                         state={true}
                         marginTop={"8vw"}
                     />
-                    <div onClick={() => history.push("/review")} style={{
-                        width: "90vw",
-                        paddingTop: "4vw",
-                        paddingBottom: "4vw",
-                        backgroundColor: "#ffffff",
-                        alignSelf: "center",
-                        cursor: "pointer",
-                        marginTop: "4vw",
-                        marginBottom: "4vw",
-                        borderRadius: 6,
-                        border: "1px solid #dfdfdf",
-
-                        fontSize: 16,
-                        opacity: 0.6,
-                        fontFamily: "NotoSansCJKkr",
-                        color: "#051a1a",
-                        textAlign: "center"
-                    }}>내 리뷰 확인하기</div>
+                   
                 </div>
             </Mobile>
         </div>

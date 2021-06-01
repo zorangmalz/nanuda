@@ -176,14 +176,15 @@ export function OrderDetail({ wishTime, img, title, price, name, orderNum, numbe
                         alignItems: "center",
                         marginBottom: 16
                     }}>
-                        <div style={{
-                            width: 80,
-                            height: 80,
-                            marginRight: 10,
-                            borderRadius: 6,
-                            border: "solid 1px rgba(219, 219, 219, 0.1)",
-                            backgroundColor: "#000000"
-                        }}></div>
+                        <img style={{
+                width: 80,
+                height: 80,
+                objectFit: "cover",
+                border: "solid 1px rgba(219, 219, 219, 0.1)",
+                marginRight: 10,
+                borderRadius:6
+            }} src={img}></img>
+                  
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
@@ -213,7 +214,7 @@ export function OrderDetail({ wishTime, img, title, price, name, orderNum, numbe
                         fontSize: 16,
                     }}>
                         받는사람 : {name} <br />
-                        주문번호 : {orderNum} <br />
+                        
                         우편번호 : {number} <br />
                         주소: {address} <br />
                         상세주소 : {addressDetail} <br />
@@ -233,8 +234,8 @@ export function MOrderDetail({ wishTime, img, title, price, name, orderNum, numb
         <div>
             {wishTime ?
                 <div style={{
-                    width: "82%",
-                    padding: "4%",
+                    width: "90vw",
+                    padding : "4vw",
                     border: "1px solid #dfdfdf",
                     backgroundColor: "#ffffff",
                     marginTop: 32,
@@ -258,14 +259,14 @@ export function MOrderDetail({ wishTime, img, title, price, name, orderNum, numb
                         alignItems: "center",
                         marginBottom: 16
                     }}>
-                        <div style={{
-                            width: 70,
-                            height: 70,
-                            marginRight: 10,
-                            borderRadius: 6,
-                            border: "solid 1px rgba(219, 219, 219, 0.1)",
-                            backgroundColor: "#000000"
-                        }}></div>
+                     <img style={{
+                width: 80,
+                height: 80,
+                objectFit: "cover",
+                border: "solid 1px rgba(219, 219, 219, 0.1)",
+                marginRight: 10,
+                borderRadius:6
+            }} src={img}></img>
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
@@ -295,7 +296,7 @@ export function MOrderDetail({ wishTime, img, title, price, name, orderNum, numb
                         fontSize: 14,
                     }}>
                         받는사람 : {name} <br />
-                        주문번호 : {orderNum} <br />
+                        
                         우편번호 : {number} <br />
                         주소: {address} <br />
                         상세주소 : {addressDetail} <br />

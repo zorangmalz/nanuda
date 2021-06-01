@@ -72,9 +72,9 @@ export default function WishDeal() {
     const [state, setState] = useState(false)
     const location = useLocation()
     const myparam = location.state.info
-
+    const getUrl=location.state.url
     useEffect(() => {
-
+        console.log(getUrl)
         console.log(myparam)
         setImage(myparam.image.url)
         setUrl(myparam.url)
@@ -114,13 +114,13 @@ export default function WishDeal() {
         if (type === 0) {
             console.log("0")
         } else if (type == 1) {
-            history.push("/wishdealurl", { param: myparam, code: 1, des: text })
+            history.push("/wishdealurl", { param: myparam, code: 1, des: text,url:getUrl })
         } else if (type == 2) {
-            history.push("/wishdealurl", { param: myparam, code: 2, des: text })
+            history.push("/wishdealurl", { param: myparam, code: 2, des: text,url:getUrl })
         } else if (type == 3) {
-            history.push("/wishdealurl", { param: myparam, code: 3, des: text })
+            history.push("/wishdealurl", { param: myparam, code: 3, des: text,url:getUrl })
         } else if (type == 4) {
-            history.push("/wishdealurl", { code: 4, param: myparam, des: text })
+            history.push("/wishdealurl", { code: 4, param: myparam, des: text,url:getUrl })
         }
     }
     return (
@@ -181,7 +181,7 @@ export default function WishDeal() {
                                 opacity: 0.6,
                                 color: "#202426",
 
-                            }}>{url.substr(0, 20)}...</div>
+                            }}>{getUrl.substr(0, 20)}...</div>
                             <div style={{
                                 fontWeight: "bold",
                                 marginTop: 8,
@@ -343,7 +343,7 @@ export default function WishDeal() {
                             opacity: 0.6,
                             color: "#202426",
 
-                        }}>{url.substr(0, 20)}...</div>
+                        }}>{getUrl.substr(0, 20)}...</div>
                         <div style={{
                             fontWeight: "bold",
                             marginTop: 8,

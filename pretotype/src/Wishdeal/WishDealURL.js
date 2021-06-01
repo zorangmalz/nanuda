@@ -74,6 +74,7 @@ export default function WishDealURL() {
     const myparam = location.state.param
     const code = location.state.code
     const des = location.state.des
+    const getUrl = location.state.url
     const [stats, setStats] = useState("")
     const [state, setState] = useState(false)
     useEffect(() => {
@@ -248,13 +249,13 @@ export default function WishDealURL() {
         const lst = []
         if (stats === 1) {
             lst.push(myparam, code, des, ELinputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst ,addre:""})
+            history.push("/ordersheet", { param: lst ,addInfo:"", url:getUrl})
         } else if (stats === 2) {
             lst.push(myparam, code, des, Finputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst,addre:"" })
+            history.push("/ordersheet", { param: lst,addInfo:"", url:getUrl })
         } else {
             lst.push(myparam, code, des, Einputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst,addre:"" })
+            history.push("/ordersheet", { param: lst,addInfo:"", url:getUrl })
         }
     }
     return (
@@ -284,8 +285,8 @@ export default function WishDealURL() {
                         {stats === 1 ?
                             <div>
                                 <ElectronicForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
                                     input={ELinputs}
                                     setInput={setELInputs}
                                 />
@@ -296,8 +297,8 @@ export default function WishDealURL() {
                         {stats === 2 ?
                             <div>
                                 <FashionForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
                                     input={Finputs}
                                     setInput={setFInputs}
                                 />
@@ -309,8 +310,8 @@ export default function WishDealURL() {
                         {stats === 4 ?
                             <div>
                                 <ETCForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
                                     input={Einputs}
                                     setInput={setEInputs}
                                 />
@@ -486,7 +487,7 @@ export default function WishDealURL() {
                             <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
                             <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
-                            <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
+                            
                         </div>
                         <StandardButton
                             marginTop={32}
@@ -521,10 +522,10 @@ export default function WishDealURL() {
                         {stats === 1 ?
                             <div>
                                 <MElectronicForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
-                                    input={Einputs}
-                                    setInput={setEInputs}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
+                                    input={ELinputs}
+                                    setInput={setELInputs}
                                 />
                             </div>
                             :
@@ -533,8 +534,8 @@ export default function WishDealURL() {
                         {stats === 2 ?
                             <div>
                                 <MFashionForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
                                     input={Finputs}
                                     setInput={setFInputs}
                                 />
@@ -546,8 +547,8 @@ export default function WishDealURL() {
                         {stats === 4 ?
                             <div>
                                 <METCForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
                                     input={Einputs}
                                     setInput={setEInputs}
                                 />
@@ -720,7 +721,7 @@ export default function WishDealURL() {
                             <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
                             <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
-                            <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
+                            
                         </div>
                         <MStandardButton
                             marginTop={32}
@@ -1005,7 +1006,8 @@ function MFashionForm({ image, brand, name, input, setInput }) {
                 onChange={onChange}
                 style={{
                     marginTop: "4vw",
-                    width: "90vw",
+                    width: "80vw",
+                    marginLeft:"5vw",
                     alignSelf: "center",
                     outline: 0,
                     border: 0,
@@ -1033,7 +1035,8 @@ function MFashionForm({ image, brand, name, input, setInput }) {
                 onChange={onChange}
                 style={{
                     marginTop: "4vw",
-                    width: "90vw",
+                    width: "80vw",
+                    marginLeft:"5vw",
                     alignSelf: "center",
                     outline: 0,
                     border: 0,
@@ -1061,7 +1064,8 @@ function MFashionForm({ image, brand, name, input, setInput }) {
                 onChange={onChange}
                 style={{
                     marginTop: "4vw",
-                    width: "90vw",
+                    width: "80vw",
+                    marginLeft:"5vw",
                     alignSelf: "center",
                     outline: 0,
                     border: 0,
@@ -1315,7 +1319,8 @@ function MElectronicForm({ image, brand, name, input, setInput }) {
                 onChange={onChange}
                 style={{
                     marginTop: "4vw",
-                    width: "90vw",
+                    width: "80vw",
+                    marginLeft:"5vw",
                     alignSelf: "center",
                     outline: 0,
                     border: 0,
@@ -1343,7 +1348,8 @@ function MElectronicForm({ image, brand, name, input, setInput }) {
                 onChange={onChange}
                 style={{
                     marginTop: "4vw",
-                    width: "90vw",
+                    width: "80vw",
+                    marginLeft:"5vw",
                     alignSelf: "center",
                     outline: 0,
                     border: 0,
@@ -1570,7 +1576,8 @@ function METCForm({ image, brand, name, input, setInput }) {
                 onChange={onChange}
                 style={{
                     marginTop: "4vw",
-                    width: "90vw",
+                    width: "80vw",
+                    marginLeft:"5vw",
                     alignSelf: "center",
                     outline: 0,
                     border: 0,
