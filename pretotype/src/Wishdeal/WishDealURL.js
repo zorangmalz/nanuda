@@ -299,13 +299,13 @@ export default function WishDealURL() {
         const lst = []
         if (stats === 1) {
             lst.push(myparam, code, des, ELinputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst ,addInfo:"", url:getUrl})
+            history.push("/ordersheet", { param: lst ,addInfo:"", url:getUrl,image:""})
         } else if (stats === 2) {
             lst.push(myparam, code, des, Finputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst,addInfo:"", url:getUrl })
+            history.push("/ordersheet", { param: lst,addInfo:"", url:getUrl,image:"" })
         } else {
             lst.push(myparam, code, des, Einputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst,addInfo:"", url:getUrl })
+            history.push("/ordersheet", { param: lst,addInfo:"", url:getUrl,image:"" })
         }
     }
     return (

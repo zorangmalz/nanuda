@@ -196,13 +196,6 @@ export default function WishDealNotURL() {
         }
     }, [Finputs, number, numberB, option, ship])
 
-    function NextPage() {
-        const lst = []
-        uploadFile()
-
-        lst.push("", 2, "", Finputs, number, option, numberB, ship)
-        history.push("/ordersheet", { param: lst, addInfo: "", url: getUrl })
-    }
 
     //ImageToS3
     //이미지 진행상황
@@ -227,7 +220,9 @@ export default function WishDealNotURL() {
     }
 
     //s3로 업로드
+    const [imageUrl,setImageUrl]=useState("")
     const uploadFile = async () => {
+        console.log("uploading")
         var imageArray = []
         const params = {
             ACL: "public-read",
@@ -236,7 +231,7 @@ export default function WishDealNotURL() {
             Key: selectedFile[0].name
         }
 
-        imageBucket.putObject(params)
+        await imageBucket.putObject(params)
             .on("httpUploadProgress", (evt) => {
                 setProgress(Math.round((evt.loaded / evt.total) * 100))
                 console.log(progress)
@@ -247,8 +242,13 @@ export default function WishDealNotURL() {
                 }
             })
         imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[0].name}`)
-
+        setImageUrl(imageArray)
         console.log(imageArray)
+        const lst = []
+        
+
+        lst.push("", 2, "", Finputs, number, option, numberB, ship)
+        history.push("/ordersheet", { param: lst, addInfo: "", url: getUrl,image:imageArray })
     }
     return (
         <div>
@@ -444,7 +444,8 @@ export default function WishDealNotURL() {
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                         </div>
-                        <div onClick={NextPage} style={{
+                        {next?
+                        <div onClick={uploadFile} style={{
                             borderRadius: 8,
                             width: 440,
                             paddingTop: 15,
@@ -460,6 +461,25 @@ export default function WishDealNotURL() {
                             marginBottom: 150,
                             cursor: "pointer",
                         }}>다음</div>
+                         :
+                         <div style={{
+                            borderRadius: 8,
+                            width: 440,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            alignSelf: "center",
+                            marginTop: 32,
+                            backgroundColor: "#dbdbdb",
+
+                            color: "#ffffff",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            textAlign: "center",
+                            marginBottom: 150,
+                            cursor: "pointer",
+                        }}>다음</div>
+                         }
+                      
                     </div>
                 </div>
             </Default>
@@ -661,7 +681,8 @@ export default function WishDealNotURL() {
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                         </div>
-                        <div onClick={NextPage} style={{
+                        {next? 
+                         <div onClick={uploadFile} style={{
                             borderRadius: 8,
                             width: "90vw",
                             paddingTop: "4vw",
@@ -677,6 +698,25 @@ export default function WishDealNotURL() {
                             marginBottom: 80,
                             cursor: "pointer",
                         }}>다음</div>
+                        : 
+                        <div  style={{
+                            borderRadius: 8,
+                            width: "90vw",
+                            paddingTop: "4vw",
+                            paddingBottom: "4vw",
+                            alignSelf: "center",
+                            marginTop: "8vw",
+                            backgroundColor: "#dbdbdb",
+
+                            color: "#ffffff",
+                            fontSize: 16,
+                            fontWeight: "bold",
+                            textAlign: "center",
+                            marginBottom: 80,
+                            cursor: "pointer",
+                        }}>다음</div>
+                        }
+                       
                     </div>
                 </div>
             </Mobile>

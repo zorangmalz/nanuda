@@ -168,6 +168,7 @@ export default function OrderSheet() {
     const myparam = location.state.param
     const addre=location.state.addInfo
     const getUrl=location.state.url
+    const imageUrl=location.state.image
     const [image, setImage] = useState("")
     const [itemDes, setItemDes] = useState("")
     const [orderDes, setOrderDes] = useState("")
@@ -175,14 +176,14 @@ export default function OrderSheet() {
     const [ship,setShip]=useState(0)
 
     useEffect(() => {
-        console.log(myparam,addre,getUrl)
+        console.log(myparam,addre,getUrl,imageUrl)
         try
         {
             try{
                 setImage(myparam.image.url)
                 setItemDes(myparam.title)
             }catch(err){
-                setImage("")
+                setImage(imageUrl)
                 setItemDes(myparam.Fname)
             }
             
@@ -281,7 +282,8 @@ export default function OrderSheet() {
                 setImage(myparam.myparam[0].image.url)
                 setItemDes(myparam.myparam[0].title)
             }catch(err){
-                setImage("")
+                console.log(imageUrl)
+                setImage(myparam.image[0])
                 setItemDes(myparam.myparam[0].Fname)
             }
             
@@ -384,13 +386,14 @@ export default function OrderSheet() {
                 ship:item,
                 option:number,
                 schedule:paymentDate,
-                url:getUrl
+                url:getUrl,
+                image:myparam.image[0]
             })
-            history.push("paymentsuccess",{myparam:myparam,ship:item})
+            history.push("paymentsuccess",{myparam:myparam,ship:item,image:imageUrl})
         }
     }
     function fix(){
-        history.push("address",{param:myparam, url:getUrl})
+        history.push("address",{param:myparam, url:getUrl,image:imageUrl})
     }
 
     return (
@@ -493,7 +496,7 @@ export default function OrderSheet() {
                         {basicAddress ?
                             <BasicAddress item={item} />
                             :
-                            <NoAddress myparam={myparam} url={getUrl} />
+                            <NoAddress myparam={myparam} url={getUrl} image={imageUrl} />
                         }
                        
                         
@@ -884,7 +887,7 @@ export default function OrderSheet() {
                     {basicAddress ?
                         <MBasicAddress item={item} />
                         :
-                        <MNoAddress myparam={myparam} url={getUrl}/>
+                        <MNoAddress myparam={myparam} url={getUrl} image={imageUrl}/>
                     }
                     
                     <div style={{

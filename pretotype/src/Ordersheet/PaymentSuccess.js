@@ -15,6 +15,7 @@ export default function PaymentSuccess() {
     const [prices,setPrices]=useState("")
     const myparam=location.state.myparam
     const ship = location.state.ship
+    const imageUrl=location.state.image
     useEffect(()=>{
         console.log(myparam,ship)
         try{
@@ -24,7 +25,7 @@ setPrices(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
             console.log(err)
             console.log(Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))
             console.log(Number(myparam.myparam[3].Fprice),Number(myparam.myparam[5]))
-            setImg("")
+            setImg(myparam.image[0])
             setPrices(Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))
         }
     },[])
