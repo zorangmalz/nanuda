@@ -46,24 +46,31 @@ export default function WishDealDefault() {
     },[text])
     const ogtag = async () => {
         setLoading(true)
-        let response = await axios.get(
-            "http://3.35.166.77:3002/api",
-            {  params:
-                {
-                    code: text
-                },
-            }
-            );
-            console.log(response.data.openGraph)
-            
-                if (response.data.error == true) {
-                    setLoading(false)
-                    history.push("wishdealnoturl")
-                } else {
-                    setLoading(false)
-                    history.push("wishdeal", { info: response.data.openGraph,url:text })
-
+        try{
+            let response = await axios.get(
+                "http://3.35.166.77:3002/api",
+                {  params:
+                    {
+                        code: text
+                    },
                 }
+                );
+                console.log(response.data.openGraph)
+                console.log("hererererer",response)
+                    if (response.data.error == true) {
+                        setLoading(false)
+                        history.push("wishdealnoturl")
+                    } else {
+                        setLoading(false)
+                        history.push("wishdeal", { info: response.data.openGraph,url:text })
+    
+                    }
+        }catch(err){
+            console.log(err)
+            setLoading(false)
+            history.push("wishdealnoturl",{url:text})
+        }
+        
             
 
     }

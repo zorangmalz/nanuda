@@ -163,28 +163,7 @@ export function MHeader({ content, goBack, goX }) {
 export function HomeHeader() {
     let history = useHistory()
     const [log, setLog] = useState(false)
-    useEffect(() => {
-        test()
-    }, [])
-    const test = async () => {
-        console.log("come")
-        fetch("https://haulfree.link/userInfoName/", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials:"include",
-        })
-            
-            .then(response => {
-                setLog(response.data.data)
-              
-            }).catch(err=>{
-                console.log(err)
-            })
-      
-    }
+   
     function noticeClick() {
         if (log == true) {
             history.push("/notice")
@@ -241,7 +220,7 @@ export function HomeHeader() {
                 <img alt="" src={user} style={{
                     width: 28,
                     height: 28,
-                    marginLeft: 8,
+                    marginLeft: 8, 
                     cursor: "pointer"
                 }} />
             </div>
@@ -252,27 +231,7 @@ export function HomeHeader() {
 export function MHomeHeader() {
     let history = useHistory()
     const [log, setLog] = useState("")
-    useEffect(() => {
-        test()
-    }, [])
-    const test = async () => {
-        console.log("come")
-        fetch("https://haulfree.link/userInfoName/", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials:"include",
-        })
-            
-            .then(response => {
-                setLog(response.data.data)
-              
-            }).catch(err=>{
-                console.log(err)
-            })
-    }
+   
     function noticeClick() {
         if (log == true) {
             history.push("/notice")
@@ -1020,6 +979,114 @@ export function MStandardButton({ marginTop, text, onClick, state }) {
         </div>
     )
     
+}
+
+export function MTopBanner({img, title, content, backgroundColor, link}) {
+    return (
+        
+            <div style={{
+                width: "100vw",
+                
+                height: 250,
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                
+            }}>
+                {/* <img src={topbanner} height="250" style={{ objectFit: "cover", minWidth: 300 }} />
+                <div style={{ position: "absolute", zIndex: 1, top: 0, width: "100vw", minWidth: 300, height: 250, background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8))" }} /> */}
+                <a href={link} target="_blank" style={{
+                    textDecorationLine: "none",
+                    WebkitAppearance: "none"
+                }}>
+                    <div style={{
+                        position: "absolute",
+                        zIndex: 1,
+                        top: 0,
+                        width: "100vw",
+                        height: 230,
+                        paddingBottom: 20,
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "flex-end",
+                        justifyContent: "flex-end",
+                    }}>
+                        <img src={img} style={{
+                            width:"100vw",
+                            height:250,
+                            objectFit: "contain",
+                        }} />
+                    </div>
+                   
+                </a>
+            </div>
+        
+    )
+}
+
+
+export function TopBanner({ img, title, content, backgroundColor, link }) {
+    return (
+        
+            <div style={{
+                width: 480,
+                
+                height: 300,
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                backgroundColor: backgroundColor
+            }}>
+                {/* vlog 리영자 디자인 */}
+                {/* <img src={topbanner} height="418" style={{objectFit: "cover", minWidth: 1060}} />
+                <div style={{position: "absolute", zIndex: 1, top: 0, width: "100vw", minWidth: 1060, height: 418, background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8))"}} /> */}
+                <a href={link} target="_blank" style={{
+                    textDecorationLine: "none",
+                    WebkitAppearance: "none"
+                }}>
+                    <div style={{
+                        width: 480,
+                        height: 300,
+                        paddingBottom: 62,
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "flex-end",
+                        justifyContent: "flex-end",
+                    }}>
+                        <img src={img} alt="" style={{
+                            width: 480,
+                            objectFit: "contain",
+                        }} />
+                    </div>
+                    {/* <div style={{
+                        position: "absolute",
+                        zIndex: 2,
+                        top: 144,
+                        width: "56vw",
+                        minWidth: 1060,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                    }}>
+                        <div style={{
+                            width: 445,
+                            fontWeight: "bold",
+                            fontSize: 24,
+                            color: "#ffffff",
+                            marginBottom: 20,
+                        }}>{title}</div>
+                        <div style={{
+                            width: 300,
+                            fontSize: 36,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                        }}>{content}</div>
+                    </div> */}
+                </a>
+            </div>
+        
+    )
 }
 
 //이름 중간 마스킹하기

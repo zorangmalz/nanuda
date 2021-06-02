@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask } from "../Style";
+import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask,TopBanner,MTopBanner } from "../Style";
 import { BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
@@ -16,6 +16,10 @@ import topbanner from "../images/topbanner.png"
 import {firestore} from "../firebase"
 import MetaTags from "react-meta-tags"
 import banner from "../images/homebanner.png"
+import Slider from "react-slick"
+import bannerOne from "../images/bannerOne.png"
+import bannerTwo from "../images/bannerTwo.png"
+
 const AfterContainer = styled.div`
     width: 424px;
     margin-left: 20px;
@@ -49,7 +53,39 @@ const MAfterContainer = styled.div`
     flex-direction: row;
     align-items: center;
 `;
+const MainContainer = styled.div`
+    width: 424px;
+    margin-left: 20px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    overflow: auto;
+    ::-webkit-scrollbar {
+        display: none;
+    }
 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+
+const MMainContainer = styled.div`
+    width: 86vw;
+    margin-left: 5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+    overflow: auto;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
 export default function Home() {
     let history = useHistory()
     
@@ -269,12 +305,80 @@ export default function Home() {
                             </a>
                             </div>
                         </div>
-                        <img 
-                            src={topbanner}
-                            style={{
-                                width: 480,
-                            }}
-                        />
+                        <div style={{
+                            width:480,
+                            height:300
+                        }}>
+                        <Slider  dots={true} autoplaySpeed={5000} autoplay={true} >
+                            <div>
+                        <TopBanner
+                                img={bannerOne}
+                                title="크리에이터 크라우드 펀딩 플랫폼"
+                                content="Y.은 무슨 서비스인지 알아볼까요?"
+                                num={1}
+                                backgroundColor="#273d5a"
+                                link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
+                            />
+                            </div>
+                            <div>
+                            <div style={{
+                width: 480,
+                
+                height: 300,
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                
+            }}>
+                
+                <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                    textDecorationLine: "none",
+                    WebkitAppearance: "none"
+                }}>
+                    <div style={{
+                        width: 480,
+                        height: 300,
+                        paddingBottom: 62,
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "flex-end",
+                        justifyContent: "flex-end",
+                    }}>
+                        <img src={bannerTwo} alt="" style={{
+                            width: 480,
+                            objectFit: "contain",
+                        }} />
+                    </div>
+                    {/* <div style={{
+                        position: "absolute",
+                        zIndex: 2,
+                        top: 144,
+                        width: "56vw",
+                        minWidth: 1060,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                    }}>
+                        <div style={{
+                            width: 445,
+                            fontWeight: "bold",
+                            fontSize: 24,
+                            color: "#ffffff",
+                            marginBottom: 20,
+                        }}>{title}</div>
+                        <div style={{
+                            width: 300,
+                            fontSize: 36,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                        }}>{content}</div>
+                    </div> */}
+                </a>
+            </div>
+                            </div>
+      </Slider></div>
+                        
                         <div onClick={() => setModal(true)} style={{
                             display: "flex",
                             flexDirection: "row",
@@ -405,7 +509,7 @@ export default function Home() {
                                             marginTop: 6
                                         }}>{item.user_nickname} </div>
                                     </div>
-                                    <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                    <img alt="리뷰사진" src={item.review_image} style={{
                                         width: 210,
                                         height: 160,
                                         borderRadius: 6,
@@ -564,12 +668,30 @@ export default function Home() {
                             </a>
                             </div>
                         </div>
-                    <img
-                        src={topbanner}
-                        style={{
-                            width: "100vw",
-                        }}
-                    />
+                        <div>
+                        <Slider  dots={true} autoplaySpeed={5000} autoplay={true} >
+                            <div>
+                        <MTopBanner
+                                img={bannerOne}
+                                title="크리에이터 크라우드 펀딩 플랫폼"
+                                content="Y.은 무슨 서비스인지 알아볼까요?"
+                                num={1}
+                                backgroundColor="#273d5a"
+                                link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
+                            />
+                            </div>
+                            <div>
+                                <MTopBanner
+                                img={bannerTwo}
+                                title="크리에이터 크라우드 펀딩 플랫폼"
+                                content="Y.은 무슨 서비스인지 알아볼까요?"
+                                num={1}
+                                backgroundColor="#273d5a"
+                                link="https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"
+                                ></MTopBanner>
+                    
+                            </div>
+      </Slider></div>
                     <div onClick={() => setModal(true)} style={{
                         display: "flex",
                         flexDirection: "row",
@@ -699,7 +821,7 @@ export default function Home() {
                                         marginTop: 6
                                     }}>{item.user_nickname} </div>
                                 </div>
-                                <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                <img alt="리뷰사진" src={item.review_image} style={{
                                     width: "42vw",
                                     height: "32vw",
                                     borderRadius: 6,

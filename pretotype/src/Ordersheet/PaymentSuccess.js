@@ -10,10 +10,23 @@ export default function PaymentSuccess() {
     //WishDeal인지 여부
     const [wish, setWish] = useState(true)
     const location = useLocation()
+    const [img,setImg]=useState("")
+    const [title,setTitle]=useState("")
+    const [prices,setPrices]=useState("")
     const myparam=location.state.myparam
     const ship = location.state.ship
     useEffect(()=>{
         console.log(myparam,ship)
+        try{
+setImg(myparam.myparam[0].image.url)
+setPrices(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
+        }catch(err){
+            console.log(err)
+            console.log(Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))
+            console.log(Number(myparam.myparam[3].Fprice),Number(myparam.myparam[5]))
+            setImg("")
+            setPrices(Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))
+        }
     },[])
 
 
@@ -74,10 +87,10 @@ export default function PaymentSuccess() {
                         </div>
                         {myparam.myparam[1]==1 ?
                             <OrderDetail
-                            img={myparam.myparam[0].image.url}
+                            img={img}
                             wishTime={wish}
                             title={myparam.myparam[0].title}
-                            price={myparam.myparam[3].ELprice}
+                            price={prices}
                             name={ship.name}
                             number={ship.addressNum}
                             address={ship.address}
@@ -89,10 +102,10 @@ export default function PaymentSuccess() {
                        
                         (myparam.myparam[1]===2 ? 
                             <OrderDetail
-                            img={myparam.myparam[0].image.url}
+                            img={img}
                             wishTime={wish}
                             title={myparam.myparam[0].title}
-                            price={myparam.myparam[3].Fprice}
+                            price={prices}
                             name={ship.name}
                             number={ship.addressNum}
                             address={ship.address}
@@ -102,10 +115,10 @@ export default function PaymentSuccess() {
                         />
                         :
                         <OrderDetail
-                        img={myparam.myparam[0].image.url}
+                        img={img}
                             wishTime={wish}
                             title={myparam.myparam[0].title}
-                            price={myparam.myparam[3].Eprice}
+                            price={Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5])}
                             name={ship.name}
                             number={ship.addressNum}
                             address={ship.address}
@@ -161,10 +174,10 @@ export default function PaymentSuccess() {
                     </div>
                     {myparam.myparam[1]==1 ?
                             <MOrderDetail
-                            img={myparam.myparam[0].image.url}
+                            img={img}
                             wishTime={wish}
                             title={myparam.myparam[0].title}
-                            price={myparam.myparam[3].ELprice}
+                            price={prices}
                             name={ship.name}
                             number={ship.addressNum}
                             address={ship.address}
@@ -176,10 +189,10 @@ export default function PaymentSuccess() {
                        
                         (myparam.myparam[1]===2 ? 
                             <MOrderDetail
-                            img={myparam.myparam[0].image.url}
+                            img={img}
                             wishTime={wish}
                             title={myparam.myparam[0].title}
-                            price={myparam.myparam[3].Fprice}
+                            price={prices}
                             name={ship.name}
                             number={ship.addressNum}
                             address={ship.address}
@@ -189,10 +202,10 @@ export default function PaymentSuccess() {
                         />
                         :
                         <MOrderDetail
-                        img={myparam.myparam[0].image.url}
+                        img={img}
                             wishTime={wish}
                             title={myparam.myparam[0].title}
-                            price={myparam.myparam[3].Eprice}
+                            price={Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5])}
                             name={ship.name}
                             number={ship.addressNum}
                             address={ship.address}

@@ -149,7 +149,7 @@ export default function WishDealURL() {
     },[])
     useEffect(()=>{
         if(stats===1){
-            if(Number(Finputs.Fprice)<30000){
+            if(Number(ELinputs.ELprice)<30000){
 
                 if(ELinputs.ELprice===""){
                     setHighPrice(true)
@@ -188,7 +188,7 @@ export default function WishDealURL() {
                 console.log("There")
             }
         }
-    },[Finputs.Fprice,ELinputs.Eprice,Einputs.Eprice])
+    },[Finputs.Fprice,ELinputs.ELprice,Einputs.Eprice])
 
     useEffect(() => {
         
@@ -781,12 +781,14 @@ export default function WishDealURL() {
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                             
                         </div>
+                        <div style={{marginLeft:20}}>
                         <MStandardButton
                             marginTop={32}
                             text="다음"
                             onClick={NextPage}
                             state={next}
                         />
+                        </div>
                     </div>
                 </div>
             </Mobile>

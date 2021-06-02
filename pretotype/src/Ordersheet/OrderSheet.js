@@ -178,8 +178,14 @@ export default function OrderSheet() {
         console.log(myparam,addre,getUrl)
         try
         {
-        setImage(myparam[0].image.url)
-        setItemDes(myparam[0].title)
+            try{
+                setImage(myparam.image.url)
+                setItemDes(myparam.title)
+            }catch(err){
+                setImage("")
+                setItemDes(myparam.Fname)
+            }
+            
         if(myparam[6]===2){
             setShip(0)
         }else if(myparam[6]===3){
@@ -195,22 +201,23 @@ export default function OrderSheet() {
             setPrice(Number(myparam[3].ELprice)+Number(myparam[5]))
             
             if(number===2){
-                var res=parseInt(parseInt((myparam[3].ELprice)/100)/2)
-                var left=parseInt((myparam[3].ELprice)/100)%2
+                var res=parseInt(parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)/2)
+                var left=parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)%2
                 setOneMoney(res*100+left*100)
                 setTwoMoney(res*100)
                 setThreeMoney("-")
                 setFourMoney("-")
+                console.log(res,left)
             }else if(number===3){
-                var res=parseInt(parseInt((myparam[3].ELprice)/100)/3)
-                var left=parseInt((myparam[3].ELprice)/100)%3
+                var res=parseInt(parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)/3)
+                var left=parseInt((Number(myparam[3].ELprice)+Number(myparam[5])/100))%3
                 setOneMoney(res*100+left*100)
                 setTwoMoney(res*100)
                 setThreeMoney(res*100)
                 setFourMoney("-")
             }else{
-                var res=parseInt(parseInt((myparam[3].ELprice)/100)/4)
-                var left=parseInt((myparam[3].ELprice)/100)%4
+                var res=parseInt(parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)/4)
+                var left=parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)%4
                 setOneMoney(res*100+left*100)
                 setTwoMoney(res*100)
                 setThreeMoney(res*100)
@@ -220,22 +227,22 @@ export default function OrderSheet() {
             setOrderDes(myparam[3].Fcolor + "   " + myparam[3].Fsize + "   " + myparam[3].Fetc)
             setPrice(Number(myparam[3].Fprice)+Number(myparam[5]))
             if(number===2){
-                var res=parseInt(parseInt((myparam[3].Fprice)/100)/2)
-                var left=parseInt((myparam[3].Fprice)/100)%2
+                var res=parseInt(parseInt((Number(myparam[3].Fprice)+Number(myparam[5]))/100)/2)
+                var left=parseInt((Number(myparam[3].Fprice)+Number(myparam[5])/100))%2
                 setOneMoney(res*100+left*100)
                 setTwoMoney(res*100)
                 setThreeMoney("-")
                 setFourMoney("-")
             }else if(number===3){
-                var res=parseInt(parseInt((myparam[3].Fprice)/100)/3)
-                var left=parseInt((myparam[3].Fprice)/100)%3
+                var res=parseInt(parseInt((Number(myparam[3].Fprice)+Number(myparam[5]))/100)/3)
+                var left=parseInt((Number(myparam[3].Fprice)+Number(myparam[5])/100))%3
                 setOneMoney(res*100+left*100)
                 setTwoMoney(res*100)
                 setThreeMoney(res*100)
                 setFourMoney("-")
             }else{
-                var res=parseInt(parseInt((myparam[3].Fprice)/100)/4)
-                var left=parseInt((myparam[3].Fprice)/100)%4
+                var res=parseInt(parseInt((Number(myparam[3].Fprice)+Number(myparam[5]))/100)/4)
+                var left=parseInt((Number(myparam[3].Fprice)+Number(myparam[5]))/100)%4
                 setOneMoney(res*100+left*100)
                 setTwoMoney(res*100)
                 setThreeMoney(res*100)
@@ -245,22 +252,22 @@ export default function OrderSheet() {
             setOrderDes(myparam[3].Eetc)
             setPrice(Number(myparam[3].Eprice)+Number(myparam[5]))
             if(number===2){
-                var res=parseInt(parseInt((myparam[3].Eprice)/100)/2)
-                var left=parseInt((myparam[3].Eprice)/100)%2
+                var res=parseInt(parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)/2)
+                var left=parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)%2
                 setOneMoney(res*100+left*100)
                 setTwoMoney(res*100)
                 setThreeMoney("-")
                 setFourMoney("-")
             }else if(number===3){
-                var res=parseInt(parseInt((myparam[3].Eprice)/100)/3)
-                var left=parseInt((myparam[3].Eprice)/100)%3
+                var res=parseInt(parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)/3)
+                var left=parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)%3
                 setOneMoney(res*100+left*100)
                 setTwoMoney(res*100)
                 setThreeMoney(res*100)
                 setFourMoney("-")
             }else{
-                var res=parseInt(parseInt((myparam[3].Eprice)/100)/4)
-                var left=parseInt((myparam[3].Eprice)/100)%4
+                var res=parseInt(parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)/4)
+                var left=parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)%4
                 setOneMoney(res*100+left*100)
                 setTwoMoney(res*100)
                 setThreeMoney(res*100)
@@ -270,8 +277,15 @@ export default function OrderSheet() {
         } catch(err){
             console.log(err)
             console.log(myparam,addre)
-            setImage(myparam.myparam[0].image.url)
-            setItemDes(myparam.myparam[0].title)
+            try{
+                setImage(myparam.myparam[0].image.url)
+                setItemDes(myparam.myparam[0].title)
+            }catch(err){
+                setImage("")
+                setItemDes(myparam.myparam[0].Fname)
+            }
+            
+            
             if(myparam.myparam[6]===2){
                 setShip(0)
             }else if(myparam.myparam[6]===3){
@@ -286,22 +300,23 @@ export default function OrderSheet() {
                 setPrice(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
                 
                 if(number===2){
-                    var res=parseInt(parseInt((myparam.myparam[3].ELprice)/100)/2)
-                    var left=parseInt((myparam.myparam[3].ELprice)/100)%2
+                    var res=parseInt(parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)/2)
+                    var left=parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)%2
                     setOneMoney(res*100+left*100)
                     setTwoMoney(res*100)
                     setThreeMoney("-")
                     setFourMoney("-")
+                    console.log(res,left)
                 }else if(number===3){
-                    var res=parseInt(parseInt((myparam.myparam[3].ELprice)/100)/3)
-                    var left=parseInt((myparam.myparam[3].ELprice)/100)%3
+                    var res=parseInt(parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)/3)
+                    var left=parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)%3
                     setOneMoney(res*100+left*100)
                     setTwoMoney(res*100)
                     setThreeMoney(res*100)
                     setFourMoney("-")
                 }else{
-                    var res=parseInt(parseInt((myparam.myparam[3].ELprice)/100)/4)
-                    var left=parseInt((myparam.myparam[3].ELprice)/100)%4
+                    var res=parseInt(parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)/4)
+                    var left=parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)%4
                     setOneMoney(res*100+left*100)
                     setTwoMoney(res*100)
                     setThreeMoney(res*100)
@@ -311,22 +326,22 @@ export default function OrderSheet() {
                 setOrderDes(myparam.myparam[3].Fcolor + "   " + myparam.myparam[3].Fsize + "   " + myparam.myparam[3].Fetc)
                 setPrice(Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))
                 if(number===2){
-                    var res=parseInt(parseInt((myparam.myparam[3].Fprice)/100)/2)
-                    var left=parseInt((myparam.myparam[3].Fprice)/100)%2
+                    var res=parseInt(parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)/2)
+                    var left=parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)%2
                     setOneMoney(res*100+left*100)
                     setTwoMoney(res*100)
                     setThreeMoney("-")
                     setFourMoney("-")
                 }else if(number===3){
-                    var res=parseInt(parseInt((myparam.myparam[3].Fprice)/100)/3)
-                    var left=parseInt((myparam.myparam[3].Fprice)/100)%3
+                    var res=parseInt(parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)/3)
+                    var left=parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)%3
                     setOneMoney(res*100+left*100)
                     setTwoMoney(res*100)
                     setThreeMoney(res*100)
                     setFourMoney("-")
                 }else{
-                    var res=parseInt(parseInt((myparam.myparam[3].Fprice)/100)/4)
-                    var left=parseInt((myparam.myparam[3].Fprice)/100)%4
+                    var res=parseInt(parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)/4)
+                    var left=parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)%4
                     setOneMoney(res*100+left*100)
                     setTwoMoney(res*100)
                     setThreeMoney(res*100)
@@ -336,22 +351,22 @@ export default function OrderSheet() {
                 setOrderDes(myparam.myparam[3].Eetc)
                 setPrice(Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))
                 if(number===2){
-                    var res=parseInt(parseInt((myparam.myparam[3].Eprice)/100)/2)
-                    var left=parseInt((myparam.myparam[3].Eprice)/100)%2
+                    var res=parseInt(parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)/2)
+                    var left=parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)%2
                     setOneMoney(res*100+left*100)
                     setTwoMoney(res*100)
                     setThreeMoney("-")
                     setFourMoney("-")
                 }else if(number===3){
-                    var res=parseInt(parseInt((myparam.myparam[3].Eprice)/100)/3)
-                    var left=parseInt((myparam.myparam[3].Eprice)/100)%3
+                    var res=parseInt(parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)/3)
+                    var left=parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)%3
                     setOneMoney(res*100+left*100)
                     setTwoMoney(res*100)
                     setThreeMoney(res*100)
                     setFourMoney("-")
                 }else{
-                    var res=parseInt(parseInt((myparam.myparam[3].Eprice)/100)/4)
-                    var left=parseInt((myparam.myparam[3].Eprice)/100)%4
+                    var res=parseInt(parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)/4)
+                    var left=parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)%4
                     setOneMoney(res*100+left*100)
                     setTwoMoney(res*100)
                     setThreeMoney(res*100)
@@ -555,7 +570,7 @@ export default function OrderSheet() {
                                         fontWeight: "bold",
                                         color: "#202426",
                                         fontFamily: "NotoSansCJKkr"
-                                    }}>{item.money} 원</div>
+                                    }}>{item.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</div>
                                 </div>
                             )}
                         </div>
@@ -648,7 +663,7 @@ export default function OrderSheet() {
                                     opacity: 0.6,
                                     color: "#202426",
                                     fontFamily: "NotoSansCJKkr"
-                                }}> + {ship} 원</div>
+                                }}> + {ship.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</div>
                             </div>
                             <div style={{
                                 display: "flex",
@@ -945,13 +960,13 @@ export default function OrderSheet() {
                                     fontWeight: "bold",
                                     color: "#202426",
                                     fontFamily: "NotoSansCJKkr"
-                                }}>{item.money} 원</div>
+                                }}>{item.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</div>
                             </div>
                         )}
                     </div>
                     <div style={{
                         marginTop: 8,
-                        fontSize: 12,
+                        fontSize: 11,
                         marginLeft: "5vw",
                         fontWeight: "bold",
                         color: "#202426",
@@ -961,7 +976,7 @@ export default function OrderSheet() {
                     }}>하울프리 팁</div>
                     <div style={{
                         opacity: 0.8,
-                        fontSize: 12,
+                        fontSize: 11,
                         marginLeft: "5vw",
                         color: "#202426",
                         alignSelf: "flex-start",
@@ -1037,7 +1052,7 @@ export default function OrderSheet() {
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
-                            }}> + {ship} 원</div>
+                            }}> + {ship.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</div>
                         </div>
                         <div style={{
                             display: "flex",

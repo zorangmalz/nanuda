@@ -76,10 +76,24 @@ export default function WishDeal() {
     useEffect(() => {
         console.log(getUrl)
         console.log(myparam)
-        setImage(myparam.image.url)
-        setUrl(myparam.url)
-        setTitle(myparam.title)
-
+        try{
+            setImage(myparam.image.url)
+        }catch(err){
+            console.log(err)
+            setImage("")
+        }
+        try{
+            setUrl(myparam.url)
+        }catch(err){
+            console.log(err)
+            setUrl(getUrl)
+        }
+        try{
+            setTitle(myparam.title)
+        }catch(err){
+            console.log(err)
+            setTitle("")
+        }
     }, [])
 
     const [type, dispatch] = useReducer(reducer, 0)
