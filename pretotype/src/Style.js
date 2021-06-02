@@ -892,12 +892,13 @@ export function LimitBox() {
     )
 }
 
-export function StandardButton({ marginTop, text, onClick, state }) {
+export function StandardButton({ marginTop, text, onClick, state, stats }) {
     let history = useHistory()
+    const id = stats === 1 ? "electronic_click" : stats === 2 ? "fashion_click" : stats === 4 ? "etc_click" : ""
     return (
         <div>
             {state? 
-            <div onClick={onClick} style={{
+            <div id={id} onClick={onClick} style={{
                 width: 440,
                 paddingTop: 16,
                 paddingBottom: 16,
@@ -936,12 +937,13 @@ export function StandardButton({ marginTop, text, onClick, state }) {
     )
 }
 
-export function MStandardButton({ marginTop, text, onClick, state }) {
+export function MStandardButton({ marginTop, text, onClick, state, stats }) {
     let history = useHistory()
+    const id = stats === 1 ? "electronic_click" : stats === 2 ? "fashion_click" : stats === 4 ? "etc_click" : ""
     return (
         <div>
         {state?
-        <div onClick={onClick} style={{
+        <div id={id} onClick={onClick} style={{
             width: "90vw",
             paddingTop: "4vw",
             paddingBottom: "4vw",

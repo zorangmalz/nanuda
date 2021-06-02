@@ -548,6 +548,7 @@ export default function WishDealURL() {
                             text="다음"
                             onClick={NextPage}
                             state={next}
+                            stats={stats}
                         />
                         </div>
                     </div>
@@ -787,6 +788,7 @@ export default function WishDealURL() {
                             text="다음"
                             onClick={NextPage}
                             state={next}
+                            stats={stats}
                         />
                         </div>
                     </div>

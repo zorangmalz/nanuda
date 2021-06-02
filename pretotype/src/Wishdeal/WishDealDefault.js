@@ -129,7 +129,7 @@ export default function WishDealDefault() {
 
                                 </div>
                                 {checker?
-                                 <div onClick={ogtag} style={{
+                                 <div id="url_click" onClick={ogtag} style={{
                                     borderRadius: 6,
                                     width: 440,
                                     marginLeft: 20,
@@ -220,7 +220,7 @@ export default function WishDealDefault() {
                             </div>
                         </div>
                         {checker?
-                        <div onClick={ogtag} style={{
+                        <div id="url_click" onClick={ogtag} style={{
                             borderRadius: 6,
                             width:"90vw",
                             paddingTop: "4vw",
