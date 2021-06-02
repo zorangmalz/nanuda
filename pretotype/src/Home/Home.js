@@ -14,7 +14,8 @@ import sampletwo from "../images/sampletwo.png"
 import profile from "../images/profile.png"
 import topbanner from "../images/topbanner.png"
 import {firestore} from "../firebase"
-
+import MetaTags from "react-meta-tags"
+import banner from "../images/homebanner.png"
 const AfterContainer = styled.div`
     width: 424px;
     margin-left: 20px;
@@ -138,6 +139,7 @@ export default function Home() {
     const [modal, setModal] = useState(false)
     return (
         <div>
+
             <Default>
                 <div style={{
                     display: "flex",
@@ -253,6 +255,7 @@ export default function Home() {
                             }}>
                                 스타트업 대표님이신가요? 
                             </div>
+                            <a  target="_blank"  href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
                             <div style={{
                                 marginLeft:5,
                                 fontSize:16,
@@ -263,6 +266,7 @@ export default function Home() {
                             }}>
                                 첫 구매 수수료 50% 할인
                             </div>
+                            </a>
                             </div>
                         </div>
                         <img 
@@ -312,15 +316,18 @@ export default function Home() {
                             alignItems: "flex-start",
                             justifyContent: "space-between"
                         }}>
+                            <div onClick={() => setModal(true)}>
                             <TimeShop
                                 img={sampleone}
                                 title="애플"
                                 sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
                                 price="329,000"
                                 currentPrice="240,000"
-                                stock={2}
+                                stock={0}
                                 sale={27}
                             />
+                            </div>
+                            <div onClick={() => setModal(true)}>
                             <TimeShop
                                 img={sampletwo}
                                 title="애플"
@@ -331,6 +338,7 @@ export default function Home() {
                                 stock={0}
                                 sale={5}
                             />
+                            </div>
                         </div>
                         <BannerContainer>
                             <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" />
@@ -479,6 +487,16 @@ export default function Home() {
                                 }}
                             />
                         </AfterContainer>
+                        <div style={{marginTop:64,marginLeft:20, width:440, height:160, backgroundImage:`url(${banner})`,backgroundSize:"cover",borderRadius:6,}}>
+                        <div style={{marginLeft:20,marginTop:20,fontSize:21,color:"#ffffff",fontWeight:"bold"}}>스타트업 대표님이신가요?</div>
+                        <div style={{marginLeft:20,marginTop:8,fontSize:16,color:"#ffffff"}}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
+                        <div style={{marginLeft:24,marginTop:8,backgroundColor:"#051a1a",width:240,height:48,borderRadius:6}}>
+                        <a  target="_blank"  href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                            <div style={{textDecorationLine: "none",padding:15,marginTop:20,marginLeft:20,fontSize:16,fontWeight:"bold",color:"#ffffff"}}>첫 구매 수수료 50% 할인!</div>
+                            </a>
+                        </div>
+                        </div>
+                        
                         <BottomTag marginTop={200} marginBottom={0} />
                         <div onClick={() => history.push("/wishdealdefault")} style={{
                             width: 440,
@@ -513,6 +531,39 @@ export default function Home() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHomeHeader />
+                    <div style={{
+                            width:"100%",
+                            height:48,
+                            backgroundColor:"#051a1a"
+                        }}>
+                            <div style={{
+                                 display: "flex",
+                                 flexDirection: "row",
+                                 justifyContent: "flex-start",
+                                 
+                            }}>
+                            <div style={{
+                                fontSize:14,
+                                color:"#ffffff",
+                                marginTop:12,
+                                marginLeft:50
+                            }}>
+                                스타트업 대표님이신가요? 
+                            </div>
+                            <a  target="_blank"  href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                            <div style={{
+                                marginLeft:5,
+                                fontSize:14,
+                                color:"#ffffff",
+                                marginTop:12,
+                                textDecorationLine:"underline",
+                                fontWeight:"bold"
+                            }}>
+                                첫 구매 수수료 50% 할인
+                            </div>
+                            </a>
+                            </div>
+                        </div>
                     <img
                         src={topbanner}
                         style={{
@@ -560,6 +611,7 @@ export default function Home() {
                         alignItems: "flex-start",
                         justifyContent: "space-between"
                     }}>
+                          <div onClick={() => setModal(true)}>
                         <MTimeShop
                             img={sampleone}
                             title="애플"
@@ -569,6 +621,8 @@ export default function Home() {
                             stock={2}
                             sale={27}
                         />
+                        </div>
+                          <div onClick={() => setModal(true)}>
                         <MTimeShop
                             img={sampletwo}
                             title="애플"
@@ -579,6 +633,7 @@ export default function Home() {
                             stock={0}
                             sale={5}
                         />
+                        </div>
                     </div>
                     <MBannerContainer>
                         <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" />
@@ -728,7 +783,19 @@ export default function Home() {
                             }}
                         />
                     </MAfterContainer>
+                    
+                    <div style={{marginTop:64,marginLeft:20, width:"90vw", height:160, backgroundImage:`url(${banner})`,backgroundSize:"cover",borderRadius:6,}}>
+                        <div style={{marginLeft:20,marginTop:20,fontSize:21,color:"#ffffff",fontWeight:"bold"}}>스타트업 대표님이신가요?</div>
+                        <div style={{marginLeft:20,marginTop:8,fontSize:16,color:"#ffffff"}}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
+                        <div style={{marginLeft:24,marginTop:8,backgroundColor:"#051a1a",width:"60vw",height:48,borderRadius:6}}>
+                        <a  target="_blank"  href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                            <div style={{textDecorationLine: "none",padding:15,marginTop:20,marginLeft:20,fontSize:16,fontWeight:"bold",color:"#ffffff"}}>첫 구매 수수료 50% 할인!</div>
+                            </a>
+                        </div>
+                        </div>
+                        
                     <MBottomTag marginTop={100} marginBottom={0} />
+                    
                     <div onClick={() => history.push("/wishdealdefault")} style={{
                         width: "90%",
                         marginLeft: "5%",

@@ -77,6 +77,7 @@ export default function WishDealURL() {
     const getUrl = location.state.url
     const [stats, setStats] = useState("")
     const [state, setState] = useState(false)
+    const [highPrice,setHighPrice]=useState(true)
     useEffect(() => {
         console.log(myparam, code, des)
         setStats(code)
@@ -143,9 +144,56 @@ export default function WishDealURL() {
             [name]: value
         })
     }
+    useEffect(()=>{
+        console.log(highPrice)
+    },[])
+    useEffect(()=>{
+        if(stats===1){
+            if(Number(Finputs.Fprice)<30000){
+
+                if(ELinputs.ELprice===""){
+                    setHighPrice(true)
+                }else{
+                    setHighPrice(false)
+                    console.log("?")
+                }
+            }else{
+                setHighPrice(true)
+                console.log("There")
+            }
+        }else if(stats===2){
+            if(Number(Finputs.Fprice)<30000){
+
+                if(Finputs.Fprice===""){
+                    setHighPrice(true)
+                }else{
+                    setHighPrice(false)
+                    console.log("?")
+                }
+            }else{
+                setHighPrice(true)
+                console.log("There")
+            }
+        }else{
+            if(Number(Einputs.Eprice)<30000){
+
+                if(Einputs.Eprice===""){
+                    setHighPrice(true)
+                }else{
+                    setHighPrice(false)
+                    console.log("?")
+                }
+            }else{
+                setHighPrice(true)
+                console.log("There")
+            }
+        }
+    },[Finputs.Fprice,ELinputs.Eprice,Einputs.Eprice])
 
     useEffect(() => {
+        
         if (stats === 1) {
+          
             if (ELinputs.ELcolor && ELinputs.ELprice != "") {
                 if (number && numberB > 1) {
                     if (number === 2 && numberB === 5) {
@@ -178,6 +226,7 @@ export default function WishDealURL() {
                 setNext(false)
             }
         } else if (stats === 2) {
+          
             if (Finputs.Fcolor && Finputs.Fsize && Finputs.Fprice != "") {
                 if (number && numberB > 1) {
                     if (number === 2 && numberB === 5) {
@@ -210,6 +259,7 @@ export default function WishDealURL() {
                 setNext(false)
             }
         } else {
+       
             if (Einputs.Eprice != "") {
                 if (number && numberB > 1) {
                     if (number === 2 && numberB === 5) {
@@ -285,6 +335,7 @@ export default function WishDealURL() {
                         {stats === 1 ?
                             <div>
                                 <ElectronicForm
+                                highPrice={highPrice}
                                     name={myparam.title}
                                     image={myparam.image.url}
                                     input={ELinputs}
@@ -297,6 +348,7 @@ export default function WishDealURL() {
                         {stats === 2 ?
                             <div>
                                 <FashionForm
+                                highPrice={highPrice}
                                     name={myparam.title}
                                     image={myparam.image.url}
                                     input={Finputs}
@@ -310,6 +362,7 @@ export default function WishDealURL() {
                         {stats === 4 ?
                             <div>
                                 <ETCForm
+                                highPrice={highPrice}
                                     name={myparam.title}
                                     image={myparam.image.url}
                                     input={Einputs}
@@ -489,12 +542,14 @@ export default function WishDealURL() {
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                             
                         </div>
+                        <div style={{marginLeft:20}}>
                         <StandardButton
                             marginTop={32}
                             text="다음"
                             onClick={NextPage}
                             state={next}
                         />
+                        </div>
                     </div>
                 </div>
             </Default>
@@ -522,6 +577,7 @@ export default function WishDealURL() {
                         {stats === 1 ?
                             <div>
                                 <MElectronicForm
+                                highPrice={highPrice}
                                     name={myparam.title}
                                     image={myparam.image.url}
                                     input={ELinputs}
@@ -534,6 +590,7 @@ export default function WishDealURL() {
                         {stats === 2 ?
                             <div>
                                 <MFashionForm
+                                highPrice={highPrice}
                                     name={myparam.title}
                                     image={myparam.image.url}
                                     input={Finputs}
@@ -547,6 +604,7 @@ export default function WishDealURL() {
                         {stats === 4 ?
                             <div>
                                 <METCForm
+                                highPrice={highPrice}
                                     name={myparam.title}
                                     image={myparam.image.url}
                                     input={Einputs}
@@ -736,7 +794,10 @@ export default function WishDealURL() {
     )
 }
 
-function FashionForm({ image, brand, name, input, setInput }) {
+function FashionForm({ image, brand, name, input, setInput,highPrice }) {
+    useEffect(()=>{
+        console.log(highPrice)
+    })
     const { Fprice, Fcolor, Fsize, Fetc } = input
 
     const onChange = (e) => {
@@ -783,6 +844,7 @@ function FashionForm({ image, brand, name, input, setInput }) {
                 marginTop: 16,
                 marginLeft: 20,
             }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
+            
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -818,7 +880,15 @@ function FashionForm({ image, brand, name, input, setInput }) {
                     color: "#202426"
                 }}>원</div>
             </div>
-
+            
+            {highPrice?
+            
+            <div></div>
+            
+             :
+             <div style={{color:"#f72b2b",fontSize:16,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+            
 
             <div style={{
                 fontFamily: "NotoSansCJKkr",
@@ -842,6 +912,7 @@ function FashionForm({ image, brand, name, input, setInput }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    marginLeft:20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
@@ -870,6 +941,7 @@ function FashionForm({ image, brand, name, input, setInput }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    marginLeft:20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
@@ -898,6 +970,7 @@ function FashionForm({ image, brand, name, input, setInput }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    marginLeft:20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
@@ -908,7 +981,7 @@ function FashionForm({ image, brand, name, input, setInput }) {
     )
 }
 
-function MFashionForm({ image, brand, name, input, setInput }) {
+function MFashionForm({ image, brand, name, input, setInput,highPrice }) {
     const { Fprice, Fcolor, Fsize, Fetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
@@ -988,7 +1061,12 @@ function MFashionForm({ image, brand, name, input, setInput }) {
                     color: "#202426"
                 }}>원</div>
             </div>
-
+            {highPrice===true?
+            <div></div>
+             :
+             <div style={{color:"#f72b2b",fontSize:14,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+            
 
             <div style={{
                 fontFamily: "NotoSansCJKkr",
@@ -1081,7 +1159,7 @@ function MFashionForm({ image, brand, name, input, setInput }) {
     )
 }
 
-function ElectronicForm({ image, brand, name, input, setInput }) {
+function ElectronicForm({ image, brand, name, input, setInput,highPrice }) {
     const { ELprice, ELcolor, ELetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
@@ -1161,6 +1239,12 @@ function ElectronicForm({ image, brand, name, input, setInput }) {
                     color: "#202426"
                 }}>원</div>
             </div>
+            {highPrice===true?
+            <div></div>
+             :
+             <div style={{color:"#f72b2b",fontSize:16,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+            
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
@@ -1183,6 +1267,7 @@ function ElectronicForm({ image, brand, name, input, setInput }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    marginLeft:20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
@@ -1211,6 +1296,7 @@ function ElectronicForm({ image, brand, name, input, setInput }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    marginLeft:20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
@@ -1221,7 +1307,7 @@ function ElectronicForm({ image, brand, name, input, setInput }) {
     )
 }
 
-function MElectronicForm({ image, brand, name, input, setInput }) {
+function MElectronicForm({ image, brand, name, input, setInput,highPrice }) {
     const { ELprice, ELcolor, ELetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
@@ -1301,7 +1387,12 @@ function MElectronicForm({ image, brand, name, input, setInput }) {
                     color: "#202426"
                 }}>원</div>
             </div>
-
+            {highPrice===true?
+            <div></div>
+             :
+             <div style={{color:"#f72b2b",fontSize:14,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+            
 
             <div style={{
                 fontFamily: "NotoSansCJKkr",
@@ -1365,7 +1456,7 @@ function MElectronicForm({ image, brand, name, input, setInput }) {
     )
 }
 
-function ETCForm({ image, brand, name, input, setInput }) {
+function ETCForm({ image, brand, name, input, setInput,highPrice }) {
     const { Eprice, Eetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
@@ -1445,7 +1536,12 @@ function ETCForm({ image, brand, name, input, setInput }) {
                     color: "#202426"
                 }}>원</div>
             </div>
-
+            {highPrice===true?
+            <div></div>
+             :
+             <div style={{color:"#f72b2b",fontSize:16,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+            
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
@@ -1468,6 +1564,7 @@ function ETCForm({ image, brand, name, input, setInput }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    marginLeft:20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
@@ -1478,7 +1575,7 @@ function ETCForm({ image, brand, name, input, setInput }) {
     )
 }
 
-function METCForm({ image, brand, name, input, setInput }) {
+function METCForm({ image, brand, name, input, setInput,highPrice }) {
     const { Eprice, Eetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
@@ -1558,7 +1655,12 @@ function METCForm({ image, brand, name, input, setInput }) {
                     color: "#202426"
                 }}>원</div>
             </div>
-
+            {highPrice===true?
+          <div></div>
+             :
+             <div style={{color:"#f72b2b",fontSize:14,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+            
 
             <div style={{
                 fontFamily: "NotoSansCJKkr",

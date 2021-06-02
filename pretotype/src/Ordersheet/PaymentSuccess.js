@@ -87,7 +87,7 @@ export default function PaymentSuccess() {
                         />
                         : 
                        
-                        (myparam.myparma[1]===2 ? 
+                        (myparam.myparam[1]===2 ? 
                             <OrderDetail
                             img={myparam.myparam[0].image.url}
                             wishTime={wish}
@@ -121,22 +121,7 @@ export default function PaymentSuccess() {
                             onClick={() => history.replace("/")}
                             state={true}
                         />
-                        <div onClick={goReview} style={{
-                            width: 440,
-                            paddingTop: 15,
-                            paddingBottom: 15,
-                            backgroundColor: "#ffffff",
-                            borderRadius: 6,
-                            marginTop: 16,
-                            border: "1px solid #dfdfdf",
-
-                            textAlign: "center",
-                            fontSize: 18,
-                            opacity: 0.6,
-                            color: "#051a1a",
-                            cursor: "pointer",
-                            fontFamily: "NotoSansCJKkr",
-                        }}>내 리뷰 확인하기</div>
+                     
                     </div>
                 </div>
             </Default>
@@ -189,7 +174,7 @@ export default function PaymentSuccess() {
                         />
                         : 
                        
-                        (myparam.myparma[1]===2 ? 
+                        (myparam.myparam[1]===2 ? 
                             <MOrderDetail
                             img={myparam.myparam[0].image.url}
                             wishTime={wish}

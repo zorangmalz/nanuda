@@ -610,7 +610,7 @@ export const NoAddress = (myparam,url) => {
                 opacity: 0.6,
                 color: "#202426",
                 marginTop: 8,
-            }}>빠른 결제를 위해 기본 배송지를 설정해주세요.</div>
+            }}>배송지를 입력해주세요.</div>
         </div>
     )
 }
@@ -642,7 +642,7 @@ export const MNoAddress = (myparam,url) => {
                 opacity: 0.6,
                 color: "#202426",
                 marginTop: "2vw",
-            }}>빠른 결제를 위해 기본 배송지를 설정해주세요.</div>
+            }}>배송지를 입력해주세요.</div>
         </div>
     )
 }

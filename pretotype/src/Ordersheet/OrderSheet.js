@@ -98,16 +98,6 @@ export default function OrderSheet() {
             date: twoDate,
             money: twoMoney,
         },
-        {
-            num: "3",
-            date: threeDate,
-            money: threeMoney,
-        },
-        {
-            num: "4",
-            date: fourDate,
-            money: fourMoney,
-        },
     ]
 
     //결제 성공 시 -> paymentsuccess, 결제 실패 시 -> paymentfail
@@ -154,8 +144,8 @@ export default function OrderSheet() {
                 setFourDate("1/28")
             }else{
                 setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+2)+"/"+today.getDate())
-                setThreeDate(((today.getMonth()+1)+3)+"/"+today.getDate())
+                setTwoDate(((today.getMonth()+1)+1)+"/"+today.getDate())
+                setThreeDate(((today.getMonth()+1)+2)+"/"+today.getDate())
                 setFourDate("1/"+today.getDate())
             }
         }else{
@@ -166,9 +156,9 @@ export default function OrderSheet() {
                 setFourDate(((today.getMonth()+1)+3)+"/28")
             }else{
                 setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+2)+"/"+today.getDate())
-                setThreeDate(((today.getMonth()+1)+3)+"/"+today.getDate())
-                setFourDate(((today.getMonth()+1)+4)+"/"+today.getDate())
+                setTwoDate(((today.getMonth()+1)+1)+"/"+today.getDate())
+                setThreeDate(((today.getMonth()+1)+2)+"/"+today.getDate())
+                setFourDate(((today.getMonth()+1)+3)+"/"+today.getDate())
             }
         }
     },[])
@@ -190,7 +180,16 @@ export default function OrderSheet() {
         {
         setImage(myparam[0].image.url)
         setItemDes(myparam[0].title)
-        setShip(myparam[7])
+        if(myparam[6]===2){
+            setShip(0)
+        }else if(myparam[6]===3){
+            setShip(2500)
+        }else if(myparam[6]===4){
+            setShip(5000)
+        }else{
+            setShip(myparam[7])
+        }
+        
         if (myparam[1] === 1) {
             setOrderDes(myparam[3].ELcolor + "   " + myparam[3].ELetc)
             setPrice(Number(myparam[3].ELprice)+Number(myparam[5]))
@@ -273,7 +272,15 @@ export default function OrderSheet() {
             console.log(myparam,addre)
             setImage(myparam.myparam[0].image.url)
             setItemDes(myparam.myparam[0].title)
-            setShip(myparam.myparam[7])
+            if(myparam.myparam[6]===2){
+                setShip(0)
+            }else if(myparam.myparam[6]===3){
+                setShip(2500)
+            }else if(myparam.myparam[6]===4){
+                setShip(5000)
+            }else{
+                setShip(myparam.myparam[7])
+            }
             if (myparam.myparam[1] === 1) {
                 setOrderDes(myparam.myparam[3].ELcolor + "   " + myparam.myparam[3].ELetc)
                 setPrice(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
@@ -507,37 +514,7 @@ export default function OrderSheet() {
                                 textAlign: "center",
                                 fontFamily: "NotoSansCJKkr"
                             }}>2회</div>
-                            <div onClick={onThree} style={{
-                                width: 95,
-                                marginRight: 20,
-                                borderRadius: 6,
-                                border: number === 3 ? "1px solid #051a1a" : "1px solid #dfdfdf",
-                                backgroundColor: number === 3 ? "#051a1a" : "#ffffff",
-                                paddingTop: 10,
-                                paddingBottom: 10,
-
-                                fontSize: 16,
-                                fontWeight: number === 3 ? "bold" : "normal",
-                                color: number === 3 ? "#ffffff" : "#051a1a",
-                                opacity: number === 3 ? 1 : 0.8,
-                                textAlign: "center",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>3회</div>
-                            <div onClick={onFour} style={{
-                                width: 95,
-                                borderRadius: 6,
-                                border: number === 4 ? "1px solid #051a1a" : "1px solid #dfdfdf",
-                                backgroundColor: number === 4 ? "#051a1a" : "#ffffff",
-                                paddingTop: 10,
-                                paddingBottom: 10,
-
-                                fontSize: 16,
-                                fontWeight: number === 4 ? "bold" : "normal",
-                                color: number === 4 ? "#ffffff" : "#051a1a",
-                                opacity: number === 4 ? 1 : 0.8,
-                                textAlign: "center",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>4회</div>
+                            
                         </div>
                         <div style={{
                             padding: 16,
@@ -732,6 +709,7 @@ export default function OrderSheet() {
                             marginTop: 32,
                             marginBottom: 16,
                         }} />
+                        <a  target="_blank"  href={"https://www.notion.so/ydot/77771c4f099d457d99366bdc0e0f2e2d"}>
                         <div style={{
                             fontSize: 14,
                             opacity: 0.6,
@@ -742,6 +720,8 @@ export default function OrderSheet() {
                             fontFamily: "NotoSansCJKkr",
                             cursor: "pointer"
                         }}>분할 결제 약관</div>
+                        </a>
+                        <a  target="_blank"  href={"https://www.notion.so/ydot/2fe90eeb1865441fb0a741cc9a860b0a"}>
                         <div style={{
                             fontSize: 14,
                             opacity: 0.6,
@@ -751,7 +731,8 @@ export default function OrderSheet() {
                             marginLeft: 20,
                             fontFamily: "NotoSansCJKkr",
                             cursor: "pointer"
-                        }}>구매 위탁 이용약관</div>
+                        }}>하울프리 서비스 이용약관</div>
+                        </a>
                         <div style={{
                             width: 440,
                             fontSize: 12,
@@ -923,37 +904,7 @@ export default function OrderSheet() {
                             textAlign: "center",
                             fontFamily: "NotoSansCJKkr"
                         }}>2회</div>
-                        <div onClick={onThree} style={{
-                            width: 80,
-                            marginRight: 10,
-                            borderRadius: 6,
-                            border: number === 3 ? "1px solid #051a1a" : "1px solid #dfdfdf",
-                            backgroundColor: number === 3 ? "#051a1a" : "#ffffff",
-                            paddingTop: 5,
-                            paddingBottom: 5,
-
-                            fontSize: 14,
-                            fontWeight: number === 3 ? "bold" : "normal",
-                            color: number === 3 ? "#ffffff" : "#051a1a",
-                            opacity: number === 3 ? 1 : 0.8,
-                            textAlign: "center",
-                            fontFamily: "NotoSansCJKkr"
-                        }}>3회</div>
-                        <div onClick={onFour} style={{
-                            width: 80,
-                            borderRadius: 6,
-                            border: number === 4 ? "1px solid #051a1a" : "1px solid #dfdfdf",
-                            backgroundColor: number === 4 ? "#051a1a" : "#ffffff",
-                            paddingTop: 5,
-                            paddingBottom: 5,
-
-                            fontSize: 14,
-                            fontWeight: number === 4 ? "bold" : "normal",
-                            color: number === 4 ? "#ffffff" : "#051a1a",
-                            opacity: number === 4 ? 1 : 0.8,
-                            textAlign: "center",
-                            fontFamily: "NotoSansCJKkr"
-                        }}>4회</div>
+                       
                     </div>
                     <div style={{
                         padding: "4%",
@@ -1148,6 +1099,7 @@ export default function OrderSheet() {
                         marginTop: "8vw",
                         marginBottom: "4vw",
                     }} />
+                    <a  target="_blank"  href={"https://www.notion.so/ydot/77771c4f099d457d99366bdc0e0f2e2d"}>
                     <div style={{
                         fontSize: 12,
                         opacity: 0.6,
@@ -1157,6 +1109,8 @@ export default function OrderSheet() {
                         marginLeft: "5%",
                         fontFamily: "NotoSansCJKkr"
                     }}>분할 결제 약관</div>
+                    </a>
+                    <a  target="_blank"  href={"https://www.notion.so/ydot/2fe90eeb1865441fb0a741cc9a860b0a"}>
                     <div style={{
                         fontSize: 12,
                         opacity: 0.6,
@@ -1165,7 +1119,8 @@ export default function OrderSheet() {
                         marginBottom: 8,
                         marginLeft: "5%",
                         fontFamily: "NotoSansCJKkr"
-                    }}>구매 위탁 이용약관</div>
+                    }}>하울프리 서비스 이용약관</div>
+                    </a>
                     <div style={{
                         width: "90%",
                         fontSize: 10,

@@ -33,7 +33,17 @@ export default function WishDealDefault() {
         setText(e.target.value)		//이벤트 발생한 value값으로 {text} 변경
         console.log(text)
     }
-
+    const [checker,setChecker]=useState(false)
+    function check(){
+        if(text.length>5){
+            setChecker(true)
+        }else{
+            setChecker(false)
+        }
+    }
+    useEffect(()=>{
+        check()
+    },[text])
     const ogtag = async () => {
         setLoading(true)
         let response = await axios.get(
@@ -87,7 +97,7 @@ export default function WishDealDefault() {
                             marginTop: 32,
                             fontWeight: "bold",
                             fontSize: 18
-                        }}>사고싶은 상품 링크를 입력해주세요!</div>
+                        }}>사고 싶은 상품 링크를 입력해주세요!</div>
                       
                             <div>
                                 <div>
@@ -111,7 +121,8 @@ export default function WishDealDefault() {
                                     </div>
 
                                 </div>
-                                <div onClick={ogtag} style={{
+                                {checker?
+                                 <div onClick={ogtag} style={{
                                     borderRadius: 6,
                                     width: 440,
                                     marginLeft: 20,
@@ -128,6 +139,27 @@ export default function WishDealDefault() {
                                     cursor: "pointer",
                                     textAlign: "center",
                                 }}>{loading? <Loading></Loading>:"확인"}</div>
+                                :
+                                <div style={{
+                                    borderRadius: 6,
+                                    width: 440,
+                                    marginLeft: 20,
+                                    paddingTop: 15,
+                                    paddingBottom: 15,
+                                    alignSelf: "center",
+
+                                    marginTop: 32,
+                                    backgroundColor: "#dbdbdb",
+
+                                    color: "#ffffff",
+                                    fontSize: 18,
+                                    fontWeight: "bold",
+                                    cursor: "pointer",
+                                    textAlign: "center",
+                                }}>{loading? <Loading></Loading>:"확인"}</div>
+
+                                }
+                               
                             </div>
                         
                     </div>
@@ -159,7 +191,7 @@ export default function WishDealDefault() {
                             marginTop: "8vw",
                             fontWeight: "bold",
                             fontSize: 16
-                        }}>사고싶은 상품 링크를 입력해주세요!</div>
+                        }}>사고 싶은 상품 링크를 입력해주세요!</div>
                         <div>
                             <div
                                 style={{
@@ -180,22 +212,42 @@ export default function WishDealDefault() {
                                 <div style={{ width: "90vw", marginTop: 8, height: 1, backgroundColor: "#f2f3f8" }}></div>
                             </div>
                         </div>
+                        {checker?
                         <div onClick={ogtag} style={{
-                                    borderRadius: 6,
-                                    width:"90vw",
-                                    paddingTop: "4vw",
-                                    paddingBottom: "4vw",
-                                    alignSelf: "center",
+                            borderRadius: 6,
+                            width:"90vw",
+                            paddingTop: "4vw",
+                            paddingBottom: "4vw",
+                            alignSelf: "center",
 
-                                    marginTop: 32,
-                                    backgroundColor: "#26c1f0",
+                            marginTop: 32,
+                            backgroundColor: "#26c1f0",
 
-                                    color: "#ffffff",
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    cursor: "pointer",
-                                    textAlign: "center",
-                                }}>{loading? <Loading></Loading>:"확인"}</div>
+                            color: "#ffffff",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            cursor: "pointer",
+                            textAlign: "center",
+                        }}>{loading? <Loading></Loading>:"확인"}</div>
+                        :
+                        <div style={{
+                            borderRadius: 6,
+                            width:"90vw",
+                            paddingTop: "4vw",
+                            paddingBottom: "4vw",
+                            alignSelf: "center",
+
+                            marginTop: 32,
+                            backgroundColor: "#dbdbdb",
+
+                            color: "#ffffff",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            cursor: "pointer",
+                            textAlign: "center",
+                        }}>{loading? <Loading></Loading>:"확인"}</div>
+                        }
+                        
                             </div>
                 </div>
             </Mobile>

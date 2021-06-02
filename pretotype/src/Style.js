@@ -937,6 +937,7 @@ export function StandardButton({ marginTop, text, onClick, state }) {
     let history = useHistory()
     return (
         <div>
+            {state? 
             <div onClick={onClick} style={{
                 width: 440,
                 paddingTop: 16,
@@ -953,6 +954,25 @@ export function StandardButton({ marginTop, text, onClick, state }) {
                 color: "#ffffff",
                 textAlign: "center"
             }}>{text}</div>
+            : 
+            <div style={{
+                width: 440,
+                paddingTop: 16,
+                paddingBottom: 16,
+                borderRadius: 6,
+                backgroundColor: state ? "#26c1f0" : "#dbdbdb",
+                alignSelf: "center",
+                cursor: "pointer",
+                marginTop: marginTop,
+
+                fontSize: 18,
+                fontWeight: "bold",
+                fontFamily: "NotoSansCJKkr",
+                color: "#ffffff",
+                textAlign: "center"
+            }}>{text}</div>
+            }
+            
         </div>
     )
 }
@@ -960,6 +980,8 @@ export function StandardButton({ marginTop, text, onClick, state }) {
 export function MStandardButton({ marginTop, text, onClick, state }) {
     let history = useHistory()
     return (
+        <div>
+        {state?
         <div onClick={onClick} style={{
             width: "90vw",
             paddingTop: "4vw",
@@ -975,8 +997,29 @@ export function MStandardButton({ marginTop, text, onClick, state }) {
             fontFamily: "NotoSansCJKkr",
             color: "#ffffff",
             textAlign: "center"
+        }}>{text}</div> 
+        :
+        <div style={{
+            width: "90vw",
+            paddingTop: "4vw",
+            paddingBottom: "4vw",
+            backgroundColor: state ? "#26c1f0" : "#dbdbdb",
+            alignSelf: "center",
+            cursor: "pointer",
+            marginTop: marginTop,
+            borderRadius: 6,
+
+            fontSize: 16,
+            fontWeight: "bold",
+            fontFamily: "NotoSansCJKkr",
+            color: "#ffffff",
+            textAlign: "center"
         }}>{text}</div>
+         }
+        
+        </div>
     )
+    
 }
 
 //이름 중간 마스킹하기

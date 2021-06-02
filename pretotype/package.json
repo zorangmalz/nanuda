@@ -13,8 +13,10 @@
     "react": "^17.0.2",
     "react-daum-postcode": "^2.0.6",
     "react-dom": "^17.0.2",
+    "react-helmet": "6.1.0",
     "react-icons": "^4.2.0",
     "react-loader-spinner": "4.0.0",
+    "react-meta-tags": "1.0.1",
     "react-responsive": "^8.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^1.1.5",
@@ -26,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy":"aws s3 sync ./build s3://haulfree-pilot --profile=landing-nanuda"
+    "deploy": "aws s3 sync ./build s3://haulfree-pilot --profile=landing-nanuda"
   },
   "eslintConfig": {
     "extends": [
@@ -37,7 +39,6 @@
   "browserslist": {
     "production": [
       ">0.2%",
-      
       "not op_mini all"
     ],
     "development": [

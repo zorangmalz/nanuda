@@ -44,7 +44,7 @@ export default function Landing() {
                                 }}>
                                     <div style={{
                                         fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr"
-                                    }}>사고싶은게 있는데</div>
+                                    }}>사고 싶은게 있는데</div>
                                     <div style={{ marginLeft: 5, color: "#26c1f0", fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>너무 큰 금액</div>
                                 </div>
                                 <div style={{
@@ -270,7 +270,7 @@ export default function Landing() {
                         <div style={{
                             fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr"
                         }}>
-                            사고싶은게 있는데
+                            사고 싶은게 있는데
                             </div>
                         <div style={{ marginLeft: 5, color: "#26c1f0", fontSize: 24, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>너무 큰 금액</div>
                     </div>

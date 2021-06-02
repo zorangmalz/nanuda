@@ -459,12 +459,16 @@ export default function Address() {
                                 marginLeft: 52,
                                 fontFamily: "NotoSansCJKkr"
                             }}>필수 입력 정보입니다.</div></div> : <div></div>}
+                            <div style={{
+                                marginLeft:20
+                            }}>
                         <StandardButton
                             marginTop={32}
                             onClick={send}
                             state={next}
                             text={"수정완료"}
                         ></StandardButton>
+                        </div>
                     </div>
                 </div>
             </Default>
@@ -729,12 +733,14 @@ export default function Address() {
                             marginLeft: "13%",
                             fontFamily: "NotoSansCJKkr"
                         }}>필수 입력 정보입니다.</div></div> : <div></div>}
+                        <div style={{marginLeft:20}}>
                     <MStandardButton
                         marginTop={32}
                         onClick={send}
                         state={next}
                         text={"수정완료"}
                     ></MStandardButton>
+                    </div>
                 </div>
             </Mobile>
         </div>
