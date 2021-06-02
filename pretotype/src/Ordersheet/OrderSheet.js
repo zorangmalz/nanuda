@@ -381,18 +381,34 @@ export default function OrderSheet() {
     async function order(){
         if(basicAddress&&payment){
             // history.push("paymentsuccess",{myparam:myparam})'
-            firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
-                myparam:myparam,
-                ship:item,
-                option:number,
-                schedule:paymentDate,
-                url:getUrl,
-                image:myparam.image[0],
-                orderOrNot:false,
-                payOrNot:false,
-                secondOrNot:false
-            })
-            history.push("paymentsuccess",{myparam:myparam,ship:item,image:imageUrl})
+            try{
+                firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
+                    myparam:myparam,
+                    ship:item,
+                    option:number,
+                    schedule:paymentDate,
+                    url:getUrl,
+                    image:myparam.image[0],
+                    orderOrNot:false,
+                    payOrNot:false,
+                    secondOrNot:false
+                })
+                history.push("paymentsuccess",{myparam:myparam,ship:item,image:imageUrl})
+            }catch(err){
+                firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
+                    myparam:myparam,
+                    ship:item,
+                    option:number,
+                    schedule:paymentDate,
+                    url:getUrl,
+                    image:"",
+                    orderOrNot:false,
+                    payOrNot:false,
+                    secondOrNot:false
+                })
+                history.push("paymentsuccess",{myparam:myparam,ship:item,image:imageUrl})
+            }
+          
         }
     }
     function fix(){
