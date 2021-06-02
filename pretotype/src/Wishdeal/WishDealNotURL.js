@@ -1,14 +1,14 @@
-import React, { useReducer, useState,useEffect } from "react";
+import React, { useReducer, useState, useEffect, useRef } from "react";
 import { BsPlusCircle } from "react-icons/bs";
-import { useHistory,useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import AWS from "aws-sdk";
 
-const AWS_ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
-const AWS_SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
-const S3_BUCKET = process.env.REACT_APP_S3_IMAGE_BUCKET
-const REGION = process.env.REACT_APP_REGION
+const AWS_ACCESS_KEY = "AKIAYPG3AAD4HBHACKPU"
+const AWS_SECRET_KEY = "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"
+const S3_BUCKET = "nanuda-product-image"
+const REGION = "ap-northeast-2"
 
 AWS.config.update({
     accessKeyId: AWS_ACCESS_KEY,
@@ -16,7 +16,7 @@ AWS.config.update({
 })
 
 const imageBucket = new AWS.S3({
-    params: { Bucket: "haulfree-user" },
+    params: { Bucket: S3_BUCKET },
     region: REGION
 })
 
@@ -76,7 +76,7 @@ const MButton = ({ onClick, state, number, content }) => {
             border: state === number ? "1px solid #051a1a" : "1px solid #dfdfdf",
             backgroundColor: state === number ? "#051a1a" : "#ffffff",
             paddingTop: "2vw",
-            paddingBottom: "2vw", 
+            paddingBottom: "2vw",
             cursor: "pointer",
             fontSize: 14,
             fontWeight: state === number ? "bold" : "normal",
@@ -97,7 +97,7 @@ export default function WishDealNotURL() {
     const getUrl = location.state.url
     const [stats, setStats] = useState("")
     const [state, setState] = useState(false)
-    const [highPrice,setHighPrice]=useState(true)
+    const [highPrice, setHighPrice] = useState(true)
 
     const onYES = () => {
         dispatch({ type: 'YES' });
@@ -127,7 +127,7 @@ export default function WishDealNotURL() {
         Fcolor: "",
         Fetc: "",
         Fsize: "",
-        Fname:""
+        Fname: ""
     })
     const [next, setNext] = useState(false)
     const [inp, setInp] = useState({
@@ -142,67 +142,113 @@ export default function WishDealNotURL() {
             [name]: value
         })
     }
-    useEffect(()=>{
-        console.log(highPrice)
-    },[])
-    useEffect(()=>{
-      
-            if(Number(Finputs.Fprice)<30000){
-
-                if(Finputs.Fprice===""){
-                    setHighPrice(true)
-                }else{
-                    setHighPrice(false)
-                    console.log("?")
-                }
-            }else{
-                setHighPrice(true)
-                console.log("There")
-            }
-        
-    },[Finputs.Fprice])
     useEffect(() => {
-        
-            if (Finputs.Fcolor && Finputs.Fsize && Finputs.Fprice != "") {
-                if (number && numberB > 1) {
-                    if (number === 2 && numberB === 5) {
-                        if (option && ship != "") {
-                            setNext(true)
-                        } else {
-                            setNext(false)
-                        }
-                    }
-                    if (number === 2 && numberB < 5) {
-                        if (option != "") {
-                            setNext(true)
-                        } else {
-                            setNext(false)
-                        }
-                    }
-                    if (number === 3 && numberB === 5) {
-                        if (ship != "") {
-                            setNext(true)
-                        } else {
-                            setNext(false)
-                        }
-                    }
-                    if (number === 3 && numberB < 5) {
+        console.log(highPrice)
+    }, [])
+    useEffect(() => {
+
+        if (Number(Finputs.Fprice) < 30000) {
+
+            if (Finputs.Fprice === "") {
+                setHighPrice(true)
+            } else {
+                setHighPrice(false)
+                console.log("?")
+            }
+        } else {
+            setHighPrice(true)
+            console.log("There")
+        }
+
+    }, [Finputs.Fprice])
+
+    useEffect(() => {
+
+        if (Finputs.Fcolor && Finputs.Fsize && Finputs.Fprice != "") {
+            if (number && numberB > 1) {
+                if (number === 2 && numberB === 5) {
+                    if (option && ship != "") {
                         setNext(true)
+                    } else {
+                        setNext(false)
                     }
                 }
-
-            } else {
-                setNext(false)
+                if (number === 2 && numberB < 5) {
+                    if (option != "") {
+                        setNext(true)
+                    } else {
+                        setNext(false)
+                    }
+                }
+                if (number === 3 && numberB === 5) {
+                    if (ship != "") {
+                        setNext(true)
+                    } else {
+                        setNext(false)
+                    }
+                }
+                if (number === 3 && numberB < 5) {
+                    setNext(true)
+                }
             }
-        
-
+        } else {
+            setNext(false)
+        }
     }, [Finputs, number, numberB, option, ship])
+
     function NextPage() {
         const lst = []
-    
-            lst.push( "",2,"",Finputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst,addInfo:"", url:getUrl })
-       
+        uploadFile()
+
+        lst.push("", 2, "", Finputs, number, option, numberB, ship)
+        history.push("/ordersheet", { param: lst, addInfo: "", url: getUrl })
+    }
+
+    //ImageToS3
+    //이미지 진행상황
+    const [progress, setProgress] = useState(0)
+
+    //이미지 컴포넌트
+    const inputFile = useRef(null)
+
+    //이미지 저장 및 경로
+    const [selectedFile, setSelectedFile] = useState([])
+    const [filePath, setFilePath] = useState([])
+
+    const onButtonClick = () => {
+        inputFile.current.click()
+    }
+
+    //이미지 경로 저장
+    const handelFileInput = (e) => {
+        const files = e.target.files;
+        setSelectedFile(selectedFile => [...selectedFile, files[0]])
+        setFilePath(filePath => [...filePath, URL.createObjectURL(files[0])])
+    }
+
+    //s3로 업로드
+    const uploadFile = async () => {
+        var imageArray = []
+        const params = {
+            ACL: "public-read",
+            Body: selectedFile[0],
+            Bucket: S3_BUCKET,
+            Key: selectedFile[0].name
+        }
+
+        imageBucket.putObject(params)
+            .on("httpUploadProgress", (evt) => {
+                setProgress(Math.round((evt.loaded / evt.total) * 100))
+                console.log(progress)
+            })
+            .send((err) => {
+                if (err) {
+                    console.log(err)
+                }
+            })
+        imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[0].name}`)
+
+        console.log(imageArray)
     }
     return (
         <div>
@@ -229,9 +275,13 @@ export default function WishDealNotURL() {
                     }}>
                         <Header content="상품 정보 작성" goBack={true} />
                         <FashionForm
-                           highPrice={highPrice}
-                           input={Finputs}
-                           setInput={setFInputs}
+                            filePath={filePath}
+                            inputFile={inputFile}
+                            onButtonClick={onButtonClick}
+                            handelFileInput={handelFileInput}
+                            highPrice={highPrice}
+                            input={Finputs}
+                            setInput={setFInputs}
                         />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
@@ -435,9 +485,13 @@ export default function WishDealNotURL() {
                     }}>
                         <MHeader content="상품 정보 작성" goBack={true} />
                         <MFashionForm
-                        highPrice={highPrice}
-                        input={Finputs}
-                        setInput={setFInputs}
+                            filePath={filePath}
+                            onButtonClick={onButtonClick}
+                            inputFile={inputFile}
+                            handelFileInput={handelFileInput}
+                            highPrice={highPrice}
+                            input={Finputs}
+                            setInput={setFInputs}
                         />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
@@ -493,7 +547,7 @@ export default function WishDealNotURL() {
                                             width: "45vw",
                                             outline: 0,
                                             border: 0,
-                                            
+
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 14,
                                             color: "#202426"
@@ -553,42 +607,42 @@ export default function WishDealNotURL() {
                             />
                         </div>
                         {numberB === 5 ?
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "space-between",
 
-                                    marginTop: "4vw",
-                                    marginLeft: "5vw",
-                                    paddingBottom: "2vw",
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                                    width: "50vw",
-                                }}>
-                                    <input
+                                marginTop: "4vw",
+                                marginLeft: "5vw",
+                                paddingBottom: "2vw",
+                                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                width: "50vw",
+                            }}>
+                                <input
 
-name="ship"
-value={ship}
-onChange={onChange}
-                                        placeholder="배송비용을 입력해주세요"
-                                        type="number"
-                                        style={{
-                                            width: "45vw",
-                                            outline: 0,
-                                            border: 0,
-                                            
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontSize: 14,
-                                            color: "#202426"
-                                        }}
-                                    />
-                                    <div style={{
+                                    name="ship"
+                                    value={ship}
+                                    onChange={onChange}
+                                    placeholder="배송비용을 입력해주세요"
+                                    type="number"
+                                    style={{
+                                        width: "45vw",
+                                        outline: 0,
+                                        border: 0,
+
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 14,
-                                        fontWeight: "bold",
                                         color: "#202426"
-                                    }}>원</div>
-                                </div>
+                                    }}
+                                />
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 14,
+                                    fontWeight: "bold",
+                                    color: "#202426"
+                                }}>원</div>
+                            </div>
                             :
                             <div></div>
                         }
@@ -630,11 +684,11 @@ onChange={onChange}
     )
 }
 
-function FashionForm({ image, brand, name, input, setInput,highPrice }) {
-    useEffect(()=>{
+function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, name, input, setInput, highPrice }) {
+    useEffect(() => {
         console.log(highPrice)
     })
-    const { Fprice, Fcolor, Fsize, Fetc,Fname } = input
+    const { Fprice, Fcolor, Fsize, Fetc, Fname } = input
 
     const onChange = (e) => {
         const { value, name } = e.target
@@ -646,24 +700,36 @@ function FashionForm({ image, brand, name, input, setInput,highPrice }) {
 
     return (
         <div>
-            <div style={{
-                width: 480,
-                height: 212,
-                backgroundColor: "#f2f3f8",
+            {filePath.length > 0 ?
+                <img src={filePath[0]} alt="제품 이미지"
+                    style={{
+                        width: 480,
+                    }}
+                />
+                :
+                <div onClick={onButtonClick} style={{
+                    width: 480,
+                    height: 212,
+                    backgroundColor: "#f2f3f8",
 
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BsPlusCircle size={36} color="#051a1a" />
-                <div style={{
-                    marginTop: 24,
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    columnGap: "#202426"
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                }}>
+                    <input ref={inputFile} onChange={handelFileInput} type="file" style={{
+                        display: "none"
+                    }} />
+                    <BsPlusCircle size={36} color="#051a1a" />
+                    <div style={{
+                        marginTop: 24,
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 16,
+                        columnGap: "#202426"
+                    }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
+                </div>
+            }
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
@@ -686,7 +752,7 @@ function FashionForm({ image, brand, name, input, setInput,highPrice }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                    marginLeft:20,
+                    marginLeft: 20,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
                     color: "#202426",
@@ -697,10 +763,11 @@ function FashionForm({ image, brand, name, input, setInput,highPrice }) {
                 marginTop: 16,
                 marginLeft: 20,
                 fontFamily: "AvenirNext",
-            fontWeight: "bold",
-            fontSize: 21,}}>
-                
-            {brand}</div>
+                fontWeight: "bold",
+                fontSize: 21,
+            }}>
+
+                {brand}</div>
             <div style={{
                 marginTop: 16,
                 marginLeft: 20,
@@ -718,7 +785,7 @@ function FashionForm({ image, brand, name, input, setInput,highPrice }) {
                 marginTop: 16,
                 marginLeft: 20,
             }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            
+
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -754,15 +821,15 @@ function FashionForm({ image, brand, name, input, setInput,highPrice }) {
                     color: "#202426"
                 }}>원</div>
             </div>
-            
-            {highPrice?
-            
-            <div></div>
-            
-             :
-             <div style={{color:"#f72b2b",fontSize:16,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+
+            {highPrice ?
+
+                <div></div>
+
+                :
+                <div style={{ color: "#f72b2b", fontSize: 16, marginLeft: 20, marginTop: 5 }}>최소 주문금액은 30,000원부터 입니다 </div>
             }
-            
+
 
             <div style={{
                 fontFamily: "NotoSansCJKkr",
@@ -786,7 +853,7 @@ function FashionForm({ image, brand, name, input, setInput,highPrice }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                    marginLeft:20,
+                    marginLeft: 20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
@@ -815,7 +882,7 @@ function FashionForm({ image, brand, name, input, setInput,highPrice }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                    marginLeft:20,
+                    marginLeft: 20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
@@ -844,7 +911,7 @@ function FashionForm({ image, brand, name, input, setInput,highPrice }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                    marginLeft:20,
+                    marginLeft: 20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
@@ -855,8 +922,8 @@ function FashionForm({ image, brand, name, input, setInput,highPrice }) {
     )
 }
 
-function MFashionForm({ image, brand, name, input, setInput,highPrice }) {
-    const { Fprice, Fcolor, Fsize, Fetc,Fname } = input
+function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, name, input, setInput, highPrice }) {
+    const { Fprice, Fcolor, Fsize, Fetc, Fname } = input
     const onChange = (e) => {
         const { value, name } = e.target
         setInput({
@@ -866,30 +933,42 @@ function MFashionForm({ image, brand, name, input, setInput,highPrice }) {
     }
     return (
         <div>
-            <div style={{
-                width: "100vw",
-                height: "45vw",
-                backgroundColor: "#f2f3f8",
+            {filePath.length > 0 ?
+                <img src={filePath[0]} alt="제품 이미지"
+                    style={{
+                        width: "100vw",
+                    }}
+                />
+                :
+                <div onClick={onButtonClick} style={{
+                    width: "100vw",
+                    height: "45vw",
+                    backgroundColor: "#f2f3f8",
 
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BsPlusCircle size={24} color="#051a1a" />
-                <div style={{
-                    marginTop: 24,
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    columnGap: "#202426"
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                }}>
+                    <input ref={inputFile} onChange={handelFileInput} type="file" style={{
+                        display: "none"
+                    }} />
+                    <BsPlusCircle size={24} color="#051a1a" />
+                    <div style={{
+                        marginTop: 24,
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 16,
+                        columnGap: "#202426"
+                    }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
+                </div>
+            }
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
                 color: "#202426",
-                
+
                 marginTop: 16,
                 marginLeft: 20,
             }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
@@ -906,11 +985,11 @@ function MFashionForm({ image, brand, name, input, setInput,highPrice }) {
                     border: 0,
                     paddingBottom: 8,
                     borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
-                    marginLeft:20,
+                    marginLeft: 20,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
                     color: "#202426",
-                   
+
                 }}
             />
 
@@ -918,10 +997,11 @@ function MFashionForm({ image, brand, name, input, setInput,highPrice }) {
                 marginTop: 16,
                 marginLeft: 20,
                 fontFamily: "AvenirNext",
-            fontWeight: "bold",
-            fontSize: 21,}}>
-                
-            {brand}</div>
+                fontWeight: "bold",
+                fontSize: 21,
+            }}>
+
+                {brand}</div>
             <div style={{
                 marginTop: "4vw",
                 marginLeft: "5vw",
@@ -974,12 +1054,12 @@ function MFashionForm({ image, brand, name, input, setInput,highPrice }) {
                     color: "#202426"
                 }}>원</div>
             </div>
-            {highPrice===true?
-            <div></div>
-             :
-             <div style={{color:"#f72b2b",fontSize:14,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            {highPrice === true ?
+                <div></div>
+                :
+                <div style={{ color: "#f72b2b", fontSize: 14, marginLeft: 20, marginTop: 5 }}>최소 주문금액은 30,000원부터 입니다 </div>
             }
-            
+
 
             <div style={{
                 fontFamily: "NotoSansCJKkr",
@@ -998,7 +1078,7 @@ function MFashionForm({ image, brand, name, input, setInput,highPrice }) {
                 style={{
                     marginTop: "4vw",
                     width: "80vw",
-                    marginLeft:"5vw",
+                    marginLeft: "5vw",
                     alignSelf: "center",
                     outline: 0,
                     border: 0,
@@ -1027,7 +1107,7 @@ function MFashionForm({ image, brand, name, input, setInput,highPrice }) {
                 style={{
                     marginTop: "4vw",
                     width: "80vw",
-                    marginLeft:"5vw",
+                    marginLeft: "5vw",
                     alignSelf: "center",
                     outline: 0,
                     border: 0,
@@ -1056,7 +1136,7 @@ function MFashionForm({ image, brand, name, input, setInput,highPrice }) {
                 style={{
                     marginTop: "4vw",
                     width: "80vw",
-                    marginLeft:"5vw",
+                    marginLeft: "5vw",
                     alignSelf: "center",
                     outline: 0,
                     border: 0,
