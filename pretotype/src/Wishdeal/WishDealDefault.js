@@ -147,7 +147,7 @@ export default function WishDealDefault() {
                                     textAlign: "center",
                                 }}>{loading? <Loading></Loading>:"확인"}</div>
                                 :
-                                <div style={{
+                                <div id="url_click" style={{
                                     borderRadius: 6,
                                     width: 440,
                                     marginLeft: 20,
@@ -237,7 +237,7 @@ export default function WishDealDefault() {
                             textAlign: "center",
                         }}>{loading? <Loading></Loading>:"확인"}</div>
                         :
-                        <div style={{
+                        <div id="url_click" style={{
                             borderRadius: 6,
                             width:"90vw",
                             paddingTop: "4vw",

@@ -540,16 +540,47 @@ export default function WishDealURL() {
                             <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
                             <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
-                            
+
                         </div>
-                        <div style={{marginLeft:20}}>
-                        <StandardButton
-                            marginTop={32}
-                            text="다음"
-                            onClick={NextPage}
-                            state={next}
-                            stats={stats}
-                        />
+                        <div style={{ marginLeft: 20 }}>
+                            <div>
+                                {state ?
+                                    <div id={stats === 1 ? "electronic_click" : stats === 2 ? "fashion_click" : stats === 4 ? "etc_click" : ""} onClick={NextPage} style={{
+                                        width: 440,
+                                        paddingTop: 16,
+                                        paddingBottom: 16,
+                                        borderRadius: 6,
+                                        backgroundColor: next ? "#26c1f0" : "#dbdbdb",
+                                        alignSelf: "center",
+                                        cursor: "pointer",
+                                        marginTop: 32,
+
+                                        fontSize: 18,
+                                        fontWeight: "bold",
+                                        fontFamily: "NotoSansCJKkr",
+                                        color: "#ffffff",
+                                        textAlign: "center"
+                                    }}>다음</div>
+                                    :
+                                    <div id={stats === 1 ? "electronic_click" : stats === 2 ? "fashion_click" : stats === 4 ? "etc_click" : ""} style={{
+                                        width: 440,
+                                        paddingTop: 16,
+                                        paddingBottom: 16,
+                                        borderRadius: 6,
+                                        backgroundColor: next ? "#26c1f0" : "#dbdbdb",
+                                        alignSelf: "center",
+                                        cursor: "pointer",
+                                        marginTop: 32,
+
+                                        fontSize: 18,
+                                        fontWeight: "bold",
+                                        fontFamily: "NotoSansCJKkr",
+                                        color: "#ffffff",
+                                        textAlign: "center"
+                                    }}>다음</div>
+                                }
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -780,16 +811,47 @@ export default function WishDealURL() {
                             <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
                             <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
-                            
+
                         </div>
-                        <div style={{marginLeft:20}}>
-                        <MStandardButton
-                            marginTop={32}
-                            text="다음"
-                            onClick={NextPage}
-                            state={next}
-                            stats={stats}
-                        />
+                        <div style={{ marginLeft: 20 }}>
+                            <div>
+                                {state ?
+                                    <div id={stats === 1 ? "electronic_click" : stats === 2 ? "fashion_click" : stats === 4 ? "etc_click" : ""} onClick={NextPage} style={{
+                                        width: "90vw",
+                                        paddingTop: "4vw",
+                                        paddingBottom: "4vw",
+                                        backgroundColor: next ? "#26c1f0" : "#dbdbdb",
+                                        alignSelf: "center",
+                                        cursor: "pointer",
+                                        marginTop: "8vw",
+                                        borderRadius: 6,
+
+                                        fontSize: 16,
+                                        fontWeight: "bold",
+                                        fontFamily: "NotoSansCJKkr",
+                                        color: "#ffffff",
+                                        textAlign: "center"
+                                    }}>다음</div>
+                                    :
+                                    <div id={stats === 1 ? "electronic_click" : stats === 2 ? "fashion_click" : stats === 4 ? "etc_click" : ""} style={{
+                                        width: "90vw",
+                                        paddingTop: "4vw",
+                                        paddingBottom: "4vw",
+                                        backgroundColor: next ? "#26c1f0" : "#dbdbdb",
+                                        alignSelf: "center",
+                                        cursor: "pointer",
+                                        marginTop: "8vw",
+                                        borderRadius: 6,
+
+                                        fontSize: 16,
+                                        fontWeight: "bold",
+                                        fontFamily: "NotoSansCJKkr",
+                                        color: "#ffffff",
+                                        textAlign: "center"
+                                    }}>다음</div>
+                                }
+
+                            </div>
                         </div>
                     </div>
                 </div>
