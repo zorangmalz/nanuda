@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask,TopBanner,MTopBanner } from "../Style";
+import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask, TopBanner, MTopBanner } from "../Style";
 import { BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
@@ -13,7 +13,7 @@ import sampleone from "../images/sampleone.png"
 import sampletwo from "../images/sampletwo.png"
 import profile from "../images/profile.png"
 import topbanner from "../images/topbanner.png"
-import {firestore} from "../firebase"
+import { firestore } from "../firebase"
 import MetaTags from "react-meta-tags"
 import banner from "../images/homebanner.png"
 import Slider from "react-slick"
@@ -88,7 +88,7 @@ const MMainContainer = styled.div`
 `;
 export default function Home() {
     let history = useHistory()
-    
+
     //Get Service Review Data
     const [reviewData, setReviewData] = useState([])
     // useEffect(() => {
@@ -167,11 +167,11 @@ export default function Home() {
     //         })
     // }, [])
 
-    useEffect(()=>{
-        firestore.collection("test").doc("test").get().then((doc)=>{
+    useEffect(() => {
+        firestore.collection("test").doc("test").get().then((doc) => {
             console.log(doc.data().read)
         })
-    },[])
+    }, [])
     const [modal, setModal] = useState(false)
     return (
         <div>
@@ -187,7 +187,7 @@ export default function Home() {
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
-                    {modal? 
+                    {modal ?
                         <div style={{
                             width: "100vw",
                             height: "100vh",
@@ -273,84 +273,84 @@ export default function Home() {
                     }}>
                         <HomeHeader />
                         <div style={{
-                            width:480,
-                            height:48,
-                            backgroundColor:"#051a1a"
+                            width: 480,
+                            height: 48,
+                            backgroundColor: "#051a1a"
                         }}>
                             <div style={{
-                                 display: "flex",
-                                 flexDirection: "row",
-                                 justifyContent: "flex-start",
-                                 
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "flex-start",
+
                             }}>
-                            <div style={{
-                                fontSize:16,
-                                color:"#ffffff",
-                                marginTop:12,
-                                marginLeft:69
-                            }}>
-                                스타트업 대표님이신가요? 
+                                <div style={{
+                                    fontSize: 16,
+                                    color: "#ffffff",
+                                    marginTop: 12,
+                                    marginLeft: 69
+                                }}>
+                                    스타트업 대표님이신가요?
                             </div>
-                            <a  target="_blank"  href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
-                            <div style={{
-                                marginLeft:5,
-                                fontSize:16,
-                                color:"#ffffff",
-                                marginTop:12,
-                                textDecorationLine:"underline",
-                                fontWeight:"bold"
-                            }}>
-                                첫 구매 수수료 50% 할인
+                                <a target="_blank" href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                                    <div style={{
+                                        marginLeft: 5,
+                                        fontSize: 16,
+                                        color: "#ffffff",
+                                        marginTop: 12,
+                                        textDecorationLine: "underline",
+                                        fontWeight: "bold"
+                                    }}>
+                                        첫 구매 수수료 50% 할인
                             </div>
-                            </a>
+                                </a>
                             </div>
                         </div>
                         <div style={{
-                            width:480,
-                            height:300
-                        }}>
-                        <Slider  dots={true} autoplaySpeed={5000} autoplay={true} >
-                            <div>
-                        <TopBanner
-                                img={bannerOne}
-                                title="크리에이터 크라우드 펀딩 플랫폼"
-                                content="Y.은 무슨 서비스인지 알아볼까요?"
-                                num={1}
-                                backgroundColor="#273d5a"
-                                link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
-                            />
-                            </div>
-                            <div>
-                            <div style={{
-                width: 480,
-                
-                height: 300,
-                position: "relative",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                
-            }}>
-                
-                <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
-                    textDecorationLine: "none",
-                    WebkitAppearance: "none"
-                }}>
-                    <div style={{
-                        width: 480,
-                        height: 300,
-                        paddingBottom: 62,
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "flex-end",
-                        justifyContent: "flex-end",
-                    }}>
-                        <img src={bannerTwo} alt="" style={{
                             width: 480,
-                            objectFit: "contain",
-                        }} />
-                    </div>
-                    {/* <div style={{
+                            height: 300
+                        }}>
+                            <Slider dots={true} autoplaySpeed={5000} autoplay={true} >
+                                <div>
+                                    <TopBanner
+                                        img={bannerOne}
+                                        title="크리에이터 크라우드 펀딩 플랫폼"
+                                        content="Y.은 무슨 서비스인지 알아볼까요?"
+                                        num={1}
+                                        backgroundColor="#273d5a"
+                                        link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
+                                    />
+                                </div>
+                                <div>
+                                    <div style={{
+                                        width: 480,
+
+                                        height: 300,
+                                        position: "relative",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "center",
+
+                                    }}>
+
+                                        <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                                            textDecorationLine: "none",
+                                            WebkitAppearance: "none"
+                                        }}>
+                                            <div style={{
+                                                width: 480,
+                                                height: 300,
+                                                paddingBottom: 62,
+                                                display: "flex",
+                                                flexDirection: "row",
+                                                alignItems: "flex-end",
+                                                justifyContent: "flex-end",
+                                            }}>
+                                                <img src={bannerTwo} alt="" style={{
+                                                    width: 480,
+                                                    objectFit: "contain",
+                                                }} />
+                                            </div>
+                                            {/* <div style={{
                         position: "absolute",
                         zIndex: 2,
                         top: 144,
@@ -374,11 +374,11 @@ export default function Home() {
                             color: "#ffffff",
                         }}>{content}</div>
                     </div> */}
-                </a>
-            </div>
-                            </div>
-      </Slider></div>
-                        
+                                        </a>
+                                    </div>
+                                </div>
+                            </Slider></div>
+
                         <div onClick={() => setModal(true)} style={{
                             display: "flex",
                             flexDirection: "row",
@@ -421,27 +421,27 @@ export default function Home() {
                             justifyContent: "space-between"
                         }}>
                             <div onClick={() => setModal(true)}>
-                            <TimeShop
-                                img={sampleone}
-                                title="애플"
-                                sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
-                                price="329,000"
-                                currentPrice="240,000"
-                                stock={0}
-                                sale={27}
-                            />
+                                <TimeShop
+                                    img={sampleone}
+                                    title="애플"
+                                    sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
+                                    price="329,000"
+                                    currentPrice="240,000"
+                                    stock={0}
+                                    sale={27}
+                                />
                             </div>
                             <div onClick={() => setModal(true)}>
-                            <TimeShop
-                                img={sampletwo}
-                                title="애플"
-                                sub="Apple iPad Air Sky Blue
+                                <TimeShop
+                                    img={sampletwo}
+                                    title="애플"
+                                    sub="Apple iPad Air Sky Blue
                                 10.9형 iPad Air Wi-Fi 스카이 블루"
-                                price="779,000"
-                                currentPrice="739,000"
-                                stock={0}
-                                sale={5}
-                            />
+                                    price="779,000"
+                                    currentPrice="739,000"
+                                    stock={0}
+                                    sale={5}
+                                />
                             </div>
                         </div>
                         <BannerContainer>
@@ -591,18 +591,18 @@ export default function Home() {
                                 }}
                             />
                         </AfterContainer>
-                        <div style={{marginTop:64,marginLeft:20, width:440, height:160, backgroundImage:`url(${banner})`,backgroundSize:"cover",borderRadius:6,}}>
-                        <div style={{marginLeft:20,marginTop:20,fontSize:21,color:"#ffffff",fontWeight:"bold"}}>스타트업 대표님이신가요?</div>
-                        <div style={{marginLeft:20,marginTop:8,fontSize:16,color:"#ffffff"}}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
-                        <div style={{marginLeft:24,marginTop:8,backgroundColor:"#051a1a",width:240,height:48,borderRadius:6}}>
-                        <a  target="_blank"  href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
-                            <div style={{textDecorationLine: "none",padding:15,marginTop:20,marginLeft:20,fontSize:16,fontWeight:"bold",color:"#ffffff"}}>첫 구매 수수료 50% 할인!</div>
-                            </a>
+                        <div style={{ marginTop: 64, marginLeft: 20, width: 440, height: 160, backgroundImage: `url(${banner})`, backgroundSize: "cover", borderRadius: 6, }}>
+                            <div style={{ marginLeft: 20, marginTop: 20, fontSize: 21, color: "#ffffff", fontWeight: "bold" }}>스타트업 대표님이신가요?</div>
+                            <div style={{ marginLeft: 20, marginTop: 8, fontSize: 16, color: "#ffffff" }}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
+                            <div style={{ marginLeft: 24, marginTop: 8, backgroundColor: "#051a1a", width: 240, height: 48, borderRadius: 6 }}>
+                                <a target="_blank" href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                                    <div style={{ textDecorationLine: "none", padding: 15, marginTop: 20, marginLeft: 20, fontSize: 16, fontWeight: "bold", color: "#ffffff" }}>첫 구매 수수료 50% 할인!</div>
+                                </a>
+                            </div>
                         </div>
-                        </div>
-                        
+
                         <BottomTag marginTop={200} marginBottom={0} />
-                        <div onClick={() => history.push("/wishdealdefault")} style={{
+                        <div id="wishdeal_click" onClick={() => history.push("/wishdealdefault")} style={{
                             width: 440,
                             marginLeft: 20,
                             marginRight: 20,
@@ -636,62 +636,62 @@ export default function Home() {
                 }}>
                     <MHomeHeader />
                     <div style={{
-                            width:"100%",
-                            height:48,
-                            backgroundColor:"#051a1a"
+                        width: "100%",
+                        height: 48,
+                        backgroundColor: "#051a1a"
+                    }}>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "flex-start",
+
                         }}>
                             <div style={{
-                                 display: "flex",
-                                 flexDirection: "row",
-                                 justifyContent: "flex-start",
-                                 
+                                fontSize: 14,
+                                color: "#ffffff",
+                                marginTop: 12,
+                                marginLeft: 50
                             }}>
-                            <div style={{
-                                fontSize:14,
-                                color:"#ffffff",
-                                marginTop:12,
-                                marginLeft:50
-                            }}>
-                                스타트업 대표님이신가요? 
+                                스타트업 대표님이신가요?
                             </div>
-                            <a  target="_blank"  href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
-                            <div style={{
-                                marginLeft:5,
-                                fontSize:14,
-                                color:"#ffffff",
-                                marginTop:12,
-                                textDecorationLine:"underline",
-                                fontWeight:"bold"
-                            }}>
-                                첫 구매 수수료 50% 할인
+                            <a target="_blank" href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                                <div style={{
+                                    marginLeft: 5,
+                                    fontSize: 14,
+                                    color: "#ffffff",
+                                    marginTop: 12,
+                                    textDecorationLine: "underline",
+                                    fontWeight: "bold"
+                                }}>
+                                    첫 구매 수수료 50% 할인
                             </div>
                             </a>
-                            </div>
                         </div>
-                        <div>
-                        <Slider  dots={true} autoplaySpeed={5000} autoplay={true} >
+                    </div>
+                    <div>
+                        <Slider dots={true} autoplaySpeed={5000} autoplay={true} >
                             <div>
-                        <MTopBanner
-                                img={bannerOne}
-                                title="크리에이터 크라우드 펀딩 플랫폼"
-                                content="Y.은 무슨 서비스인지 알아볼까요?"
-                                num={1}
-                                backgroundColor="#273d5a"
-                                link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
-                            />
+                                <MTopBanner
+                                    img={bannerOne}
+                                    title="크리에이터 크라우드 펀딩 플랫폼"
+                                    content="Y.은 무슨 서비스인지 알아볼까요?"
+                                    num={1}
+                                    backgroundColor="#273d5a"
+                                    link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
+                                />
                             </div>
                             <div>
                                 <MTopBanner
-                                img={bannerTwo}
-                                title="크리에이터 크라우드 펀딩 플랫폼"
-                                content="Y.은 무슨 서비스인지 알아볼까요?"
-                                num={1}
-                                backgroundColor="#273d5a"
-                                link="https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"
+                                    img={bannerTwo}
+                                    title="크리에이터 크라우드 펀딩 플랫폼"
+                                    content="Y.은 무슨 서비스인지 알아볼까요?"
+                                    num={1}
+                                    backgroundColor="#273d5a"
+                                    link="https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"
                                 ></MTopBanner>
-                    
+
                             </div>
-      </Slider></div>
+                        </Slider></div>
                     <div onClick={() => setModal(true)} style={{
                         display: "flex",
                         flexDirection: "row",
@@ -733,28 +733,28 @@ export default function Home() {
                         alignItems: "flex-start",
                         justifyContent: "space-between"
                     }}>
-                          <div onClick={() => setModal(true)}>
-                        <MTimeShop
-                            img={sampleone}
-                            title="애플"
-                            sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
-                            price="329,000"
-                            currentPrice="240,000"
-                            stock={2}
-                            sale={27}
-                        />
+                        <div onClick={() => setModal(true)}>
+                            <MTimeShop
+                                img={sampleone}
+                                title="애플"
+                                sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
+                                price="329,000"
+                                currentPrice="240,000"
+                                stock={2}
+                                sale={27}
+                            />
                         </div>
-                          <div onClick={() => setModal(true)}>
-                        <MTimeShop
-                            img={sampletwo}
-                            title="애플"
-                            sub="Apple iPad Air Sky Blue
+                        <div onClick={() => setModal(true)}>
+                            <MTimeShop
+                                img={sampletwo}
+                                title="애플"
+                                sub="Apple iPad Air Sky Blue
                                 10.9형 iPad Air Wi-Fi 스카이 블루"
-                            price="779,000"
-                            currentPrice="739,000"
-                            stock={0}
-                            sale={5}
-                        />
+                                price="779,000"
+                                currentPrice="739,000"
+                                stock={0}
+                                sale={5}
+                            />
                         </div>
                     </div>
                     <MBannerContainer>
@@ -905,25 +905,23 @@ export default function Home() {
                             }}
                         />
                     </MAfterContainer>
-                    
-                    <div style={{marginTop:64,marginLeft:20, width:"90vw", height:160, backgroundImage:`url(${banner})`,backgroundSize:"cover",borderRadius:6,}}>
-                        <div style={{marginLeft:20,marginTop:20,fontSize:21,color:"#ffffff",fontWeight:"bold"}}>스타트업 대표님이신가요?</div>
-                        <div style={{marginLeft:20,marginTop:8,fontSize:16,color:"#ffffff"}}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
-                        <div style={{marginLeft:24,marginTop:8,backgroundColor:"#051a1a",width:"60vw",height:48,borderRadius:6}}>
-                        <a  target="_blank"  href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
-                            <div style={{textDecorationLine: "none",padding:15,marginTop:20,marginLeft:20,fontSize:16,fontWeight:"bold",color:"#ffffff"}}>첫 구매 수수료 50% 할인!</div>
+
+                    <div style={{ marginTop: 64, marginLeft: 20, width: "90vw", height: 160, backgroundImage: `url(${banner})`, backgroundSize: "cover", borderRadius: 6, }}>
+                        <div style={{ marginLeft: 20, marginTop: 20, fontSize: 21, color: "#ffffff", fontWeight: "bold" }}>스타트업 대표님이신가요?</div>
+                        <div style={{ marginLeft: 20, marginTop: 8, fontSize: 16, color: "#ffffff" }}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
+                        <div style={{ marginLeft: 24, marginTop: 8, backgroundColor: "#051a1a", width: "60vw", height: 48, borderRadius: 6 }}>
+                            <a target="_blank" href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                                <div style={{ textDecorationLine: "none", padding: 15, marginTop: 20, marginLeft: 20, fontSize: 16, fontWeight: "bold", color: "#ffffff" }}>첫 구매 수수료 50% 할인!</div>
                             </a>
                         </div>
-                        </div>
-                        
+                    </div>
+
                     <MBottomTag marginTop={100} marginBottom={0} />
-                    
-                    <div onClick={() => history.push("/wishdealdefault")} style={{
-                        width: "90%",
-                        marginLeft: "5%",
-                        marginRight: "5%",
-                        paddingTop: "3%",
-                        paddingBottom: "3%",
+
+                    <div id="wishdeal_click" onClick={() => history.push("/wishdealdefault")} style={{
+                        width: "90vw",
+                        paddingTop: "3vw",
+                        paddingBottom: "3vw",
                         textAlign: "center",
                         backgroundColor: "#26c1f0",
                         boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
@@ -935,7 +933,8 @@ export default function Home() {
                         color: "#ffffff",
                         cursor: "pointer",
                         position: "fixed",
-                        bottom: 20,
+                        bottom: "12vw",
+                        alignSelf: "center",
                     }}>위시딜 신청하기</div>
                 </div>
             </Mobile>

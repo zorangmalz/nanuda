@@ -445,7 +445,7 @@ export default function WishDealNotURL() {
                             <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                         </div>
                         {next?
-                        <div onClick={uploadFile} style={{
+                        <div id="nourl_click" onClick={uploadFile} style={{
                             borderRadius: 8,
                             width: 440,
                             paddingTop: 15,
@@ -682,7 +682,7 @@ export default function WishDealNotURL() {
                             <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                         </div>
                         {next? 
-                         <div onClick={uploadFile} style={{
+                         <div id="nourl_click" onClick={uploadFile} style={{
                             borderRadius: 8,
                             width: "90vw",
                             paddingTop: "4vw",

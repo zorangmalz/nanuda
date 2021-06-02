@@ -273,7 +273,7 @@ export default function WishDeal() {
                             }}
                         /> : <div></div>}
                         {state ?
-                            <div onClick={move} style={{
+                            <div id="category_click" onClick={move} style={{
                                 width: 440,
                                 paddingTop: 16,
                                 paddingBottom: 16,
@@ -434,7 +434,7 @@ export default function WishDeal() {
                             color: "#202426"
                         }}
                     /> : <div></div>}
-                    <div onClick={move} style={{
+                    <div id="category_click" onClick={move} style={{
                         width: "90vw",
                         paddingTop: "4vw",
                         paddingBottom: "4vw",
