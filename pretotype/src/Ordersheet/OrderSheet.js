@@ -387,7 +387,10 @@ export default function OrderSheet() {
                 option:number,
                 schedule:paymentDate,
                 url:getUrl,
-                image:myparam.image[0]
+                image:myparam.image[0],
+                orderOrNot:false,
+                payOrNot:false,
+                secondOrNot:false
             })
             history.push("paymentsuccess",{myparam:myparam,ship:item,image:imageUrl})
         }
