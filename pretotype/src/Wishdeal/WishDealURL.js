@@ -544,7 +544,7 @@ export default function WishDealURL() {
                         </div>
                         <div style={{ marginLeft: 20 }}>
                             <div>
-                                {state ?
+                                {next ?
                                     <div id={stats === 1 ? "electronic_click" : stats === 2 ? "fashion_click" : stats === 4 ? "etc_click" : ""} onClick={NextPage} style={{
                                         width: 440,
                                         paddingTop: 16,
@@ -815,7 +815,7 @@ export default function WishDealURL() {
                         </div>
                         <div style={{ marginLeft: 20 }}>
                             <div>
-                                {state ?
+                                {next ?
                                     <div id={stats === 1 ? "electronic_click" : stats === 2 ? "fashion_click" : stats === 4 ? "etc_click" : ""} onClick={NextPage} style={{
                                         width: "90vw",
                                         paddingTop: "4vw",

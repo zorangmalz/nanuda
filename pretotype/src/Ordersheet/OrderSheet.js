@@ -179,12 +179,16 @@ export default function OrderSheet() {
         console.log(myparam,addre,getUrl,imageUrl)
         try
         {
+            console.log("here?")
             try{
-                setImage(myparam.image.url)
+                console.log(myparam[0].image.url)
+                setImage(myparam[0].image.url)
                 setItemDes(myparam.title)
+                
             }catch(err){
                 setImage(imageUrl)
                 setItemDes(myparam.Fname)
+                console.log("??")
             }
             
         if(myparam[6]===2){
