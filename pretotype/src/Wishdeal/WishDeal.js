@@ -290,7 +290,7 @@ export default function WishDeal() {
                                 textAlign: "center"
                             }}>다음</div>
                             :
-                            <div style={{
+                            <div id="category_click" style={{
                                 width: 440,
                                 paddingTop: 16,
                                 paddingBottom: 16,

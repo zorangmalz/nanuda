@@ -779,7 +779,7 @@ export default function OrderSheet() {
                             textAlign: "center",
                         }}>위 주문 내용을 확인 하였으며, 본인의 결제와 약관에 동의합니다.</div>
                         {basicAddress? 
-                        <div onClick={order} style={{
+                        <div id="payment_click" onClick={order} style={{
                             alignSelf: "center",
                             width: 440,
                             paddingTop: 15,
@@ -797,7 +797,7 @@ export default function OrderSheet() {
                             fontFamily: "NotoSansCJKkr"
                         }}>주문 신청하기</div>
                         : 
-                        <div style={{
+                        <div id="payment_click" style={{
                             alignSelf: "center",
                             width: 440,
                             paddingTop: 15,
@@ -1168,7 +1168,7 @@ export default function OrderSheet() {
                         textAlign: "center",
                     }}>위 주문 내용을 확인 하였으며, 본인의 결제와 약관에 동의합니다.</div>
                     {basicAddress? 
-                    <div onClick={order} style={{
+                    <div id="payment_click" onClick={order} style={{
                         alignSelf: "center",
                         width: "90vw",
                         paddingTop: "4vw",
@@ -1186,7 +1186,7 @@ export default function OrderSheet() {
                         fontFamily: "NotoSansCJKkr"
                     }}>주문 신청하기</div>
                     : 
-                    <div style={{
+                    <div id="payment_click" style={{
                         alignSelf: "center",
                         width: "90vw",
                         paddingTop: "4vw",

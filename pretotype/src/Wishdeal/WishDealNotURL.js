@@ -462,7 +462,7 @@ export default function WishDealNotURL() {
                             cursor: "pointer",
                         }}>다음</div>
                          :
-                         <div style={{
+                         <div id="nourl_click" style={{
                             borderRadius: 8,
                             width: 440,
                             paddingTop: 15,
@@ -699,7 +699,7 @@ export default function WishDealNotURL() {
                             cursor: "pointer",
                         }}>다음</div>
                         : 
-                        <div  style={{
+                        <div id="nourl_click" style={{
                             borderRadius: 8,
                             width: "90vw",
                             paddingTop: "4vw",
