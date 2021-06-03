@@ -79,7 +79,7 @@ export default function WishDealURL() {
     const [state, setState] = useState(false)
     const [highPrice,setHighPrice]=useState(true)
     useEffect(() => {
-        console.log(myparam, code, des)
+        //console.log(myparam, code, des)
         setStats(code)
 
     }, [])
@@ -108,9 +108,9 @@ export default function WishDealURL() {
 
     let history = useHistory();
     // useEffect(() => {
-    //     console.log(ELinputs)
-    //     console.log(Einputs)
-    //     console.log(Finputs)
+    //     //console.log(ELinputs)
+    //     //console.log(Einputs)
+    //     //console.log(Finputs)
     // })
 
     const [Finputs, setFInputs] = useState({
@@ -145,7 +145,7 @@ export default function WishDealURL() {
         })
     }
     useEffect(()=>{
-        console.log(highPrice)
+        //console.log(highPrice)
     },[])
     useEffect(()=>{
         if(stats===1){
@@ -155,11 +155,11 @@ export default function WishDealURL() {
                     setHighPrice(true)
                 }else{
                     setHighPrice(false)
-                    console.log("?")
+                    //console.log("?")
                 }
             }else{
                 setHighPrice(true)
-                console.log("There")
+                //console.log("There")
             }
         }else if(stats===2){
             if(Number(Finputs.Fprice)<30000){
@@ -168,11 +168,11 @@ export default function WishDealURL() {
                     setHighPrice(true)
                 }else{
                     setHighPrice(false)
-                    console.log("?")
+                    //console.log("?")
                 }
             }else{
                 setHighPrice(true)
-                console.log("There")
+                //console.log("There")
             }
         }else{
             if(Number(Einputs.Eprice)<30000){
@@ -181,11 +181,11 @@ export default function WishDealURL() {
                     setHighPrice(true)
                 }else{
                     setHighPrice(false)
-                    console.log("?")
+                    //console.log("?")
                 }
             }else{
                 setHighPrice(true)
-                console.log("There")
+                //console.log("There")
             }
         }
     },[Finputs.Fprice,ELinputs.ELprice,Einputs.Eprice])
@@ -924,7 +924,7 @@ setNext(true)
 
 function FashionForm({ image, brand, name, input, setInput,highPrice }) {
     useEffect(()=>{
-        console.log(highPrice)
+        //console.log(highPrice)
     })
     const { Fprice, Fcolor, Fsize, Fetc } = input
 

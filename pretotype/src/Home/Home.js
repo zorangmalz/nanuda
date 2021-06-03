@@ -169,7 +169,7 @@ export default function Home() {
 
     useEffect(() => {
         firestore.collection("test").doc("test").get().then((doc) => {
-            console.log(doc.data().read)
+            //console.log(doc.data().read)
         })
     }, [])
     const [modal, setModal] = useState(false)

@@ -41,7 +41,7 @@ export default function ProfileEdit() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
+                //console.log(response)
                 setUser({
                     ...user,
                     name: response.name,

@@ -42,7 +42,7 @@ export default function OrderSheet() {
 
         try{
             
-            console.log(addre)
+            //console.log(addre)
             if(addre==""){
                 setBasicAddress(false)
             }else{
@@ -111,7 +111,7 @@ export default function OrderSheet() {
     //날짜 계산해보기!!
     useEffect(()=>{
         let today=new Date()
-        console.log(today.getFullYear(),today.getMonth(),today.getDate())
+        //console.log(today.getFullYear(),today.getMonth(),today.getDate())
         if(today.getMonth()===11){
             if(today.getDate()>=28){
                 setOneDate((today.getMonth()+1)+"/"+today.getDate())
@@ -176,19 +176,19 @@ export default function OrderSheet() {
     const [ship,setShip]=useState(0)
 
     useEffect(() => {
-        console.log(myparam,addre,getUrl,imageUrl)
+        //console.log(myparam,addre,getUrl,imageUrl)
         try
         {
-            console.log("here?")
+            //console.log("here?")
             try{
-                console.log(myparam[0].image.url)
+                //console.log(myparam[0].image.url)
                 setImage(myparam[0].image.url)
                 setItemDes(myparam.title)
                 
             }catch(err){
                 setImage(imageUrl)
                 setItemDes(myparam.Fname)
-                console.log("??")
+                //console.log("??")
             }
             
         if(myparam[6]===2){
@@ -212,7 +212,7 @@ export default function OrderSheet() {
                 setTwoMoney(res*100)
                 setThreeMoney("-")
                 setFourMoney("-")
-                console.log(res,left)
+                //console.log(res,left)
             }else if(number===3){
                 var res=parseInt(parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)/3)
                 var left=parseInt((Number(myparam[3].ELprice)+Number(myparam[5])/100))%3
@@ -281,12 +281,12 @@ export default function OrderSheet() {
         }
         } catch(err){
             console.log(err)
-            console.log(myparam,addre)
+            //console.log(myparam,addre)
             try{
                 setImage(myparam.myparam[0].image.url)
                 setItemDes(myparam.myparam[0].title)
             }catch(err){
-                console.log(imageUrl)
+                //console.log(imageUrl)
                 setImage(myparam.image[0])
                 setItemDes(myparam.myparam[0].Fname)
             }
@@ -312,7 +312,7 @@ export default function OrderSheet() {
                     setTwoMoney(res*100)
                     setThreeMoney("-")
                     setFourMoney("-")
-                    console.log(res,left)
+                    //console.log(res,left)
                 }else if(number===3){
                     var res=parseInt(parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)/3)
                     var left=parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)%3

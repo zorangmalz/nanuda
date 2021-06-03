@@ -74,8 +74,8 @@ export default function WishDeal() {
     const myparam = location.state.info
     const getUrl=location.state.url
     useEffect(() => {
-        console.log(getUrl)
-        console.log(myparam)
+        //console.log(getUrl)
+        //console.log(myparam)
         try{
             setImage(myparam.image.url)
         }catch(err){
@@ -116,17 +116,17 @@ export default function WishDeal() {
     const [text, setText] = useState('')
 
     const onChange = (e) => {
-        console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
-        console.log(e.target.value)	//이벤트가 발생한 타겟의 Value를 출력
+        //console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
+        //console.log(e.target.value)	//이벤트가 발생한 타겟의 Value를 출력
         setText(e.target.value)		//이벤트 발생한 value값으로 {text} 변경
         setState(true)
     }
 
 
     function move() {
-        console.log(type)
+        //console.log(type)
         if (type === 0) {
-            console.log("0")
+            //console.log("0")
         } else if (type == 1) {
             history.push("/wishdealurl", { param: myparam, code: 1, des: text,url:getUrl })
         } else if (type == 2) {

@@ -94,7 +94,7 @@ export default function Address() {
 
     function Daum({ setVisible }) {
         const handleComplete = (data) => {
-            console.log(data)
+            //console.log(data)
             let fullAddress = data.address;
             let extraAddress = "";
 
@@ -170,12 +170,12 @@ export default function Address() {
         }
     }
     useEffect(() => {
-        console.log(myparam, getUrl, imageUrl)
+        //console.log(myparam, getUrl, imageUrl)
         check()
     }, [inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber])
 
     async function send() {
-        console.log(inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber)
+        //console.log(inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber)
 
         await firestore.collection("User").doc(inputs.phoneNumber).set({
             address: inputs.address,

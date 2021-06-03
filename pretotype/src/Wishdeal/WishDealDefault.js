@@ -28,10 +28,10 @@ export default function WishDealDefault() {
     
     const [text, setText] = useState("")
     const onChange = (e) => {
-        console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
-        console.log(e.target.value)	//이벤트가 발생한 타겟의 Value를 출력
+        //console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
+        //console.log(e.target.value)	//이벤트가 발생한 타겟의 Value를 출력
         setText(e.target.value)		//이벤트 발생한 value값으로 {text} 변경
-        console.log(text)
+        //console.log(text)
     }
     const [checker,setChecker]=useState(false)
     function check(){
@@ -55,8 +55,8 @@ export default function WishDealDefault() {
                     },
                 }
                 );
-                console.log(response.data.openGraph)
-                console.log("hererererer",response)
+                //console.log(response.data.openGraph)
+                //console.log("hererererer",response)
                     if (response.data.error == true) {
                         setLoading(false)
                         history.push("wishdealnoturl")

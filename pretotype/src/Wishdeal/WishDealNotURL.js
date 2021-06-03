@@ -143,7 +143,7 @@ export default function WishDealNotURL() {
         })
     }
     useEffect(() => {
-        console.log(highPrice)
+        //console.log(highPrice)
     }, [])
     useEffect(() => {
 
@@ -153,18 +153,18 @@ export default function WishDealNotURL() {
                 setHighPrice(true)
             } else {
                 setHighPrice(false)
-                console.log("?")
+                //console.log("?")
             }
         } else {
             setHighPrice(true)
-            console.log("There")
+            //console.log("There")
         }
 
     }, [Finputs.Fprice])
     const [checker,setChecker]=useState(false)
     const [imageUrl,setImageUrl]=useState(false)
     useEffect(() => {
-        console.log("checking")
+        //console.log("checking")
         if (Finputs.Fcolor && Finputs.Fsize && Finputs.Fprice != "" &&highPrice&&imageUrl) {
             if (number && numberB > 1) {
                 if (number === 2 && numberB === 5) {
@@ -212,7 +212,7 @@ export default function WishDealNotURL() {
         } else {
             setNext(false)
         }
-        console.log(highPrice,imageUrl)
+        //console.log(highPrice,imageUrl)
     }, [Finputs, number, numberB, option, ship,imageUrl,checker,highPrice])
 
     
@@ -244,7 +244,7 @@ export default function WishDealNotURL() {
     //s3로 업로드
     
     const uploadFile = async () => {
-        console.log("uploading")
+        //console.log("uploading")
         var imageArray = []
         const params = {
             ACL: "public-read",
@@ -256,7 +256,7 @@ export default function WishDealNotURL() {
         await imageBucket.putObject(params)
             .on("httpUploadProgress", (evt) => {
                 setProgress(Math.round((evt.loaded / evt.total) * 100))
-                console.log(progress)
+                //console.log(progress)
             })
             .send((err) => {
                 if (err) {
@@ -265,7 +265,7 @@ export default function WishDealNotURL() {
             })
         imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[0].name}`)
         
-        console.log(imageArray)
+        //console.log(imageArray)
         const lst = []
         
 
@@ -748,7 +748,7 @@ export default function WishDealNotURL() {
 
 function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, name, input, setInput, highPrice }) {
     useEffect(() => {
-        console.log(highPrice)
+        //console.log(highPrice)
     })
     const { Fprice, Fcolor, Fsize, Fetc, Fname } = input
 

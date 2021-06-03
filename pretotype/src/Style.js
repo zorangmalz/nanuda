@@ -174,10 +174,10 @@ export function HomeHeader() {
     function profileClick() {
         if (log == true) {
             history.push("/profilemain")
-            console.log("here", log)
+            //console.log("here", log)
         } else {
             history.push("/signup")
-            console.log("there")
+            //console.log("there")
         }
     }
     return (
