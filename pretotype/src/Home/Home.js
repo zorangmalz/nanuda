@@ -242,7 +242,7 @@ export default function Home() {
                                         color: "rgba(5, 26, 26, 0.6)",
                                         fontSize: 14,
                                     }}>취소</div>
-                                    <div onClick={() => history.push("/wishdealdefault")} style={{
+                                    <div id="wishdeal_click" onClick={() => history.push("/wishdealdefault")} style={{
                                         width: 150,
                                         fontFamily: "NotoSansCJKkr",
                                         paddingTop: 14,
@@ -291,7 +291,7 @@ export default function Home() {
                                 }}>
                                     스타트업 대표님이신가요?
                             </div>
-                                <a target="_blank" href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                                <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
                                     <div style={{
                                         marginLeft: 5,
                                         fontSize: 16,
@@ -445,8 +445,13 @@ export default function Home() {
                             </div>
                         </div>
                         <BannerContainer>
-                            <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" />
-                            <img style={{ marginRight: 16 }} src={smallbannertwo} alt="광고배너" />
+                        <div id="wishdeal_click"  onClick={()=>history.push("wishdealdefault")}>
+                            <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" /></div>
+                            <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                                            textDecorationLine: "none",
+                                            WebkitAppearance: "none"
+                                        }}>
+                            <img style={{ marginRight: 16 }} src={smallbannertwo} alt="광고배너" /></a>
                         </BannerContainer>
                         <div style={{
                             display: "flex",
@@ -595,7 +600,7 @@ export default function Home() {
                             <div style={{ marginLeft: 20, marginTop: 20, fontSize: 21, color: "#ffffff", fontWeight: "bold" }}>스타트업 대표님이신가요?</div>
                             <div style={{ marginLeft: 20, marginTop: 8, fontSize: 16, color: "#ffffff" }}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
                             <div style={{ marginLeft: 24, marginTop: 8, backgroundColor: "#051a1a", width: 240, height: 48, borderRadius: 6 }}>
-                                <a target="_blank" href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                                <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
                                     <div style={{ textDecorationLine: "none", padding: 15, marginTop: 20, marginLeft: 20, fontSize: 16, fontWeight: "bold", color: "#ffffff" }}>첫 구매 수수료 50% 할인!</div>
                                 </a>
                             </div>
@@ -634,6 +639,80 @@ export default function Home() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
+                    {modal ?
+                        <div style={{
+                            width: "100vw",
+                            height: "100vh",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            backgroundColor: "rgba(0, 0, 0, 0.4)",
+                            position: "fixed",
+                            top: 0,
+                            zIndex: 3,
+                        }}>
+                            <div style={{
+                                width: 300,
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                borderRadius: 6,
+                                backgroundColor: "#ffffff"
+                            }}>
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 16,
+                                    fontWeight: "bold",
+                                    color: "#051a1a",
+                                    marginTop: 16,
+                                    marginBottom: 16
+                                }}>상품 준비중입니다.</div>
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 14,
+                                    color: "#051a1a",
+                                    marginBottom: 16,
+                                    textAlign: "center"
+                                }}>위시딜을 통해 신청할 수 있습니다. <br />
+                                빠른 시일내에 준비하도록 하겠습니다.</div>
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}>
+                                    <div onClick={() => setModal(false)} style={{
+                                        width: 150,
+                                        fontFamily: "NotoSansCJKkr",
+                                        paddingTop: 14,
+                                        paddingBottom: 14,
+                                        backgroundColor: "#f2f3f8",
+                                        textAlign: "center",
+                                        cursor: "pointer",
+                                        borderBottomLeftRadius: 6,
+                                        color: "rgba(5, 26, 26, 0.6)",
+                                        fontSize: 14,
+                                    }}>취소</div>
+                                    <div id="wishdeal_click" onClick={() => history.push("/wishdealdefault")} style={{
+                                        width: 150,
+                                        fontFamily: "NotoSansCJKkr",
+                                        paddingTop: 14,
+                                        paddingBottom: 14,
+                                        backgroundColor: "#26c1f0",
+                                        textAlign: "center",
+                                        cursor: "pointer",
+                                        borderBottomRightRadius: 6,
+                                        fontWeight: "bold",
+                                        color: "#ffffff",
+                                        fontSize: 14,
+                                    }}>위시딜 신청하기</div>
+                                </div>
+                            </div>
+                        </div>
+                        :
+                        <div></div>
+                    }
                     <MHomeHeader />
                     <div style={{
                         width: "100%",
@@ -654,7 +733,7 @@ export default function Home() {
                             }}>
                                 스타트업 대표님이신가요?
                             </div>
-                            <a target="_blank" href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                            <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
                                 <div style={{
                                     marginLeft: 5,
                                     fontSize: 14,
@@ -740,7 +819,7 @@ export default function Home() {
                                 sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
                                 price="329,000"
                                 currentPrice="240,000"
-                                stock={2}
+                                stock={0}
                                 sale={27}
                             />
                         </div>
@@ -758,8 +837,13 @@ export default function Home() {
                         </div>
                     </div>
                     <MBannerContainer>
-                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" />
-                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbannertwo} alt="광고배너" />
+                    <div id="wishdeal_click"  onClick={()=>history.push("wishdealdefault")}>
+                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" /></div>
+                        <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                                            textDecorationLine: "none",
+                                            WebkitAppearance: "none"
+                                        }}>
+                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbannertwo} alt="광고배너" /></a>
                     </MBannerContainer>
                     <div style={{
                         display: "flex",
@@ -910,7 +994,7 @@ export default function Home() {
                         <div style={{ marginLeft: 20, marginTop: 20, fontSize: 21, color: "#ffffff", fontWeight: "bold" }}>스타트업 대표님이신가요?</div>
                         <div style={{ marginLeft: 20, marginTop: 8, fontSize: 16, color: "#ffffff" }}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
                         <div style={{ marginLeft: 24, marginTop: 8, backgroundColor: "#051a1a", width: "60vw", height: 48, borderRadius: 6 }}>
-                            <a target="_blank" href={"https://forms.gle/AH6wjiC9Ah4oHk16A"}>
+                            <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
                                 <div style={{ textDecorationLine: "none", padding: 15, marginTop: 20, marginLeft: 20, fontSize: 16, fontWeight: "bold", color: "#ffffff" }}>첫 구매 수수료 50% 할인!</div>
                             </a>
                         </div>
