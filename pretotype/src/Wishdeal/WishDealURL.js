@@ -890,7 +890,8 @@ setNext(true)
                                         fontWeight: "bold",
                                         fontFamily: "NotoSansCJKkr",
                                         color: "#ffffff",
-                                        textAlign: "center"
+                                        textAlign: "center",
+                                        marginBottom: "10vw",
                                     }}>다음</div>
                                     :
                                     <div id={stats === 1 ? "electronic_click" : stats === 2 ? "fashion_click" : stats === 4 ? "etc_click" : ""} style={{
@@ -907,7 +908,8 @@ setNext(true)
                                         fontWeight: "bold",
                                         fontFamily: "NotoSansCJKkr",
                                         color: "#ffffff",
-                                        textAlign: "center"
+                                        textAlign: "center",
+                                        marginBottom: "10vw",
                                     }}>다음</div>
                                 }
 

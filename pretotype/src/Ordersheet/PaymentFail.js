@@ -92,21 +92,21 @@ export default function PaymentFail() {
                     width: "100%",
                     height: "100vh",
                     backgroundColor: "#ffffff",
-                    paddingBottom: "5vw"
+                    paddingBottom: "8vw",
                 }}>
                     <MHeader content={timeDeal ? "작성 실패" : "주문 결과"} goX={true} />
                     <div style={{
                         width: 80,
                         height: 80,
                         borderRadius: 40,
-                        marginTop: 32,
+                        marginTop: "8vw",
                         backgroundColor: "#f72b2b",
 
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center"
                     }}>
-                        <AiOutlineClose color="#ffffff" size={50} />
+                        <AiOutlineClose color="#ffffff" size={80} />
                     </div>
                     <div style={{
                         marginTop: 32,
@@ -177,14 +177,14 @@ export function OrderDetail({ wishTime, img, title, price, name, orderNum, numbe
                         marginBottom: 16
                     }}>
                         <img style={{
-                width: 80,
-                height: 80,
-                objectFit: "cover",
-                border: "solid 1px rgba(219, 219, 219, 0.1)",
-                marginRight: 10,
-                borderRadius:6
-            }} src={img}></img>
-                  
+                            width: 80,
+                            height: 80,
+                            objectFit: "cover",
+                            border: "solid 1px rgba(219, 219, 219, 0.1)",
+                            marginRight: 10,
+                            borderRadius: 6
+                        }} src={img}></img>
+
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
@@ -214,7 +214,7 @@ export function OrderDetail({ wishTime, img, title, price, name, orderNum, numbe
                         fontSize: 16,
                     }}>
                         받는사람 : {name} <br />
-                        
+
                         우편번호 : {number} <br />
                         주소: {address} <br />
                         상세주소 : {addressDetail} <br />
@@ -234,11 +234,11 @@ export function MOrderDetail({ wishTime, img, title, price, name, orderNum, numb
         <div>
             {wishTime ?
                 <div style={{
-                    width: "90vw",
-                    padding : "4vw",
+                    width: "82vw",
+                    padding: "4vw",
                     border: "1px solid #dfdfdf",
                     backgroundColor: "#ffffff",
-                    marginTop: 32,
+                    marginTop: "8vw",
                     alignSelf: "center",
                     borderRadius: 6,
 
@@ -259,14 +259,14 @@ export function MOrderDetail({ wishTime, img, title, price, name, orderNum, numb
                         alignItems: "center",
                         marginBottom: 16
                     }}>
-                     <img style={{
-                width: 80,
-                height: 80,
-                objectFit: "cover",
-                border: "solid 1px rgba(219, 219, 219, 0.1)",
-                marginRight: 10,
-                borderRadius:6
-            }} src={img}></img>
+                        <img style={{
+                            width: 80,
+                            height: 80,
+                            objectFit: "cover",
+                            border: "solid 1px rgba(219, 219, 219, 0.1)",
+                            marginRight: 10,
+                            borderRadius: 6
+                        }} src={img}></img>
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
@@ -296,7 +296,7 @@ export function MOrderDetail({ wishTime, img, title, price, name, orderNum, numb
                         fontSize: 14,
                     }}>
                         받는사람 : {name} <br />
-                        
+
                         우편번호 : {number} <br />
                         주소: {address} <br />
                         상세주소 : {addressDetail} <br />

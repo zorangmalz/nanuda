@@ -3,32 +3,32 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
 import { MOrderDetail, OrderDetail } from "./PaymentFail";
-import { useHistory,useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 
 
 export default function PaymentSuccess() {
     //WishDeal인지 여부
     const [wish, setWish] = useState(true)
     const location = useLocation()
-    const [img,setImg]=useState("")
-    const [title,setTitle]=useState("")
-    const [prices,setPrices]=useState("")
-    const myparam=location.state.myparam
+    const [img, setImg] = useState("")
+    const [title, setTitle] = useState("")
+    const [prices, setPrices] = useState("")
+    const myparam = location.state.myparam
     const ship = location.state.ship
-    const imageUrl=location.state.image
-    useEffect(()=>{
-        console.log(myparam,ship)
-        try{
-setImg(myparam.myparam[0].image.url)
-setPrices(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
-        }catch(err){
+    const imageUrl = location.state.image
+    useEffect(() => {
+        console.log(myparam, ship)
+        try {
+            setImg(myparam.myparam[0].image.url)
+            setPrices(Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5]))
+        } catch (err) {
             console.log(err)
-            console.log(Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))
-            console.log(Number(myparam.myparam[3].Fprice),Number(myparam.myparam[5]))
+            console.log(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
+            console.log(Number(myparam.myparam[3].Fprice), Number(myparam.myparam[5]))
             setImg(myparam.image[0])
-            setPrices(Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))
+            setPrices(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
         }
-    },[])
+    }, [])
 
 
     //화면 변경
@@ -86,56 +86,56 @@ setPrices(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
                         }}>{wish ? "주문" : "작성"}이 완료
                                 <span style={{ color: "#051a1a" }}>되었습니다!</span>
                         </div>
-                        {myparam.myparam[1]==1 ?
+                        {myparam.myparam[1] == 1 ?
                             <OrderDetail
-                            img={img}
-                            wishTime={wish}
-                            title={myparam.myparam[0].title}
-                            price={prices}
-                            name={ship.name}
-                            number={ship.addressNum}
-                            address={ship.address}
-                            addressDetail={ship.addressDetail}
-                            phoneNumber={ship.phoneNumber}
-                            deliveryClaim={ship.request}
-                        />
-                        : 
-                       
-                        (myparam.myparam[1]===2 ? 
-                            <OrderDetail
-                            img={img}
-                            wishTime={wish}
-                            title={myparam.myparam[0].title}
-                            price={prices}
-                            name={ship.name}
-                            number={ship.addressNum}
-                            address={ship.address}
-                            addressDetail={ship.addressDetail}
-                            phoneNumber={ship.phoneNumber}
-                            deliveryClaim={ship.request}
-                        />
-                        :
-                        <OrderDetail
-                        img={img}
-                            wishTime={wish}
-                            title={myparam.myparam[0].title}
-                            price={Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5])}
-                            name={ship.name}
-                            number={ship.addressNum}
-                            address={ship.address}
-                            addressDetail={ship.addressDetail}
-                            phoneNumber={ship.phoneNumber}
-                            deliveryClaim={ship.request}
-                        />)
+                                img={img}
+                                wishTime={wish}
+                                title={myparam.myparam[0].title}
+                                price={prices}
+                                name={ship.name}
+                                number={ship.addressNum}
+                                address={ship.address}
+                                addressDetail={ship.addressDetail}
+                                phoneNumber={ship.phoneNumber}
+                                deliveryClaim={ship.request}
+                            />
+                            :
+
+                            (myparam.myparam[1] === 2 ?
+                                <OrderDetail
+                                    img={img}
+                                    wishTime={wish}
+                                    title={myparam.myparam[0].title}
+                                    price={prices}
+                                    name={ship.name}
+                                    number={ship.addressNum}
+                                    address={ship.address}
+                                    addressDetail={ship.addressDetail}
+                                    phoneNumber={ship.phoneNumber}
+                                    deliveryClaim={ship.request}
+                                />
+                                :
+                                <OrderDetail
+                                    img={img}
+                                    wishTime={wish}
+                                    title={myparam.myparam[0].title}
+                                    price={Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])}
+                                    name={ship.name}
+                                    number={ship.addressNum}
+                                    address={ship.address}
+                                    addressDetail={ship.addressDetail}
+                                    phoneNumber={ship.phoneNumber}
+                                    deliveryClaim={ship.request}
+                                />)
                         }
-                        
+
                         <StandardButton
                             text="홈으로 돌아가기"
                             marginTop={32}
                             onClick={() => history.replace("/")}
                             state={true}
                         />
-                     
+
                     </div>
                 </div>
             </Default>
@@ -149,6 +149,7 @@ setPrices(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
                     width: "100%",
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
+                    paddingBottom: "8vw",
                 }}>
                     <MHeader content={wish ? "주문 결과" : "작성 완료"} goX={true} />
                     <div style={{
@@ -165,31 +166,18 @@ setPrices(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
                         <AiOutlineCheck color="#ffffff" size={50} />
                     </div>
                     <div style={{
-                        marginTop: 32,
+                        width: "90vw",
+                        marginTop: "8vw",
                         fontSize: 21,
                         fontWeight: "bold",
                         color: "#26c1f0",
-                        fontFamily: "NotoSansCJKkr"
+                        fontFamily: "NotoSansCJKkr",
+                        textAlign: "center",
                     }}>{wish ? "주문" : "작성"}이 완료
                         <span style={{ color: "#051a1a" }}>되었습니다!</span>
                     </div>
-                    {myparam.myparam[1]==1 ?
-                            <MOrderDetail
-                            img={img}
-                            wishTime={wish}
-                            title={myparam.myparam[0].title}
-                            price={prices}
-                            name={ship.name}
-                            number={ship.addressNum}
-                            address={ship.address}
-                            addressDetail={ship.addressDetail}
-                            phoneNumber={ship.phoneNumber}
-                            deliveryClaim={ship.request}
-                        />
-                        : 
-                       
-                        (myparam.myparam[1]===2 ? 
-                            <MOrderDetail
+                    {myparam.myparam[1] == 1 ?
+                        <MOrderDetail
                             img={img}
                             wishTime={wish}
                             title={myparam.myparam[0].title}
@@ -202,26 +190,41 @@ setPrices(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
                             deliveryClaim={ship.request}
                         />
                         :
-                        <MOrderDetail
-                        img={img}
-                            wishTime={wish}
-                            title={myparam.myparam[0].title}
-                            price={Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5])}
-                            name={ship.name}
-                            number={ship.addressNum}
-                            address={ship.address}
-                            addressDetail={ship.addressDetail}
-                            phoneNumber={ship.phoneNumber}
-                            deliveryClaim={ship.request}
-                        />)
-                        }
+
+                        (myparam.myparam[1] === 2 ?
+                            <MOrderDetail
+                                img={img}
+                                wishTime={wish}
+                                title={myparam.myparam[0].title}
+                                price={prices}
+                                name={ship.name}
+                                number={ship.addressNum}
+                                address={ship.address}
+                                addressDetail={ship.addressDetail}
+                                phoneNumber={ship.phoneNumber}
+                                deliveryClaim={ship.request}
+                            />
+                            :
+                            <MOrderDetail
+                                img={img}
+                                wishTime={wish}
+                                title={myparam.myparam[0].title}
+                                price={Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])}
+                                name={ship.name}
+                                number={ship.addressNum}
+                                address={ship.address}
+                                addressDetail={ship.addressDetail}
+                                phoneNumber={ship.phoneNumber}
+                                deliveryClaim={ship.request}
+                            />)
+                    }
                     <MStandardButton
                         text="홈으로 돌아가기"
                         onClick={() => history.replace("/")}
                         state={true}
                         marginTop={"8vw"}
                     />
-                   
+
                 </div>
             </Mobile>
         </div>

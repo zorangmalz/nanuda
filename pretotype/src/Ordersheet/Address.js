@@ -3,7 +3,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, StandardButton, MStandardButton } from "../Style";
 import { BsCheck } from "react-icons/bs"
 import DaumPostCode from 'react-daum-postcode';
-import {firestore} from "../firebase"
+import { firestore } from "../firebase"
 import { useHistory, useLocation } from "react-router";
 
 
@@ -27,9 +27,9 @@ function reducer(state, action) {
 export default function Address() {
     const location = useLocation()
     const myparam = location.state.myparam
-    const getUrl=location.state.url
-    const imageUrl=location.state.image
-    const history=useHistory()
+    const getUrl = location.state.url
+    const imageUrl = location.state.image
+    const history = useHistory()
     const [modal, setModal] = useState(false)
     //우편번호 입력
 
@@ -170,22 +170,22 @@ export default function Address() {
         }
     }
     useEffect(() => {
-        console.log(myparam,getUrl,imageUrl)
+        console.log(myparam, getUrl, imageUrl)
         check()
     }, [inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber])
-    
+
     async function send() {
         console.log(inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber)
 
         await firestore.collection("User").doc(inputs.phoneNumber).set({
             address: inputs.address,
-                    address_claim: inputs.claim,
-                    address_code: inputs.addressNum,
-                    address_detail: inputs.addressDetail,
-                    address_name: inputs.name,
-                    address_phone: inputs.phoneNumber,
+            address_claim: inputs.claim,
+            address_code: inputs.addressNum,
+            address_detail: inputs.addressDetail,
+            address_name: inputs.name,
+            address_phone: inputs.phoneNumber,
         })
-        history.push("/ordersheet",{param:myparam, addInfo:inputs,url:getUrl,image:imageUrl})
+        history.push("/ordersheet", { param: myparam, addInfo: inputs, url: getUrl, image: imageUrl })
     }
     return (
         <div>
@@ -460,15 +460,15 @@ export default function Address() {
                                 marginLeft: 52,
                                 fontFamily: "NotoSansCJKkr"
                             }}>필수 입력 정보입니다.</div></div> : <div></div>}
-                            <div style={{
-                                marginLeft:20
-                            }}>
-                        <StandardButton
-                            marginTop={32}
-                            onClick={send}
-                            state={next}
-                            text={"수정완료"}
-                        ></StandardButton>
+                        <div style={{
+                            marginLeft: 20
+                        }}>
+                            <StandardButton
+                                marginTop={32}
+                                onClick={send}
+                                state={next}
+                                text={"수정완료"}
+                            ></StandardButton>
                         </div>
                     </div>
                 </div>
@@ -487,6 +487,7 @@ export default function Address() {
                     width: "100%",
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
+                    paddingBottom: "8vw",
                 }}>
                     <MHeader content="배송정보 수정" goBack={true} />
                     <div style={{
@@ -734,13 +735,13 @@ export default function Address() {
                             marginLeft: "13%",
                             fontFamily: "NotoSansCJKkr"
                         }}>필수 입력 정보입니다.</div></div> : <div></div>}
-                        <div style={{marginLeft:20}}>
-                    <MStandardButton
-                        marginTop={32}
-                        onClick={send}
-                        state={next}
-                        text={"수정완료"}
-                    ></MStandardButton>
+                    <div style={{ marginLeft: 20 }}>
+                        <MStandardButton
+                            marginTop={32}
+                            onClick={send}
+                            state={next}
+                            text={"수정완료"}
+                        ></MStandardButton>
                     </div>
                 </div>
             </Mobile>

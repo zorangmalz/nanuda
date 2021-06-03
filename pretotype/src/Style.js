@@ -991,12 +991,10 @@ export function MTopBanner({img, title, content, backgroundColor, link}) {
         
             <div style={{
                 width: "100vw",
-                
-                height: 250,
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
-                
+                height: 270
             }}>
                 {/* <img src={topbanner} height="250" style={{ objectFit: "cover", minWidth: 300 }} />
                 <div style={{ position: "absolute", zIndex: 1, top: 0, width: "100vw", minWidth: 300, height: 250, background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8))" }} /> */}
@@ -1009,7 +1007,6 @@ export function MTopBanner({img, title, content, backgroundColor, link}) {
                         zIndex: 1,
                         top: 0,
                         width: "100vw",
-                        height: 250,
                         paddingBottom: 20,
                         display: "flex",
                         flexDirection: "row",
@@ -1018,7 +1015,6 @@ export function MTopBanner({img, title, content, backgroundColor, link}) {
                     }}>
                         <img src={img} style={{
                             width:"100vw",
-                            height:250,
                             objectFit: "contain",
                         }} />
                     </div>
