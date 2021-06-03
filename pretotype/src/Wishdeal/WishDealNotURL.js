@@ -802,7 +802,7 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
                 marginLeft: 20,
             }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <input
-                placeholder="나누다"
+                placeholder="하울프리"
                 name="Fname"
                 value={Fname}
                 onChange={onChange}
@@ -1035,7 +1035,7 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                 marginLeft: 20,
             }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <input
-                placeholder="나누다"
+                placeholder="하울프리"
                 name="Fname"
                 value={Fname}
                 onChange={onChange}

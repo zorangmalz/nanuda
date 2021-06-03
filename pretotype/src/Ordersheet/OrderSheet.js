@@ -705,7 +705,7 @@ export default function OrderSheet() {
                                     opacity: 0.6,
                                     color: "#202426",
                                     fontFamily: "NotoSansCJKkr"
-                                }}>나누다 포인트 : </div>
+                                }}>하울프리 포인트 : </div>
                                 <div style={{
                                     fontSize: 16,
                                     opacity: 0.6,
@@ -1094,7 +1094,7 @@ export default function OrderSheet() {
                                 opacity: 0.6,
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
-                            }}>나누다 포인트 : </div>
+                            }}>하울프리 포인트 : </div>
                             <div style={{
                                 fontSize: 14,
                                 opacity: 0.6,

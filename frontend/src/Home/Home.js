@@ -326,7 +326,7 @@ export default function Home() {
                             opacity: 0.6,
                             color: "#202426",
                             marginLeft: 20,
-                        }}>아직도 나누다 이용을 망설이시나요?</div>
+                        }}>아직도 하울프리 이용을 망설이시나요?</div>
                         <AfterContainer>
                             {reviewData.map(item =>
                                 <Review
@@ -563,7 +563,7 @@ export default function Home() {
                         color: "#202426",
                         marginLeft: "5%",
                         marginTop: "2vw"
-                    }}>아직도 나누다 이용을 망설이시나요?</div>
+                    }}>아직도 하울프리 이용을 망설이시나요?</div>
                     <MAfterContainer>
                         {reviewData.map(item =>
                             <MReview

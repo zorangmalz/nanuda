@@ -102,7 +102,7 @@ export default function ServiceReview() {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 18,
                                 color: "#ffffff"
-                            }}>아직도 나누다 사용을 망설이시나요?</div>
+                            }}>아직도 하울프리 사용을 망설이시나요?</div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 24,
@@ -188,7 +188,7 @@ export default function ServiceReview() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             color: "#ffffff"
-                        }}>아직도 나누다 사용을 망설이시나요?</div>
+                        }}>아직도 하울프리 사용을 망설이시나요?</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 20,
