@@ -7,7 +7,7 @@ import { BsX } from "react-icons/bs"
 import { useHistory } from "react-router";
 
 import styled from "styled-components";
-
+import kakao from "./images/kkt cs.png"
 export default function WebIntro() {
     let history = useHistory()
     return (
@@ -331,15 +331,18 @@ export function BottomTag({ marginTop, marginBottom }) {
                         marginTop: 8
                     }}>
                         운영시간  평일 11:00 ~ 18:00 (토 -일, 공휴일 휴무) <br />
-                        점심시간 평일 12:30 ~ 1:30
+                        점심시간 평일 12:30 ~ 13:30
                     </div>
                 </div>
-                <div style={{
+                <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
+                    textDecorationLine: "none",
+                    WebkitAppearance: "none"
+                }}>
+                 <img src={kakao} alt="로고" style={{
                     width: 48,
-                    height: 48,
-                    borderRadius: 24,
-                    backgroundColor: "#fff500"
-                }} />
+                    height:48,
+                    borderRadius:6
+                }} /></a>
             </div>
             <div style={{
                 display: "flex",
@@ -553,7 +556,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         marginTop: 8
                     }}>
                         운영시간  평일 11:00 ~ 18:00 (토 -일, 공휴일 휴무) <br />
-                                점심시간 평일 12:30 ~ 1:30
+                                점심시간 평일 12:30 ~ 13:30
                             </div>
                 </div>
                 <div style={{
@@ -1006,7 +1009,7 @@ export function MTopBanner({img, title, content, backgroundColor, link}) {
                         zIndex: 1,
                         top: 0,
                         width: "100vw",
-                        height: 230,
+                        height: 250,
                         paddingBottom: 20,
                         display: "flex",
                         flexDirection: "row",

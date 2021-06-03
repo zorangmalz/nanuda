@@ -748,7 +748,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div>
-                        <Slider dots={true} autoplaySpeed={5000} autoplay={true} >
+                        <Slider dots={true} autoplaySpeed={5000} autoplay={true} arrows={false}>
                             <div>
                                 <MTopBanner
                                     img={bannerOne}

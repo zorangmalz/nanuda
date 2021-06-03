@@ -434,6 +434,7 @@ export default function WishDeal() {
                             color: "#202426"
                         }}
                     /> : <div></div>}
+                  {state? 
                     <div id="category_click" onClick={move} style={{
                         width: "90vw",
                         paddingTop: "4vw",
@@ -450,6 +451,24 @@ export default function WishDeal() {
                         color: "#ffffff",
                         textAlign: "center"
                     }}>다음</div>
+                  : 
+                  <div id="category_click" style={{
+                    width: "90vw",
+                    paddingTop: "4vw",
+                    paddingBottom: "4vw",
+                    backgroundColor: "#dbdbdb",
+                    alignSelf: "center",
+                    cursor: "pointer",
+                    marginTop: 32,
+                    borderRadius: 6,
+
+                    fontSize: 16,
+                    fontWeight: "bold",
+                    fontFamily: "NotoSansCJKkr",
+                    color: "#ffffff",
+                    textAlign: "center"
+                }}>다음</div>
+                  }
                 </div>
             </Mobile>
         </div>
