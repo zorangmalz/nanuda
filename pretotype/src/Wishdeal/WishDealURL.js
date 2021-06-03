@@ -198,27 +198,47 @@ export default function WishDealURL() {
                 if (number && numberB > 1) {
                     if (number === 2 && numberB === 5) {
                         if (option && ship != "") {
-                            setNext(true)
+                            if(ELinputs.ELprice>30000){
+                                setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 2 && numberB < 5) {
                         if (option != "") {
-                            setNext(true)
+                            if(ELinputs.ELprice>30000){
+                                setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB === 5) {
                         if (ship != "") {
-                            setNext(true)
+                            if(ELinputs.ELprice>30000){
+                                setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB < 5) {
-                        setNext(true)
+                        if(ELinputs.ELprice>30000){
+                                setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                        
                     }
                 }
 
@@ -231,27 +251,47 @@ export default function WishDealURL() {
                 if (number && numberB > 1) {
                     if (number === 2 && numberB === 5) {
                         if (option && ship != "") {
-                            setNext(true)
+if(Finputs.Fprice>30000){
+    setNext(true)
+}else{
+    setNext(false)
+}
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 2 && numberB < 5) {
                         if (option != "") {
-                            setNext(true)
+                            if(Finputs.Fprice>30000){
+                            setNext(true)    
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB === 5) {
                         if (ship != "") {
-                            setNext(true)
+                            if(Finputs.Fprice>30000){
+                            setNext(true)    
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB < 5) {
-                        setNext(true)
+                        if(Finputs.Fprice>30000){
+                        setNext(true)    
+                        }else{
+                            setNext(false)
+                        }
+                        
                     }
                 }
 
@@ -264,27 +304,47 @@ export default function WishDealURL() {
                 if (number && numberB > 1) {
                     if (number === 2 && numberB === 5) {
                         if (option && ship != "") {
-                            setNext(true)
+                            if(Einputs.Eprice>30000){
+setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 2 && numberB < 5) {
                         if (option != "") {
-                            setNext(true)
+                            if(Einputs.Eprice>30000){
+setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB === 5) {
                         if (ship != "") {
-                            setNext(true)
+                            if(Einputs.Eprice>30000){
+setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB < 5) {
-                        setNext(true)
+                        if(Einputs.Eprice>30000){
+setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                        
                     }
                 }
 
@@ -293,7 +353,7 @@ export default function WishDealURL() {
             }
         }
 
-    }, [Finputs, Einputs, ELinputs, number, numberB, option, ship])
+    }, [Finputs, Einputs, ELinputs, number, numberB, option, ship,highPrice])
 
     function NextPage() {
         const lst = []

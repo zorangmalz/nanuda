@@ -161,42 +161,61 @@ export default function WishDealNotURL() {
         }
 
     }, [Finputs.Fprice])
-
+    const [checker,setChecker]=useState(false)
+    const [imageUrl,setImageUrl]=useState(false)
     useEffect(() => {
-
-        if (Finputs.Fcolor && Finputs.Fsize && Finputs.Fprice != "") {
+        console.log("checking")
+        if (Finputs.Fcolor && Finputs.Fsize && Finputs.Fprice != "" &&highPrice&&imageUrl) {
             if (number && numberB > 1) {
                 if (number === 2 && numberB === 5) {
                     if (option && ship != "") {
-                        setNext(true)
+                        if(Finputs.Fprice>30000 && filePath.length>0){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                        
                     } else {
                         setNext(false)
                     }
                 }
                 if (number === 2 && numberB < 5) {
                     if (option != "") {
-                        setNext(true)
+                        if(Finputs.Fprice>30000 && filePath.length>0){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
                     } else {
                         setNext(false)
                     }
                 }
                 if (number === 3 && numberB === 5) {
                     if (ship != "") {
-                        setNext(true)
+                        if(Finputs.Fprice>30000 && filePath.length>0){
+                            setNext(true)
+                        }else{
+                            setNext(false)
+                        }
                     } else {
                         setNext(false)
                     }
                 }
                 if (number === 3 && numberB < 5) {
-                    setNext(true)
+                    if(Finputs.Fprice>30000 && filePath.length>0){
+                        setNext(true)
+                    }else{
+                        setNext(false)
+                    }
                 }
             }
         } else {
             setNext(false)
         }
-    }, [Finputs, number, numberB, option, ship])
+        console.log(highPrice,imageUrl)
+    }, [Finputs, number, numberB, option, ship,imageUrl,checker,highPrice])
 
-
+    
     //ImageToS3
     //이미지 진행상황
     const [progress, setProgress] = useState(0)
@@ -207,20 +226,23 @@ export default function WishDealNotURL() {
     //이미지 저장 및 경로
     const [selectedFile, setSelectedFile] = useState([])
     const [filePath, setFilePath] = useState([])
-
+    
     const onButtonClick = () => {
         inputFile.current.click()
+        setImageUrl(true)
+        setChecker(true)
     }
 
     //이미지 경로 저장
     const handelFileInput = (e) => {
+        setChecker(true)
         const files = e.target.files;
         setSelectedFile(selectedFile => [...selectedFile, files[0]])
         setFilePath(filePath => [...filePath, URL.createObjectURL(files[0])])
     }
 
     //s3로 업로드
-    const [imageUrl,setImageUrl]=useState("")
+    
     const uploadFile = async () => {
         console.log("uploading")
         var imageArray = []
@@ -242,7 +264,7 @@ export default function WishDealNotURL() {
                 }
             })
         imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[0].name}`)
-        setImageUrl(imageArray)
+        
         console.log(imageArray)
         const lst = []
         
