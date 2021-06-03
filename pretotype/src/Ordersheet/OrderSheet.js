@@ -408,7 +408,8 @@ export default function OrderSheet() {
                     image:"",
                     orderOrNot:false,
                     payOrNot:false,
-                    secondOrNot:false
+                    secondOrNot:false,
+                    realPrice:(Number(oneMoney)+Number(ship)-10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                 })
                 history.push("paymentsuccess",{myparam:myparam,ship:item,image:imageUrl})
             }

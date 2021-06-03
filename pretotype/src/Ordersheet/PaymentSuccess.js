@@ -20,7 +20,14 @@ export default function PaymentSuccess() {
         //console.log(myparam, ship)
         try {
             setImg(myparam.myparam[0].image.url)
-            setPrices(Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5]))
+            if(myparam.myparam[1]===1){
+                setPrices(Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5]))
+            }else if (myparam.mypara[1]===2){
+                setPrices(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
+            }else{
+                setPrices(Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5]))
+            }
+            
         } catch (err) {
             console.log(err)
             //console.log(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
