@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask } from "../Style";
+import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask ,TopBanner, MTopBanner } from "../Style";
 import { BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import smallbanner from "../images/smallbanner.png";
+import Slider from "react-slick"
+import bannerOne from "../images/bannerOne.png"
+import bannerTwo from "../images/bannerTwo.png"
+import banner from "../images/homebanner.png"
 
 const AfterContainer = styled.div`
     width: 424px;
@@ -132,6 +136,113 @@ export default function Home() {
                     }}>
                         <HomeHeader />
                         {/* 배너 넣어야됨 */}
+                        <div style={{
+                            width: 480,
+                            height: 48,
+                            backgroundColor: "#051a1a"
+                        }}>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "flex-start",
+
+                            }}>
+                                <div style={{
+                                    fontSize: 16,
+                                    color: "#ffffff",
+                                    marginTop: 12,
+                                    marginLeft: 69
+                                }}>
+                                    스타트업 대표님이신가요?
+                            </div>
+                                <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
+                                    <div style={{
+                                        marginLeft: 5,
+                                        fontSize: 16,
+                                        color: "#ffffff",
+                                        marginTop: 12,
+                                        textDecorationLine: "underline",
+                                        fontWeight: "bold"
+                                    }}>
+                                        첫 구매 수수료 50% 할인
+                            </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div style={{
+                            width: 480,
+                            height: 300
+                        }}>
+                            <Slider dots={true} autoplaySpeed={5000} autoplay={true} >
+                                <div>
+                                    <TopBanner
+                                        img={bannerOne}
+                                        title="크리에이터 크라우드 펀딩 플랫폼"
+                                        content="Y.은 무슨 서비스인지 알아볼까요?"
+                                        num={1}
+                                        backgroundColor="#273d5a"
+                                        link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
+                                    />
+                                </div>
+                                <div>
+                                    <div style={{
+                                        width: 480,
+
+                                        height: 300,
+                                        position: "relative",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "center",
+
+                                    }}>
+
+                                        <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                                            textDecorationLine: "none",
+                                            WebkitAppearance: "none"
+                                        }}>
+                                            <div style={{
+                                                width: 480,
+                                                height: 300,
+                                                paddingBottom: 62,
+                                                display: "flex",
+                                                flexDirection: "row",
+                                                alignItems: "flex-end",
+                                                justifyContent: "flex-end",
+                                            }}>
+                                                <img src={bannerTwo} alt="" style={{
+                                                    width: 480,
+                                                    objectFit: "contain",
+                                                }} />
+                                            </div>
+                                            {/* <div style={{
+                        position: "absolute",
+                        zIndex: 2,
+                        top: 144,
+                        width: "56vw",
+                        minWidth: 1060,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                    }}>
+                        <div style={{
+                            width: 445,
+                            fontWeight: "bold",
+                            fontSize: 24,
+                            color: "#ffffff",
+                            marginBottom: 20,
+                        }}>{title}</div>
+                        <div style={{
+                            width: 300,
+                            fontSize: 36,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                        }}>{content}</div>
+                    </div> */}
+                                        </a>
+                                    </div>
+                                </div>
+                            </Slider></div>
+
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -334,6 +445,15 @@ export default function Home() {
                                 />
                             )}
                         </AfterContainer>
+                        <div style={{ marginTop: 64, marginLeft: 20, width: 440, height: 160, backgroundImage: `url(${banner})`, backgroundSize: "cover", borderRadius: 6, }}>
+                            <div style={{ marginLeft: 20, marginTop: 20, fontSize: 21, color: "#ffffff", fontWeight: "bold" }}>스타트업 대표님이신가요?</div>
+                            <div style={{ marginLeft: 20, marginTop: 8, fontSize: 16, color: "#ffffff" }}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
+                            <div style={{ marginLeft: 24, marginTop: 8, backgroundColor: "#051a1a", width: 240, height: 48, borderRadius: 6 }}>
+                                <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
+                                    <div style={{ textDecorationLine: "none", padding: 15, marginTop: 20, marginLeft: 20, fontSize: 16, fontWeight: "bold", color: "#ffffff" }}>첫 구매 수수료 50% 할인!</div>
+                                </a>
+                            </div>
+                        </div>
                         <BottomTag marginTop={200} marginBottom={0} />
                         <div onClick={() => history.push("/wishdealdefault")} style={{
                             width: 440,
@@ -368,6 +488,63 @@ export default function Home() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHomeHeader />
+                    <div style={{
+                        width: "100%",
+                        height: 48,
+                        backgroundColor: "#051a1a"
+                    }}>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "flex-start",
+
+                        }}>
+                            <div style={{
+                                fontSize: 14,
+                                color: "#ffffff",
+                                marginTop: 12,
+                                marginLeft: 50
+                            }}>
+                                스타트업 대표님이신가요?
+                            </div>
+                            <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
+                                <div style={{
+                                    marginLeft: 5,
+                                    fontSize: 14,
+                                    color: "#ffffff",
+                                    marginTop: 12,
+                                    textDecorationLine: "underline",
+                                    fontWeight: "bold"
+                                }}>
+                                    첫 구매 수수료 50% 할인
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div style={{width: "100vw"}}>
+                        <Slider dots={true} autoplaySpeed={5000} autoplay={true} arrows={false}>
+                            <div style={{ width: "100vw"}}>
+                                <MTopBanner
+                                    img={bannerOne}
+                                    title="크리에이터 크라우드 펀딩 플랫폼"
+                                    content="Y.은 무슨 서비스인지 알아볼까요?"
+                                    num={1}
+                                    backgroundColor="#273d5a"
+                                    link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
+                                />
+                            </div>
+                            <div style={{ width: "100vw"}}>
+                                <MTopBanner
+                                    img={bannerTwo}
+                                    title="크리에이터 크라우드 펀딩 플랫폼"
+                                    content="Y.은 무슨 서비스인지 알아볼까요?"
+                                    num={1}
+                                    backgroundColor="#273d5a"
+                                    link="https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"
+                                ></MTopBanner>
+
+                            </div>
+                        </Slider></div>
                     {/* 배너 넣어야됨 */}
                     <div style={{
                         display: "flex",
