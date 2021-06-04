@@ -8,6 +8,7 @@ import { useHistory } from "react-router";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import smallbanner from "../images/smallbanner.png";
+import smallbannertwo from "../images/smallbannertwo.png";
 import Slider from "react-slick"
 import bannerOne from "../images/bannerOne.png"
 import bannerTwo from "../images/bannerTwo.png"
@@ -301,8 +302,13 @@ export default function Home() {
                             />
                         </div>
                         <BannerContainer>
-                            <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" />
-                            <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" />
+                        <div id="wishdeal_click"  onClick={()=>history.push("wishdealdefault")}>
+                            <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" /></div>
+                            <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                                            textDecorationLine: "none",
+                                            WebkitAppearance: "none"
+                                        }}>
+                            <img style={{ marginRight: 16 }} src={smallbannertwo} alt="광고배너" /></a>
                         </BannerContainer>
                         <div style={{
                             display: "flex",
@@ -604,8 +610,13 @@ export default function Home() {
                         />
                     </div>
                     <MBannerContainer>
-                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" />
-                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" />
+                    <div id="wishdeal_click"  onClick={()=>history.push("wishdealdefault")}>
+                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" /></div>
+                        <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                                            textDecorationLine: "none",
+                                            WebkitAppearance: "none"
+                                        }}>
+                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbannertwo} alt="광고배너" /></a>
                     </MBannerContainer>
                     <div style={{
                         display: "flex",
