@@ -514,7 +514,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                 color: "#051a1a",
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 32
-            }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no.</div>
+            }}></div>
         </div>
     )
 }
@@ -736,7 +736,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                 color: "#051a1a",
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 28
-            }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no.</div>
+            }}></div>
         </div>
     )
 }
