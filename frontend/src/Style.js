@@ -169,16 +169,17 @@ export function HomeHeader() {
     const test = async () => {
         console.log("come")
         fetch("https://haulfree.link/userInfoName/", {
-            method: "POST",
+            method: "GET",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
             credentials:"include",
         })
-            
+        .then((response)=>(response.json()))
             .then(response => {
-                setLog(response.data.data)
+                console.log(response)
+                setLog(response.data)
               
             }).catch(err=>{
                 console.log(err)

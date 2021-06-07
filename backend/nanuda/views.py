@@ -4,7 +4,7 @@ from django.http import HttpResponse,JsonResponse
 from django.db.models import Count
 import requests
 import json
-
+ 
 #보안
 import jwt
 from dotenv import load_dotenv

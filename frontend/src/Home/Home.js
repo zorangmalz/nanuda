@@ -54,6 +54,7 @@ export default function Home() {
     //Get Service Review Data
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {
+        console.log("hhhh")
         setReviewData([])
         fetch("https://haulfree.link/servicereview/home", {
             method: "GET",
