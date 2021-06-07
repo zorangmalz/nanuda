@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask ,TopBanner, MTopBanner } from "../Style";
+import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask, TopBanner, MTopBanner, HomeBottomTag, MHomeBottomTag } from "../Style";
 import { BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
@@ -50,11 +50,10 @@ const MAfterContainer = styled.div`
 
 export default function Home() {
     let history = useHistory()
-    
+
     //Get Service Review Data
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {
-        console.log("hhhh")
         setReviewData([])
         fetch("https://haulfree.link/servicereview/home", {
             method: "GET",
@@ -112,6 +111,30 @@ export default function Home() {
                 setReview(review.concat(array))
             })
     }, [])
+
+    const [wishButton, setWishButton] = useState(0)
+    const buttonRef = useRef(0)
+
+    const [bottomPosition, setBottomPosition] = useState(0)
+    const bottomRef = useRef(0)
+
+    const [hide, setHide] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setBottomPosition(bottomRef.current.getBoundingClientRect().top)
+            setWishButton(buttonRef.current.getBoundingClientRect().top)
+            if (bottomPosition < wishButton) {
+                setHide(true)
+            } else {
+                setHide(false)
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [wishButton, bottomPosition])
 
     return (
         <>
@@ -303,13 +326,13 @@ export default function Home() {
                             />
                         </div>
                         <BannerContainer>
-                        <div id="wishdeal_click"  onClick={()=>history.push("wishdealdefault")}>
-                            <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" /></div>
+                            <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
+                                <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" /></div>
                             <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
-                                            textDecorationLine: "none",
-                                            WebkitAppearance: "none"
-                                        }}>
-                            <img style={{ marginRight: 16 }} src={smallbannertwo} alt="광고배너" /></a>
+                                textDecorationLine: "none",
+                                WebkitAppearance: "none"
+                            }}>
+                                <img style={{ marginRight: 16 }} src={smallbannertwo} alt="광고배너" /></a>
                         </BannerContainer>
                         <div style={{
                             display: "flex",
@@ -471,26 +494,47 @@ export default function Home() {
                                 </a>
                             </div>
                         </div>
-                        <BottomTag marginTop={200} marginBottom={0} />
-                        <div onClick={() => history.push("/wishdealdefault")} style={{
-                            width: 440,
-                            marginLeft: 20,
-                            marginRight: 20,
-                            paddingTop: 21,
-                            paddingBottom: 21,
-                            textAlign: "center",
-                            backgroundColor: "#26c1f0",
-                            boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
-                            borderRadius: 6,
+                        <HomeBottomTag marginTop={200} marginBottom={0} bottomRef={bottomRef} />
+                        {hide ?
+                            <div ref={buttonRef} style={{
+                                width: 440,
+                                marginLeft: 20,
+                                marginRight: 20,
+                                paddingTop: 21,
+                                paddingBottom: 21,
+                                textAlign: "center",
+                                backgroundColor: "rgba(0, 0, 0, 0)",
+                                borderRadius: 6,
+                                zIndex: 1,
 
-                            fontSize: 21,
-                            fontWeight: "bold",
-                            fontFamily: "NotoSansCJKkr",
-                            color: "#ffffff",
-                            cursor: "pointer",
-                            position: "fixed",
-                            bottom: 40,
-                        }}>필요한건 위시딜</div>
+                                fontSize: 21,
+                                fontWeight: "bold",
+                                fontFamily: "NotoSansCJKkr",
+                                color: "rgba(0, 0, 0, 0)",
+                                position: "fixed",
+                                bottom: 40,
+                            }} />
+                            :
+                            <div ref={buttonRef} onClick={() => history.push("/wishdealdefault")} style={{
+                                width: 440,
+                                marginLeft: 20,
+                                marginRight: 20,
+                                paddingTop: 21,
+                                paddingBottom: 21,
+                                textAlign: "center",
+                                backgroundColor: "#26c1f0",
+                                boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
+                                borderRadius: 6,
+
+                                fontSize: 21,
+                                fontWeight: "bold",
+                                fontFamily: "NotoSansCJKkr",
+                                color: "#ffffff",
+                                cursor: "pointer",
+                                position: "fixed",
+                                bottom: 40,
+                            }}>필요한건 위시딜</div>
+                        }
                     </div>
                 </div>
             </Default>
@@ -538,9 +582,9 @@ export default function Home() {
                             </a>
                         </div>
                     </div>
-                    <div style={{width: "100vw"}}>
+                    <div style={{ width: "100vw" }}>
                         <Slider dots={true} autoplaySpeed={5000} autoplay={true} arrows={false}>
-                            <div style={{ width: "100vw"}}>
+                            <div style={{ width: "100vw" }}>
                                 <MTopBanner
                                     img={bannerOne}
                                     title="크리에이터 크라우드 펀딩 플랫폼"
@@ -550,7 +594,7 @@ export default function Home() {
                                     link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
                                 />
                             </div>
-                            <div style={{ width: "100vw"}}>
+                            <div style={{ width: "100vw" }}>
                                 <MTopBanner
                                     img={bannerTwo}
                                     title="크리에이터 크라우드 펀딩 플랫폼"
@@ -621,13 +665,13 @@ export default function Home() {
                         />
                     </div>
                     <MBannerContainer>
-                    <div id="wishdeal_click"  onClick={()=>history.push("wishdealdefault")}>
-                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" /></div>
+                        <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
+                            <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" /></div>
                         <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
-                                            textDecorationLine: "none",
-                                            WebkitAppearance: "none"
-                                        }}>
-                        <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbannertwo} alt="광고배너" /></a>
+                            textDecorationLine: "none",
+                            WebkitAppearance: "none"
+                        }}>
+                            <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbannertwo} alt="광고배너" /></a>
                     </MBannerContainer>
                     <div style={{
                         display: "flex",
@@ -770,26 +814,46 @@ export default function Home() {
                             />
                         )}
                     </MAfterContainer>
-                    <MBottomTag marginTop={100} marginBottom={0} />
-                    <div onClick={() => history.push("/wishdealdefault")} style={{
-                        width: "90%",
-                        marginLeft: "5%",
-                        marginRight: "5%",
-                        paddingTop: "3%",
-                        paddingBottom: "3%",
-                        textAlign: "center",
-                        backgroundColor: "#26c1f0",
-                        boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
-                        borderRadius: 6,
+                    <MHomeBottomTag marginTop={100} marginBottom={0} bottomRef={bottomRef} />
+                    {hide ?
+                        <div ref={buttonRef} style={{
+                            width: "90%",
+                            marginLeft: "5%",
+                            marginRight: "5%",
+                            paddingTop: "3%",
+                            paddingBottom: "3%",
+                            textAlign: "center",
+                            backgroundColor: "rgba(0, 0, 0, 0)",
+                            borderRadius: 6,
 
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        fontFamily: "NotoSansCJKkr",
-                        color: "#ffffff",
-                        cursor: "pointer",
-                        position: "fixed",
-                        bottom: 20,
-                    }}>필요한건 위시딜</div>
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr",
+                            color: "rgba(0, 0, 0, 0)",
+                            position: "fixed",
+                            bottom: 20,
+                        }}></div>
+                        :
+                        <div ref={buttonRef} onClick={() => history.push("/wishdealdefault")} style={{
+                            width: "90%",
+                            marginLeft: "5%",
+                            marginRight: "5%",
+                            paddingTop: "3%",
+                            paddingBottom: "3%",
+                            textAlign: "center",
+                            backgroundColor: "#26c1f0",
+                            boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
+                            borderRadius: 6,
+
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr",
+                            color: "#ffffff",
+                            cursor: "pointer",
+                            position: "fixed",
+                            bottom: 20,
+                        }}>필요한건 위시딜</div>
+                    }
                 </div>
             </Mobile>
         </>

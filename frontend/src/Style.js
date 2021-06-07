@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import logoS from "./images/logoS.png"
 import bell from "./images/bell.png"
 import user from "./images/users.png"
@@ -167,7 +167,6 @@ export function HomeHeader() {
         test()
     }, [])
     const test = async () => {
-        console.log("come")
         fetch("https://haulfree.link/userInfoName/", {
             method: "GET",
             headers: {
@@ -178,7 +177,6 @@ export function HomeHeader() {
         })
         .then((response)=>(response.json()))
             .then(response => {
-                console.log(response)
                 setLog(response.data)
               
             }).catch(err=>{
@@ -196,10 +194,8 @@ export function HomeHeader() {
     function profileClick() {
         if (log == true) {
             history.push("/profilemain")
-            console.log("here", log)
         } else {
             history.push("/signup")
-            console.log("there")
         }
     }
     return (
@@ -257,7 +253,6 @@ export function MHomeHeader() {
         test()
     }, [])
     const test = async () => {
-        console.log("come")
         fetch("https://haulfree.link/userInfoName/", {
             method: "POST",
             headers: {
@@ -335,6 +330,227 @@ export function MHomeHeader() {
     )
 }
 
+export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
+    return (
+        <div ref={bottomRef} style={{
+            width: 440,
+            paddingTop: 32,
+            paddingBottom: 30,
+            paddingLeft: 20,
+            paddingRight: 20,
+            marginTop: marginTop,
+            backgroundColor: "#f2f3f8",
+            marginBottom: marginBottom,
+        }}>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "flex-start",
+                justifyContent: "space-between"
+            }}>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                }}>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSizeAdjust: 14,
+                        fontWeight: "bold",
+                        color: "#051a1a"
+                    }}>고객센터 (카카오톡 채널 상담)</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 12,
+                        opacity: 0.6,
+                        color: "#202426",
+                        lineHeight: 1.5,
+                        marginTop: 8
+                    }}>
+                        운영시간  평일 11:00 ~ 18:00 (토 -일, 공휴일 휴무) <br />
+                        점심시간 평일 12:30 ~ 1:30
+                    </div>
+                </div>
+                <div style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 24,
+                    backgroundColor: "#fff500"
+                }} />
+            </div>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "flex-start",
+                justifyContent: "space-between",
+                marginTop: 16,
+            }}>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                }}>
+                    <div style={{
+                        fontSize: 14,
+                        fontWeight: "bold",
+                        color: "#051a1a",
+                        fontFamily: "NotoSansCJKkr"
+                    }}>서비스 이용안내</div>
+                    <div onClick={() => window.open('https://www.notion.so/8bd2f5a8861f4a72a3af30f160257055', "_blank")} style={{
+                        fontSize: 12,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 8,
+                    }}>공지사항</div>
+                    <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
+                        fontSize: 12,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 8,
+                    }}>나누다는 어떤 서비스인가요?</div>
+                    <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
+                        fontSize: 12,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 8,
+                    }}>자주 묻는 질문</div>
+                    <div onClick={() => window.open('https://www.notion.so/c2c73887bb154e9abd312ed70a6cc6f4', "_blank")} style={{
+                        fontSize: 12,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 8,
+                    }}>제휴/파트너쉽 문의</div>
+                </div>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    marginRight: 128
+                }}>
+                    <div style={{
+                        fontSize: 14,
+                        fontWeight: "bold",
+                        color: "#051a1a",
+                        fontFamily: "NotoSansCJKkr"
+                    }}>서비스 정책</div>
+                    <div onClick={() => window.open('https://www.notion.so/2fe90eeb1865441fb0a741cc9a860b0a', "_blank")} style={{
+                        fontSize: 12,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 8,
+                    }}>이용약관</div>
+                    <div onClick={() => window.open('https://www.notion.so/8917843ebfe54b88a8912949d7fd7bc7', "_blank")} style={{
+                        fontSize: 12,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 8,
+                    }}>개인정보 처리약관</div>
+                    <div onClick={() => window.open('https://www.notion.so/65497c24ee6b4d4ab2b63b3830a790f0', "_blank")} style={{
+                        fontSize: 12,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 8,
+                    }}>마케팅수신 약관</div>
+                    <div onClick={() => window.open('https://www.notion.so/77771c4f099d457d99366bdc0e0f2e2d', "_blank")} style={{
+                        fontSize: 12,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 8,
+                    }}>분할결제 약관</div>
+                </div>
+            </div>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: 32
+            }}>
+                <div style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 24,
+                    backgroundColor: "#fff500",
+                    marginRight: 16
+                }} />
+                <div style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 24,
+                    backgroundColor: "#26c1f0",
+                    marginRight: 16
+                }} />
+                <div style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 24,
+                    backgroundColor: "#051a1a",
+                    marginRight: 16
+                }} />
+            </div>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: 32
+            }}>
+                <img src={logoS} alt="로고" style={{
+                    width: 120,
+                    color: "#ffffff"
+                }} />
+            </div>
+            <div style={{
+                fontSize: 14,
+                fontWeight: "bold",
+                color: "#051a1a",
+                opacity: 0.6,
+                fontFamily: "NotoSansCJKkr",
+                marginTop: 12
+            }}>(주) 라텔</div>
+            <div style={{
+                fontFamily: "NotoSansCJKkr",
+                fontSize: 14,
+                opacity: 0.6,
+                lineHeight: 1.8,
+                color: "#051a1a",
+                marginTop: 8
+            }}>
+                사업자 등록번호 278-88-02031 <br />
+                대표자 : 김현명, 이지행 <br />
+                
+                주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
+            </div>
+            <div style={{
+                width: 440,
+                opacity: 0.4,
+                fontSize: 12,
+                color: "#051a1a",
+                fontFamily: "NotoSansCJKkr",
+                marginTop: 32
+            }}></div>
+        </div>
+    )
+}
 
 export function BottomTag({ marginTop, marginBottom }) {
     return (
@@ -553,6 +769,228 @@ export function BottomTag({ marginTop, marginBottom }) {
                 color: "#051a1a",
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 32
+            }}></div>
+        </div>
+    )
+}
+
+export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
+    return (
+        <div ref={bottomRef} style={{
+            width: "90%",
+            paddingTop: "5%",
+            paddingBottom: "5%",
+            paddingLeft: "5%",
+            paddingRight: "5%",
+            marginTop: marginTop,
+            backgroundColor: "#f2f3f8",
+            marginBottom: marginBottom,
+        }}>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "flex-start",
+                justifyContent: "space-between"
+            }}>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                }}>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSizeAdjust: 12,
+                        fontWeight: "bold",
+                        color: "#051a1a"
+                    }}>고객센터 (카카오톡 채널 상담)</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 10,
+                        opacity: 0.6,
+                        color: "#202426",
+                        lineHeight: 1.5,
+                        marginTop: 8
+                    }}>
+                        운영시간  평일 11:00 ~ 18:00 (토 -일, 공휴일 휴무) <br />
+                                점심시간 평일 12:30 ~ 1:30
+                            </div>
+                </div>
+                <div style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 18,
+                    backgroundColor: "#fff500"
+                }} />
+            </div>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "flex-start",
+                justifyContent: "space-between",
+                marginTop: 12,
+            }}>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                }}>
+                    <div style={{
+                        fontSize: 12,
+                        fontWeight: "bold",
+                        color: "#051a1a",
+                        fontFamily: "NotoSansCJKkr"
+                    }}>서비스 이용안내</div>
+                    <div onClick={() => window.open('https://www.notion.so/8bd2f5a8861f4a72a3af30f160257055', "_blank")} style={{
+                        fontSize: 10,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 6,
+                    }}>공지사항</div>
+                    <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
+                        fontSize: 10,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 6,
+                    }}>나누다는 어떤 서비스인가요?</div>
+                    <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
+                        fontSize: 10,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 6,
+                    }}>자주 묻는 질문</div>
+                    <div onClick={() => window.open('https://www.notion.so/c2c73887bb154e9abd312ed70a6cc6f4', "_blank")} style={{
+                        fontSize: 10,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 6,
+                    }}>제휴/파트너쉽 문의</div>
+                </div>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    marginRight: "30%"
+                }}>
+                    <div style={{
+                        fontSize: 12,
+                        fontWeight: "bold",
+                        color: "#051a1a",
+                        fontFamily: "NotoSansCJKkr"
+                    }}>서비스 정책</div>
+                    <div onClick={() => window.open('https://www.notion.so/2fe90eeb1865441fb0a741cc9a860b0a', "_blank")} style={{
+                        fontSize: 10,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 6,
+                    }}>이용약관</div>
+                    <div onClick={() => window.open('https://www.notion.so/8917843ebfe54b88a8912949d7fd7bc7', "_blank")} style={{
+                        fontSize: 10,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 6,
+                    }}>개인정보 처리약관</div>
+                    <div onClick={() => window.open('https://www.notion.so/65497c24ee6b4d4ab2b63b3830a790f0', "_blank")} style={{
+                        fontSize: 10,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 6,
+                    }}>마케팅수신 약관</div>
+                    <div onClick={() => window.open('https://www.notion.so/77771c4f099d457d99366bdc0e0f2e2d', "_blank")} style={{
+                        fontSize: 10,
+                        opacity: 0.8,
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#202426",
+
+                        cursor: "pointer",
+                        marginTop: 6,
+                    }}>분할결제 약관</div>
+                </div>
+            </div>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: 24
+            }}>
+                <div style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 18,
+                    backgroundColor: "#fff500",
+                    marginRight: 12
+                }} />
+                <div style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 18,
+                    backgroundColor: "#26c1f0",
+                    marginRight: 12
+                }} />
+                <div style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 18,
+                    backgroundColor: "#051a1a",
+                    marginRight: 12
+                }} />
+            </div>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: 24
+            }}>
+                <img src={logoS} alt="로고" style={{
+                    width: "30vw",
+                    color: "#ffffff"
+                }} />
+            </div>
+            <div style={{
+                fontSize: 12,
+                fontWeight: "bold",
+                color: "#051a1a",
+                opacity: 0.6,
+                fontFamily: "NotoSansCJKkr",
+                marginTop: 10
+            }}>(주) 라텔</div>
+            <div style={{
+                fontFamily: "NotoSansCJKkr",
+                fontSize: 12,
+                opacity: 0.6,
+                lineHeight: 1.8,
+                color: "#051a1a",
+                marginTop: 6
+            }}>
+                사업자 등록번호 278-88-02031 <br />
+                        대표자 : 김현명, 이지행 <br />
+                       
+                        주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
+            </div>
+            <div style={{
+                width: "90%",
+                opacity: 0.4,
+                fontSize: 12,
+                color: "#051a1a",
+                fontFamily: "NotoSansCJKkr",
+                marginTop: 28
             }}></div>
         </div>
     )
