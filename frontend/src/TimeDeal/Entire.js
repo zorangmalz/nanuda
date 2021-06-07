@@ -33,17 +33,19 @@ export default function Entire() {
                         marginTop: 32,
                     }}>
                         <TimeShop
-                            title="PRADA"
-                            sub="PRADA Model 23-9 limited edition berry expensive"
-                            price="600000"
-                            currentPrice="480000"
+                            title="애플"
+                            sub="Apple AirPods Pro 
+                                애플 에어팟 프로 2세대 무선충전형"
+                            twoPrice="130000"
+                            fourPrice="65000"
                             stock={2}
                         />
                         <TimeShop
-                            title="PRADA"
-                            sub="PRADA Model 23-9 limited edition berry expensive"
-                            price="600000"
-                            currentPrice="480000"
+                            title="애플"
+                            sub="Apple iPad Air Sky Blue
+                                10.9형 iPad Air Wi-Fi 스카이 블루"
+                            twoPrice="360750"
+                            fourPrice="180375"
                             stock={0}
                         />
                     </div>
@@ -71,17 +73,19 @@ export default function Entire() {
                         marginTop: "8vw",
                     }}>
                         <MTimeShop
-                            title="PRADA"
-                            sub="PRADA Model 23-9 limited edition berry expensive"
-                            price="600000"
-                            currentPrice="480000"
+                            title="애플"
+                            sub="Apple AirPods Pro 
+                                애플 에어팟 프로 2세대 무선충전형"
+                            twoPrice="130000"
+                            fourPrice="65000"
                             stock={2}
                         />
                         <MTimeShop
-                            title="PRADA"
-                            sub="PRADA Model 23-9 limited edition berry expensive"
-                            price="600000"
-                            currentPrice="480000"
+                            title="애플"
+                            sub="Apple iPad Air Sky Blue
+                                10.9형 iPad Air Wi-Fi 스카이 블루"
+                            twoPrice="360750"
+                            fourPrice="180375"
                             stock={0}
                         />
                     </div>

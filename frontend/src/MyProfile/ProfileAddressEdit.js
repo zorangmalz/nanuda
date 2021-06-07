@@ -7,13 +7,6 @@ import DaumPostCode from 'react-daum-postcode';
 
 
 export default function ProfileAddressEdit() {
-
-    //API call
-
-
-
-
-
     const [modal, setModal] = useState(false)
     let history = useHistory()
 

@@ -1373,7 +1373,6 @@ export function LimitBox() {
 }
 
 export function StandardButton({ marginTop, text, onClick, state }) {
-    let history = useHistory()
     return (
         <>
             <div onClick={onClick} style={{
@@ -1397,7 +1396,6 @@ export function StandardButton({ marginTop, text, onClick, state }) {
 }
 
 export function MStandardButton({ marginTop, text, onClick, state }) {
-    let history = useHistory()
     return (
         <div onClick={onClick} style={{
             width: "90vw",
@@ -1474,7 +1472,7 @@ export function MTopBanner({img, title, content, backgroundColor, link}) {
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
-                height: 270
+                height: 230,
             }}>
                 {/* <img src={topbanner} height="250" style={{ objectFit: "cover", minWidth: 300 }} />
                 <div style={{ position: "absolute", zIndex: 1, top: 0, width: "100vw", minWidth: 300, height: 250, background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8))" }} /> */}

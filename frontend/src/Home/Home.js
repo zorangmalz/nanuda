@@ -177,9 +177,7 @@ export default function Home() {
                                     color: "#ffffff",
                                     marginTop: 12,
                                     marginLeft: 69
-                                }}>
-                                    스타트업 대표님이신가요?
-                            </div>
+                                }}>스타트업 대표님이신가요?</div>
                                 <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
                                     <div style={{
                                         marginLeft: 5,
@@ -188,17 +186,16 @@ export default function Home() {
                                         marginTop: 12,
                                         textDecorationLine: "underline",
                                         fontWeight: "bold"
-                                    }}>
-                                        첫 구매 수수료 50% 할인
-                            </div>
+                                    }}>첫 구매 수수료 50% 할인</div>
                                 </a>
                             </div>
                         </div>
                         <div style={{
                             width: 480,
-                            height: 300
+                            height: 300,
+                            marginBottom: 16,
                         }}>
-                            <Slider dots={true} arrows={false} autoplaySpeed={5000} autoplay={true} >
+                            <Slider dots={false} arrows={false} autoplaySpeed={5000} autoplay={true} >
                                 <div>
                                     <TopBanner
                                         img={bannerOne}
@@ -266,8 +263,16 @@ export default function Home() {
                                         </a>
                                     </div>
                                 </div>
-                            </Slider></div>
-
+                            </Slider>
+                        </div>
+                        <BannerContainer>
+                            <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
+                                <img style={{ marginRight: 16, cursor: "pointer" }} src={smallbanner} alt="광고배너" /></div>
+                            <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                                textDecorationLine: "none",
+                                WebkitAppearance: "none"
+                            }}><img style={{ marginRight: 16 }} src={smallbannertwo} alt="광고배너" /></a>
+                        </BannerContainer>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -281,7 +286,7 @@ export default function Home() {
                                 fontSize: 21,
                                 color: "#202426",
                                 marginRight: 4,
-                            }}>하울딜</div>
+                            }}>나눠서 결제하고 바로 경험해보세요 😎</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/timedeal/entire")}
                                 size={24}
@@ -300,7 +305,7 @@ export default function Home() {
                             marginTop: 4,
                             marginLeft: 20,
                             marginBottom: 16,
-                        }}>할인된 상품을 분할결제 하세요!</div>
+                        }}>체크카드, 계좌로 간편하게 분할결제해보세요!</div>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -311,29 +316,22 @@ export default function Home() {
                             justifyContent: "space-between"
                         }}>
                             <TimeShop
-                                title="PRADA"
-                                sub="PRADA Model 23-9 limited edition berry expensive"
-                                price="600000"
-                                currentPrice="480000"
+                                title="애플"
+                                sub="Apple AirPods Pro 
+                                애플 에어팟 프로 2세대 무선충전형"
+                                twoPrice="130000"
+                                fourPrice="65000"
                                 stock={2}
                             />
                             <TimeShop
-                                title="PRADA"
-                                sub="PRADA Model 23-9 limited edition berry expensive"
-                                price="600000"
-                                currentPrice="480000"
+                                title="애플"
+                                sub="Apple iPad Air Sky Blue
+                                10.9형 iPad Air Wi-Fi 스카이 블루"
+                                twoPrice="360750"
+                                fourPrice="180375"
                                 stock={0}
                             />
                         </div>
-                        <BannerContainer>
-                            <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
-                                <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" /></div>
-                            <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
-                                textDecorationLine: "none",
-                                WebkitAppearance: "none"
-                            }}>
-                                <img style={{ marginRight: 16 }} src={smallbannertwo} alt="광고배너" /></a>
-                        </BannerContainer>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -452,7 +450,7 @@ export default function Home() {
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
-                            marginTop: 32,
+                            marginTop: 64,
                             marginLeft: 20,
                         }}>
                             <div style={{
@@ -576,14 +574,12 @@ export default function Home() {
                                     marginTop: 12,
                                     textDecorationLine: "underline",
                                     fontWeight: "bold"
-                                }}>
-                                    첫 구매 수수료 50% 할인
-                            </div>
+                                }}>첫 구매 수수료 50% 할인</div>
                             </a>
                         </div>
                     </div>
-                    <div style={{ width: "100vw" }}>
-                        <Slider dots={true} autoplaySpeed={5000} autoplay={true} arrows={false}>
+                    <div style={{ width: "100vw", marginBottom: "3vw"}}>
+                        <Slider dots={false} autoplaySpeed={5000} autoplay={true} arrows={false}>
                             <div style={{ width: "100vw" }}>
                                 <MTopBanner
                                     img={bannerOne}
@@ -602,11 +598,19 @@ export default function Home() {
                                     num={1}
                                     backgroundColor="#273d5a"
                                     link="https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"
-                                ></MTopBanner>
-
+                                 />
                             </div>
-                        </Slider></div>
-                    {/* 배너 넣어야됨 */}
+                        </Slider>
+                    </div>
+                    <MBannerContainer>
+                        <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
+                            <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" /></div>
+                        <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                            textDecorationLine: "none",
+                            WebkitAppearance: "none"
+                        }}>
+                            <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbannertwo} alt="광고배너" /></a>
+                    </MBannerContainer>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -620,7 +624,7 @@ export default function Home() {
                             fontSize: 18,
                             color: "#202426",
                             marginRight: 4,
-                        }}>하울딜</div>
+                        }}>나눠서 결제하고 바로 경험해보세요 😎</div>
                         <MdKeyboardArrowRight
                             onClick={() => history.push("/timedeal/entire")}
                             size={20}
@@ -639,7 +643,7 @@ export default function Home() {
                         marginTop: 4,
                         marginLeft: "5%",
                         marginBottom: "4vw",
-                    }}>할인된 상품을 분할결제 하세요!</div>
+                    }}>체크카드, 계좌로 간편하게 분할결제해보세요!</div>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -650,29 +654,22 @@ export default function Home() {
                         justifyContent: "space-between"
                     }}>
                         <MTimeShop
-                            title="PRADA"
-                            sub="PRADA Model 23-9 limited edition berry expensive"
-                            price="600000"
-                            currentPrice="480000"
+                            title="애플"
+                            sub="Apple AirPods Pro 
+                                애플 에어팟 프로 2세대 무선충전형"
+                            twoPrice="130000"
+                            fourPrice="65000"
                             stock={2}
                         />
                         <MTimeShop
-                            title="PRADA"
-                            sub="PRADA Model 23-9 limited edition berry expensive"
-                            price="600000"
-                            currentPrice="480000"
+                            title="애플"
+                            sub="Apple iPad Air Sky Blue
+                                10.9형 iPad Air Wi-Fi 스카이 블루"
+                            twoPrice="360750"
+                            fourPrice="180375"
                             stock={0}
                         />
                     </div>
-                    <MBannerContainer>
-                        <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
-                            <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" /></div>
-                        <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
-                            textDecorationLine: "none",
-                            WebkitAppearance: "none"
-                        }}>
-                            <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbannertwo} alt="광고배너" /></a>
-                    </MBannerContainer>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -860,7 +857,7 @@ export default function Home() {
     )
 }
 
-export function TimeShop({ title, sub, price, currentPrice, stock }) {
+export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
     return (
         <>
             <div style={{
@@ -937,32 +934,60 @@ export function TimeShop({ title, sub, price, currentPrice, stock }) {
                     marginBottom: 8,
                 }}>{sub}</div>
                 <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    fontWeight: "bold",
-                    color: "#f72b2b",
-                    marginBottom: 4,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    marginBottom: 8,
+                    width: "100%"
                 }}>
-                    <span style={{
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 14,
                         color: "#202426",
-                        opacity: 0.6,
-                        textDecorationLine: "line-through",
-                        marginRight: 8,
-                    }}>{price} 원 </span>
-                    20%
+                    }}>2회 분할결제</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontWeight: "bold",
+                        color: "#202426",
+                        fontSize: 18,
+                    }}>
+                        <span style={{
+                            fontSize: 14,
+                            fontWeight: "normal",
+                        }}>월 </span>{twoPrice}원
+                    </div>
                 </div>
                 <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 21,
-                    fontWeight: "bold",
-                    color: "#202426"
-                }}>{currentPrice} 원</div>
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    width: "100%"
+                }}>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 14,
+                        color: "#202426",
+                    }}>4회 분할결제</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontWeight: "bold",
+                        color: "#202426",
+                        fontSize: 18,
+                    }}>
+                        <span style={{
+                            fontSize: 14,
+                            fontWeight: "normal",
+                        }}>월 </span>{fourPrice}원
+                    </div>
+                </div>
             </div>
         </>
     )
 }
 
-export function MTimeShop({ title, sub, price, currentPrice, stock }) {
+export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
     return (
         <>
             <div style={{
@@ -1023,7 +1048,8 @@ export function MTimeShop({ title, sub, price, currentPrice, stock }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
                         color: "#202426",
-                        fontWeight: "bold"
+                        fontWeight: "bold",
+                        maxHeight: ""
                     }}>{title}</div>
                     <BsUpload size={18} style={{
                         marginRight: 4,
@@ -1031,34 +1057,64 @@ export function MTimeShop({ title, sub, price, currentPrice, stock }) {
                     }} />
                 </div>
                 <div style={{
-                    fontSize: 12,
+                    fontSize: 11,
                     opacity: 0.8,
                     color: "#202426",
                     lineHeight: 1.5,
                     fontFamily: "AvenirNext",
                     marginBottom: 6,
+                    maxHeight: "9vw",
+                    overflowY: "hidden"
                 }}>{sub}</div>
                 <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    fontWeight: "bold",
-                    color: "#f72b2b",
-                    marginBottom: 4,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    marginBottom: "1vw",
+                    width: "100%"
                 }}>
-                    <span style={{
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 11,
                         color: "#202426",
-                        opacity: 0.6,
-                        textDecorationLine: "line-through",
-                        marginRight: 8,
-                    }}>{price} 원 </span>
-                    20%
+                    }}>2회 분할결제</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontWeight: "bold",
+                        color: "#202426",
+                        fontSize: 13,
+                    }}>
+                        <span style={{
+                            fontSize: 11,
+                            fontWeight: "normal",
+                        }}>월 </span>{twoPrice}원
+                    </div>
                 </div>
                 <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 18,
-                    fontWeight: "bold",
-                    color: "#202426"
-                }}>{currentPrice} 원</div>
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    width: "100%"
+                }}>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 11,
+                        color: "#202426",
+                    }}>4회 분할결제</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontWeight: "bold",
+                        color: "#202426",
+                        fontSize: 13,
+                    }}>
+                        <span style={{
+                            fontSize: 11,
+                            fontWeight: "normal",
+                        }}>월 </span>{fourPrice}원
+                    </div>
+                </div>
             </div>
         </>
     )
@@ -1074,24 +1130,39 @@ function Review({ item }) {
     return (
         <>
             <div style={{
-                minWidth: 330,
+                minWidth: 298,
                 padding: 16,
-                height: 138,
                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
+                justifyContent: "space-between",
                 alignSelf: "center",
                 marginRight: 20,
                 borderRadius: 6,
             }}>
                 <div style={{
-                    fontSize: 21,
-                    fontWeight: "bold",
-                    color: "#26c1f0",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
                     marginBottom: 8,
-                    fontFamily: "NotoSansCJKkr"
-                }}>{score}/5.0</div>
+                }}>
+                    <AiFillStar size={16} color="#fad94f" />
+                    <div style={{
+                        fontSize: 14,
+                        fontWeight: "bold",
+                        color: "#051a1a",
+                        fontFamily: "NotoSansCJKkr",
+                        marginLeft: 4,
+                    }}>{score}</div>
+                </div>
+                <div style={{
+                    fontSize: 16,
+                    color: "#202426",
+                    lineHeight: 1.5,
+                    fontFamily: "NotoSansCJKkr",
+                    height: 72,
+                }}>{content}</div>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
@@ -1099,7 +1170,7 @@ function Review({ item }) {
                     justifyContent: "space-between",
 
                     width: "100%",
-                    marginBottom: 8,
+                    marginTop: 8,
                 }}>
                     <div style={{
                         opacity: 0.4,
@@ -1114,12 +1185,6 @@ function Review({ item }) {
                         fontFamily: "NotoSansCJKkr"
                     }}>{date}</div>
                 </div>
-                <div style={{
-                    fontSize: 16,
-                    color: "#202426",
-                    lineHeight: 1.5,
-                    fontFamily: "NotoSansCJKkr"
-                }}>{content}</div>
             </div>
         </>
     )
@@ -1135,24 +1200,40 @@ function MReview({ item }) {
     return (
         <div>
             <div style={{
-                width: "82vw",
+                width: "72vw",
                 padding: "4vw",
-                height: "32vw",
                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
+                justifyContent: "space-between",
                 alignSelf: "center",
                 borderRadius: 6,
                 marginRight: 12,
             }}>
                 <div style={{
-                    fontSize: 18,
-                    fontWeight: "bold",
-                    color: "#26c1f0",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
                     marginBottom: 6,
-                    fontFamily: "NotoSansCJKkr"
-                }}>{score}/5.0</div>
+                }}>
+                    <AiFillStar size={14} color="#fad94f" />
+                    <div style={{
+                        fontSize: 12,
+                        fontWeight: "bold",
+                        color: "#051a1a",
+                        marginBottom: 6,
+                        fontFamily: "NotoSansCJKkr",
+                        marginLeft: "1vw",
+                    }}>{score}</div>
+                </div>
+                <div style={{
+                    fontSize: 14,
+                    color: "#202426",
+                    lineHeight: 1.5,
+                    fontFamily: "NotoSansCJKkr",
+                    height: "18vw",
+                }}>{content}</div>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
@@ -1160,7 +1241,7 @@ function MReview({ item }) {
                     justifyContent: "space-between",
 
                     width: "100%",
-                    marginBottom: 6,
+                    marginTop: 6,
                 }}>
                     <div style={{
                         opacity: 0.4,
@@ -1175,12 +1256,6 @@ function MReview({ item }) {
                         fontFamily: "NotoSansCJKkr"
                     }}>{date}</div>
                 </div>
-                <div style={{
-                    fontSize: 14,
-                    color: "#202426",
-                    lineHeight: 1.5,
-                    fontFamily: "NotoSansCJKkr"
-                }}>{content}</div>
             </div>
         </div>
     )
