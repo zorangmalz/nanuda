@@ -938,7 +938,7 @@ export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     flexDirection: "row",
                     alignItems: "flex-end",
                     justifyContent: "space-between",
-                    marginBottom: 8,
+                    marginBottom: 4,
                     width: "100%"
                 }}>
                     <div style={{
