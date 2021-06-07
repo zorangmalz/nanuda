@@ -39,8 +39,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync ./build s3://haulfree.io --profile=landing-nanuda",
-    "invalidate": "aws cloudfront create-invalidation --profile=landing-nanuda --distribution-id E1NVZR27PX8VIT --paths /*"
+    "deploy": "aws s3 sync ./build s3://haulfree.io --exclude \"*.DS_Store\" --profile=landing-nanuda",
+    "invalidate": "aws cloudfront create-invalidation --distribution-id E1NVZR27PX8VIT --paths '/*' --profile=landing-nanuda"
   },
   "eslintConfig": {
     "extends": [
