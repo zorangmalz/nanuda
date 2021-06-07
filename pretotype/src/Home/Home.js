@@ -587,7 +587,7 @@ export default function Home() {
                         <AfterContainer>
                             <Review
                                 item={{
-                                    content: "알바를해서 수입은 고정적인데 한번에 큰 지출을 하기 부담스럽더라고요.. 근데 하울프리 통해서 부담없이 나눠서 결제하게 돼서 좋아요!!",
+                                    content: "알바를 해서 수입은 고정적인데 한번에 큰 지출을 하기 부담스럽더라고요.. 근데 하울프리 통해서 부담없이 나눠서 결제하게 돼서 좋아요!!",
                                 }}
                             />
                             <Review

@@ -106,7 +106,7 @@ export default function WishDealDefault() {
                             marginTop: 32,
                             fontWeight: "bold",
                             fontSize: 18
-                        }}>사고 싶은 상품 링크를 입력해주세요!</div>
+                        }}>사고 싶은 상품 링크를 입력해주세요</div>
                         {linkOrNot ?
                             <>
                                 <div style={{
