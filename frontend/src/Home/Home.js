@@ -174,7 +174,7 @@ export default function Home() {
                             width: 480,
                             height: 300
                         }}>
-                            <Slider dots={true} autoplaySpeed={5000} autoplay={true} >
+                            <Slider dots={true} arrows={false} autoplaySpeed={5000} autoplay={true} >
                                 <div>
                                     <TopBanner
                                         img={bannerOne}
@@ -372,15 +372,25 @@ export default function Home() {
                                             marginTop: 6
                                         }}>{item.user_nickname} </div>
                                     </div>
-                                    <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
-                                        width: 210,
-                                        height: 160,
+                                    <div style={{
+                                        minWidth: 210,
+                                        minHeight: 160,
                                         borderRadius: 6,
                                         backgroundColor: "#051a1a",
                                         marginTop: 8,
-                                        objectFit: "cover",
-                                        border: "1px solid #ebebeb"
-                                    }} />
+                                        border: "1px solid #ebebeb",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "center",
+                                        alignItems: "center"
+                                    }}>
+                                        <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                            width: 210,
+                                            height: 160,
+                                            borderRadius: 6,
+                                            objectFit: "cover",
+                                        }} />
+                                    </div>
                                     <div style={{
                                         display: "flex",
                                         flexDirection: "row",
