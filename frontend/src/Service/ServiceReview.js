@@ -18,14 +18,12 @@ export default function ServiceReview() {
             credentials: "include",
         })
             .then(response => {
-                console.log(response)
                 if (response.data.data === true) {
                     setNoReview(true)
                 } else {
                     setNoReview(false)
                 }
             }).catch(err => {
-                console.log("여기야")
                 console.log(err)
             })
     }
@@ -42,7 +40,6 @@ export default function ServiceReview() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 var array = []
                 for (var i = 0; i < response.length; i++) {
                     const data = {

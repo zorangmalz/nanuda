@@ -92,30 +92,28 @@ export default function SignupProfile() {
     }, [])
 
     const test = async () => {
-        console.log("come")
-        fetch("https://haulfree.link/userInfoName/", {
+        await fetch("https://haulfree.link/userInfoName/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
-            credentials:"include",
-           
+            credentials: "include",
+
 
         })
-    .then((response)=>(response.json()))
- .then(response => {
-     console.log(response)
+            .then((response) => (response.json()))
+            .then(response => {
                 setInputs({
                     ...inputs,
                     name: response.name,
                     email: response.email
                 })
-              
-            }).catch(err=>{
+
+            }).catch(err => {
                 console.log(err)
             })
-     
+
     }
 
     const [number, dispatch] = useReducer(reducer, 0)

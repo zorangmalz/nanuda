@@ -36,16 +36,10 @@ export default function ProfileAddressEdit() {
     }
 
     const [isAddress, setIsAddress] = useState("");
-    const [isZoneCode, setIsZoneCode] = useState();
-    useEffect(() => {
-        console.log(isAddress)
-        console.log(isZoneCode)
-    }, [isZoneCode])
 
 
     function Daum({ setVisible }) {
         const handleComplete = (data) => {
-            console.log(data)
             let fullAddress = data.address;
             let extraAddress = "";
 

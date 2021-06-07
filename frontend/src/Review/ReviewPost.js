@@ -175,7 +175,6 @@ export default function ReviewPost({ match }) {
         .then(response => response.json())    
         .then(response => {
                 history.goBack()
-                console.log(response)
             })
             .catch(err => console.log(err))
     }

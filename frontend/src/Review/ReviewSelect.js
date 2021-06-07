@@ -18,10 +18,6 @@ function reducer(state, action) {
 }
 
 export default function ReviewSelect() {
-    const [number, dispatch] = useReducer(reducer, 0);
-    const onOne = () => {
-        dispatch({ type: 'ONE' });
-    };
     return (
         <>
             <Default>

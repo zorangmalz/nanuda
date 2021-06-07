@@ -20,37 +20,37 @@ function reducer(state, action) {
 }
 
 export default function OrderSheet() {
-   
+
     const [number, dispatch] = useReducer(reducer, 2);
 
     //기본 배송지 존재 여부
-    const[a,setA]=useState("")
-    const[b,setB]=useState("")
-    const[c,setC]=useState("")
-    const[d,setD]=useState("")
-    const[e,setE]=useState("")
-    const[f,setF]=useState("")
+    const [a, setA] = useState("")
+    const [b, setB] = useState("")
+    const [c, setC] = useState("")
+    const [d, setD] = useState("")
+    const [e, setE] = useState("")
+    const [f, setF] = useState("")
     const item = {
         name: a,
         addressNum: b,
         address: c,
         addressDetail: d,
         phoneNumber: e,
-        request:f
+        request: f
     }
-    async function addressCheck(){
+    async function addressCheck() {
         fetch("https://haulfree.link/checkAddress/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
-            credentials:"include",
+            credentials: "include",
         })
             .then(res => {
-                if(res.data.data===false){
+                if (res.data.data === false) {
                     setBasicAddress(false)
-                }else{
+                } else {
                     setBasicAddress(true)
                     setA(res.data.address_name)
                     setB(res.data.address_number)
@@ -59,16 +59,16 @@ export default function OrderSheet() {
                     setE(res.data.address_phone)
                     setF(res.data.address_claim)
                 }
-            }).catch(err=>{
+            }).catch(err => {
                 console.log(err)
             })
-      
+
     }
-    useEffect(()=>{
+    useEffect(() => {
         addressCheck()
-    },[])
+    }, [])
     const [basicAddress, setBasicAddress] = useState(false)
-    
+
 
     //분할결제 기간 선택
     const onTwo = () => {
@@ -82,15 +82,15 @@ export default function OrderSheet() {
     };
 
     //결제 일정,가격 제공
-    const [oneDate,setOneDate]=useState("")
-    const [oneMoney,setOneMoney]=useState("")
-    const [twoDate,setTwoDate]=useState("")
-    const [twoMoney,setTwoMoney]=useState("")
-    const [threeDate,setThreeDate]=useState("")
-    const [threeMoney,setThreeMoney]=useState("")
-    const [fourDate,setFourDate]=useState("")
-    const [fourMoney,setFourMoney]=useState("")
-    
+    const [oneDate, setOneDate] = useState("")
+    const [oneMoney, setOneMoney] = useState("")
+    const [twoDate, setTwoDate] = useState("")
+    const [twoMoney, setTwoMoney] = useState("")
+    const [threeDate, setThreeDate] = useState("")
+    const [threeMoney, setThreeMoney] = useState("")
+    const [fourDate, setFourDate] = useState("")
+    const [fourMoney, setFourMoney] = useState("")
+
     const paymentDate = [
         {
             num: "1",
@@ -123,59 +123,58 @@ export default function OrderSheet() {
 
 
     //날짜 계산해보기!!
-    useEffect(()=>{
-        let today=new Date()
-        console.log(today.getFullYear(),today.getMonth(),today.getDate())
-        if(today.getMonth()===11){
-            if(today.getDate()>=28){
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
+    useEffect(() => {
+        let today = new Date()
+        if (today.getMonth() === 11) {
+            if (today.getDate() >= 28) {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
                 setTwoDate("1/28")
                 setThreeDate("2/28")
                 setFourDate("3/28")
-            }else{
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate("1/"+today.getDate())
-                setThreeDate("2/"+today.getDate())
-                setFourDate("3/"+today.getDate())
+            } else {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate("1/" + today.getDate())
+                setThreeDate("2/" + today.getDate())
+                setFourDate("3/" + today.getDate())
             }
-        }else if(today.getMonth()===10){
-            if(today.getDate()>=28){
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+1)+"/28")
+        } else if (today.getMonth() === 10) {
+            if (today.getDate() >= 28) {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/28")
                 setThreeDate("1/28")
                 setFourDate("2/28")
-            }else{
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+1)+"/"+today.getDate())
-                setThreeDate("1/"+today.getDate())
-                setFourDate("2/"+today.getDate())
+            } else {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/" + today.getDate())
+                setThreeDate("1/" + today.getDate())
+                setFourDate("2/" + today.getDate())
             }
-        }else if(today.getMonth()===9){
-            if(today.getDate()>=28){
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+1)+"/28")
-                setThreeDate(((today.getMonth()+1)+2)+"/28")
+        } else if (today.getMonth() === 9) {
+            if (today.getDate() >= 28) {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/28")
+                setThreeDate(((today.getMonth() + 1) + 2) + "/28")
                 setFourDate("1/28")
-            }else{
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+2)+"/"+today.getDate())
-                setThreeDate(((today.getMonth()+1)+3)+"/"+today.getDate())
-                setFourDate("1/"+today.getDate())
+            } else {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 2) + "/" + today.getDate())
+                setThreeDate(((today.getMonth() + 1) + 3) + "/" + today.getDate())
+                setFourDate("1/" + today.getDate())
             }
-        }else{
-            if(today.getDate()>=28){
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+1)+"/28")
-                setThreeDate(((today.getMonth()+1)+2)+"/28")
-                setFourDate(((today.getMonth()+1)+3)+"/28")
-            }else{
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+2)+"/"+today.getDate())
-                setThreeDate(((today.getMonth()+1)+3)+"/"+today.getDate())
-                setFourDate(((today.getMonth()+1)+4)+"/"+today.getDate())
+        } else {
+            if (today.getDate() >= 28) {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/28")
+                setThreeDate(((today.getMonth() + 1) + 2) + "/28")
+                setFourDate(((today.getMonth() + 1) + 3) + "/28")
+            } else {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 2) + "/" + today.getDate())
+                setThreeDate(((today.getMonth() + 1) + 3) + "/" + today.getDate())
+                setFourDate(((today.getMonth() + 1) + 4) + "/" + today.getDate())
             }
         }
-    },[])
+    }, [])
 
     //파라미터 받기
     const location = useLocation()
@@ -185,125 +184,122 @@ export default function OrderSheet() {
     const [itemDes, setItemDes] = useState("")
     const [orderDes, setOrderDes] = useState("")
     const [price, setPrice] = useState("")
-    const [ship,setShip]=useState(0)
+    const [ship, setShip] = useState(0)
 
     useEffect(() => {
-        console.log(myparam)
         setImage(myparam[0].ogImage.url)
         setItemDes(myparam[0].ogTitle)
         setShip(myparam[7])
         if (myparam[1] === 1) {
             setOrderDes(myparam[3].ELcolor + "   " + myparam[3].ELetc)
-            setPrice(Number(myparam[3].ELprice)+Number(myparam[5]))
-            
-            if(number===2){
-                var res=parseInt(parseInt((myparam[3].ELprice)/100)/2)
-                var left=parseInt((myparam[3].ELprice)/100)%2
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
+            setPrice(Number(myparam[3].ELprice) + Number(myparam[5]))
+
+            if (number === 2) {
+                var res = parseInt(parseInt((myparam[3].ELprice) / 100) / 2)
+                var left = parseInt((myparam[3].ELprice) / 100) % 2
+                setOneMoney(res * 100 + left * 100)
+                setTwoMoney(res * 100)
                 setThreeMoney("-")
                 setFourMoney("-")
-            }else if(number===3){
-                var res=parseInt(parseInt((myparam[3].ELprice)/100)/3)
-                var left=parseInt((myparam[3].ELprice)/100)%3
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
+            } else if (number === 3) {
+                var res = parseInt(parseInt((myparam[3].ELprice) / 100) / 3)
+                var left = parseInt((myparam[3].ELprice) / 100) % 3
+                setOneMoney(res * 100 + left * 100)
+                setTwoMoney(res * 100)
+                setThreeMoney(res * 100)
                 setFourMoney("-")
-            }else{
-                var res=parseInt(parseInt((myparam[3].ELprice)/100)/4)
-                var left=parseInt((myparam[3].ELprice)/100)%4
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
-                setFourMoney(res*100)
+            } else {
+                var res = parseInt(parseInt((myparam[3].ELprice) / 100) / 4)
+                var left = parseInt((myparam[3].ELprice) / 100) % 4
+                setOneMoney(res * 100 + left * 100)
+                setTwoMoney(res * 100)
+                setThreeMoney(res * 100)
+                setFourMoney(res * 100)
             }
         } else if (myparam[1] === 2) {
             setOrderDes(myparam[3].Fcolor + "   " + myparam[3].Fsize + "   " + myparam[3].Fetc)
-            setPrice(Number(myparam[3].Fprice)+Number(myparam[5]))
-            if(number===2){
-                var res=parseInt(parseInt((myparam[3].Fprice)/100)/2)
-                var left=parseInt((myparam[3].Fprice)/100)%2
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
+            setPrice(Number(myparam[3].Fprice) + Number(myparam[5]))
+            if (number === 2) {
+                var res = parseInt(parseInt((myparam[3].Fprice) / 100) / 2)
+                var left = parseInt((myparam[3].Fprice) / 100) % 2
+                setOneMoney(res * 100 + left * 100)
+                setTwoMoney(res * 100)
                 setThreeMoney("-")
                 setFourMoney("-")
-            }else if(number===3){
-                var res=parseInt(parseInt((myparam[3].Fprice)/100)/3)
-                var left=parseInt((myparam[3].Fprice)/100)%3
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
+            } else if (number === 3) {
+                var res = parseInt(parseInt((myparam[3].Fprice) / 100) / 3)
+                var left = parseInt((myparam[3].Fprice) / 100) % 3
+                setOneMoney(res * 100 + left * 100)
+                setTwoMoney(res * 100)
+                setThreeMoney(res * 100)
                 setFourMoney("-")
-            }else{
-                var res=parseInt(parseInt((myparam[3].Fprice)/100)/4)
-                var left=parseInt((myparam[3].Fprice)/100)%4
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
-                setFourMoney(res*100)
+            } else {
+                var res = parseInt(parseInt((myparam[3].Fprice) / 100) / 4)
+                var left = parseInt((myparam[3].Fprice) / 100) % 4
+                setOneMoney(res * 100 + left * 100)
+                setTwoMoney(res * 100)
+                setThreeMoney(res * 100)
+                setFourMoney(res * 100)
             }
         } else {
             setOrderDes(myparam[3].Eetc)
-            setPrice(Number(myparam[3].Eprice)+Number(myparam[5]))
-            if(number===2){
-                var res=parseInt(parseInt((myparam[3].Eprice)/100)/2)
-                var left=parseInt((myparam[3].Eprice)/100)%2
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
+            setPrice(Number(myparam[3].Eprice) + Number(myparam[5]))
+            if (number === 2) {
+                var res = parseInt(parseInt((myparam[3].Eprice) / 100) / 2)
+                var left = parseInt((myparam[3].Eprice) / 100) % 2
+                setOneMoney(res * 100 + left * 100)
+                setTwoMoney(res * 100)
                 setThreeMoney("-")
                 setFourMoney("-")
-            }else if(number===3){
-                var res=parseInt(parseInt((myparam[3].Eprice)/100)/3)
-                var left=parseInt((myparam[3].Eprice)/100)%3
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
+            } else if (number === 3) {
+                var res = parseInt(parseInt((myparam[3].Eprice) / 100) / 3)
+                var left = parseInt((myparam[3].Eprice) / 100) % 3
+                setOneMoney(res * 100 + left * 100)
+                setTwoMoney(res * 100)
+                setThreeMoney(res * 100)
                 setFourMoney("-")
-            }else{
-                var res=parseInt(parseInt((myparam[3].Eprice)/100)/4)
-                var left=parseInt((myparam[3].Eprice)/100)%4
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
-                setFourMoney(res*100)
+            } else {
+                var res = parseInt(parseInt((myparam[3].Eprice) / 100) / 4)
+                var left = parseInt((myparam[3].Eprice) / 100) % 4
+                setOneMoney(res * 100 + left * 100)
+                setTwoMoney(res * 100)
+                setThreeMoney(res * 100)
+                setFourMoney(res * 100)
             }
         }
 
     }, [number])
-    async function order(){
-        if(basicAddress&&payment){
+    async function order() {
+        if (basicAddress && payment) {
             // history.push("paymentsuccess",{myparam:myparam})'
 
             fetch("https://haulfree.link/checkAddress/", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials:"include",
-            body:JSON.stringify({
-                params:{
-                    myparam:myparam,
-                    ship:item,
-                    payment:"",
-                    option:number,
-                    schedule:paymentDate
-                }
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    params: {
+                        myparam: myparam,
+                        ship: item,
+                        payment: "",
+                        option: number,
+                        schedule: paymentDate
+                    }
+                })
             })
-        })
-           .then(response => response.json())
- .then(response => {
-                if(response.data.data===true){
-                    history.push("paymentsuccess")
-                }else{
-                    history.push("paymentfail",{myparam:myparam,ship:item})
-                }
-            }).catch(err=>{
-                console.log(err)
-            })
-        }else{
-            console.log("no")
+                .then(response => response.json())
+                .then(response => {
+                    if (response.data.data === true) {
+                        history.push("paymentsuccess")
+                    } else {
+                        history.push("paymentfail", { myparam: myparam, ship: item })
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
         }
     }
 
@@ -396,7 +392,7 @@ export default function OrderSheet() {
                                 color: "#202426",
                                 fontFamily: "NotoSansCJKkr"
                             }}>배송 정보</div>
-                            <div onClick={()=>history.push("/address")} style={{
+                            <div onClick={() => history.push("/address")} style={{
                                 fontSize: 14,
                                 opacity: 0.8,
                                 color: "#202426",
@@ -715,7 +711,7 @@ export default function OrderSheet() {
                             이번 달은
                                 <span style={{
                                 color: "#26c1f0"
-                            }}>  {(Number(oneMoney)+Number(ship)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</span>
+                            }}>  {(Number(oneMoney) + Number(ship)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</span>
                                  만 결제하세요.
                             </div>
                         <div style={{
@@ -1168,7 +1164,7 @@ export default function OrderSheet() {
                         이번달은
                                 <span style={{
                             color: "#26c1f0"
-                        }}> {(Number(oneMoney)+Number(ship)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 </span>
+                        }}> {(Number(oneMoney) + Number(ship)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 </span>
                                  만 결제하세요.
                             </div>
                     <div style={{

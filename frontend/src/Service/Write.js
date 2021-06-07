@@ -44,8 +44,6 @@ export default function Write() {
                 console.log(err)
             })
     
-        
-        console.log(data)
         await fetch("https://haulfree.link/servicereview/", {
             method: "POST",
             headers: {
@@ -62,7 +60,6 @@ export default function Write() {
     }
 
     const ratingChanged = (newRating) => {
-        console.log(newRating);
         setNumber(newRating)
     };
     return (

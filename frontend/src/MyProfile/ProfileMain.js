@@ -341,7 +341,6 @@ export default function ProfileMain() {
 
     //s3로 업로드 후 URL을 RDS에 삽입 + user_id, product_id는 추후에 수정
     const uploadFile = async () => {
-        console.log(selectedFile)
         var image;
         const params = {
             ACL: "public-read",

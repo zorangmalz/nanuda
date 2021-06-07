@@ -13,10 +13,7 @@ export default function WishDealDefault() {
     const [des, setDes] = useState("")
     const [url, setUrl] = useState("")
     const onChange = (e) => {
-        console.log(e.target)		//이벤트가 발생한 타겟의 요소를 출력
-        console.log(e.target.value)	//이벤트가 발생한 타겟의 Value를 출력
-        setText(e.target.value)		//이벤트 발생한 value값으로 {text} 변경
-        console.log(text)
+        setText(e.target.value)
     }
     const ogtag = async () => {
 

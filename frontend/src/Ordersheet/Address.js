@@ -23,7 +23,7 @@ function reducer(state, action) {
 }
 
 export default function Address() {
-    const history=useHistory()
+    const history = useHistory()
     const [modal, setModal] = useState(false)
     //우편번호 입력
 
@@ -88,7 +88,6 @@ export default function Address() {
 
     function Daum({ setVisible }) {
         const handleComplete = (data) => {
-            console.log(data)
             let fullAddress = data.address;
             let extraAddress = "";
 
@@ -167,16 +166,14 @@ export default function Address() {
         check()
     }, [inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber])
     async function send() {
-        console.log(inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber)
-        
-        fetch("https://haulfree.link/uploadAddress/", {
+        await fetch("https://haulfree.link/uploadAddress/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
-            credentials:"include",
-            body:JSON.stringify({
+            credentials: "include",
+            body: JSON.stringify({
                 params:
                 {
                     address: inputs.address,
@@ -189,20 +186,16 @@ export default function Address() {
             })
 
         })
-            
-           .then(response => response.json())
- .then(response => {
-                console.log(response)
-                if(response.data.data===true){
-                    console.log("goback")
+            .then(response => response.json())
+            .then(response => {
+                if (response.data.data === true) {
                     history.goBack()
                 }
-              
-            }).catch(err=>{
+            }).catch(err => {
                 console.log(err)
             })
 
-       
+
     }
     return (
         <>

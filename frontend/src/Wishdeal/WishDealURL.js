@@ -77,9 +77,7 @@ export default function WishDealURL() {
     const [stats, setStats] = useState("")
     const [state, setState] = useState(false)
     useEffect(() => {
-        console.log(myparam, code, des)
         setStats(code)
-
     }, [])
 
     const [number, dispatch] = useReducer(reducerA, 0);
@@ -105,11 +103,6 @@ export default function WishDealURL() {
     };
 
     let history = useHistory();
-    // useEffect(() => {
-    //     console.log(ELinputs)
-    //     console.log(Einputs)
-    //     console.log(Finputs)
-    // })
 
     const [Finputs, setFInputs] = useState({
         Fprice: "",

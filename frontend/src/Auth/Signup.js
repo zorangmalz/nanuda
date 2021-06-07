@@ -32,9 +32,6 @@ const KaKaoBtn = styled(KakaoLogin)`
 
 export default function Signup() {
     const responseGoogle = async (response) => {
-        console.log("come")
-        console.log(response, "here")
-
         let res = await axios.post(
             "https://haulfree.link/rest-auth/google/",
             {
@@ -46,43 +43,31 @@ export default function Signup() {
             },
             { withCredentials: true }
         )
-        console.log(res)
         if (res.data === "success") {
             history.replace("./signupprofile")
         }
     }
-    useEffect(() => {
-        console.log("왜", My_App_Key, GOOGLE_APP_KEY)
-    }, [])
 
     const kakaoResponse = async (response) => {
-        console.log("fullResponsㄴe",response)
-        console.log(response.response.access_token)
-        fetch("https://haulfree.link/rest-auth/kakao/", {
+        await fetch("https://haulfree.link/rest-auth/kakao/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
-            credentials:"include",
-            body:JSON.stringify({
+            credentials: "include",
+            body: JSON.stringify({
                 params:
                 {
                     code: response.response.access_token
                 },
             })
-
         })
-        
             .then(response => {
-                console.log(response)
-              if(response.status===200){
-                  history.replace("/signupprofile")
-              }else{
-                  console.log("nonononono")
-              }
-              
-            }).catch(err=>{
+                if (response.status === 200) {
+                    history.replace("/signupprofile")
+                }
+            }).catch(err => {
                 console.log(err)
             })
         // let res = await axios.post(
@@ -101,17 +86,14 @@ export default function Signup() {
         // }
     }
     const kakaoFail = async (res) => {
-        console.log("failed")
     }
     let history = useHistory()
 
     const test = async () => {
-        console.log("come")
         let response = await axios.get(
             "https://haulfree.link/userInfoName/",
             { withCredentials: true }
         )
-        console.log(response)
     }
     return (
         <>
@@ -146,7 +128,7 @@ export default function Signup() {
                             <Header content="회원가입" goBack={true} />
                             {/* 배너 넣어야됨 */}
                             <KaKaoBtn
-                            style={{width:440, fontSize:18,height:56,color:"#051a1a"}}
+                                style={{ width: 440, fontSize: 18, height: 56, color: "#051a1a" }}
                                 token={My_App_Key}
                                 onSuccess={kakaoResponse}
                                 onFailure={kakaoFail}

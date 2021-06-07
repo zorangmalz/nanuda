@@ -85,7 +85,6 @@ export default function ReviewWrite() {
             imageBucket.putObject(params)
                 .on("httpUploadProgress", (evt) => {
                     setProgress(Math.round((evt.loaded / evt.total) * 100))
-                    console.log(progress)
                 })
                 .send((err) => {
                     if (err) {
@@ -94,7 +93,6 @@ export default function ReviewWrite() {
                 })
             imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[i].name}`)
         }
-        console.log(imageArray)
         var data = {
             user_id: 1,
             product_id: "ae766068-cfd6-464b-ad17-884aad6a6d4a",
@@ -114,7 +112,6 @@ export default function ReviewWrite() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 history.push("/reviewsuccess")
             }).catch(err => {
                 console.log(err)
@@ -123,7 +120,6 @@ export default function ReviewWrite() {
     }
 
     const ratingChanged = (newRating) => {
-        console.log(newRating);
         setNumber(newRating)
     };
 
@@ -419,7 +415,6 @@ function ImagePut() {
 
     const handelFileInput = (e) => {
         setSelectedFile(e.target.files[0])
-        console.log(selectedFile)
     }
 
     const uploadFile = (file) => {
@@ -433,14 +428,13 @@ function ImagePut() {
         imageBucket.putObject(params)
             .on("httpUploadProgress", (evt) => {
                 setProgress(Math.round((evt.loaded / evt.total) * 100))
-                console.log(progress)
             })
             .send((err) => {
                 if (err) console.log(err)
             })
     }
     return (
-        <input onChange={selectedFile === null ? handelFileInput : () => console.log(selectedFile)} onClick={() => selectedFile === null ? console.log("이미지 없어") : uploadFile(selectedFile)} type="file" style={{
+        <input onChange={selectedFile === null ? handelFileInput : () => {}} onClick={() => selectedFile === null ? {} : uploadFile(selectedFile)} type="file" style={{
             marginLeft: 20,
             marginTop: 16,
             width: 120,

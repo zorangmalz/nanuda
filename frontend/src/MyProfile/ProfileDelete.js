@@ -82,7 +82,7 @@ export default function ProfileDelete() {
                         <StandardButton
                             marginTop={32}
                             text="탈퇴하기"
-                            onClick={agree ? () => history.replace("/") : () => console.log("동의해주세요")}
+                            onClick={agree ? () => history.replace("/") : () => {}}
                             state={agree}
                         />
                     </div>
@@ -150,7 +150,7 @@ export default function ProfileDelete() {
                     <MStandardButton
                         marginTop={"8vw"}
                         text="탈퇴하기"
-                        onClick={agree ? () => history.replace("/") : () => console.log("동의해주세요")}
+                        onClick={agree ? () => history.replace("/") : () => {}}
                         state={agree}
                     />
                 </div>
