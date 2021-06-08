@@ -107,11 +107,6 @@ export default function WishDealURL() {
     };
 
     let history = useHistory();
-    // useEffect(() => {
-    //     //console.log(ELinputs)
-    //     //console.log(Einputs)
-    //     //console.log(Finputs)
-    // })
 
     const [Finputs, setFInputs] = useState({
         Fprice: "",
@@ -1680,7 +1675,7 @@ function ETCForm({ image, brand, name, input, setInput,highPrice }) {
                 marginLeft: 20,
             }}>기타 옵션을 입력해주세요. </div>
             <input
-                placeholder="하나는 딸기맛, 하나는 포도맛으로 해주세요."
+                placeholder="ex) 하나는 딸기맛, 하나는 포도맛으로 해주세요."
                 name="Eetc"
                 value={Eetc}
                 onChange={onChange}
@@ -1800,7 +1795,7 @@ function METCForm({ image, brand, name, input, setInput,highPrice }) {
                 marginLeft: "5vw",
             }}>기타 옵션을 입력해주세요. </div>
             <input
-                placeholder="하나는 딸기맛, 하나는 포도맛으로 해주세요."
+                placeholder="ex) 하나는 딸기맛, 하나는 포도맛으로 해주세요."
                 name="Eetc"
                 value={Eetc}
                 onChange={onChange}

@@ -74,8 +74,6 @@ export default function WishDeal() {
     const myparam = location.state.info
     const getUrl=location.state.url
     useEffect(() => {
-        //console.log(getUrl)
-        //console.log(myparam)
         try{
             setImage(myparam.image.url)
         }catch(err){

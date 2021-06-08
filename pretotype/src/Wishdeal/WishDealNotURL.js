@@ -296,7 +296,7 @@ export default function WishDealNotURL() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="상품 정보 작성" goBack={true} />
-                        <FashionForm
+                        <ETCForm
                             filePath={filePath}
                             inputFile={inputFile}
                             onButtonClick={onButtonClick}
@@ -526,7 +526,7 @@ export default function WishDealNotURL() {
                         backgroundColor: "#ffffff",
                     }}>
                         <MHeader content="상품 정보 작성" goBack={true} />
-                        <MFashionForm
+                        <METCForm
                             filePath={filePath}
                             onButtonClick={onButtonClick}
                             inputFile={inputFile}
@@ -1199,6 +1199,287 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                     marginTop: "4vw",
                     width: "80vw",
                     marginLeft: "5vw",
+                    alignSelf: "center",
+                    outline: 0,
+                    border: 0,
+                    paddingBottom: 8,
+                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 14,
+                    color: "#202426",
+                }}
+            />
+        </div>
+    )
+}
+
+function ETCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, name, input, setInput,highPrice }) {
+    const { Eprice, Eetc } = input
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setInput({
+            ...input,
+            [name]: value
+        })
+    }
+    return (
+        <div>
+            {filePath.length > 0 ?
+                <img src={filePath[0]} alt="제품 이미지"
+                    style={{
+                        width: 480,
+                    }}
+                />
+                :
+                <div onClick={onButtonClick} style={{
+                    width: 480,
+                    height: 212,
+                    backgroundColor: "#f2f3f8",
+
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                }}>
+                    <input ref={inputFile} onChange={handelFileInput} type="file" style={{
+                        display: "none"
+                    }} />
+                    <BsPlusCircle size={36} color="#051a1a" />
+                    <div style={{
+                        marginTop: 24,
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 16,
+                        columnGap: "#202426"
+                    }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
+                </div>
+            }
+            <div style={{
+                marginTop: 16,
+                marginLeft: 20,
+
+                fontFamily: "AvenirNext",
+                fontWeight: "bold",
+                fontSize: 21,
+            }}>{brand}</div>
+            <div style={{
+                marginTop: 16,
+                marginLeft: 20,
+                fontsize: 18,
+                fontWeight: "normal",
+                fontFamily: "AvenirNext",
+                opacity: 0.8
+            }}>{name}</div>
+            <div style={{
+                fontFamily: "NotoSansCJKkr",
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "#202426",
+
+                marginTop: 16,
+                marginLeft: 20,
+            }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+
+                marginTop: 16,
+                marginLeft: 20,
+                paddingBottom: 8,
+                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                width: 210,
+            }}>
+                <input
+                    placeholder="상품 가격"
+                    type="number"
+                    name="Eprice"
+                    value={Eprice}
+                    onChange={onChange}
+                    style={{
+                        width: 190,
+                        outline: 0,
+                        border: 0,
+
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 16,
+                        color: "#202426"
+                    }}
+                />
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 16,
+                    fontWeight: "bold",
+                    color: "#202426"
+                }}>원</div>
+            </div>
+            {highPrice===true?
+            <div></div>
+             :
+             <div style={{color:"#f72b2b",fontSize:16,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+            
+            <div style={{
+                fontFamily: "NotoSansCJKkr",
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "#202426",
+
+                marginTop: 32,
+                marginLeft: 20,
+            }}>기타 옵션을 입력해주세요. </div>
+            <input
+                placeholder="ex) 하나는 딸기맛, 하나는 포도맛으로 해주세요."
+                name="Eetc"
+                value={Eetc}
+                onChange={onChange}
+                style={{
+                    marginTop: 16,
+                    width: 440,
+                    alignSelf: "center",
+                    outline: 0,
+                    border: 0,
+                    paddingBottom: 8,
+                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    marginLeft:20,
+
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 16,
+                    color: "#202426",
+                }}
+            />
+        </div>
+    )
+}
+
+function METCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, name, input, setInput,highPrice }) {
+    const { Eprice, Eetc } = input
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setInput({
+            ...input,
+            [name]: value
+        })
+    }
+    return (
+        <div>
+            {filePath.length > 0 ?
+                <img src={filePath[0]} alt="제품 이미지"
+                    style={{
+                        width: "100vw",
+                    }}
+                />
+                :
+                <div onClick={onButtonClick} style={{
+                    width: "100vw",
+                    height: "45vw",
+                    backgroundColor: "#f2f3f8",
+
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                }}>
+                    <input ref={inputFile} onChange={handelFileInput} type="file" style={{
+                        display: "none"
+                    }} />
+                    <BsPlusCircle size={24} color="#051a1a" />
+                    <div style={{
+                        marginTop: 24,
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 16,
+                        columnGap: "#202426"
+                    }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
+                </div>
+            }
+            <div style={{
+                marginTop: "4vw",
+                marginLeft: "5vw",
+
+                fontFamily: "AvenirNext",
+                fontWeight: "bold",
+                fontSize: 18,
+            }}>{brand}</div>
+            <div style={{
+                marginTop: "4vw",
+                marginLeft: "5vw",
+                fontsize: 16,
+                fontWeight: "normal",
+                fontFamily: "AvenirNext",
+                opacity: 0.8
+            }}>{name}</div>
+            <div style={{
+                fontFamily: "NotoSansCJKkr",
+                fontSize: 16,
+                fontWeight: "bold",
+                color: "#202426",
+
+                marginTop: "4vw",
+                marginLeft: "5vw",
+            }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+
+                marginTop: "4vw",
+                marginLeft: "5vw",
+                paddingBottom: "2vw",
+                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                width: "45vw",
+            }}>
+                <input
+                    placeholder="상품 가격"
+                    type="number"
+                    name="Eprice"
+                    value={Eprice}
+                    onChange={onChange}
+                    style={{
+                        width: "40vw",
+                        outline: 0,
+                        border: 0,
+
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 14,
+                        color: "#202426"
+                    }}
+                />
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: 14,
+                    fontWeight: "bold",
+                    color: "#202426"
+                }}>원</div>
+            </div>
+            {highPrice===true?
+          <div></div>
+             :
+             <div style={{color:"#f72b2b",fontSize:14,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+            
+
+            <div style={{
+                fontFamily: "NotoSansCJKkr",
+                fontSize: 16,
+                fontWeight: "bold",
+                color: "#202426",
+
+                marginTop: "8vw",
+                marginLeft: "5vw",
+            }}>기타 옵션을 입력해주세요. </div>
+            <input
+                placeholder="ex) 하나는 딸기맛, 하나는 포도맛으로 해주세요."
+                name="Eetc"
+                value={Eetc}
+                onChange={onChange}
+                style={{
+                    marginTop: "4vw",
+                    width: "80vw",
+                    marginLeft:"5vw",
                     alignSelf: "center",
                     outline: 0,
                     border: 0,

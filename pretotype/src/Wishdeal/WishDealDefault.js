@@ -66,7 +66,7 @@ export default function WishDealDefault() {
                 history.push("wishdealnoturl")
             } else {
                 setLoading(false)
-                history.push("wishdeal", { info: response.data.openGraph, url: text })
+                history.push("wishdealurl", { param: response.data.openGraph, des: "", url: text, code: 4 })
 
             }
         } catch (err) {
@@ -109,9 +109,9 @@ export default function WishDealDefault() {
                             paddingLeft: 20,
                             paddingRight: 20,
                             borderBottom: "1px solid #dddddd",
-                            paddingBottom: 32,
+                            paddingBottom: 16,
                         }}>
-                            <Slider className="desktop-slick-dots" arrows={false} dots={true} autoplay={true} autoplaySpeed={3000} >
+                            <Slider className="desktop-slick-dots" arrows={false} dots={false} autoplay={true} autoplaySpeed={3000} >
                                 <div style={{
                                     width: 440,
                                     display: "flex",
@@ -265,9 +265,9 @@ export default function WishDealDefault() {
                             paddingLeft: "5vw",
                             paddingRight: "5vw",
                             borderBottom: "1px solid #dddddd",
-                            paddingBottom: "8vw",
+                            paddingBottom: "4vw",
                         }}>
-                            <Slider className="desktop-slick-dots" arrows={false} dots={true} autoplay={true} autoplaySpeed={3000} >
+                            <Slider className="desktop-slick-dots" arrows={false} dots={false} autoplay={true} autoplaySpeed={3000} >
                                 <div style={{
                                     width: "90vw",
                                     display: "flex",
