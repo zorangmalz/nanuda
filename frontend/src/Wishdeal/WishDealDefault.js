@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Header, MHeader } from "../Style";
 import axios from "axios"
+import Slider from "react-slick"
+import wishone from "../images/wishone.png"
+import wishtwo from "../images/wishtwo.png"
+import wishthree from "../images/wishthree.png"
 
 export default function WishDealDefault() {
     let history = useHistory();
@@ -18,7 +22,7 @@ export default function WishDealDefault() {
     const ogtag = async () => {
 
          let response = await axios.post(
-            "https://haulfree.link:3001/api",
+            "https://haulfree.link/api",
             {
                 params:
                 {
@@ -38,39 +42,26 @@ export default function WishDealDefault() {
             setDes(response.data.results.ogDescription)
             setUrl(response.data.results.ogUrl)
         }
+    }
 
-//         fetch("https://haulfree.link/api", {
-//             method: "POST",
-//             headers: {
-//                 'Content-type': 'application/json',
-//                 'Accept': 'application/json'
-//             },
-//             credentials:"include",
-//             body:JSON.stringify({
-//                 params:
-//                 {
-//                     code: text
-//                 },
-//             })
-
-//         })
-            
-//            .then(response => response.json())
-//  .then(response => {
-//                 if (response.data.error == true) {
-//                     history.push("wishdealnoturl")
-//                 } else {
-//                     history.push("wishdeal", { info: response.data.results })
-//                     setLinkOrNot(true)
-//                     setImage(response.data.results.ogImage.url)
-//                     setTitle(response.data.results.ogTitle)
-//                     setDes(response.data.results.ogDescription)
-//                     setUrl(response.data.results.ogUrl)
-//                 }
-//             }).catch(err=>{
-//                 console.log(err)
-//             })
-      
+    const naverSearch = async () => {
+        const query = encodeURI(text)
+        await fetch(` http://127.0.0.1:8000/naver/search`, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json",
+            },
+            body: query
+        })
+        .then(res => {
+            console.log(res)
+            res.text()
+        })
+        .then(res => {
+            console.log(res)
+            // history.push("/wishdealurl")
+        })
+        .catch(err => console.log(err))
     }
 
     
@@ -98,6 +89,68 @@ export default function WishDealDefault() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="위시딜" goBack={true} />
+                        <div style={{
+                            width: 440,
+                            paddingTop: 32,
+                            paddingLeft: 20,
+                            paddingRight: 20,
+                            borderBottom: "1px solid #dddddd",
+                            paddingBottom: 32,
+                        }}>
+                            <Slider className="desktop-slick-dots" arrows={false} dots={true} autoplay={true} autoplaySpeed={5000} >
+                                <div style={{
+                                    width: 440,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "flex-start",
+                                }}>
+                                    <div style={{
+                                        width: 440,
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 16,
+                                        fontWeight: "bold",
+                                        color: "#202426",
+                                        marginBottom: 16,
+                                        textAlign: "left"
+                                    }}>1. 다양한 쇼핑몰에서 사고싶은 상품의 링크를 입력해주세요!</div>
+                                    <img alt="wishone" style={{ marginLeft: 60 }} src={wishone} />
+                                </div>
+                                <div style={{
+                                    width: 440,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "flex-start"
+                                }}>
+                                    <div style={{
+                                        width: 440,
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 16,
+                                        fontWeight: "bold",
+                                        color: "#202426",
+                                        marginBottom: 42,
+                                        textAlign: "left"
+                                    }}>2. 가격과 원하는 옵션을 선택해 주문서를 작성해주세요!</div>
+                                    <img alt="wishtwo" style={{ marginLeft: 60 }} src={wishtwo} />
+                                </div>
+                                <div style={{
+                                    width: 440,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "flex-start"
+                                }}>
+                                    <div style={{
+                                        width: 440,
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 16,
+                                        fontWeight: "bold",
+                                        color: "#202426",
+                                        marginBottom: 8,
+                                        textAlign: "left"
+                                    }}>3. 반절만 결제하고 원하는 상품 Get!!</div>
+                                    <img alt="wishthree" style={{ marginLeft: 50 }} src={wishthree} />
+                                </div>
+                            </Slider>
+                        </div>
                         <div style={{
                             marginLeft: 20,
                             marginTop: 32,
@@ -169,7 +222,7 @@ export default function WishDealDefault() {
                                             marginLeft: 20,
                                             marginRight: 20
                                         }}>
-                                        <input style={{
+                                        <input value={text} onChange={onChange} style={{
                                             outline: 0,
                                             width: 440,
                                             height: 26,
@@ -184,7 +237,7 @@ export default function WishDealDefault() {
                                     </div>
 
                                 </div>
-                                <div onClick={() => history.push("/wishdealurl")} style={{
+                                <div onClick={naverSearch} style={{
                                     borderRadius: 6,
                                     width: 440,
                                     paddingTop: 15,
@@ -210,7 +263,7 @@ export default function WishDealDefault() {
                                             marginLeft: 20,
                                             marginRight: 20
                                         }}>
-                                        <input onChange={onChange} style={{
+                                        <input value={text} onChange={onChange} style={{
                                             outline: 0,
                                             width: 440,
                                             height: 26,
@@ -224,7 +277,7 @@ export default function WishDealDefault() {
                                     </div>
 
                                 </div>
-                                <div onClick={ogtag} style={{
+                                <div onClick={naverSearch} style={{
                                     borderRadius: 6,
                                     width: 440,
                                     paddingTop: 15,
@@ -266,6 +319,68 @@ export default function WishDealDefault() {
                         backgroundColor: "#ffffff",
                     }}>
                         <MHeader content="위시딜" goBack={true} />
+                        <div style={{
+                            width: "90vw",
+                            paddingTop: "8vw",
+                            paddingLeft: "5vw",
+                            paddingRight: "5vw",
+                            borderBottom: "1px solid #dddddd",
+                            paddingBottom: "8vw",
+                        }}>
+                            <Slider className="desktop-slick-dots" arrows={false} dots={true} autoplay={true} autoplaySpeed={5000} >
+                                <div style={{
+                                    width: "90vw",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "flex-start",
+                                }}>
+                                    <div style={{
+                                        width: "90vw",
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 12,
+                                        fontWeight: "bold",
+                                        color: "#202426",
+                                        marginBottom: "4vw",
+                                        textAlign: "left"
+                                    }}>1. 다양한 쇼핑몰에서 사고싶은 상품의 링크를 입력해주세요!</div>
+                                    <img alt="wishone" style={{ marginLeft: "15vw", width: "60vw" }} src={wishone} />
+                                </div>
+                                <div style={{
+                                    width: "90vw",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "flex-start"
+                                }}>
+                                    <div style={{
+                                        width: "90vw",
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 12,
+                                        fontWeight: "bold",
+                                        color: "#202426",
+                                        marginBottom: "10vw",
+                                        textAlign: "left"
+                                    }}>2. 가격과 원하는 옵션을 선택해 주문서를 작성해주세요!</div>
+                                    <img alt="wishtwo" style={{ width: "70vw", marginLeft: "12vw" }} src={wishtwo} />
+                                </div>
+                                <div style={{
+                                    width: "90vw",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "flex-start"
+                                }}>
+                                    <div style={{
+                                        width: "90vw",
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 12,
+                                        fontWeight: "bold",
+                                        color: "#202426",
+                                        marginBottom: "4vw",
+                                        textAlign: "left"
+                                    }}>3. 반절만 결제하고 원하는 상품 Get!!</div>
+                                    <img alt="wishthree" style={{ marginLeft: "10vw", width: "70vw" }} src={wishthree} />
+                                </div>
+                            </Slider>
+                        </div>
                         <div style={{
                             marginLeft: "5vw",
                             marginTop: "8vw",

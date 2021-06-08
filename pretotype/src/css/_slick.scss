@@ -13,6 +13,7 @@
     -ms-touch-action: pan-y;
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 .slick-list {
     position: relative;
@@ -22,6 +23,7 @@
     padding: 0;
 
     &:focus {
+        outline: 0;
         outline: none;
     }
 
@@ -76,6 +78,8 @@
     }
 
     display: none;
+    outline: 0;
+    outline: none;
 
     &.dragging img {
         pointer-events: none;

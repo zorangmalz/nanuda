@@ -20,7 +20,7 @@ from nanuda.views import GoogleLogin, KakaoLogin,userInfoName,uploadAddress,chec
 #API 제작
 from rest_framework.urlpatterns import format_suffix_patterns
 from nanuda.views import KakaoLogin, GoogleLogin
-from data.views import user_list, service_review_all, product_all, review_all, order_all, review_one, review_home, service_review_home, user_one
+from data.views import user_list, service_review_all, product_all, review_all, order_all, review_one, review_home, service_review_home, user_one, naver_search
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,6 +39,7 @@ urlpatterns = [
     path('checkAddress/', checkAddress.as_view(), name='address'),
     path('servicereviewornot/', serviceReviewOrNOt.as_view(), name='service'),
     path('orderupload/', orderUpload.as_view(), name='orderupload'),
+    path('naver/search', naver_search),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -1,6 +1,8 @@
 #보안
 import os
+from django.http.response import JsonResponse
 import jwt
+import urllib.request
 from dotenv import load_dotenv
 
 # API 제작 - 상태, 기능, 인증, 권한, Header(JSON)
@@ -186,3 +188,26 @@ def order_all(request):
             order_serializer.save()
             return Response(order_serializer.data, status=status.HTTP_201_CREATED)
         return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET","POST"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+def naver_search(request):
+    if request.method == "GET":
+        client_id = "niz7fq7bMSOMVInWyV3w"
+        client_secret = "rfa8lA_Uu7"
+        encText = urllib.parse.quote(request.data)
+        print(request.data)
+        url = "https://openapi.naver.com/v1/search/shop.json?query=" + encText
+        naver = urllib.request.Request(url)
+        naver.add_header("X-Naver-Client-Id", client_id)
+        naver.add_header("X-Naver-Client-Secret", client_secret)
+        response = urllib.request.urlopen(naver)
+        rescode = response.getcode()
+        if(rescode == 200):
+            response_body = response.read()
+            print(response_body.decode('utf-8'))
+            return Response(response_body.decode('utf-8'))
+        else:
+            print("Error Code:" + rescode)
