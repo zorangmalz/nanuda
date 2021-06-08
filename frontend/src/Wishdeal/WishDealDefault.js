@@ -45,20 +45,16 @@ export default function WishDealDefault() {
     }
 
     const naverSearch = async () => {
-        const query = encodeURI(text)
-        await fetch(` http://127.0.0.1:8000/naver/search`, {
-            method: "POST",
-            headers: {
-                'Content-Type': "application/json",
+        await axios.get('/api/v1/search/shop.json', {
+            params: {
+                query: text
             },
-            body: query
+            headers: {
+                'X-Naver-Client-Id': 'niz7fq7bMSOMVInWyV3w', 'X-Naver-Client-Secret': 'rfa8lA_Uu7'
+            },
         })
         .then(res => {
-            console.log(res)
-            res.text()
-        })
-        .then(res => {
-            console.log(res)
+            console.log(res["data"])
             // history.push("/wishdealurl")
         })
         .catch(err => console.log(err))

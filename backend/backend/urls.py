@@ -39,7 +39,7 @@ urlpatterns = [
     path('checkAddress/', checkAddress.as_view(), name='address'),
     path('servicereviewornot/', serviceReviewOrNOt.as_view(), name='service'),
     path('orderupload/', orderUpload.as_view(), name='orderupload'),
-    path('naver/search', naver_search),
+    path('naversearch/', naver_search),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
