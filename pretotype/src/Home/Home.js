@@ -338,7 +338,7 @@ export default function Home() {
                                 <TimeShop
                                     img={sampleone}
                                     title="애플"
-                                    sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
+                                    sub="Apple AirPods Pro 애플 에어팟 프로 무선충전형"
                                     twoPrice="130,000"
                                     fourPrice="65,000"
                                     stock={0}
