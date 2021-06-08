@@ -5,8 +5,8 @@ import user from "./images/users.png"
 import { IoIosArrowBack } from "react-icons/io";
 import { BsX } from "react-icons/bs"
 import { useHistory } from "react-router";
-
 import styled from "styled-components";
+import kakao from "./images/kkt cs.png"
 
 export default function WebIntro() {
     let history = useHistory()
@@ -370,12 +370,16 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         점심시간 평일 12:30 ~ 1:30
                     </div>
                 </div>
-                <div style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 24,
-                    backgroundColor: "#fff500"
-                }} />
+                <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
+                    textDecorationLine: "none",
+                    WebkitAppearance: "none"
+                }}>
+                    <img src={kakao} alt="로고" style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 6
+                    }} />
+                </a>
             </div>
             <div style={{
                 display: "flex",
@@ -589,15 +593,18 @@ export function BottomTag({ marginTop, marginBottom }) {
                         marginTop: 8
                     }}>
                         운영시간  평일 11:00 ~ 18:00 (토 -일, 공휴일 휴무) <br />
-                        점심시간 평일 12:30 ~ 1:30
+                        점심시간 평일 12:30 ~ 13:30
                     </div>
                 </div>
-                <div style={{
+                <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
+                    textDecorationLine: "none",
+                    WebkitAppearance: "none"
+                }}>
+                 <img src={kakao} alt="로고" style={{
                     width: 48,
-                    height: 48,
-                    borderRadius: 24,
-                    backgroundColor: "#fff500"
-                }} />
+                    height:48,
+                    borderRadius:6
+                }} /></a>
             </div>
             <div style={{
                 display: "flex",
@@ -814,12 +821,16 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                                 점심시간 평일 12:30 ~ 1:30
                             </div>
                 </div>
-                <div style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: 18,
-                    backgroundColor: "#fff500"
-                }} />
+                <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
+                    textDecorationLine: "none",
+                    WebkitAppearance: "none"
+                }}>
+                    <img src={kakao} alt="로고" style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: 6
+                    }} />
+                </a>
             </div>
             <div style={{
                 display: "flex",
@@ -1033,15 +1044,19 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         marginTop: 8
                     }}>
                         운영시간  평일 11:00 ~ 18:00 (토 -일, 공휴일 휴무) <br />
-                                점심시간 평일 12:30 ~ 1:30
+                                점심시간 평일 12:30 ~ 13:30
                             </div>
                 </div>
-                <div style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: 18,
-                    backgroundColor: "#fff500"
-                }} />
+                <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
+                    textDecorationLine: "none",
+                    WebkitAppearance: "none"
+                }}>
+                    <img src={kakao} alt="로고" style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: 6
+                    }} />
+                </a>
             </div>
             <div style={{
                 display: "flex",

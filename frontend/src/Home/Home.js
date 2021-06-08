@@ -195,73 +195,18 @@ export default function Home() {
                             height: 300,
                             marginBottom: 16,
                         }}>
-                            <Slider dots={false} arrows={false} autoplaySpeed={5000} autoplay={true} >
+                            <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
                                 <div>
-                                    <TopBanner
-                                        img={bannerOne}
-                                        title="크리에이터 크라우드 펀딩 플랫폼"
-                                        content="Y.은 무슨 서비스인지 알아볼까요?"
-                                        num={1}
-                                        backgroundColor="#273d5a"
-                                        link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
-                                    />
+                                    <img alt="bannerOne" src={bannerOne} onClick={() => window.open('https://www.notion.so/haulfree/HaulFree-6a3f1f7d342d493193ac59d4319c2100', '_blank')} style={{
+                                        width: 480,
+                                        cursor: "pointer",
+                                    }} />
                                 </div>
                                 <div>
-                                    <div style={{
+                                    <img src={bannerTwo} alt="bannerTwo" onClick={() => window.open('https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934', '_blank')} style={{
                                         width: 480,
-
-                                        height: 300,
-                                        position: "relative",
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        alignItems: "center",
-
-                                    }}>
-
-                                        <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
-                                            textDecorationLine: "none",
-                                            WebkitAppearance: "none"
-                                        }}>
-                                            <div style={{
-                                                width: 480,
-                                                height: 300,
-                                                paddingBottom: 62,
-                                                display: "flex",
-                                                flexDirection: "row",
-                                                alignItems: "flex-end",
-                                                justifyContent: "flex-end",
-                                            }}>
-                                                <img src={bannerTwo} alt="" style={{
-                                                    width: 480,
-                                                    objectFit: "contain",
-                                                }} />
-                                            </div>
-                                            {/* <div style={{
-                        position: "absolute",
-                        zIndex: 2,
-                        top: 144,
-                        width: "56vw",
-                        minWidth: 1060,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <div style={{
-                            width: 445,
-                            fontWeight: "bold",
-                            fontSize: 24,
-                            color: "#ffffff",
-                            marginBottom: 20,
-                        }}>{title}</div>
-                        <div style={{
-                            width: 300,
-                            fontSize: 36,
-                            fontWeight: "bold",
-                            color: "#ffffff",
-                        }}>{content}</div>
-                    </div> */}
-                                        </a>
-                                    </div>
+                                        cursor: "pointer",
+                                    }} />
                                 </div>
                             </Slider>
                         </div>
@@ -398,9 +343,7 @@ export default function Home() {
                                         minWidth: 210,
                                         minHeight: 160,
                                         borderRadius: 6,
-                                        backgroundColor: "#051a1a",
                                         marginTop: 8,
-                                        border: "1px solid #ebebeb",
                                         display: "flex",
                                         flexDirection: "column",
                                         justifyContent: "center",
@@ -493,46 +436,25 @@ export default function Home() {
                             </div>
                         </div>
                         <HomeBottomTag marginTop={200} marginBottom={0} bottomRef={bottomRef} />
-                        {hide ?
-                            <div ref={buttonRef} style={{
-                                width: 440,
-                                marginLeft: 20,
-                                marginRight: 20,
-                                paddingTop: 21,
-                                paddingBottom: 21,
-                                textAlign: "center",
-                                backgroundColor: "rgba(0, 0, 0, 0)",
-                                borderRadius: 6,
-                                zIndex: 1,
+                        <div ref={buttonRef} onClick={hide ? () => { } : () => history.push("/wishdealdefault")} style={{
+                            width: 440,
+                            marginLeft: 20,
+                            marginRight: 20,
+                            paddingTop: 21,
+                            paddingBottom: 21,
+                            textAlign: "center",
+                            backgroundColor: hide ? "rgba(0, 0, 0, 0)" : "#26c1f0",
+                            boxShadow: hide ? "0 0px 0px 0 rgba(0, 0, 0, 0)" : "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
+                            borderRadius: 6,
 
-                                fontSize: 21,
-                                fontWeight: "bold",
-                                fontFamily: "NotoSansCJKkr",
-                                color: "rgba(0, 0, 0, 0)",
-                                position: "fixed",
-                                bottom: 40,
-                            }} />
-                            :
-                            <div ref={buttonRef} onClick={() => history.push("/wishdealdefault")} style={{
-                                width: 440,
-                                marginLeft: 20,
-                                marginRight: 20,
-                                paddingTop: 21,
-                                paddingBottom: 21,
-                                textAlign: "center",
-                                backgroundColor: "#26c1f0",
-                                boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
-                                borderRadius: 6,
-
-                                fontSize: 21,
-                                fontWeight: "bold",
-                                fontFamily: "NotoSansCJKkr",
-                                color: "#ffffff",
-                                cursor: "pointer",
-                                position: "fixed",
-                                bottom: 40,
-                            }}>필요한건 위시딜</div>
-                        }
+                            fontSize: 21,
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr",
+                            color: hide ? "rgba(0, 0, 0, 0)" : "#ffffff",
+                            cursor: hide ? "none" : "pointer",
+                            position: "fixed",
+                            bottom: 40,
+                        }}>{hide ? "" : "위시딜 신청하기"}</div>
                     </div>
                 </div>
             </Default>
@@ -578,27 +500,19 @@ export default function Home() {
                             </a>
                         </div>
                     </div>
-                    <div style={{ width: "100vw", marginBottom: "3vw"}}>
-                        <Slider dots={false} autoplaySpeed={5000} autoplay={true} arrows={false}>
-                            <div style={{ width: "100vw" }}>
-                                <MTopBanner
-                                    img={bannerOne}
-                                    title="크리에이터 크라우드 펀딩 플랫폼"
-                                    content="Y.은 무슨 서비스인지 알아볼까요?"
-                                    num={1}
-                                    backgroundColor="#273d5a"
-                                    link="https://www.notion.so/ydot/HaulFree-6a3f1f7d342d493193ac59d4319c2100"
-                                />
+                    <div style={{ width: "100vw", marginBottom: "3vw" }}>
+                        <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
+                            <div>
+                                <img alt="bannerOne" src={bannerOne} onClick={() => window.open('https://www.notion.so/haulfree/HaulFree-6a3f1f7d342d493193ac59d4319c2100', '_blank')} style={{
+                                    width: "100vw",
+                                    cursor: "pointer",
+                                }} />
                             </div>
-                            <div style={{ width: "100vw" }}>
-                                <MTopBanner
-                                    img={bannerTwo}
-                                    title="크리에이터 크라우드 펀딩 플랫폼"
-                                    content="Y.은 무슨 서비스인지 알아볼까요?"
-                                    num={1}
-                                    backgroundColor="#273d5a"
-                                    link="https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"
-                                 />
+                            <div>
+                                <img src={bannerTwo} alt="bannerTwo" onClick={() => window.open('https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934', '_blank')} style={{
+                                    width: "100vw",
+                                    cursor: "pointer",
+                                }} />
                             </div>
                         </Slider>
                     </div>
@@ -735,10 +649,8 @@ export default function Home() {
                                     width: "42vw",
                                     height: "32vw",
                                     borderRadius: 6,
-                                    backgroundColor: "#051a1a",
                                     marginTop: "2vw",
                                     objectFit: "cover",
-                                    border: "1px solid #ebebeb"
                                 }} />
                                 <div style={{
                                     display: "flex",
@@ -812,45 +724,25 @@ export default function Home() {
                         )}
                     </MAfterContainer>
                     <MHomeBottomTag marginTop={100} marginBottom={0} bottomRef={bottomRef} />
-                    {hide ?
-                        <div ref={buttonRef} style={{
-                            width: "90%",
-                            marginLeft: "5%",
-                            marginRight: "5%",
-                            paddingTop: "3%",
-                            paddingBottom: "3%",
-                            textAlign: "center",
-                            backgroundColor: "rgba(0, 0, 0, 0)",
-                            borderRadius: 6,
+                    <div ref={buttonRef} onClick={hide ? () => { } : () => history.push("/wishdealdefault")} style={{
+                        width: "90%",
+                        marginLeft: "5%",
+                        marginRight: "5%",
+                        paddingTop: "3%",
+                        paddingBottom: "3%",
+                        textAlign: "center",
+                        backgroundColor: hide ? "rgba(0, 0, 0, 0)" : "#26c1f0",
+                        boxShadow: hide ? "0 0px 0px 0 rgba(0, 0, 0, 0)" : "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
+                        borderRadius: 6,
 
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            fontFamily: "NotoSansCJKkr",
-                            color: "rgba(0, 0, 0, 0)",
-                            position: "fixed",
-                            bottom: 20,
-                        }}></div>
-                        :
-                        <div ref={buttonRef} onClick={() => history.push("/wishdealdefault")} style={{
-                            width: "90%",
-                            marginLeft: "5%",
-                            marginRight: "5%",
-                            paddingTop: "3%",
-                            paddingBottom: "3%",
-                            textAlign: "center",
-                            backgroundColor: "#26c1f0",
-                            boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
-                            borderRadius: 6,
-
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            fontFamily: "NotoSansCJKkr",
-                            color: "#ffffff",
-                            cursor: "pointer",
-                            position: "fixed",
-                            bottom: 20,
-                        }}>필요한건 위시딜</div>
-                    }
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        fontFamily: "NotoSansCJKkr",
+                        color: hide ? "rgba(0, 0, 0, 0)" : "#ffffff",
+                        cursor: hide ? "none" : "pointer",
+                        position: "fixed",
+                        bottom: 20,
+                    }}>{hide ? "" : "위시딜 신청하기"}</div>
                 </div>
             </Mobile>
         </>

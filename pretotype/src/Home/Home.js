@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask, TopBanner, MTopBanner } from "../Style";
+import { BannerContainer, HomeBottomTag, HomeHeader, MBannerContainer, MHomeBottomTag, MHomeHeader } from "../Style";
 import { BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
@@ -12,9 +12,7 @@ import smallbannertwo from "../images/smallbannertwo.png"
 import sampleone from "../images/sampleone.png"
 import sampletwo from "../images/sampletwo.png"
 import profile from "../images/profile.png"
-import topbanner from "../images/topbanner.png"
 import { firestore } from "../firebase"
-import MetaTags from "react-meta-tags"
 import banner from "../images/homebanner.png"
 import Slider from "react-slick"
 import bannerOne from "../images/bannerOne.png"
@@ -115,6 +113,30 @@ export default function Home() {
         })
     }, [])
     const [modal, setModal] = useState(false)
+
+    const [wishButton, setWishButton] = useState(0)
+    const buttonRef = useRef(0)
+
+    const [bottomPosition, setBottomPosition] = useState(0)
+    const bottomRef = useRef(0)
+
+    const [hide, setHide] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setBottomPosition(bottomRef.current.getBoundingClientRect().top)
+            setWishButton(buttonRef.current.getBoundingClientRect().top)
+            if (bottomPosition < wishButton) {
+                setHide(true)
+            } else {
+                setHide(false)
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [wishButton, bottomPosition])
     return (
         <div>
 
@@ -245,7 +267,8 @@ export default function Home() {
                         </div>
                         <div style={{
                             width: 480,
-                            height: 300
+                            height: 300,
+                            marginBottom: 16,
                         }}>
                             <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
                                 <div>
@@ -262,6 +285,14 @@ export default function Home() {
                                 </div>
                             </Slider>
                         </div>
+                        <BannerContainer>
+                            <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
+                                <img style={{ marginRight: 16, cursor: "pointer" }} src={smallbanner} alt="광고배너" /></div>
+                            <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                                textDecorationLine: "none",
+                                WebkitAppearance: "none"
+                            }}><img style={{ marginRight: 16 }} src={smallbannertwo} alt="광고배너" /></a>
+                        </BannerContainer>
                         <div onClick={() => setModal(true)} style={{
                             display: "flex",
                             flexDirection: "row",
@@ -275,7 +306,7 @@ export default function Home() {
                                 fontSize: 21,
                                 color: "#202426",
                                 marginRight: 4,
-                            }}>하울딜</div>
+                            }}>나눠서 결제하고 바로 경험해보세요 😎</div>
                             <MdKeyboardArrowRight
                                 size={24}
                                 color="rgba(5, 26, 26, 0.6)"
@@ -293,7 +324,7 @@ export default function Home() {
                             marginTop: 4,
                             marginLeft: 20,
                             marginBottom: 16,
-                        }}>할인된 상품을 분할결제 하세요!</div>
+                        }}>체크카드, 계좌로 간편하게 분할결제해보세요!</div>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -308,8 +339,8 @@ export default function Home() {
                                     img={sampleone}
                                     title="애플"
                                     sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
-                                    price="329,000"
-                                    currentPrice="240,000"
+                                    twoPrice="130,000"
+                                    fourPrice="65,000"
                                     stock={0}
                                     sale={27}
                                 />
@@ -320,22 +351,13 @@ export default function Home() {
                                     title="애플"
                                     sub="Apple iPad Air Sky Blue
                                 10.9형 iPad Air Wi-Fi 스카이 블루"
-                                    price="779,000"
-                                    currentPrice="739,000"
+                                    twoPrice="360,750"
+                                    fourPrice="180,375"
                                     stock={0}
                                     sale={5}
                                 />
                             </div>
                         </div>
-                        <BannerContainer>
-                            <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
-                                <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" /></div>
-                            <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
-                                textDecorationLine: "none",
-                                WebkitAppearance: "none"
-                            }}>
-                                <img style={{ marginRight: 16 }} src={smallbannertwo} alt="광고배너" /></a>
-                        </BannerContainer>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -397,13 +419,23 @@ export default function Home() {
                                             marginTop: 6
                                         }}>{item.user_nickname} </div>
                                     </div>
-                                    <img alt="리뷰사진" src={item.review_image} style={{
-                                        width: 210,
-                                        height: 160,
+                                    <div style={{
+                                        minWidth: 210,
+                                        minHeight: 160,
                                         borderRadius: 6,
                                         marginTop: 8,
-                                        objectFit: "cover",
-                                    }} />
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "center",
+                                        alignItems: "center"
+                                    }}>
+                                        <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                            width: 210,
+                                            height: 160,
+                                            borderRadius: 6,
+                                            objectFit: "cover",
+                                        }} />
+                                    </div>
                                     <div style={{
                                         display: "flex",
                                         flexDirection: "row",
@@ -488,27 +520,26 @@ export default function Home() {
                                 </a>
                             </div>
                         </div>
-
-                        <BottomTag marginTop={200} marginBottom={0} />
-                        <div id="wishdeal_click" onClick={() => history.push("/wishdealdefault")} style={{
+                        <HomeBottomTag marginTop={200} marginBottom={0} bottomRef={bottomRef} />
+                        <div id="wishdeal_click" ref={buttonRef} onClick={hide ? () => { } : () => history.push("/wishdealdefault")} style={{
                             width: 440,
                             marginLeft: 20,
                             marginRight: 20,
                             paddingTop: 21,
                             paddingBottom: 21,
                             textAlign: "center",
-                            backgroundColor: "#26c1f0",
-                            boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
+                            backgroundColor: hide ? "rgba(0, 0, 0, 0)" : "#26c1f0",
+                            boxShadow: hide ? "0 0px 0px 0 rgba(0, 0, 0, 0)" : "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
                             borderRadius: 6,
 
                             fontSize: 21,
                             fontWeight: "bold",
                             fontFamily: "NotoSansCJKkr",
-                            color: "#ffffff",
-                            cursor: "pointer",
+                            color: hide ? "rgba(0, 0, 0, 0)" : "#ffffff",
+                            cursor: hide ? "none" : "pointer",
                             position: "fixed",
                             bottom: 40,
-                        }}>위시딜 신청하기</div>
+                        }}>{hide ? "" : "위시딜 신청하기"}</div>
                     </div>
                 </div>
             </Default>
@@ -630,7 +661,7 @@ export default function Home() {
                             </a>
                         </div>
                     </div>
-                    <div style={{ width: "100vw" }}>
+                    <div style={{ width: "100vw", marginBottom: "3vw" }}>
                         <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
                             <div>
                                 <img alt="bannerOne" src={bannerOne} onClick={() => window.open('https://www.notion.so/haulfree/HaulFree-6a3f1f7d342d493193ac59d4319c2100', '_blank')} style={{
@@ -646,6 +677,15 @@ export default function Home() {
                             </div>
                         </Slider>
                     </div>
+                    <MBannerContainer>
+                        <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
+                            <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" /></div>
+                        <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
+                            textDecorationLine: "none",
+                            WebkitAppearance: "none"
+                        }}>
+                            <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbannertwo} alt="광고배너" /></a>
+                    </MBannerContainer>
                     <div onClick={() => setModal(true)} style={{
                         display: "flex",
                         flexDirection: "row",
@@ -659,7 +699,7 @@ export default function Home() {
                             fontSize: 18,
                             color: "#202426",
                             marginRight: 4,
-                        }}>하울딜</div>
+                        }}>나눠서 결제하고 바로 경험해보세요 😎</div>
                         <MdKeyboardArrowRight
                             size={20}
                             color="rgba(5, 26, 26, 0.6)"
@@ -677,7 +717,7 @@ export default function Home() {
                         marginTop: 4,
                         marginLeft: "5%",
                         marginBottom: "4vw",
-                    }}>할인된 상품을 분할결제 하세요!</div>
+                    }}>체크카드, 계좌로 간편하게 분할결제해보세요!</div>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -692,8 +732,8 @@ export default function Home() {
                                 img={sampleone}
                                 title="애플"
                                 sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
-                                price="329,000"
-                                currentPrice="240,000"
+                                twoPrice="130,000"
+                                fourPrice="65,000"
                                 stock={0}
                                 sale={27}
                             />
@@ -704,22 +744,13 @@ export default function Home() {
                                 title="애플"
                                 sub="Apple iPad Air Sky Blue
                                 10.9형 iPad Air Wi-Fi 스카이 블루"
-                                price="779,000"
-                                currentPrice="739,000"
+                                twoPrice="360,750"
+                                fourPrice="180,375"
                                 stock={0}
                                 sale={5}
                             />
                         </div>
                     </div>
-                    <MBannerContainer>
-                        <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
-                            <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" /></div>
-                        <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
-                            textDecorationLine: "none",
-                            WebkitAppearance: "none"
-                        }}>
-                            <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbannertwo} alt="광고배너" /></a>
-                    </MBannerContainer>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -808,7 +839,7 @@ export default function Home() {
                                     opacity: 0.8,
                                     marginTop: 8,
                                     width: "42vw",
-                                    height: "8vw",
+                                    height: "7vw",
                                     overflow: "hidden",
                                     fontFamily: "NotoSansCJKkr"
                                 }}>{item.review_like}</div>
@@ -874,34 +905,33 @@ export default function Home() {
                             </a>
                         </div>
                     </div>
-
-                    <MBottomTag marginTop={100} marginBottom={0} />
-
-                    <div id="wishdeal_click" onClick={() => history.push("/wishdealdefault")} style={{
-                        width: "90vw",
-                        paddingTop: "3vw",
-                        paddingBottom: "3vw",
+                    <MHomeBottomTag marginTop={100} marginBottom={0} bottomRef={bottomRef} />
+                    <div id="wishdeal_click" ref={buttonRef} onClick={hide ? () => { } : () => history.push("/wishdealdefault")} style={{
+                        width: "90%",
+                        marginLeft: "5%",
+                        marginRight: "5%",
+                        paddingTop: "3%",
+                        paddingBottom: "3%",
                         textAlign: "center",
-                        backgroundColor: "#26c1f0",
-                        boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
+                        backgroundColor: hide ? "rgba(0, 0, 0, 0)" : "#26c1f0",
+                        boxShadow: hide ? "0 0px 0px 0 rgba(0, 0, 0, 0)" : "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
                         borderRadius: 6,
 
                         fontSize: 18,
                         fontWeight: "bold",
                         fontFamily: "NotoSansCJKkr",
-                        color: "#ffffff",
-                        cursor: "pointer",
+                        color: hide ? "rgba(0, 0, 0, 0)" : "#ffffff",
+                        cursor: hide ? "none" : "pointer",
                         position: "fixed",
-                        bottom: "12vw",
-                        alignSelf: "center",
-                    }}>위시딜 신청하기</div>
+                        bottom: 20,
+                    }}>{hide ? "" : "위시딜 신청하기"}</div>
                 </div>
             </Mobile>
         </div>
     )
 }
 
-export function TimeShop({ img, title, sub, price, sale, currentPrice, stock }) {
+export function TimeShop({ img, title, sub, twoPrice, fourPrice, stock }) {
     return (
         <div>
             <div style={{
@@ -980,33 +1010,60 @@ export function TimeShop({ img, title, sub, price, sale, currentPrice, stock }) 
                     marginBottom: 8,
                 }}>{sub}</div>
                 <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    fontWeight: "bold",
-                    color: "#f72b2b",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
                     marginBottom: 4,
+                    width: "100%"
                 }}>
-                    <span style={{
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 14,
                         color: "#202426",
-                        opacity: 0.6,
-                        textDecorationLine: "line-through",
-                        marginRight: 8,
-                        fontWeight: "normal"
-                    }}>{price}</span>
-                    {sale}%
+                    }}>2회 분할결제</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontWeight: "bold",
+                        color: "#202426",
+                        fontSize: 18,
+                    }}>
+                        <span style={{
+                            fontSize: 14,
+                            fontWeight: "normal",
+                        }}>월 </span>{twoPrice}원
+                    </div>
                 </div>
                 <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 21,
-                    fontWeight: "bold",
-                    color: "#202426"
-                }}>{currentPrice} 원</div>
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    width: "100%"
+                }}>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 14,
+                        color: "#202426",
+                    }}>4회 분할결제</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontWeight: "bold",
+                        color: "#202426",
+                        fontSize: 18,
+                    }}>
+                        <span style={{
+                            fontSize: 14,
+                            fontWeight: "normal",
+                        }}>월 </span>{fourPrice}원
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
 
-export function MTimeShop({ img, title, sub, price, sale, currentPrice, stock }) {
+export function MTimeShop({ img, title, sub, twoPrice, fourPrice, stock }) {
     return (
         <div>
             <div style={{
@@ -1084,27 +1141,54 @@ export function MTimeShop({ img, title, sub, price, sale, currentPrice, stock })
                     marginBottom: 6,
                 }}>{sub}</div>
                 <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    fontWeight: "bold",
-                    color: "#f72b2b",
-                    marginBottom: 4,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    marginBottom: "1vw",
+                    width: "100%"
                 }}>
-                    <span style={{
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 11,
                         color: "#202426",
-                        opacity: 0.6,
-                        textDecorationLine: "line-through",
-                        marginRight: 8,
-                        fontWeight: "normal"
-                    }}>{price}</span>
-                    {sale}%
+                    }}>2회 분할결제</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontWeight: "bold",
+                        color: "#202426",
+                        fontSize: 13,
+                    }}>
+                        <span style={{
+                            fontSize: 11,
+                            fontWeight: "normal",
+                        }}>월 </span>{twoPrice}원
+                    </div>
                 </div>
                 <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 18,
-                    fontWeight: "bold",
-                    color: "#202426"
-                }}>{currentPrice} 원</div>
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    width: "100%"
+                }}>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 11,
+                        color: "#202426",
+                    }}>4회 분할결제</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontWeight: "bold",
+                        color: "#202426",
+                        fontSize: 13,
+                    }}>
+                        <span style={{
+                            fontSize: 11,
+                            fontWeight: "normal",
+                        }}>월 </span>{fourPrice}원
+                    </div>
+                </div>
             </div>
         </div>
     )
