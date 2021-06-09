@@ -519,7 +519,7 @@ export default function TimeDealDetail({ location }) {
                         color: "#ffffff",
                         textAlign: "center"
                     }}>구매하기</div>
-                    {infoShow && query.product === "airpod" ? <div style={{
+                    {infoShow ? <div style={{
                         width: "100vw",
                         height: "100%",
                         backgroundColor: "rgba(5, 26, 26, 0.4)",
