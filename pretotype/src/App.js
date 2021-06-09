@@ -12,6 +12,7 @@ import WishDeal from './Wishdeal/WishDeal';
 import WishDealURL from './Wishdeal/WishDealURL';
 import WishDealDefault from './Wishdeal/WishDealDefault';
 import WishDealNotURL from "./Wishdeal/WishDealNotURL";
+import TimeDealDetail from './TimeDeal/TimeDealDetail';
 
 const advancedMatching = { em: 'jinsungone@haulfree.io' }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
 const options = {
@@ -44,6 +45,7 @@ function App() {
         <Route path="/wishdealdefault" component={WishDealDefault} />
         <Route path="/wishdealurl" component={WishDealURL} />
         <Route path="/wishdealnoturl" component={WishDealNotURL} />
+        <Route path="/timedeal/airpot" component={TimeDealDetail} />
       </Switch>
     </Router>
   );

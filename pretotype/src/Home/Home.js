@@ -334,7 +334,7 @@ export default function Home() {
                             alignItems: "flex-start",
                             justifyContent: "space-between"
                         }}>
-                            <div onClick={() => setModal(true)}>
+                            <div onClick={() => history.push('/timedeal/airpot')}>
                                 <TimeShop
                                     img={sampleone}
                                     title="애플"
@@ -727,7 +727,7 @@ export default function Home() {
                         alignItems: "flex-start",
                         justifyContent: "space-between"
                     }}>
-                        <div onClick={() => setModal(true)}>
+                        <div onClick={() => history.push('/timedeal/airpot')}>
                             <MTimeShop
                                 img={sampleone}
                                 title="애플"
