@@ -729,7 +729,7 @@ export default function Home() {
                         alignItems: "flex-start",
                         justifyContent: "space-between"
                     }}>
-                        <div onClick={() => history.push('/timedeal/airpot')} style={{ cursor: "pointer" }}>
+                        <div onClick={() => history.push('/timedeal?product=airpod')} style={{ cursor: "pointer" }}>
                             <MTimeShop
                                 id="display_click"
                                 img={sampleone}
@@ -741,7 +741,7 @@ export default function Home() {
                                 sale={27}
                             />
                         </div>
-                        <div onClick={() => setModal(true)}>
+                        <div onClick={() => history.push('/timedeal?product=ipad')} style={{ cursor: "pointer" }}>
                             <MTimeShop
                                 id=""
                                 img={sampletwo}
