@@ -54,11 +54,9 @@ export default function OrderSheet() {
                 setE(addre.phoneNumber)
                 setF(addre.claim)
             }
-            
         }catch(err){
             setBasicAddress(false)
         }
-        
     }
     useEffect(()=>{
         addressCheck()

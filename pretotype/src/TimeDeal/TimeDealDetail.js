@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import { BottomTag, Header, MBottomTag, MHeader } from "../Style";
+import { BottomTag, Header, MBottomTag, MHeader, MStandardButton } from "../Style";
 import { useHistory } from "react-router";
 import airpotone from "../images/airpotone.png"
 import airpottwo from "../images/airpottwo.png"
@@ -230,6 +230,23 @@ export default function TimeDealDetail() {
                         <InfoBox name="배송 및 반품, 교환안내" marginBottom={16} />
                         <InfoBox name="자주 묻는 질문" marginBottom={0} />
                         <BottomTag marginTop={100} marginBottom={0} />
+                        <div onClick={() => history.push("/ordersheet")} style={{
+                            position: "fixed",
+                            bottom: 40,
+                            width: 440,
+                            paddingTop: 16,
+                            paddingBottom: 16,
+                            borderRadius: 6,
+                            backgroundColor: "#26c1f0",
+                            alignSelf: "center",
+                            cursor: "pointer",
+
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr",
+                            color: "#ffffff",
+                            textAlign: "center"
+                        }}>구매하기</div>
                     </div>
                 </div>
             </Default>
@@ -434,6 +451,23 @@ export default function TimeDealDetail() {
                     <MInfoBox name="배송 및 반품, 교환안내" marginBottom={"4vw"} />
                     <MInfoBox name="자주 묻는 질문" marginBottom={0} />
                     <MBottomTag marginTop={"25vw"} marginBottom={0} />
+                    <div onClick={() => history.push("/ordersheet")} style={{
+                        position: "fixed",
+                        bottom: "10vw",
+                        width: "90vw",
+                        paddingTop: "4vw",
+                        paddingBottom: "4vw",
+                        backgroundColor: "#26c1f0",
+                        alignSelf: "center",
+                        cursor: "pointer",
+                        borderRadius: 6,
+
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#ffffff",
+                        textAlign: "center"
+                    }}>구매하기</div>
                 </div>
             </Mobile>
         </div>
