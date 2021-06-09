@@ -334,8 +334,9 @@ export default function Home() {
                             alignItems: "flex-start",
                             justifyContent: "space-between"
                         }}>
-                            <div id="display_click" onClick={() => history.push('/timedeal/airpot')} style={{ cursor: "pointer" }}>
+                            <div onClick={() => history.push('/timedeal/airpot')} style={{ cursor: "pointer" }}>
                                 <TimeShop
+                                    id="display_click"
                                     img={sampleone}
                                     title="애플"
                                     sub="Apple AirPods Pro 애플 에어팟 프로 무선충전형"
@@ -347,6 +348,7 @@ export default function Home() {
                             </div>
                             <div onClick={() => setModal(true)}>
                                 <TimeShop
+                                    id=""
                                     img={sampletwo}
                                     title="애플"
                                     sub="Apple iPad Air Sky Blue
@@ -727,8 +729,9 @@ export default function Home() {
                         alignItems: "flex-start",
                         justifyContent: "space-between"
                     }}>
-                        <div id="display_click" onClick={() => history.push('/timedeal/airpot')} style={{ cursor: "pointer" }}>
+                        <div onClick={() => history.push('/timedeal/airpot')} style={{ cursor: "pointer" }}>
                             <MTimeShop
+                                id="display_click"
                                 img={sampleone}
                                 title="애플"
                                 sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
@@ -740,6 +743,7 @@ export default function Home() {
                         </div>
                         <div onClick={() => setModal(true)}>
                             <MTimeShop
+                                id=""
                                 img={sampletwo}
                                 title="애플"
                                 sub="Apple iPad Air Sky Blue
@@ -931,10 +935,10 @@ export default function Home() {
     )
 }
 
-export function TimeShop({ img, title, sub, twoPrice, fourPrice, stock }) {
+export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
     return (
         <div>
-            <div style={{
+            <div id={id} style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
@@ -1063,10 +1067,10 @@ export function TimeShop({ img, title, sub, twoPrice, fourPrice, stock }) {
     )
 }
 
-export function MTimeShop({ img, title, sub, twoPrice, fourPrice, stock }) {
+export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
     return (
         <div>
-            <div style={{
+            <div id={id} style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",

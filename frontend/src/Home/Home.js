@@ -242,7 +242,7 @@ export default function Home() {
                             />
                         </div>
                         <div style={{
-                            fontSizeAdjust: 16,
+                            fontSize: 16,
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             color: "#202426",
