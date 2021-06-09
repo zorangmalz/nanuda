@@ -172,6 +172,7 @@ export default function Address() {
     useEffect(() => {
         //console.log(myparam, getUrl, imageUrl)
         check()
+        console.log(imageUrl)
     }, [inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber])
 
     async function send() {
@@ -185,7 +186,12 @@ export default function Address() {
             address_name: inputs.name,
             address_phone: inputs.phoneNumber,
         })
-        history.push("/ordersheet", { param: myparam, addInfo: inputs, url: getUrl, image: imageUrl })
+        if (imageUrl != "airpodone") {
+            console.log("아니에요")
+            history.push("/ordersheet", { param: myparam, addInfo: inputs, url: getUrl, image: imageUrl })
+        } else {
+            history.push("/ordersheet", { param: myparam, addInfo: inputs, url: "", image: "airpodone" })
+        }
     }
     return (
         <div>

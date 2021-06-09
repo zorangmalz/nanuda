@@ -2,9 +2,9 @@ import React, { useState, useReducer, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Default, Mobile } from "../App";
 import { Header, MHeader } from "../Style";
-import { BiPlusCircle } from "react-icons/bi";
 import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile/ProfileEdit";
-import {firestore} from "../firebase"
+import { firestore } from "../firebase"
+import airpotone from "../images/airpotone.png"
 
 function reducer(state, action) {
     switch (action.type) {
@@ -20,32 +20,32 @@ function reducer(state, action) {
 }
 
 export default function OrderSheet() {
-   
+
     const [number, dispatch] = useReducer(reducer, 2);
 
     //기본 배송지 존재 여부
-    const[a,setA]=useState("")
-    const[b,setB]=useState("")
-    const[c,setC]=useState("")
-    const[d,setD]=useState("")
-    const[e,setE]=useState("")
-    const[f,setF]=useState("")
+    const [a, setA] = useState("")
+    const [b, setB] = useState("")
+    const [c, setC] = useState("")
+    const [d, setD] = useState("")
+    const [e, setE] = useState("")
+    const [f, setF] = useState("")
     const item = {
         name: a,
         addressNum: b,
         address: c,
         addressDetail: d,
         phoneNumber: e,
-        request:f
+        request: f
     }
-    async function addressCheck(){
+    async function addressCheck() {
 
-        try{
-            
+        try {
+
             //console.log(addre)
-            if(addre==""){
+            if (addre == "") {
                 setBasicAddress(false)
-            }else{
+            } else {
                 setBasicAddress(true)
                 setA(addre.name)
                 setB(addre.addressNum)
@@ -54,15 +54,15 @@ export default function OrderSheet() {
                 setE(addre.phoneNumber)
                 setF(addre.claim)
             }
-        }catch(err){
+        } catch (err) {
             setBasicAddress(false)
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         addressCheck()
-    },[])
+    }, [])
     const [basicAddress, setBasicAddress] = useState(false)
-    
+
 
     //분할결제 기간 선택
     const onTwo = () => {
@@ -76,15 +76,15 @@ export default function OrderSheet() {
     };
 
     //결제 일정,가격 제공
-    const [oneDate,setOneDate]=useState("")
-    const [oneMoney,setOneMoney]=useState("")
-    const [twoDate,setTwoDate]=useState("")
-    const [twoMoney,setTwoMoney]=useState("")
-    const [threeDate,setThreeDate]=useState("")
-    const [threeMoney,setThreeMoney]=useState("")
-    const [fourDate,setFourDate]=useState("")
-    const [fourMoney,setFourMoney]=useState("")
-    
+    const [oneDate, setOneDate] = useState("")
+    const [oneMoney, setOneMoney] = useState("")
+    const [twoDate, setTwoDate] = useState("")
+    const [twoMoney, setTwoMoney] = useState("")
+    const [threeDate, setThreeDate] = useState("")
+    const [threeMoney, setThreeMoney] = useState("")
+    const [fourDate, setFourDate] = useState("")
+    const [fourMoney, setFourMoney] = useState("")
+
     const paymentDate = [
         {
             num: "1",
@@ -107,315 +107,352 @@ export default function OrderSheet() {
 
 
     //날짜 계산해보기!!
-    useEffect(()=>{
-        let today=new Date()
+    useEffect(() => {
+        let today = new Date()
         //console.log(today.getFullYear(),today.getMonth(),today.getDate())
-        if(today.getMonth()===11){
-            if(today.getDate()>=28){
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
+        if (today.getMonth() === 11) {
+            if (today.getDate() >= 28) {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
                 setTwoDate("1/28")
                 setThreeDate("2/28")
                 setFourDate("3/28")
-            }else{
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate("1/"+today.getDate())
-                setThreeDate("2/"+today.getDate())
-                setFourDate("3/"+today.getDate())
+            } else {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate("1/" + today.getDate())
+                setThreeDate("2/" + today.getDate())
+                setFourDate("3/" + today.getDate())
             }
-        }else if(today.getMonth()===10){
-            if(today.getDate()>=28){
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+1)+"/28")
+        } else if (today.getMonth() === 10) {
+            if (today.getDate() >= 28) {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/28")
                 setThreeDate("1/28")
                 setFourDate("2/28")
-            }else{
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+1)+"/"+today.getDate())
-                setThreeDate("1/"+today.getDate())
-                setFourDate("2/"+today.getDate())
+            } else {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/" + today.getDate())
+                setThreeDate("1/" + today.getDate())
+                setFourDate("2/" + today.getDate())
             }
-        }else if(today.getMonth()===9){
-            if(today.getDate()>=28){
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+1)+"/28")
-                setThreeDate(((today.getMonth()+1)+2)+"/28")
+        } else if (today.getMonth() === 9) {
+            if (today.getDate() >= 28) {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/28")
+                setThreeDate(((today.getMonth() + 1) + 2) + "/28")
                 setFourDate("1/28")
-            }else{
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+1)+"/"+today.getDate())
-                setThreeDate(((today.getMonth()+1)+2)+"/"+today.getDate())
-                setFourDate("1/"+today.getDate())
+            } else {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/" + today.getDate())
+                setThreeDate(((today.getMonth() + 1) + 2) + "/" + today.getDate())
+                setFourDate("1/" + today.getDate())
             }
-        }else{
-            if(today.getDate()>=28){
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+1)+"/28")
-                setThreeDate(((today.getMonth()+1)+2)+"/28")
-                setFourDate(((today.getMonth()+1)+3)+"/28")
-            }else{
-                setOneDate((today.getMonth()+1)+"/"+today.getDate())
-                setTwoDate(((today.getMonth()+1)+1)+"/"+today.getDate())
-                setThreeDate(((today.getMonth()+1)+2)+"/"+today.getDate())
-                setFourDate(((today.getMonth()+1)+3)+"/"+today.getDate())
+        } else {
+            if (today.getDate() >= 28) {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/28")
+                setThreeDate(((today.getMonth() + 1) + 2) + "/28")
+                setFourDate(((today.getMonth() + 1) + 3) + "/28")
+            } else {
+                setOneDate((today.getMonth() + 1) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/" + today.getDate())
+                setThreeDate(((today.getMonth() + 1) + 2) + "/" + today.getDate())
+                setFourDate(((today.getMonth() + 1) + 3) + "/" + today.getDate())
             }
         }
-    },[])
+    }, [])
 
     //파라미터 받기
     const location = useLocation()
     const myparam = location.state.param
-    const addre=location.state.addInfo
-    const getUrl=location.state.url
-    const imageUrl=location.state.image
+    const addre = location.state.addInfo
+    const getUrl = location.state.url
+    const imageUrl = location.state.image
     const [image, setImage] = useState("")
     const [itemDes, setItemDes] = useState("")
     const [orderDes, setOrderDes] = useState("")
     const [price, setPrice] = useState("")
-    const [ship,setShip]=useState(0)
+    const [ship, setShip] = useState(0)
 
     useEffect(() => {
-        //console.log(myparam,addre,getUrl,imageUrl)
-        try
-        {
-            //console.log("here?")
-            try{
-                //console.log(myparam[0].image.url)
-                setImage(myparam[0].image.url)
-                setItemDes(myparam.title)
-                
-            }catch(err){
-                setImage(imageUrl)
-                setItemDes(myparam.Fname)
-                //console.log("??")
-            }
-            
-        if(myparam[6]===2){
+        if (imageUrl == "airpodone") {
+            setImage(airpotone)
             setShip(0)
-        }else if(myparam[6]===3){
-            setShip(2500)
-        }else if(myparam[6]===4){
-            setShip(5000)
-        }else{
-            setShip(myparam[7])
-        }
-        
-        if (myparam[1] === 1) {
-            setOrderDes(myparam[3].ELcolor + "   " + myparam[3].ELetc)
-            setPrice(Number(myparam[3].ELprice)+Number(myparam[5]))
-            
-            if(number===2){
-                var res=parseInt(parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)/2)
-                var left=parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)%2
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
+            setItemDes("애플")
+            setOrderDes("Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형")
+            setPrice(260000)
+
+            if (number === 2) {
+                setOneMoney(130000)
+                setTwoMoney(130000)
                 setThreeMoney("-")
                 setFourMoney("-")
-                //console.log(res,left)
-            }else if(number===3){
-                var res=parseInt(parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)/3)
-                var left=parseInt((Number(myparam[3].ELprice)+Number(myparam[5])/100))%3
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
-                setFourMoney("-")
-            }else{
-                var res=parseInt(parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)/4)
-                var left=parseInt((Number(myparam[3].ELprice)+Number(myparam[5]))/100)%4
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
-                setFourMoney(res*100)
+            } else {
+                setOneMoney(65000)
+                setTwoMoney(65000)
+                setThreeMoney(65000)
+                setFourMoney(65000)
             }
-        } else if (myparam[1] === 2) {
-            setOrderDes(myparam[3].Fcolor + "   " + myparam[3].Fsize + "   " + myparam[3].Fetc)
-            setPrice(Number(myparam[3].Fprice)+Number(myparam[5]))
-            if(number===2){
-                var res=parseInt(parseInt((Number(myparam[3].Fprice)+Number(myparam[5]))/100)/2)
-                var left=parseInt((Number(myparam[3].Fprice)+Number(myparam[5])/100))%2
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney("-")
-                setFourMoney("-")
-            }else if(number===3){
-                var res=parseInt(parseInt((Number(myparam[3].Fprice)+Number(myparam[5]))/100)/3)
-                var left=parseInt((Number(myparam[3].Fprice)+Number(myparam[5])/100))%3
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
-                setFourMoney("-")
-            }else{
-                var res=parseInt(parseInt((Number(myparam[3].Fprice)+Number(myparam[5]))/100)/4)
-                var left=parseInt((Number(myparam[3].Fprice)+Number(myparam[5]))/100)%4
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
-                setFourMoney(res*100)
-            }
-        } else {
-            setOrderDes(myparam[3].Eetc)
-            setPrice(Number(myparam[3].Eprice)+Number(myparam[5]))
-            if(number===2){
-                var res=parseInt(parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)/2)
-                var left=parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)%2
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney("-")
-                setFourMoney("-")
-            }else if(number===3){
-                var res=parseInt(parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)/3)
-                var left=parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)%3
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
-                setFourMoney("-")
-            }else{
-                var res=parseInt(parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)/4)
-                var left=parseInt((Number(myparam[3].Eprice)+Number(myparam[5]))/100)%4
-                setOneMoney(res*100+left*100)
-                setTwoMoney(res*100)
-                setThreeMoney(res*100)
-                setFourMoney(res*100)
-            }
-        }
-        } catch(err){
-            console.log(err)
-            //console.log(myparam,addre)
-            try{
-                setImage(myparam.myparam[0].image.url)
-                setItemDes(myparam.myparam[0].title)
-            }catch(err){
-                //console.log(imageUrl)
-                setImage(myparam.image[0])
-                setItemDes(myparam.myparam[0].Fname)
-            }
-            
-            
-            if(myparam.myparam[6]===2){
-                setShip(0)
-            }else if(myparam.myparam[6]===3){
-                setShip(2500)
-            }else if(myparam.myparam[6]===4){
-                setShip(5000)
-            }else{
-                setShip(myparam.myparam[7])
-            }
-            if (myparam.myparam[1] === 1) {
-                setOrderDes(myparam.myparam[3].ELcolor + "   " + myparam.myparam[3].ELetc)
-                setPrice(Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))
-                
-                if(number===2){
-                    var res=parseInt(parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)/2)
-                    var left=parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)%2
-                    setOneMoney(res*100+left*100)
-                    setTwoMoney(res*100)
-                    setThreeMoney("-")
-                    setFourMoney("-")
-                    //console.log(res,left)
-                }else if(number===3){
-                    var res=parseInt(parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)/3)
-                    var left=parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)%3
-                    setOneMoney(res*100+left*100)
-                    setTwoMoney(res*100)
-                    setThreeMoney(res*100)
-                    setFourMoney("-")
-                }else{
-                    var res=parseInt(parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)/4)
-                    var left=parseInt((Number(myparam.myparam[3].ELprice)+Number(myparam.myparam[5]))/100)%4
-                    setOneMoney(res*100+left*100)
-                    setTwoMoney(res*100)
-                    setThreeMoney(res*100)
-                    setFourMoney(res*100)
+        } else if (imageUrl != "airpodone") {
+            //console.log(myparam,addre,getUrl,imageUrl)
+            try {
+                //console.log("here?")
+                try {
+                    //console.log(myparam[0].image.url)
+                    setImage(myparam[0].image.url)
+                    setItemDes(myparam.title)
+
+                } catch (err) {
+                    setImage(imageUrl)
+                    setItemDes(myparam.Fname)
+                    //console.log("??")
                 }
-            } else if (myparam.myparam[1] === 2) {
-                setOrderDes(myparam.myparam[3].Fcolor + "   " + myparam.myparam[3].Fsize + "   " + myparam.myparam[3].Fetc)
-                setPrice(Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))
-                if(number===2){
-                    var res=parseInt(parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)/2)
-                    var left=parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)%2
-                    setOneMoney(res*100+left*100)
-                    setTwoMoney(res*100)
-                    setThreeMoney("-")
-                    setFourMoney("-")
-                }else if(number===3){
-                    var res=parseInt(parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)/3)
-                    var left=parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)%3
-                    setOneMoney(res*100+left*100)
-                    setTwoMoney(res*100)
-                    setThreeMoney(res*100)
-                    setFourMoney("-")
-                }else{
-                    var res=parseInt(parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)/4)
-                    var left=parseInt((Number(myparam.myparam[3].Fprice)+Number(myparam.myparam[5]))/100)%4
-                    setOneMoney(res*100+left*100)
-                    setTwoMoney(res*100)
-                    setThreeMoney(res*100)
-                    setFourMoney(res*100)
+
+                if (myparam[6] === 2) {
+                    setShip(0)
+                } else if (myparam[6] === 3) {
+                    setShip(2500)
+                } else if (myparam[6] === 4) {
+                    setShip(5000)
+                } else {
+                    setShip(myparam[7])
+                }
+
+                if (myparam[1] === 1) {
+                    setOrderDes(myparam[3].ELcolor + "   " + myparam[3].ELetc)
+                    setPrice(Number(myparam[3].ELprice) + Number(myparam[5]))
+
+                    if (number === 2) {
+                        var res = parseInt(parseInt((Number(myparam[3].ELprice) + Number(myparam[5])) / 100) / 2)
+                        var left = parseInt((Number(myparam[3].ELprice) + Number(myparam[5])) / 100) % 2
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney("-")
+                        setFourMoney("-")
+                        //console.log(res,left)
+                    } else if (number === 3) {
+                        var res = parseInt(parseInt((Number(myparam[3].ELprice) + Number(myparam[5])) / 100) / 3)
+                        var left = parseInt((Number(myparam[3].ELprice) + Number(myparam[5]) / 100)) % 3
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney("-")
+                    } else {
+                        var res = parseInt(parseInt((Number(myparam[3].ELprice) + Number(myparam[5])) / 100) / 4)
+                        var left = parseInt((Number(myparam[3].ELprice) + Number(myparam[5])) / 100) % 4
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney(res * 100)
+                    }
+                } else if (myparam[1] === 2) {
+                    setOrderDes(myparam[3].Fcolor + "   " + myparam[3].Fsize + "   " + myparam[3].Fetc)
+                    setPrice(Number(myparam[3].Fprice) + Number(myparam[5]))
+                    if (number === 2) {
+                        var res = parseInt(parseInt((Number(myparam[3].Fprice) + Number(myparam[5])) / 100) / 2)
+                        var left = parseInt((Number(myparam[3].Fprice) + Number(myparam[5]) / 100)) % 2
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney("-")
+                        setFourMoney("-")
+                    } else if (number === 3) {
+                        var res = parseInt(parseInt((Number(myparam[3].Fprice) + Number(myparam[5])) / 100) / 3)
+                        var left = parseInt((Number(myparam[3].Fprice) + Number(myparam[5]) / 100)) % 3
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney("-")
+                    } else {
+                        var res = parseInt(parseInt((Number(myparam[3].Fprice) + Number(myparam[5])) / 100) / 4)
+                        var left = parseInt((Number(myparam[3].Fprice) + Number(myparam[5])) / 100) % 4
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney(res * 100)
+                    }
+                } else {
+                    setOrderDes(myparam[3].Eetc)
+                    setPrice(Number(myparam[3].Eprice) + Number(myparam[5]))
+                    if (number === 2) {
+                        var res = parseInt(parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) / 2)
+                        var left = parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) % 2
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney("-")
+                        setFourMoney("-")
+                    } else if (number === 3) {
+                        var res = parseInt(parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) / 3)
+                        var left = parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) % 3
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney("-")
+                    } else {
+                        var res = parseInt(parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) / 4)
+                        var left = parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) % 4
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney(res * 100)
+                    }
+                }
+            } catch (err) {
+                console.log(err)
+                //console.log(myparam,addre)
+                try {
+                    setImage(myparam.myparam[0].image.url)
+                    setItemDes(myparam.myparam[0].title)
+                } catch (err) {
+                    //console.log(imageUrl)
+                    setImage(myparam.image[0])
+                    setItemDes(myparam.myparam[0].Fname)
+                }
+
+
+                if (myparam.myparam[6] === 2) {
+                    setShip(0)
+                } else if (myparam.myparam[6] === 3) {
+                    setShip(2500)
+                } else if (myparam.myparam[6] === 4) {
+                    setShip(5000)
+                } else {
+                    setShip(myparam.myparam[7])
+                }
+                if (myparam.myparam[1] === 1) {
+                    setOrderDes(myparam.myparam[3].ELcolor + "   " + myparam.myparam[3].ELetc)
+                    setPrice(Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5]))
+
+                    if (number === 2) {
+                        var res = parseInt(parseInt((Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5])) / 100) / 2)
+                        var left = parseInt((Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5])) / 100) % 2
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney("-")
+                        setFourMoney("-")
+                        //console.log(res,left)
+                    } else if (number === 3) {
+                        var res = parseInt(parseInt((Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5])) / 100) / 3)
+                        var left = parseInt((Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5])) / 100) % 3
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney("-")
+                    } else {
+                        var res = parseInt(parseInt((Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5])) / 100) / 4)
+                        var left = parseInt((Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5])) / 100) % 4
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney(res * 100)
+                    }
+                } else if (myparam.myparam[1] === 2) {
+                    setOrderDes(myparam.myparam[3].Fcolor + "   " + myparam.myparam[3].Fsize + "   " + myparam.myparam[3].Fetc)
+                    setPrice(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
+                    if (number === 2) {
+                        var res = parseInt(parseInt((Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5])) / 100) / 2)
+                        var left = parseInt((Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5])) / 100) % 2
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney("-")
+                        setFourMoney("-")
+                    } else if (number === 3) {
+                        var res = parseInt(parseInt((Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5])) / 100) / 3)
+                        var left = parseInt((Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5])) / 100) % 3
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney("-")
+                    } else {
+                        var res = parseInt(parseInt((Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5])) / 100) / 4)
+                        var left = parseInt((Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5])) / 100) % 4
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney(res * 100)
+                    }
+                } else {
+                    setOrderDes(myparam.myparam[3].Eetc)
+                    setPrice(Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5]))
+                    if (number === 2) {
+                        var res = parseInt(parseInt((Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])) / 100) / 2)
+                        var left = parseInt((Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])) / 100) % 2
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney("-")
+                        setFourMoney("-")
+                    } else if (number === 3) {
+                        var res = parseInt(parseInt((Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])) / 100) / 3)
+                        var left = parseInt((Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])) / 100) % 3
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney("-")
+                    } else {
+                        var res = parseInt(parseInt((Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])) / 100) / 4)
+                        var left = parseInt((Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])) / 100) % 4
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney(res * 100)
+                    }
+                }
+            }
+        }
+    }, [number, imageUrl])
+    async function order() {
+        if (basicAddress && payment) {
+            // history.push("paymentsuccess",{myparam:myparam})'
+            if (imageUrl != "airpodone") {
+                try {
+                    firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
+                        myparam: myparam,
+                        ship: item,
+                        option: number,
+                        schedule: paymentDate,
+                        url: getUrl,
+                        image: myparam.image[0],
+                        orderOrNot: false,
+                        payOrNot: false,
+                        secondOrNot: false
+                    })
+                    history.push("paymentsuccess", { myparam: myparam, ship: item, image: imageUrl })
+                } catch (err) {
+                    firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
+                        myparam: myparam,
+                        ship: item,
+                        option: number,
+                        schedule: paymentDate,
+                        url: getUrl,
+                        image: "",
+                        orderOrNot: false,
+                        payOrNot: false,
+                        secondOrNot: false,
+                        realPrice: (Number(oneMoney) + Number(ship) - 10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    })
+                    history.push("paymentsuccess", { myparam: myparam, ship: item, image: imageUrl })
                 }
             } else {
-                setOrderDes(myparam.myparam[3].Eetc)
-                setPrice(Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))
-                if(number===2){
-                    var res=parseInt(parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)/2)
-                    var left=parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)%2
-                    setOneMoney(res*100+left*100)
-                    setTwoMoney(res*100)
-                    setThreeMoney("-")
-                    setFourMoney("-")
-                }else if(number===3){
-                    var res=parseInt(parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)/3)
-                    var left=parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)%3
-                    setOneMoney(res*100+left*100)
-                    setTwoMoney(res*100)
-                    setThreeMoney(res*100)
-                    setFourMoney("-")
-                }else{
-                    var res=parseInt(parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)/4)
-                    var left=parseInt((Number(myparam.myparam[3].Eprice)+Number(myparam.myparam[5]))/100)%4
-                    setOneMoney(res*100+left*100)
-                    setTwoMoney(res*100)
-                    setThreeMoney(res*100)
-                    setFourMoney(res*100)
-                }
-            }
-    }
-
-    }, [number])
-    async function order(){
-        if(basicAddress&&payment){
-            // history.push("paymentsuccess",{myparam:myparam})'
-            try{
                 firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
-                    myparam:myparam,
-                    ship:item,
-                    option:number,
-                    schedule:paymentDate,
-                    url:getUrl,
-                    image:myparam.image[0],
-                    orderOrNot:false,
-                    payOrNot:false,
-                    secondOrNot:false
+                    myparam: ["airpod", 4, "", "white", 1, "", 4, ""],
+                    ship: item,
+                    option: number,
+                    schedule: paymentDate,
+                    url: "",
+                    image: "",
+                    orderOrNot: false,
+                    payOrNot: false,
+                    secondOrNot: false,
+                    realPrice: (Number(oneMoney) + Number(ship) - 10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                 })
-                history.push("paymentsuccess",{myparam:myparam,ship:item,image:imageUrl})
-            }catch(err){
-                firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
-                    myparam:myparam,
-                    ship:item,
-                    option:number,
-                    schedule:paymentDate,
-                    url:getUrl,
-                    image:"",
-                    orderOrNot:false,
-                    payOrNot:false,
-                    secondOrNot:false,
-                    realPrice:(Number(oneMoney)+Number(ship)-10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                })
-                history.push("paymentsuccess",{myparam:myparam,ship:item,image:imageUrl})
+                history.push("paymentsuccess", { myparam: ["airpod", 4, "", "white", 1, "", 4, ""], ship: item, image: "airpodone" })
             }
-          
         }
     }
-    function fix(){
-        history.push("address",{param:myparam, url:getUrl,image:imageUrl})
+    function fix() {
+        if (imageUrl != "airpodone") {
+            history.push("address", { param: myparam, url: getUrl, image: imageUrl })
+        } else {
+            history.push("address", { param: ["airpod", 4, "", "white", 1, "", 4, ""], url: "", image: "airpodone" })
+        }
     }
 
     return (
@@ -472,9 +509,10 @@ export default function OrderSheet() {
                                 <div style={{
                                     fontSize: 16,
                                     color: "#202426",
-                                    fontFamily: "AvenirNext"
+                                    fontFamily: "AvenirNext",
+                                    fontWeight: "bold"
                                 }}>{itemDes} <br />
-                                    {orderDes}</div>
+                                <span style={{ fontWeight: "normal" }}>{orderDes}</span></div>
                                 <div style={{
                                     marginTop: 8,
                                     fontSize: 18,
@@ -518,10 +556,10 @@ export default function OrderSheet() {
                         {basicAddress ?
                             <BasicAddress item={item} />
                             :
-                            <NoAddress myparam={myparam} url={getUrl} image={imageUrl} />
+                            <NoAddress myparam={imageUrl != "airpodone" ? myparam : ["airpod", 4, "", "white", 1, "", 4, ""]} url={imageUrl != "airpodone" ? getUrl : ""} image={imageUrl != "airpodone" ? imageUrl : "airpodone"} />
                         }
-                       
-                        
+
+
                         <div style={{
                             fontSize: 18,
                             marginLeft: 20,
@@ -554,7 +592,7 @@ export default function OrderSheet() {
                                 textAlign: "center",
                                 fontFamily: "NotoSansCJKkr"
                             }}>2회</div>
-                            
+
                         </div>
                         <div style={{
                             padding: 16,
@@ -620,7 +658,7 @@ export default function OrderSheet() {
                         }}>
                             주문서를 접수한 이후 카카오톡을 통해 입금 및 주문 확인이 진행됩니다.  <br />
                             결제일로부터 한달 뒤 두번째 결제 금액을 입력해주세요!<br />
-                            
+
                         </div>
                         <div style={{
                             height: 1,
@@ -725,7 +763,7 @@ export default function OrderSheet() {
                                     color: "#f72b2b",
                                     fontFamily: "NotoSansCJKkr"
                                 }}>첫만남 기념 1만원 무조건 할인!</div>
-                            
+
                             </div>
                         </div>
                         <div style={{
@@ -739,7 +777,7 @@ export default function OrderSheet() {
                             이번 달은
                                 <span style={{
                                 color: "#26c1f0"
-                            }}>  {(Number(oneMoney)+Number(ship)-10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</span>
+                            }}>  {(Number(oneMoney) + Number(ship) - 10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</span>
                                  만 결제하세요.
                             </div>
                         <div style={{
@@ -749,29 +787,29 @@ export default function OrderSheet() {
                             marginTop: 32,
                             marginBottom: 16,
                         }} />
-                        <a  target="_blank"  href={"https://www.notion.so/ydot/77771c4f099d457d99366bdc0e0f2e2d"}>
-                        <div style={{
-                            fontSize: 14,
-                            opacity: 0.6,
-                            color: "#202426",
-                            textDecorationLine: "underline",
-                            marginBottom: 8,
-                            marginLeft: 20,
-                            fontFamily: "NotoSansCJKkr",
-                            cursor: "pointer"
-                        }}>분할 결제 약관</div>
+                        <a target="_blank" href={"https://www.notion.so/ydot/77771c4f099d457d99366bdc0e0f2e2d"}>
+                            <div style={{
+                                fontSize: 14,
+                                opacity: 0.6,
+                                color: "#202426",
+                                textDecorationLine: "underline",
+                                marginBottom: 8,
+                                marginLeft: 20,
+                                fontFamily: "NotoSansCJKkr",
+                                cursor: "pointer"
+                            }}>분할 결제 약관</div>
                         </a>
-                        <a  target="_blank"  href={"https://www.notion.so/ydot/2fe90eeb1865441fb0a741cc9a860b0a"}>
-                        <div style={{
-                            fontSize: 14,
-                            opacity: 0.6,
-                            color: "#202426",
-                            textDecorationLine: "underline",
-                            marginBottom: 8,
-                            marginLeft: 20,
-                            fontFamily: "NotoSansCJKkr",
-                            cursor: "pointer"
-                        }}>하울프리 서비스 이용약관</div>
+                        <a target="_blank" href={"https://www.notion.so/ydot/2fe90eeb1865441fb0a741cc9a860b0a"}>
+                            <div style={{
+                                fontSize: 14,
+                                opacity: 0.6,
+                                color: "#202426",
+                                textDecorationLine: "underline",
+                                marginBottom: 8,
+                                marginLeft: 20,
+                                fontFamily: "NotoSansCJKkr",
+                                cursor: "pointer"
+                            }}>하울프리 서비스 이용약관</div>
                         </a>
                         <div style={{
                             width: 440,
@@ -797,44 +835,44 @@ export default function OrderSheet() {
                             fontFamily: "NotoSansCJKkr",
                             textAlign: "center",
                         }}>위 주문 내용을 확인 하였으며, 본인의 결제와 약관에 동의합니다.</div>
-                        {basicAddress? 
-                        <div id="payment_click" onClick={order} style={{
-                            alignSelf: "center",
-                            width: 440,
-                            paddingTop: 15,
-                            paddingBottom: 15,
-                            backgroundColor: "#26c1f0",
-                            borderRadius: 6,
-                            marginBottom: 120,
+                        {basicAddress ?
+                            <div id="payment_click" onClick={order} style={{
+                                alignSelf: "center",
+                                width: 440,
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                backgroundColor: "#26c1f0",
+                                borderRadius: 6,
+                                marginBottom: 120,
 
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            color: "#ffffff",
-                            textAlign: "center",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                color: "#ffffff",
+                                textAlign: "center",
 
-                            cursor: "pointer",
-                            fontFamily: "NotoSansCJKkr"
-                        }}>주문 신청하기</div>
-                        : 
-                        <div id="payment_click" style={{
-                            alignSelf: "center",
-                            width: 440,
-                            paddingTop: 15,
-                            paddingBottom: 15,
-                            backgroundColor: "#dbdbdb",
-                            borderRadius: 6,
-                            marginBottom: 120,
+                                cursor: "pointer",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>주문 신청하기</div>
+                            :
+                            <div id="payment_click" style={{
+                                alignSelf: "center",
+                                width: 440,
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                backgroundColor: "#dbdbdb",
+                                borderRadius: 6,
+                                marginBottom: 120,
 
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            color: "#ffffff",
-                            textAlign: "center",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                color: "#ffffff",
+                                textAlign: "center",
 
-                            cursor: "pointer",
-                            fontFamily: "NotoSansCJKkr"
-                        }}>주문 신청하기</div>
+                                cursor: "pointer",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>주문 신청하기</div>
                         }
-                        
+
                     </div>
                 </div>
             </Default>
@@ -864,34 +902,35 @@ export default function OrderSheet() {
 
                         marginLeft: "5%"
                     }}>
-                          <img src={image} style={{
-                                width: "25vw",
-                                heigh: "25vw",
-                                borderRadius: 6,
-                                marginRight: "4vw",
-                                objectFit: "cover"
-                            }}></img>
+                        <img src={image} style={{
+                            width: "25vw",
+                            heigh: "25vw",
+                            borderRadius: 6,
+                            marginRight: "4vw",
+                            objectFit: "cover"
+                        }}></img>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "flex-start",
+                            justifyContent: "flex-start"
+                        }}>
                             <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "flex-start",
-                                justifyContent: "flex-start"
-                            }}>
-                                <div style={{
-                                    fontSize: 14,
-                                    color: "#202426",
-                                    fontFamily: "AvenirNext"
-                                }}>{itemDes} <br />
-                                    {orderDes}</div>
-                                <div style={{
-                                    marginTop: 8,
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    color: "#051a1a",
-                                    fontFamily: "NotoSansCJKkr"
-                                }}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</div>
-                            </div>
-                                            </div>
+                                fontSize: 14,
+                                color: "#202426",
+                                fontFamily: "AvenirNext",
+                                fontWeight: "bold"
+                            }}>{itemDes} <br />
+                                <span style={{ fontWeight: "normal" }}>{orderDes}</span></div>
+                            <div style={{
+                                marginTop: 8,
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                color: "#051a1a",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</div>
+                        </div>
+                    </div>
                     <div style={{
                         height: 1,
                         width: "100%",
@@ -909,9 +948,9 @@ export default function OrderSheet() {
                     {basicAddress ?
                         <MBasicAddress item={item} />
                         :
-                        <MNoAddress myparam={myparam} url={getUrl} image={imageUrl}/>
+                        <MNoAddress myparam={imageUrl != "airpodone" ? myparam : ["airpod", 4, "", "white", 1, "", 4, ""]} url={imageUrl != "airpodone" ? getUrl : ""} image={imageUrl != "airpodone" ? imageUrl : "airpodone"} />
                     }
-                    
+
                     <div style={{
                         fontSize: 16,
                         marginLeft: "5%",
@@ -944,7 +983,7 @@ export default function OrderSheet() {
                             textAlign: "center",
                             fontFamily: "NotoSansCJKkr"
                         }}>2회</div>
-                       
+
                     </div>
                     <div style={{
                         padding: "4%",
@@ -1010,7 +1049,7 @@ export default function OrderSheet() {
                     }}>
                         주문서를 접수한 이후 카카오톡을 통해 입금 및 주문 확인이 진행됩니다.  <br />
                         분할결제 한도에 따라 분할 결제 금액이 바뀔 수 있습니다. <br />
-                       
+
                     </div>
                     <div style={{
                         height: 1,
@@ -1114,7 +1153,7 @@ export default function OrderSheet() {
                                 color: "#f72b2b",
                                 fontFamily: "NotoSansCJKkr"
                             }}>첫만남 기념 1만원 무조건 할인!</div>
-                    
+
                         </div>
                     </div>
                     <div style={{
@@ -1129,7 +1168,7 @@ export default function OrderSheet() {
                         이번달은
                                 <span style={{
                             color: "#26c1f0"
-                        }}> {(Number(oneMoney)+Number(ship)-10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 </span>
+                        }}> {(Number(oneMoney) + Number(ship) - 10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 </span>
                                  만 결제하세요.
                             </div>
                     <div style={{
@@ -1139,27 +1178,27 @@ export default function OrderSheet() {
                         marginTop: "8vw",
                         marginBottom: "4vw",
                     }} />
-                    <a  target="_blank"  href={"https://www.notion.so/ydot/77771c4f099d457d99366bdc0e0f2e2d"}>
-                    <div style={{
-                        fontSize: 12,
-                        opacity: 0.6,
-                        color: "#202426",
-                        textDecorationLine: "underline",
-                        marginBottom: 8,
-                        marginLeft: "5%",
-                        fontFamily: "NotoSansCJKkr"
-                    }}>분할 결제 약관</div>
+                    <a target="_blank" href={"https://www.notion.so/ydot/77771c4f099d457d99366bdc0e0f2e2d"}>
+                        <div style={{
+                            fontSize: 12,
+                            opacity: 0.6,
+                            color: "#202426",
+                            textDecorationLine: "underline",
+                            marginBottom: 8,
+                            marginLeft: "5%",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>분할 결제 약관</div>
                     </a>
-                    <a  target="_blank"  href={"https://www.notion.so/ydot/2fe90eeb1865441fb0a741cc9a860b0a"}>
-                    <div style={{
-                        fontSize: 12,
-                        opacity: 0.6,
-                        color: "#202426",
-                        textDecorationLine: "underline",
-                        marginBottom: 8,
-                        marginLeft: "5%",
-                        fontFamily: "NotoSansCJKkr"
-                    }}>하울프리 서비스 이용약관</div>
+                    <a target="_blank" href={"https://www.notion.so/ydot/2fe90eeb1865441fb0a741cc9a860b0a"}>
+                        <div style={{
+                            fontSize: 12,
+                            opacity: 0.6,
+                            color: "#202426",
+                            textDecorationLine: "underline",
+                            marginBottom: 8,
+                            marginLeft: "5%",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>하울프리 서비스 이용약관</div>
                     </a>
                     <div style={{
                         width: "90%",
@@ -1186,44 +1225,44 @@ export default function OrderSheet() {
                         fontFamily: "NotoSansCJKkr",
                         textAlign: "center",
                     }}>위 주문 내용을 확인 하였으며, 본인의 결제와 약관에 동의합니다.</div>
-                    {basicAddress? 
-                    <div id="payment_click" onClick={order} style={{
-                        alignSelf: "center",
-                        width: "90vw",
-                        paddingTop: "4vw",
-                        paddingBottom: "4vw",
-                        backgroundColor: "#26c1f0",
-                        borderRadius: 6,
-                        marginBottom: 80,
+                    {basicAddress ?
+                        <div id="payment_click" onClick={order} style={{
+                            alignSelf: "center",
+                            width: "90vw",
+                            paddingTop: "4vw",
+                            paddingBottom: "4vw",
+                            backgroundColor: "#26c1f0",
+                            borderRadius: 6,
+                            marginBottom: 80,
 
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        color: "#ffffff",
-                        textAlign: "center",
+                            fontSize: 16,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            textAlign: "center",
 
-                        cursor: "pointer",
-                        fontFamily: "NotoSansCJKkr"
-                    }}>주문 신청하기</div>
-                    : 
-                    <div id="payment_click" style={{
-                        alignSelf: "center",
-                        width: "90vw",
-                        paddingTop: "4vw",
-                        paddingBottom: "4vw",
-                        backgroundColor: "#dbdbdb",
-                        borderRadius: 6,
-                        marginBottom: 80,
+                            cursor: "pointer",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>주문 신청하기</div>
+                        :
+                        <div id="payment_click" style={{
+                            alignSelf: "center",
+                            width: "90vw",
+                            paddingTop: "4vw",
+                            paddingBottom: "4vw",
+                            backgroundColor: "#dbdbdb",
+                            borderRadius: 6,
+                            marginBottom: 80,
 
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        color: "#ffffff",
-                        textAlign: "center",
+                            fontSize: 16,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            textAlign: "center",
 
-                        cursor: "pointer",
-                        fontFamily: "NotoSansCJKkr"
-                    }}>주문 신청하기</div>
+                            cursor: "pointer",
+                            fontFamily: "NotoSansCJKkr"
+                        }}>주문 신청하기</div>
                     }
-                    
+
                 </div>
             </Mobile>
         </div>

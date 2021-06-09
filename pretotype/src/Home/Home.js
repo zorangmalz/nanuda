@@ -334,7 +334,7 @@ export default function Home() {
                             alignItems: "flex-start",
                             justifyContent: "space-between"
                         }}>
-                            <div onClick={() => history.push('/timedeal/airpot')}>
+                            <div id="display_click" onClick={() => history.push('/timedeal/airpot')} style={{ cursor: "pointer" }}>
                                 <TimeShop
                                     img={sampleone}
                                     title="애플"
@@ -429,7 +429,7 @@ export default function Home() {
                                         justifyContent: "center",
                                         alignItems: "center"
                                     }}>
-                                        <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                        <img alt="리뷰사진" src={item.review_image} style={{
                                             width: 210,
                                             height: 160,
                                             borderRadius: 6,
@@ -727,7 +727,7 @@ export default function Home() {
                         alignItems: "flex-start",
                         justifyContent: "space-between"
                     }}>
-                        <div onClick={() => history.push('/timedeal/airpot')}>
+                        <div id="display_click" onClick={() => history.push('/timedeal/airpot')} style={{ cursor: "pointer" }}>
                             <MTimeShop
                                 img={sampleone}
                                 title="애플"

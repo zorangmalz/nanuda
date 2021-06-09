@@ -170,7 +170,7 @@ export default function TimeDealDetail() {
                                             fontSize: 14,
                                             fontWeight: "bold",
                                             color: "#202426",
-                                        }}>나누다 홀릭</div>
+                                        }}>하울 홀릭</div>
                                     </div>
                                     <div style={{
                                         display: "flex",
@@ -230,7 +230,7 @@ export default function TimeDealDetail() {
                         <InfoBox name="배송 및 반품, 교환안내" marginBottom={16} />
                         <InfoBox name="자주 묻는 질문" marginBottom={0} />
                         <BottomTag marginTop={100} marginBottom={0} />
-                        <div onClick={() => history.push("/ordersheet")} style={{
+                        <div id="hauldeal_click" onClick={() => history.push("/ordersheet", { param: ["airpod", 4, "", "white", 1, "", 4, ""], addInfo: "", url: "", image: "airpodone" })} style={{
                             position: "fixed",
                             bottom: 40,
                             width: 440,
@@ -391,7 +391,7 @@ export default function TimeDealDetail() {
                                         fontSize: 12,
                                         fontWeight: "bold",
                                         color: "#202426",
-                                    }}>나누다 홀릭</div>
+                                    }}>하울 홀릭</div>
                                 </div>
                                 <div style={{
                                     display: "flex",
@@ -451,7 +451,7 @@ export default function TimeDealDetail() {
                     <MInfoBox name="배송 및 반품, 교환안내" marginBottom={"4vw"} />
                     <MInfoBox name="자주 묻는 질문" marginBottom={0} />
                     <MBottomTag marginTop={"25vw"} marginBottom={0} />
-                    <div onClick={() => history.push("/ordersheet")} style={{
+                    <div id="hauldeal_click" onClick={() => history.push("/ordersheet", { param: ["", 4, "", "white", 1, "", 4, ""], addInfo: "", url: "", image: "airpodone" })} style={{
                         position: "fixed",
                         bottom: "10vw",
                         width: "90vw",

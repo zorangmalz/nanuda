@@ -4,7 +4,7 @@ import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../S
 import { AiOutlineCheck } from "react-icons/ai";
 import { MOrderDetail, OrderDetail } from "./PaymentFail";
 import { useHistory, useLocation } from "react-router";
-
+import airpotone from "../images/airpotone.png"
 
 export default function PaymentSuccess() {
     //WishDeal인지 여부
@@ -18,22 +18,27 @@ export default function PaymentSuccess() {
     const imageUrl = location.state.image
     useEffect(() => {
         //console.log(myparam, ship)
-        try {
-            setImg(myparam.myparam[0].image.url)
-            if(myparam.myparam[1]===1){
-                setPrices(Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5]))
-            }else if (myparam.mypara[1]===2){
+        if (imageUrl != "airpodone") {
+            try {
+                setImg(myparam.myparam[0].image.url)
+                if (myparam.myparam[1] === 1) {
+                    setPrices(Number(myparam.myparam[3].ELprice) + Number(myparam.myparam[5]))
+                } else if (myparam.mypara[1] === 2) {
+                    setPrices(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
+                } else {
+                    setPrices(Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5]))
+                }
+
+            } catch (err) {
+                console.log(err)
+                //console.log(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
+                //console.log(Number(myparam.myparam[3].Fprice), Number(myparam.myparam[5]))
+                setImg(myparam.image[0])
                 setPrices(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
-            }else{
-                setPrices(Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5]))
             }
-            
-        } catch (err) {
-            console.log(err)
-            //console.log(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
-            //console.log(Number(myparam.myparam[3].Fprice), Number(myparam.myparam[5]))
-            setImg(myparam.image[0])
-            setPrices(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
+        } else {
+            setImg(airpotone)
+            setPrices(125000)
         }
     }, [])
 
@@ -93,12 +98,12 @@ export default function PaymentSuccess() {
                         }}>{wish ? "주문" : "작성"}이 완료
                                 <span style={{ color: "#051a1a" }}>되었습니다!</span>
                         </div>
-                        {myparam.myparam[1] == 1 ?
+                        {imageUrl != "airpodone" ?
                             <OrderDetail
                                 img={img}
                                 wishTime={wish}
                                 title={myparam.myparam[0].title}
-                                price={prices}
+                                price={Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])}
                                 name={ship.name}
                                 number={ship.addressNum}
                                 address={ship.address}
@@ -107,35 +112,19 @@ export default function PaymentSuccess() {
                                 deliveryClaim={ship.request}
                             />
                             :
-
-                            (myparam.myparam[1] === 2 ?
-                                <OrderDetail
-                                    img={img}
-                                    wishTime={wish}
-                                    title={myparam.myparam[0].title}
-                                    price={prices}
-                                    name={ship.name}
-                                    number={ship.addressNum}
-                                    address={ship.address}
-                                    addressDetail={ship.addressDetail}
-                                    phoneNumber={ship.phoneNumber}
-                                    deliveryClaim={ship.request}
-                                />
-                                :
-                                <OrderDetail
-                                    img={img}
-                                    wishTime={wish}
-                                    title={myparam.myparam[0].title}
-                                    price={Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])}
-                                    name={ship.name}
-                                    number={ship.addressNum}
-                                    address={ship.address}
-                                    addressDetail={ship.addressDetail}
-                                    phoneNumber={ship.phoneNumber}
-                                    deliveryClaim={ship.request}
-                                />)
+                            <OrderDetail
+                                img={img}
+                                wishTime={wish}
+                                title={"Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"}
+                                price={prices}
+                                name={ship.name}
+                                number={ship.addressNum}
+                                address={ship.address}
+                                addressDetail={ship.addressDetail}
+                                phoneNumber={ship.phoneNumber}
+                                deliveryClaim={ship.request}
+                            />
                         }
-
                         <StandardButton
                             text="홈으로 돌아가기"
                             marginTop={32}
@@ -183,12 +172,12 @@ export default function PaymentSuccess() {
                     }}>{wish ? "주문" : "작성"}이 완료
                         <span style={{ color: "#051a1a" }}>되었습니다!</span>
                     </div>
-                    {myparam.myparam[1] == 1 ?
+                    {imageUrl != "airpodone" ?
                         <MOrderDetail
                             img={img}
                             wishTime={wish}
                             title={myparam.myparam[0].title}
-                            price={prices}
+                            price={Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])}
                             name={ship.name}
                             number={ship.addressNum}
                             address={ship.address}
@@ -197,33 +186,18 @@ export default function PaymentSuccess() {
                             deliveryClaim={ship.request}
                         />
                         :
-
-                        (myparam.myparam[1] === 2 ?
-                            <MOrderDetail
-                                img={img}
-                                wishTime={wish}
-                                title={myparam.myparam[0].title}
-                                price={prices}
-                                name={ship.name}
-                                number={ship.addressNum}
-                                address={ship.address}
-                                addressDetail={ship.addressDetail}
-                                phoneNumber={ship.phoneNumber}
-                                deliveryClaim={ship.request}
-                            />
-                            :
-                            <MOrderDetail
-                                img={img}
-                                wishTime={wish}
-                                title={myparam.myparam[0].title}
-                                price={Number(myparam.myparam[3].Eprice) + Number(myparam.myparam[5])}
-                                name={ship.name}
-                                number={ship.addressNum}
-                                address={ship.address}
-                                addressDetail={ship.addressDetail}
-                                phoneNumber={ship.phoneNumber}
-                                deliveryClaim={ship.request}
-                            />)
+                        <MOrderDetail
+                            img={img}
+                            wishTime={wish}
+                            title={"Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"}
+                            price={prices}
+                            name={ship.name}
+                            number={ship.addressNum}
+                            address={ship.address}
+                            addressDetail={ship.addressDetail}
+                            phoneNumber={ship.phoneNumber}
+                            deliveryClaim={ship.request}
+                        />
                     }
                     <MStandardButton
                         text="홈으로 돌아가기"

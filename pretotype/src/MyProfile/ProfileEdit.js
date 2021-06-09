@@ -583,7 +583,7 @@ export const MBasicAddress = ({ item }) => {
     )
 }
 
-export const NoAddress = (myparam,url,image) => {
+export const NoAddress = ({myparam,url,image}) => {
     let history = useHistory()
     return (
         <div onClick={() => history.push("/address",{myparam:myparam,url:url,image})} style={{
@@ -615,7 +615,7 @@ export const NoAddress = (myparam,url,image) => {
     )
 }
 
-export const MNoAddress = (myparam,url,image) => {
+export const MNoAddress = ({myparam,url,image}) => {
     let history = useHistory()
     return (
         <div onClick={() => history.push("/address",{myparam:myparam,url:url,image})} style={{
