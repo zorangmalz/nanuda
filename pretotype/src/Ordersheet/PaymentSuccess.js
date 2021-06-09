@@ -5,6 +5,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { MOrderDetail, OrderDetail } from "./PaymentFail";
 import { useHistory, useLocation } from "react-router";
 import airpotone from "../images/airpotone.png"
+import ipadlogo from "../images/ipadlogo.png"
 
 export default function PaymentSuccess() {
     //WishDeal인지 여부
@@ -18,7 +19,7 @@ export default function PaymentSuccess() {
     const imageUrl = location.state.image
     useEffect(() => {
         //console.log(myparam, ship)
-        if (imageUrl != "airpodone") {
+        if (imageUrl != "airpodone" && imageUrl != "ipad") {
             try {
                 setImg(myparam.myparam[0].image.url)
                 if (myparam.myparam[1] === 1) {
@@ -36,9 +37,12 @@ export default function PaymentSuccess() {
                 setImg(myparam.image[0])
                 setPrices(Number(myparam.myparam[3].Fprice) + Number(myparam.myparam[5]))
             }
-        } else {
+        } else if (imageUrl === "airpodone"){
             setImg(airpotone)
             setPrices(125000)
+        } else if (imageUrl === "ipad"){
+            setImg(ipadlogo)
+            setPrices(340750)
         }
     }, [])
 
@@ -98,7 +102,7 @@ export default function PaymentSuccess() {
                         }}>{wish ? "주문" : "작성"}이 완료
                                 <span style={{ color: "#051a1a" }}>되었습니다!</span>
                         </div>
-                        {imageUrl != "airpodone" ?
+                        {imageUrl != "airpodone" && imageUrl != "ipad" ?
                             <OrderDetail
                                 img={img}
                                 wishTime={wish}
@@ -115,7 +119,7 @@ export default function PaymentSuccess() {
                             <OrderDetail
                                 img={img}
                                 wishTime={wish}
-                                title={"Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"}
+                                title={imageUrl === "airpodone" ? "Apple AirPods Pro 애플 에어팟 프로 1세대 무선충전형" : "Apple iPad Air 4세대 (MYFM2KH/A), Wi-Fi, 64GB, 스페이스그레이"}
                                 price={prices}
                                 name={ship.name}
                                 number={ship.addressNum}
@@ -172,7 +176,7 @@ export default function PaymentSuccess() {
                     }}>{wish ? "주문" : "작성"}이 완료
                         <span style={{ color: "#051a1a" }}>되었습니다!</span>
                     </div>
-                    {imageUrl != "airpodone" ?
+                    {imageUrl != "airpodone" && imageUrl != "ipad" ?
                         <MOrderDetail
                             img={img}
                             wishTime={wish}
@@ -189,7 +193,7 @@ export default function PaymentSuccess() {
                         <MOrderDetail
                             img={img}
                             wishTime={wish}
-                            title={"Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"}
+                            title={imageUrl === "airpodone" ? "Apple AirPods Pro 애플 에어팟 프로 1세대 무선충전형" : "Apple iPad Air 4세대 (MYFM2KH/A), Wi-Fi, 64GB, 스페이스그레이"}
                             price={prices}
                             name={ship.name}
                             number={ship.addressNum}

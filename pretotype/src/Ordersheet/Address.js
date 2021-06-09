@@ -186,11 +186,13 @@ export default function Address() {
             address_name: inputs.name,
             address_phone: inputs.phoneNumber,
         })
-        if (imageUrl != "airpodone") {
+        if (imageUrl != "airpodone" && imageUrl != "ipad") {
             console.log("아니에요")
             history.push("/ordersheet", { param: myparam, addInfo: inputs, url: getUrl, image: imageUrl })
-        } else {
+        } else if (imageUrl === "airpodone") {
             history.push("/ordersheet", { param: myparam, addInfo: inputs, url: "", image: "airpodone" })
+        } else if (imageUrl === "ipad") {
+            history.push("/ordersheet", { param: myparam, addInfo: inputs, url: "", image: "ipad" })
         }
     }
     return (

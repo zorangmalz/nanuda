@@ -51,7 +51,7 @@ export default function WishDealDefault() {
         setLoading(true)
         try {
             let response = await axios.get(
-                "http://3.35.166.77:3002/api",
+                "http://52.78.132.237:3002/api",
                 {
                     params:
                     {

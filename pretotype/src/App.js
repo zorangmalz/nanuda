@@ -45,7 +45,7 @@ function App() {
         <Route path="/wishdealdefault" component={WishDealDefault} />
         <Route path="/wishdealurl" component={WishDealURL} />
         <Route path="/wishdealnoturl" component={WishDealNotURL} />
-        <Route path="/timedeal/airpot" component={TimeDealDetail} />
+        <Route path="/timedeal" component={TimeDealDetail} />
       </Switch>
     </Router>
   );

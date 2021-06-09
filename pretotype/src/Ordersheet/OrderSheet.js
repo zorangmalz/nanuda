@@ -5,6 +5,7 @@ import { Header, MHeader } from "../Style";
 import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile/ProfileEdit";
 import { firestore } from "../firebase"
 import airpotone from "../images/airpotone.png"
+import ipadlogo from "../images/ipadlogo.png"
 
 function reducer(state, action) {
     switch (action.type) {
@@ -186,13 +187,21 @@ export default function OrderSheet() {
                 setTwoMoney(130000)
                 setThreeMoney("-")
                 setFourMoney("-")
-            } else {
-                setOneMoney(65000)
-                setTwoMoney(65000)
-                setThreeMoney(65000)
-                setFourMoney(65000)
             }
-        } else if (imageUrl != "airpodone") {
+        } else if (imageUrl === "ipad") {
+            setImage(ipadlogo)
+            setShip(0)
+            setItemDes("애플")
+            setOrderDes("Apple iPad Air 4세대 (MYFM2KH/A), Wi-Fi, 64GB, 스페이스그레이")
+            setPrice(701500)
+
+            if (number === 2) {
+                setOneMoney(350750)
+                setTwoMoney(180375)
+                setThreeMoney("-")
+                setFourMoney("-")
+            }
+        } else if (imageUrl != "airpodone" && imageUrl != "ipad") {
             //console.log(myparam,addre,getUrl,imageUrl)
             try {
                 //console.log("here?")
@@ -401,7 +410,7 @@ export default function OrderSheet() {
     async function order() {
         if (basicAddress && payment) {
             // history.push("paymentsuccess",{myparam:myparam})'
-            if (imageUrl != "airpodone") {
+            if (imageUrl != "airpodone" && imageUrl != "ipad") {
                 try {
                     firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
                         myparam: myparam,
@@ -430,7 +439,7 @@ export default function OrderSheet() {
                     })
                     history.push("paymentsuccess", { myparam: myparam, ship: item, image: imageUrl })
                 }
-            } else {
+            } else if (imageUrl === "airpodone") {
                 firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
                     myparam: ["airpod", 4, "", "white", 1, "", 4, ""],
                     ship: item,
@@ -444,14 +453,30 @@ export default function OrderSheet() {
                     realPrice: (Number(oneMoney) + Number(ship) - 10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                 })
                 history.push("paymentsuccess", { myparam: ["airpod", 4, "", "white", 1, "", 4, ""], ship: item, image: "airpodone" })
+            } else if (imageUrl === "ipad") {
+                firestore.collection("User").doc(addre.phoneNumber).collection("Order").add({
+                    myparam: ["airpod", 4, "", "white", 1, "", 4, ""],
+                    ship: item,
+                    option: number,
+                    schedule: paymentDate,
+                    url: "",
+                    image: "",
+                    orderOrNot: false,
+                    payOrNot: false,
+                    secondOrNot: false,
+                    realPrice: (Number(oneMoney) + Number(ship) - 10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                })
+                history.push("paymentsuccess", { myparam: ["ipad", 4, "", "white", 1, "", 4, ""], ship: item, image: "ipad" })
             }
         }
     }
     function fix() {
-        if (imageUrl != "airpodone") {
+        if (imageUrl != "airpodone" && imageUrl != "ipad") {
             history.push("address", { param: myparam, url: getUrl, image: imageUrl })
-        } else {
+        } else if (imageUrl === "airpodone") {
             history.push("address", { param: ["airpod", 4, "", "white", 1, "", 4, ""], url: "", image: "airpodone" })
+        } else if (imageUrl === "ipad") {
+            history.push("address", { param: ["ipad", 4, "", "white", 1, "", 4, ""], url: "", image: "ipad" })
         }
     }
 
@@ -556,7 +581,14 @@ export default function OrderSheet() {
                         {basicAddress ?
                             <BasicAddress item={item} />
                             :
-                            <NoAddress myparam={imageUrl != "airpodone" ? myparam : ["airpod", 4, "", "white", 1, "", 4, ""]} url={imageUrl != "airpodone" ? getUrl : ""} image={imageUrl != "airpodone" ? imageUrl : "airpodone"} />
+                            <NoAddress myparam={
+                                imageUrl != "airpodone" && imageUrl != "ipad" ? 
+                                    myparam : 
+                                    imageUrl === "airpodone" ? 
+                                    ["airpod", 4, "", "white", 1, "", 4, ""] : ["ipad", 4, "", "white", 1, "", 4, ""]} 
+                                url={imageUrl != "airpodone" && imageUrl !="ipad" ? getUrl : ""} 
+                                image={imageUrl != "airpodone" && imageUrl != "ipad" ? 
+                                        imageUrl : imageUrl === "airpodone" ? "airpodone" : "ipad"} />
                         }
 
 
@@ -948,7 +980,14 @@ export default function OrderSheet() {
                     {basicAddress ?
                         <MBasicAddress item={item} />
                         :
-                        <MNoAddress myparam={imageUrl != "airpodone" ? myparam : ["airpod", 4, "", "white", 1, "", 4, ""]} url={imageUrl != "airpodone" ? getUrl : ""} image={imageUrl != "airpodone" ? imageUrl : "airpodone"} />
+                        <NoAddress myparam={
+                            imageUrl != "airpodone" && imageUrl != "ipad" ? 
+                                myparam : 
+                                imageUrl === "airpodone" ? 
+                                ["airpod", 4, "", "white", 1, "", 4, ""] : ["ipad", 4, "", "white", 1, "", 4, ""]} 
+                            url={imageUrl != "airpodone" && imageUrl !="ipad" ? getUrl : ""} 
+                            image={imageUrl != "airpodone" && imageUrl != "ipad" ? 
+                                    imageUrl : imageUrl === "airpodone" ? "airpodone" : "ipad"} />
                     }
 
                     <div style={{
