@@ -111,6 +111,18 @@ export default function Home() {
         firestore.collection("test").doc("test").get().then((doc) => {
             //console.log(doc.data().read)
         })
+
+        var url = new URL('http://127.0.0.1:3002/search/shop')
+        var params = {query: "가방"};
+        url.search = new URLSearchParams(params).toString()
+        fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type' : "application/json",
+                'Access-Control-Allow-Origin': "*"
+            }
+        }).then(res => console.log(res))
+        .catch(err => console.log(err))
     }, [])
     const [modal, setModal] = useState(false)
 
@@ -137,6 +149,7 @@ export default function Home() {
 
         return () => window.removeEventListener("scroll", handleScroll);
     }, [wishButton, bottomPosition])
+
     return (
         <div>
 
