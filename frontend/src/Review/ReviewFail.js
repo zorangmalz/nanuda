@@ -51,10 +51,10 @@ export default function ReviewFail() {
                             fontWeight: "bold",
                             color: "#f72b2b",
                             fontFamily: "NotoSansCJKkr"
-                        }}>작성에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
+                        }}>작성에 실패<span style={{ color: "#010608" }}>했습니다.</span></div>
                         <div style={{
                             fontSize: 16,
-                            color: "#051a1a",
+                            color: "#010608",
                             opacity: 0.6,
                             marginTop: 16,
                             fontFamily: "NotoSansCJKkr"
@@ -110,10 +110,10 @@ export default function ReviewFail() {
                         fontWeight: "bold",
                         color: "#f72b2b",
                         fontFamily: "NotoSansCJKkr"
-                    }}>작성에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
+                    }}>작성에 실패<span style={{ color: "#010608" }}>했습니다.</span></div>
                     <div style={{
                         fontSize: 16,
-                        color: "#051a1a",
+                        color: "#010608",
                         opacity: 0.6,
                         marginTop: 16,
                         fontFamily: "NotoSansCJKkr"

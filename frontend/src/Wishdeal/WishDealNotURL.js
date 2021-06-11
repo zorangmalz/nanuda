@@ -37,14 +37,14 @@ const Button = ({ onClick, state, number, content }) => {
             width: 95,
             marginRight: 20,
             borderRadius: 6,
-            border: state === number ? "1px solid #051a1a" : "1px solid #dfdfdf",
-            backgroundColor: state === number ? "#051a1a" : "#ffffff",
+            border: state === number ? "1px solid #010608" : "1px solid #dfdfdf",
+            backgroundColor: state === number ? "#010608" : "#ffffff",
             paddingTop: 10,
             paddingBottom: 10,
             cursor: "pointer",
             fontSize: 16,
             fontWeight: state === number ? "bold" : "normal",
-            color: state === number ? "#ffffff" : "#051a1a",
+            color: state === number ? "#ffffff" : "#010608",
             opacity: state === number ? 1 : 0.8,
             textAlign: "center",
         }}>{content}</div>
@@ -57,14 +57,14 @@ const MButton = ({ onClick, state, number, content }) => {
             width: 90,
             marginRight: "5vw",
             borderRadius: 6,
-            border: state === number ? "1px solid #051a1a" : "1px solid #dfdfdf",
-            backgroundColor: state === number ? "#051a1a" : "#ffffff",
+            border: state === number ? "1px solid #010608" : "1px solid #dfdfdf",
+            backgroundColor: state === number ? "#010608" : "#ffffff",
             paddingTop: "2vw",
             paddingBottom: "2vw",
             cursor: "pointer",
             fontSize: 14,
             fontWeight: state === number ? "bold" : "normal",
-            color: state === number ? "#ffffff" : "#051a1a",
+            color: state === number ? "#ffffff" : "#010608",
             opacity: state === number ? 1 : 0.8,
             textAlign: "center",
         }}>{content}</div>
@@ -130,7 +130,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 32,
                             marginLeft: 20,
@@ -167,7 +167,7 @@ export default function WishDealNotURL() {
                                     marginTop: 16,
                                     marginLeft: 20,
                                     paddingBottom: 8,
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                                     width: 240,
                                 }}>
                                     <input
@@ -179,14 +179,14 @@ export default function WishDealNotURL() {
 
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 16,
-                                            color: "#202426"
+                                            color: "#010608"
                                         }}
                                     />
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
                                         fontWeight: "bold",
-                                        color: "#202426"
+                                        color: "#010608"
                                     }}>원</div>
                                 </div>
                             </>
@@ -197,7 +197,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 32,
                             marginLeft: 20,
@@ -246,7 +246,7 @@ export default function WishDealNotURL() {
                                     marginTop: 16,
                                     marginLeft: 20,
                                     paddingBottom: 8,
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                                     width: 240,
                                 }}>
                                     <input
@@ -258,14 +258,14 @@ export default function WishDealNotURL() {
 
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 16,
-                                            color: "#202426"
+                                            color: "#010608"
                                         }}
                                     />
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
                                         fontWeight: "bold",
-                                        color: "#202426"
+                                        color: "#010608"
                                     }}>원</div>
                                 </div>
                             </>
@@ -280,7 +280,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
                             opacity: 0.4,
-                            color: "#202426",
+                            color: "#010608",
                         }}>
                             <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
                             <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
@@ -336,7 +336,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: "8vw",
                             marginLeft: "5vw",
@@ -373,7 +373,7 @@ export default function WishDealNotURL() {
                                     marginTop: "4vw",
                                     marginLeft: "5vw",
                                     paddingBottom: "2vw",
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                                     width: "50vw",
                                 }}>
                                     <input
@@ -385,14 +385,14 @@ export default function WishDealNotURL() {
 
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 14,
-                                            color: "#202426"
+                                            color: "#010608"
                                         }}
                                     />
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 14,
                                         fontWeight: "bold",
-                                        color: "#202426"
+                                        color: "#010608"
                                     }}>원</div>
                                 </div>
                             </>
@@ -403,7 +403,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: "8vw",
                             marginLeft: "5vw",
@@ -452,7 +452,7 @@ export default function WishDealNotURL() {
                                     marginTop: "4vw",
                                     marginLeft: "5vw",
                                     paddingBottom: "2vw",
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                                     width: "50vw",
                                 }}>
                                     <input
@@ -464,14 +464,14 @@ export default function WishDealNotURL() {
 
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 14,
-                                            color: "#202426"
+                                            color: "#010608"
                                         }}
                                     />
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 14,
                                         fontWeight: "bold",
-                                        color: "#202426"
+                                        color: "#010608"
                                     }}>원</div>
                                 </div>
                             </>
@@ -486,7 +486,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             opacity: 0.4,
-                            color: "#202426",
+                            color: "#010608",
                         }}>
                             <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
                             <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
@@ -529,19 +529,19 @@ function FashionForm({ image, brand, name, price, color, size, etc }) {
                 alignItems: "center",
                 justifyContent: "center"
             }}>
-                <BsPlusCircle size={36} color="#051a1a" />
+                <BsPlusCircle size={36} color="#010608" />
                 <div style={{
                     marginTop: 24,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    columnGap: "#202426"
+                    columnGap: "#010608"
                 }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 16,
                 marginLeft: 20,
@@ -555,18 +555,18 @@ function FashionForm({ image, brand, name, price, color, size, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -580,7 +580,7 @@ function FashionForm({ image, brand, name, price, color, size, etc }) {
                 marginTop: 16,
                 marginLeft: 20,
                 paddingBottom: 8,
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: 210,
             }}>
                 <input
@@ -592,21 +592,21 @@ function FashionForm({ image, brand, name, price, color, size, etc }) {
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -620,18 +620,18 @@ function FashionForm({ image, brand, name, price, color, size, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -645,18 +645,18 @@ function FashionForm({ image, brand, name, price, color, size, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -670,11 +670,11 @@ function FashionForm({ image, brand, name, price, color, size, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </>
@@ -694,19 +694,19 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
                 alignItems: "center",
                 justifyContent: "center"
             }}>
-                <BsPlusCircle size={24} color="#051a1a" />
+                <BsPlusCircle size={24} color="#010608" />
                 <div style={{
                     marginTop: 16,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 12,
-                    columnGap: "#202426"
+                    columnGap: "#010608"
                 }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "4vw",
                 marginLeft: "5vw",
@@ -720,18 +720,18 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -745,7 +745,7 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
                 marginTop: "4vw",
                 marginLeft: "5vw",
                 paddingBottom: "2vw",
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: "45vw",
             }}>
                 <input
@@ -757,21 +757,21 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -785,18 +785,18 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -810,18 +810,18 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -835,11 +835,11 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </>
@@ -859,19 +859,19 @@ function ElectronicForm({ image, brand, name, price, count, etc }) {
                 alignItems: "center",
                 justifyContent: "center"
             }}>
-                <BsPlusCircle size={36} color="#051a1a" />
+                <BsPlusCircle size={36} color="#010608" />
                 <div style={{
                     marginTop: 24,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    columnGap: "#202426"
+                    columnGap: "#010608"
                 }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 16,
                 marginLeft: 20,
@@ -885,18 +885,18 @@ function ElectronicForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -910,7 +910,7 @@ function ElectronicForm({ image, brand, name, price, count, etc }) {
                 marginTop: 32,
                 marginLeft: 20,
                 paddingBottom: 8,
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: 210,
             }}>
                 <input
@@ -922,21 +922,21 @@ function ElectronicForm({ image, brand, name, price, count, etc }) {
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -950,18 +950,18 @@ function ElectronicForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -975,11 +975,11 @@ function ElectronicForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </>
@@ -999,19 +999,19 @@ function MElectronicForm({ image, brand, name, price, count, etc }) {
                 alignItems: "center",
                 justifyContent: "center"
             }}>
-                <BsPlusCircle size={24} color="#051a1a" />
+                <BsPlusCircle size={24} color="#010608" />
                 <div style={{
                     marginTop: 16,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 12,
-                    columnGap: "#202426"
+                    columnGap: "#010608"
                 }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "4vw",
                 marginLeft: "5vw",
@@ -1025,18 +1025,18 @@ function MElectronicForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1050,7 +1050,7 @@ function MElectronicForm({ image, brand, name, price, count, etc }) {
                 marginTop: "4vw",
                 marginLeft: "5vw",
                 paddingBottom: "2vw",
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: "45vw",
             }}>
                 <input
@@ -1062,21 +1062,21 @@ function MElectronicForm({ image, brand, name, price, count, etc }) {
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1090,18 +1090,18 @@ function MElectronicForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1115,11 +1115,11 @@ function MElectronicForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </>
@@ -1139,19 +1139,19 @@ function FoodForm({ image, brand, name, price, count, etc }) {
                 alignItems: "center",
                 justifyContent: "center"
             }}>
-                <BsPlusCircle size={36} color="#051a1a" />
+                <BsPlusCircle size={36} color="#010608" />
                 <div style={{
                     marginTop: 24,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    columnGap: "#202426"
+                    columnGap: "#010608"
                 }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 16,
                 marginLeft: 20,
@@ -1165,18 +1165,18 @@ function FoodForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -1190,7 +1190,7 @@ function FoodForm({ image, brand, name, price, count, etc }) {
                 marginTop: 16,
                 marginLeft: 20,
                 paddingBottom: 8,
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: 210,
             }}>
                 <input
@@ -1202,21 +1202,21 @@ function FoodForm({ image, brand, name, price, count, etc }) {
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -1230,18 +1230,18 @@ function FoodForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -1255,11 +1255,11 @@ function FoodForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </>
@@ -1279,19 +1279,19 @@ function MFoodForm({ image, brand, name, price, count, etc }) {
                 alignItems: "center",
                 justifyContent: "center"
             }}>
-                <BsPlusCircle size={24} color="#051a1a" />
+                <BsPlusCircle size={24} color="#010608" />
                 <div style={{
                     marginTop: 16,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 12,
-                    columnGap: "#202426"
+                    columnGap: "#010608"
                 }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "4vw",
                 marginLeft: "5vw",
@@ -1305,18 +1305,18 @@ function MFoodForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1330,7 +1330,7 @@ function MFoodForm({ image, brand, name, price, count, etc }) {
                 marginTop: "4vw",
                 marginLeft: "5vw",
                 paddingBottom: "2vw",
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: "45vw",
             }}>
                 <input
@@ -1342,21 +1342,21 @@ function MFoodForm({ image, brand, name, price, count, etc }) {
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1370,18 +1370,18 @@ function MFoodForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1395,11 +1395,11 @@ function MFoodForm({ image, brand, name, price, count, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </>
@@ -1419,19 +1419,19 @@ function ETCForm({ image, brand, name, price, etc }) {
                 alignItems: "center",
                 justifyContent: "center"
             }}>
-                <BsPlusCircle size={36} color="#051a1a" />
+                <BsPlusCircle size={36} color="#010608" />
                 <div style={{
                     marginTop: 24,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    columnGap: "#202426"
+                    columnGap: "#010608"
                 }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 16,
                 marginLeft: 20,
@@ -1445,18 +1445,18 @@ function ETCForm({ image, brand, name, price, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -1470,7 +1470,7 @@ function ETCForm({ image, brand, name, price, etc }) {
                 marginTop: 16,
                 marginLeft: 20,
                 paddingBottom: 8,
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: 210,
             }}>
                 <input
@@ -1482,21 +1482,21 @@ function ETCForm({ image, brand, name, price, etc }) {
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -1510,11 +1510,11 @@ function ETCForm({ image, brand, name, price, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </>
@@ -1534,19 +1534,19 @@ function METCForm({ image, brand, name, price, etc }) {
                 alignItems: "center",
                 justifyContent: "center"
             }}>
-                <BsPlusCircle size={24} color="#051a1a" />
+                <BsPlusCircle size={24} color="#010608" />
                 <div style={{
                     marginTop: 16,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 12,
-                    columnGap: "#202426"
+                    columnGap: "#010608"
                 }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "4vw",
                 marginLeft: "5vw",
@@ -1560,18 +1560,18 @@ function METCForm({ image, brand, name, price, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1585,7 +1585,7 @@ function METCForm({ image, brand, name, price, etc }) {
                 marginTop: "4vw",
                 marginLeft: "5vw",
                 paddingBottom: "2vw",
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: "45vw",
             }}>
                 <input
@@ -1597,21 +1597,21 @@ function METCForm({ image, brand, name, price, etc }) {
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1625,11 +1625,11 @@ function METCForm({ image, brand, name, price, etc }) {
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </>

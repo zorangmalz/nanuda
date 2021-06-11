@@ -68,13 +68,13 @@ function BNPLForm({ state, title, num, date, payback }) {
             marginTop: 32,
             width: 440,
             paddingBottom: state === 0 ? 16 : 0,
-            borderBottom: state === 0 ? "1px solid rgba(5, 26, 26, 0.2)" : 0,
+            borderBottom: state === 0 ? "1px solid rgba(1, 6, 8, 0.2)" : 0,
         }}>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
                 marginBottom: 16,
             }}>{state === 0 ? "분할결제 완료" : "분할결제 진행중"}</div>
             <div onClick={() => history.push("/profilepaymentdetail")} style={{
@@ -108,12 +108,12 @@ function BNPLForm({ state, title, num, date, payback }) {
                         <div style={{
                             fontSize: 16,
                             fontFamily: "NotoSansCJKkr",
-                            color: "#202426",
+                            color: "#010608",
                             opacity: 0.6,
                         }}>{date}</div>
                         <div style={{
                             fontSize: 16,
-                            color: "#202426",
+                            color: "#010608",
                             fontFamily: "AvenirNext",
                             lineHeight: 1.5,
                         }}>{title}</div>
@@ -126,7 +126,7 @@ function BNPLForm({ state, title, num, date, payback }) {
                         }}>{state === 0 ? "결제 완료" : num + "차 결제 예정"}</div>
                     </div>
                 </div>
-                <MdKeyboardArrowRight size={40} color="rgba(5, 26, 26, 0.4)" />
+                <MdKeyboardArrowRight size={40} color="rgba(1, 6, 8, 0.4)" />
             </div>
             {state === 0 ? <></> :
                 <div style={{
@@ -153,13 +153,13 @@ function BNPLForm({ state, title, num, date, payback }) {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 16,
-                            color: "#202426"
+                            color: "#010608"
                         }}>{num}차 총 결제 금액</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#051a1a",
+                            color: "#010608",
                         }}>{payback} 원</div>
                     </div>
                     <div style={{
@@ -175,13 +175,13 @@ function BNPLForm({ state, title, num, date, payback }) {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 16,
-                            color: "#202426"
+                            color: "#010608"
                         }}>결제 후 잔여금액</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#051a1a",
+                            color: "#010608",
                         }}>0 원</div>
                     </div>
                     <div style={{
@@ -197,13 +197,13 @@ function BNPLForm({ state, title, num, date, payback }) {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 16,
-                            color: "#202426"
+                            color: "#010608"
                         }}>자동결제일</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#051a1a",
+                            color: "#010608",
                         }}>{date}</div>
                     </div>
                     <div style={{
@@ -218,13 +218,13 @@ function BNPLForm({ state, title, num, date, payback }) {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 16,
-                            color: "#202426"
+                            color: "#010608"
                         }}>분할결제 방법</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#051a1a",
+                            color: "#010608",
                         }}>{num}분할 결제</div>
                     </div>
                 </div>
@@ -255,13 +255,13 @@ function MBNPLForm({ state, title, num, date, payback }) {
             marginTop: "8vw",
             width: "90vw",
             paddingBottom: state === 0 ? "4vw" : 0,
-            borderBottom: state === 0 ? "1px solid rgba(5, 26, 26, 0.2)" : 0,
+            borderBottom: state === 0 ? "1px solid rgba(1, 6, 8, 0.2)" : 0,
         }}>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
                 marginBottom: "4vw",
             }}>{state === 0 ? "분할결제 완료" : "분할결제 진행중"}</div>
             <div onClick={() => history.push("/profilepaymentdetail")} style={{
@@ -295,12 +295,12 @@ function MBNPLForm({ state, title, num, date, payback }) {
                         <div style={{
                             fontSize: 12,
                             fontFamily: "NotoSansCJKkr",
-                            color: "#202426",
+                            color: "#010608",
                             opacity: 0.6,
                         }}>{date}</div>
                         <div style={{
                             fontSize: 12,
-                            color: "#202426",
+                            color: "#010608",
                             fontFamily: "AvenirNext",
                             lineHeight: 1.5,
                         }}>{title}</div>
@@ -313,7 +313,7 @@ function MBNPLForm({ state, title, num, date, payback }) {
                         }}>{state === 0 ? "결제 완료" : num + "차 결제 예정"}</div>
                     </div>
                 </div>
-                <MdKeyboardArrowRight size={32} color="rgba(5, 26, 26, 0.4)" />
+                <MdKeyboardArrowRight size={32} color="rgba(1, 6, 8, 0.4)" />
             </div>
             {state === 0 ? <></> :
                 <div style={{
@@ -340,13 +340,13 @@ function MBNPLForm({ state, title, num, date, payback }) {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 14,
-                            color: "#202426"
+                            color: "#010608"
                         }}>{num}차 총 결제 금액</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
                             fontWeight: "bold",
-                            color: "#051a1a",
+                            color: "#010608",
                         }}>{payback} 원</div>
                     </div>
                     <div style={{
@@ -362,13 +362,13 @@ function MBNPLForm({ state, title, num, date, payback }) {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 14,
-                            color: "#202426"
+                            color: "#010608"
                         }}>결제 후 잔여금액</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
                             fontWeight: "bold",
-                            color: "#051a1a",
+                            color: "#010608",
                         }}>0 원</div>
                     </div>
                     <div style={{
@@ -384,13 +384,13 @@ function MBNPLForm({ state, title, num, date, payback }) {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 14,
-                            color: "#202426"
+                            color: "#010608"
                         }}>자동결제일</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
                             fontWeight: "bold",
-                            color: "#051a1a",
+                            color: "#010608",
                         }}>{date}</div>
                     </div>
                     <div style={{
@@ -405,13 +405,13 @@ function MBNPLForm({ state, title, num, date, payback }) {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 14,
-                            color: "#202426"
+                            color: "#010608"
                         }}>분할결제 방법</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
                             fontWeight: "bold",
-                            color: "#051a1a",
+                            color: "#010608",
                         }}>{num}분할 결제</div>
                     </div>
                 </div>

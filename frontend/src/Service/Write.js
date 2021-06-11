@@ -95,7 +95,7 @@ export default function Write() {
                             <div style={{
                                 fontSize: 18,
                                 fontWeight: "bold",
-                                color: "#202426",
+                                color: "#010608",
                                 marginTop: 32,
                                 marginLeft: 20,
                                 fontFamily: "NotoSansCJKkr"
@@ -122,7 +122,7 @@ export default function Write() {
                             <div style={{
                                 fontSize: 18,
                                 fontWeight: "bold",
-                                color: "#202426",
+                                color: "#010608",
                                 marginTop: 36,
                                 marginLeft: 20,
                                 fontFamily: "NotoSansCJKkr"
@@ -143,7 +143,7 @@ export default function Write() {
                             <div style={{
                                 fontSize: 18,
                                 fontWeight: "bold",
-                                color: "#202426",
+                                color: "#010608",
                                 marginTop: 32,
                                 marginLeft: 20,
                                 fontFamily: "NotoSansCJKkr"
@@ -192,7 +192,7 @@ export default function Write() {
                         <div style={{
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 32,
                             marginLeft: "5%",
                             fontFamily: "NotoSansCJKkr"
@@ -219,7 +219,7 @@ export default function Write() {
                         <div style={{
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 36,
                             marginLeft: "5%",
                             fontFamily: "NotoSansCJKkr"
@@ -240,7 +240,7 @@ export default function Write() {
                         <div style={{
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 32,
                             marginLeft: "5%",
                             fontFamily: "NotoSansCJKkr"

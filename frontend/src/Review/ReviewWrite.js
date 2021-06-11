@@ -208,7 +208,7 @@ export default function ReviewWrite() {
                                     <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
                                         display: "none"
                                     }} />
-                                    <BsPlusCircle size={24} color="#051a1a" />
+                                    <BsPlusCircle size={24} color="#010608" />
                                 </div>
                                 :
                                 <></>
@@ -342,7 +342,7 @@ export default function ReviewWrite() {
                                 <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
                                     display: "none"
                                 }} />
-                                <BsPlusCircle size={20} color="#051a1a" />
+                                <BsPlusCircle size={20} color="#010608" />
                             </div>
                             :
                             <></>
@@ -444,7 +444,7 @@ function ImagePut() {
             cursor: "pointer",
 
         }}>
-            {/* <BsPlusCircle size={24} color="#051a1a" /> */}
+            {/* <BsPlusCircle size={24} color="#010608" /> */}
         </input>
     )
 }
@@ -465,7 +465,7 @@ function MImagePut() {
 
             cursor: "pointer"
         }}>
-            <BsPlusCircle size={16} color="#051a1a" />
+            <BsPlusCircle size={16} color="#010608" />
         </div>
     )
 }

@@ -53,14 +53,14 @@ const Button = ({ onClick, state, number, content }) => {
             width: 95,
             marginRight: 20,
             borderRadius: 6,
-            border: state === number ? "1px solid #051a1a" : "1px solid #dfdfdf",
-            backgroundColor: state === number ? "#051a1a" : "#ffffff",
+            border: state === number ? "1px solid #010608" : "1px solid #dfdfdf",
+            backgroundColor: state === number ? "#010608" : "#ffffff",
             paddingTop: 10,
             paddingBottom: 10,
             cursor: "pointer",
             fontSize: 16,
             fontWeight: state === number ? "bold" : "normal",
-            color: state === number ? "#ffffff" : "#051a1a",
+            color: state === number ? "#ffffff" : "#010608",
             opacity: state === number ? 1 : 0.8,
             textAlign: "center",
         }}>{content}</div>
@@ -73,14 +73,14 @@ const MButton = ({ onClick, state, number, content }) => {
             width: 90,
             marginRight: "5vw",
             borderRadius: 6,
-            border: state === number ? "1px solid #051a1a" : "1px solid #dfdfdf",
-            backgroundColor: state === number ? "#051a1a" : "#ffffff",
+            border: state === number ? "1px solid #010608" : "1px solid #dfdfdf",
+            backgroundColor: state === number ? "#010608" : "#ffffff",
             paddingTop: "2vw",
             paddingBottom: "2vw",
             cursor: "pointer",
             fontSize: 14,
             fontWeight: state === number ? "bold" : "normal",
-            color: state === number ? "#ffffff" : "#051a1a",
+            color: state === number ? "#ffffff" : "#010608",
             opacity: state === number ? 1 : 0.8,
             textAlign: "center",
         }}>{content}</div>
@@ -309,7 +309,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 32,
                             marginLeft: 20,
@@ -346,7 +346,7 @@ export default function WishDealNotURL() {
                                     marginTop: 16,
                                     marginLeft: 20,
                                     paddingBottom: 8,
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                                     width: 240,
                                 }}>
                                     <input
@@ -358,14 +358,14 @@ export default function WishDealNotURL() {
 
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 16,
-                                            color: "#202426"
+                                            color: "#010608"
                                         }}
                                     />
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
                                         fontWeight: "bold",
-                                        color: "#202426"
+                                        color: "#010608"
                                     }}>원</div>
                                 </div>
                             </div>
@@ -376,7 +376,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 32,
                             marginLeft: 20,
@@ -425,7 +425,7 @@ export default function WishDealNotURL() {
                                     marginTop: 16,
                                     marginLeft: 20,
                                     paddingBottom: 8,
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                                     width: 240,
                                 }}>
                                     <input
@@ -437,14 +437,14 @@ export default function WishDealNotURL() {
 
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 16,
-                                            color: "#202426"
+                                            color: "#010608"
                                         }}
                                     />
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
                                         fontWeight: "bold",
-                                        color: "#202426"
+                                        color: "#010608"
                                     }}>원</div>
                                 </div>
                             </div>
@@ -459,7 +459,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
                             opacity: 0.4,
-                            color: "#202426",
+                            color: "#010608",
                         }}>
                             <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
                             <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
@@ -539,7 +539,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: "8vw",
                             marginLeft: "5vw",
@@ -576,7 +576,7 @@ export default function WishDealNotURL() {
                                     marginTop: "4vw",
                                     marginLeft: "5vw",
                                     paddingBottom: "2vw",
-                                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                                     width: "50vw",
                                 }}>
                                     <input
@@ -592,14 +592,14 @@ export default function WishDealNotURL() {
 
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 14,
-                                            color: "#202426"
+                                            color: "#010608"
                                         }}
                                     />
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 14,
                                         fontWeight: "bold",
-                                        color: "#202426"
+                                        color: "#010608"
                                     }}>원</div>
                                 </div>
                             </div>
@@ -610,7 +610,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: "8vw",
                             marginLeft: "5vw",
@@ -658,7 +658,7 @@ export default function WishDealNotURL() {
                                 marginTop: "4vw",
                                 marginLeft: "5vw",
                                 paddingBottom: "2vw",
-                                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                                 width: "50vw",
                             }}>
                                 <input
@@ -675,14 +675,14 @@ export default function WishDealNotURL() {
 
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 14,
-                                        color: "#202426"
+                                        color: "#010608"
                                     }}
                                 />
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 14,
                                     fontWeight: "bold",
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>원</div>
                             </div>
                             :
@@ -696,7 +696,7 @@ export default function WishDealNotURL() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             opacity: 0.4,
-                            color: "#202426",
+                            color: "#010608",
                         }}>
                             <div>* 가격, 입력 정보가 상이한 경우 혹은 품절인 경우 주문이 취소될 수 있습니다.</div>
                             <div style={{ marginTop: 4 }}>* 입력한 정보 외에 추가 금액이 붙는 경우 2차 결제일에 청구됩니다.</div>
@@ -783,12 +783,12 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
                     <input ref={inputFile} onChange={handelFileInput} type="file" style={{
                         display: "none"
                     }} />
-                    <BsPlusCircle size={36} color="#051a1a" />
+                    <BsPlusCircle size={36} color="#010608" />
                     <div style={{
                         marginTop: 24,
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        columnGap: "#202426"
+                        columnGap: "#010608"
                     }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
                 </div>
             }
@@ -796,7 +796,7 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 16,
                 marginLeft: 20,
@@ -813,11 +813,11 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                     marginLeft: 20,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
 
@@ -842,7 +842,7 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 16,
                 marginLeft: 20,
@@ -857,7 +857,7 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
                 marginTop: 16,
                 marginLeft: 20,
                 paddingBottom: 8,
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: 210,
             }}>
                 <input
@@ -873,14 +873,14 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
 
@@ -897,7 +897,7 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -914,19 +914,19 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                     marginLeft: 20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -943,19 +943,19 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                     marginLeft: 20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -972,12 +972,12 @@ function FashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bran
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                     marginLeft: 20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </div>
@@ -1016,12 +1016,12 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                     <input ref={inputFile} onChange={handelFileInput} type="file" style={{
                         display: "none"
                     }} />
-                    <BsPlusCircle size={24} color="#051a1a" />
+                    <BsPlusCircle size={24} color="#010608" />
                     <div style={{
                         marginTop: 24,
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        columnGap: "#202426"
+                        columnGap: "#010608"
                     }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
                 </div>
             }
@@ -1029,7 +1029,7 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 16,
                 marginLeft: 20,
@@ -1046,11 +1046,11 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                     marginLeft: 20,
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
 
                 }}
             />
@@ -1076,7 +1076,7 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "4vw",
                 marginLeft: "5vw",
@@ -1090,7 +1090,7 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                 marginTop: "4vw",
                 marginLeft: "5vw",
                 paddingBottom: "2vw",
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: "45vw",
             }}>
                 <input
@@ -1106,14 +1106,14 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             {highPrice === true ?
@@ -1127,7 +1127,7 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1145,18 +1145,18 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                     outline: 0,
                     border: 0,
                     paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1174,18 +1174,18 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1203,11 +1203,11 @@ function MFashionForm({ filePath, onButtonClick, inputFile, handelFileInput, bra
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </div>
@@ -1246,12 +1246,12 @@ function ETCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, n
                     <input ref={inputFile} onChange={handelFileInput} type="file" style={{
                         display: "none"
                     }} />
-                    <BsPlusCircle size={36} color="#051a1a" />
+                    <BsPlusCircle size={36} color="#010608" />
                     <div style={{
                         marginTop: 24,
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        columnGap: "#202426"
+                        columnGap: "#010608"
                     }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
                 </div>
             }
@@ -1275,7 +1275,7 @@ function ETCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, n
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 16,
                 marginLeft: 20,
@@ -1289,7 +1289,7 @@ function ETCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, n
                 marginTop: 16,
                 marginLeft: 20,
                 paddingBottom: 8,
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: 210,
             }}>
                 <input
@@ -1305,14 +1305,14 @@ function ETCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, n
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             {highPrice===true?
@@ -1325,7 +1325,7 @@ function ETCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, n
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: 32,
                 marginLeft: 20,
@@ -1342,12 +1342,12 @@ function ETCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, n
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                     marginLeft:20,
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </div>
@@ -1386,12 +1386,12 @@ function METCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, 
                     <input ref={inputFile} onChange={handelFileInput} type="file" style={{
                         display: "none"
                     }} />
-                    <BsPlusCircle size={24} color="#051a1a" />
+                    <BsPlusCircle size={24} color="#010608" />
                     <div style={{
                         marginTop: 24,
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        columnGap: "#202426"
+                        columnGap: "#010608"
                     }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
                 </div>
             }
@@ -1415,7 +1415,7 @@ function METCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, 
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "4vw",
                 marginLeft: "5vw",
@@ -1429,7 +1429,7 @@ function METCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, 
                 marginTop: "4vw",
                 marginLeft: "5vw",
                 paddingBottom: "2vw",
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 width: "45vw",
             }}>
                 <input
@@ -1445,14 +1445,14 @@ function METCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, 
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426"
+                        color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     fontWeight: "bold",
-                    color: "#202426"
+                    color: "#010608"
                 }}>원</div>
             </div>
             {highPrice===true?
@@ -1466,7 +1466,7 @@ function METCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, 
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
 
                 marginTop: "8vw",
                 marginLeft: "5vw",
@@ -1484,11 +1484,11 @@ function METCForm({ filePath, onButtonClick, inputFile, handelFileInput, brand, 
                     outline: 0,
                     border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </div>

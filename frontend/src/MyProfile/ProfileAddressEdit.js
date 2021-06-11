@@ -123,7 +123,7 @@ export default function ProfileAddressEdit() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426"
+                            color: "#010608"
                         }}>거주지 주소를 입력해주세요.</div>
                         <div style={{
                             display: "flex",
@@ -149,7 +149,7 @@ export default function ProfileAddressEdit() {
                                 paddingRight: 10,
                                 marginLeft: 20,
                                 borderRadius: 6,
-                                backgroundColor: "#051a1a",
+                                backgroundColor: "#010608",
 
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 12,
@@ -219,7 +219,7 @@ export default function ProfileAddressEdit() {
                             paddingRight: 8,
                             marginLeft: 10,
                             borderRadius: 6,
-                            backgroundColor: "#051a1a",
+                            backgroundColor: "#010608",
 
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,

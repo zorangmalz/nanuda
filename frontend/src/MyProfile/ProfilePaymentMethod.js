@@ -39,7 +39,7 @@ export default function ProfilePaymentMethod() {
                         <div onClick={() => history.push("/paymentaddbank")} style={{
                             width: 440,
                             height: 136,
-                            border: "1px solid rgba(5, 26, 26, 0.2)",
+                            border: "1px solid rgba(1, 6, 8, 0.2)",
                             borderRadius: 6,
                             cursor: "pointer",
 
@@ -49,12 +49,12 @@ export default function ProfilePaymentMethod() {
                             justifyContent: "center",
                             alignSelf: "center",
                         }}>
-                            <BiPlusCircle size={64} color="rgba(5, 26, 26, 0.6)" />
+                            <BiPlusCircle size={64} color="rgba(1, 6, 8, 0.6)" />
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 16,
-                                color: "#202426",
+                                color: "#010608",
                                 marginTop: 8,
                             }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
                         </div>
@@ -81,7 +81,7 @@ export default function ProfilePaymentMethod() {
                     <div onClick={() => history.push("/paymentaddbank")} style={{
                         width: "76vw",
                         padding: "5vw 7vw",
-                        border: "1px solid rgba(5, 26, 26, 0.2)",
+                        border: "1px solid rgba(1, 6, 8, 0.2)",
                         borderRadius: 6,
                         cursor: "pointer",
 
@@ -91,12 +91,12 @@ export default function ProfilePaymentMethod() {
                         justifyContent: "center",
                         alignSelf: "center",
                     }}>
-                        <BiPlusCircle size={48} color="rgba(5, 26, 26, 0.6)" />
+                        <BiPlusCircle size={48} color="rgba(1, 6, 8, 0.6)" />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 12,
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 4,
                         }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
                     </div>

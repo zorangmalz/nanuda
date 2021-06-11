@@ -100,7 +100,7 @@ export default function PaymentSuccess() {
                             color: "#26c1f0",
                             fontFamily: "NotoSansCJKkr",
                         }}>{wish ? "주문" : "작성"}이 완료
-                                <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                                <span style={{ color: "#010608" }}>되었습니다!</span>
                         </div>
                         {imageUrl != "airpodone" && imageUrl != "ipad" ?
                             <OrderDetail
@@ -174,7 +174,7 @@ export default function PaymentSuccess() {
                         fontFamily: "NotoSansCJKkr",
                         textAlign: "center",
                     }}>{wish ? "주문" : "작성"}이 완료
-                        <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                        <span style={{ color: "#010608" }}>되었습니다!</span>
                     </div>
                     {imageUrl != "airpodone" && imageUrl != "ipad" ?
                         <MOrderDetail

@@ -90,7 +90,7 @@ function ProductInfo({ img, title, price, name, number, orderNum, address, addre
                     fontSize: 16,
                     fontWeight: "bold",
                     marginBottom: 16,
-                    color: "#202426"
+                    color: "#010608"
                 }}>주문상세</div>
                 <div style={{
                     display: "flex",
@@ -115,13 +115,13 @@ function ProductInfo({ img, title, price, name, number, orderNum, address, addre
                         <div style={{
                             fontSize: 16,
                             lineHeight: 1.5,
-                            color: "#202426",
+                            color: "#010608",
                             fontFamily: "AvenirNext",
                             marginBottom: 8,
                         }}>{title}</div>
                         <div style={{
                             fontSize: 18,
-                            color: "#051a1a",
+                            color: "#010608",
                             fontFamily: "NotoSansCJKkr",
                             fontWeight: "bold",
                         }}>{price} 원</div>
@@ -130,7 +130,7 @@ function ProductInfo({ img, title, price, name, number, orderNum, address, addre
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     opacity: 0.8,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.88,
                     fontSize: 16,
                 }}>
@@ -168,7 +168,7 @@ function MProductInfo({ img, title, price, name, number, orderNum, address, addr
                     fontSize: 16,
                     fontWeight: "bold",
                     marginBottom: 16,
-                    color: "#202426"
+                    color: "#010608"
                 }}>주문상세</div>
                 <div style={{
                     display: "flex",
@@ -193,13 +193,13 @@ function MProductInfo({ img, title, price, name, number, orderNum, address, addr
                         <div style={{
                             fontSize: 14,
                             lineHeight: 1.5,
-                            color: "#202426",
+                            color: "#010608",
                             fontFamily: "AvenirNext",
                             marginBottom: 8,
                         }}>{title}</div>
                         <div style={{
                             fontSize: 16,
-                            color: "#051a1a",
+                            color: "#010608",
                             fontFamily: "NotoSansCJKkr",
                             fontWeight: "bold",
                         }}>{price} 원</div>
@@ -208,7 +208,7 @@ function MProductInfo({ img, title, price, name, number, orderNum, address, addr
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     opacity: 0.8,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.88,
                     fontSize: 14,
                 }}>

@@ -37,7 +37,7 @@ export default function ProfileDelete() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 21,
                             fontWeight: "bold",
-                            color: "#051a1a",
+                            color: "#010608",
                             lineHeight: 1.43,
                         }}>
                             잠깐! 회원탈퇴하면 다음과 같은 <br />
@@ -47,7 +47,7 @@ export default function ProfileDelete() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             opacity: 0.8,
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 16,
                             marginLeft: 20,
@@ -75,7 +75,7 @@ export default function ProfileDelete() {
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                             }}>위 내용에 동의합니다.</div>
                         </div>
@@ -105,7 +105,7 @@ export default function ProfileDelete() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         lineHeight: 1.43,
                     }}>
                         잠깐! 회원탈퇴하면 다음과 같은 <br />
@@ -115,7 +115,7 @@ export default function ProfileDelete() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         opacity: 0.8,
-                        color: "#202426",
+                        color: "#010608",
 
                         marginTop: "4vw",
                         marginLeft: "5vw",
@@ -143,7 +143,7 @@ export default function ProfileDelete() {
                             fontSize: 16,
                             fontWeight: "bold",
                             fontFamily: "NotoSansCJKkr",
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: "2vw",
                         }}>위 내용에 동의합니다.</div>
                     </div>

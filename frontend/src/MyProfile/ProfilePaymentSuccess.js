@@ -55,7 +55,7 @@ export default function ProfilePaymentSuccess() {
                             color: "#26c1f0",
                             fontFamily: "NotoSansCJKkr",
                         }}>결제가 완료
-                                <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                                <span style={{ color: "#010608" }}>되었습니다!</span>
                         </div>
                         <div onClick={goHome} style={{
                             width: 440,
@@ -107,7 +107,7 @@ export default function ProfilePaymentSuccess() {
                         color: "#26c1f0",
                         fontFamily: "NotoSansCJKkr"
                     }}>결제가 완료
-                        <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                        <span style={{ color: "#010608" }}>되었습니다!</span>
                     </div>
                     <div onClick={goHome} style={{
                         width: "90%",

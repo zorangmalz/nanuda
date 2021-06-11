@@ -47,7 +47,7 @@ export default function ReviewSelect() {
                                 marginLeft: 20,
                                 fontSize: 18,
                                 fontWeight: "bold",
-                                color: "#202426",
+                                color: "#010608",
                                 fontFamily: "NotoSansCJKkr"
                             }}>리뷰를 작성할 상품을 골라주세요.</div>
                             <Product
@@ -76,7 +76,7 @@ export default function ReviewSelect() {
                             marginLeft: "5vw",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             fontFamily: "NotoSansCJKkr"
                         }}>리뷰를 작성할 상품을 골라주세요.</div>
                         <MProduct
@@ -104,7 +104,7 @@ export function Product({ name, current, sale, border }) {
 
             cursor: "pointer",
             paddingBottom: border ? 16 : 0,
-            borderBottom: border ? "1px solid rgba(5, 26, 26, 0.2)" : 0,
+            borderBottom: border ? "1px solid rgba(1, 6, 8, 0.2)" : 0,
             width: 440,
         }}>
             <div style={{
@@ -125,7 +125,7 @@ export function Product({ name, current, sale, border }) {
                 }}>
                     <div style={{ fontSize: 14, fontFamily: "AvenirNext", marginBottom: 8 }}>{name}</div>
                     <div style={{ fontSize: 14, opacity: 0.6, textDecoration: "line-through", marginBottom: 8 }}>{current} 원</div>
-                    <div style={{ fontSize: 16, fontWeight: "bold", color: "#051a1a", marginBottom: 8 }}>{sale} 원에 획득 완료!</div>
+                    <div style={{ fontSize: 16, fontWeight: "bold", color: "#010608", marginBottom: 8 }}>{sale} 원에 획득 완료!</div>
                 </div>
             </div>
             <RiArrowRightSLine color="#dfdfdf" size={24} style={{ cursor: "pointer" }} />
@@ -145,7 +145,7 @@ export function MProduct({ name, current, sale, border }) {
 
             cursor: "pointer",
             paddingBottom: border ? "4vw" : 0,
-            borderBottom: border ? "1px solid rgba(5, 26, 26, 0.2)" : 0,
+            borderBottom: border ? "1px solid rgba(1, 6, 8, 0.2)" : 0,
             width: "90vw",
         }}>
             <div style={{
@@ -166,7 +166,7 @@ export function MProduct({ name, current, sale, border }) {
                 }}>
                     <div style={{ fontSize: 12, fontFamily: "AvenirNext", marginBottom: 4 }}>{name}</div>
                     <div style={{ fontSize: 12, opacity: 0.6, textDecoration: "line-through", marginBottom: 4 }}>{current} 원</div>
-                    <div style={{ fontSize: 14, fontWeight: "bold", color: "#051a1a", marginBottom: 4 }}>{sale} 원에 획득 완료!</div>
+                    <div style={{ fontSize: 14, fontWeight: "bold", color: "#010608", marginBottom: 4 }}>{sale} 원에 획득 완료!</div>
                 </div>
             </div>
             <RiArrowRightSLine color="#dfdfdf" size={20} style={{ cursor: "pointer" }} />

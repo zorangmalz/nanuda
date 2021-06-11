@@ -54,7 +54,7 @@ export default function TimeDealDetail({ location }) {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 20,
                             marginTop: 32,
                         }}>애플</div>
@@ -62,7 +62,7 @@ export default function TimeDealDetail({ location }) {
                             fontFamily: "AvenirNext",
                             fontSize: 18,
                             opacity: 0.8,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 20,
                             marginRight: 20,
                             marginTop: 8,
@@ -81,7 +81,7 @@ export default function TimeDealDetail({ location }) {
 
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
-                            color: "#202426",
+                            color: "#010608",
                             fontWeight: "bold",
                         }}>🔥 계좌이체를 통해 <span style={{ fontWeight: "normal" }}>간편하게 분할결제하세요!</span></div>
                         <div style={{
@@ -89,7 +89,7 @@ export default function TimeDealDetail({ location }) {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 20,
                             marginBottom: 32,
                         }}>상품정보</div>
@@ -116,12 +116,12 @@ export default function TimeDealDetail({ location }) {
                             :
                             <img alt="airpotthree" src={query.product === "airpod" ? airpotthree : ipadlong} style={{ width: 440, marginLeft: 20, marginBottom: 32, height: "auto" }} />
                         }
-                        <div style={{ width: 440, height: 1, backgroundColor: "rgba(5, 26, 26, 0.2)", alignSelf: "center", marginBottom: 32 }} />
+                        <div style={{ width: 440, height: 1, backgroundColor: "rgba(1, 6, 8, 0.2)", alignSelf: "center", marginBottom: 32 }} />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 20,
                             marginBottom: 16,
                         }}>리뷰(예시)</div>
@@ -129,7 +129,7 @@ export default function TimeDealDetail({ location }) {
                             width: 440,
                             marginLeft: 20,
                             paddingBottom: 16,
-                            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                             marginBottom: 32,
                         }}>
                             <div style={{
@@ -147,7 +147,7 @@ export default function TimeDealDetail({ location }) {
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 21,
                                     fontWeight: "bold",
-                                    color: "#051a1a",
+                                    color: "#010608",
                                     marginLeft: 8,
                                 }}>5.0/5.0</div>
                             </div>
@@ -178,7 +178,7 @@ export default function TimeDealDetail({ location }) {
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 14,
                                             fontWeight: "bold",
-                                            color: "#202426",
+                                            color: "#010608",
                                         }}>하울 홀릭</div>
                                     </div>
                                     <div style={{
@@ -192,7 +192,7 @@ export default function TimeDealDetail({ location }) {
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 14,
                                             fontWeight: "bold",
-                                            color: "#051a1a",
+                                            color: "#010608",
                                         }}>4.5</div>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@ export default function TimeDealDetail({ location }) {
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 opacity: 0.8,
                                 marginBottom: 16,
                                 lineHeight: 1.5
@@ -223,7 +223,7 @@ export default function TimeDealDetail({ location }) {
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 opacity: 0.8,
                                 marginBottom: 8,
                                 lineHeight: 1.5
@@ -232,7 +232,7 @@ export default function TimeDealDetail({ location }) {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 12,
                                 opacity: 0.6,
-                                color: "#202426"
+                                color: "#010608"
                             }}>2021.03.30</div>
                         </div>
                         <InfoBox onClick={() => setNeccInfo(true)} name="필수 표기 정보" marginBottom={16} />
@@ -259,7 +259,7 @@ export default function TimeDealDetail({ location }) {
                         {infoShow ? <div style={{
                             width: 480,
                             height: "100%",
-                            backgroundColor: "rgba(5, 26, 26, 0.4)",
+                            backgroundColor: "rgba(1, 6, 8, 0.4)",
                             position: "fixed",
                             top: 0,
                             zIndex: 1,
@@ -273,7 +273,7 @@ export default function TimeDealDetail({ location }) {
                         {neccInfo && query.product === "airpod" ? <div style={{
                             width: 480,
                             height: "100%",
-                            backgroundColor: "rgba(5, 26, 26, 0.4)",
+                            backgroundColor: "rgba(1, 6, 8, 0.4)",
                             position: "fixed",
                             top: 0,
                             zIndex: 1,
@@ -287,7 +287,7 @@ export default function TimeDealDetail({ location }) {
                         {neccInfo && query.product === "ipad" ? <div style={{
                             width: 480,
                             height: "100%",
-                            backgroundColor: "rgba(5, 26, 26, 0.4)",
+                            backgroundColor: "rgba(1, 6, 8, 0.4)",
                             position: "fixed",
                             top: 0,
                             zIndex: 1,
@@ -318,7 +318,7 @@ export default function TimeDealDetail({ location }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginLeft: "5vw",
                         marginTop: "8vw",
                     }}>애플</div>
@@ -326,7 +326,7 @@ export default function TimeDealDetail({ location }) {
                         fontFamily: "AvenirNext",
                         fontSize: 16,
                         opacity: 0.8,
-                        color: "#202426",
+                        color: "#010608",
                         marginLeft: "5vw",
                         marginRight: "5vw",
                         marginTop: "2vw",
@@ -345,7 +345,7 @@ export default function TimeDealDetail({ location }) {
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426",
+                        color: "#010608",
                         fontWeight: "bold",
                     }}>🔥 계좌이체를 통해 <span style={{ fontWeight: "normal" }}>간편하게 분할결제하세요!</span></div>
                     <div style={{
@@ -353,7 +353,7 @@ export default function TimeDealDetail({ location }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginLeft: "5vw",
                         marginBottom: "8vw",
                     }}>상품정보</div>
@@ -380,12 +380,12 @@ export default function TimeDealDetail({ location }) {
                         :
                         <img alt="airpotthree" src={query.product === "airpod" ? airpotthree : ipadlong} style={{ width: "90vw", marginLeft: "5vw", marginBottom: "8vw", height: "auto" }} />
                     }
-                    <div style={{ width: "90vw", height: 1, backgroundColor: "rgba(5, 26, 26, 0.2)", alignSelf: "center", marginBottom: "8vw" }} />
+                    <div style={{ width: "90vw", height: 1, backgroundColor: "rgba(1, 6, 8, 0.2)", alignSelf: "center", marginBottom: "8vw" }} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginLeft: "5vw",
                         marginBottom: "4vw",
                     }}>리뷰(예시)</div>
@@ -393,7 +393,7 @@ export default function TimeDealDetail({ location }) {
                         width: "90vw",
                         marginLeft: "5vw",
                         paddingBottom: "4vw",
-                        borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                        borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                         marginBottom: "8vw",
                     }}>
                         <div style={{
@@ -411,7 +411,7 @@ export default function TimeDealDetail({ location }) {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 18,
                                 fontWeight: "bold",
-                                color: "#051a1a",
+                                color: "#010608",
                                 marginLeft: "2vw",
                             }}>5.0/5.0</div>
                         </div>
@@ -441,7 +441,7 @@ export default function TimeDealDetail({ location }) {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 12,
                                         fontWeight: "bold",
-                                        color: "#202426",
+                                        color: "#010608",
                                     }}>하울 홀릭</div>
                                 </div>
                                 <div style={{
@@ -455,7 +455,7 @@ export default function TimeDealDetail({ location }) {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 12,
                                         fontWeight: "bold",
-                                        color: "#051a1a",
+                                        color: "#010608",
                                     }}>4.5</div>
                                 </div>
                             </div>
@@ -471,7 +471,7 @@ export default function TimeDealDetail({ location }) {
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
-                            color: "#202426",
+                            color: "#010608",
                             opacity: 0.8,
                             marginBottom: "4vw",
                             lineHeight: 1.5
@@ -486,7 +486,7 @@ export default function TimeDealDetail({ location }) {
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
-                            color: "#202426",
+                            color: "#010608",
                             opacity: 0.8,
                             marginBottom: "2vw",
                             lineHeight: 1.5
@@ -495,7 +495,7 @@ export default function TimeDealDetail({ location }) {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 10,
                             opacity: 0.6,
-                            color: "#202426"
+                            color: "#010608"
                         }}>2021.03.30</div>
                     </div>
                     <MInfoBox onClick={() => setNeccInfo(true)} name="필수 표기 정보" marginBottom={"4vw"} />
@@ -522,7 +522,7 @@ export default function TimeDealDetail({ location }) {
                     {infoShow ? <div style={{
                         width: "100vw",
                         height: "100%",
-                        backgroundColor: "rgba(5, 26, 26, 0.4)",
+                        backgroundColor: "rgba(1, 6, 8, 0.4)",
                         position: "fixed",
                         top: 0,
                         zIndex: 1,
@@ -536,7 +536,7 @@ export default function TimeDealDetail({ location }) {
                     {neccInfo && query.product === "airpod" ? <div style={{
                         width: "100vw",
                         height: "100%",
-                        backgroundColor: "rgba(5, 26, 26, 0.4)",
+                        backgroundColor: "rgba(1, 6, 8, 0.4)",
                         position: "fixed",
                         top: 0,
                         zIndex: 1,
@@ -550,7 +550,7 @@ export default function TimeDealDetail({ location }) {
                     {neccInfo && query.product === "ipad" ? <div style={{
                         width: "100vw",
                         height: "100%",
-                        backgroundColor: "rgba(5, 26, 26, 0.4)",
+                        backgroundColor: "rgba(1, 6, 8, 0.4)",
                         position: "fixed",
                         top: 0,
                         zIndex: 1,
@@ -576,21 +576,21 @@ const DivideContainer = ({ num, price, marginBottom }) => {
             alignItems: "center",
             justifyContent: "space-between",
             paddingBottom: 8,
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             marginBottom: marginBottom,
             marginLeft: 20
         }}>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
-                color: "#202426",
+                color: "#010608",
                 opacity: 0.6
             }}>{num}회 분할결제</div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 21,
                 fontWeight: "bold",
-                color: "#051a1a"
+                color: "#010608"
             }}>
                 <span style={{ fontSize: 16 }}>월 </span>
                 {price} 원
@@ -608,21 +608,21 @@ const MDivideContainer = ({ num, price, marginBottom }) => {
             alignItems: "center",
             justifyContent: "space-between",
             paddingBottom: "2vw",
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             marginBottom: marginBottom,
             marginLeft: "5vw"
         }}>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 14,
-                color: "#202426",
+                color: "#010608",
                 opacity: 0.6
             }}>{num}회 분할결제</div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#051a1a"
+                color: "#010608"
             }}>
                 <span style={{ fontSize: 14 }}>월 </span>
                 {price} 원
@@ -641,15 +641,15 @@ const InfoBox = ({ name, marginBottom, onClick }) => {
             marginLeft: 20,
             paddingBottom: 16,
             marginBottom: marginBottom,
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             cursor: "pointer"
         }}>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
-                color: "#202426"
+                color: "#010608"
             }}>{name}</div>
-            <MdKeyboardArrowRight size={24} color="#051a1a" />
+            <MdKeyboardArrowRight size={24} color="#010608" />
         </div>
     )
 }
@@ -664,15 +664,15 @@ const MInfoBox = ({ name, marginBottom, onClick }) => {
             marginLeft: "5vw",
             paddingBottom: "4vw",
             marginBottom: marginBottom,
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             cursor: "pointer"
         }}>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 14,
-                color: "#202426"
+                color: "#010608"
             }}>{name}</div>
-            <MdKeyboardArrowRight size={18} color="#051a1a" />
+            <MdKeyboardArrowRight size={18} color="#010608" />
         </div>
     )
 }
@@ -688,12 +688,12 @@ const Delivery = ({ onClick }) => {
             flexDirection: "column",
             zIndex: 2,
         }}>
-            <AiOutlineClose onClick={onClick} size={20} color="rgba(5, 26, 26, 0.3)" style={{ marginLeft: 12, cursor: "pointer" }} />
+            <AiOutlineClose onClick={onClick} size={20} color="rgba(1, 6, 8, 0.4)" style={{ marginLeft: 12, cursor: "pointer" }} />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 21,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 marginBottom: 16,
                 width: 360,
                 marginLeft: 40,
@@ -701,7 +701,7 @@ const Delivery = ({ onClick }) => {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 14,
-                color: "#051a1a",
+                color: "#010608",
                 opacity: 0.8,
                 width: 360,
                 marginLeft: 40,
@@ -735,12 +735,12 @@ const MDelivery = ({ onClick }) => {
             flexDirection: "column",
             zIndex: 2,
         }}>
-            <AiOutlineClose onClick={onClick} size={16} color="rgba(5, 26, 26, 0.3)" style={{ marginLeft: 12, cursor: "pointer" }} />
+            <AiOutlineClose onClick={onClick} size={16} color="rgba(1, 6, 8, 0.4)" style={{ marginLeft: 12, cursor: "pointer" }} />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 marginBottom: "4vw",
                 width: "80vw",
                 marginLeft: "10vw",
@@ -748,7 +748,7 @@ const MDelivery = ({ onClick }) => {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 12,
-                color: "#051a1a",
+                color: "#010608",
                 opacity: 0.8,
                 width: "80vw",
                 marginLeft: "5vw",
@@ -783,12 +783,12 @@ const Neccessary = ({ onClick }) => {
             flexDirection: "column",
             zIndex: 2,
         }}>
-            <AiOutlineClose onClick={onClick} size={20} color="rgba(5, 26, 26, 0.3)" style={{ marginLeft: 12, cursor: "pointer" }} />
+            <AiOutlineClose onClick={onClick} size={20} color="rgba(1, 6, 8, 0.4)" style={{ marginLeft: 12, cursor: "pointer" }} />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 21,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 marginBottom: 16,
                 width: 360,
                 marginLeft: 40,
@@ -797,7 +797,7 @@ const Neccessary = ({ onClick }) => {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 14,
-                color: "#051a1a",
+                color: "#010608",
                 opacity: 0.8,
                 width: 360,
                 marginLeft: 40,
@@ -826,12 +826,12 @@ const NeccessaryIpad = ({ onClick }) => {
             flexDirection: "column",
             zIndex: 2,
         }}>
-            <AiOutlineClose onClick={onClick} size={20} color="rgba(5, 26, 26, 0.3)" style={{ marginLeft: 12, cursor: "pointer" }} />
+            <AiOutlineClose onClick={onClick} size={20} color="rgba(1, 6, 8, 0.4)" style={{ marginLeft: 12, cursor: "pointer" }} />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 21,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 marginBottom: 16,
                 width: 360,
                 marginLeft: 40,
@@ -840,7 +840,7 @@ const NeccessaryIpad = ({ onClick }) => {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 14,
-                color: "#051a1a",
+                color: "#010608",
                 opacity: 0.8,
                 width: 360,
                 marginLeft: 40,
@@ -871,12 +871,12 @@ const MNeccessary = ({ onClick }) => {
             flexDirection: "column",
             zIndex: 2,
         }}>
-            <AiOutlineClose onClick={onClick} size={16} color="rgba(5, 26, 26, 0.3)" style={{ marginLeft: 12, cursor: "pointer" }} />
+            <AiOutlineClose onClick={onClick} size={16} color="rgba(1, 6, 8, 0.4)" style={{ marginLeft: 12, cursor: "pointer" }} />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 marginBottom: "4vw",
                 width: "80vw",
                 marginLeft: "5vw",
@@ -885,7 +885,7 @@ const MNeccessary = ({ onClick }) => {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 12,
-                color: "#051a1a",
+                color: "#010608",
                 opacity: 0.8,
                 width: "80vw",
                 marginLeft: "5vw",
@@ -914,12 +914,12 @@ const MNeccessaryIpad = ({ onClick }) => {
             flexDirection: "column",
             zIndex: 2,
         }}>
-            <AiOutlineClose onClick={onClick} size={16} color="rgba(5, 26, 26, 0.3)" style={{ marginLeft: 12, cursor: "pointer" }} />
+            <AiOutlineClose onClick={onClick} size={16} color="rgba(1, 6, 8, 0.4)" style={{ marginLeft: 12, cursor: "pointer" }} />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 marginBottom: "4vw",
                 width: "80vw",
                 marginLeft: "5vw",
@@ -928,7 +928,7 @@ const MNeccessaryIpad = ({ onClick }) => {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 12,
-                color: "#051a1a",
+                color: "#010608",
                 opacity: 0.8,
                 width: "80vw",
                 marginLeft: "5vw",

@@ -60,12 +60,12 @@ export default function ProfilePaymentDetail() {
                                 <div style={{
                                     fontSize: 16,
                                     fontFamily: "NotoSansCJKkr",
-                                    color: "#202426",
+                                    color: "#010608",
                                     opacity: 0.6,
                                 }}>2021.03.13</div>
                                 <div style={{
                                     fontSize: 16,
-                                    color: "#202426",
+                                    color: "#010608",
                                     fontFamily: "AvenirNext",
                                     lineHeight: 1.5,
                                 }}>PRADA Model 23-9 limited… <br />
@@ -73,7 +73,7 @@ export default function ProfilePaymentDetail() {
                                 <div style={{
                                     fontSize: 18,
                                     fontWeight: "bold",
-                                    color: "#051a1a",
+                                    color: "#010608",
                                     fontFamily: "NotoSansCJKkr"
                                 }}>480,000원</div>
                             </div>
@@ -81,7 +81,7 @@ export default function ProfilePaymentDetail() {
                         <div style={{
                             width: 440,
                             height: 1,
-                            backgroundColor: "rgba(5, 26, 26, 0.2)",
+                            backgroundColor: "rgba(1, 6, 8, 0.2)",
                             alignSelf: "center",
                         }} />
                         <PayInfo
@@ -130,7 +130,7 @@ export default function ProfilePaymentDetail() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
                             textDecorationLine: "underline",
 
                             marginTop: 16,
@@ -178,12 +178,12 @@ export default function ProfilePaymentDetail() {
                             <div style={{
                                 fontSize: 14,
                                 fontFamily: "NotoSansCJKkr",
-                                color: "#202426",
+                                color: "#010608",
                                 opacity: 0.6,
                             }}>2021.03.13</div>
                             <div style={{
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 fontFamily: "AvenirNext",
                                 lineHeight: 1.5,
                             }}>PRADA Model 23-9 limited… <br />
@@ -191,7 +191,7 @@ export default function ProfilePaymentDetail() {
                             <div style={{
                                 fontSize: 16,
                                 fontWeight: "bold",
-                                color: "#051a1a",
+                                color: "#010608",
                                 fontFamily: "NotoSansCJKkr"
                             }}>480,000원</div>
                         </div>
@@ -199,7 +199,7 @@ export default function ProfilePaymentDetail() {
                     <div style={{
                         width: "90vw",
                         height: 1,
-                        backgroundColor: "rgba(5, 26, 26, 0.2)",
+                        backgroundColor: "rgba(1, 6, 8, 0.2)",
                         alignSelf: "center",
                     }} />
                     <MPayInfo
@@ -248,7 +248,7 @@ export default function ProfilePaymentDetail() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 12,
                         opacity: 0.6,
-                        color: "#202426",
+                        color: "#010608",
                         textDecorationLine: "underline",
 
                         marginTop: 12,
@@ -268,7 +268,7 @@ function PayInfo({ num, date, state, payback }) {
                 width: 440,
                 marginTop: 16,
                 paddingBottom: 16,
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                 display: "flex",
                 flexDirection: "column",
@@ -286,13 +286,13 @@ function PayInfo({ num, date, state, payback }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                     }}>{num}차 분할결제 정보 ({date})</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: state === 0 ? "rgba(5, 26, 26, 0.6)" : state === 1 ? "#26c1f0" : "#f72b2b",
+                        color: state === 0 ? "rgba(1, 6, 8, 0.6)" : state === 1 ? "#26c1f0" : "#f72b2b",
                     }}>{state === 0 ? "결제완료" : state === 1 ? "결제 예정" : "연체"}</div>
                 </div>
                 <div style={{
@@ -365,13 +365,13 @@ function PayInfo({ num, date, state, payback }) {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 18,
-                        color: "#202426",
+                        color: "#010608",
                     }}>{num}차 총 결제 금액</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 24,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                     }}>{payback} 원</div>
                 </div>
             </div>
@@ -386,7 +386,7 @@ function MPayInfo({ num, date, state, payback }) {
                 width: "90vw",
                 marginTop: 12,
                 paddingBottom: 12,
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                 display: "flex",
                 flexDirection: "column",
@@ -404,13 +404,13 @@ function MPayInfo({ num, date, state, payback }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                     }}>{num}차 분할결제 정보 ({date})</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: state === 0 ? "rgba(5, 26, 26, 0.6)" : state === 1 ? "#26c1f0" : "#f72b2b",
+                        color: state === 0 ? "rgba(1, 6, 8, 0.6)" : state === 1 ? "#26c1f0" : "#f72b2b",
                     }}>{state === 0 ? "결제완료" : state === 1 ? "결제 예정" : "연체"}</div>
                 </div>
                 <div style={{
@@ -483,13 +483,13 @@ function MPayInfo({ num, date, state, payback }) {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        color: "#202426",
+                        color: "#010608",
                     }}>{num}차 총 결제 금액</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 20,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                     }}>{payback} 원</div>
                 </div>
             </div>

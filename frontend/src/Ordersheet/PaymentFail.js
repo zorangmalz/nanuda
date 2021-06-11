@@ -53,10 +53,10 @@ export default function PaymentFail() {
                             fontWeight: "bold",
                             color: "#f72b2b",
                             fontFamily: "NotoSansCJKkr"
-                        }}>작성에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
+                        }}>작성에 실패<span style={{ color: "#010608" }}>했습니다.</span></div>
                         <div style={{
                             fontSize: 16,
-                            color: "#051a1a",
+                            color: "#010608",
                             opacity: 0.6,
                             marginTop: 16,
                             fontFamily: "NotoSansCJKkr"
@@ -114,10 +114,10 @@ export default function PaymentFail() {
                         fontWeight: "bold",
                         color: "#f72b2b",
                         fontFamily: "NotoSansCJKkr"
-                    }}>작성에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
+                    }}>작성에 실패<span style={{ color: "#010608" }}>했습니다.</span></div>
                     <div style={{
                         fontSize: 16,
-                        color: "#051a1a",
+                        color: "#010608",
                         opacity: 0.6,
                         marginTop: 16,
                         fontFamily: "NotoSansCJKkr"
@@ -168,7 +168,7 @@ export function OrderDetail({ wishTime, img, title, price, name, orderNum, numbe
                         fontSize: 16,
                         fontWeight: "bold",
                         marginBottom: 16,
-                        color: "#202426"
+                        color: "#010608"
                     }}>주문상세</div>
                     <div style={{
                         display: "flex",
@@ -193,13 +193,13 @@ export function OrderDetail({ wishTime, img, title, price, name, orderNum, numbe
                             <div style={{
                                 fontSize: 16,
                                 lineHeight: 1.5,
-                                color: "#202426",
+                                color: "#010608",
                                 fontFamily: "AvenirNext",
                                 marginBottom: 8,
                             }}>{title}</div>
                             <div style={{
                                 fontSize: 18,
-                                color: "#051a1a",
+                                color: "#010608",
                                 fontFamily: "NotoSansCJKkr",
                                 fontWeight: "bold",
                             }}>{price} 원</div>
@@ -208,7 +208,7 @@ export function OrderDetail({ wishTime, img, title, price, name, orderNum, numbe
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         opacity: 0.8,
-                        color: "#202426",
+                        color: "#010608",
                         lineHeight: 1.88,
                         fontSize: 16,
                     }}>
@@ -250,7 +250,7 @@ export function MOrderDetail({ wishTime, img, title, price, name, orderNum, numb
                         fontSize: 16,
                         fontWeight: "bold",
                         marginBottom: 16,
-                        color: "#202426"
+                        color: "#010608"
                     }}>주문상세</div>
                     <div style={{
                         display: "flex",
@@ -275,13 +275,13 @@ export function MOrderDetail({ wishTime, img, title, price, name, orderNum, numb
                             <div style={{
                                 fontSize: 14,
                                 lineHeight: 1.5,
-                                color: "#202426",
+                                color: "#010608",
                                 fontFamily: "AvenirNext",
                                 marginBottom: 8,
                             }}>{title}</div>
                             <div style={{
                                 fontSize: 16,
-                                color: "#051a1a",
+                                color: "#010608",
                                 fontFamily: "NotoSansCJKkr",
                                 fontWeight: "bold",
                             }}>{price} 원</div>
@@ -290,7 +290,7 @@ export function MOrderDetail({ wishTime, img, title, price, name, orderNum, numb
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         opacity: 0.8,
-                        color: "#202426",
+                        color: "#010608",
                         lineHeight: 1.88,
                         fontSize: 14,
                     }}>

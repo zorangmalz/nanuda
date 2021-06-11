@@ -30,7 +30,7 @@ export default function ProfileLimit() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 32,
                             marginLeft: 20,
                         }}>김현명님의 총 한도</div>
@@ -38,7 +38,7 @@ export default function ProfileLimit() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 32,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 16,
                             marginBottom: 16,
                             marginLeft: 20,
@@ -69,13 +69,13 @@ export default function ProfileLimit() {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
                                 fontWeight: "bold",
-                                color: "#202426"
+                                color: "#010608"
                             }}>나누다 팁!</div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
                                 opacity: 0.8,
-                                color: "#202426",
+                                color: "#010608",
                                 marginTop: 4,
                             }}>현재 한도 금액은 최대 분할결제가 가능한 금액을 의미합니다. <br />
                                 예를 들어 60만원 짜리 상품을 구매하는 경우 30만원을 선결제 후 <br />
@@ -121,21 +121,21 @@ export default function ProfileLimit() {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
                                         fontWeight: "bold",
-                                        color: "#202426",
+                                        color: "#010608",
                                         marginBottom: 8,
                                     }}>작업 인증하기</div>
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         opacity: 0.6,
                                         fontSize: 14,
-                                        color: "#202426"
+                                        color: "#010608"
                                     }}>한도 10만원 증가</div>
                                 </div>
                             </div>
                             <div style={{
                                 padding: "7px 14px",
                                 borderRadius: 6,
-                                backgroundColor: "#051a1a",
+                                backgroundColor: "#010608",
 
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
@@ -171,14 +171,14 @@ export default function ProfileLimit() {
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 16,
                                     fontWeight: "bold",
-                                    color: "#202426",
+                                    color: "#010608",
                                     marginBottom: 8,
                                 }}>추가 예정</div>
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     opacity: 0.6,
                                     fontSize: 14,
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>다양한 미션을 준비하고 있어요.</div>
                             </div>
                         </div>
@@ -216,14 +216,14 @@ export default function ProfileLimit() {
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 16,
                                     fontWeight: "bold",
-                                    color: "#202426",
+                                    color: "#010608",
                                     marginBottom: 8,
                                 }}>완료한 미션이 없습니다.</div>
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     opacity: 0.6,
                                     fontSize: 14,
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>미션을 수행하고 한도를 늘려보세요.</div>
                             </div>
                         </div>
@@ -245,7 +245,7 @@ export default function ProfileLimit() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: 28,
                         marginLeft: "5vw",
                     }}>김현명님의 총 한도</div>
@@ -253,7 +253,7 @@ export default function ProfileLimit() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 28,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: 14,
                         marginBottom: 14,
                         marginLeft: "5vw",
@@ -284,13 +284,13 @@ export default function ProfileLimit() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             fontWeight: "bold",
-                            color: "#202426"
+                            color: "#010608"
                         }}>나누다 팁!</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             opacity: 0.8,
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 4,
                         }}>현재 한도 금액은 최대 분할결제가 가능한 금액을 의미합니다.
                             예를 들어 60만원 짜리 상품을 구매하는 경우 30만원을 선결제 후
@@ -337,21 +337,21 @@ export default function ProfileLimit() {
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 14,
                                     fontWeight: "bold",
-                                    color: "#202426",
+                                    color: "#010608",
                                     marginBottom: 4,
                                 }}>작업 인증하기</div>
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     opacity: 0.6,
                                     fontSize: 12,
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>한도 10만원 증가</div>
                             </div>
                         </div>
                         <div style={{
                             padding: "6px 12px",
                             borderRadius: 6,
-                            backgroundColor: "#051a1a",
+                            backgroundColor: "#010608",
 
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
@@ -388,14 +388,14 @@ export default function ProfileLimit() {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
                                 fontWeight: "bold",
-                                color: "#202426",
+                                color: "#010608",
                                 marginBottom: 4,
                             }}>추가 예정</div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 12,
-                                color: "#202426"
+                                color: "#010608"
                             }}>다양한 미션을 준비하고 있어요.</div>
                         </div>
                     </div>
@@ -434,14 +434,14 @@ export default function ProfileLimit() {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
                                 fontWeight: "bold",
-                                color: "#202426",
+                                color: "#010608",
                                 marginBottom: 4,
                             }}>완료한 미션이 없습니다.</div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 12,
-                                color: "#202426"
+                                color: "#010608"
                             }}>미션을 수행하고 한도를 늘려보세요.</div>
                         </div>
                     </div>

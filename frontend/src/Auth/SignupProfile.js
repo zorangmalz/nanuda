@@ -10,7 +10,7 @@ export const Title = styled.div`
     font-family: "NotoSansCJKkr";
     font-size: 18px;
     font-weight: bold;
-    color: #202426;
+    color: #010608;
     margin-top: 32px;
     margin-left: 20px;
 `;
@@ -20,7 +20,7 @@ export const MTitle = styled.div`
     font-family: "NotoSansCJKkr";
     font-size: 16px;
     font-weight: bold;
-    color: #202426;
+    color: #010608;
     margin-top: 28px;
     margin-left: 5vw;
 `;
@@ -32,14 +32,14 @@ export const Button = ({ text, number, standard, onClick }) => {
             paddingTop: 12,
             paddingBottom: 12,
             borderRadius: 6,
-            backgroundColor: number === standard ? "#051a1a" : "#ffffff",
-            border: number === standard ? "1px solid #051a1a" : "1px solid rgba(5, 26, 26, 0.2)",
+            backgroundColor: number === standard ? "#010608" : "#ffffff",
+            border: number === standard ? "1px solid #010608" : "1px solid rgba(1, 6, 8, 0.2)",
             cursor: "pointer",
 
             fontFamily: "NotoSansCJKkr",
             fontSize: 16,
             fontWeight: number === standard ? "bold" : "normal",
-            color: number === standard ? "#ffffff" : "rgba(5, 26, 26, 0.8)",
+            color: number === standard ? "#ffffff" : "rgba(1, 6, 8, 0.8)",
             textAlign: "center",
         }}>{text}</div>
     )
@@ -52,14 +52,14 @@ export const MButton = ({ text, number, standard, onClick }) => {
             paddingTop: 8,
             paddingBottom: 8,
             borderRadius: 6,
-            backgroundColor: number === standard ? "#051a1a" : "#ffffff",
-            border: number === standard ? "1px solid #051a1a" : "1px solid rgba(5, 26, 26, 0.2)",
+            backgroundColor: number === standard ? "#010608" : "#ffffff",
+            border: number === standard ? "1px solid #010608" : "1px solid rgba(1, 6, 8, 0.2)",
             cursor: "pointer",
 
             fontFamily: "NotoSansCJKkr",
             fontSize: 12,
             fontWeight: number === standard ? "bold" : "normal",
-            color: number === standard ? "#ffffff" : "rgba(5, 26, 26, 0.8)",
+            color: number === standard ? "#ffffff" : "rgba(1, 6, 8, 0.8)",
             textAlign: "center",
         }}>{text}</div>
     )
@@ -268,7 +268,7 @@ export default function SignupProfile() {
                             paddingTop: 12,
                             paddingBottom: 12,
                             marginTop: 32,
-                            border: "1px solid rgba(5, 26, 26, 0.2)",
+                            border: "1px solid rgba(1, 6, 8, 0.2)",
                             borderRadius: 6,
                         }}>
                             <BsCheck
@@ -286,7 +286,7 @@ export default function SignupProfile() {
                                     }
                                 }}
                                 size={24}
-                                color={personal && service && veri && market ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                                color={personal && service && veri && market ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                                 style={{
                                     marginLeft: 8,
                                     cursor: "pointer",
@@ -296,7 +296,7 @@ export default function SignupProfile() {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 18,
                                 fontWeight: "bold",
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                             }}>전체 약관 동의</div>
                         </div>
@@ -310,7 +310,7 @@ export default function SignupProfile() {
                             <BsCheck
                                 onClick={() => setPersonal(!personal)}
                                 size={24}
-                                color={personal ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                                color={personal ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                                 style={{
                                     cursor: "pointer"
                                 }}
@@ -319,7 +319,7 @@ export default function SignupProfile() {
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                             }}><span style={{
                                 textDecorationLine: "underline",
@@ -336,7 +336,7 @@ export default function SignupProfile() {
                             <BsCheck
                                 onClick={() => setService(!service)}
                                 size={24}
-                                color={service ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                                color={service ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                                 style={{
                                     cursor: "pointer"
                                 }}
@@ -345,7 +345,7 @@ export default function SignupProfile() {
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                             }}>나누다 <span style={{
                                 textDecorationLine: "underline",
@@ -362,7 +362,7 @@ export default function SignupProfile() {
                             <BsCheck
                                 onClick={() => setVeri(!veri)}
                                 size={24}
-                                color={veri ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                                color={veri ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                                 style={{
                                     cursor: "pointer"
                                 }}
@@ -371,7 +371,7 @@ export default function SignupProfile() {
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                             }}>
                                 <span style={{
@@ -390,7 +390,7 @@ export default function SignupProfile() {
                             <BsCheck
                                 onClick={() => setMarket(!market)}
                                 size={24}
-                                color={market ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                                color={market ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                                 style={{
                                     cursor: "pointer"
                                 }}
@@ -399,7 +399,7 @@ export default function SignupProfile() {
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                             }}>마케팅 정보 수신 동의(선택)</div>
                         </div>
@@ -520,7 +520,7 @@ export default function SignupProfile() {
                         paddingTop: "3vw",
                         paddingBottom: "3vw",
                         marginTop: "8vw",
-                        border: "1px solid rgba(5, 26, 26, 0.2)",
+                        border: "1px solid rgba(1, 6, 8, 0.2)",
                         borderRadius: 6,
                     }}>
                         <BsCheck
@@ -537,7 +537,7 @@ export default function SignupProfile() {
                                     setMarket(true)
                                 }
                             }}
-                            color={personal && service && veri && market ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                            color={personal && service && veri && market ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                             size={16}
                             style={{
                                 marginLeft: 8,
@@ -548,7 +548,7 @@ export default function SignupProfile() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 8,
                         }}>전체 약관 동의</div>
                     </div>
@@ -561,7 +561,7 @@ export default function SignupProfile() {
                     }}>
                         <BsCheck
                             onClick={() => setPersonal(!personal)}
-                            color={personal ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                            color={personal ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                             size={16}
                             style={{
                                 cursor: "pointer"
@@ -571,7 +571,7 @@ export default function SignupProfile() {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 14,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: "2vw",
                         }}><span style={{
                             textDecorationLine: "underline",
@@ -587,7 +587,7 @@ export default function SignupProfile() {
                     }}>
                         <BsCheck
                             onClick={() => setService(!service)}
-                            color={service ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                            color={service ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                             size={16}
                             style={{
                                 cursor: "pointer"
@@ -597,7 +597,7 @@ export default function SignupProfile() {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 14,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: "2vw",
                         }}>나누다 <span style={{
                             textDecorationLine: "underline",
@@ -613,7 +613,7 @@ export default function SignupProfile() {
                     }}>
                         <BsCheck
                             onClick={() => setVeri(!veri)}
-                            color={veri ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                            color={veri ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                             size={16}
                             style={{
                                 cursor: "pointer"
@@ -623,7 +623,7 @@ export default function SignupProfile() {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 14,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: "2vw",
                         }}><span style={{
                             textDecorationLine: "underline",
@@ -639,7 +639,7 @@ export default function SignupProfile() {
                     }}>
                         <BsCheck
                             onClick={() => setMarket(!market)}
-                            color={market ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                            color={market ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                             size={16}
                             style={{
                                 cursor: "pointer"
@@ -649,7 +649,7 @@ export default function SignupProfile() {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 14,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: "2vw",
                         }}>마케팅 정보 수신 동의 (선택)</div>
                     </div>
@@ -691,12 +691,12 @@ export function InputModule({ name, value, onChange, placeholder, width, marginL
                     borderTop: 0,
                     borderLeft: 0,
                     borderRight: 0,
-                    borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                     outline: 0,
 
                     fontSize: fontSize,
                     fontFamily: "NotoSansCJKkr",
-                    color: "#202426",
+                    color: "#010608",
                 }}
             />
         </>

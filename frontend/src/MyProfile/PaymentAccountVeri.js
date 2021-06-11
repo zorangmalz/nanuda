@@ -67,7 +67,7 @@ export default function PaymentAccountVeri() {
                             fontWeight: "bold",
                             marginTop: 32,
                             marginLeft: 20,
-                            color: "#202426",
+                            color: "#010608",
                         }}>통신사를 선택해주세요.</div>
                         <div style={{
                             display: "grid",
@@ -120,7 +120,7 @@ export default function PaymentAccountVeri() {
                             fontWeight: "bold",
                             marginTop: 32,
                             marginLeft: 20,
-                            color: "#202426",
+                            color: "#010608",
                         }}>휴대폰 번호를 입력해주세요.</div>
                         <input placeholder="휴대폰 번호를 입력해주세요 (-제외)"
                             style={{
@@ -130,11 +130,11 @@ export default function PaymentAccountVeri() {
                                 border: 0,
                                 paddingBottom: 8,
                                 width: 440,
-                                borderBottom: "1px solid rgba(5, 26, 26, 0.4)",
+                                borderBottom: "1px solid rgba(1, 6, 8, 0.4)",
 
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 16,
-                                color: "#202426",
+                                color: "#010608",
                             }}
                         />
                         <div style={{
@@ -147,7 +147,7 @@ export default function PaymentAccountVeri() {
                             paddingTop: 12,
                             paddingBottom: 12,
                             marginTop: 32,
-                            border: "1px solid rgba(5, 26, 26, 0.2)",
+                            border: "1px solid rgba(1, 6, 8, 0.2)",
                             borderRadius: 6,
                         }}>
                             <BsCheck
@@ -161,7 +161,7 @@ export default function PaymentAccountVeri() {
                                     }
                                 }}
                                 size={24}
-                                color={self && pay ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                                color={self && pay ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                                 style={{
                                     marginLeft: 8,
                                     cursor: "pointer",
@@ -171,7 +171,7 @@ export default function PaymentAccountVeri() {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 18,
                                 fontWeight: "bold",
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                             }}>전체 약관 동의</div>
                         </div>
@@ -185,7 +185,7 @@ export default function PaymentAccountVeri() {
                             <BsCheck
                                 onClick={() => setSelf(!self)}
                                 size={24}
-                                color={self ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                                color={self ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                                 style={{
                                     cursor: "pointer"
                                 }}
@@ -194,7 +194,7 @@ export default function PaymentAccountVeri() {
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                                 textDecorationLine: "underline"
                             }}>본인확인 서비스 동의 (필수)</div>
@@ -209,7 +209,7 @@ export default function PaymentAccountVeri() {
                             <BsCheck
                                 onClick={() => setPay(!pay)}
                                 size={24}
-                                color={pay ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                                color={pay ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                                 style={{
                                     cursor: "pointer"
                                 }}
@@ -218,7 +218,7 @@ export default function PaymentAccountVeri() {
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                             }}>간편결제 서비스 동의 (필수)</div>
                         </div>
@@ -248,7 +248,7 @@ export default function PaymentAccountVeri() {
                         fontWeight: "bold",
                         marginTop: "8vw",
                         marginLeft: "5vw",
-                        color: "#202426",
+                        color: "#010608",
                     }}>통신사를 선택해주세요.</div>
                     <div style={{
                         width: "90vw",
@@ -301,7 +301,7 @@ export default function PaymentAccountVeri() {
                         fontWeight: "bold",
                         marginTop: "8vw",
                         marginLeft: "5vw",
-                        color: "#202426",
+                        color: "#010608",
                     }}>휴대폰 번호를 입력해주세요.</div>
                     <input placeholder="휴대폰 번호를 입력해주세요 (-제외)"
                         style={{
@@ -311,11 +311,11 @@ export default function PaymentAccountVeri() {
                             border: 0,
                             paddingBottom: "2vw",
                             width: "90vw",
-                            borderBottom: "1px solid rgba(5, 26, 26, 0.4)",
+                            borderBottom: "1px solid rgba(1, 6, 8, 0.4)",
 
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
-                            color: "#202426",
+                            color: "#010608",
                         }}
                     />
                     <div style={{
@@ -328,7 +328,7 @@ export default function PaymentAccountVeri() {
                         paddingTop: "3vw",
                         paddingBottom: "3vw",
                         marginTop: "8vw",
-                        border: "1px solid rgba(5, 26, 26, 0.2)",
+                        border: "1px solid rgba(1, 6, 8, 0.2)",
                         borderRadius: 6,
                     }}>
                         <BsCheck
@@ -342,7 +342,7 @@ export default function PaymentAccountVeri() {
                                 }
                             }}
                             size={16}
-                            color={self && pay ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                            color={self && pay ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                             style={{
                                 marginLeft: 8,
                                 cursor: "pointer",
@@ -352,7 +352,7 @@ export default function PaymentAccountVeri() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 8,
                         }}>전체 약관 동의</div>
                     </div>
@@ -366,7 +366,7 @@ export default function PaymentAccountVeri() {
                         <BsCheck
                             onClick={() => setSelf(!self)}
                             size={16}
-                            color={self ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                            color={self ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                             style={{
                                 cursor: "pointer"
                             }}
@@ -375,7 +375,7 @@ export default function PaymentAccountVeri() {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 14,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: "2vw",
                             textDecorationLine: "underline"
                         }}>본인확인 서비스 동의 (필수)</div>
@@ -390,7 +390,7 @@ export default function PaymentAccountVeri() {
                         <BsCheck
                             onClick={() => setPay(!pay)}
                             size={16}
-                            color={pay ? "#26c1f0" : "rgba(5, 26, 26, 0.6)"}
+                            color={pay ? "#26c1f0" : "rgba(1, 6, 8, 0.6)"}
                             style={{
                                 cursor: "pointer"
                             }}
@@ -399,7 +399,7 @@ export default function PaymentAccountVeri() {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 14,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: "2vw",
                         }}>간편결제 서비스 동의 (필수)</div>
                     </div>
@@ -422,7 +422,7 @@ const Telecom = ({ text, number, compare, onClick }) => {
             paddingTop: 12,
             paddingBottom: 12,
             borderRadius: 6,
-            border: "1px solid rgba(5, 26, 26, 0.2)",
+            border: "1px solid rgba(1, 6, 8, 0.2)",
             cursor: "pointer",
 
             fontFamily: "NotoSansCJKkr",
@@ -430,8 +430,8 @@ const Telecom = ({ text, number, compare, onClick }) => {
             fontWeight: "bold",
             lineHeight: 1.88,
             textAlign: "center",
-            color: number === compare ? "#ffffff" : "rgba(5, 26, 26, 0.8)",
-            backgroundColor: number === compare ? "#051a1a" : "#ffffff"
+            color: number === compare ? "#ffffff" : "rgba(1, 6, 8, 0.8)",
+            backgroundColor: number === compare ? "#010608" : "#ffffff"
         }}>{text}</div>
     )
 }
@@ -443,7 +443,7 @@ const MTelecom = ({ text, number, compare, onClick }) => {
             paddingTop: "3vw",
             paddingBottom: "3vw",
             borderRadius: 6,
-            border: "1px solid rgba(5, 26, 26, 0.2)",
+            border: "1px solid rgba(1, 6, 8, 0.2)",
             cursor: "pointer",
 
             fontFamily: "NotoSansCJKkr",
@@ -451,8 +451,8 @@ const MTelecom = ({ text, number, compare, onClick }) => {
             fontWeight: "bold",
             lineHeight: 1.88,
             textAlign: "center",
-            color: number === compare ? "#ffffff" : "rgba(5, 26, 26, 0.8)",
-            backgroundColor: number === compare ? "#051a1a" : "#ffffff"
+            color: number === compare ? "#ffffff" : "rgba(1, 6, 8, 0.8)",
+            backgroundColor: number === compare ? "#010608" : "#ffffff"
         }}>{text}</div>
     )
 }

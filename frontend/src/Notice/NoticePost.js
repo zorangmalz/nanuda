@@ -31,7 +31,7 @@ export default function NoticePost() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 32,
                             marginLeft: 20,
                         }}>카드 결제 추가 관련 공지</div>
@@ -39,11 +39,11 @@ export default function NoticePost() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 8,
                             paddingBottom: 16,
                             marginLeft: 20,
-                            borderBottom: "1px solid rgba(5, 26, 26, 0.4)",
+                            borderBottom: "1px solid rgba(1, 6, 8, 0.4)",
                             width: 440,
                             marginBottom: 16,
                         }}>2020.12.28</div>
@@ -53,7 +53,7 @@ export default function NoticePost() {
                             alignSelf: "center",
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
-                            color: "#202426",
+                            color: "#010608",
                             lineHeight: 1.5
                         }}>
                             안녕하세요 나누다 여러분? <br />
@@ -81,7 +81,7 @@ export default function NoticePost() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: "8vw",
                         marginLeft: "5vw",
                     }}>카드 결제 추가 관련 공지</div>
@@ -89,11 +89,11 @@ export default function NoticePost() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
                         opacity: 0.6,
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: "2vw",
                         paddingBottom: "4vw",
                         marginLeft: "5vw",
-                        borderBottom: "1px solid rgba(5, 26, 26, 0.4)",
+                        borderBottom: "1px solid rgba(1, 6, 8, 0.4)",
                         width: "90vw",
                         marginBottom: "4vw",
                     }}>2020.12.28</div>
@@ -104,7 +104,7 @@ export default function NoticePost() {
 
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426",
+                        color: "#010608",
                         lineHeight: 1.5
                     }}>
                         안녕하세요 나누다 여러분?

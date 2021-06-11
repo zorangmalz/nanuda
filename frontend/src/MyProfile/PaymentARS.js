@@ -34,7 +34,7 @@ export default function PaymentARS() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 32,
                             marginLeft: 20,
                         }}>입력하신 핸드폰 번호로 ARS인증을 진행합니다.</div>
@@ -42,7 +42,7 @@ export default function PaymentARS() {
                             width: 440,
                             paddingTop: 16,
                             paddingBottom: 16,
-                            backgroundColor: call ? "#dbdbdb" : "#051a1a",
+                            backgroundColor: call ? "#dbdbdb" : "#010608",
                             marginTop: 16,
                             borderRadius: 6,
                             alignSelf: "center",
@@ -66,7 +66,7 @@ export default function PaymentARS() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 32,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             textAlign: "center",
                         }}>1228</div>
                         <div style={{
@@ -75,7 +75,7 @@ export default function PaymentARS() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
                             opacity: 0.8,
-                            color: "#202426",
+                            color: "#010608",
                             lineHeight: 1.5,
                             marginTop: 16,
                         }}>
@@ -123,7 +123,7 @@ export default function PaymentARS() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: "8vw",
                         marginLeft: "5vw",
                     }}>입력하신 핸드폰 번호로 ARS인증을 진행합니다.</div>
@@ -131,7 +131,7 @@ export default function PaymentARS() {
                         width: "90vw",
                         paddingTop: "4vw",
                         paddingBottom: "4vw",
-                        backgroundColor: call ? "#dbdbdb" : "#051a1a",
+                        backgroundColor: call ? "#dbdbdb" : "#010608",
                         marginTop: "4vw",
                         borderRadius: 6,
                         alignSelf: "center",
@@ -154,7 +154,7 @@ export default function PaymentARS() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: "8vw",
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         textAlign: "center",
                     }}>1228</div>
                     <div style={{
@@ -163,7 +163,7 @@ export default function PaymentARS() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
                         opacity: 0.8,
-                        color: "#202426",
+                        color: "#010608",
                         lineHeight: 1.5,
                         marginTop: "4vw",
                     }}>

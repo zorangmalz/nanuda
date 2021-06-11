@@ -58,7 +58,7 @@ export default function ReviewSuccess() {
                             color: "#26c1f0",
                             fontFamily: "NotoSansCJKkr",
                         }}>작성이 완료
-                                <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                                <span style={{ color: "#010608" }}>되었습니다!</span>
                         </div>
                         <div onClick={goHome} style={{
                             borderRadius: 8,
@@ -89,7 +89,7 @@ export default function ReviewSuccess() {
                             textAlign: "center",
                             fontSize: 18,
                             opacity: 0.6,
-                            color: "#051a1a",
+                            color: "#010608",
                             cursor: "pointer",
                             fontFamily: "NotoSansCJKkr",
                         }}>내 리뷰 확인하기</div>
@@ -128,7 +128,7 @@ export default function ReviewSuccess() {
                         color: "#26c1f0",
                         fontFamily: "NotoSansCJKkr"
                     }}>작성이 완료
-                        <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                        <span style={{ color: "#010608" }}>되었습니다!</span>
                     </div>
                     <div onClick={goHome} style={{
                         borderRadius: 8,
@@ -159,7 +159,7 @@ export default function ReviewSuccess() {
                         textAlign: "center",
                         fontSize: 16,
                         opacity: 0.6,
-                        color: "#051a1a",
+                        color: "#010608",
                         cursor: "pointer",
                         fontFamily: "NotoSansCJKkr",
                     }}>내 리뷰 확인하기</div>

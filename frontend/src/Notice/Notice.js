@@ -97,7 +97,7 @@ function NoticeList({ tag, title, date }) {
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             paddingBottom: 16,
             marginBottom: 16,
             width: 440,
@@ -106,7 +106,7 @@ function NoticeList({ tag, title, date }) {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
-                color: "#202426",
+                color: "#010608",
                 fontWeight: "bold",
                 marginBottom: 8,
             }}># {tag}</div>
@@ -121,12 +121,12 @@ function NoticeList({ tag, title, date }) {
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426"
+                    color: "#010608"
                 }}>{title}</div>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                 }}>{date}</div>
             </div>
         </div>
@@ -140,7 +140,7 @@ function MNoticeList({ tag, title, date }) {
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             paddingBottom: "4vw",
             marginBottom: "4vw",
             width: "90vw",
@@ -149,7 +149,7 @@ function MNoticeList({ tag, title, date }) {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 14,
-                color: "#202426",
+                color: "#010608",
                 fontWeight: "bold",
                 marginBottom: "2vw",
             }}># {tag}</div>
@@ -164,12 +164,12 @@ function MNoticeList({ tag, title, date }) {
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426"
+                    color: "#010608"
                 }}>{title}</div>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                 }}>{date}</div>
             </div>
         </div>

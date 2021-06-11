@@ -44,13 +44,13 @@ export default function WebIntro() {
                         marginBottom: 32,
                         fontSize: 32,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         fontFamily: "NotoSansCJKkr"
                     }}>나누다</div>
                     <div style={{
                         fontSize: 24,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginBottom: 16,
                         fontFamily: "NotoSansCJKkr"
                     }}>
@@ -64,7 +64,7 @@ export default function WebIntro() {
                     </div>
                     <div style={{
                         fontSize: 21,
-                        color: "#202426",
+                        color: "#010608",
                         marginBottom: 32,
                         fontFamily: "NotoSansCJKkr"
                     }}>
@@ -76,7 +76,7 @@ export default function WebIntro() {
                         cursor: "pointer",
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         textDecorationLine: "underline",
                         fontFamily: "NotoSansCJKkr"
                     }}>나누다는 신용카드와 무엇이 다른가요?</div>
@@ -101,12 +101,12 @@ export function Header({ content, goBack, goX }) {
             paddingBottom: 15,
             position: "relative",
         }}>
-            {goBack ? <IoIosArrowBack size={24} color="#051a1a" onClick={() => history.goBack()} style={{
+            {goBack ? <IoIosArrowBack size={24} color="#010608" onClick={() => history.goBack()} style={{
                 position: "absolute",
                 left: 20,
                 cursor: "pointer"
             }} /> : <></>}
-            {goX ? <BsX size={32} color="#051a1a" onClick={() => history.goBack()} style={{
+            {goX ? <BsX size={32} color="#010608" onClick={() => history.goBack()} style={{
                 position: "absolute",
                 left: 20,
                 cursor: "pointer"
@@ -114,7 +114,7 @@ export function Header({ content, goBack, goX }) {
             <div style={{
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 alignSelf: "center",
                 justifyContent: "center",
                 fontFamily: "NotoSansCJKkr"
@@ -138,12 +138,12 @@ export function MHeader({ content, goBack, goX }) {
             paddingBottom: 15,
             position: "relative",
         }}>
-            {goBack ? <IoIosArrowBack size={24} color="#051a1a" onClick={() => history.goBack()} style={{
+            {goBack ? <IoIosArrowBack size={24} color="#010608" onClick={() => history.goBack()} style={{
                 position: "absolute",
                 left: "5vw",
                 cursor: "pointer"
             }} /> : <></>}
-            {goX ? <BsX size={24} color="#051a1a" onClick={() => history.goBack()} style={{
+            {goX ? <BsX size={24} color="#010608" onClick={() => history.goBack()} style={{
                 position: "absolute",
                 left: "5vw",
                 cursor: "pointer"
@@ -151,7 +151,7 @@ export function MHeader({ content, goBack, goX }) {
             <div style={{
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 alignSelf: "center",
                 justifyContent: "center",
                 fontFamily: "NotoSansCJKkr"
@@ -216,7 +216,7 @@ export function HomeHeader() {
             }} />
             <div style={{
                 fontSize: 24,
-                color: "#051a1a",
+                color: "#010608",
                 fontFamily: "AvenirNext",
                 textAlign: "center",
                 width: 120
@@ -300,7 +300,7 @@ export function MHomeHeader() {
             }} />
             <div style={{
                 fontSize: 18,
-                color: "#051a1a",
+                color: "#010608",
                 fontFamily: "AvenirNext",
                 textAlign: "center",
                 width: "30vw"
@@ -356,13 +356,13 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSizeAdjust: 14,
                         fontWeight: "bold",
-                        color: "#051a1a"
+                        color: "#010608"
                     }}>고객센터 (카카오톡 채널 상담)</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 12,
                         opacity: 0.6,
-                        color: "#202426",
+                        color: "#010608",
                         lineHeight: 1.5,
                         marginTop: 8
                     }}>
@@ -395,14 +395,14 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                     <div style={{
                         fontSize: 14,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 이용안내</div>
                     <div onClick={() => window.open('https://www.notion.so/8bd2f5a8861f4a72a3af30f160257055', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -411,7 +411,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -420,7 +420,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -429,7 +429,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -443,14 +443,14 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                     <div style={{
                         fontSize: 14,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 정책</div>
                     <div onClick={() => window.open('https://www.notion.so/2fe90eeb1865441fb0a741cc9a860b0a', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -459,7 +459,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -468,7 +468,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -477,7 +477,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -508,7 +508,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                     width: 48,
                     height: 48,
                     borderRadius: 24,
-                    backgroundColor: "#051a1a",
+                    backgroundColor: "#010608",
                     marginRight: 16
                 }} />
             </div>
@@ -526,7 +526,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
             <div style={{
                 fontSize: 14,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 opacity: 0.6,
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 12
@@ -536,7 +536,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                 fontSize: 14,
                 opacity: 0.6,
                 lineHeight: 1.8,
-                color: "#051a1a",
+                color: "#010608",
                 marginTop: 8
             }}>
                 사업자 등록번호 278-88-02031 <br />
@@ -548,7 +548,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                 width: 440,
                 opacity: 0.4,
                 fontSize: 12,
-                color: "#051a1a",
+                color: "#010608",
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 32
             }}></div>
@@ -582,13 +582,13 @@ export function BottomTag({ marginTop, marginBottom }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSizeAdjust: 14,
                         fontWeight: "bold",
-                        color: "#051a1a"
+                        color: "#010608"
                     }}>고객센터 (카카오톡 채널 상담)</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 12,
                         opacity: 0.6,
-                        color: "#202426",
+                        color: "#010608",
                         lineHeight: 1.5,
                         marginTop: 8
                     }}>
@@ -620,14 +620,14 @@ export function BottomTag({ marginTop, marginBottom }) {
                     <div style={{
                         fontSize: 14,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 이용안내</div>
                     <div onClick={() => window.open('https://www.notion.so/8bd2f5a8861f4a72a3af30f160257055', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -636,7 +636,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -645,7 +645,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -654,7 +654,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -668,14 +668,14 @@ export function BottomTag({ marginTop, marginBottom }) {
                     <div style={{
                         fontSize: 14,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 정책</div>
                     <div onClick={() => window.open('https://www.notion.so/2fe90eeb1865441fb0a741cc9a860b0a', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -684,7 +684,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -693,7 +693,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -702,7 +702,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         fontSize: 12,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 8,
@@ -733,7 +733,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                     width: 48,
                     height: 48,
                     borderRadius: 24,
-                    backgroundColor: "#051a1a",
+                    backgroundColor: "#010608",
                     marginRight: 16
                 }} />
             </div>
@@ -751,7 +751,7 @@ export function BottomTag({ marginTop, marginBottom }) {
             <div style={{
                 fontSize: 14,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 opacity: 0.6,
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 12
@@ -761,7 +761,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                 fontSize: 14,
                 opacity: 0.6,
                 lineHeight: 1.8,
-                color: "#051a1a",
+                color: "#010608",
                 marginTop: 8
             }}>
                 사업자 등록번호 278-88-02031 <br />
@@ -773,7 +773,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                 width: 440,
                 opacity: 0.4,
                 fontSize: 12,
-                color: "#051a1a",
+                color: "#010608",
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 32
             }}></div>
@@ -807,13 +807,13 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSizeAdjust: 12,
                         fontWeight: "bold",
-                        color: "#051a1a"
+                        color: "#010608"
                     }}>고객센터 (카카오톡 채널 상담)</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 10,
                         opacity: 0.6,
-                        color: "#202426",
+                        color: "#010608",
                         lineHeight: 1.5,
                         marginTop: 8
                     }}>
@@ -846,14 +846,14 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                     <div style={{
                         fontSize: 12,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 이용안내</div>
                     <div onClick={() => window.open('https://www.notion.so/8bd2f5a8861f4a72a3af30f160257055', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -862,7 +862,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -871,7 +871,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -880,7 +880,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -894,14 +894,14 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                     <div style={{
                         fontSize: 12,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 정책</div>
                     <div onClick={() => window.open('https://www.notion.so/2fe90eeb1865441fb0a741cc9a860b0a', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -910,7 +910,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -919,7 +919,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -928,7 +928,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -959,7 +959,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                     width: 36,
                     height: 36,
                     borderRadius: 18,
-                    backgroundColor: "#051a1a",
+                    backgroundColor: "#010608",
                     marginRight: 12
                 }} />
             </div>
@@ -977,7 +977,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
             <div style={{
                 fontSize: 12,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 opacity: 0.6,
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 10
@@ -987,7 +987,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                 fontSize: 12,
                 opacity: 0.6,
                 lineHeight: 1.8,
-                color: "#051a1a",
+                color: "#010608",
                 marginTop: 6
             }}>
                 사업자 등록번호 278-88-02031 <br />
@@ -999,7 +999,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                 width: "90%",
                 opacity: 0.4,
                 fontSize: 12,
-                color: "#051a1a",
+                color: "#010608",
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 28
             }}></div>
@@ -1033,13 +1033,13 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSizeAdjust: 12,
                         fontWeight: "bold",
-                        color: "#051a1a"
+                        color: "#010608"
                     }}>고객센터 (카카오톡 채널 상담)</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 10,
                         opacity: 0.6,
-                        color: "#202426",
+                        color: "#010608",
                         lineHeight: 1.5,
                         marginTop: 8
                     }}>
@@ -1072,14 +1072,14 @@ export function MBottomTag({ marginTop, marginBottom }) {
                     <div style={{
                         fontSize: 12,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 이용안내</div>
                     <div onClick={() => window.open('https://www.notion.so/8bd2f5a8861f4a72a3af30f160257055', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -1088,7 +1088,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -1097,7 +1097,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -1106,7 +1106,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -1120,14 +1120,14 @@ export function MBottomTag({ marginTop, marginBottom }) {
                     <div style={{
                         fontSize: 12,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         fontFamily: "NotoSansCJKkr"
                     }}>서비스 정책</div>
                     <div onClick={() => window.open('https://www.notion.so/2fe90eeb1865441fb0a741cc9a860b0a', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -1136,7 +1136,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -1145,7 +1145,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -1154,7 +1154,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         fontSize: 10,
                         opacity: 0.8,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
 
                         cursor: "pointer",
                         marginTop: 6,
@@ -1185,7 +1185,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                     width: 36,
                     height: 36,
                     borderRadius: 18,
-                    backgroundColor: "#051a1a",
+                    backgroundColor: "#010608",
                     marginRight: 12
                 }} />
             </div>
@@ -1203,7 +1203,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
             <div style={{
                 fontSize: 12,
                 fontWeight: "bold",
-                color: "#051a1a",
+                color: "#010608",
                 opacity: 0.6,
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 10
@@ -1213,7 +1213,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                 fontSize: 12,
                 opacity: 0.6,
                 lineHeight: 1.8,
-                color: "#051a1a",
+                color: "#010608",
                 marginTop: 6
             }}>
                 사업자 등록번호 278-88-02031 <br />
@@ -1225,7 +1225,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                 width: "90%",
                 opacity: 0.4,
                 fontSize: 12,
-                color: "#051a1a",
+                color: "#010608",
                 fontFamily: "NotoSansCJKkr",
                 marginTop: 28
             }}></div>
@@ -1239,7 +1239,7 @@ export function LateBox() {
             position: "fixed",
             width: "100vw",
             height: "100vh",
-            backgroundColor: "rgba(5, 26, 26, 0.2)",
+            backgroundColor: "rgba(1, 6, 8, 0.2)",
 
             display: "flex",
             alignItems: "center",
@@ -1250,9 +1250,9 @@ export function LateBox() {
                 height: 588,
                 borderRadius: 6,
                 backgroundColor: "#ffffff",
-                border: "1px solid rgba(5, 26, 26, 0.2)",
+                border: "1px solid rgba(1, 6, 8, 0.2)",
             }}>
-                <BsX size={24} color="#051a1a" style={{
+                <BsX size={24} color="#010608" style={{
                     marginTop: 8,
                     marginLeft: 8,
                 }} />
@@ -1263,12 +1263,12 @@ export function LateBox() {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 21,
                     fontWeight: "bold",
-                    color: "#051a1a",
+                    color: "#010608",
                 }}>연체료와 미결제 금액은 무엇인가요?</div>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 18,
-                    color: "#202426",
+                    color: "#010608",
                     marginLeft: 40,
                     marginTop: 16,
                 }}>1. 연체료란</div>
@@ -1276,7 +1276,7 @@ export function LateBox() {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     opacity: 0.8,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.5,
                     marginTop: 16,
                     marginLeft: 40,
@@ -1289,7 +1289,7 @@ export function LateBox() {
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 18,
-                    color: "#202426",
+                    color: "#010608",
                     marginLeft: 40,
                     marginTop: 16,
                 }}>1. 연체료란</div>
@@ -1297,7 +1297,7 @@ export function LateBox() {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     opacity: 0.8,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.5,
                     marginTop: 16,
                     marginLeft: 40,
@@ -1316,7 +1316,7 @@ export function LimitBox() {
             position: "fixed",
             width: "100vw",
             height: "100vh",
-            backgroundColor: "rgba(5, 26, 26, 0.2)",
+            backgroundColor: "rgba(1, 6, 8, 0.2)",
 
             display: "flex",
             alignItems: "center",
@@ -1327,9 +1327,9 @@ export function LimitBox() {
                 height: 588,
                 borderRadius: 6,
                 backgroundColor: "#ffffff",
-                border: "1px solid rgba(5, 26, 26, 0.2)",
+                border: "1px solid rgba(1, 6, 8, 0.2)",
             }}>
-                <BsX size={24} color="#051a1a" style={{
+                <BsX size={24} color="#010608" style={{
                     marginTop: 8,
                     marginLeft: 8,
                 }} />
@@ -1340,12 +1340,12 @@ export function LimitBox() {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 21,
                     fontWeight: "bold",
-                    color: "#051a1a",
+                    color: "#010608",
                 }}>연체료와 미결제 금액은 무엇인가요?</div>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 18,
-                    color: "#202426",
+                    color: "#010608",
                     marginLeft: 40,
                     marginTop: 16,
                 }}>1. 연체료란</div>
@@ -1353,7 +1353,7 @@ export function LimitBox() {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     opacity: 0.8,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.5,
                     marginTop: 16,
                     marginLeft: 40,
@@ -1366,7 +1366,7 @@ export function LimitBox() {
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 18,
-                    color: "#202426",
+                    color: "#010608",
                     marginLeft: 40,
                     marginTop: 16,
                 }}>1. 연체료란</div>
@@ -1374,7 +1374,7 @@ export function LimitBox() {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     opacity: 0.8,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.5,
                     marginTop: 16,
                     marginLeft: 40,

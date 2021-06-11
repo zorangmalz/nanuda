@@ -228,7 +228,7 @@ export default function Address() {
                             marginLeft: 20,
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 44,
                             marginBottom: 16,
                             fontFamily: "NotoSansCJKkr"
@@ -244,7 +244,7 @@ export default function Address() {
                             paddingBottom: 8,
 
                             fontSize: 16,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 20,
                             fontFamily: "NotoSansCJKkr"
                         }} />
@@ -252,7 +252,7 @@ export default function Address() {
                             marginLeft: 20,
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 16,
                             marginBottom: 16,
                             fontFamily: "NotoSansCJKkr"
@@ -274,7 +274,7 @@ export default function Address() {
                                 paddingBottom: 8,
 
                                 fontSize: 16,
-                                color: "#202426",
+                                color: "#010608",
                                 marginRight: 20,
                                 fontFamily: "NotoSansCJKkr"
                             }} />
@@ -282,7 +282,7 @@ export default function Address() {
                                 cursor: "pointer",
                                 width: 100,
                                 padding: 8,
-                                backgroundColor: "#051a1a",
+                                backgroundColor: "#010608",
                                 borderRadius: 6,
 
                                 fontSize: 14,
@@ -303,7 +303,7 @@ export default function Address() {
                             paddingBottom: 8,
 
                             fontSize: 16,
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 16,
                             marginLeft: 20,
                             fontFamily: "NotoSansCJKkr"
@@ -319,7 +319,7 @@ export default function Address() {
                             paddingBottom: 8,
 
                             fontSize: 16,
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 16,
                             marginLeft: 20,
                             fontFamily: "NotoSansCJKkr"
@@ -328,7 +328,7 @@ export default function Address() {
                             marginLeft: 20,
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 16,
                             marginBottom: 16,
                             fontFamily: "NotoSansCJKkr"
@@ -344,7 +344,7 @@ export default function Address() {
                             paddingBottom: 8,
 
                             fontSize: 16,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 20,
                             fontFamily: "NotoSansCJKkr"
                         }} />
@@ -352,7 +352,7 @@ export default function Address() {
                             marginLeft: 20,
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 16,
                             marginBottom: 16,
                             fontFamily: "NotoSansCJKkr"
@@ -370,7 +370,7 @@ export default function Address() {
                             <div style={{
                                 fontSize: 16,
                                 opacity: 0.6,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                                 fontFamily: "NotoSansCJKkr"
                             }}>문 앞</div>
@@ -388,7 +388,7 @@ export default function Address() {
                             <div style={{
                                 fontSize: 16,
                                 opacity: 0.6,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                                 fontFamily: "NotoSansCJKkr"
                             }}>직접 받고 부재시 문앞</div>
@@ -406,7 +406,7 @@ export default function Address() {
                             <div style={{
                                 fontSize: 16,
                                 opacity: 0.6,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                                 fontFamily: "NotoSansCJKkr"
                             }}>경비실</div>
@@ -424,7 +424,7 @@ export default function Address() {
                             <div style={{
                                 fontSize: 16,
                                 opacity: 0.6,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                                 fontFamily: "NotoSansCJKkr"
                             }}>택배함</div>
@@ -442,7 +442,7 @@ export default function Address() {
                             <div style={{
                                 fontSize: 16,
                                 opacity: 0.6,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                                 fontFamily: "NotoSansCJKkr"
                             }}>기타</div>
@@ -458,7 +458,7 @@ export default function Address() {
                             paddingBottom: 8,
 
                             fontSize: 16,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 52,
                         }} />
                             <div style={{
@@ -502,7 +502,7 @@ export default function Address() {
                         marginLeft: 20,
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: 44,
                         marginBottom: 16,
                         fontFamily: "NotoSansCJKkr"
@@ -518,7 +518,7 @@ export default function Address() {
                         paddingBottom: 8,
 
                         fontSize: 16,
-                        color: "#202426",
+                        color: "#010608",
                         alignSelf: "center",
                         fontFamily: "NotoSansCJKkr"
                     }} />
@@ -526,7 +526,7 @@ export default function Address() {
                         marginLeft: "5%",
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: 16,
                         marginBottom: 16,
                         fontFamily: "NotoSansCJKkr"
@@ -548,7 +548,7 @@ export default function Address() {
                             paddingBottom: 8,
 
                             fontSize: 16,
-                            color: "#202426",
+                            color: "#010608",
                             marginRight: 20,
                             fontFamily: "NotoSansCJKkr"
                         }} />
@@ -556,7 +556,7 @@ export default function Address() {
                             cursor: "pointer",
                             width: 100,
                             padding: 8,
-                            backgroundColor: "#051a1a",
+                            backgroundColor: "#010608",
                             borderRadius: 6,
 
                             fontSize: 14,
@@ -577,7 +577,7 @@ export default function Address() {
                         paddingBottom: 8,
 
                         fontSize: 16,
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: 16,
                         alignSelf: "center",
                         fontFamily: "NotoSansCJKkr"
@@ -593,7 +593,7 @@ export default function Address() {
                         paddingBottom: 8,
 
                         fontSize: 16,
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: 16,
                         alignSelf: "center",
                         fontFamily: "NotoSansCJKkr"
@@ -602,7 +602,7 @@ export default function Address() {
                         marginLeft: "5%",
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: 16,
                         marginBottom: 16,
                         fontFamily: "NotoSansCJKkr"
@@ -618,7 +618,7 @@ export default function Address() {
                         paddingBottom: 8,
 
                         fontSize: 16,
-                        color: "#202426",
+                        color: "#010608",
                         alignSelf: "center",
                         fontFamily: "NotoSansCJKkr"
                     }} />
@@ -626,7 +626,7 @@ export default function Address() {
                         marginLeft: "5%",
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: 16,
                         marginBottom: 16,
                         fontFamily: "NotoSansCJKkr"
@@ -644,7 +644,7 @@ export default function Address() {
                         <div style={{
                             fontSize: 16,
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 8,
                             fontFamily: "NotoSansCJKkr"
                         }}>문 앞</div>
@@ -662,7 +662,7 @@ export default function Address() {
                         <div style={{
                             fontSize: 16,
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 8,
                             fontFamily: "NotoSansCJKkr"
                         }}>직접 받고 부재시 문앞</div>
@@ -680,7 +680,7 @@ export default function Address() {
                         <div style={{
                             fontSize: 16,
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 8,
                             fontFamily: "NotoSansCJKkr"
                         }}>경비실</div>
@@ -698,7 +698,7 @@ export default function Address() {
                         <div style={{
                             fontSize: 16,
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 8,
                             fontFamily: "NotoSansCJKkr"
                         }}>택배함</div>
@@ -716,7 +716,7 @@ export default function Address() {
                         <div style={{
                             fontSize: 16,
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 8,
                             fontFamily: "NotoSansCJKkr"
                         }}>기타</div>
@@ -732,7 +732,7 @@ export default function Address() {
                         paddingBottom: 8,
 
                         fontSize: 16,
-                        color: "#202426",
+                        color: "#010608",
                         marginLeft: "13%",
                         fontFamily: "NotoSansCJKkr"
                     }} />
@@ -816,7 +816,7 @@ export default function Address() {
 //                 marginLeft: 20,
 //                 fontSize: 18,
 //                 fontWeight: "bold",
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 44,
 //                 marginBottom: 16,
 //                 fontFamily: "NotoSansCJKkr"
@@ -832,7 +832,7 @@ export default function Address() {
 //                 paddingBottom: 8,
 
 //                 fontSize: 16,
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginLeft: 20,
 //                 fontFamily: "NotoSansCJKkr"
 //             }} />
@@ -840,7 +840,7 @@ export default function Address() {
 //                 marginLeft: 20,
 //                 fontSize: 18,
 //                 fontWeight: "bold",
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 16,
 //                 marginBottom: 16,
 //                 fontFamily: "NotoSansCJKkr"
@@ -862,7 +862,7 @@ export default function Address() {
 //                     paddingBottom: 8,
 
 //                     fontSize: 16,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginRight: 20,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }} />
@@ -870,7 +870,7 @@ export default function Address() {
 //                     cursor: "pointer",
 //                     width: 100,
 //                     padding: 8,
-//                     backgroundColor: "#051a1a",
+//                     backgroundColor: "#010608",
 //                     borderRadius: 6,
 
 //                     fontSize: 14,
@@ -891,7 +891,7 @@ export default function Address() {
 //                 paddingBottom: 8,
 
 //                 fontSize: 16,
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 16,
 //                 marginLeft: 20,
 //                 fontFamily: "NotoSansCJKkr"
@@ -907,7 +907,7 @@ export default function Address() {
 //                 paddingBottom: 8,
 
 //                 fontSize: 16,
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 16,
 //                 marginLeft: 20,
 //                 fontFamily: "NotoSansCJKkr"
@@ -916,7 +916,7 @@ export default function Address() {
 //                 marginLeft: 20,
 //                 fontSize: 18,
 //                 fontWeight: "bold",
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 16,
 //                 marginBottom: 16,
 //                 fontFamily: "NotoSansCJKkr"
@@ -932,7 +932,7 @@ export default function Address() {
 //                 paddingBottom: 8,
 
 //                 fontSize: 16,
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginLeft: 20,
 //                 fontFamily: "NotoSansCJKkr"
 //             }} />
@@ -940,7 +940,7 @@ export default function Address() {
 //                 marginLeft: 20,
 //                 fontSize: 18,
 //                 fontWeight: "bold",
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 16,
 //                 marginBottom: 16,
 //                 fontFamily: "NotoSansCJKkr"
@@ -958,7 +958,7 @@ export default function Address() {
 //                 <div style={{
 //                     fontSize: 16,
 //                     opacity: 0.6,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginLeft: 8,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }}>문 앞</div>
@@ -976,7 +976,7 @@ export default function Address() {
 //                 <div style={{
 //                     fontSize: 16,
 //                     opacity: 0.6,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginLeft: 8,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }}>직접 받고 부재시 문앞</div>
@@ -994,7 +994,7 @@ export default function Address() {
 //                 <div style={{
 //                     fontSize: 16,
 //                     opacity: 0.6,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginLeft: 8,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }}>경비실</div>
@@ -1012,7 +1012,7 @@ export default function Address() {
 //                 <div style={{
 //                     fontSize: 16,
 //                     opacity: 0.6,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginLeft: 8,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }}>택배함</div>
@@ -1030,7 +1030,7 @@ export default function Address() {
 //                 <div style={{
 //                     fontSize: 16,
 //                     opacity: 0.6,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginLeft: 8,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }}>기타</div>
@@ -1046,7 +1046,7 @@ export default function Address() {
 //                 paddingBottom: 8,
 
 //                 fontSize: 16,
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginLeft: 52,
 //             }} />
 //                 <div style={{
@@ -1132,7 +1132,7 @@ export default function Address() {
 //                 marginLeft: 20,
 //                 fontSize: 18,
 //                 fontWeight: "bold",
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 44,
 //                 marginBottom: 16,
 //                 fontFamily: "NotoSansCJKkr"
@@ -1148,7 +1148,7 @@ export default function Address() {
 //                 paddingBottom: 8,
 
 //                 fontSize: 16,
-//                 color: "#202426",
+//                 color: "#010608",
 //                 alignSelf: "center",
 //                 fontFamily: "NotoSansCJKkr"
 //             }} />
@@ -1156,7 +1156,7 @@ export default function Address() {
 //                 marginLeft: "5%",
 //                 fontSize: 18,
 //                 fontWeight: "bold",
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 16,
 //                 marginBottom: 16,
 //                 fontFamily: "NotoSansCJKkr"
@@ -1178,7 +1178,7 @@ export default function Address() {
 //                     paddingBottom: 8,
 
 //                     fontSize: 16,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginRight: 20,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }} />
@@ -1186,7 +1186,7 @@ export default function Address() {
 //                     cursor: "pointer",
 //                     width: 100,
 //                     padding: 8,
-//                     backgroundColor: "#051a1a",
+//                     backgroundColor: "#010608",
 //                     borderRadius: 6,
 
 //                     fontSize: 14,
@@ -1207,7 +1207,7 @@ export default function Address() {
 //                 paddingBottom: 8,
 
 //                 fontSize: 16,
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 16,
 //                 alignSelf: "center",
 //                 fontFamily: "NotoSansCJKkr"
@@ -1223,7 +1223,7 @@ export default function Address() {
 //                 paddingBottom: 8,
 
 //                 fontSize: 16,
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 16,
 //                 alignSelf: "center",
 //                 fontFamily: "NotoSansCJKkr"
@@ -1232,7 +1232,7 @@ export default function Address() {
 //                 marginLeft: "5%",
 //                 fontSize: 18,
 //                 fontWeight: "bold",
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 16,
 //                 marginBottom: 16,
 //                 fontFamily: "NotoSansCJKkr"
@@ -1248,7 +1248,7 @@ export default function Address() {
 //                 paddingBottom: 8,
 
 //                 fontSize: 16,
-//                 color: "#202426",
+//                 color: "#010608",
 //                 alignSelf: "center",
 //                 fontFamily: "NotoSansCJKkr"
 //             }} />
@@ -1256,7 +1256,7 @@ export default function Address() {
 //                 marginLeft: "5%",
 //                 fontSize: 18,
 //                 fontWeight: "bold",
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginTop: 16,
 //                 marginBottom: 16,
 //                 fontFamily: "NotoSansCJKkr"
@@ -1274,7 +1274,7 @@ export default function Address() {
 //                 <div style={{
 //                     fontSize: 16,
 //                     opacity: 0.6,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginLeft: 8,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }}>문 앞</div>
@@ -1292,7 +1292,7 @@ export default function Address() {
 //                 <div style={{
 //                     fontSize: 16,
 //                     opacity: 0.6,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginLeft: 8,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }}>직접 받고 부재시 문앞</div>
@@ -1310,7 +1310,7 @@ export default function Address() {
 //                 <div style={{
 //                     fontSize: 16,
 //                     opacity: 0.6,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginLeft: 8,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }}>경비실</div>
@@ -1328,7 +1328,7 @@ export default function Address() {
 //                 <div style={{
 //                     fontSize: 16,
 //                     opacity: 0.6,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginLeft: 8,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }}>택배함</div>
@@ -1346,7 +1346,7 @@ export default function Address() {
 //                 <div style={{
 //                     fontSize: 16,
 //                     opacity: 0.6,
-//                     color: "#202426",
+//                     color: "#010608",
 //                     marginLeft: 8,
 //                     fontFamily: "NotoSansCJKkr"
 //                 }}>기타</div>
@@ -1362,7 +1362,7 @@ export default function Address() {
 //                 paddingBottom: 8,
 
 //                 fontSize: 16,
-//                 color: "#202426",
+//                 color: "#010608",
 //                 marginLeft: "13%",
 //                 fontFamily: "NotoSansCJKkr"
 //             }} />

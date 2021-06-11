@@ -73,20 +73,20 @@ export default function Alarm() {
                                 width: 210,
                                 paddingTop: 12,
                                 paddingBottom: 12,
-                                border: "1px solid rgba(5, 26, 26, 0.2)",
+                                border: "1px solid rgba(1, 6, 8, 0.2)",
                                 cursor: "pointer",
                                 borderRadius: 6,
 
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 16,
-                                color: "rgba(5, 26, 26, 0.8)",
+                                color: "rgba(1, 6, 8, 0.8)",
                                 textAlign: "center"
                             }}>전체 삭제</div>
                             <div style={{
                                 width: 210,
                                 paddingTop: 12,
                                 paddingBottom: 12,
-                                backgroundColor: "#051a1a",
+                                backgroundColor: "#010608",
                                 cursor: "pointer",
                                 borderRadius: 6,
 
@@ -132,20 +132,20 @@ export default function Alarm() {
                             width: "40vw",
                             paddingTop: "3vw",
                             paddingBottom: "3vw",
-                            border: "1px solid rgba(5, 26, 26, 0.2)",
+                            border: "1px solid rgba(1, 6, 8, 0.2)",
                             cursor: "pointer",
                             borderRadius: 6,
 
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
-                            color: "rgba(5, 26, 26, 0.8)",
+                            color: "rgba(1, 6, 8, 0.8)",
                             textAlign: "center"
                         }}>전체 삭제</div>
                         <div style={{
                             width: "40vw",
                             paddingTop: "3vw",
                             paddingBottom: "3vw",
-                            backgroundColor: "#051a1a",
+                            backgroundColor: "#010608",
                             cursor: "pointer",
                             borderRadius: 6,
 
@@ -174,7 +174,7 @@ const AlarmButton = ({ read, title, content, date }) => {
             <div style={{
                 width: 440,
                 paddingBottom: 16,
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 marginTop: 16,
 
                 display: "flex",
@@ -195,7 +195,7 @@ const AlarmButton = ({ read, title, content, date }) => {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         marginBottom: 8,
                         opacity: read ? 0.6 : 1,
                         width: 410
@@ -205,7 +205,7 @@ const AlarmButton = ({ read, title, content, date }) => {
                         fontSize: 14,
                         opacity: read ? 0.4 : 0.6,
                         width: 410,
-                        color: "#051a1a",
+                        color: "#010608",
                         marginBottom: 8,
                     }}>{content}</div>
                     <div style={{
@@ -213,7 +213,7 @@ const AlarmButton = ({ read, title, content, date }) => {
                         fontSize: 14,
                         opacity: 0.6,
                         width: 410,
-                        color: "#051a1a",
+                        color: "#010608",
                     }}>{date}</div>
                 </div>
             </div>
@@ -227,7 +227,7 @@ const MAlarmButton = ({ read, title, content, date }) => {
             <div style={{
                 width: "90vw",
                 paddingBottom: "4vw",
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 marginTop: "4vw",
 
                 display: "flex",
@@ -248,7 +248,7 @@ const MAlarmButton = ({ read, title, content, date }) => {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         marginBottom: 8,
                         opacity: read ? 0.6 : 1,
                         width: "82vw"
@@ -258,7 +258,7 @@ const MAlarmButton = ({ read, title, content, date }) => {
                         fontSize: 12,
                         opacity: read ? 0.4 : 0.6,
                         width: "82vw",
-                        color: "#051a1a",
+                        color: "#010608",
                         marginBottom: 8,
                     }}>{content}</div>
                     <div style={{
@@ -266,7 +266,7 @@ const MAlarmButton = ({ read, title, content, date }) => {
                         fontSize: 12,
                         opacity: 0.6,
                         width: "82vw",
-                        color: "#051a1a",
+                        color: "#010608",
                     }}>{date}</div>
                 </div>
             </div>

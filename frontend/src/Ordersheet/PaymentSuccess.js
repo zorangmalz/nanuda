@@ -65,7 +65,7 @@ export default function PaymentSuccess() {
                             color: "#26c1f0",
                             fontFamily: "NotoSansCJKkr",
                         }}>{wish ? "주문" : "작성"}이 완료
-                                <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                                <span style={{ color: "#010608" }}>되었습니다!</span>
                         </div>
                         <OrderDetail
                             wishTime={wish}
@@ -97,7 +97,7 @@ export default function PaymentSuccess() {
                             textAlign: "center",
                             fontSize: 18,
                             opacity: 0.6,
-                            color: "#051a1a",
+                            color: "#010608",
                             cursor: "pointer",
                             fontFamily: "NotoSansCJKkr",
                         }}>내 리뷰 확인하기</div>
@@ -136,7 +136,7 @@ export default function PaymentSuccess() {
                         color: "#26c1f0",
                         fontFamily: "NotoSansCJKkr"
                     }}>{wish ? "주문" : "작성"}이 완료
-                        <span style={{ color: "#051a1a" }}>되었습니다!</span>
+                        <span style={{ color: "#010608" }}>되었습니다!</span>
                     </div>
                     <MOrderDetail
                         wishTime={wish}
@@ -171,7 +171,7 @@ export default function PaymentSuccess() {
                         fontSize: 16,
                         opacity: 0.6,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#051a1a",
+                        color: "#010608",
                         textAlign: "center"
                     }}>내 리뷰 확인하기</div>
                 </div>

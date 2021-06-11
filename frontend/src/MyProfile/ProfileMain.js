@@ -42,17 +42,17 @@ const MyInfoList = ({ standard, current, limit, path }) => {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426",
+                        color: "#010608",
                         opacity: 0.6,
                         marginRight: 4,
                     }}>{standard}</div>
-                    <AiOutlineQuestionCircle size={16} opacity={0.4} color="#051a1a" />
+                    <AiOutlineQuestionCircle size={16} opacity={0.4} color="#010608" />
                 </div>
                 :
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                     opacity: 0.6,
                 }}>{standard}</div>
             }
@@ -61,7 +61,7 @@ const MyInfoList = ({ standard, current, limit, path }) => {
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 21,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
                 cursor: "pointer"
             }}>{current}</div>
         </div>
@@ -87,17 +87,17 @@ const MMyInfoList = ({ standard, current, limit, path }) => {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 12,
-                        color: "#202426",
+                        color: "#010608",
                         opacity: 0.6,
                         marginRight: 4,
                     }}>{standard}</div>
-                    <AiOutlineQuestionCircle size={10} opacity={0.4} color="#051a1a" />
+                    <AiOutlineQuestionCircle size={10} opacity={0.4} color="#010608" />
                 </div>
                 :
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 10,
-                    color: "#202426",
+                    color: "#010608",
                     opacity: 0.6,
                 }}>{standard}</div>
             }
@@ -106,7 +106,7 @@ const MMyInfoList = ({ standard, current, limit, path }) => {
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
                 cursor: "pointer"
             }}>{current}</div>
         </div>
@@ -130,7 +130,7 @@ const PayDate = ({ date, name, num, price }) => {
 
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
-                color: "#051a1a"
+                color: "#010608"
             }}>
                 <div style={{
                     marginRight: 16,
@@ -141,7 +141,7 @@ const PayDate = ({ date, name, num, price }) => {
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426"
+                color: "#010608"
             }}>{price} 원</div>
         </div>
     )
@@ -164,7 +164,7 @@ const MPayDate = ({ date, name, num, price }) => {
 
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 12,
-                color: "#051a1a"
+                color: "#010608"
             }}>
                 <div style={{
                     marginRight: "4vw",
@@ -175,7 +175,7 @@ const MPayDate = ({ date, name, num, price }) => {
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 12,
                 fontWeight: "bold",
-                color: "#202426"
+                color: "#010608"
             }}>{price} 원</div>
         </div>
     )
@@ -190,7 +190,7 @@ const ManageList = ({ name, path }) => {
             alignItems: "center",
             justifyContent: "space-between",
 
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             paddingBottom: 16,
             marginTop: 16,
             cursor: "pointer",
@@ -200,7 +200,7 @@ const ManageList = ({ name, path }) => {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
-                color: "#202426"
+                color: "#010608"
             }}>{name}</div>
             <IoIosArrowForward size={24} color="#dbdbdb" />
         </div>
@@ -216,7 +216,7 @@ const MManageList = ({ name, path }) => {
             alignItems: "center",
             justifyContent: "space-between",
 
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             paddingBottom: "4vw",
             marginTop: "4vw",
             cursor: "pointer",
@@ -226,7 +226,7 @@ const MManageList = ({ name, path }) => {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
-                color: "#202426"
+                color: "#010608"
             }}>{name}</div>
             <IoIosArrowForward size={20} color="#dbdbdb" />
         </div>
@@ -432,7 +432,7 @@ export default function ProfileMain() {
                                             fontFamily: "NotoSansCJKKR",
                                             fontSize: 16,
                                             fontWeight: "bold",
-                                            color: "#051a1a",
+                                            color: "#010608",
                                             marginBottom: 16,
                                         }}>변경할 닉네임을 입력해주세요.</div>
                                         <input value={nickname} name="nickname" onChange={onChange} placeholder="영문, 한글, 숫자 포함 8자리 이내" style={{
@@ -445,7 +445,7 @@ export default function ProfileMain() {
 
                                             fontFamily: "NotoSansCJKKR",
                                             fontSize: 14,
-                                            color: "#202426",
+                                            color: "#010608",
                                             marginBottom: 22,
                                             backgroundColor: "rgba(118, 118, 128, 0.12)",
                                             outline: 0,
@@ -473,7 +473,7 @@ export default function ProfileMain() {
                                     height: "100vh",
                                     position: "fixed",
                                     top: 0,
-                                    backgroundColor: "rgba(5, 26, 26, 0.4)",
+                                    backgroundColor: "rgba(1, 6, 8, 0.4)",
                                     zIndex: 1
                                 }} />
                             </>
@@ -541,18 +541,18 @@ export default function ProfileMain() {
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 21,
                                             fontWeight: "bold",
-                                            color: "#202426",
+                                            color: "#010608",
                                             marginRight: 4,
                                         }}>{user.nickname}</div>
                                         <BsPencil onClick={() => setNickModal(true)} style={{
                                             cursor: "pointer"
-                                        }} size={15} color="rgba(5, 26, 26, 0.6)" />
+                                        }} size={15} color="rgba(1, 6, 8, 0.6)" />
                                     </div>
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
                                         opacity: 0.6,
-                                        color: "#202426",
+                                        color: "#010608",
                                     }}>{user.user_email}</div>
                                 </div>
                             </div>
@@ -573,14 +573,14 @@ export default function ProfileMain() {
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 16,
                             marginLeft: 20
                         }}>이번달 총 결제 금액</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 32,
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 8,
                             marginLeft: 20,
                             marginBottom: 16
@@ -604,13 +604,13 @@ export default function ProfileMain() {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
                                 fontWeight: "bold",
-                                color: "#202426",
+                                color: "#010608",
                                 marginTop: 8,
                             }}>나누다 팁!</div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 opacity: 0.8,
                                 marginTop: 4,
                             }}>첫 결제 이후 분할결제 금액은 결제일에 자동결제 됩니다.</div>
@@ -661,7 +661,7 @@ export default function ProfileMain() {
                                         fontFamily: "NotoSansCJKKR",
                                         fontSize: 12,
                                         fontWeight: "bold",
-                                        color: "#051a1a",
+                                        color: "#010608",
                                         marginBottom: "4vw",
                                     }}>변경할 닉네임을 입력해주세요.</div>
                                     <input value={nickname} name="nickname" onChange={onChange} placeholder="영문, 한글, 숫자 포함 8자리 이내" style={{
@@ -674,7 +674,7 @@ export default function ProfileMain() {
 
                                         fontFamily: "NotoSansCJKKR",
                                         fontSize: 12,
-                                        color: "#202426",
+                                        color: "#010608",
                                         marginBottom: "5vw",
                                         backgroundColor: "rgba(118, 118, 128, 0.12)",
                                         outline: 0,
@@ -702,7 +702,7 @@ export default function ProfileMain() {
                                 height: "100vh",
                                 position: "fixed",
                                 top: 0,
-                                backgroundColor: "rgba(5, 26, 26, 0.4)",
+                                backgroundColor: "rgba(1, 6, 8, 0.4)",
                                 zIndex: 1
                             }} />
                         </>
@@ -770,16 +770,16 @@ export default function ProfileMain() {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 18,
                                         fontWeight: "bold",
-                                        color: "#202426",
+                                        color: "#010608",
                                         marginRight: 4,
                                     }}>{user.nickname}</div>
-                                    <BsPencil onClick={() => setNickModal(true)} size={12} color="rgba(5, 26, 26, 0.6)" />
+                                    <BsPencil onClick={() => setNickModal(true)} size={12} color="rgba(1, 6, 8, 0.6)" />
                                 </div>
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 14,
                                     opacity: 0.6,
-                                    color: "#202426",
+                                    color: "#010608",
                                 }}>{user.user_email}</div>
                             </div>
                         </div>
@@ -800,14 +800,14 @@ export default function ProfileMain() {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: "4vw",
                         marginLeft: "5vw"
                     }}>이번달 총 결제 금액</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 28,
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: "2vw",
                         marginLeft: "5vw",
                         marginBottom: "4vw"
@@ -831,13 +831,13 @@ export default function ProfileMain() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 8,
                         }}>나누다 팁!</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
-                            color: "#202426",
+                            color: "#010608",
                             opacity: 0.8,
                             marginTop: 4,
                         }}>첫 결제 이후 분할결제 금액은 결제일에 자동결제 됩니다.</div>

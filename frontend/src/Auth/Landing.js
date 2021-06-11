@@ -70,7 +70,7 @@ export default function Landing() {
                                     lineHeight: 1.5,
                                     fontSize: 16,
                                     fontFamily: "NotoSansCJKkr",
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>아.. 노트북이 꼭 필요한데 ㅠㅠ <br /> 지금 사면 생활비가 너무 부족해...</div>
                                 <div style={{
                                     border: "solid 1px rgba(0,0,0,0.12)",
@@ -84,7 +84,7 @@ export default function Landing() {
                                     fontSize: 16,
                                     fontFamily: "NotoSansCJKkr",
                                     textAlign: "left",
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>그냥 나눠서 결제하면 되는거 아니야?</div>
                                 <div style={{
                                     marginTop: 32,
@@ -99,7 +99,7 @@ export default function Landing() {
                                     lineHeight: 1.5,
                                     fontSize: 16,
                                     fontFamily: "NotoSansCJKkr",
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>아.. 노트북이 꼭 필요한데 ㅠㅠ <br /> 지금 사면 생활비가 너무 부족해...</div>
                                 <div style={{
                                     border: "solid 1px rgba(0,0,0,0.12)",
@@ -113,7 +113,7 @@ export default function Landing() {
                                     fontSize: 16,
                                     fontFamily: "NotoSansCJKkr",
                                     textAlign: "left",
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>나누다에서 나눠서 결제해! <br /> 할부 이자 없이 구매할 수 있어 ㅎㅎ</div>
                                 <div style={{
                                     width: 408,
@@ -126,7 +126,7 @@ export default function Landing() {
                                     textAlign: "center",
                                     fontWeight: "bold",
                                     fontSize: 16,
-                                    color: "#202426",
+                                    color: "#010608",
                                     fontFamily: "NotoSansCJKkr",
                                     marginBottom: 32,
                                 }}>지금 가입하고 신용등급, 할부이자 상관없이 분할 결제해봐!</div>
@@ -139,13 +139,13 @@ export default function Landing() {
                                     fontSize: 24,
                                     fontWeight: "bold",
                                     fontFamily: "NotoSansCJKkr",
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>누다에서<span style={{ color: "#26c1f0", marginLeft: 4, }}>원하는 기간을 선택</span>하고</div>
                                 <div style={{
                                     marginLeft: 20,
                                     fontSize: 24, fontWeight: "bold", color: "#26c1f0", fontFamily: "NotoSansCJKkr"
-                                }}>간편하게 분할결제하세요<span style={{ color: "#202426" }}>!</span></div>
-                                <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", color: "#202426", fontFamily: "NotoSansCJKkr" }}>1. 원하는 상품을 고르고!</div>
+                                }}>간편하게 분할결제하세요<span style={{ color: "#010608" }}>!</span></div>
+                                <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", color: "#010608", fontFamily: "NotoSansCJKkr" }}>1. 원하는 상품을 고르고!</div>
                                 <div style={{
                                     marginTop: 16,
                                     marginLeft: 20,
@@ -162,7 +162,7 @@ export default function Landing() {
                                     </div>
                                 </div>
                                 <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>2. 분할 결제 옵션 선택하면</div>
-                                <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", color: "#202426", fontFamily: "NotoSansCJKkr" }}>1. 원하는 상품을 고르고!</div>
+                                <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", color: "#010608", fontFamily: "NotoSansCJKkr" }}>1. 원하는 상품을 고르고!</div>
                                 <div style={{
                                     marginTop: 16,
                                     marginLeft: 20,
@@ -179,7 +179,7 @@ export default function Landing() {
                                     </div>
                                 </div>
                                 <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", fontFamily: "NotoSansCJKkr" }}>3. 단돈 50만원에 획득!</div>
-                                <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", color: "#202426", fontFamily: "NotoSansCJKkr" }}>1. 원하는 상품을 고르고!</div>
+                                <div style={{ marginTop: 32, marginLeft: 20, fontSize: 21, fontWeight: "bold", color: "#010608", fontFamily: "NotoSansCJKkr" }}>1. 원하는 상품을 고르고!</div>
                                 <div style={{
                                     marginTop: 16,
                                     marginLeft: 20,
@@ -191,7 +191,7 @@ export default function Landing() {
                                 }}>
                                     <div style={{}}>아이콘 자리</div>
                                     <div style={{
-                                        marginLeft: 32, fontSize: 18, fontWeight: "bold", fontFamily: "NotoSansCJKkr", color: "#051a1a",
+                                        marginLeft: 32, fontSize: 18, fontWeight: "bold", fontFamily: "NotoSansCJKkr", color: "#010608",
                                     }}>[Web 발신] 택배가 도착했습니다.</div>
                                 </div>
                             </div>
@@ -303,7 +303,7 @@ export default function Landing() {
                         <div style={{ marginTop: 4, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>할부 이자 없이 구매할 수 있어 ㅎㅎ </div>
                     </div>
                     <div style={{ width: "100%", marginLeft: 20, marginTop: 32, height: 56, backgroundColor: "#D4F7F6", boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)", borderRadius: 10 }}>
-                        <div style={{ marginTop: 20, marginLeft: 16, fontWeight: "bold", fontSize: 16, opacity: 1, color: "#202426", fontFamily: "NotoSansCJKkr" }}>지금 가입하고 신용등급, 할부이자 상관없이 분할 결제해봐!</div>
+                        <div style={{ marginTop: 20, marginLeft: 16, fontWeight: "bold", fontSize: 16, opacity: 1, color: "#010608", fontFamily: "NotoSansCJKkr" }}>지금 가입하고 신용등급, 할부이자 상관없이 분할 결제해봐!</div>
                     </div>
                     <div style={{
                         position: "fixed",

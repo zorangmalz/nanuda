@@ -30,7 +30,7 @@ export default function ProfilePoint() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 32,
                             marginLeft: 20,
@@ -39,12 +39,12 @@ export default function ProfilePoint() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 32,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             width: 440,
                             marginTop: 16,
                             paddingBottom: 32,
-                            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                             alignSelf: "center",
                         }}>100 원</div>
                         <PointList date="2021.04.13" content="결제시 사용" price={-10000} />
@@ -68,7 +68,7 @@ export default function ProfilePoint() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
 
                         marginTop: "8vw",
                         marginLeft: "5vw",
@@ -77,12 +77,12 @@ export default function ProfilePoint() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 28,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
 
                         width: "90vw",
                         marginTop: "4vw",
                         paddingBottom: "8vw",
-                        borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                        borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                         alignSelf: "center",
                     }}>100 원</div>
                     <MPointList date="2021.04.13" content="결제시 사용" price={-10000} />
@@ -100,7 +100,7 @@ function PointList({ date, content, price }) {
             width: 440,
             marginTop: 16,
             paddingBottom: 16,
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
             display: "flex",
             flexDirection: "column",
@@ -124,7 +124,7 @@ function PointList({ date, content, price }) {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
                     fontWeight: "bold",
-                    color: "#202426",
+                    color: "#010608",
                 }}>{content}</div>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
@@ -143,7 +143,7 @@ function MPointList({ date, content, price }) {
             width: "90vw",
             marginTop: "4vw",
             paddingBottom: "4vw",
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
             display: "flex",
             flexDirection: "column",
@@ -167,7 +167,7 @@ function MPointList({ date, content, price }) {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     fontWeight: "bold",
-                    color: "#202426",
+                    color: "#010608",
                 }}>{content}</div>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",

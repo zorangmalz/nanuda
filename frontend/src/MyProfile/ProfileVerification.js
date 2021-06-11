@@ -150,7 +150,7 @@ export default function ProfileVerification() {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
                                 fontWeight: "bold",
-                                color: "#202426",
+                                color: "#010608",
 
                                 marginTop: 16,
                                 width: 440,
@@ -160,7 +160,7 @@ export default function ProfileVerification() {
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
                                 opacity: 0.8,
-                                color: "#202426",
+                                color: "#010608",
 
                                 marginTop: 4,
                                 width: 440,
@@ -277,7 +277,7 @@ export default function ProfileVerification() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: "4vw",
                             width: "90vw",
@@ -287,7 +287,7 @@ export default function ProfileVerification() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             opacity: 0.8,
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 4,
                             width: "90vw",
@@ -333,7 +333,7 @@ function PictureButton() {
             alignItems: "center",
             justifyContent: "center"
         }}>
-            <AiOutlinePlusCircle size={32} color="#051a1a" />
+            <AiOutlinePlusCircle size={32} color="#010608" />
         </div>
     )
 }
@@ -351,7 +351,7 @@ function MPictureButton() {
             alignItems: "center",
             justifyContent: "center"
         }}>
-            <AiOutlinePlusCircle size={24} color="#051a1a" />
+            <AiOutlinePlusCircle size={24} color="#010608" />
         </div>
     )
 }

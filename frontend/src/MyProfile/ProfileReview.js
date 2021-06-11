@@ -32,7 +32,7 @@ function PostThumb({ item }) {
                 width: 210,
                 height: 160,
                 borderRadius: 6,
-                backgroundColor: "#051a1a",
+                backgroundColor: "#010608",
                 marginTop: 8,
                 objectFit: "cover",
                 border: "1px solid #ebebeb"
@@ -49,7 +49,7 @@ function PostThumb({ item }) {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 14,
                     fontWeight: "bold",
-                    color: "#051a1a",
+                    color: "#010608",
                     marginLeft: 4,
                 }}>{item.review_score}</div>
             </div>
@@ -98,7 +98,7 @@ function MPostThumb({ item }) {
                 width: "42vw",
                 height: "32vw",
                 borderRadius: 6,
-                backgroundColor: "#051a1a",
+                backgroundColor: "#010608",
                 marginTop: "2vw",
                 objectFit: "cover",
                 border: "1px solid #ebebeb"
@@ -115,7 +115,7 @@ function MPostThumb({ item }) {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 11,
                     fontWeight: "bold",
-                    color: "#051a1a",
+                    color: "#010608",
                     marginLeft: 4,
                 }}>{item.review_score}</div>
             </div>
@@ -148,7 +148,7 @@ function ProductList() {
             justifyContent: "space-between",
             cursor: "pointer",
             paddingBottom: 16,
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             width: 440,
             alignSelf: "center",
         }}>
@@ -170,12 +170,12 @@ function ProductList() {
                 }}>
                     <div style={{ fontSize: 14, fontFamily: "AvenirNext", marginBottom: 8 }}>삼베옷 컬렉션, White, 95</div>
                     <div style={{ fontSize: 14, opacity: 0.6, textDecoration: "line-through", marginBottom: 8 }}>210,000 원</div>
-                    <div style={{ fontSize: 16, fontWeight: "bold", color: "#051a1a", marginBottom: 8 }}>70,000 원에 획득 완료!</div>
+                    <div style={{ fontSize: 16, fontWeight: "bold", color: "#010608", marginBottom: 8 }}>70,000 원에 획득 완료!</div>
                 </div>
             </div>
             <MdKeyboardArrowRight style={{
                 marginRight: 8,
-            }} size={24} color="rgba(5, 26, 26, 0.2)" />
+            }} size={24} color="rgba(1, 6, 8, 0.2)" />
         </div>
     )
 }
@@ -191,7 +191,7 @@ function MProductList() {
             justifyContent: "space-between",
             cursor: "pointer",
             paddingBottom: 12,
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             width: "90vw",
             alignSelf: "center",
         }}>
@@ -213,12 +213,12 @@ function MProductList() {
                 }}>
                     <div style={{ fontSize: 12, fontFamily: "AvenirNext", marginBottom: 8 }}>삼베옷 컬렉션, White, 95</div>
                     <div style={{ fontSize: 12, opacity: 0.6, textDecoration: "line-through", marginBottom: 8 }}>210,000 원</div>
-                    <div style={{ fontSize: 14, fontWeight: "bold", color: "#051a1a", marginBottom: 8 }}>70,000 원에 획득 완료!</div>
+                    <div style={{ fontSize: 14, fontWeight: "bold", color: "#010608", marginBottom: 8 }}>70,000 원에 획득 완료!</div>
                 </div>
             </div>
             <MdKeyboardArrowRight style={{
                 marginRight: 4,
-            }} size={20} color="rgba(5, 26, 26, 0.2)" />
+            }} size={20} color="rgba(1, 6, 8, 0.2)" />
         </div>
     )
 }
@@ -301,7 +301,7 @@ export default function ProfileReview() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 20,
                             marginTop: 32,
                             marginBottom: 16,
@@ -339,7 +339,7 @@ export default function ProfileReview() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginLeft: "5vw",
                         marginTop: 28,
                         marginBottom: 12,

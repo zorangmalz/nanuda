@@ -39,7 +39,7 @@ export default function PaymentAddBank() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
                             marginTop: 32,
                             marginLeft: 20,
                             marginBottom: 16,
@@ -74,7 +74,7 @@ export default function PaymentAddBank() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         marginTop: "8vw",
                         marginLeft: "5vw",
                         marginBottom: "4vw",
@@ -120,7 +120,7 @@ const Bank = ({ name }) => {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 14,
-                color: "#202426",
+                color: "#010608",
                 marginTop: 4,
             }}>{name}</div>
         </div>
@@ -150,7 +150,7 @@ const MBank = ({ name }) => {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 12,
-                color: "#202426",
+                color: "#010608",
                 marginTop: 4,
             }}>{name}</div>
         </div>

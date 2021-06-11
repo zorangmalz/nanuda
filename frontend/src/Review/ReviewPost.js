@@ -228,7 +228,7 @@ export default function ReviewPost({ match }) {
                                         fontFamily: "NotoSansCJKkr",
                                         opacity: 0.6,
                                         fontSize: 14,
-                                        color: "#202426",
+                                        color: "#010608",
                                         textDecorationLine: "underline",
                                         marginRight: 20,
                                         cursor: "pointer",
@@ -266,13 +266,13 @@ export default function ReviewPost({ match }) {
                                                         fontFamily: "NotoSansCJKkr",
                                                         fontSize: 16,
                                                         fontWeight: "bold",
-                                                        color: "#051a1a",
+                                                        color: "#010608",
                                                         marginTop: 16,
                                                     }}>삭제하시겠습니까?</div>
                                                     <div style={{
                                                         fontFamily: "NotoSansCJKkr",
                                                         fontSize: 14,
-                                                        color: "#051a1a",
+                                                        color: "#010608",
                                                         textAlign: "center",
                                                         height: 42,
                                                         marginTop: 16,
@@ -293,7 +293,7 @@ export default function ReviewPost({ match }) {
 
                                                         fontFamily: "NotoSansCJKkr",
                                                         fontSize: 14,
-                                                        color: "rgba(5, 26, 26, 0.6)",
+                                                        color: "rgba(1, 6, 8, 0.6)",
                                                         cursor: "pointer",
                                                         borderBottomLeftRadius: 6,
                                                     }}>취소</div>
@@ -323,7 +323,7 @@ export default function ReviewPost({ match }) {
                                     fontFamily: "NotoSansCJKkr",
                                     opacity: 0.6,
                                     fontSize: 14,
-                                    color: "#202426",
+                                    color: "#010608",
                                     textDecorationLine: "underline",
                                     marginRight: 20,
                                     cursor: "pointer"
@@ -346,7 +346,7 @@ export default function ReviewPost({ match }) {
                         <div style={{
                             marginTop: 16,
                             width: 480,
-                            border: "0.5px solid #051a1a",
+                            border: "0.5px solid #010608",
                             opacity: 0.2
                         }}></div>
                         <div style={{
@@ -355,7 +355,7 @@ export default function ReviewPost({ match }) {
                             fontSize: 12,
                             opacity: 0.6,
                             fontFamily: "NotoSansCJKkr",
-                            color: "#202426",
+                            color: "#010608",
                         }}>{data.review_date}</div>
                         <div style={{
                             display: "flex",
@@ -407,19 +407,19 @@ export default function ReviewPost({ match }) {
                             marginTop: 16,
                             marginLeft: 20,
                         }}>
-                            {like === 0 ? <AiOutlineLike onClick={putLike} size={24} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={putReset} size={24} color="#051a1a" /> : <AiOutlineLike onClick={putLike} size={24} color="#051a1a" />}
+                            {like === 0 ? <AiOutlineLike onClick={putLike} size={24} color="#010608" /> : like === 1 ? <AiFillLike onClick={putReset} size={24} color="#010608" /> : <AiOutlineLike onClick={putLike} size={24} color="#010608" />}
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                                 marginRight: 12,
                             }}>{data.review_likeNum}</div>
-                            {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={24} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={putReset} size={24} color="#051a1a" /> : <AiOutlineDislike onClick={putDisLike} size={24} color="#051a1a" />}
+                            {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={24} color="#010608" /> : like === 2 ? <AiFillDislike onClick={putReset} size={24} color="#010608" /> : <AiOutlineDislike onClick={putDisLike} size={24} color="#010608" />}
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 marginLeft: 8,
                             }}>{data.review_dislikeNum}</div>
                         </div>
@@ -469,7 +469,7 @@ export default function ReviewPost({ match }) {
                                     fontFamily: "NotoSansCJKkr",
                                     opacity: 0.6,
                                     fontSize: 12,
-                                    color: "#202426",
+                                    color: "#010608",
                                     textDecorationLine: "underline",
                                     marginRight: "5vw",
                                     cursor: "pointer",
@@ -507,13 +507,13 @@ export default function ReviewPost({ match }) {
                                                     fontFamily: "NotoSansCJKkr",
                                                     fontSize: 14,
                                                     fontWeight: "bold",
-                                                    color: "#051a1a",
+                                                    color: "#010608",
                                                     marginTop: "4vw",
                                                 }}>삭제하시겠습니까?</div>
                                                 <div style={{
                                                     fontFamily: "NotoSansCJKkr",
                                                     fontSize: 12,
-                                                    color: "#051a1a",
+                                                    color: "#010608",
                                                     textAlign: "center",
                                                     height: "10vw",
                                                     marginTop: "4vw",
@@ -534,7 +534,7 @@ export default function ReviewPost({ match }) {
 
                                                     fontFamily: "NotoSansCJKkr",
                                                     fontSize: 12,
-                                                    color: "rgba(5, 26, 26, 0.6)",
+                                                    color: "rgba(1, 6, 8, 0.6)",
                                                     cursor: "pointer",
                                                     borderBottomLeftRadius: 6,
                                                 }}>취소</div>
@@ -564,7 +564,7 @@ export default function ReviewPost({ match }) {
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 12,
-                                color: "#202426",
+                                color: "#010608",
                                 textDecorationLine: "underline",
                                 marginRight: "5vw",
                                 cursor: "pointer"
@@ -583,7 +583,7 @@ export default function ReviewPost({ match }) {
                     <div style={{
                         marginTop: 12,
                         width: "100vw",
-                        border: "0.5px solid #051a1a",
+                        border: "0.5px solid #010608",
                         opacity: 0.2
                     }}></div>
                     <div style={{
@@ -592,7 +592,7 @@ export default function ReviewPost({ match }) {
                         fontSize: 10,
                         opacity: 0.6,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
                     }}>{data.review_date}</div>
                     <div style={{
                         display: "flex",
@@ -644,19 +644,19 @@ export default function ReviewPost({ match }) {
                         marginTop: "4vw",
                         marginLeft: "5vw",
                     }}>
-                        {like === 0 ? <AiOutlineLike onClick={putLike} size={20} color="#051a1a" /> : like === 1 ? <AiFillLike onClick={putReset} size={20} color="#051a1a" /> : <AiOutlineLike onClick={putLike} size={20} color="#051a1a" />}
+                        {like === 0 ? <AiOutlineLike onClick={putLike} size={20} color="#010608" /> : like === 1 ? <AiFillLike onClick={putReset} size={20} color="#010608" /> : <AiOutlineLike onClick={putLike} size={20} color="#010608" />}
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 4,
                             marginRight: 8,
                         }}>{data.review_likeNum}</div>
-                        {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={20} color="#051a1a" /> : like === 2 ? <AiFillDislike onClick={putReset} size={20} color="#051a1a" /> : <AiOutlineDislike onClick={putDisLike} size={20} color="#051a1a" />}
+                        {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={20} color="#010608" /> : like === 2 ? <AiFillDislike onClick={putReset} size={20} color="#010608" /> : <AiOutlineDislike onClick={putDisLike} size={20} color="#010608" />}
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 4,
                         }}>{data.review_dislikeNum}</div>
                     </div>

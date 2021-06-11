@@ -14,14 +14,14 @@ const TypeButton = ({ text, variable, number, onClick }) => {
             paddingTop: 12,
             paddingBottom: 12,
             borderRadius: 6,
-            border: "1px solid rgba(5, 26, 26, 0.2)",
-            backgroundColor: variable === number ? "#051a1a" : "#ffffff",
+            border: "1px solid rgba(1, 6, 8, 0.2)",
+            backgroundColor: variable === number ? "#010608" : "#ffffff",
             marginRight: 16,
             cursor: "pointer",
 
             fontFamily: "NotoSansCJKkr",
             fontSize: 16,
-            color: variable === number ? "#ffffff" : "rgba(5, 26, 26, 0.8)",
+            color: variable === number ? "#ffffff" : "rgba(1, 6, 8, 0.8)",
             textAlign: "center",
             fontWeight: variable === number ? "bold" : "normal",
         }}>{text}</div>
@@ -35,14 +35,14 @@ const MTypeButton = ({ text, variable, number, onClick }) => {
             paddingTop: "3vw",
             paddingBottom: "3vw",
             borderRadius: 6,
-            border: "1px solid rgba(5, 26, 26, 0.2)",
-            backgroundColor: variable === number ? "#051a1a" : "#ffffff",
+            border: "1px solid rgba(1, 6, 8, 0.2)",
+            backgroundColor: variable === number ? "#010608" : "#ffffff",
             marginRight: "4vw",
             cursor: "pointer",
 
             fontFamily: "NotoSansCJKkr",
             fontSize: 14,
-            color: variable === number ? "#ffffff" : "rgba(5, 26, 26, 0.8)",
+            color: variable === number ? "#ffffff" : "rgba(1, 6, 8, 0.8)",
             textAlign: "center",
             fontWeight: variable === number ? "bold" : "normal",
         }}>{text}</div>
@@ -165,7 +165,7 @@ export default function WishDeal() {
                             fontWeight: "bold",
                             fontSize: 18,
                             fontFamily: "NotoSansCJKkr",
-                            color: "#202426",
+                            color: "#010608",
                         }}>상품 정보를 가져왔습니다</div>
                         <div style={{
                             width: 440,
@@ -191,7 +191,7 @@ export default function WishDeal() {
                             <div stlye={{
                                 fontSize: 14,
                                 opacity: 0.6,
-                                color: "#202426",
+                                color: "#010608",
 
                             }}>{getUrl.substr(0, 20)}...</div>
                             <div style={{
@@ -208,11 +208,11 @@ export default function WishDeal() {
                             marginLeft: 20,
                             marginTop: 16,
                         }}>
-                            <AiOutlineExclamationCircle size={16} color="#202426" />
+                            <AiOutlineExclamationCircle size={16} color="#010608" />
                             <div style={{
                                 marginLeft: 8,
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 fontFamily: "NotoSansCJKkr"
                             }}>이 상품이 맞는지 한번 더 확인해주세요.</div>
                         </div>
@@ -222,7 +222,7 @@ export default function WishDeal() {
                             fontWeight: "bold",
                             fontSize: 18,
                             fontFamily: "NotoSansCJKkr",
-                            color: "#202426",
+                            color: "#010608",
                         }}>상품 카테고리를 알려주세요!</div>
                         <div style={{
                             display: "flex",
@@ -259,7 +259,7 @@ export default function WishDeal() {
                                 marginTop: 16,
                                 width: 440,
                                 outline: 0,
-                                borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                                 borderTop: 0,
                                 borderLeft: 0,
                                 borderRight: 0,
@@ -267,7 +267,7 @@ export default function WishDeal() {
 
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 16,
-                                color: "#202426"
+                                color: "#010608"
                             }}
                         /> : <div></div>}
                         {state ?
@@ -327,7 +327,7 @@ export default function WishDeal() {
                         fontWeight: "bold",
                         fontSize: 16,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
                     }}>상품 정보를 가져왔습니다.</div>
                     <div style={{
                         width: "90%",
@@ -353,7 +353,7 @@ export default function WishDeal() {
                         <div stlye={{
                             fontSize: 14,
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
 
                         }}>{getUrl.substr(0, 20)}...</div>
                         <div style={{
@@ -371,11 +371,11 @@ export default function WishDeal() {
                         marginLeft: "5vw",
                         marginTop: "4vw",
                     }}>
-                        <AiOutlineExclamationCircle size={12} color="#202426" />
+                        <AiOutlineExclamationCircle size={12} color="#010608" />
                         <div style={{
                             marginLeft: 8,
                             fontSize: 12,
-                            color: "#202426",
+                            color: "#010608",
                             fontFamily: "NotoSansCJKkr"
                         }}>이 상품이 맞는지 한번 더 확인해주세요.</div>
                     </div>
@@ -385,7 +385,7 @@ export default function WishDeal() {
                         fontWeight: "bold",
                         fontSize: 16,
                         fontFamily: "NotoSansCJKkr",
-                        color: "#202426",
+                        color: "#010608",
                     }}>상품 카테고리를 알려주세요!</div>
                     <div style={{
                         display: "flex",
@@ -421,7 +421,7 @@ export default function WishDeal() {
                             marginTop: "4vw",
                             width: "90vw",
                             outline: 0,
-                            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+                            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                             borderTop: 0,
                             borderLeft: 0,
                             borderRight: 0,
@@ -429,7 +429,7 @@ export default function WishDeal() {
 
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
-                            color: "#202426"
+                            color: "#010608"
                         }}
                     /> : <div></div>}
                   {state? 

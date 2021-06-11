@@ -112,7 +112,7 @@ function ProductState({ date, title, price, state }) {
                 marginTop: 16,
                 paddingBottom: 16,
                 width: 440,
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)"
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)"
             }}>
                 <div onClick={() => history.push("/profileproductinfo")} style={{
                     display: "flex",
@@ -145,24 +145,24 @@ function ProductState({ date, title, price, state }) {
                             <div style={{
                                 fontSize: 16,
                                 fontFamily: "NotoSansCJKkr",
-                                color: "#202426",
+                                color: "#010608",
                                 opacity: 0.6,
                             }}>{date}</div>
                             <div style={{
                                 fontSize: 16,
-                                color: "#202426",
+                                color: "#010608",
                                 fontFamily: "AvenirNext",
                                 lineHeight: 1.5,
                             }}>{title}</div>
                             <div style={{
                                 fontSize: 18,
                                 fontWeight: "bold",
-                                color: "#051a1a",
+                                color: "#010608",
                                 fontFamily: "NotoSansCJKkr"
                             }}>{price}원</div>
                         </div>
                     </div>
-                    <MdKeyboardArrowRight size={32} color="rgba(5, 26, 26, 0.4)" />
+                    <MdKeyboardArrowRight size={32} color="rgba(1, 6, 8, 0.4)" />
                 </div>
                 {/* <div style={{
                     display: "flex",
@@ -230,7 +230,7 @@ function ProductState({ date, title, price, state }) {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
                             fontWeight: state > 0 ? "bold" : "normal",
-                            color: "#202426",
+                            color: "#010608",
                             opacity: state > 0 ? 1 : 0.6,
                             width: 55,
                             textAlign: "center",
@@ -239,7 +239,7 @@ function ProductState({ date, title, price, state }) {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
                             fontWeight: state > 1 ? "bold" : "normal",
-                            color: "#202426",
+                            color: "#010608",
                             opacity: state > 1 ? 1 : 0.6,
                             width: 55,
                             textAlign: "center",
@@ -248,7 +248,7 @@ function ProductState({ date, title, price, state }) {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
                             fontWeight: state > 2 ? "bold" : "normal",
-                            color: "#202426",
+                            color: "#010608",
                             opacity: state > 2 ? 1 : 0.6,
                             width: 55,
                             textAlign: "center",
@@ -271,7 +271,7 @@ function MProductState({ date, title, price, state }) {
                 paddingBottom: "4vw",
                 width: "90vw",
                 alignSelf: "center",
-                borderBottom: "1px solid rgba(5, 26, 26, 0.2)"
+                borderBottom: "1px solid rgba(1, 6, 8, 0.2)"
             }}>
                 <div onClick={() => history.push("/profileproductinfo")} style={{
                     display: "flex",
@@ -304,24 +304,24 @@ function MProductState({ date, title, price, state }) {
                             <div style={{
                                 fontSize: 14,
                                 fontFamily: "NotoSansCJKkr",
-                                color: "#202426",
+                                color: "#010608",
                                 opacity: 0.6,
                             }}>{date}</div>
                             <div style={{
                                 fontSize: 12,
-                                color: "#202426",
+                                color: "#010608",
                                 fontFamily: "AvenirNext",
                                 lineHeight: 1.5,
                             }}>{title}</div>
                             <div style={{
                                 fontSize: 16,
                                 fontWeight: "bold",
-                                color: "#051a1a",
+                                color: "#010608",
                                 fontFamily: "NotoSansCJKkr"
                             }}>{price}원</div>
                         </div>
                     </div>
-                    <MdKeyboardArrowRight size={24} color="rgba(5, 26, 26, 0.4)" />
+                    <MdKeyboardArrowRight size={24} color="rgba(1, 6, 8, 0.4)" />
                 </div>
                 {/* <div style={{
                     display: "flex",
@@ -389,7 +389,7 @@ function MProductState({ date, title, price, state }) {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             fontWeight: state > 0 ? "bold" : "normal",
-                            color: "#202426",
+                            color: "#010608",
                             opacity: state > 0 ? 1 : 0.6,
                             width: 50,
                             textAlign: "center",
@@ -398,7 +398,7 @@ function MProductState({ date, title, price, state }) {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             fontWeight: state > 1 ? "bold" : "normal",
-                            color: "#202426",
+                            color: "#010608",
                             opacity: state > 1 ? 1 : 0.6,
                             width: 50,
                             textAlign: "center",
@@ -407,7 +407,7 @@ function MProductState({ date, title, price, state }) {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             fontWeight: state > 2 ? "bold" : "normal",
-                            color: "#202426",
+                            color: "#010608",
                             opacity: state > 2 ? 1 : 0.6,
                             width: 50,
                             textAlign: "center",

@@ -32,7 +32,7 @@ export default function SingupComplete() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 24,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 32,
                             lineHeight: 1.5,
@@ -73,7 +73,7 @@ export default function SingupComplete() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 20,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
 
                         marginTop: "8vw",
                         lineHeight: 1.5,

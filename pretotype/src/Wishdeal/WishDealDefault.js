@@ -123,7 +123,7 @@ export default function WishDealDefault() {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
                                         fontWeight: "bold",
-                                        color: "#202426",
+                                        color: "#010608",
                                         marginBottom: 16,
                                         textAlign: "left"
                                     }}>1. 다양한 쇼핑몰에서 사고싶은 상품의 링크를 입력해주세요!</div>
@@ -140,7 +140,7 @@ export default function WishDealDefault() {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
                                         fontWeight: "bold",
-                                        color: "#202426",
+                                        color: "#010608",
                                         marginBottom: 42,
                                         textAlign: "left"
                                     }}>2. 가격과 원하는 옵션을 선택해 주문서를 작성해주세요!</div>
@@ -157,7 +157,7 @@ export default function WishDealDefault() {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
                                         fontWeight: "bold",
-                                        color: "#202426",
+                                        color: "#010608",
                                         marginBottom: 8,
                                         textAlign: "left"
                                     }}>3. 반절만 결제하고 원하는 상품 Get!!</div>
@@ -279,7 +279,7 @@ export default function WishDealDefault() {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 12,
                                         fontWeight: "bold",
-                                        color: "#202426",
+                                        color: "#010608",
                                         marginBottom: "4vw",
                                         textAlign: "left"
                                     }}>1. 다양한 쇼핑몰에서 사고싶은 상품의 링크를 입력해주세요!</div>
@@ -296,7 +296,7 @@ export default function WishDealDefault() {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 12,
                                         fontWeight: "bold",
-                                        color: "#202426",
+                                        color: "#010608",
                                         marginBottom: "10vw",
                                         textAlign: "left"
                                     }}>2. 가격과 원하는 옵션을 선택해 주문서를 작성해주세요!</div>
@@ -313,7 +313,7 @@ export default function WishDealDefault() {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 12,
                                         fontWeight: "bold",
-                                        color: "#202426",
+                                        color: "#010608",
                                         marginBottom: "4vw",
                                         textAlign: "left"
                                     }}>3. 반절만 결제하고 원하는 상품 Get!!</div>

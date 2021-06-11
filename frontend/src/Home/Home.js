@@ -164,7 +164,7 @@ export default function Home() {
                         <div style={{
                             width: 480,
                             height: 48,
-                            backgroundColor: "#051a1a"
+                            backgroundColor: "#010608"
                         }}>
                             <div style={{
                                 display: "flex",
@@ -229,13 +229,13 @@ export default function Home() {
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 21,
-                                color: "#202426",
+                                color: "#010608",
                                 marginRight: 4,
                             }}>나눠서 결제하고 바로 경험해보세요 😎</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/timedeal/entire")}
                                 size={24}
-                                color="rgba(5, 26, 26, 0.6)"
+                                color="rgba(1, 6, 8, 0.6)"
                                 style={{
                                     cursor: "pointer"
                                 }}
@@ -245,7 +245,7 @@ export default function Home() {
                             fontSize: 16,
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 4,
                             marginLeft: 20,
@@ -288,13 +288,13 @@ export default function Home() {
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 21,
-                                color: "#202426",
+                                color: "#010608",
                                 marginRight: 4,
                             }}>하울한 사람들</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/review")}
                                 size={24}
-                                color="rgba(5, 26, 26, 0.6)"
+                                color="rgba(1, 6, 8, 0.6)"
                                 style={{
                                     cursor: "pointer"
                                 }}
@@ -304,7 +304,7 @@ export default function Home() {
                             fontSizeAdjust: 16,
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 4,
                             marginLeft: 20,
@@ -368,7 +368,7 @@ export default function Home() {
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 14,
                                             fontWeight: "bold",
-                                            color: "#051a1a",
+                                            color: "#010608",
                                             marginLeft: 4,
                                         }}>{item.review_score}</div>
                                     </div>
@@ -400,13 +400,13 @@ export default function Home() {
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 21,
-                                color: "#202426",
+                                color: "#010608",
                                 marginRight: 4,
                             }}>하울프리 이용후기</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/servicereview")}
                                 size={24}
-                                color="rgba(5, 26, 26, 0.6)"
+                                color="rgba(1, 6, 8, 0.6)"
                                 style={{
                                     cursor: "pointer"
                                 }}
@@ -416,7 +416,7 @@ export default function Home() {
                             fontSize: 16,
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
-                            color: "#202426",
+                            color: "#010608",
                             marginLeft: 20,
                         }}>아직도 하울프리 이용을 망설이시나요?</div>
                         <AfterContainer>
@@ -429,7 +429,7 @@ export default function Home() {
                         <div style={{ marginTop: 64, marginLeft: 20, width: 440, height: 160, backgroundImage: `url(${banner})`, backgroundSize: "cover", borderRadius: 6, }}>
                             <div style={{ marginLeft: 20, marginTop: 20, fontSize: 21, color: "#ffffff", fontWeight: "bold" }}>스타트업 대표님이신가요?</div>
                             <div style={{ marginLeft: 20, marginTop: 8, fontSize: 16, color: "#ffffff" }}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
-                            <div style={{ marginLeft: 24, marginTop: 8, backgroundColor: "#051a1a", width: 240, height: 48, borderRadius: 6 }}>
+                            <div style={{ marginLeft: 24, marginTop: 8, backgroundColor: "#010608", width: 240, height: 48, borderRadius: 6 }}>
                                 <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
                                     <div style={{ textDecorationLine: "none", padding: 15, marginTop: 20, marginLeft: 20, fontSize: 16, fontWeight: "bold", color: "#ffffff" }}>첫 구매 수수료 50% 할인!</div>
                                 </a>
@@ -472,7 +472,7 @@ export default function Home() {
                     <div style={{
                         width: "100%",
                         height: 48,
-                        backgroundColor: "#051a1a"
+                        backgroundColor: "#010608"
                     }}>
                         <div style={{
                             display: "flex",
@@ -536,13 +536,13 @@ export default function Home() {
                             fontWeight: "bold",
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
-                            color: "#202426",
+                            color: "#010608",
                             marginRight: 4,
                         }}>나눠서 결제하고 바로 경험해보세요 😎</div>
                         <MdKeyboardArrowRight
                             onClick={() => history.push("/timedeal/entire")}
                             size={20}
-                            color="rgba(5, 26, 26, 0.6)"
+                            color="rgba(1, 6, 8, 0.6)"
                             style={{
                                 cursor: "pointer"
                             }}
@@ -552,7 +552,7 @@ export default function Home() {
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr",
                         opacity: 0.6,
-                        color: "#202426",
+                        color: "#010608",
 
                         marginTop: 4,
                         marginLeft: "5%",
@@ -595,13 +595,13 @@ export default function Home() {
                             fontWeight: "bold",
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
-                            color: "#202426",
+                            color: "#010608",
                             marginRight: 4,
                         }}>하울한 사람들</div>
                         <MdKeyboardArrowRight
                             onClick={() => history.push("/review")}
                             size={20}
-                            color="rgba(5, 26, 26, 0.6)"
+                            color="rgba(1, 6, 8, 0.6)"
                             style={{
                                 cursor: "pointer"
                             }}
@@ -611,7 +611,7 @@ export default function Home() {
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr",
                         opacity: 0.6,
-                        color: "#202426",
+                        color: "#010608",
 
                         marginTop: 4,
                         marginLeft: "5%",
@@ -664,7 +664,7 @@ export default function Home() {
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 11,
                                         fontWeight: "bold",
-                                        color: "#051a1a",
+                                        color: "#010608",
                                         marginLeft: 4,
                                     }}>{item.review_score}</div>
                                 </div>
@@ -696,13 +696,13 @@ export default function Home() {
                             fontWeight: "bold",
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
-                            color: "#202426",
+                            color: "#010608",
                             marginRight: 4,
                         }}>하울프리 이용후기</div>
                         <MdKeyboardArrowRight
                             onClick={() => history.push("/servicereview")}
                             size={20}
-                            color="rgba(5, 26, 26, 0.6)"
+                            color="rgba(1, 6, 8, 0.6)"
                             style={{
                                 cursor: "pointer"
                             }}
@@ -712,7 +712,7 @@ export default function Home() {
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr",
                         opacity: 0.6,
-                        color: "#202426",
+                        color: "#010608",
                         marginLeft: "5%",
                         marginTop: "2vw"
                     }}>아직도 하울프리 이용을 망설이시나요?</div>
@@ -767,13 +767,13 @@ export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     backgroundColor: "#ffffff",
                     color: "#ffffff",
                     position: "relative",
-                    border: "1px solid rgba(5, 26, 26, 0.2)"
+                    border: "1px solid rgba(1, 6, 8, 0.2)"
                 }}>
                     {stock > 0 ?
                         <div style={{
                             borderBottomLeftRadius: 6,
                             borderBottomRightRadius: 6,
-                            backgroundColor: "rgba(5, 26, 26, 0.8)",
+                            backgroundColor: "rgba(1, 6, 8, 0.8)",
                             position: "absolute",
                             bottom: 0,
 
@@ -809,7 +809,7 @@ export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        color: "#202426",
+                        color: "#010608",
                         fontWeight: "bold",
                     }}>{title}</div>
                     <BsUpload size={18} style={{
@@ -820,7 +820,7 @@ export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                 <div style={{
                     fontSize: 14,
                     opacity: 0.8,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.71,
                     fontFamily: "AvenirNext",
                     marginBottom: 8,
@@ -836,12 +836,12 @@ export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426",
+                        color: "#010608",
                     }}>2회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 18,
                     }}>
                         <span style={{
@@ -860,12 +860,12 @@ export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426",
+                        color: "#010608",
                     }}>4회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 18,
                     }}>
                         <span style={{
@@ -897,13 +897,13 @@ export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     backgroundColor: "#ffffff",
                     color: "#ffffff",
                     position: "relative",
-                    border: "1px solid rgba(5, 26, 26, 0.2)"
+                    border: "1px solid rgba(1, 6, 8, 0.2)"
                 }}>
                     {stock > 0 ?
                         <div style={{
                             borderBottomLeftRadius: 6,
                             borderBottomRightRadius: 6,
-                            backgroundColor: "rgba(5, 26, 26, 0.8)",
+                            backgroundColor: "rgba(1, 6, 8, 0.8)",
                             position: "absolute",
                             bottom: 0,
 
@@ -939,7 +939,7 @@ export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
-                        color: "#202426",
+                        color: "#010608",
                         fontWeight: "bold",
                         maxHeight: ""
                     }}>{title}</div>
@@ -951,7 +951,7 @@ export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                 <div style={{
                     fontSize: 11,
                     opacity: 0.8,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.5,
                     fontFamily: "AvenirNext",
                     marginBottom: 6,
@@ -969,12 +969,12 @@ export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 11,
-                        color: "#202426",
+                        color: "#010608",
                     }}>2회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 13,
                     }}>
                         <span style={{
@@ -993,12 +993,12 @@ export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 11,
-                        color: "#202426",
+                        color: "#010608",
                     }}>4회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 13,
                     }}>
                         <span style={{
@@ -1043,14 +1043,14 @@ function Review({ item }) {
                     <div style={{
                         fontSize: 14,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         fontFamily: "NotoSansCJKkr",
                         marginLeft: 4,
                     }}>{score}</div>
                 </div>
                 <div style={{
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.5,
                     fontFamily: "NotoSansCJKkr",
                     height: 72,
@@ -1066,13 +1066,13 @@ function Review({ item }) {
                 }}>
                     <div style={{
                         opacity: 0.4,
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr"
                     }}>{maskingName}({age}0대 {gender})</div>
                     <div style={{
                         opacity: 0.4,
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr"
                     }}>{date}</div>
@@ -1113,7 +1113,7 @@ function MReview({ item }) {
                     <div style={{
                         fontSize: 12,
                         fontWeight: "bold",
-                        color: "#051a1a",
+                        color: "#010608",
                         marginBottom: 6,
                         fontFamily: "NotoSansCJKkr",
                         marginLeft: "1vw",
@@ -1121,7 +1121,7 @@ function MReview({ item }) {
                 </div>
                 <div style={{
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.5,
                     fontFamily: "NotoSansCJKkr",
                     height: "18vw",
@@ -1137,13 +1137,13 @@ function MReview({ item }) {
                 }}>
                     <div style={{
                         opacity: 0.4,
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 12,
                         fontFamily: "NotoSansCJKkr"
                     }}>{maskingName}({age}0대 {gender})</div>
                     <div style={{
                         opacity: 0.4,
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 12,
                         fontFamily: "NotoSansCJKkr"
                     }}>{date}</div>

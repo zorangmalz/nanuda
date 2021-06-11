@@ -128,7 +128,7 @@ export default function Signup() {
                             <Header content="회원가입" goBack={true} />
                             {/* 배너 넣어야됨 */}
                             <KaKaoBtn
-                                style={{ width: 440, fontSize: 18, height: 56, color: "#051a1a" }}
+                                style={{ width: 440, fontSize: 18, height: 56, color: "#010608" }}
                                 token={My_App_Key}
                                 onSuccess={kakaoResponse}
                                 onFailure={kakaoFail}
@@ -173,7 +173,7 @@ export default function Signup() {
                                     paddingTop: 16,
                                     paddingBottom: 16,
                                     backgroundColor: "#f4e34d",
-                                    color: "#051a1a",
+                                    color: "#010608",
                                     border: "1px solid transparent",
                                     fontWeight: "bold",
                                     fontSize: 16,

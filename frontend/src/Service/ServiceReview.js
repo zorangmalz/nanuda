@@ -89,7 +89,7 @@ export default function ServiceReview() {
                             alignSelf: "center",
                             marginTop: 32,
 
-                            backgroundColor: "#051a1a",
+                            backgroundColor: "#010608",
                             borderRadius: 6,
                         }}>
                             <div style={{
@@ -178,7 +178,7 @@ export default function ServiceReview() {
                         paddingRight: "10vw",
                         paddingBottom: "8vw",
 
-                        backgroundColor: "#051a1a",
+                        backgroundColor: "#010608",
                         borderRadius: 6,
                     }}>
                         <div style={{
@@ -285,20 +285,20 @@ function Review({ item }) {
                 }}>
                     <div style={{
                         opacity: 0.4,
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr"
                     }}>{maskingName}({age}0대 {gender})</div>
                     <div style={{
                         opacity: 0.4,
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr"
                     }}>{date}</div>
                 </div>
                 <div style={{
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.5,
                     fontFamily: "NotoSansCJKkr"
                 }}>{content}</div>
@@ -346,20 +346,20 @@ function MReview({ item }) {
                 }}>
                     <div style={{
                         opacity: 0.4,
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr"
                     }}>{maskingName}({age}0대 {gender})</div>
                     <div style={{
                         opacity: 0.4,
-                        color: "#202426",
+                        color: "#010608",
                         fontSize: 14,
                         fontFamily: "NotoSansCJKkr"
                     }}>{date}</div>
                 </div>
                 <div style={{
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                     lineHeight: 1.5,
                     fontFamily: "NotoSansCJKkr"
                 }}>{content}</div>

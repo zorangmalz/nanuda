@@ -166,7 +166,7 @@ export default function ProfileEdit() {
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 marginBottom: 8,
                                 cursor: "pointer",
                                 textDecorationLine: "underline"
@@ -175,7 +175,7 @@ export default function ProfileEdit() {
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 14,
-                                color: "#202426",
+                                color: "#010608",
                                 cursor: "pointer",
                                 textDecorationLine: "underline"
                             }}>회원 탈퇴</div>
@@ -281,7 +281,7 @@ export default function ProfileEdit() {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 12,
-                            color: "#202426",
+                            color: "#010608",
                             marginBottom: 8,
                             cursor: "pointer",
                             textDecorationLine: "underline"
@@ -290,7 +290,7 @@ export default function ProfileEdit() {
                             fontFamily: "NotoSansCJKkr",
                             opacity: 0.6,
                             fontSize: 12,
-                            color: "#202426",
+                            color: "#010608",
                             cursor: "pointer",
                             textDecorationLine: "underline"
                         }}>회원 탈퇴</div>
@@ -310,7 +310,7 @@ const Profile = ({ title, content, marginRight, width }) => {
             paddingBottom: 8,
             marginBottom: 16,
             width: width,
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             marginRight: marginRight,
             alignSelf: "center",
         }}>
@@ -324,7 +324,7 @@ const Profile = ({ title, content, marginRight, width }) => {
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
             }}>{content}</div>
         </div>
     )
@@ -339,7 +339,7 @@ const MProfile = ({ title, content, marginRight, width }) => {
             paddingBottom: 8,
             marginBottom: 12,
             width: width,
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             marginRight: marginRight,
             alignSelf: "center",
         }}>
@@ -353,7 +353,7 @@ const MProfile = ({ title, content, marginRight, width }) => {
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 fontWeight: "bold",
-                color: "#202426",
+                color: "#010608",
             }}>{content}</div>
         </div>
     )
@@ -368,7 +368,7 @@ const ProfileWithButton = ({ title, content, width, buttonText, onClick }) => {
             paddingBottom: 8,
             marginBottom: 16,
             width: width,
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             alignSelf: "center",
         }}>
             <div style={{
@@ -388,14 +388,14 @@ const ProfileWithButton = ({ title, content, width, buttonText, onClick }) => {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 18,
                     fontWeight: "bold",
-                    color: "#202426",
+                    color: "#010608",
                 }}>{content}</div>
                 <div onClick={onClick} style={{
                     width: 108,
                     paddingTop: 7,
                     paddingBottom: 7,
                     borderRadius: 6,
-                    backgroundColor: "#051a1a",
+                    backgroundColor: "#010608",
 
                     fontSize: 14,
                     fontWeight: "bold",
@@ -417,7 +417,7 @@ const MProfileWithButton = ({ title, content, width, buttonText, onClick }) => {
             paddingBottom: 8,
             marginBottom: 12,
             width: width,
-            borderBottom: "1px solid rgba(5, 26, 26, 0.2)",
+            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             alignSelf: "center",
         }}>
             <div style={{
@@ -437,14 +437,14 @@ const MProfileWithButton = ({ title, content, width, buttonText, onClick }) => {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 16,
                     fontWeight: "bold",
-                    color: "#202426",
+                    color: "#010608",
                 }}>{content}</div>
                 <div onClick={onClick} style={{
                     width: 90,
                     paddingTop: 4,
                     paddingBottom: 4,
                     borderRadius: 6,
-                    backgroundColor: "#051a1a",
+                    backgroundColor: "#010608",
 
                     fontSize: 12,
                     fontWeight: "bold",
@@ -478,43 +478,43 @@ export const BasicAddress = ({ item }) => {
                 <div style={{
                     fontSize: 16,
                     fontWeight: "bold",
-                    color: "#202426",
+                    color: "#010608",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.name}</div>
                 <div style={{
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.addressNum}</div>
                 <div style={{
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.address}</div>
                 <div style={{
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.addressDetail}</div>
                 <div style={{
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.phoneNumber}</div>
                 <div style={{
                     fontSize: 16,
-                    color: "#202426",
+                    color: "#010608",
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.request}</div>
             </div>
             <MdKeyboardArrowRight
                 size={24}
-                color="rgba(5, 26, 26, 0.2)"
+                color="rgba(1, 6, 8, 0.2)"
             />
         </div>
     )
@@ -541,43 +541,43 @@ export const MBasicAddress = ({ item }) => {
                 <div style={{
                     fontSize: 14,
                     fontWeight: "bold",
-                    color: "#202426",
+                    color: "#010608",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.name}</div>
                 <div style={{
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.addressNum}</div>
                 <div style={{
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.address}</div>
                 <div style={{
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.addressDetail}</div>
                 <div style={{
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                     marginBottom: 8,
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.phoneNumber}</div>
                 <div style={{
                     fontSize: 14,
-                    color: "#202426",
+                    color: "#010608",
                     fontFamily: "NotoSansCJKkr"
                 }}>{item.request}</div>
             </div>
             <MdKeyboardArrowRight
                 size={20}
-                color="rgba(5, 26, 26, 0.2)"
+                color="rgba(1, 6, 8, 0.2)"
             />
         </div>
     )
@@ -595,20 +595,20 @@ export const NoAddress = ({myparam,url,image}) => {
 
             width: 440,
             height: 136,
-            border: "1px solid rgba(5, 26, 26, 0.2)",
+            border: "1px solid rgba(1, 6, 8, 0.2)",
             cursor: "pointer",
             borderRadius: 6,
             marginTop: 16,
         }}>
             <BiPlusCircle
                 size={32}
-                color="rgba(5, 26, 26, 0.6)"
+                color="rgba(1, 6, 8, 0.6)"
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
                 opacity: 0.6,
-                color: "#202426",
+                color: "#010608",
                 marginTop: 8,
             }}>배송지를 입력해주세요.</div>
         </div>
@@ -627,20 +627,20 @@ export const MNoAddress = ({myparam,url,image}) => {
 
             width: "90vw",
             height: "30vw",
-            border: "1px solid rgba(5, 26, 26, 0.2)",
+            border: "1px solid rgba(1, 6, 8, 0.2)",
             cursor: "pointer",
             borderRadius: 6,
             marginTop: "4vw",
         }}>
             <BiPlusCircle
                 size={28}
-                color="rgba(5, 26, 26, 0.6)"
+                color="rgba(1, 6, 8, 0.6)"
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 14,
                 opacity: 0.6,
-                color: "#202426",
+                color: "#010608",
                 marginTop: "2vw",
             }}>배송지를 입력해주세요.</div>
         </div>

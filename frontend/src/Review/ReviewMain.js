@@ -96,13 +96,13 @@ export default function ReviewMain() {
                                     fontWeight: "bold",
                                     marginTop: 32,
                                     marginBottom: 8,
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 18,
                                     opacity: 0.6,
-                                    color: "#202426"
+                                    color: "#010608"
                                 }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
                             </div>
                             :
@@ -141,7 +141,7 @@ export default function ReviewMain() {
                                             width: 210,
                                             height: 160,
                                             borderRadius: 6,
-                                            backgroundColor: "#051a1a",
+                                            backgroundColor: "#010608",
                                             marginTop: 8,
                                             objectFit: "cover",
                                             border: "1px solid #ebebeb"
@@ -158,7 +158,7 @@ export default function ReviewMain() {
                                                 fontFamily: "NotoSansCJKkr",
                                                 fontSize: 14,
                                                 fontWeight: "bold",
-                                                color: "#051a1a",
+                                                color: "#010608",
                                                 marginLeft: 4,
                                             }}>{item.review_score}</div>
                                         </div>
@@ -236,13 +236,13 @@ export default function ReviewMain() {
                                 fontWeight: "bold",
                                 marginTop: "8vw",
                                 marginBottom: "2vw",
-                                color: "#202426"
+                                color: "#010608"
                             }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 16,
                                 opacity: 0.6,
-                                color: "#202426"
+                                color: "#010608"
                             }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
                         </div>
                         :
@@ -281,7 +281,7 @@ export default function ReviewMain() {
                                         width: "42vw",
                                         height: "32vw",
                                         borderRadius: 6,
-                                        backgroundColor: "#051a1a",
+                                        backgroundColor: "#010608",
                                         marginTop: "2vw",
                                         objectFit: "cover",
                                         border: "1px solid #ebebeb"
@@ -298,7 +298,7 @@ export default function ReviewMain() {
                                             fontFamily: "NotoSansCJKkr",
                                             fontSize: 11,
                                             fontWeight: "bold",
-                                            color: "#051a1a",
+                                            color: "#010608",
                                             marginLeft: 4,
                                         }}>{item.review_score}</div>
                                     </div>

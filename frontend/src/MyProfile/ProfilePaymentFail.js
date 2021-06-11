@@ -51,10 +51,10 @@ export default function ProfilePaymentFail() {
                             fontWeight: "bold",
                             color: "#f72b2b",
                             fontFamily: "NotoSansCJKkr"
-                        }}>결제에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
+                        }}>결제에 실패<span style={{ color: "#010608" }}>했습니다.</span></div>
                         <div style={{
                             fontSize: 16,
-                            color: "#051a1a",
+                            color: "#010608",
                             opacity: 0.6,
                             marginTop: 16,
                             fontFamily: "NotoSansCJKkr"
@@ -83,10 +83,10 @@ export default function ProfilePaymentFail() {
                             marginTop: 16,
                             backgroundColor: "#ffffff",
                             alignSelf: "center",
-                            border: "1px solid rgba(5, 26, 26, 0.2)",
+                            border: "1px solid rgba(1, 6, 8, 0.2)",
 
                             textAlign: "center",
-                            color: "rgba(5, 26, 26, 0.6)",
+                            color: "rgba(1, 6, 8, 0.6)",
                             fontSize: 18,
                             fontFamily: "NotoSansCJKkr",
                             cursor: "pointer",
@@ -125,10 +125,10 @@ export default function ProfilePaymentFail() {
                         fontWeight: "bold",
                         color: "#f72b2b",
                         fontFamily: "NotoSansCJKkr"
-                    }}>결제에 실패<span style={{ color: "#051a1a" }}>했습니다.</span></div>
+                    }}>결제에 실패<span style={{ color: "#010608" }}>했습니다.</span></div>
                     <div style={{
                         fontSize: 14,
-                        color: "#051a1a",
+                        color: "#010608",
                         opacity: 0.6,
                         marginTop: 16,
                         fontFamily: "NotoSansCJKkr"
@@ -156,10 +156,10 @@ export default function ProfilePaymentFail() {
                         marginTop: 12,
                         backgroundColor: "#ffffff",
                         alignSelf: "center",
-                        border: "1px solid rgba(5, 26, 26, 0.2)",
+                        border: "1px solid rgba(1, 6, 8, 0.2)",
 
                         textAlign: "center",
-                        color: "rgba(5, 26, 26, 0.6)",
+                        color: "rgba(1, 6, 8, 0.6)",
                         fontSize: 16,
                         fontFamily: "NotoSansCJKkr",
                         cursor: "pointer",

@@ -33,7 +33,7 @@ export default function PaymentAddAccount() {
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
-                            color: "#202426",
+                            color: "#010608",
 
                             marginTop: 32,
                             marginLeft: 20,
@@ -46,11 +46,11 @@ export default function PaymentAddAccount() {
                                 border: 0,
                                 paddingBottom: 8,
                                 width: 440,
-                                borderBottom: "1px solid rgba(5, 26, 26, 0.4)",
+                                borderBottom: "1px solid rgba(1, 6, 8, 0.4)",
 
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 16,
-                                color: "#202426",
+                                color: "#010608",
                             }}
                         />
                         <StandardButton
@@ -77,7 +77,7 @@ export default function PaymentAddAccount() {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: "#202426",
+                        color: "#010608",
 
                         marginTop: "8vw",
                         marginLeft: "5vw",
@@ -90,11 +90,11 @@ export default function PaymentAddAccount() {
                             border: 0,
                             paddingBottom: 8,
                             width: "90vw",
-                            borderBottom: "1px solid rgba(5, 26, 26, 0.4)",
+                            borderBottom: "1px solid rgba(1, 6, 8, 0.4)",
 
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 14,
-                            color: "#202426",
+                            color: "#010608",
                         }}
                     />
                     <MStandardButton

@@ -10,7 +10,7 @@ const Container = styled.div`
     height: 40px;
     padding-left: 20px;
     padding-right: 20px;
-    border-bottom: 1px solid rgba(5, 26, 26, 0.2);
+    border-bottom: 1px solid rgba(1, 6, 8, 0.2);
     background-color: #ffffff;
     overflow-x: auto;
     overflow-y: hidden;
@@ -30,7 +30,7 @@ const MContainer = styled.div`
     height: 10vw;
     padding-left: 5vw;
     padding-right: 5vw;
-    border-bottom: 1px solid rgba(5, 26, 26, 0.2);
+    border-bottom: 1px solid rgba(1, 6, 8, 0.2);
     background-color: #ffffff;
     overflow: auto;
     position: relative;
@@ -55,9 +55,9 @@ const Title = ({ text, state, onClick }) => {
             fontFamily: "NotoSansCJKkr",
             fontSize: 16,
             fontWeight: state ? "bold" : "normal",
-            color: "#051a1a",
+            color: "#010608",
             paddingBottom: 8,
-            borderBottom: state ? "2px solid rgba(5, 26, 26, 1)" : "0px solid rgba(255, 255, 255, 0)",
+            borderBottom: state ? "2px solid #010608" : "0px solid rgba(255, 255, 255, 0)",
             cursor: "pointer",
         }}>{text}</div>
     )
@@ -75,10 +75,10 @@ const MTitle = ({ text, state, onClick }) => {
             fontFamily: "NotoSansCJKkr",
             fontSize: 14,
             fontWeight: state ? "bold" : "normal",
-            color: "#051a1a",
+            color: "#010608",
             paddingTop: "2vw",
             paddingBottom: "2vw",
-            borderBottom: state ? "2px solid rgba(5, 26, 26, 1)" : "0px solid rgba(255, 255, 255, 0)",
+            borderBottom: state ? "2px solid #010608" : "0px solid rgba(255, 255, 255, 0)",
             cursor: "pointer",
         }}>{text}</div>
     )
