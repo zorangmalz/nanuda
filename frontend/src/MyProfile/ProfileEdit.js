@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components"
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
-import { FaUserCircle } from "react-icons/fa";
+import { Header, MHeader, InputModule, MInputModule, StandardModal, StandardChoiceModal } from "../Style";
 import { MdKeyboardArrowRight } from "react-icons/md"
 import { BiPlusCircle } from "react-icons/bi";
 
 export default function ProfileEdit() {
     let history = useHistory()
-    const onPhoneVerify = () => { }
-    const onJobVerify = () => { }
-    const [basicAddress, setBasicAddress] = useState(true)
-    const item = {
-        name: "김현명",
-        addressNum: "03770",
-        address: "서울 특별시 서대문구 북아현로 1길 17",
-        addressDetail: "e편한세상 203동 2104호",
-        phoneNumber: "010-4337-6607",
-        request: "배송 요청사항: 집앞"
+
+
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setUser({
+            ...user,
+            [name]: value
+        })
     }
 
     //현재 유저 정보
@@ -29,6 +27,7 @@ export default function ProfileEdit() {
         job: "",
         phone_number: ""
     })
+    const { name, gender, user_email, profile, job, phone_number } = user
 
     useEffect(() => {
         fetch('userinfo/', {
@@ -83,74 +82,46 @@ export default function ProfileEdit() {
                             width: "100%",
                         }}>
                             <Header content="내 정보 관리" goBack={true} />
-                            {user.profile.length > 0 ?
-                                <>
-                                    <img src={user.profile} alt="프로필 사진" style={{
-                                        width: 72,
-                                        height: 72,
-                                        borderRadius: 36,
-                                        marginTop: 32,
-                                        marginBottom: 32,
-                                        alignSelf: "center",
-                                    }} />
-                                </>
-                                :
-                                <>
-                                    <FaUserCircle
-                                        size={72}
-                                        color="#dbdbdb"
-                                        style={{
-                                            marginTop: 32,
-                                            marginBottom: 32,
-                                            alignSelf: "center",
-                                        }}
-                                    />
-                                </>
-                            }
+                            <Title marginTop="32px" >이름</Title>
+                            <InputModule
+                                name="name"
+                                value={name}
+                                onChange={onChange}
+                                placeholder="이름"
+                                type={4}
+                                width={440}
+                            />
+                            <Title marginTop="16px" >휴대폰번호</Title>
+                            <InputModule
+                                name="phone_number"
+                                value={phone_number}
+                                onChange={onChange}
+                                placeholder="휴대폰 번호"
+                                type={4}
+                                width={440}
+                            />
                             <div style={{
-                                marginLeft: 20,
+                                width: 440,
+                                alignSelf: "center",
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                border: "1px solid rgba(1, 6, 8, 0.2)",
+                                borderRadius: 6,
+                                marginTop: 16,
 
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "flex-start",
-                            }}>
-                                <Profile
-                                    title="이름"
-                                    content={user.name}
-                                    marginRight={20}
-                                    width={90}
-                                />
-                                <Profile
-                                    title="성별"
-                                    content={user.gender == 0 ? "남자" : "여자"}
-                                    marginRight={0}
-                                    width={90}
-                                />
-                            </div>
-                            <Profile
-                                title="생년월일"
-                                content="1995-12-28"
-                                marginRight={0}
-                                width={440}
-                            />
-                            <ProfileWithButton
-                                title="핸드폰 번호"
-                                content={user.phone_number}
-                                width={440}
-                                buttonText="재인증"
-                                onClick={onPhoneVerify}
-                            />
-                            <ProfileWithButton
-                                title="직업"
-                                content={user.job}
-                                width={440}
-                                buttonText="인증하기"
-                                onClick={onJobVerify}
-                            />
-                            <Profile
-                                title="이메일 주소"
-                                content={user.user_email}
-                                marginRight={0}
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 18,
+                                color: "rgba(1, 6, 8, 0.6)",
+                                cursor: "pointer",
+                                textAlign: "center"
+                            }}>본인인증하고 정보 변경하기</div>
+                            <Title marginTop="32px" >이메일주소</Title>
+                            <InputModule
+                                name="user_email"
+                                value={user_email}
+                                onChange={onChange}
+                                placeholder="이메일 주소"
+                                type={1}
                                 width={440}
                             />
                         </div>
@@ -161,23 +132,8 @@ export default function ProfileEdit() {
                             marginBottom: 40,
                             marginLeft: 20,
                         }}>
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                opacity: 0.6,
-                                fontSize: 14,
-                                color: "#010608",
-                                marginBottom: 8,
-                                cursor: "pointer",
-                                textDecorationLine: "underline"
-                            }}>로그아웃</div>
-                            <div onClick={() => history.push("/profiledelete")} style={{
-                                fontFamily: "NotoSansCJKkr",
-                                opacity: 0.6,
-                                fontSize: 14,
-                                color: "#010608",
-                                cursor: "pointer",
-                                textDecorationLine: "underline"
-                            }}>회원 탈퇴</div>
+                            <Small marginBottom="8px" >로그아웃</Small>
+                            <Small onClick={() => history.push("/profiledelete")}>회원 탈퇴</Small>
                         </div>
                     </div>
                 </div>
@@ -198,74 +154,46 @@ export default function ProfileEdit() {
                         width: "100%",
                     }}>
                         <MHeader content="내 정보 관리" goBack={true} />
-                        {user.profile.length > 0 ?
-                            <>
-                                <img src={user.profile} alt="프로필 사진" style={{
-                                    width: 60,
-                                    height: 60,
-                                    borderRadius: 30,
-                                    marginTop: "7vw",
-                                    marginBottom: "7vw",
-                                    alignSelf: "center",
-                                }} />
-                            </>
-                            :
-                            <>
-                                <FaUserCircle
-                                    size={60}
-                                    color="#dbdbdb"
-                                    style={{
-                                        objectFit: "contain",
-                                        marginTop: "7vw",
-                                        marginBottom: "7vw",
-                                        alignSelf: "center",
-                                    }} />
-                            </>
-                        }
+                        <Title marginTop="8vw" fontSize="16px">이름</Title>
+                        <MInputModule
+                            name="name"
+                            value={name}
+                            onChange={onChange}
+                            placeholder="이름"
+                            type={4}
+                            width={"90vw"}
+                        />
+                        <Title marginTop="4vw" fontSize="16px">휴대폰번호</Title>
+                        <MInputModule
+                            name="phone_number"
+                            value={phone_number}
+                            onChange={onChange}
+                            placeholder="휴대폰 번호"
+                            type={4}
+                            width={"90vw"}
+                        />
                         <div style={{
-                            marginLeft: "5vw",
+                            width: "90vw",
+                            alignSelf: "center",
+                            paddingTop: "4vw",
+                            paddingBottom: "4vw",
+                            border: "1px solid rgba(1, 6, 8, 0.2)",
+                            borderRadius: 6,
+                            marginTop: "4vw",
 
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "flex-start",
-                        }}>
-                            <MProfile
-                                title="이름"
-                                content={user.name}
-                                marginRight={10}
-                                width={"20vw"}
-                            />
-                            <MProfile
-                                title="성별"
-                                content={user.gender == 0 ? "남자" : "여자"}
-                                marginRight={0}
-                                width={"20vw"}
-                            />
-                        </div>
-                        <MProfile
-                            title="생년월일"
-                            content="1995-12-28"
-                            marginRight={0}
-                            width={"90vw"}
-                        />
-                        <MProfileWithButton
-                            title="핸드폰 번호"
-                            content={user.phone_number}
-                            width={"90vw"}
-                            buttonText="재인증"
-                            onClick={onPhoneVerify}
-                        />
-                        <MProfileWithButton
-                            title="직업"
-                            content={user.job}
-                            width={"90vw"}
-                            buttonText="인증하기"
-                            onClick={onJobVerify}
-                        />
-                        <MProfile
-                            title="이메일 주소"
-                            content={user.user_email}
-                            marginRight={0}
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 16,
+                            color: "rgba(1, 6, 8, 0.6)",
+                            cursor: "pointer",
+                            textAlign: "center"
+                        }}>본인인증하고 정보 변경하기</div>
+                        <Title marginTop="8vw" fontSize="16px">이메일주소</Title>
+                        <MInputModule
+                            name="user_email"
+                            value={user_email}
+                            onChange={onChange}
+                            placeholder="이메일 주소"
+                            type={1}
                             width={"90vw"}
                         />
                     </div>
@@ -273,26 +201,11 @@ export default function ProfileEdit() {
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "flex-start",
-                        marginBottom: 20,
+                        marginBottom: "10vw",
                         marginLeft: "5vw",
                     }}>
-                        <div style={{
-                            fontFamily: "NotoSansCJKkr",
-                            opacity: 0.6,
-                            fontSize: 12,
-                            color: "#010608",
-                            marginBottom: 8,
-                            cursor: "pointer",
-                            textDecorationLine: "underline"
-                        }}>로그아웃</div>
-                        <div style={{
-                            fontFamily: "NotoSansCJKkr",
-                            opacity: 0.6,
-                            fontSize: 12,
-                            color: "#010608",
-                            cursor: "pointer",
-                            textDecorationLine: "underline"
-                        }}>회원 탈퇴</div>
+                        <Small fontSize="12px" marginBottom="2vw" >로그아웃</Small>
+                        <Small fontSize="12px" onClick={() => history.push("/profiledelete")}>회원 탈퇴</Small>
                     </div>
                 </div>
             </Mobile>
@@ -300,161 +213,25 @@ export default function ProfileEdit() {
     )
 }
 
-const Profile = ({ title, content, marginRight, width }) => {
-    return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            paddingBottom: 8,
-            marginBottom: 16,
-            width: width,
-            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-            marginRight: marginRight,
-            alignSelf: "center",
-        }}>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                opacity: 0.6,
-                marginBottom: 8
-            }}>{title}</div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-            }}>{content}</div>
-        </div>
-    )
-}
+const Small = styled.div`
+    font-family: 'NotoSansCJKkr';
+    opacity: 0.6;
+    font-size: ${props => props.fontSize || "14px"};
+    color: #010608;
+    cursor: pointer;
+    text-decoration-line: underline;
+    margin-bottom: ${props => props.marginBottom || "0px"};
+`
 
-const MProfile = ({ title, content, marginRight, width }) => {
-    return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            paddingBottom: 8,
-            marginBottom: 12,
-            width: width,
-            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-            marginRight: marginRight,
-            alignSelf: "center",
-        }}>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 14,
-                opacity: 0.6,
-                marginBottom: 8
-            }}>{title}</div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-            }}>{content}</div>
-        </div>
-    )
-}
-
-const ProfileWithButton = ({ title, content, width, buttonText, onClick }) => {
-    return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            paddingBottom: 8,
-            marginBottom: 16,
-            width: width,
-            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-            alignSelf: "center",
-        }}>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                opacity: 0.6,
-                marginBottom: 8
-            }}>{title}</div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-            }}>
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 18,
-                    fontWeight: "bold",
-                    color: "#010608",
-                }}>{content}</div>
-                <div onClick={onClick} style={{
-                    width: 108,
-                    paddingTop: 7,
-                    paddingBottom: 7,
-                    borderRadius: 6,
-                    backgroundColor: "#010608",
-
-                    fontSize: 14,
-                    fontWeight: "bold",
-                    color: "#ffffff",
-                    textAlign: "center",
-                    cursor: "pointer"
-                }}>{buttonText}</div>
-            </div>
-        </div>
-    )
-}
-
-const MProfileWithButton = ({ title, content, width, buttonText, onClick }) => {
-    return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            paddingBottom: 8,
-            marginBottom: 12,
-            width: width,
-            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-            alignSelf: "center",
-        }}>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 14,
-                opacity: 0.6,
-                marginBottom: 8
-            }}>{title}</div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-            }}>
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    fontWeight: "bold",
-                    color: "#010608",
-                }}>{content}</div>
-                <div onClick={onClick} style={{
-                    width: 90,
-                    paddingTop: 4,
-                    paddingBottom: 4,
-                    borderRadius: 6,
-                    backgroundColor: "#010608",
-
-                    fontSize: 12,
-                    fontWeight: "bold",
-                    color: "#ffffff",
-                    textAlign: "center",
-                    cursor: "pointer"
-                }}>{buttonText}</div>
-            </div>
-        </div>
-    )
-}
+const Title = styled.div`
+    font-family: 'NotoSansCJKkr';
+    font-size: ${props => props.fontSize || "18px"};
+    font-weight: bold;
+    color: #010608;
+    margin-top: ${props => props.marginTop || "0px"};
+    margin-bottom: 16px;
+    margin-left: 20px;
+`;
 
 export const BasicAddress = ({ item }) => {
     return (

@@ -1,0 +1,44 @@
+.input-module {
+    border: 1px solid rgba(1, 6, 8, 0.2);
+    outline: 0px;
+    box-shadow: none;
+    border-radius: 6px;
+}
+
+.input-module:valid {
+    border: 1px solid rgba(1, 6, 8, 0.4);
+}
+
+.input-module:focus {
+    border: 1px solid #26c1f0;
+}
+
+.arrow_box:hover {
+	position: relative;
+	background: #ffffff;
+	border: 1px solid #010608;
+    height: 80px;
+}
+.arrow_box:hover:after, .arrow_box:hover:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: "";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:hover:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #ffffff;
+	border-width: 20px;
+	margin-left: -20px;
+}
+.arrow_box:hover:before {
+	border-color: rgba(1, 6, 8, 0);
+	border-bottom-color: #010608;
+	border-width: 21px;
+	margin-left: -21px;
+}

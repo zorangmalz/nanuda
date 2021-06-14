@@ -1,6 +1,6 @@
 import React, { useReducer, useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, StandardButton, MStandardButton } from "../Style";
+import WebIntro, { Header, MHeader, StandardButton, MStandardButton, InputModule, MInputModule } from "../Style";
 import { BsCheck } from "react-icons/bs"
 import DaumPostCode from 'react-daum-postcode';
 
@@ -30,11 +30,6 @@ export default function Address() {
 
     const [isAddress, setIsAddress] = useState("");
     const [isZoneCode, setIsZoneCode] = useState();
-
-
-
-
-
 
     const [number, dispatch] = useReducer(reducer, 0);
     const onOne = () => {
@@ -86,6 +81,8 @@ export default function Address() {
         })
     }
 
+    const [addressType, setAddressType] = useState(0)
+
     function Daum({ setVisible }) {
         const handleComplete = (data) => {
             let fullAddress = data.address;
@@ -114,6 +111,7 @@ export default function Address() {
             // })
 
             setVisible(false)
+            setAddressType(4)
         };
 
         return (
@@ -237,6 +235,7 @@ export default function Address() {
                             marginBottom: 16,
                         }}>받는 사람은 누구인가요?</div>
                         <InputModule
+                            type={1}
                             name="name"
                             value={name}
                             onChange={onChange}
@@ -253,6 +252,7 @@ export default function Address() {
                             marginBottom: 16,
                         }}>연락처를 입력해주세요.</div>
                         <InputModule
+                            type={1}
                             name="phoneNumber"
                             value={phoneNumber}
                             onChange={onChange}
@@ -274,6 +274,7 @@ export default function Address() {
                             alignItems: "center",
                         }}>
                             <InputModule
+                                type={addressType}
                                 name="addressNum"
                                 value={addressNum}
                                 onChange={onChange}
@@ -298,6 +299,7 @@ export default function Address() {
                             }}>우편번호 찾기</div>
                         </div>
                         <InputModule
+                            type={addressType}
                             name="address"
                             value={address}
                             onChange={onChange}
@@ -305,6 +307,7 @@ export default function Address() {
                             width={440}
                         />
                         <InputModule
+                            type={1}
                             name="addressDetail"
                             value={addressDetail}
                             onChange={onChange}
@@ -407,6 +410,7 @@ export default function Address() {
                         marginBottom: "4vw",
                     }}>받는 사람은 누구인가요?</div>
                     <MInputModule
+                        type={1}
                         name="name"
                         value={name}
                         onChange={onChange}
@@ -423,6 +427,7 @@ export default function Address() {
                         marginBottom: "4vw",
                     }}>연락처를 입력해주세요.</div>
                     <MInputModule
+                        type={1}
                         name="phoneNumber"
                         value={phoneNumber}
                         onChange={onChange}
@@ -444,6 +449,7 @@ export default function Address() {
                         alignItems: "center",
                     }}>
                         <MInputModule
+                            type={addressType}
                             name="addressNum"
                             value={addressNum}
                             onChange={onChange}
@@ -467,6 +473,7 @@ export default function Address() {
                         }}>우편번호 찾기</div>
                     </div>
                     <MInputModule
+                        type={addressType}
                         name="address"
                         value={address}
                         onChange={onChange}
@@ -474,6 +481,7 @@ export default function Address() {
                         width="90vw"
                     />
                     <MInputModule
+                        type={1}
                         name="addressDetail"
                         value={addressDetail}
                         onChange={onChange}
@@ -489,35 +497,40 @@ export default function Address() {
                         marginBottom: "4vw",
                         fontFamily: "NotoSansCJKkr"
                     }}>배송 요청사항</div>
-                    <MClaimFormat
+                    <ClaimFormat
                         onClick={onOne}
                         number={number}
                         num={1}
                         text="문 앞"
+                        mobile={true}
                     />
-                    <MClaimFormat
+                    <ClaimFormat
                         onClick={onTwo}
                         number={number}
                         num={2}
                         text="직접 받고 부재시 문앞"
+                        mobile={true}
                     />
-                    <MClaimFormat
+                    <ClaimFormat
                         onClick={onThree}
                         number={number}
                         num={3}
                         text="경비실"
+                        mobile={true}
                     />
-                    <MClaimFormat
+                    <ClaimFormat
                         onClick={onFour}
                         number={number}
                         num={4}
                         text="택배함"
+                        mobile={true}
                     />
-                    <MClaimFormat
+                    <ClaimFormat
                         onClick={onFive}
                         number={number}
                         num={5}
                         text="기타"
+                        mobile={true}
                     />
                     {number === 5 ? <><input name="claim" value={claim} onChange={onChange} placeholder="장소 입력 (필수)" style={{
                         outline: 0,
@@ -553,101 +566,25 @@ export default function Address() {
     )
 }
 
-function ClaimFormat({ onClick, number, num, text }) {
+function ClaimFormat({ onClick, number, num, text, mobile }) {
     return (
         <div onClick={onClick} style={{
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
 
-            marginLeft: 20,
+            marginLeft: mobile ? "5vw" : 20,
             cursor: "pointer",
-            marginBottom: 16,
+            marginBottom: mobile ? "4vw" : 16,
         }}>
-            <BsCheck size={24} color={number === num ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
+            <BsCheck size={mobile ? 20 : 24} color={number === num ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
             <div style={{
-                fontSize: 16,
+                fontSize: mobile ? 14 : 16,
                 opacity: 0.6,
                 color: "#010608",
-                marginLeft: 8,
+                marginLeft: mobile ? "2vw" : 8,
                 fontFamily: "NotoSansCJKkr"
             }}>{text}</div>
         </div>
-    )
-}
-
-function MClaimFormat({ onClick, number, num, text }) {
-    return (
-        <div onClick={onClick} style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-
-            marginLeft: "5%",
-            cursor: "pointer",
-            marginBottom: 16,
-        }}>
-            <BsCheck size={24} color={number === num ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
-            <div style={{
-                fontSize: 16,
-                opacity: 0.6,
-                color: "#010608",
-                marginLeft: 8,
-                fontFamily: "NotoSansCJKkr"
-            }}>{text}</div>
-        </div>
-    )
-}
-
-function InputModule({ name, value, onChange, placeholder, width }) {
-    return (
-        <>
-            <input name={name} value={value} onChange={onChange} placeholder={placeholder} style={{
-                outline: 0,
-                borderTop: 0,
-                borderLeft: 0,
-                borderRight: 0,
-                border: "1px solid #dfdfdf",
-                borderRadius: 6,
-
-                width: width - 16,
-                paddingLeft: 16,
-                paddingTop: 16,
-                paddingBottom: 16,
-
-                fontSize: 16,
-                color: "#010608",
-                marginLeft: 20,
-                fontFamily: "NotoSansCJKkr",
-                marginBottom: 16,
-            }} />
-        </>
-    )
-}
-
-function MInputModule({ name, value, onChange, placeholder, width }) {
-    return (
-        <>
-            <input name={name} value={value} onChange={onChange} placeholder={placeholder} style={{
-                outline: 0,
-                borderTop: 0,
-                borderLeft: 0,
-                borderRight: 0,
-                border: "1px solid #dfdfdf",
-                borderRadius: 6,
-
-                width: width - "4vw",
-                paddingLeft: "4vw",
-                paddingTop: "4vw",
-                paddingBottom: "4vw",
-
-                fontSize: 14,
-                color: "#010608",
-                marginLeft: "5vw",
-                marginRight: "5vw",
-                fontFamily: "NotoSansCJKkr",
-                marginBottom: "4vw",
-            }} />
-        </>
     )
 }

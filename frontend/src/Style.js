@@ -8,6 +8,7 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import kakao from "./images/kkt cs.png"
 import mainlogo from "./images/mainlogo.png"
+import "./css/haulfree.css"
 
 export default function WebIntro() {
     let history = useHistory()
@@ -503,8 +504,8 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                 alignItems: "center",
                 marginTop: 32
             }}>
-                <img src={logoS} alt="로고" style={{
-                    width: 120,
+                <img src={mainlogo} alt="로고" style={{
+                    width: 60,
                     color: "#ffffff"
                 }} />
             </div>
@@ -728,8 +729,8 @@ export function BottomTag({ marginTop, marginBottom }) {
                 alignItems: "center",
                 marginTop: 32
             }}>
-                <img src={logoS} alt="로고" style={{
-                    width: 120,
+                <img src={mainlogo} alt="로고" style={{
+                    width: 60,
                     color: "#ffffff"
                 }} />
             </div>
@@ -954,8 +955,8 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                 alignItems: "center",
                 marginTop: 24
             }}>
-                <img src={logoS} alt="로고" style={{
-                    width: "30vw",
+                <img src={mainlogo} alt="로고" style={{
+                    width: "15vw",
                     color: "#ffffff"
                 }} />
             </div>
@@ -1180,8 +1181,8 @@ export function MBottomTag({ marginTop, marginBottom }) {
                 alignItems: "center",
                 marginTop: 24
             }}>
-                <img src={logoS} alt="로고" style={{
-                    width: "30vw",
+                <img src={mainlogo} alt="로고" style={{
+                    width: "15vw",
                     color: "#ffffff"
                 }} />
             </div>
@@ -1382,7 +1383,7 @@ export function StandardButton({ marginTop, text, onClick, state }) {
                 borderRadius: 6,
                 backgroundColor: state ? "#26c1f0" : "#dbdbdb",
                 alignSelf: "center",
-                cursor: "pointer",
+                cursor: state ? "pointer" : "auto",
                 marginTop: marginTop,
 
                 fontSize: 18,
@@ -1403,7 +1404,7 @@ export function MStandardButton({ marginTop, text, onClick, state }) {
             paddingBottom: "4vw",
             backgroundColor: state ? "#26c1f0" : "#dbdbdb",
             alignSelf: "center",
-            cursor: "pointer",
+            cursor: state ? "pointer" : "auto",
             marginTop: marginTop,
             borderRadius: 6,
 
@@ -1503,7 +1504,6 @@ export function MTopBanner({img, title, content, backgroundColor, link}) {
     )
 }
 
-
 export function TopBanner({ img, title, content, backgroundColor, link }) {
     return (
         
@@ -1565,5 +1565,194 @@ export function TopBanner({ img, title, content, backgroundColor, link }) {
                 </a>
             </div>
         
+    )
+}
+
+export function InputModule({ name, value, onChange, placeholder, width, type }) {
+    return (
+        <>
+            <input className="input-module" name={name} disabled={type === 4 ? true : false} value={value} onChange={onChange} placeholder={placeholder} style={{
+                backgroundColor: type === 4 ? "#eeeeee" : "#ffffff",
+
+                width: width - 16,
+                paddingLeft: 16,
+                paddingTop: 16,
+                paddingBottom: 16,
+
+                fontSize: 16,
+                color: type === 4 ? "rgba(1, 6, 8, 0.6)" : "#010608",
+                marginLeft: 20,
+                fontFamily: "NotoSansCJKkr",
+                marginBottom: 16,
+            }} />
+        </>
+    )
+}
+
+export function MInputModule({ name, value, onChange, placeholder, width, type }) {
+    return (
+        <>
+            <input className="input-module" name={name} disabled={type === 4 ? true : false} value={value} onChange={onChange} placeholder={placeholder} style={{
+                backgroundColor: type === 4 ? "#eeeeee" : "#ffffff",
+
+                width: width - "4vw",
+                paddingLeft: "4vw",
+                paddingTop: "4vw",
+                paddingBottom: "4vw",
+
+                fontSize: 14,
+                color: type === 4 ? "rgba(1, 6, 8, 0.6)" : "#010608",
+                marginLeft: "5vw",
+                marginRight: "5vw",
+                fontFamily: "NotoSansCJKkr",
+                marginBottom: "4vw",
+            }} />
+        </>
+    )
+}
+
+export function StandardModal({ title, content, buttontext, onClick, mobile }) {
+    return (
+        <div style={{
+            position: "fixed",
+            top: 0,
+            width: mobile ? "100vw" : 480,
+            height: "100vh",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.4)"
+        }}>
+            <div style={{
+                width: mobile ? "75vw" : 300,
+                paddingTop: mobile ? "4vw" : 16,
+                backgroundColor: "#ffffff",
+                borderRadius: 6,
+
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-between",
+            }}>
+                <div style={{
+                    maxWidth: mobile ? "68vw" : 268,
+                    textAlign: "center",
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 14 : 16,
+                    fontWeight: "bold",
+                    color: "#010608",
+                    marginBottom: mobile ? "4vw" : 16,
+                }}>{title}</div>
+                <div style={{
+                    maxWidth: mobile ? "68vw" : 268,
+                    minHeight: mobile ? "10.5vw" : 42,
+                    maxHeight: mobile ? "12.5vw" : 50,
+                    textAlign: "center",
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 12 : 14,
+                    color: "#010608",
+                    marginBottom: mobile ? "4vw" : 16,
+                }}>{content}</div>
+                <div onClick={onClick} style={{
+                    width: mobile ? "75vw" : 300,
+                    paddingTop: mobile ? "3.5vw" : 14,
+                    paddingBottom: mobile ? "3.5vw" : 14,
+                    backgroundColor: "#26c1f0",
+                    cursor: "pointer",
+                    textAlign: "center",
+
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 12 : 14,
+                    color: "#ffffff",
+                    fontWeight: "bold",
+                    borderBottomLeftRadius: 6,
+                    borderBottomRightRadius: 6,
+                }}>{buttontext}</div>
+            </div>
+        </div>
+    )
+}
+
+export function StandardChoiceModal({ title, content, canceltext, onCancelClick, buttontext, onClick, mobile }) {
+    return (
+        <div style={{
+            position: "fixed",
+            top: 0,
+            width: mobile ? "100vw" : 480,
+            height: "100vh",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.4)"
+        }}>
+            <div style={{
+                width: mobile ? "75vw" : 300,
+                paddingTop: mobile ? "4vw" : 16,
+                backgroundColor: "#ffffff",
+                borderRadius: 6,
+
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-between",
+            }}>
+                <div style={{
+                    maxWidth: mobile ? "68vw" : 268,
+                    textAlign: "center",
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 14 : 16,
+                    fontWeight: "bold",
+                    color: "#010608",
+                    marginBottom: mobile ? "4vw" : 16,
+                }}>{title}</div>
+                <div style={{
+                    maxWidth: mobile ? "68vw" : 268,
+                    minHeight: mobile ? "10.5vw" : 42,
+                    maxHeight: mobile ? "12.5vw" : 50,
+                    textAlign: "center",
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 12 : 14,
+                    color: "#010608",
+                    marginBottom: mobile ? "4vw" : 16,
+                }}>{content}</div>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+
+                    width: mobile ? "75vw" : 300,
+                }}>
+                    <div onClick={onCancelClick} style={{
+                        width: mobile ? "37.5vw" : 150,
+                        paddingTop: mobile ? "3.5vw" : 14,
+                        paddingBottom: mobile ? "3.5vw" : 14,
+                        backgroundColor: "#f2f3f8",
+                        cursor: "pointer",
+                        textAlign: "center",
+
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: mobile ? 12 : 14,
+                        color: "rgba(1, 6, 8, 0.6)",
+                        borderBottomLeftRadius: 6,
+                    }}>{canceltext}</div>
+                    <div onClick={onClick} style={{
+                        width: mobile ? " 37.5vw" : 150,
+                        paddingTop: mobile ? "3.5vw" : 14,
+                        paddingBottom: mobile ? "3.5vw" : 14,
+                        backgroundColor: "#26c1f0",
+                        cursor: "pointer",
+                        textAlign: "center",
+
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: mobile ? 12 : 14,
+                        color: "#ffffff",
+                        fontWeight: "bold",
+                        borderBottomRightRadius: 6,
+                    }}>{buttontext}</div>
+                </div>
+            </div>
+        </div>
     )
 }
