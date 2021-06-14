@@ -317,7 +317,7 @@ class niceMain(View):
             print('reqseq:', reqseq)
 
         # 요청번호 세션에 저장 (세션 이용하지 않는 경우 생략)
-        session['REQ_SEQ'] = reqseq
+    
 
         # plain 데이터 생성 (형식 수정불가)
         plaindata = '7:REQ_SEQ' + str(len(reqseq)) + ':' + reqseq + '8:SITECODE' + str(len(sitecode)) + ':' + sitecode + '9:AUTH_TYPE' + str(len(authtype)) + ':' + authtype + '7:RTN_URL' + str(len(returnurl)) + ':' + returnurl + '7:ERR_URL' + str(len(errorurl)) + ':' + errorurl + '11:POPUP_GUBUN' + str(len(popgubun)) + ':' + popgubun + '9:CUSTOMIZE' + str(len(customize)) + ':' + customize + '6:GENDER' + str(len(gender)) + ':' + gender
@@ -385,7 +385,7 @@ class niceMain(View):
                 print('reqseq:', reqseq)
 
             # 요청번호 세션에 저장 (세션 이용하지 않는 경우 생략)
-            session['REQ_SEQ'] = reqseq
+            
 
             # plain 데이터 생성 (형식 수정불가)
             plaindata = '7:REQ_SEQ' + str(len(reqseq)) + ':' + reqseq + '8:SITECODE' + str(len(sitecode)) + ':' + sitecode + '9:AUTH_TYPE' + str(len(authtype)) + ':' + authtype + '7:RTN_URL' + str(len(returnurl)) + ':' + returnurl + '7:ERR_URL' + str(len(errorurl)) + ':' + errorurl + '11:POPUP_GUBUN' + str(len(popgubun)) + ':' + popgubun + '9:CUSTOMIZE' + str(len(customize)) + ':' + customize + '6:GENDER' + str(len(gender)) + ':' + gender

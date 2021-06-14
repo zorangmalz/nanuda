@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'corsheaders',
+    # 'corsheaders',
     'django.contrib.staticfiles',
     "rest_framework",
     'rest_framework.authtoken',
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 SITE_ID = 2
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
