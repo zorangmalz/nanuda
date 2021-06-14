@@ -7,6 +7,7 @@ import { BsX } from "react-icons/bs"
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import kakao from "./images/kkt cs.png"
+import mainlogo from "./images/mainlogo.png"
 
 export default function WebIntro() {
     let history = useHistory()
@@ -214,13 +215,10 @@ export function HomeHeader() {
                 width: 100,
                 height: 28,
             }} />
-            <div style={{
-                fontSize: 24,
-                color: "#010608",
-                fontFamily: "AvenirNext",
-                textAlign: "center",
-                width: 120
-            }}>Haul Free</div>
+            <img alt="mainlogo" src={mainlogo} style={{
+                width: 32,
+                height: 32
+            }} />
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -230,11 +228,6 @@ export function HomeHeader() {
                 paddingRight: 20,
                 width: 80,
             }}>
-                <img onClick={noticeClick} alt="" src={bell} style={{
-                    width: 28,
-                    height: 28,
-                    cursor: "pointer"
-                }} />
                 <img onClick={profileClick} alt="" src={user} style={{
                     width: 28,
                     height: 28,
@@ -298,13 +291,10 @@ export function MHomeHeader() {
             <div style={{
                 width: "30vw",
             }} />
-            <div style={{
-                fontSize: 18,
-                color: "#010608",
-                fontFamily: "AvenirNext",
-                textAlign: "center",
-                width: "30vw"
-            }}>Haul Free</div>
+            <img alt="mainlogo" src={mainlogo} style={{
+                width: "8vw",
+                height: "8vw"
+            }} />
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -314,11 +304,6 @@ export function MHomeHeader() {
                 paddingRight: "5vw",
                 width: "25vw"
             }}>
-                <img onClick={noticeClick} alt="" src={bell} style={{
-                    width: 24,
-                    height: 24,
-                    cursor: "pointer"
-                }} />
                 <img onClick={profileClick} alt="" src={user} style={{
                     width: 24,
                     height: 24,

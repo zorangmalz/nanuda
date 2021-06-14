@@ -45,6 +45,7 @@ import AlarmPost from './Alarm/AlarmPost';
 import PaymentAddAccount from './MyProfile/PaymentAddAccount';
 import TimeDeal from './TimeDeal/TimeDeal';
 import Alarm from './Alarm/Alarm';
+import TimeDealDetail from "./TimeDeal/TimeDealDetail"
 
 
 export const Default = ({ children }) => {
@@ -104,6 +105,7 @@ function App() {
         <Route path="/alarmpost" component={AlarmPost} />
         <Route path="/addaccount" component={PaymentAddAccount} />
         <Route path="/timedeal" component={TimeDeal} />
+        <Route path="/detail" component={TimeDealDetail} />
       </Switch>
     </Router>
   );

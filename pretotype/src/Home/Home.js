@@ -118,7 +118,6 @@ export default function Home() {
         fetch(url, {
             method: "GET",
             headers: {
-                'Content-Type' : "application/json",
                 'Access-Control-Allow-Origin': "*"
             }
         }).then(res => console.log(res))

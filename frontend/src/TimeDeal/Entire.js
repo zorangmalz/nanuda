@@ -5,6 +5,8 @@ import { BannerContainer, MBannerContainer } from "../Style";
 import { useHistory } from "react-router";
 import smallbanner from "../images/smallbanner.png";
 import { MTimeShop, TimeShop } from "../Home/Home";
+import sampleone from "../images/sampleone.png"
+import sampletwo from "../images/sampletwo.png"
 
 export default function Entire() {
     let history = useHistory()
@@ -32,22 +34,31 @@ export default function Entire() {
                         alignSelf: "center",
                         marginTop: 32,
                     }}>
-                        <TimeShop
-                            title="애플"
-                            sub="Apple AirPods Pro 
-                                애플 에어팟 프로 2세대 무선충전형"
-                            twoPrice="130000"
-                            fourPrice="65000"
-                            stock={2}
-                        />
-                        <TimeShop
-                            title="애플"
-                            sub="Apple iPad Air Sky Blue
+                        <div onClick={() => history.push('/detail?product=airpod')} style={{ cursor: "pointer" }}>
+                            <TimeShop
+                                id="display_click"
+                                img={sampleone}
+                                title="애플"
+                                sub="Apple AirPods Pro 애플 에어팟 프로 무선충전형"
+                                twoPrice="130,000"
+                                fourPrice="65,000"
+                                stock={0}
+                                sale={27}
+                            />
+                        </div>
+                        <div onClick={() => history.push('/detail?product=ipad')} style={{ cursor: "pointer" }}>
+                            <TimeShop
+                                id=""
+                                img={sampletwo}
+                                title="애플"
+                                sub="Apple iPad Air Sky Blue
                                 10.9형 iPad Air Wi-Fi 스카이 블루"
-                            twoPrice="360750"
-                            fourPrice="180375"
-                            stock={0}
-                        />
+                                twoPrice="360,750"
+                                fourPrice="180,375"
+                                stock={0}
+                                sale={5}
+                            />
+                        </div>
                     </div>
                 </div>
             </Default>
@@ -72,22 +83,31 @@ export default function Entire() {
                         alignSelf: "center",
                         marginTop: "8vw",
                     }}>
-                        <MTimeShop
-                            title="애플"
-                            sub="Apple AirPods Pro 
-                                애플 에어팟 프로 2세대 무선충전형"
-                            twoPrice="130000"
-                            fourPrice="65000"
-                            stock={2}
-                        />
-                        <MTimeShop
-                            title="애플"
-                            sub="Apple iPad Air Sky Blue
+                        <div onClick={() => history.push('/detail?product=airpod')} style={{ cursor: "pointer" }}>
+                            <MTimeShop
+                                id="display_click"
+                                img={sampleone}
+                                title="애플"
+                                sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
+                                twoPrice="130,000"
+                                fourPrice="65,000"
+                                stock={0}
+                                sale={27}
+                            />
+                        </div>
+                        <div onClick={() => history.push('/detail?product=ipad')} style={{ cursor: "pointer" }}>
+                            <MTimeShop
+                                id=""
+                                img={sampletwo}
+                                title="애플"
+                                sub="Apple iPad Air Sky Blue
                                 10.9형 iPad Air Wi-Fi 스카이 블루"
-                            twoPrice="360750"
-                            fourPrice="180375"
-                            stock={0}
-                        />
+                                twoPrice="360,750"
+                                fourPrice="180,375"
+                                stock={0}
+                                sale={5}
+                            />
+                        </div>
                     </div>
                 </div>
             </Mobile>

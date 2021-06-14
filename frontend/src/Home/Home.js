@@ -13,6 +13,8 @@ import Slider from "react-slick"
 import bannerOne from "../images/bannerOne.png"
 import bannerTwo from "../images/bannerTwo.png"
 import banner from "../images/homebanner.png"
+import sampleone from "../images/sampleone.png"
+import sampletwo from "../images/sampletwo.png"
 
 const AfterContainer = styled.div`
     width: 424px;
@@ -260,22 +262,31 @@ export default function Home() {
                             alignItems: "flex-start",
                             justifyContent: "space-between"
                         }}>
-                            <TimeShop
-                                title="애플"
-                                sub="Apple AirPods Pro 
-                                애플 에어팟 프로 2세대 무선충전형"
-                                twoPrice="130000"
-                                fourPrice="65000"
-                                stock={2}
-                            />
-                            <TimeShop
-                                title="애플"
-                                sub="Apple iPad Air Sky Blue
+                            <div onClick={() => history.push('/timedeal/entire')} style={{ cursor: "pointer" }}>
+                                <TimeShop
+                                    id="display_click"
+                                    img={sampleone}
+                                    title="애플"
+                                    sub="Apple AirPods Pro 애플 에어팟 프로 무선충전형"
+                                    twoPrice="130,000"
+                                    fourPrice="65,000"
+                                    stock={0}
+                                    sale={27}
+                                />
+                            </div>
+                            <div onClick={() => history.push('/timedeal/entire')} style={{ cursor: "pointer" }}>
+                                <TimeShop
+                                    id=""
+                                    img={sampletwo}
+                                    title="애플"
+                                    sub="Apple iPad Air Sky Blue
                                 10.9형 iPad Air Wi-Fi 스카이 블루"
-                                twoPrice="360750"
-                                fourPrice="180375"
-                                stock={0}
-                            />
+                                    twoPrice="360,750"
+                                    fourPrice="180,375"
+                                    stock={0}
+                                    sale={5}
+                                />
+                            </div>
                         </div>
                         <div style={{
                             display: "flex",
@@ -290,7 +301,7 @@ export default function Home() {
                                 fontSize: 21,
                                 color: "#010608",
                                 marginRight: 4,
-                            }}>하울한 사람들</div>
+                            }}>나눠산 사람들</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/review")}
                                 size={24}
@@ -402,7 +413,7 @@ export default function Home() {
                                 fontSize: 21,
                                 color: "#010608",
                                 marginRight: 4,
-                            }}>하울프리 이용후기</div>
+                            }}>이용후기</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/servicereview")}
                                 size={24}
@@ -418,7 +429,7 @@ export default function Home() {
                             opacity: 0.6,
                             color: "#010608",
                             marginLeft: 20,
-                        }}>아직도 하울프리 이용을 망설이시나요?</div>
+                        }}>아직도 이용을 망설이시나요?</div>
                         <AfterContainer>
                             {reviewData.map(item =>
                                 <Review
@@ -567,22 +578,31 @@ export default function Home() {
                         alignItems: "flex-start",
                         justifyContent: "space-between"
                     }}>
-                        <MTimeShop
-                            title="애플"
-                            sub="Apple AirPods Pro 
-                                애플 에어팟 프로 2세대 무선충전형"
-                            twoPrice="130000"
-                            fourPrice="65000"
-                            stock={2}
-                        />
-                        <MTimeShop
-                            title="애플"
-                            sub="Apple iPad Air Sky Blue
+                        <div onClick={() => history.push('/timedeal/entire')} style={{ cursor: "pointer" }}>
+                            <MTimeShop
+                                id="display_click"
+                                img={sampleone}
+                                title="애플"
+                                sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
+                                twoPrice="130,000"
+                                fourPrice="65,000"
+                                stock={0}
+                                sale={27}
+                            />
+                        </div>
+                        <div onClick={() => history.push('/timedeal/entire')} style={{ cursor: "pointer" }}>
+                            <MTimeShop
+                                id=""
+                                img={sampletwo}
+                                title="애플"
+                                sub="Apple iPad Air Sky Blue
                                 10.9형 iPad Air Wi-Fi 스카이 블루"
-                            twoPrice="360750"
-                            fourPrice="180375"
-                            stock={0}
-                        />
+                                twoPrice="360,750"
+                                fourPrice="180,375"
+                                stock={0}
+                                sale={5}
+                            />
+                        </div>
                     </div>
                     <div style={{
                         display: "flex",
@@ -597,7 +617,7 @@ export default function Home() {
                             fontSize: 18,
                             color: "#010608",
                             marginRight: 4,
-                        }}>하울한 사람들</div>
+                        }}>나눠산 사람들</div>
                         <MdKeyboardArrowRight
                             onClick={() => history.push("/review")}
                             size={20}
@@ -698,7 +718,7 @@ export default function Home() {
                             fontSize: 18,
                             color: "#010608",
                             marginRight: 4,
-                        }}>하울프리 이용후기</div>
+                        }}>이용후기</div>
                         <MdKeyboardArrowRight
                             onClick={() => history.push("/servicereview")}
                             size={20}
@@ -715,7 +735,7 @@ export default function Home() {
                         color: "#010608",
                         marginLeft: "5%",
                         marginTop: "2vw"
-                    }}>아직도 하울프리 이용을 망설이시나요?</div>
+                    }}>아직도 이용을 망설이시나요?</div>
                     <MAfterContainer>
                         {reviewData.map(item =>
                             <MReview
@@ -749,10 +769,10 @@ export default function Home() {
     )
 }
 
-export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
+export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
     return (
-        <>
-            <div style={{
+        <div>
+            <div id={id} style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
@@ -767,8 +787,10 @@ export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     backgroundColor: "#ffffff",
                     color: "#ffffff",
                     position: "relative",
-                    border: "1px solid rgba(1, 6, 8, 0.2)"
                 }}>
+                    <img src={img} style={{
+                        width: "100%",
+                    }} />
                     {stock > 0 ?
                         <div style={{
                             borderBottomLeftRadius: 6,
@@ -795,7 +817,7 @@ export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                             }}>{stock}개 남았어요!</div>
                         </div>
                         :
-                        <></>
+                        <div></div>
                     }
                 </div>
                 <div style={{
@@ -875,14 +897,14 @@ export function TimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
-export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
+export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
     return (
-        <>
-            <div style={{
+        <div>
+            <div id={id} style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
@@ -891,14 +913,15 @@ export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
             }}>
                 <div style={{
                     width: "100%",
-                    height: "32vw",
                     borderRadius: 6,
                     marginBottom: "2vw",
                     backgroundColor: "#ffffff",
                     color: "#ffffff",
                     position: "relative",
-                    border: "1px solid rgba(1, 6, 8, 0.2)"
                 }}>
+                    <img src={img} style={{
+                        width: "100%",
+                    }} />
                     {stock > 0 ?
                         <div style={{
                             borderBottomLeftRadius: 6,
@@ -925,7 +948,7 @@ export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                             }}>{stock}개 남았어요!</div>
                         </div>
                         :
-                        <></>
+                        <div></div>
                     }
                 </div>
                 <div style={{
@@ -940,8 +963,7 @@ export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 14,
                         color: "#010608",
-                        fontWeight: "bold",
-                        maxHeight: ""
+                        fontWeight: "bold"
                     }}>{title}</div>
                     <BsUpload size={18} style={{
                         marginRight: 4,
@@ -949,7 +971,7 @@ export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     }} />
                 </div>
                 <div style={{
-                    fontSize: 11,
+                    fontSize: 12,
                     opacity: 0.8,
                     color: "#010608",
                     lineHeight: 1.5,
@@ -1008,7 +1030,7 @@ export function MTimeShop({ title, sub, twoPrice, fourPrice, stock }) {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
