@@ -312,6 +312,7 @@ class niceMain(View):
             # check_output 함수 이용하는 경우 1 이외의 결과는 에러로 처리됨
             reqseq = e.output.decode('euc-kr')
             print('cmd:', e.cmd, '\n output:', e.output)
+            return JsonResponse({"error":"error here"})
         finally:       
             print('reqseq:', reqseq)
 
@@ -330,6 +331,7 @@ class niceMain(View):
             # check_output 함수 이용하는 경우 1 이외의 결과는 에러로 처리됨
             enc_data = e.output.decode('euc-kr')
             print('cmd:', e.cmd, '\n output:\n', e.output)
+            return JsonResponse({"error":"here")
         finally:       
             print('enc_data:\n', enc_data)
 
@@ -338,8 +340,8 @@ class niceMain(View):
         # render_params['enc_data'] = enc_data
         # render_params['returnMsg'] = returnMsg 
         return JsonResponse({"enc":enc_data,"return":returnMsg})
-        def post(self,request):
-            # NICE평가정보에서 발급한 안심본인인증 서비스 개발정보 (사이트코드, 사이트패스워드)
+    def post(self,request):
+    # NICE평가정보에서 발급한 안심본인인증 서비스 개발정보 (사이트코드, 사이트패스워드)
             sitecode = 'BU543'   
             sitepasswd = 'oaRvzS50f3Ir'   
 
@@ -404,5 +406,5 @@ class niceMain(View):
             # render_params = {}  
             # render_params['enc_data'] = enc_data
             # render_params['returnMsg'] = returnMsg 
-            return JsonResponse({"enc":enc_data,"return":returnMsg})
+            return JsonResponse({"enc":enc_data,"return":returnMsg})        
 	

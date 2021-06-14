@@ -162,12 +162,13 @@ export default function SignupProfile() {
     }
     const [enc,setEnc]=useState("")
     function getInfo(){
-        fetch("https://haulfree.link/niceId", {
+        fetch("https://haulfree.link/niceMain", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
+            credentials: "include",
         })
         .then(res => res.json())
             .then(res => {

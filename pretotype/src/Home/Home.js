@@ -146,7 +146,7 @@ export default function Home() {
                 'Accept': 'application/json'
             },
         })
-        .then(res => res.json())
+        
             .then(res => {
               console.log(res)
               setEnc(res.sEncData)
