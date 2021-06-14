@@ -157,6 +157,42 @@ export default function SignupProfile() {
     const [service, setService] = useState(false)
     const [veri, setVeri] = useState(false)
     const [market, setMarket] = useState(false)
+    function nice(){
+        console.log("nice")
+    }
+    const [enc,setEnc]=useState("")
+    function getInfo(){
+        fetch("https://haulfree.link/niceId", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+        })
+        .then(res => res.json())
+            .then(res => {
+              console.log(res)
+              setEnc(res.sEncData)
+              
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+    useEffect(()=>{
+        getInfo()
+    },[])
+    function fnPopup(){
+        console.log(enc)
+		window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+        try{
+            document.form_chk.action = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb";
+            document.form_chk.target = "popupChk";
+            document.form_chk.submit();
+        }catch(err){
+            console.log(err)
+        }
+        
+	}
     return (
         <>
             <Default>
@@ -180,6 +216,12 @@ export default function SignupProfile() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="회원정보" goBack={true} />
+                        <form name="form_chk" method="post">
+                        <input type="hidden" name="m" value="checkplusService"/>
+                        <input type="hidden" name="EncodeData" value={enc}/>	
+                        <input type ="hidden" name="recvMethodType" value ="get"/>
+                        <div onClick={fnPopup}> CheckPlus 안심본인인증 Click</div>
+                    </form>
                         <Title>이름</Title>
                         <InputModule
                             name="name"
@@ -403,7 +445,7 @@ export default function SignupProfile() {
                                 marginLeft: 8,
                             }}>마케팅 정보 수신 동의(선택)</div>
                         </div>
-                        <div style={{
+                        <div onClick={nice} style={{
                             width: 440,
                             paddingTop: 15,
                             paddingBottom: 15,
