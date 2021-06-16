@@ -3,7 +3,7 @@ import { BsCheck } from "react-icons/bs";
 import styled from "styled-components"
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-
+import { useHistory } from "react-router";
 
 export const Title = styled.div`
     width: 440px;
@@ -86,7 +86,7 @@ function reducer(state, action) {
 }
 
 export default function SignupProfile() {
-
+    const history=useHistory()
     useEffect(() => {
         test()
     }, [])
@@ -218,9 +218,9 @@ export default function SignupProfile() {
         console.log(code)
     },[])
 
-   
+    
     async function send() {
-        await fetch("https://wishdeal.link/niceMain/", {
+        await fetch("https://haulfree.link/niceMain/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
@@ -251,7 +251,11 @@ export default function SignupProfile() {
 
 
     }
-
+    useEffect(()=>{
+        if(userData){
+            send()
+        }
+    },[userData])
     return (
         <>
             <Default>
