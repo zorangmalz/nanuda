@@ -16,7 +16,7 @@ class User(models.Model):
     name = models.TextField(default="나누다")
     job = models.CharField(max_length=30, default="",blank=True)
     gender = models.IntegerField(choices=GENDER_CHOICE, default="",blank=True)
-    birth = models.CharField(max_length=30, default="",blank=True)
+    birthdate = models.CharField(max_length=30, default="",blank=True)
     joinday = models.DateTimeField(auto_now_add=True)
     limit =  models.IntegerField(blank=True, default=0)
     age = models.PositiveIntegerField(blank=True, default=0)

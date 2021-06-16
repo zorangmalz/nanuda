@@ -282,7 +282,7 @@ class niceMain(View):
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
             user=User.objects.get(uid=payload["id"])
             user.gender=user_info['params']['gender']
-            user.birth=user_info['params']['birthdate']
+            user.birthdate=user_info['params']['birthdate']
             user.nationalinfo=user_info['params']['nationalinfo']
             user.phone_number=user_info['params']['mobileno']
             user.phone_company=user_info['params']['mobileco']
