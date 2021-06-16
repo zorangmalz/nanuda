@@ -201,7 +201,7 @@ export default function SignupProfile() {
                     'Accept': 'application/json'
                 },
                 method: "POST",    
-                body:JSON.stringify({EncodeData:realCode})
+                body:JSON.stringify(message)
             })
             .then(res => res.text())
                 .then(res => {
