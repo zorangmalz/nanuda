@@ -59,7 +59,7 @@ class ServiceReview(models.Model):
         return self.user_id.name
 
     def user_age(self):
-        return self.user_id.birth
+        return self.user_id.age
     
     def user_gender(self):
         return self.user_id.gender
