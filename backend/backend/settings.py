@@ -26,7 +26,7 @@ SECRET_KEY = 'h=7y9=-tjzrin@t6=^d*^*zbs(3=n7k2zl_t*jf=+2ic=b$dc$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['15.164.94.36', 'ec2-15-164-94-36.ap-northeast-2.compute.amazonaws.com', 'haulfree.io',".amazonaws.com","haulfree.link"]
+ALLOWED_HOSTS = ['15.164.94.36', 'ec2-15-164-94-36.ap-northeast-2.compute.amazonaws.com', 'haulfree.io',".amazonaws.com","haulfree.link","127.0.0.1","localhost"]
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    # 'corsheaders',
+    'corsheaders',
     'django.contrib.staticfiles',
     "rest_framework",
     'rest_framework.authtoken',
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 SITE_ID = 2
 
 MIDDLEWARE = [
-    # 'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -153,13 +153,14 @@ AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 )
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOWED_ORIGINS=[
-    "https://haulfree.io",
-    "https://haulfree.link",
-    
-]
-CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL =True
+# CORS_ALLOWED_ORIGINS=[
+#     "https://haulfree.io",
+#     "https://haulfree.link",
+#     "127.0.0.1",
+#     "http://localhost:3001"
+# ]
+# CORS_ALLOW_CREDENTIALS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

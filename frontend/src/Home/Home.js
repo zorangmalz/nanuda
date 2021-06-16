@@ -121,7 +121,7 @@ export default function Home() {
     const bottomRef = useRef(0)
 
     const [hide, setHide] = useState(false)
-
+ 
     useEffect(() => {
         const handleScroll = () => {
             setBottomPosition(bottomRef.current.getBoundingClientRect().top)
@@ -137,7 +137,38 @@ export default function Home() {
 
         return () => window.removeEventListener("scroll", handleScroll);
     }, [wishButton, bottomPosition])
-
+    const [enc,setEnc]=useState("")
+    function getInfo(){
+        fetch("https://wishdeal.link/checkplus_main", {
+            
+            method: "GET",
+            
+            
+        })
+        .then(res => res.json())
+            .then(res => {
+              console.log(res)
+              setEnc(res.sEncData)
+              
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+    useEffect(()=>{
+        getInfo()
+    },[])
+    function fnPopup(){
+        console.log(enc)
+		// window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+        try{
+            document.form_chk.action = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb";
+            // document.form_chk.target = "popupChk";
+            document.form_chk.submit();
+        }catch(err){
+            console.log(err)
+        }
+        
+	}
     return (
         <>
             <Default>
@@ -161,6 +192,12 @@ export default function Home() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
+                        	<form name="form_chk" method="post">
+                        <input type="hidden" name="m" value="checkplusService"/>
+                        <input type="hidden" name="EncodeData" value={enc}/>	
+                        <input type ="hidden" name="recvMethodType" value ="get"/>
+                        <div onClick={fnPopup}> CheckPlus 안심본인인증 Click</div>
+                    </form>
                         <HomeHeader />
                         {/* 배너 넣어야됨 */}
                         <div style={{

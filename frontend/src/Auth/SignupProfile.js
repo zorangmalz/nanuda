@@ -162,13 +162,8 @@ export default function SignupProfile() {
     }
     const [enc,setEnc]=useState("")
     function getInfo(){
-        fetch("https://haulfree.link/niceMain", {
-            method: "GET",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: "include",
+        fetch("https://wishdeal.link/checkplus_main", {
+            method: "GET",      
         })
         .then(res => res.json())
             .then(res => {
@@ -184,16 +179,43 @@ export default function SignupProfile() {
     },[])
     function fnPopup(){
         console.log(enc)
-		window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+		
         try{
             document.form_chk.action = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb";
-            document.form_chk.target = "popupChk";
+            
             document.form_chk.submit();
         }catch(err){
             console.log(err)
         }
         
-	}
+    }
+    useEffect(()=>{
+        var code = document.location.href.split("signupprofile")
+        if(code[1].length>2){
+            let mes={EncodeData:code[1]}
+            fetch("https://wishdeal.link/checkplus_success", {
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                method: "POST",    
+                body:JSON.stringify(mes)
+            })
+            // .then(res => res.json())
+                .then(res => {
+                  console.log(res)
+                  
+                  
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        console.log(code)
+    },[])
+
+   
+
+
     return (
         <>
             <Default>
