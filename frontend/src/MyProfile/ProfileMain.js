@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
-import { BottomTag, Header, MBottomTag, MHeader } from "../Style";
+import { BottomTag, Header, MBottomTag, MHeader, numberWithCommas } from "../Style";
 import { IoIosArrowForward } from "react-icons/io";
 import { useHistory } from "react-router";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -13,7 +13,7 @@ export default function ProfileMain() {
 
     //현재 유저 정보
     const [user, setUser] = useState({
-        nickname: "",
+        name: "",
         user_email: "",
         limit: 0,
         point: 0,
@@ -24,7 +24,7 @@ export default function ProfileMain() {
     })
 
     useEffect(() => {
-        fetch('userinfo/', {
+        fetch('https://haulfree.link/userinfo/', {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -34,14 +34,13 @@ export default function ProfileMain() {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 setUser({
                     ...user,
-                    nickname: response.nickname,
                     user_email: response.user_email,
-                    limit: response.limit,
+                    name: response.name,
                     point: response.point,
-                    uid: response.uid,
-                    profile: response.profile
+                    limit: response.limit,
                 })
             })
             .catch(err => console.log(err))
@@ -93,7 +92,7 @@ export default function ProfileMain() {
                                     fontWeight: "bold",
                                     color: "#010608",
                                     marginBottom: 8,
-                                }}>안녕하세요 {user.nickname}님!</div>
+                                }}>안녕하세요 {user.name}님!</div>
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     fontSize: 16,
@@ -116,9 +115,9 @@ export default function ProfileMain() {
                             display: "flex",
                             flexDirection: "column",
                         }}>
-                            <ProfileInfo title="위시딜 한도" data="300,000" unit="원" />
-                            <ProfileInfo title="하울딜 찬스" data="1" unit="회" chance={true} />
-                            <ProfileInfo title="포인트" data="10,000" unit="P" />
+                            <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" />
+                            <ProfileInfo title="하울딜 찬스" data={1} unit="회" chance={true} />
+                            <ProfileInfo title="포인트" data={user.point} unit="P" />
                         </div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
@@ -188,7 +187,7 @@ export default function ProfileMain() {
                                 fontWeight: "bold",
                                 color: "#010608",
                                 marginBottom: 8,
-                            }}>{user.nickname}</div>
+                            }}>안녕하세요 {user.name}님!</div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
@@ -211,9 +210,9 @@ export default function ProfileMain() {
                         display: "flex",
                         flexDirection: "column",
                     }}>
-                        <ProfileInfo title="위시딜 한도" data="300,000" unit="원" mobile={true} />
-                        <ProfileInfo title="하울딜 찬스" data="1" unit="회" mobile={true} chance={true} />
-                        <ProfileInfo title="포인트" data="10,000" unit="P" mobile={true} />
+                        <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" mobile={true} />
+                        <ProfileInfo title="하울딜 찬스" data={1} unit="회" mobile={true} chance={true} />
+                        <ProfileInfo title="포인트" data={user.point} unit="P" mobile={true} />
                     </div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -289,7 +288,7 @@ const ProfileInfo = ({ title, data, unit, mobile, chance }) => {
                 fontSize: mobile ? 18 : 21,
                 fontWeight: "bold",
                 color: "#ffffff"
-            }}>{data} {unit}</div>
+            }}>{numberWithCommas(data)} {unit}</div>
         </div>
     )
 }

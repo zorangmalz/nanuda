@@ -21,16 +21,14 @@ export default function ProfileEdit() {
     //현재 유저 정보
     const [user, setUser] = useState({
         name: "",
-        gender: 0,
         user_email: "",
-        profile: "",
-        job: "",
         phone_number: ""
     })
-    const { name, gender, user_email, profile, job, phone_number } = user
+
+    const { name, user_email, phone_number } = user
 
     useEffect(() => {
-        fetch('userinfo/', {
+        fetch('https://haulfree.link/userinfo/', {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -40,14 +38,12 @@ export default function ProfileEdit() {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 setUser({
                     ...user,
-                    name: response.name,
-                    gender: response.gender,
                     user_email: response.user_email,
-                    profile: response.profile,
-                    job: response.job,
-                    phone_number: response.phone_number
+                    name: response.name,
+                    phone_number: response.phone_number,
                 })
             })
             .catch(err => console.log(err))
