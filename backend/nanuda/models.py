@@ -83,7 +83,7 @@ class Product(models.Model):
 
     def __str__(self):
         return "{}".format(self.product_name)
-    
+
     class Meta:
         ordering = ["id", "product_type", "product_price"]
         managed=True
@@ -117,7 +117,7 @@ class Review(models.Model):
 
 class Order(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user_id = models.ForeignKey(User, on_delete=models.PROTECT)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     # product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
     order_id=models.CharField(default="01210413135901010000", blank=False, max_length=30)
     order_date = models.DateTimeField(auto_now_add=True)

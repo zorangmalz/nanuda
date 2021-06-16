@@ -76,6 +76,35 @@ def user_one(request):
             user.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
 
+@api_view(["GET", "PUT"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+def user_info_order(request):
+    if not request.COOKIES.get("access_token"):
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    else:
+        try:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+
+        except User.DoesNotExist():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        if request.method == "GET":
+            user_serializer = UserAllSerializer(user)
+            return Response(user_serializer.data)
+        
+        elif request.method == "PUT":
+            user_serializer = UserAllSerializer(user, data=request.data)
+            if user_serializer.is_valid():
+                user_serializer.save()
+                return Response(user_serializer.data)
+            return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 # ServiceReview
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
