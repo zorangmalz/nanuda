@@ -280,6 +280,7 @@ class niceMain(View):
             ALGORITHM=os.getenv("ALGORITHM")
             token=request.COOKIES.get("access_token")
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user_info=json.loads(request.body)
             user=User.objects.get(uid=payload["id"])
             user.gender=user_info['params']['gender']
             user.birthdate=user_info['params']['birthdate']
