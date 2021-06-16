@@ -193,7 +193,7 @@ export default function SignupProfile() {
         var code = document.location.href.split("signupprofile")
         if(code[1].length>2){
             var realCode=code[1].split("EncodeData=")
-            var message = realCode[1].replace(/%2B/gi,"+");
+            var message = {EncodeData:realCode[1].replace(/%2B/gi,"+")}
             console.log(message)
             fetch("https://wishdeal.link/checkplus_success", {
                 headers: {
@@ -201,7 +201,7 @@ export default function SignupProfile() {
                     'Accept': 'application/json'
                 },
                 method: "POST",    
-                body:JSON.stringify({"EncodeData":message})
+                body:JSON.stringify({EncodeData:realCode})
             })
             .then(res => res.text())
                 .then(res => {
