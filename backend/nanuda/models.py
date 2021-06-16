@@ -19,6 +19,7 @@ class User(models.Model):
     birth = models.CharField(max_length=30, default="",blank=True)
     joinday = models.DateTimeField(auto_now_add=True)
     limit =  models.IntegerField(blank=True, default=0)
+    age = models.PositiveIntegerField(blank=True, default=0)
     profile = models.TextField(blank=True, default="")
     phone_number = models.CharField(max_length=30, default="01090373600",blank=True)
     phone_company = models.CharField(max_length=30, default="SKT",blank=True)
@@ -58,7 +59,7 @@ class ServiceReview(models.Model):
         return self.user_id.name
 
     def user_age(self):
-        return self.user_id.age
+        return self.user_id.birth
     
     def user_gender(self):
         return self.user_id.gender
