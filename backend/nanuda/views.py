@@ -271,10 +271,22 @@ class KakaoLogin(View):
 
 
 class niceMain(View):
-    def get(self,request):
-        
-        return JsonResponse({"t":"true"})
-    def post(self,request):
-   
-        return JsonResponse({"t":"true"})
-	
+      def post(self,request):
+        if not request.COOKIES.get("access_token"):
+            return JsonResponse({"data":False})
+        else:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+            user.gender=user_info['params']['gender']
+            user.birth=user_info['params']['birthdate']
+            user.nationalinfo=user_info['params']['nationalinfo']
+            user.phone_number=user_info['params']['mobileno']
+            user.phone_company=user_info['params']['mobileco']
+            user.save()
+            return JsonResponse({"data":True})
+            
+            

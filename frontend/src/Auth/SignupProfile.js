@@ -189,24 +189,27 @@ export default function SignupProfile() {
         }
         
     }
+    const [userData,setUserData]=useState("")
     useEffect(()=>{
         var code = document.location.href.split("signupprofile")
         if(code[1].length>2){
             var realCode=code[1].split("EncodeData=")
-            var message = {EncodeData:realCode[1].replace(/%2B/gi,"+")}
+            var message = realCode[1].replace(/%2B/gi,"+")
             console.log(message)
             fetch("https://wishdeal.link/checkplus_success", {
                 headers: {
-                    'Content-type': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
                     'Accept': 'application/json'
                 },
                 method: "POST",    
-                body:JSON.stringify(message)
+                body:new URLSearchParams({
+                    EncodeData:message
+                })
             })
             .then(res => res.text())
                 .then(res => {
-                  console.log(res)
-                  
+                  console.log(res.gender)
+                  setUserData(res)
                   
                 }).catch(err => {
                     console.log(err)
@@ -216,7 +219,38 @@ export default function SignupProfile() {
     },[])
 
    
+    async function send() {
+        await fetch("https://wishdeal.link/niceMain/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                params:
+                {
+                    gender:userData.gender,
+                    name:userData.name,
+                    birthdate:userData.birthdate,
+                    nationalinfo:userData.nationalinfo,
+                    mobileno:userData.mobileno,
+                    mobileco:userData.mobileco
+                },
+            })
 
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.data.data === true) {
+                    history.push("signupcomplete")
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+
+
+    }
 
     return (
         <>

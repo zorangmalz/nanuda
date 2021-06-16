@@ -4,8 +4,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class User(models.Model):
-    MAN = 0
-    WOMAN = 1
+    MAN = "1"
+    WOMAN = "0"
     GENDER_CHOICE = [
         (MAN, "남성"),
         (WOMAN, "여성"),
@@ -15,12 +15,14 @@ class User(models.Model):
     nickname = models.CharField(unique=True,blank=True, max_length=30) 
     name = models.TextField(default="나누다")
     job = models.CharField(max_length=30, default="",blank=True)
-    gender = models.IntegerField(choices=GENDER_CHOICE, default=2,blank=True)
-    age = models.PositiveIntegerField(blank=True, default=0)
+    gender = models.IntegerField(choices=GENDER_CHOICE, default="",blank=True)
+    birth = models.CharField(max_length=30, default="",blank=True)
     joinday = models.DateTimeField(auto_now_add=True)
     limit =  models.IntegerField(blank=True, default=0)
     profile = models.TextField(blank=True, default="")
-    phone_number = PhoneNumberField(blank=True, default="+821090373600")
+    phone_number = models.CharField(max_length=30, default="01090373600",blank=True)
+    phone_company = models.CharField(max_length=30, default="SKT",blank=True)
+    nationalinfo = models.CharField(max_length=30, default="0",blank=True)
     address_exist=models.BooleanField(blank=True,default=False)
     address_number = models.TextField(blank=True, default="우편번호")
     address = models.TextField(blank=True, default="주소")
