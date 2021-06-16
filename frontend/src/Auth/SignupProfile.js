@@ -179,10 +179,10 @@ export default function SignupProfile() {
     },[])
     function fnPopup(){
         console.log(enc)
-		
+		// window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
         try{
             document.form_chk.action = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb";
-            
+            // document.form_chk.target = "popupChk";
             document.form_chk.submit();
         }catch(err){
             console.log(err)
@@ -192,16 +192,18 @@ export default function SignupProfile() {
     useEffect(()=>{
         var code = document.location.href.split("signupprofile")
         if(code[1].length>2){
-            let mes={EncodeData:code[1]}
+            var realCode=code[1].split("EncodeData=")
+            var message = realCode[1].replace(/%2B/gi,"+");
+            console.log(message)
             fetch("https://wishdeal.link/checkplus_success", {
                 headers: {
                     'Content-type': 'application/json',
                     'Accept': 'application/json'
                 },
                 method: "POST",    
-                body:JSON.stringify(mes)
+                body:JSON.stringify({"EncodeData":message})
             })
-            // .then(res => res.json())
+            .then(res => res.text())
                 .then(res => {
                   console.log(res)
                   
@@ -242,7 +244,7 @@ export default function SignupProfile() {
                         <form name="form_chk" method="post">
                         <input type="hidden" name="m" value="checkplusService"/>
                         <input type="hidden" name="EncodeData" value={enc}/>	
-                        <input type ="hidden" name="recvMethodType" value ="get"/>
+                        
                         <div onClick={fnPopup}> CheckPlus 안심본인인증 Click</div>
                     </form>
                         <Title>이름</Title>
