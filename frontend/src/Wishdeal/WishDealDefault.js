@@ -48,29 +48,40 @@ export default function WishDealDefault() {
     }
     const ogtag = async () => {
         setLoading(true)
-        try {
-            let response = await axios.get(
-                "https://wishdeal.link/api",
-                {
-                    params:
-                    {
-                        code: text
-                    },
-                }
-            );
-            if (response.data.error == true) {
-                setLoading(false)
-                history.push("wishdealnoturl")
-            } else {
-                setLoading(false)
-                history.push("wishdealurl", { param: response.data.openGraph, des: "", url: text, code: 4 })
+        await fetch("https://wishdeal.link/api",{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json'
+            },
+            
+            body:new URLSearchParams({
+                code:text
+            })
 
-            }
-        } catch (err) {
-            console.log(err)
-            setLoading(false)
-            history.push("wishdealnoturl", { url: text })
-        }
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response.openGraph)
+                setLoading(false)
+                history.push("wishdealurl", { param: response.openGraph, des: "", url: text, code: 4 })
+
+                // if (response.openGraph.description != "") {
+                //     setLoading(false)
+                //     history.push("wishdealurl", { param: response.data.openGraph, des: "", url: text, code: 4 })
+    
+                // } else {
+                //     setLoading(false)
+                //     history.push("wishdealnoturl")
+                // }
+                
+            }).catch(err => {
+                console.log(err)
+                setLoading(false)
+                history.push("wishdealnoturl", { url: text })
+            })
+
+     
 
     }
 

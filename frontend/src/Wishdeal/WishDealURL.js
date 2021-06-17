@@ -80,6 +80,7 @@ export default function WishDealURL() {
     const [highPrice,setHighPrice]=useState(true)
     useEffect(() => {
         setStats(code)
+        console.log(myparam,code,des,getUrl)
     }, [])
 
     const [number, dispatch] = useReducer(reducerA, 0);
