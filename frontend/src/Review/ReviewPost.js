@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
+import { Header, MStandardButton, StandardButton, StandardChoiceModal } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { Product, MProduct } from "./ReviewSelect";
@@ -234,86 +234,16 @@ export default function ReviewPost({ match }) {
                                         cursor: "pointer",
                                     }}>삭제하기</div>
                                     {modal ?
-                                        <div onClick={() => setModal(false)} style={{
-                                            position: "fixed",
-                                            top: 0,
-                                            width: 480,
-                                            height: "100vh",
-                                            backgroundColor: "rgba(0, 0, 0, 0.4)",
-
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                            zIndex: 2,
-                                        }}>
-                                            <div style={{
-                                                width: 300,
-                                                height: 162,
-                                                borderRadius: 6,
-                                                backgroundColor: "#ffffff",
-
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                alignItems: "center",
-                                                justifyContent: "space-between",
-                                            }}>
-                                                <div style={{
-                                                    display: "flex",
-                                                    flexDirection: "column",
-                                                    alignItems: "center",
-                                                }}>
-                                                    <div style={{
-                                                        fontFamily: "NotoSansCJKkr",
-                                                        fontSize: 16,
-                                                        fontWeight: "bold",
-                                                        color: "#010608",
-                                                        marginTop: 16,
-                                                    }}>삭제하시겠습니까?</div>
-                                                    <div style={{
-                                                        fontFamily: "NotoSansCJKkr",
-                                                        fontSize: 14,
-                                                        color: "#010608",
-                                                        textAlign: "center",
-                                                        height: 42,
-                                                        marginTop: 16,
-                                                    }}>삭제한 게시물은 되돌릴 수 없습니다.</div>
-                                                </div>
-                                                <div style={{
-                                                    display: "flex",
-                                                    flexDirection: "row",
-                                                    alignItems: "center",
-                                                    width: 300,
-                                                }}>
-                                                    <div onClick={() => setModal(false)} style={{
-                                                        width: 150,
-                                                        paddingTop: 14,
-                                                        paddingBottom: 14,
-                                                        textAlign: "center",
-                                                        backgroundColor: "#f2f3f8",
-
-                                                        fontFamily: "NotoSansCJKkr",
-                                                        fontSize: 14,
-                                                        color: "rgba(1, 6, 8, 0.6)",
-                                                        cursor: "pointer",
-                                                        borderBottomLeftRadius: 6,
-                                                    }}>취소</div>
-                                                    <div onClick={deletePost} style={{
-                                                        width: 150,
-                                                        paddingTop: 14,
-                                                        paddingBottom: 14,
-                                                        textAlign: "center",
-                                                        backgroundColor: "#2dd9d3",
-
-                                                        fontFamily: "NotoSansCJKkr",
-                                                        fontSize: 14,
-                                                        fontWeight: "bold",
-                                                        color: "#ffffff",
-                                                        cursor: "pointer",
-                                                        borderBottomRightRadius: 6,
-                                                    }}>삭제하기</div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <>
+                                            <StandardChoiceModal
+                                                title="삭제하시겠습니까?"
+                                                content="삭제한 게시물은 되돌릴 수 없습니다."
+                                                canceltext="취소"
+                                                onCancelClick={() => setModal(true)}
+                                                buttontext="삭제하기"
+                                                onClick={deletePost}
+                                            />
+                                        </>
                                         :
                                         <></>
                                     }
