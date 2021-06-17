@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import { Header, MHeader } from "../Style";
+import { Header, MHeader, urlCheck } from "../Style";
 import axios from "axios"
 import Slider from "react-slick"
 import wishone from "../images/wishone.png"
@@ -21,7 +21,7 @@ export default function WishDealDefault() {
     }
     const ogtag = async () => {
 
-         let response = await axios.post(
+        let response = await axios.post(
             "https://haulfree.link/api",
             {
                 params:
@@ -53,14 +53,14 @@ export default function WishDealDefault() {
                 'X-Naver-Client-Id': 'niz7fq7bMSOMVInWyV3w', 'X-Naver-Client-Secret': 'rfa8lA_Uu7'
             },
         })
-        .then(res => {
-            console.log(res["data"])
-            // history.push("/wishdealurl")
-        })
-        .catch(err => console.log(err))
+            .then(res => {
+                console.log(res["data"])
+                // history.push("/wishdealurl")
+            })
+            .catch(err => console.log(err))
     }
 
-    
+
     return (
         <>
             <Default>
@@ -93,7 +93,7 @@ export default function WishDealDefault() {
                             borderBottom: "1px solid #dddddd",
                             paddingBottom: 32,
                         }}>
-                            <Slider className="desktop-slick-dots" arrows={false} dots={false} autoplay={true} autoplaySpeed={5000} >
+                            <Slider className="desktop-slick-dots" arrows={false} dots={true} autoplay={true} autoplaySpeed={5000} >
                                 <div style={{
                                     width: 440,
                                     display: "flex",
@@ -211,86 +211,43 @@ export default function WishDealDefault() {
                                     <div style={{ width: 93, height: 74, marginLeft: 20, borderRadius: 6, border: "solid 1px #707070" }}></div>
                                     <div style={{ width: 93, height: 74, marginLeft: 20, borderRadius: 6, border: "solid 1px #707070" }}></div>
                                 </div>
-                                <div>
-                                    <div
-                                        style={{
-                                            marginTop: 16,
-                                            marginLeft: 20,
-                                            marginRight: 20
-                                        }}>
-                                        <input value={text} onChange={onChange} style={{
-                                            outline: 0,
-                                            width: 440,
-                                            height: 26,
-                                            border: "0px solid #ffffff"
-
-                                        }}
-                                            name="text"
-                                            placeholder="기타 항목을 입력해주세요."
-                                        >
-                                        </input>
-                                        <div style={{ width: 438, marginTop: 7, height: 0, border: "solid 1px #f2f3f8" }}></div>
-                                    </div>
-
-                                </div>
-                                <div onClick={naverSearch} style={{
-                                    borderRadius: 6,
-                                    width: 440,
-                                    paddingTop: 15,
-                                    paddingBottom: 15,
-                                    alignSelf: "center",
-
-                                    marginTop: 32,
-                                    backgroundColor: "#26c1f0",
-
-                                    color: "#ffffff",
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    cursor: "pointer",
-                                    textAlign: "center",
-                                }}>확인</div>
                             </>
                             :
-                            <>
-                                <div>
-                                    <div
-                                        style={{
-                                            marginTop: 16,
-                                            marginLeft: 20,
-                                            marginRight: 20
-                                        }}>
-                                        <input value={text} onChange={onChange} style={{
-                                            outline: 0,
-                                            width: 440,
-                                            height: 26,
-                                            border: "0px solid #ffffff"
-                                        }}
-                                            name="link"
-                                            placeholder="링크"
-                                        >
-                                        </input>
-                                        <div style={{ width: 438, marginTop: 7, height: 0, border: "solid 1px #f2f3f8" }}></div>
-                                    </div>
-
-                                </div>
-                                <div onClick={naverSearch} style={{
-                                    borderRadius: 6,
-                                    width: 440,
-                                    paddingTop: 15,
-                                    paddingBottom: 15,
-                                    alignSelf: "center",
-
-                                    marginTop: 32,
-                                    backgroundColor: "#26c1f0",
-
-                                    color: "#ffffff",
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    cursor: "pointer",
-                                    textAlign: "center",
-                                }}>확인</div>
-                            </>
+                            <></>
                         }
+                        <input value={text} onChange={onChange} style={{
+                            outline: 0,
+                            width: 408,
+                            padding: 16,
+                            border: "1px solid #dddddd",
+                            marginLeft: 20,
+                            marginTop: 16,
+                            marginRight: 20,
+                            borderRadius: 6,
+
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 16,
+                            color: "rgba(1, 6, 8, 1)"
+                        }}
+                            name="text"
+                            placeholder="상품 url"
+                        />
+                        <div onClick={ogtag} style={{
+                            borderRadius: 6,
+                            width: 440,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            alignSelf: "center",
+
+                            marginTop: 32,
+                            backgroundColor: urlCheck(text) ? "#26c1f0" : "#dbdbdb",
+
+                            color: "#ffffff",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            cursor: urlCheck(text) ? "pointer" : "auto",
+                            textAlign: "center",
+                        }}>확인</div>
                     </div>
                 </div>
             </Default>
@@ -323,7 +280,7 @@ export default function WishDealDefault() {
                             borderBottom: "1px solid #dddddd",
                             paddingBottom: "8vw",
                         }}>
-                            <Slider className="mobile-slick-dots" arrows={false} dots={false} autoplay={true} autoplaySpeed={5000} >
+                            <Slider className="mobile-slick-dots" arrows={false} dots={true} autoplay={true} autoplaySpeed={5000} >
                                 <div style={{
                                     width: "90vw",
                                     display: "flex",
@@ -383,26 +340,77 @@ export default function WishDealDefault() {
                             fontWeight: "bold",
                             fontSize: 16
                         }}>사고 싶은 상품 링크를 입력해주세요!</div>
-                        <div>
-                            <div
-                                style={{
-                                    marginTop: "4vw",
+                        {linkOrNot ?
+                            <>
+                                <img style={{
+                                    width: "90vw",
+                                    height: "50vw",
+                                    objectFit: "cover",
                                     marginLeft: "5vw",
-                                    marginRight: "5vw"
+                                    marginRight: "5vw",
+                                    marginTop: "8vw",
+                                }} src={image} />
+                                <div style={{
+                                    width: "90vw",
+                                    marginLeft: "5vw",
+                                    marginRight: "5vw",
+                                    marginTop: "8vw",
+                                    backgroundColor: "#f2f3f8",
                                 }}>
-                                <input style={{
-                                    outline: 0,
-                                    width: "90%",
-                                    height: 26,
-                                    border: "0px solid #ffffff"
-                                }}
-                                    name="link"
-                                    placeholder="링크"
-                                >
-                                </input>
-                                <div style={{ width: "90vw", marginTop: 8, height: 1, backgroundColor: "#f2f3f8" }}></div>
-                            </div>
-                        </div>
+                                    <div stlye={{
+                                        fontSize: 12,
+                                        opacity: 0.6,
+                                        color: "#010608",
+                                    }}>{url.substr(0, 20)}...</div>
+                                    <div style={{
+                                        fontWeight: "bold",
+                                        marginTop: "2vw",
+                                        fontSize: 12
+                                    }}>{title}</div>
+                                </div>
+                                <div style={{
+                                    marginTop: "4vw",
+                                    marginLeft: "12vw",
+                                    fontSize: 12
+                                }}> 이 상품이 맞는지 한번 더 확인해주세요.</div>
+                                <div style={{
+                                    marginTop: "9vw",
+                                    marginLeft: "5vw",
+                                    fontWeight: "bold",
+                                    fontSize: 16
+                                }}>상품 카테고리를 알려주세요!</div>
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    marginTop: "4vw"
+                                }}>
+                                    <div style={{ width: "23vw", height: "18vw", marginLeft: "5vw", borderRadius: 6, border: "solid 1px #707070" }} />
+                                    <div style={{ width: "23vw", height: "18vw", marginLeft: "5vw", borderRadius: 6, border: "solid 1px #707070" }} />
+                                    <div style={{ width: "23vw", height: "18vw", marginLeft: "5vw", borderRadius: 6, border: "solid 1px #707070" }} />
+                                    <div style={{ width: "23vw", height: "18vw", marginLeft: "5vw", borderRadius: 6, border: "solid 1px #707070" }} />
+                                </div>
+                            </>
+                            :
+                            <></>
+                        }
+                        <input value={text} onChange={onChange} style={{
+                            outline: 0,
+                            width: "82vw",
+                            padding: "4vw",
+                            border: "1px solid #dddddd",
+                            marginLeft: "5vw",
+                            marginTop: "4vw",
+                            marginRight: "5vw",
+                            borderRadius: 6,
+
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 14,
+                            color: "rgba(1, 6, 8, 1)"
+                        }}
+                            name="text"
+                            placeholder="상품 url"
+                        />
                         <div onClick={ogtag} style={{
                             borderRadius: 8,
                             width: "90vw",
@@ -410,8 +418,8 @@ export default function WishDealDefault() {
                             paddingBottom: "4vw",
                             alignSelf: "center",
 
-                            marginTop: 24,
-                            backgroundColor: "#26c1f0",
+                            marginTop: "6vw",
+                            backgroundColor: urlCheck(text) ? "#26c1f0" : "#dbdbdb",
 
                             textAlign: "center",
                             color: "#ffffff",

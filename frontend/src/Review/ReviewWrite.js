@@ -95,7 +95,7 @@ export default function ReviewWrite() {
         }
         var data = {
             user_id: 1,
-            product_id: "ae766068-cfd6-464b-ad17-884aad6a6d4a",
+            product_id: "285dc6bf-91e7-4b7c-a1f7-9ac3a03e7fba",
             review_score: number,
             review_like: inputs.like,
             review_dislike: inputs.dislike,

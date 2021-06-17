@@ -1782,3 +1782,15 @@ export function StandardChoiceModal({ title, content, canceltext, onCancelClick,
 export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+export function urlCheck(url){
+    //url 유효성 검사
+    let regex = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    
+    //올바른 url이 맞다면 해당 url로 이동
+    if(regex.test(url)){
+        return true
+    } else {
+        return false
+    }
+  }
