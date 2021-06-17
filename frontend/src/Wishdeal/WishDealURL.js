@@ -382,41 +382,44 @@ setNext(true)
                     }}>
                         <Header content="상품 정보 작성" goBack={true} />
                         {stats === 1 ?
-                            <>
+                            <div>
                                 <ElectronicForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
+                                highPrice={highPrice}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
                                     input={ELinputs}
                                     setInput={setELInputs}
                                 />
-                            </>
+                            </div>
                             :
-                            <></>
+                            <div></div>
                         }
                         {stats === 2 ?
-                            <>
+                            <div>
                                 <FashionForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
+                                highPrice={highPrice}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
                                     input={Finputs}
                                     setInput={setFInputs}
                                 />
-                            </>
+                            </div>
                             :
-                            <></>
+                            <div></div>
                         }
 
                         {stats === 4 ?
-                            <>
+                            <div>
                                 <ETCForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
+                                highPrice={highPrice}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
                                     input={Einputs}
                                     setInput={setEInputs}
                                 />
-                            </>
+                            </div>
                             :
-                            <></>
+                            <div></div>
                         }
 
                         <div style={{
@@ -619,41 +622,44 @@ setNext(true)
                     }}>
                         <MHeader content="상품 정보 작성" goBack={true} />
                         {stats === 1 ?
-                            <>
+                            <div>
                                 <MElectronicForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
-                                    input={Einputs}
-                                    setInput={setEInputs}
+                                highPrice={highPrice}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
+                                    input={ELinputs}
+                                    setInput={setELInputs}
                                 />
-                            </>
+                            </div>
                             :
-                            <></>
+                            <div></div>
                         }
                         {stats === 2 ?
-                            <>
+                            <div>
                                 <MFashionForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
+                                highPrice={highPrice}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
                                     input={Finputs}
                                     setInput={setFInputs}
                                 />
-                            </>
+                            </div>
                             :
-                            <></>
+                            <div></div>
                         }
 
                         {stats === 4 ?
-                            <>
+                            <div>
                                 <METCForm
-                                    name={myparam.ogTitle}
-                                    image={myparam.ogImage.url}
+                                highPrice={highPrice}
+                                    name={myparam.title}
+                                    image={myparam.image.url}
                                     input={Einputs}
                                     setInput={setEInputs}
                                 />
-                            </>
+                            </div>
                             :
-                            <></>
+                            <div></div>
                         }
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
@@ -1459,7 +1465,7 @@ function MElectronicForm({ image, brand, name, input, setInput }) {
     )
 }
 
-function ETCForm({ image, brand, name, input, setInput }) {
+function ETCForm({ image, brand, name, input, setInput,highPrice }) {
     const { Eprice, Eetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
@@ -1539,7 +1545,12 @@ function ETCForm({ image, brand, name, input, setInput }) {
                     color: "#010608"
                 }}>원</div>
             </div>
-
+            {highPrice===true?
+            <div></div>
+             :
+             <div style={{color:"#f72b2b",fontSize:16,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+            
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 18,
@@ -1572,7 +1583,7 @@ function ETCForm({ image, brand, name, input, setInput }) {
     )
 }
 
-function METCForm({ image, brand, name, input, setInput }) {
+function METCForm({ image, brand, name, input, setInput,highPrice }) {
     const { Eprice, Eetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
@@ -1653,7 +1664,12 @@ function METCForm({ image, brand, name, input, setInput }) {
                 }}>원</div>
             </div>
 
-
+            {highPrice===true?
+          <div></div>
+             :
+             <div style={{color:"#f72b2b",fontSize:14,marginLeft:20,marginTop:5}}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+            
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: 16,
