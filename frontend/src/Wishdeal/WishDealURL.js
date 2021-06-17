@@ -74,8 +74,10 @@ export default function WishDealURL() {
     const myparam = location.state.param
     const code = location.state.code
     const des = location.state.des
+    const getUrl = location.state.url
     const [stats, setStats] = useState("")
     const [state, setState] = useState(false)
+    const [highPrice,setHighPrice]=useState(true)
     useEffect(() => {
         setStats(code)
     }, [])
@@ -135,34 +137,97 @@ export default function WishDealURL() {
             [name]: value
         })
     }
+    useEffect(()=>{
+        if(stats===1){
+            if(Number(ELinputs.ELprice)<30000){
 
+                if(ELinputs.ELprice===""){
+                    setHighPrice(true)
+                }else{
+                    setHighPrice(false)
+                    //console.log("?")
+                }
+            }else{
+                setHighPrice(true)
+                //console.log("There")
+            }
+        }else if(stats===2){
+            if(Number(Finputs.Fprice)<30000){
+
+                if(Finputs.Fprice===""){
+                    setHighPrice(true)
+                }else{
+                    setHighPrice(false)
+                    //console.log("?")
+                }
+            }else{
+                setHighPrice(true)
+                //console.log("There")
+            }
+        }else{
+            if(Number(Einputs.Eprice)<30000){
+
+                if(Einputs.Eprice===""){
+                    setHighPrice(true)
+                }else{
+                    setHighPrice(false)
+                    //console.log("?")
+                }
+            }else{
+                setHighPrice(true)
+                //console.log("There")
+            }
+        }
+    },[Finputs.Fprice,ELinputs.ELprice,Einputs.Eprice])
     useEffect(() => {
+        
         if (stats === 1) {
+          
             if (ELinputs.ELcolor && ELinputs.ELprice != "") {
                 if (number && numberB > 1) {
                     if (number === 2 && numberB === 5) {
                         if (option && ship != "") {
-                            setNext(true)
+                            if(ELinputs.ELprice>30000){
+                                setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 2 && numberB < 5) {
                         if (option != "") {
-                            setNext(true)
+                            if(ELinputs.ELprice>30000){
+                                setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB === 5) {
                         if (ship != "") {
-                            setNext(true)
+                            if(ELinputs.ELprice>30000){
+                                setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB < 5) {
-                        setNext(true)
+                        if(ELinputs.ELprice>30000){
+                                setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                        
                     }
                 }
 
@@ -170,31 +235,52 @@ export default function WishDealURL() {
                 setNext(false)
             }
         } else if (stats === 2) {
+          
             if (Finputs.Fcolor && Finputs.Fsize && Finputs.Fprice != "") {
                 if (number && numberB > 1) {
                     if (number === 2 && numberB === 5) {
                         if (option && ship != "") {
-                            setNext(true)
+if(Finputs.Fprice>30000){
+    setNext(true)
+}else{
+    setNext(false)
+}
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 2 && numberB < 5) {
                         if (option != "") {
-                            setNext(true)
+                            if(Finputs.Fprice>30000){
+                            setNext(true)    
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB === 5) {
                         if (ship != "") {
-                            setNext(true)
+                            if(Finputs.Fprice>30000){
+                            setNext(true)    
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB < 5) {
-                        setNext(true)
+                        if(Finputs.Fprice>30000){
+                        setNext(true)    
+                        }else{
+                            setNext(false)
+                        }
+                        
                     }
                 }
 
@@ -202,31 +288,52 @@ export default function WishDealURL() {
                 setNext(false)
             }
         } else {
+       
             if (Einputs.Eprice != "") {
                 if (number && numberB > 1) {
                     if (number === 2 && numberB === 5) {
                         if (option && ship != "") {
-                            setNext(true)
+                            if(Einputs.Eprice>30000){
+setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 2 && numberB < 5) {
                         if (option != "") {
-                            setNext(true)
+                            if(Einputs.Eprice>30000){
+setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB === 5) {
                         if (ship != "") {
-                            setNext(true)
+                            if(Einputs.Eprice>30000){
+setNext(true)
+                            }else{
+                                setNext(false)
+                            }
+                            
                         } else {
                             setNext(false)
                         }
                     }
                     if (number === 3 && numberB < 5) {
-                        setNext(true)
+                        if(Einputs.Eprice>30000){
+setNext(true)
+                        }else{
+                            setNext(false)
+                        }
+                        
                     }
                 }
 
@@ -235,19 +342,19 @@ export default function WishDealURL() {
             }
         }
 
-    }, [Finputs, Einputs, ELinputs, number, numberB, option, ship])
-
+    }, [Finputs, Einputs, ELinputs, number, numberB, option, ship,highPrice])
+  
     function NextPage() {
         const lst = []
         if (stats === 1) {
             lst.push(myparam, code, des, ELinputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst })
+            history.push("/ordersheet", { param: lst ,addInfo:"", url:getUrl,image:""})
         } else if (stats === 2) {
             lst.push(myparam, code, des, Finputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst })
+            history.push("/ordersheet", { param: lst,addInfo:"", url:getUrl,image:"" })
         } else {
             lst.push(myparam, code, des, Einputs, number, option, numberB, ship)
-            history.push("/ordersheet", { param: lst })
+            history.push("/ordersheet", { param: lst,addInfo:"", url:getUrl,image:"" })
         }
     }
     return (
@@ -502,7 +609,7 @@ export default function WishDealURL() {
                 }}>
                     <div style={{
                         display: "flex",
-                        flexDirection: "column",
+                         flexDirection: "column",
 
                         justifyContent: "flex-start",
 

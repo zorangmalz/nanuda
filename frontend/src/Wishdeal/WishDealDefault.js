@@ -7,8 +7,24 @@ import Slider from "react-slick"
 import wishone from "../images/wishone.png"
 import wishtwo from "../images/wishtwo.png"
 import wishthree from "../images/wishthree.png"
-
+import Loader from "react-loader-spinner"
 export default function WishDealDefault() {
+    const [loading, setLoading] = useState(false)
+    function Loading() {
+        return (
+
+            <Loader
+                type="Oval"
+                color="#ffffff"
+                height={20}
+                width={20}
+                timeout={10000}
+            >
+
+            </Loader>
+
+        )
+    }
     let history = useHistory();
     const [linkOrNot, setLinkOrNot] = useState(false)
     const [text, setText] = useState("")
@@ -16,32 +32,46 @@ export default function WishDealDefault() {
     const [title, setTitle] = useState("")
     const [des, setDes] = useState("")
     const [url, setUrl] = useState("")
+    const [checker, setChecker] = useState(false)
+    function check() {
+        if (text.length > 5) {
+            setChecker(true)
+        } else {
+            setChecker(false)
+        } 
+    }
+    useEffect(() => {
+        check()
+    }, [text])
     const onChange = (e) => {
         setText(e.target.value)
     }
     const ogtag = async () => {
-
-        let response = await axios.post(
-            "https://haulfree.link/api",
-            {
-                params:
+        setLoading(true)
+        try {
+            let response = await axios.get(
+                "https://wishdeal.link/api",
                 {
-                    code: text
-                },
-            },
-            { withCredentials: true }
-        );
-        console.log(response)
-        if (response.data.error == true) {
-            history.push("wishdealnoturl")
-        } else {
-            history.push("wishdeal", { info: response.data.results })
-            setLinkOrNot(true)
-            setImage(response.data.results.ogImage.url)
-            setTitle(response.data.results.ogTitle)
-            setDes(response.data.results.ogDescription)
-            setUrl(response.data.results.ogUrl)
+                    params:
+                    {
+                        code: text
+                    },
+                }
+            );
+            if (response.data.error == true) {
+                setLoading(false)
+                history.push("wishdealnoturl")
+            } else {
+                setLoading(false)
+                history.push("wishdealurl", { param: response.data.openGraph, des: "", url: text, code: 4 })
+
+            }
+        } catch (err) {
+            console.log(err)
+            setLoading(false)
+            history.push("wishdealnoturl", { url: text })
         }
+
     }
 
     const naverSearch = async () => {
@@ -232,22 +262,44 @@ export default function WishDealDefault() {
                             name="text"
                             placeholder="상품 url"
                         />
-                        <div onClick={ogtag} style={{
-                            borderRadius: 6,
-                            width: 440,
-                            paddingTop: 15,
-                            paddingBottom: 15,
-                            alignSelf: "center",
+                       {checker ?
+                                <div id="url_click" onClick={ogtag} style={{
+                                    borderRadius: 6,
+                                    width: 440,
+                                    marginLeft: 20,
+                                    paddingTop: 15,
+                                    paddingBottom: 15,
+                                    alignSelf: "center",
 
-                            marginTop: 32,
-                            backgroundColor: urlCheck(text) ? "#26c1f0" : "#dbdbdb",
+                                    marginTop: 32,
+                                    backgroundColor: "#26c1f0",
 
-                            color: "#ffffff",
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            cursor: urlCheck(text) ? "pointer" : "auto",
-                            textAlign: "center",
-                        }}>확인</div>
+                                    color: "#ffffff",
+                                    fontSize: 18,
+                                    fontWeight: "bold",
+                                    cursor: "pointer",
+                                    textAlign: "center",
+                                }}>{loading ? <Loading></Loading> : "확인"}</div>
+                                :
+                                <div id="url_click" style={{
+                                    borderRadius: 6,
+                                    width: 440,
+                                    marginLeft: 20,
+                                    paddingTop: 15,
+                                    paddingBottom: 15,
+                                    alignSelf: "center",
+
+                                    marginTop: 32,
+                                    backgroundColor: "#dbdbdb",
+
+                                    color: "#ffffff",
+                                    fontSize: 18,
+                                    fontWeight: "bold",
+                                    cursor: "pointer",
+                                    textAlign: "center",
+                                }}>{loading ? <Loading></Loading> : "확인"}</div>
+
+                            }
                     </div>
                 </div>
             </Default>
@@ -411,21 +463,42 @@ export default function WishDealDefault() {
                             name="text"
                             placeholder="상품 url"
                         />
-                        <div onClick={ogtag} style={{
-                            borderRadius: 8,
-                            width: "90vw",
-                            paddingTop: "4vw",
-                            paddingBottom: "4vw",
-                            alignSelf: "center",
+                       {checker ?
+                            <div id="url_click" onClick={ogtag} style={{
+                                borderRadius: 6,
+                                width: "90vw",
+                                paddingTop: "4vw",
+                                paddingBottom: "4vw",
+                                alignSelf: "center",
 
-                            marginTop: "6vw",
-                            backgroundColor: urlCheck(text) ? "#26c1f0" : "#dbdbdb",
+                                marginTop: 32,
+                                backgroundColor: "#26c1f0",
 
-                            textAlign: "center",
-                            color: "#ffffff",
-                            fontSize: 16,
-                            fontWeight: "bold",
-                        }}>확인</div>
+                                color: "#ffffff",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                cursor: "pointer",
+                                textAlign: "center",
+                            }}>{loading ? <Loading></Loading> : "확인"}</div>
+                            :
+                            <div id="url_click" style={{
+                                borderRadius: 6,
+                                width: "90vw",
+                                paddingTop: "4vw",
+                                paddingBottom: "4vw",
+                                alignSelf: "center",
+
+                                marginTop: 32,
+                                backgroundColor: "#dbdbdb",
+
+                                color: "#ffffff",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                cursor: "pointer",
+                                textAlign: "center",
+                            }}>{loading ? <Loading></Loading> : "확인"}</div>
+                        }
+
                     </div>
                 </div>
             </Mobile>
