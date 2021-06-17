@@ -1,36 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, NameMask } from "../Style";
+import { Header, MHeader, NameMask } from "../Style";
 
 
 export default function ServiceReview() {
     //Get Review Data
     const [reviewData, setReviewData] = useState([])
     const [noReview, setNoReview] = useState(false)
+
     async function checkReview() {
         await fetch("https://haulfree.link/servicereviewornot/", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: "include",
-        })
-            .then(response => {
-                if (response.data.data === true) {
-                    setNoReview(true)
-                } else {
-                    setNoReview(false)
-                }
-            }).catch(err => {
-                console.log(err)
-            })
-    }
-    useEffect(() => {
-        checkReview()
-        setReviewData([])
-        fetch("https://haulfree.link/servicereview/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -40,6 +20,33 @@ export default function ServiceReview() {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
+                if (response.data === true) {
+                    setNoReview(true)
+                } else {
+                    setNoReview(false)
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
+    useEffect(() => {
+        checkReview()
+        setReviewData([])
+        fetch("https://haulfree.link/servicereview/", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+        })
+            .then(response => {
+                response.json()
+                console.log(response)
+            })
+            .then(response => {
+                console.log(response)
                 var array = []
                 for (var i = 0; i < response.length; i++) {
                     const data = {
@@ -57,7 +64,7 @@ export default function ServiceReview() {
     }, [])
 
     let history = useHistory()
-    
+
 
     return (
         <>
@@ -115,15 +122,14 @@ export default function ServiceReview() {
                                 item={item}
                             />
                         )}
-                        {noReview?
-                        <div onClick={() => history.push("/servicewrite")} style={{
+                        <div onClick={noReview ? () => history.push("/servicewrite") : () => { }} style={{
                             position: "fixed",
                             bottom: 40,
                             width: 440,
                             alignSelf: "center",
                             paddingTop: 21,
                             paddingBottom: 21,
-                            backgroundColor: "#26c1f0",
+                            backgroundColor: noReview ? "#26c1f0" : "#dbdbdb",
                             borderRadius: 6,
                             boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
 
@@ -131,30 +137,9 @@ export default function ServiceReview() {
                             fontSize: 21,
                             fontWeight: "bold",
                             textAlign: "center",
-                            cursor: "pointer",
+                            cursor: noReview ? "pointer" : "auto",
                             fontFamily: "NotoSansCJKkr"
                         }}>첫 후기 작성하고 2천 포인트 받기</div>
-                        :
-                        <div style={{
-                            position: "fixed",
-                            bottom: 40,
-                            width: 440,
-                            alignSelf: "center",
-                            paddingTop: 21,
-                            paddingBottom: 21,
-                            backgroundColor: "#dbdbdb",
-                            borderRadius: 6,
-                            boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
-
-                            color: "#ffffff",
-                            fontSize: 21,
-                            fontWeight: "bold",
-                            textAlign: "center",
-                            cursor: "pointer",
-                            fontFamily: "NotoSansCJKkr"
-                        }}>첫 후기 작성하고 2천 포인트 받기</div>
-                        }
-                       
                     </div>
                 </div>
             </Default>
@@ -200,15 +185,14 @@ export default function ServiceReview() {
                             item={item}
                         />
                     )}
-                    {noReview?
-                    <div onClick={() => history.push("/servicewrite")} style={{
+                    <div onClick={noReview ? () => history.push("/servicewrite") : () => { }} style={{
                         position: "fixed",
                         bottom: 40,
                         width: "90%",
                         alignSelf: "center",
                         paddingTop: 12,
                         paddingBottom: 12,
-                        backgroundColor: "#26c1f0",
+                        backgroundColor: noReview ? "#26c1f0" : "#dbdbdb",
                         borderRadius: 6,
                         boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
 
@@ -216,30 +200,9 @@ export default function ServiceReview() {
                         fontSize: 18,
                         fontWeight: "bold",
                         textAlign: "center",
-                        cursor: "pointer",
+                        cursor: noReview ? "pointer" : "auto",
                         fontFamily: "NotoSansCJKkr"
                     }}>첫 후기 작성하고 2천 포인트 받기</div>
-                    :
-                    <div style={{
-                        position: "fixed",
-                        bottom: 40,
-                        width: "90%",
-                        alignSelf: "center",
-                        paddingTop: 12,
-                        paddingBottom: 12,
-                        backgroundColor: "#dbdbdb",
-                        borderRadius: 6,
-                        boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
-
-                        color: "#ffffff",
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        cursor: "pointer",
-                        fontFamily: "NotoSansCJKkr"
-                    }}>첫 후기 작성하고 2천 포인트 받기</div>
-                    }
-                    
                 </div>
             </Mobile>
         </>

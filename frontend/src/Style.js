@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import logoS from "./images/logoS.png"
-import bell from "./images/bell.png"
 import user from "./images/users.png"
 import { IoIosArrowBack } from "react-icons/io";
 import { BsX } from "react-icons/bs"

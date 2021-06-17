@@ -1,6 +1,6 @@
-import React, { useReducer, useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
+import { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { BsPlusCircle } from "react-icons/bs"
 import { useHistory } from "react-router";
 import { Product, MProduct } from "./ReviewSelect";
