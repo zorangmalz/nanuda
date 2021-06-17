@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import { BannerContainer, BottomTag, HomeHeader, MBannerContainer, MBottomTag, MHomeHeader, NameMask, TopBanner, MTopBanner, HomeBottomTag, MHomeBottomTag } from "../Style";
+import { BannerContainer, HomeHeader, MBannerContainer, MHomeHeader, NameMask, HomeBottomTag, MHomeBottomTag } from "../Style";
 import { BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
+import { IoMdCheckmarkCircle } from "react-icons/io"
 import smallbanner from "../images/smallbanner.png";
 import smallbannertwo from "../images/smallbannertwo.png";
 import Slider from "react-slick"
@@ -167,7 +168,6 @@ export default function Home() {
         }catch(err){
             console.log(err)
         }
-        
 	}
     return (
         <>
@@ -180,7 +180,8 @@ export default function Home() {
 
                     width: "100%",
                     minHeight: "100vh",
-                    backgroundColor: "#f2f3f8"
+                    backgroundColor: "#f2f3f8",
+                    zIndex: 0,
                 }}>
                     <div style={{
                         display: "flex",
@@ -192,12 +193,12 @@ export default function Home() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        	<form name="form_chk" method="post">
+                        	{/* <form name="form_chk" method="post">
                         <input type="hidden" name="m" value="checkplusService"/>
                         <input type="hidden" name="EncodeData" value={enc}/>	
                         <input type ="hidden" name="recvMethodType" value ="get"/>
                         <div onClick={fnPopup}> CheckPlus 안심본인인증 Click</div>
-                    </form>
+                    </form> */}
                         <HomeHeader />
                         {/* 배너 넣어야됨 */}
                         <div style={{
@@ -264,12 +265,13 @@ export default function Home() {
                             marginTop: 32,
                             marginLeft: 20,
                         }}>
-                            <div style={{
+                            <div onClick={() => history.push("/timedeal/entire")} style={{
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 21,
                                 color: "#010608",
                                 marginRight: 4,
+                                cursor: "pointer"
                             }}>나눠서 결제하고 바로 경험해보세요 😎</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/timedeal/entire")}
@@ -299,31 +301,29 @@ export default function Home() {
                             alignItems: "flex-start",
                             justifyContent: "space-between"
                         }}>
-                            <div onClick={() => history.push('/timedeal/entire')} style={{ cursor: "pointer" }}>
-                                <TimeShop
-                                    id="display_click"
-                                    img={sampleone}
-                                    title="애플"
-                                    sub="Apple AirPods Pro 애플 에어팟 프로 무선충전형"
-                                    twoPrice="130,000"
-                                    fourPrice="65,000"
-                                    stock={0}
-                                    sale={27}
-                                />
-                            </div>
-                            <div onClick={() => history.push('/timedeal/entire')} style={{ cursor: "pointer" }}>
-                                <TimeShop
-                                    id=""
-                                    img={sampletwo}
-                                    title="애플"
-                                    sub="Apple iPad Air Sky Blue
+                            <TimeShop
+                                id="display_click"
+                                img={sampleone}
+                                title="애플"
+                                sub="Apple AirPods Pro 애플 에어팟 프로 무선충전형"
+                                twoPrice="130,000"
+                                fourPrice="65,000"
+                                stock={0}
+                                sale={27}
+                                onClick={() => history.push('/timedeal/entire')}
+                            />
+                            <TimeShop
+                                id=""
+                                img={sampletwo}
+                                title="애플"
+                                sub="Apple iPad Air Sky Blue
                                 10.9형 iPad Air Wi-Fi 스카이 블루"
-                                    twoPrice="360,750"
-                                    fourPrice="180,375"
-                                    stock={0}
-                                    sale={5}
-                                />
-                            </div>
+                                twoPrice="360,750"
+                                fourPrice="180,375"
+                                stock={0}
+                                sale={5}
+                                onClick={() => history.push('/timedeal/entire')}
+                            />
                         </div>
                         <div style={{
                             display: "flex",
@@ -332,12 +332,13 @@ export default function Home() {
                             marginTop: 32,
                             marginLeft: 20,
                         }}>
-                            <div style={{
+                            <div onClick={() => history.push("/review")} style={{
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 21,
                                 color: "#010608",
                                 marginRight: 4,
+                                cursor: "pointer"
                             }}>나눠산 사람들</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/review")}
@@ -444,12 +445,13 @@ export default function Home() {
                             marginTop: 64,
                             marginLeft: 20,
                         }}>
-                            <div style={{
+                            <div onClick={() => history.push("/servicereview")} style={{
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 21,
                                 color: "#010608",
                                 marginRight: 4,
+                                cursor: "pointer"
                             }}>이용후기</div>
                             <MdKeyboardArrowRight
                                 onClick={() => history.push("/servicereview")}
@@ -515,6 +517,7 @@ export default function Home() {
                     width: "100%",
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
+                    zIndex: 0,
                 }}>
                     <MHomeHeader />
                     <div style={{
@@ -580,7 +583,7 @@ export default function Home() {
                         marginTop: "8vw",
                         marginLeft: "5vw",
                     }}>
-                        <div style={{
+                        <div onClick={() => history.push("/timedeal/entire")} style={{
                             fontWeight: "bold",
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -615,33 +618,31 @@ export default function Home() {
                         alignItems: "flex-start",
                         justifyContent: "space-between"
                     }}>
-                        <div onClick={() => history.push('/timedeal/entire')} style={{ cursor: "pointer" }}>
-                            <MTimeShop
-                                id="display_click"
-                                img={sampleone}
-                                title="애플"
-                                sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
-                                twoPrice="130,000"
-                                fourPrice="65,000"
-                                stock={0}
-                                sale={27}
-                            />
-                        </div>
-                        <div onClick={() => history.push('/timedeal/entire')} style={{ cursor: "pointer" }}>
-                            <MTimeShop
-                                id=""
-                                img={sampletwo}
-                                title="애플"
-                                sub="Apple iPad Air Sky Blue
+                        <MTimeShop
+                            id="display_click"
+                            img={sampleone}
+                            title="애플"
+                            sub="Apple AirPods Pro 애플 에어팟 프로 2세대 무선충전형"
+                            twoPrice="130,000"
+                            fourPrice="65,000"
+                            stock={0}
+                            sale={27}
+                            onClick={() => history.push('/timedeal/entire')}
+                        />
+                        <MTimeShop
+                            id=""
+                            img={sampletwo}
+                            title="애플"
+                            sub="Apple iPad Air Sky Blue
                                 10.9형 iPad Air Wi-Fi 스카이 블루"
-                                twoPrice="360,750"
-                                fourPrice="180,375"
-                                stock={0}
-                                sale={5}
-                            />
-                        </div>
+                            twoPrice="360,750"
+                            fourPrice="180,375"
+                            stock={0}
+                            sale={5}
+                            onClick={() => history.push('/timedeal/entire')}
+                        />
                     </div>
-                    <div style={{
+                    <div onClick={() => history.push("/review")} style={{
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
@@ -749,7 +750,7 @@ export default function Home() {
                         marginTop: "8vw",
                         marginLeft: "5vw",
                     }}>
-                        <div style={{
+                        <div onClick={() => history.push("/servicereview")} style={{
                             fontWeight: "bold",
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -806,15 +807,18 @@ export default function Home() {
     )
 }
 
-export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
+export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onClick }) {
+    const [copy, setCopy] = useState(false)
+
     return (
-        <div>
+        <>
             <div id={id} style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
                 width: 210,
                 marginBottom: 32,
+                zIndex: 0,
             }}>
                 <div style={{
                     width: "100%",
@@ -825,8 +829,10 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
                     color: "#ffffff",
                     position: "relative",
                 }}>
-                    <img src={img} style={{
+                    <img onClick={onClick} src={img} style={{
                         width: "100%",
+                        zIndex: 0,
+                        cursor: "pointer"
                     }} />
                     {stock > 0 ?
                         <div style={{
@@ -871,7 +877,12 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
                         color: "#010608",
                         fontWeight: "bold",
                     }}>{title}</div>
-                    <BsUpload size={18} style={{
+                    <BsUpload onClick={() => {
+                        setCopy(true)
+                        setTimeout(() => {
+                            setCopy(false)
+                        }, 5000)
+                    }} size={18} style={{
                         marginRight: 4,
                         cursor: "pointer"
                     }} />
@@ -934,19 +945,46 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
                     </div>
                 </div>
             </div>
-        </div>
+            {copy ?
+                <div style={{
+                    position: "fixed",
+                    bottom: 40,
+                    width: 440,
+                    paddingTop: 16,
+                    paddingBottom: 16,
+                    backgroundColor: "#F2F3F8",
+                    borderRadius: 6,
+
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                }}>
+                    <IoMdCheckmarkCircle color="#26C1F0" size={24} style={{ marginLeft: 16 }} />
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        marginLeft: 8,
+                    }}>링크가 복사되었습니다.</div>
+                </div>
+                :
+                <></>
+            }
+        </>
     )
 }
 
-export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
+export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onClick }) {
+    const [copy, setCopy] = useState(false)
     return (
-        <div>
+        <>
             <div id={id} style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
                 width: "42vw",
-                marginBottom: "8vw"
+                marginBottom: "8vw",
+                zIndex: 0,
             }}>
                 <div style={{
                     width: "100%",
@@ -956,8 +994,10 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
                     color: "#ffffff",
                     position: "relative",
                 }}>
-                    <img src={img} style={{
+                    <img onClick={onClick} src={img} style={{
                         width: "100%",
+                        zIndex: 0,
+                        cursor: "pointer"
                     }} />
                     {stock > 0 ?
                         <div style={{
@@ -1002,7 +1042,12 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
                         color: "#010608",
                         fontWeight: "bold"
                     }}>{title}</div>
-                    <BsUpload size={18} style={{
+                    <BsUpload onClick={() => {
+                        setCopy(true)
+                        setTimeout(() => {
+                            setCopy(false)
+                        }, 5000)
+                    }} size={18} style={{
                         marginRight: 4,
                         cursor: "pointer"
                     }} />
@@ -1067,7 +1112,32 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock }) {
                     </div>
                 </div>
             </div>
-        </div>
+            {copy ?
+                <div style={{
+                    position: "fixed",
+                    bottom: "5vw",
+                    width: "90vw",
+                    paddingTop: "4vw",
+                    paddingBottom: "4vw",
+                    backgroundColor: "#F2F3F8",
+                    borderRadius: 6,
+
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                }}>
+                    <IoMdCheckmarkCircle color="#26C1F0" size={20} style={{ marginLeft: "4vw" }} />
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 14,
+                        fontWeight: "bold",
+                        marginLeft: "2vw",
+                    }}>링크가 복사되었습니다.</div>
+                </div>
+                :
+                <></>
+            }
+        </>
     )
 }
 

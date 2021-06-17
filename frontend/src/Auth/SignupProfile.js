@@ -5,162 +5,16 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { useHistory } from "react-router";
 
-export const Title = styled.div`
-    width: 440px;
-    font-family: "NotoSansCJKkr";
-    font-size: 18px;
-    font-weight: bold;
-    color: #010608;
-    margin-top: 32px;
-    margin-left: 20px;
-`;
-
-export const MTitle = styled.div`
-    width: 90vw;
-    font-family: "NotoSansCJKkr";
-    font-size: 16px;
-    font-weight: bold;
-    color: #010608;
-    margin-top: 28px;
-    margin-left: 5vw;
-`;
-
-export const Button = ({ text, number, standard, onClick }) => {
-    return (
-        <div onClick={onClick} style={{
-            width: 95,
-            paddingTop: 12,
-            paddingBottom: 12,
-            borderRadius: 6,
-            backgroundColor: number === standard ? "#010608" : "#ffffff",
-            border: number === standard ? "1px solid #010608" : "1px solid rgba(1, 6, 8, 0.2)",
-            cursor: "pointer",
-
-            fontFamily: "NotoSansCJKkr",
-            fontSize: 16,
-            fontWeight: number === standard ? "bold" : "normal",
-            color: number === standard ? "#ffffff" : "rgba(1, 6, 8, 0.8)",
-            textAlign: "center",
-        }}>{text}</div>
-    )
-}
-
-export const MButton = ({ text, number, standard, onClick }) => {
-    return (
-        <div onClick={onClick} style={{
-            width: "20vw",
-            paddingTop: 8,
-            paddingBottom: 8,
-            borderRadius: 6,
-            backgroundColor: number === standard ? "#010608" : "#ffffff",
-            border: number === standard ? "1px solid #010608" : "1px solid rgba(1, 6, 8, 0.2)",
-            cursor: "pointer",
-
-            fontFamily: "NotoSansCJKkr",
-            fontSize: 12,
-            fontWeight: number === standard ? "bold" : "normal",
-            color: number === standard ? "#ffffff" : "rgba(1, 6, 8, 0.8)",
-            textAlign: "center",
-        }}>{text}</div>
-    )
-}
-
-function reducer(state, action) {
-    switch (action.type) {
-        case "STUDENT":
-            return 1;
-        case "EMPLOY":
-            return 2;
-        case "HOUSE":
-            return 3;
-        case "READY":
-            return 4;
-        case "SELF":
-            return 5;
-        case "ETC":
-            return 6;
-        default:
-            return 0;
-    }
-
-}
-
 export default function SignupProfile() {
-    const history=useHistory()
-    useEffect(() => {
-        test()
-    }, [])
-
-    const test = async () => {
-        await fetch("https://haulfree.link/userInfoName/", {
-            method: "GET",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: "include",
-
-
-        })
-            .then((response) => (response.json()))
-            .then(response => {
-                setInputs({
-                    ...inputs,
-                    name: response.name,
-                    email: response.email
-                })
-
-            }).catch(err => {
-                console.log(err)
-            })
-
-    }
-
-    const [number, dispatch] = useReducer(reducer, 0)
-    const onStudent = () => {
-        dispatch({ type: "STUDENT" })
-    }
-    const onEmploy = () => {
-        dispatch({ type: "EMPLOY" })
-    }
-    const onHouse = () => {
-        dispatch({ type: "HOUSE" })
-    }
-    const onReady = () => {
-        dispatch({ type: "READY" })
-    }
-    const onSelf = () => {
-        dispatch({ type: "SELF" })
-    }
-    const onEtc = () => {
-        dispatch({ type: "ETC" })
-    }
-
-    //input요소
-    const [inputs, setInputs] = useState({
-        name: "",
-        cellPhone: "",
-        email: "",
-        job: ""
-    })
-    const { name, cellPhone, email, job } = inputs
-    const onChange = (e) => {
-        const { value, name } = e.target
-        setInputs({
-            ...inputs,
-            [name]: value
-        })
-    }
+    const history = useHistory()
 
     //약관 동의
     const [personal, setPersonal] = useState(false)
     const [service, setService] = useState(false)
     const [veri, setVeri] = useState(false)
     const [market, setMarket] = useState(false)
-    function nice(){
-        console.log("nice")
-    }
     const [enc,setEnc]=useState("")
+
     function getInfo(){
         fetch("https://wishdeal.link/checkplus_main", {
             method: "GET",      
@@ -249,8 +103,6 @@ export default function SignupProfile() {
             }).catch(err => {
                 console.log(err)
             })
-
-
     }
     useEffect(()=>{
         if(userData){
@@ -280,90 +132,16 @@ export default function SignupProfile() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="회원정보" goBack={true} />
-                        <form name="form_chk" method="post">
-                        <input type="hidden" name="m" value="checkplusService"/>
-                        <input type="hidden" name="EncodeData" value={enc}/>	
-                        
-                        <div onClick={fnPopup}> CheckPlus 안심본인인증 Click</div>
-                    </form>
-                        <Title>이름</Title>
-                        <InputModule
-                            name="name"
-                            value={name}
-                            onChange={onChange}
-                            placeholder="당신의 이름은 무엇인가요?"
-                            width={440}
-                            marginLeft={20}
-                            marginTop={16}
-                            fontSize={16}
-                        />
-                        <Title>이메일 주소</Title>
-                        <InputModule
-                            name="email"
-                            value={email}
-                            onChange={onChange}
-                            placeholder="이메일 주소를 입력해주세요."
-                            width={440}
-                            marginLeft={20}
-                            marginTop={16}
-                            fontSize={16}
-                        />
-                        <Title>현재 직업은 무엇인가요?</Title>
                         <div style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(4, 1fr)",
-                            width: 440,
-                            alignSelf: "center",
-                            marginTop: 16,
-                            rowGap: 16,
+                             fontFamily: "NotoSansCJKkr",
+                             fontSize: 21,
+                             fontWeight: "bold",
+                             color: "#010608",
+                             marginLeft: 20,
+                             marginTop: 32,
                         }}>
-                            <Button
-                                text="대학생"
-                                number={number}
-                                standard={1}
-                                onClick={onStudent}
-                            />
-                            <Button
-                                text="직장인"
-                                number={number}
-                                standard={2}
-                                onClick={onEmploy}
-                            />
-                            <Button
-                                text="주부"
-                                number={number}
-                                standard={3}
-                                onClick={onHouse}
-                            />
-                            <Button
-                                text="취준생"
-                                number={number}
-                                standard={4}
-                                onClick={onReady}
-                            />
-                            <Button
-                                text="자영업"
-                                number={number}
-                                standard={5}
-                                onClick={onSelf}
-                            />
-                            <Button
-                                text="기타"
-                                number={number}
-                                standard={6}
-                                onClick={onEtc}
-                            />
+                            원활한 서비스 이용을 위해 <br /> 본인인증을 완료해주세요.
                         </div>
-                        <InputModule
-                            name="job"
-                            value={job}
-                            onChange={onChange}
-                            placeholder="현재 직업을 입력해주세요."
-                            width={440}
-                            marginLeft={20}
-                            marginTop={16}
-                            fontSize={16}
-                        />
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -509,22 +287,27 @@ export default function SignupProfile() {
                                 marginLeft: 8,
                             }}>마케팅 정보 수신 동의(선택)</div>
                         </div>
-                        <div onClick={nice} style={{
-                            width: 440,
-                            paddingTop: 15,
-                            paddingBottom: 15,
-                            marginTop: 32,
-                            borderRadius: 6,
-                            backgroundColor: "#26c1f0",
-                            alignSelf: "center",
+                        <form name="form_chk" method="post">
+                            <input type="hidden" name="m" value="checkplusService" />
+                            <input type="hidden" name="EncodeData" value={enc} />
+                            <div style={{
+                                width: 440,
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                marginTop: 32,
+                                borderRadius: 6,
+                                backgroundColor: personal && service && veri ? "#26c1f0" : "#dbdbdb",
+                                alignSelf: "center",
 
-                            fontFamily: "NotoSansCJKkr",
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            color: "#ffffff",
-                            cursor: "pointer",
-                            textAlign: "center"
-                        }}>본인인증하기</div>
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                color: "#ffffff",
+                                cursor: "pointer",
+                                textAlign: "center",
+                                marginLeft: 20,
+                            }} onClick={personal && service && veri ? fnPopup : () => {}}>본인인증하기</div>
+                        </form>
                     </div>
                 </div>
             </Default>
@@ -538,84 +321,16 @@ export default function SignupProfile() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="회원정보" goBack={true} />
-                    <MTitle>이름</MTitle>
-                    <InputModule
-                        name="name"
-                        value={name}
-                        onChange={onChange}
-                        placeholder="당신의 이름은 무엇인가요?"
-                        width={"90vw"}
-                        marginLeft={"5vw"}
-                        marginTop={12}
-                        fontSize={12}
-                    />
-                    <MTitle>이메일 주소</MTitle>
-                    <InputModule
-                        name="email"
-                        value={email}
-                        onChange={onChange}
-                        placeholder="이메일 주소를 입력해주세요."
-                        width={"90vw"}
-                        marginLeft={"5vw"}
-                        marginTop={12}
-                        fontSize={12}
-                    />
-                    <MTitle>현재 직업은 무엇인가요?</MTitle>
                     <div style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(4, 1fr)",
-                        width: "90vw",
-                        alignSelf: "center",
-                        marginTop: 12,
-                        rowGap: 12,
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        color: "#010608",
+                        marginLeft: "5vw",
+                        marginTop: "8vw",
                     }}>
-                        <MButton
-                            text="대학생"
-                            number={number}
-                            standard={1}
-                            onClick={onStudent}
-                        />
-                        <MButton
-                            text="직장인"
-                            number={number}
-                            standard={2}
-                            onClick={onEmploy}
-                        />
-                        <MButton
-                            text="주부"
-                            number={number}
-                            standard={3}
-                            onClick={onHouse}
-                        />
-                        <MButton
-                            text="취준생"
-                            number={number}
-                            standard={4}
-                            onClick={onReady}
-                        />
-                        <MButton
-                            text="자영업"
-                            number={number}
-                            standard={5}
-                            onClick={onSelf}
-                        />
-                        <MButton
-                            text="기타"
-                            number={number}
-                            standard={6}
-                            onClick={onEtc}
-                        />
+                        원활한 서비스 이용을 위해 <br /> 본인인증을 완료해주세요.
                     </div>
-                    <InputModule
-                        name="job"
-                        value={job}
-                        onChange={onChange}
-                        placeholder="현재 직업을 입력해주세요."
-                        width={"90vw"}
-                        marginLeft={"5vw"}
-                        marginTop={12}
-                        fontSize={12}
-                    />
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -759,25 +474,90 @@ export default function SignupProfile() {
                             marginLeft: "2vw",
                         }}>마케팅 정보 수신 동의 (선택)</div>
                     </div>
-                    <div style={{
-                        width: "90vw",
-                        paddingTop: 12,
-                        paddingBottom: 12,
-                        marginTop: 24,
-                        borderRadius: 6,
-                        backgroundColor: "#26c1f0",
-                        alignSelf: "center",
+                    <form name="form_chk" method="post">
+                        <input type="hidden" name="m" value="checkplusService" />
+                        <input type="hidden" name="EncodeData" value={enc} />
+                        <div style={{
+                            width: "90vw",
+                            paddingTop: 12,
+                            paddingBottom: 12,
+                            marginTop: 24,
+                            borderRadius: 6,
+                            backgroundColor: personal && service && veri ? "#26c1f0" : "#dbdbdb",
+                            alignSelf: "center",
 
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
-                        fontWeight: "bold",
-                        color: "#ffffff",
-                        cursor: "pointer",
-                        textAlign: "center"
-                    }}>본인인증하기</div>
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 14,
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            cursor: "pointer",
+                            textAlign: "center",
+                            marginLeft: "5vw"
+                        }} onClick={personal && service && veri ? fnPopup : () => { }}>본인인증하기</div>
+                    </form>
                 </div>
             </Mobile>
         </>
+    )
+}
+
+export const Title = styled.div`
+    width: 440px;
+    font-family: "NotoSansCJKkr";
+    font-size: 21px;
+    font-weight: bold;
+    color: #010608;
+    margin-top: 32px;
+    margin-left: 20px;
+`;
+
+export const MTitle = styled.div`
+    width: 90vw;
+    font-family: "NotoSansCJKkr";
+    font-size: 16px;
+    font-weight: bold;
+    color: #010608;
+    margin-top: 28px;
+    margin-left: 5vw;
+`;
+
+export const Button = ({ text, number, standard, onClick }) => {
+    return (
+        <div onClick={onClick} style={{
+            width: 95,
+            paddingTop: 12,
+            paddingBottom: 12,
+            borderRadius: 6,
+            backgroundColor: number === standard ? "#010608" : "#ffffff",
+            border: number === standard ? "1px solid #010608" : "1px solid rgba(1, 6, 8, 0.2)",
+            cursor: "pointer",
+
+            fontFamily: "NotoSansCJKkr",
+            fontSize: 16,
+            fontWeight: number === standard ? "bold" : "normal",
+            color: number === standard ? "#ffffff" : "rgba(1, 6, 8, 0.8)",
+            textAlign: "center",
+        }}>{text}</div>
+    )
+}
+
+export const MButton = ({ text, number, standard, onClick }) => {
+    return (
+        <div onClick={onClick} style={{
+            width: "20vw",
+            paddingTop: 8,
+            paddingBottom: 8,
+            borderRadius: 6,
+            backgroundColor: number === standard ? "#010608" : "#ffffff",
+            border: number === standard ? "1px solid #010608" : "1px solid rgba(1, 6, 8, 0.2)",
+            cursor: "pointer",
+
+            fontFamily: "NotoSansCJKkr",
+            fontSize: 12,
+            fontWeight: number === standard ? "bold" : "normal",
+            color: number === standard ? "#ffffff" : "rgba(1, 6, 8, 0.8)",
+            textAlign: "center",
+        }}>{text}</div>
     )
 }
 

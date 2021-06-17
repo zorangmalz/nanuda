@@ -133,7 +133,7 @@ export default function TimeDeal() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        <Header content="나누다딜" goBack={true} />
+                        <Header content="1/n 딜" goBack={true} />
                         <Container>
                             <Title onClick={onENTIRE} text="전체 상품" state={tabNum == 0} />
                             <Title onClick={onELECTRONIC} text="전자제품" state={tabNum == 1} />
@@ -156,7 +156,7 @@ export default function TimeDeal() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="나누다딜" goBack={true} />
+                    <MHeader content="1/n 딜" goBack={true} />
                     <MContainer>
                         <MTitle onClick={onENTIRE} text="전체 상품" state={tabNum == 0} />
                         <MTitle onClick={onELECTRONIC} text="전자제품" state={tabNum == 1} />

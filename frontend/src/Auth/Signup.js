@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Default, Mobile } from "../App";
 import { BottomTag, Header, MBottomTag, MHeader } from "../Style";
 import { useHistory } from "react-router";
 import KakaoLogin from "react-kakao-login";
-import axios from "axios"
 import styled from "styled-components"
+import Slider from "react-slick"
+import bannerOne from "../images/bannerOne.png"
+import bannerTwo from "../images/bannerTwo.png"
 
-const GOOGLE_APP_KEY = process.env.REACT_APP_KEY_GOOGLE
 const My_App_Key = process.env.REACT_APP_KEY
 
 const KaKaoBtn = styled(KakaoLogin)`
@@ -31,23 +32,6 @@ const KaKaoBtn = styled(KakaoLogin)`
 `;
 
 export default function Signup() {
-    const responseGoogle = async (response) => {
-        let res = await axios.post(
-            "https://haulfree.link/rest-auth/google/",
-            {
-                params:
-                {
-                    code: response
-                },
-
-            },
-            { withCredentials: true }
-        )
-        if (res.data === "success") {
-            history.replace("./signupprofile")
-        }
-    }
-
     const kakaoResponse = async (response) => {
         await fetch("https://haulfree.link/rest-auth/kakao/", {
             method: "POST",
@@ -70,31 +54,10 @@ export default function Signup() {
             }).catch(err => {
                 console.log(err)
             })
-        // let res = await axios.post(
-        //     "https://haulfree.link/rest-auth/kakao/",
-        //     {
-        //         params:
-        //         {
-        //             code: response.response.access_token
-        //         },
-        //     },
-        //     { withCredentials: true }
-        // );
-        // console.log(res)
-        // if (res.data === "success") {
-        //     history.replace("/signupprofile")
-        // }
     }
     const kakaoFail = async (res) => {
     }
     let history = useHistory()
-
-    const test = async () => {
-        let response = await axios.get(
-            "https://haulfree.link/userInfoName/",
-            { withCredentials: true }
-        )
-    }
     return (
         <>
             <Default>
@@ -115,7 +78,6 @@ export default function Signup() {
                         justifyContent: "space-between",
 
                         width: 480,
-                        minHeight: "100vh",
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
@@ -126,7 +88,26 @@ export default function Signup() {
                             width: "100%"
                         }}>
                             <Header content="회원가입" goBack={true} />
-                            {/* 배너 넣어야됨 */}
+                            <div style={{
+                                width: 480,
+                                height: 300,
+                                marginBottom: 16,
+                            }}>
+                                <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
+                                    <div>
+                                        <img alt="bannerOne" src={bannerOne} onClick={() => window.open('https://www.notion.so/haulfree/HaulFree-6a3f1f7d342d493193ac59d4319c2100', '_blank')} style={{
+                                            width: 480,
+                                            cursor: "pointer",
+                                        }} />
+                                    </div>
+                                    <div>
+                                        <img src={bannerTwo} alt="bannerTwo" onClick={() => window.open('https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934', '_blank')} style={{
+                                            width: 480,
+                                            cursor: "pointer",
+                                        }} />
+                                    </div>
+                                </Slider>
+                            </div>
                             <KaKaoBtn
                                 style={{ width: 440, fontSize: 18, height: 56, color: "#010608" }}
                                 token={My_App_Key}
@@ -135,7 +116,7 @@ export default function Signup() {
                                 className="KaKaoBtn"
                             >카카오톡으로 시작하기</KaKaoBtn>
                         </div>
-                        <BottomTag marginBottom={0} />
+                        <BottomTag marginBottom={0} marginTop={100} />
                     </div>
                 </div>
             </Default>
@@ -166,6 +147,22 @@ export default function Signup() {
                             width: "100%"
                         }}>
                             <MHeader content="회원가입" goBack={true} />
+                            <div style={{ width: "100vw", marginBottom: "3vw" }}>
+                                <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
+                                    <div>
+                                        <img alt="bannerOne" src={bannerOne} onClick={() => window.open('https://www.notion.so/haulfree/HaulFree-6a3f1f7d342d493193ac59d4319c2100', '_blank')} style={{
+                                            width: "100vw",
+                                            cursor: "pointer",
+                                        }} />
+                                    </div>
+                                    <div>
+                                        <img src={bannerTwo} alt="bannerTwo" onClick={() => window.open('https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934', '_blank')} style={{
+                                            width: "100vw",
+                                            cursor: "pointer",
+                                        }} />
+                                    </div>
+                                </Slider>
+                            </div>
                             <KakaoLogin
                                 style={{
                                     width: "90vw",
@@ -187,7 +184,7 @@ export default function Signup() {
                                 onFail={kakaoFail}
                             >카카오톡으로 시작하기</KakaoLogin>
                         </div>
-                        <MBottomTag marginBottom={0} marginTop={"40vw"} />
+                        <MBottomTag marginBottom={0} marginTop={"20vw"} />
                     </div>
                 </div>
             </Mobile>

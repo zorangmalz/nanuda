@@ -20,7 +20,6 @@ export default function SingupComplete() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between",
 
                         width: 480,
                         minHeight: "100vh",
@@ -50,7 +49,7 @@ export default function SingupComplete() {
                             }}
                         />
                         <StandardButton
-                            text="나누다 시작하기"
+                            text="1/n 시작하기"
                             marginTop={32}
                             onClick={() => history.replace("/")}
                             state={true}
@@ -92,7 +91,7 @@ export default function SingupComplete() {
                         }}
                     />
                     <MStandardButton
-                        text="나누다 시작하기"
+                        text="1/n 시작하기"
                         marginTop={"8vw"}
                         onClick={() => history.replace("/")}
                         state={true}

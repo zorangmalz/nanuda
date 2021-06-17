@@ -59,8 +59,8 @@ export default function WebIntro() {
                         <span style={{
                             color: "#26c1f0"
                         }}>똑똑한 소비</span>
-                    를 하는 <br />당신을 위한
-                    <span style={{
+                        를 하는 <br />당신을 위한
+                        <span style={{
                             color: "#26c1f0"
                         }}> 분할결제 서비스</span>
                     </div>
@@ -71,9 +71,9 @@ export default function WebIntro() {
                         fontFamily: "NotoSansCJKkr"
                     }}>
                         나누다는 <br />
-                    원하는 상품을 신용등급 상관없이 누구나 <br />
-                    분할결제 할 수 있게 도와주는 서비스입니다.
-                </div>
+                        원하는 상품을 신용등급 상관없이 누구나 <br />
+                        분할결제 할 수 있게 도와주는 서비스입니다.
+                    </div>
                     <div style={{
                         cursor: "pointer",
                         fontSize: 18,
@@ -175,68 +175,78 @@ export function HomeHeader() {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
-            credentials:"include",
+            credentials: "include",
         })
-        .then((response)=>(response.json()))
+            .then((response) => (response.json()))
             .then(response => {
                 setLog(response.data)
-              
-            }).catch(err=>{
+
+            }).catch(err => {
                 console.log(err)
             })
-      
+
     }
-    function noticeClick() {
-        if (log == true) {
-            history.push("/notice")
-        } else {
-            history.push("/signup")
-        }
-    }
+
     function profileClick() {
         if (log == true) {
             history.push("/profilemain")
         } else {
-            history.push("/signup")
+            setIsLogin(true)
         }
     }
+    const [isLogin, setIsLogin] = useState(false)
     return (
-        <div style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            backgroundColor: "#ffffff",
-            borderBottom: "1px solid #dfdfdf",
-            paddingTop: 15,
-            paddingBottom: 15,
-        }}>
+        <>
             <div style={{
-                width: 100,
-                height: 28,
-            }} />
-            <img alt="mainlogo" src={mainlogo} style={{
-                width: 32,
-                height: 32
-            }} />
-            <div style={{
+                width: "100%",
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                justifyContent: "flex-end",
-
-                paddingRight: 20,
-                width: 80,
+                justifyContent: "space-between",
+                backgroundColor: "#ffffff",
+                borderBottom: "1px solid #dfdfdf",
+                paddingTop: 15,
+                paddingBottom: 15,
+                zIndex: 5,
             }}>
-                <img onClick={profileClick} alt="" src={user} style={{
-                    width: 28,
+                <div style={{
+                    width: 100,
                     height: 28,
-                    marginLeft: 8,
-                    cursor: "pointer"
                 }} />
+                <img alt="mainlogo" src={mainlogo} style={{
+                    width: 32,
+                    height: 32
+                }} />
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "flex-end",
+
+                    paddingRight: 20,
+                    width: 80,
+                }}>
+                    <img onClick={profileClick} alt="" src={user} style={{
+                        width: 28,
+                        height: 28,
+                        marginLeft: 8,
+                        cursor: "pointer"
+                    }} />
+                </div>
             </div>
-        </div>
+            {isLogin ?
+                <StandardChoiceModal
+                    title="회원가입이 필요한 서비스입니다."
+                    content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
+                    canceltext="취소"
+                    onCancelClick={() => setIsLogin(false)}
+                    buttontext="회원가입"
+                    onClick={() => history.push("/signup")}
+                />
+                :
+                <></>
+            }
+        </>
     )
 }
 
@@ -253,66 +263,77 @@ export function MHomeHeader() {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
-            credentials:"include",
+            credentials: "include",
         })
-            
+
             .then(response => {
                 setLog(response.data.data)
-              
-            }).catch(err=>{
+
+            }).catch(err => {
                 console.log(err)
             })
     }
-    function noticeClick() {
-        if (log == true) {
-            history.push("/notice")
-        } else {
-            history.push("/signup")
-        }
-    }
+
     function profileClick() {
         if (log == true) {
             history.push("/profilemain")
         } else {
-            history.push("/signup")
+            setIsLogin(true)
         }
     }
+    const [isLogin, setIsLogin] = useState(false)
     return (
-        <div style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            backgroundColor: "#ffffff",
-            borderBottom: "1px solid #dfdfdf",
-            paddingTop: 15,
-            paddingBottom: 15,
-        }}>
+        <>
             <div style={{
-                width: "30vw",
-            }} />
-            <img alt="mainlogo" src={mainlogo} style={{
-                width: "8vw",
-                height: "8vw"
-            }} />
-            <div style={{
+                width: "100%",
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                justifyContent: "flex-end",
-
-                paddingRight: "5vw",
-                width: "25vw"
+                justifyContent: "space-between",
+                backgroundColor: "#ffffff",
+                borderBottom: "1px solid #dfdfdf",
+                paddingTop: 15,
+                paddingBottom: 15,
+                zIndex: 5,
             }}>
-                <img onClick={profileClick} alt="" src={user} style={{
-                    width: 24,
-                    height: 24,
-                    marginLeft: 4,
-                    cursor: "pointer"
+                <div style={{
+                    width: "30vw",
                 }} />
+                <img alt="mainlogo" src={mainlogo} style={{
+                    width: "8vw",
+                    height: "8vw"
+                }} />
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "flex-end",
+
+                    paddingRight: "5vw",
+                    width: "25vw"
+                }}>
+                    <img onClick={profileClick} alt="" src={user} style={{
+                        width: 24,
+                        height: 24,
+                        marginLeft: 4,
+                        cursor: "pointer"
+                    }} />
+                </div>
             </div>
-        </div>
+            {isLogin ?
+                <StandardChoiceModal
+                    title="회원가입이 필요한 서비스입니다."
+                    content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
+                    canceltext="취소"
+                    onCancelClick={() => setIsLogin(false)}
+                    buttontext="회원가입"
+                    onClick={() => history.push("/signup")}
+                    mobile={true}
+                />
+                :
+                <></>
+            }
+        </>
     )
 }
 
@@ -527,7 +548,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
             }}>
                 사업자 등록번호 278-88-02031 <br />
                 대표자 : 김현명, 이지행 <br />
-                
+
                 주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
             </div>
             <div style={{
@@ -586,11 +607,11 @@ export function BottomTag({ marginTop, marginBottom }) {
                     textDecorationLine: "none",
                     WebkitAppearance: "none"
                 }}>
-                 <img src={kakao} alt="로고" style={{
-                    width: 48,
-                    height:48,
-                    borderRadius:6
-                }} /></a>
+                    <img src={kakao} alt="로고" style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 6
+                    }} /></a>
             </div>
             <div style={{
                 display: "flex",
@@ -752,7 +773,7 @@ export function BottomTag({ marginTop, marginBottom }) {
             }}>
                 사업자 등록번호 278-88-02031 <br />
                 대표자 : 김현명, 이지행 <br />
-                
+
                 주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
             </div>
             <div style={{
@@ -804,8 +825,8 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         marginTop: 8
                     }}>
                         운영시간  평일 11:00 ~ 18:00 (토 -일, 공휴일 휴무) <br />
-                                점심시간 평일 12:30 ~ 1:30
-                            </div>
+                        점심시간 평일 12:30 ~ 1:30
+                    </div>
                 </div>
                 <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
                     textDecorationLine: "none",
@@ -977,9 +998,9 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                 marginTop: 6
             }}>
                 사업자 등록번호 278-88-02031 <br />
-                        대표자 : 김현명, 이지행 <br />
-                       
-                        주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
+                대표자 : 김현명, 이지행 <br />
+
+                주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
             </div>
             <div style={{
                 width: "90%",
@@ -1030,8 +1051,8 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         marginTop: 8
                     }}>
                         운영시간  평일 11:00 ~ 18:00 (토 -일, 공휴일 휴무) <br />
-                                점심시간 평일 12:30 ~ 13:30
-                            </div>
+                        점심시간 평일 12:30 ~ 13:30
+                    </div>
                 </div>
                 <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
                     textDecorationLine: "none",
@@ -1203,9 +1224,9 @@ export function MBottomTag({ marginTop, marginBottom }) {
                 marginTop: 6
             }}>
                 사업자 등록번호 278-88-02031 <br />
-                        대표자 : 김현명, 이지행 <br />
-                       
-                        주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
+                대표자 : 김현명, 이지행 <br />
+
+                주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
             </div>
             <div style={{
                 width: "90%",
@@ -1268,10 +1289,10 @@ export function LateBox() {
                     marginLeft: 40,
                 }}>
                     연체료는 약속된 기한까지 분할결제 금액을 납부하지 않는 <br />
-                경우 발생하는 금액입니다.(예시 : 통장 잔액 부족) <br />
-                납부일을 넘기면 자동으로 10,000원의 연체료가 발생합니다. <br />
-                연체료의 총합은 구매 금액의 25%를 초과할 수 없습니다.
-            </div>
+                    경우 발생하는 금액입니다.(예시 : 통장 잔액 부족) <br />
+                    납부일을 넘기면 자동으로 10,000원의 연체료가 발생합니다. <br />
+                    연체료의 총합은 구매 금액의 25%를 초과할 수 없습니다.
+                </div>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 18,
@@ -1289,8 +1310,8 @@ export function LateBox() {
                     marginLeft: 40,
                 }}>
                     미결제 금액은 이전 차수의 분할결제에서 납부하지 않은 금액과 연체료의 합입니다. 미결제 금액은 다음 분할납부 결제일에 합산되어 자동이체 됩니다. <br />
-                예를 들어 10만원을 납부하지 못한경우 다음 결제일의 미결제 금액은 11만원(분할결제 금액 10만원 + 연체료 1만원)입니다. 따라서 다음달 결제일의 결제 금액은 21만원(다음달 분할결제 금액 10만원 + 미결제 금액 11만원)입니다.
-            </div>
+                    예를 들어 10만원을 납부하지 못한경우 다음 결제일의 미결제 금액은 11만원(분할결제 금액 10만원 + 연체료 1만원)입니다. 따라서 다음달 결제일의 결제 금액은 21만원(다음달 분할결제 금액 10만원 + 미결제 금액 11만원)입니다.
+                </div>
             </div>
         </div>
     )
@@ -1345,10 +1366,10 @@ export function LimitBox() {
                     marginLeft: 40,
                 }}>
                     연체료는 약속된 기한까지 분할결제 금액을 납부하지 않는 <br />
-                경우 발생하는 금액입니다.(예시 : 통장 잔액 부족) <br />
-                납부일을 넘기면 자동으로 10,000원의 연체료가 발생합니다. <br />
-                연체료의 총합은 구매 금액의 25%를 초과할 수 없습니다.
-            </div>
+                    경우 발생하는 금액입니다.(예시 : 통장 잔액 부족) <br />
+                    납부일을 넘기면 자동으로 10,000원의 연체료가 발생합니다. <br />
+                    연체료의 총합은 구매 금액의 25%를 초과할 수 없습니다.
+                </div>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: 18,
@@ -1366,8 +1387,8 @@ export function LimitBox() {
                     marginLeft: 40,
                 }}>
                     미결제 금액은 이전 차수의 분할결제에서 납부하지 않은 금액과 연체료의 합입니다. 미결제 금액은 다음 분할납부 결제일에 합산되어 자동이체 됩니다. <br />
-                예를 들어 10만원을 납부하지 못한경우 다음 결제일의 미결제 금액은 11만원(분할결제 금액 10만원 + 연체료 1만원)입니다. 따라서 다음달 결제일의 결제 금액은 21만원(다음달 분할결제 금액 10만원 + 미결제 금액 11만원)입니다.
-            </div>
+                    예를 들어 10만원을 납부하지 못한경우 다음 결제일의 미결제 금액은 11만원(분할결제 금액 10만원 + 연체료 1만원)입니다. 따라서 다음달 결제일의 결제 금액은 21만원(다음달 분할결제 금액 10만원 + 미결제 금액 11만원)입니다.
+                </div>
             </div>
         </div>
     )
@@ -1465,80 +1486,80 @@ export const MBannerContainer = styled.div`
     }
 `
 
-export function MTopBanner({img, title, content, backgroundColor, link}) {
+export function MTopBanner({ img, title, content, backgroundColor, link }) {
     return (
-        
-            <div style={{
-                width: "100vw",
-                position: "relative",
-                display: "flex",
-                flexDirection: "column",
-                height: 230,
-            }}>
-                {/* <img src={topbanner} height="250" style={{ objectFit: "cover", minWidth: 300 }} />
+
+        <div style={{
+            width: "100vw",
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            height: 230,
+        }}>
+            {/* <img src={topbanner} height="250" style={{ objectFit: "cover", minWidth: 300 }} />
                 <div style={{ position: "absolute", zIndex: 1, top: 0, width: "100vw", minWidth: 300, height: 250, background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8))" }} /> */}
-                <a href={link} target="_blank" style={{
-                    textDecorationLine: "none",
-                    WebkitAppearance: "none"
+            <a href={link} target="_blank" style={{
+                textDecorationLine: "none",
+                WebkitAppearance: "none"
+            }}>
+                <div style={{
+                    position: "absolute",
+                    zIndex: 1,
+                    top: 0,
+                    width: "100vw",
+                    paddingBottom: 20,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    justifyContent: "flex-end",
                 }}>
-                    <div style={{
-                        position: "absolute",
-                        zIndex: 1,
-                        top: 0,
+                    <img src={img} style={{
                         width: "100vw",
-                        paddingBottom: 20,
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "flex-end",
-                        justifyContent: "flex-end",
-                    }}>
-                        <img src={img} style={{
-                            width:"100vw",
-                            objectFit: "contain",
-                        }} />
-                    </div>
-                   
-                </a>
-            </div>
-        
+                        objectFit: "contain",
+                    }} />
+                </div>
+
+            </a>
+        </div>
+
     )
 }
 
 export function TopBanner({ img, title, content, backgroundColor, link }) {
     return (
-        
-            <div style={{
-                width: 480,
-                
-                height: 300,
-                position: "relative",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                backgroundColor: backgroundColor
-            }}>
-                {/* vlog 리영자 디자인 */}
-                {/* <img src={topbanner} height="418" style={{objectFit: "cover", minWidth: 1060}} />
+
+        <div style={{
+            width: 480,
+
+            height: 300,
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            backgroundColor: backgroundColor
+        }}>
+            {/* vlog 리영자 디자인 */}
+            {/* <img src={topbanner} height="418" style={{objectFit: "cover", minWidth: 1060}} />
                 <div style={{position: "absolute", zIndex: 1, top: 0, width: "100vw", minWidth: 1060, height: 418, background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8))"}} /> */}
-                <a href={link} target="_blank" style={{
-                    textDecorationLine: "none",
-                    WebkitAppearance: "none"
+            <a href={link} target="_blank" style={{
+                textDecorationLine: "none",
+                WebkitAppearance: "none"
+            }}>
+                <div style={{
+                    width: 480,
+                    height: 300,
+                    paddingBottom: 62,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    justifyContent: "flex-end",
                 }}>
-                    <div style={{
+                    <img src={img} alt="" style={{
                         width: 480,
-                        height: 300,
-                        paddingBottom: 62,
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "flex-end",
-                        justifyContent: "flex-end",
-                    }}>
-                        <img src={img} alt="" style={{
-                            width: 480,
-                            objectFit: "contain",
-                        }} />
-                    </div>
-                    {/* <div style={{
+                        objectFit: "contain",
+                    }} />
+                </div>
+                {/* <div style={{
                         position: "absolute",
                         zIndex: 2,
                         top: 144,
@@ -1562,9 +1583,9 @@ export function TopBanner({ img, title, content, backgroundColor, link }) {
                             color: "#ffffff",
                         }}>{content}</div>
                     </div> */}
-                </a>
-            </div>
-        
+            </a>
+        </div>
+
     )
 }
 
@@ -1685,7 +1706,8 @@ export function StandardChoiceModal({ title, content, canceltext, onCancelClick,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "rgba(0, 0, 0, 0.4)"
+            backgroundColor: "rgba(0, 0, 0, 0.4)",
+            zIndex: 10
         }}>
             <div style={{
                 width: mobile ? "75vw" : 300,
