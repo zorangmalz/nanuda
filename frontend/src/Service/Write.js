@@ -1,8 +1,9 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
+import { MStandardButton, StandardButton, StandardChoiceModal } from "../Style";
 import { useHistory } from "react-router";
 import ReactStars from "react-rating-stars-component";
+import { IoIosArrowBack } from "react-icons/io";
 
 export default function Write() {
     let history = useHistory()
@@ -21,15 +22,11 @@ export default function Write() {
             [name]: value
         })
     }
-    const [userId,setUserId]=useState("")    
-    const [user,setUser]=useState("")
-    async function putServiceReview() {
-        
-        var data = {
-            service_score: number, service_content: after, service_opinion: opinion, user_id:user
-        }
+
+    const [user,setUser]=useState(0)
+    useEffect(() => {
         fetch("https://haulfree.link/servicereviewornot/",{
-            method: "POST",
+            method: "GET",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
@@ -39,10 +36,17 @@ export default function Write() {
         })
             .then(response => response.json())
             .then(response => {
-                setUser(response.data.id)
+                console.log(response)
+                setUser(response.id)
             }).catch(err=>{
                 console.log(err)
             })
+    }, [])
+
+    async function putServiceReview() {
+        var data = {
+            service_score: number, service_content: after, service_opinion: opinion, user_id:user
+        }
     
         await fetch("https://haulfree.link/servicereview/", {
             method: "POST",
@@ -55,6 +59,7 @@ export default function Write() {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 history.replace("/servicereview")
             }).catch(err => console.log(err))
     }
@@ -62,6 +67,8 @@ export default function Write() {
     const ratingChanged = (newRating) => {
         setNumber(newRating)
     };
+
+    const [reviewCancel, setReviewCancel] = useState(false)
     return (
         <>
             <Default>
@@ -91,7 +98,44 @@ export default function Write() {
 
                             width: 480,
                         }}>
-                            <Header content="나눠본 사람들" goBack={true} />
+                            {reviewCancel ? 
+                                <StandardChoiceModal 
+                                    title="리뷰 작성을 취소하시겠습니까?"
+                                    content="리뷰를 작성하면 2천 포인트를 드려요!"
+                                    canceltext="취소"
+                                    onCancelClick={() => history.goBack()}
+                                    buttontext="계속쓰기"
+                                    onClick={() => setReviewCancel(false)}
+                                />
+                                :
+                                <></>
+                            }
+                            <div style={{
+                                width: "100%",
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                backgroundColor: "#ffffff",
+                                borderBottom: "1px solid #dfdfdf",
+                                justifyContent: "center",
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                position: "relative",
+                            }}>
+                                <IoIosArrowBack size={24} color="#010608" onClick={() => setReviewCancel(true)} style={{
+                                    position: "absolute",
+                                    left: 20,
+                                    cursor: "pointer"
+                                }} />
+                                <div style={{
+                                    fontSize: 18,
+                                    fontWeight: "bold",
+                                    color: "#010608",
+                                    alignSelf: "center",
+                                    justifyContent: "center",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>나눠본 사람들</div>
+                            </div>
                             <div style={{
                                 fontSize: 18,
                                 fontWeight: "bold",
@@ -188,7 +232,45 @@ export default function Write() {
 
                         width: "100%",
                     }}>
-                        <MHeader content="나눠본 사람들" goBack={true} />
+                        {reviewCancel ?
+                            <StandardChoiceModal
+                                title="리뷰 작성을 취소하시겠습니까?"
+                                content="리뷰를 작성하면 2천 포인트를 드려요!"
+                                canceltext="취소"
+                                onCancelClick={() => history.goBack()}
+                                buttontext="계속쓰기"
+                                onClick={() => setReviewCancel(false)}
+                                mobile={true}
+                            />
+                            :
+                            <></>
+                        }
+                        <div style={{
+                            width: "100%",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            backgroundColor: "#ffffff",
+                            borderBottom: "1px solid #dfdfdf",
+                            justifyContent: "center",
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            position: "relative",
+                        }}>
+                            <IoIosArrowBack size={24} color="#010608" onClick={() => setReviewCancel(true)} style={{
+                                position: "absolute",
+                                left: "5vw",
+                                cursor: "pointer"
+                            }} />
+                            <div style={{
+                                fontSize: 16,
+                                fontWeight: "bold",
+                                color: "#010608",
+                                alignSelf: "center",
+                                justifyContent: "center",
+                                fontFamily: "NotoSansCJKkr"
+                            }}>나눠본 사람들</div>
+                        </div>
                         <div style={{
                             fontSize: 16,
                             fontWeight: "bold",
