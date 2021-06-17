@@ -7,7 +7,7 @@ import OrderSheet from './Ordersheet/OrderSheet';
 import Address from './Ordersheet/Address';
 import PaymentFail from './Ordersheet/PaymentFail';
 import PaymentSuccess from './Ordersheet/PaymentSuccess';
-import SingupComplete from './Auth/SignupComplete';
+import SignupComplete from './Auth/SignupComplete';
 import ReviewMain from './Review/ReviewMain';
 import ReviewPost from './Review/ReviewPost';
 import ReviewWrite from './Review/ReviewWrite';
@@ -67,6 +67,7 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/signupprofile" component={SignupProfile} />
+        <Route path="/signupcomplete" component={SignupComplete} />
         <Route path="/ordersheet" component={OrderSheet} />
         <Route path="/address" component={Address} />
         <Route path="/paymentfail" component={PaymentFail} />

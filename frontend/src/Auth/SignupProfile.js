@@ -206,7 +206,7 @@ export default function SignupProfile() {
                     EncodeData:message
                 })
             })
-            .then(res => res.text())
+            .then(res => res.json())
                 .then(res => {
                   console.log(res.gender)
                   setUserData(res)
@@ -242,8 +242,9 @@ export default function SignupProfile() {
         })
             .then(response => response.json())
             .then(response => {
-                if (response.data.data === true) {
-                    history.push("signupcomplete")
+                console.log(response)
+                if (response.data === true) {
+                    history.push("/signupcomplete")
                 }
             }).catch(err => {
                 console.log(err)
