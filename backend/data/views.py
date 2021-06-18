@@ -275,7 +275,7 @@ def point_list(request):
             return Response(status=status.HTTP_404_NOT_FOUND)
         
         if request.method == "GET":
-            point = PointList.objects.filter(user_id = user.id)
+            point = list(PointList.objects.filter(user_id = user.id))
             return JsonResponse({
                 "point_list": point,
                 "point_entire": user.point_entire

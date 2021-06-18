@@ -1,8 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Header, MHeader, numberWithCommas } from "../Style";
 
 export default function ProfilePoint() {
+    const [pointList, setPointList] = useState([])
+    const [entirePoint, setEntirePoint] = useState(0)
+    useEffect(() => {
+        setPointList([])
+        fetch('https://haulfree.link/userpoint', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            console.log(res)
+            res.json()
+        })
+        .then(res => {
+            console.log(res)
+            setEntirePoint(res.point_entire)
+            // var array = []
+            // for(var i = 0; i < res.length; i++) {
+            //     array.push({
+            //         "date": res[i].date,
+            //         "content": res[i].content,
+            //         "add_or_sub": res[i].add_or_sub,
+            //         "point": res[i].point
+            //     })
+            // }
+            // setPointList(pointList.concat(array))
+            // console.log(pointList)
+        })
+        .catch(err =>  console.log(err))
+    }, [])
     return (
         <>
             <Default>
@@ -46,7 +76,7 @@ export default function ProfilePoint() {
                             paddingBottom: 32,
                             borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                             alignSelf: "center",
-                        }}>100 원</div>
+                        }}>{numberWithCommas(entirePoint)} 원</div>
                         <PointList date="2021.04.13" content="결제시 사용" price={-10000} />
                         <PointList date="2021.04.13" content="따라사기 보상 적립" price={200} />
                         <PointList date="2021.04.13" content="가입보상 적립" price={10000} />
@@ -84,7 +114,7 @@ export default function ProfilePoint() {
                         paddingBottom: "8vw",
                         borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                         alignSelf: "center",
-                    }}>100 원</div>
+                    }}>{numberWithCommas(entirePoint)} 원</div>
                     <MPointList date="2021.04.13" content="결제시 사용" price={-10000} />
                     <MPointList date="2021.04.13" content="따라사기 보상 적립" price={200} />
                     <MPointList date="2021.04.13" content="가입보상 적립" price={10000} />
