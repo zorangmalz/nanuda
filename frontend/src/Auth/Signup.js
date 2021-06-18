@@ -67,7 +67,7 @@ export default function Signup() {
                     alignItems: "center",
                     justifyContent: "center",
 
-                    width: "100%",
+                    width: "100vw",
                     minHeight: "100vh",
                     backgroundColor: "#f2f3f8"
                 }}>
@@ -75,48 +75,40 @@ export default function Signup() {
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
-                        justifyContent: "space-between",
 
                         width: 480,
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
+                        <Header content="회원가입" goBack={true} />
                         <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            width: "100%"
+                            width: 480,
+                            height: 300,
+                            marginBottom: 16,
                         }}>
-                            <Header content="회원가입" goBack={true} />
-                            <div style={{
-                                width: 480,
-                                height: 300,
-                                marginBottom: 16,
-                            }}>
-                                <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
-                                    <div>
-                                        <img alt="bannerOne" src={bannerOne} onClick={() => window.open('https://www.notion.so/haulfree/HaulFree-6a3f1f7d342d493193ac59d4319c2100', '_blank')} style={{
-                                            width: 480,
-                                            cursor: "pointer",
-                                        }} />
-                                    </div>
-                                    <div>
-                                        <img src={bannerTwo} alt="bannerTwo" onClick={() => window.open('https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934', '_blank')} style={{
-                                            width: 480,
-                                            cursor: "pointer",
-                                        }} />
-                                    </div>
-                                </Slider>
-                            </div>
-                            <KaKaoBtn
-                                style={{ width: 440, fontSize: 18, height: 56, color: "#010608" }}
-                                token={My_App_Key}
-                                onSuccess={kakaoResponse}
-                                onFailure={kakaoFail}
-                                className="KaKaoBtn"
-                            >카카오톡으로 시작하기</KaKaoBtn>
+                            <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
+                                <div>
+                                    <img alt="bannerOne" src={bannerOne} onClick={() => window.open('https://www.notion.so/haulfree/HaulFree-6a3f1f7d342d493193ac59d4319c2100', '_blank')} style={{
+                                        width: 480,
+                                        cursor: "pointer",
+                                    }} />
+                                </div>
+                                <div>
+                                    <img src={bannerTwo} alt="bannerTwo" onClick={() => window.open('https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934', '_blank')} style={{
+                                        width: 480,
+                                        cursor: "pointer",
+                                    }} />
+                                </div>
+                            </Slider>
                         </div>
-                        <BottomTag marginBottom={0} marginTop={100} />
+                        <KaKaoBtn
+                            style={{ width: 440, fontSize: 18, height: 56, color: "#010608", marginBottom: 0 }}
+                            token={My_App_Key}
+                            onSuccess={kakaoResponse}
+                            onFailure={kakaoFail}
+                            className="KaKaoBtn"
+                        >카카오톡으로 시작하기</KaKaoBtn>
+                        <BottomTag marginBottom={0} marginTop={80} />
                     </div>
                 </div>
             </Default>
