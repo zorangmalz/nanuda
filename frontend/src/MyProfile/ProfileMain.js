@@ -40,6 +40,7 @@ export default function ProfileMain() {
                     user_email: response.user_email,
                     name: response.name,
                     limit: response.limit,
+                    point: response.point_entire,
                 })
             })
             .catch(err => console.log(err))
