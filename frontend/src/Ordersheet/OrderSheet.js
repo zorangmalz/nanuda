@@ -30,7 +30,7 @@ export default function OrderSheet() {
     const [d, setD] = useState("")
     const [e, setE] = useState("")
     const [f, setF] = useState("")
-    const item = {
+    const item = { 
         name: a,
         addressNum: b,
         address: c,
@@ -40,24 +40,25 @@ export default function OrderSheet() {
     }
     async function addressCheck() {
         fetch("https://haulfree.link/checkAddress/", {
-            method: "POST",
+            method: "get",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
             credentials: "include",
-        })
+        }).then(response => response.json())
             .then(res => {
-                if (res.data.data === false) {
+                console.log(res)
+                if (res.data === false) {
                     setBasicAddress(false)
                 } else {
                     setBasicAddress(true)
-                    setA(res.data.address_name)
-                    setB(res.data.address_number)
-                    setC(res.data.address)
-                    setD(res.data.address_detail)
-                    setE(res.data.address_phone)
-                    setF(res.data.address_claim)
+                    setA(res.address_name)
+                    setB(res.address_number)
+                    setC(res.address)
+                    setD(res.address_detail)
+                    setE(res.address_phone)
+                    setF(res.address_claim)
                 }
             }).catch(err => {
                 console.log(err)
@@ -179,7 +180,9 @@ export default function OrderSheet() {
     //파라미터 받기
     const location = useLocation()
     const myparam = location.state.param
-
+    const addre = location.state.addInfo
+    const getUrl = location.state.url
+    const imageUrl = location.state.image
     const [image, setImage] = useState("")
     const [itemDes, setItemDes] = useState("")
     const [orderDes, setOrderDes] = useState("")
@@ -187,9 +190,26 @@ export default function OrderSheet() {
     const [ship, setShip] = useState(0)
 
     useEffect(() => {
-        setImage(myparam[0].ogImage.url)
-        setItemDes(myparam[0].ogTitle)
-        setShip(myparam[7])
+        try {
+            //console.log(myparam[0].image.url)
+            setImage(myparam[0].image.url)
+            setItemDes(myparam[0].title)
+
+        } catch (err) {
+            setImage(imageUrl)
+            setItemDes(myparam.Fname)
+            //console.log("??")
+        }
+        if (myparam[6] === 2) {
+            setShip(0)
+        } else if (myparam[6] === 3) {
+            setShip(2500)
+        } else if (myparam[6] === 4) {
+            setShip(5000)
+        } else {
+            setShip(myparam[7])
+        }
+
         if (myparam[1] === 1) {
             setOrderDes(myparam[3].ELcolor + "   " + myparam[3].ELetc)
             setPrice(Number(myparam[3].ELprice) + Number(myparam[5]))
@@ -243,29 +263,29 @@ export default function OrderSheet() {
             }
         } else {
             setOrderDes(myparam[3].Eetc)
-            setPrice(Number(myparam[3].Eprice) + Number(myparam[5]))
-            if (number === 2) {
-                var res = parseInt(parseInt((myparam[3].Eprice) / 100) / 2)
-                var left = parseInt((myparam[3].Eprice) / 100) % 2
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney("-")
-                setFourMoney("-")
-            } else if (number === 3) {
-                var res = parseInt(parseInt((myparam[3].Eprice) / 100) / 3)
-                var left = parseInt((myparam[3].Eprice) / 100) % 3
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney(res * 100)
-                setFourMoney("-")
-            } else {
-                var res = parseInt(parseInt((myparam[3].Eprice) / 100) / 4)
-                var left = parseInt((myparam[3].Eprice) / 100) % 4
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney(res * 100)
-                setFourMoney(res * 100)
-            }
+                    setPrice(Number(myparam[3].Eprice) + Number(myparam[5]))
+                    if (number === 2) {
+                        var res = parseInt(parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) / 2)
+                        var left = parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) % 2
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney("-")
+                        setFourMoney("-")
+                    } else if (number === 3) {
+                        var res = parseInt(parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) / 3)
+                        var left = parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) % 3
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney("-")
+                    } else {
+                        var res = parseInt(parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) / 4)
+                        var left = parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) % 4
+                        setOneMoney(res * 100 + left * 100)
+                        setTwoMoney(res * 100)
+                        setThreeMoney(res * 100)
+                        setFourMoney(res * 100)
+                    }
         }
 
     }, [number])

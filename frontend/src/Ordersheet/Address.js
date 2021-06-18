@@ -163,17 +163,20 @@ export default function Address() {
     useEffect(() => {
         check()
     }, [inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber])
+    
+    
     async function send() {
+        console.log("here?",inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber)
         await fetch("https://haulfree.link/uploadAddress/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
-            },
+            }, 
             credentials: "include",
             body: JSON.stringify({
                 params:
-                {
+                { 
                     address: inputs.address,
                     address_claim: inputs.claim,
                     address_code: inputs.addressNum,
@@ -186,9 +189,8 @@ export default function Address() {
         })
             .then(response => response.json())
             .then(response => {
-                if (response.data.data === true) {
-                    history.goBack()
-                }
+                console.log(response.data)
+                history.goBack()
             }).catch(err => {
                 console.log(err)
             })
