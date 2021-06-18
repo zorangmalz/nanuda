@@ -14,12 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include, re_path
-from nanuda.views import GoogleLogin, KakaoLogin,userInfoName,uploadAddress,checkAddress,serviceReviewOrNOt,orderUpload,niceMain
+from django.urls import path
+from nanuda.views import KakaoLogin, userInfoName, uploadAddress, checkAddress, serviceReviewOrNOt, orderUpload, niceMain
 
 #API 제작
 from rest_framework.urlpatterns import format_suffix_patterns
-from nanuda.views import KakaoLogin, GoogleLogin
+from nanuda.views import KakaoLogin
 from data.views import user_list, service_review_all, product_all, review_all, order_all, review_one, review_home, service_review_home, user_one, order_list
 
 urlpatterns = [
