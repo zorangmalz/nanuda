@@ -14,7 +14,6 @@ class PointList(models.Model):
         return self.date
     
     class Meta:
-        db_table = 'pointlist'
         managed=True
 
 class User(models.Model):
