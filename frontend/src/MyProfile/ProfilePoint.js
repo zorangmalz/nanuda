@@ -10,28 +10,29 @@ export default function ProfilePoint() {
         fetch('https://haulfree.link/userpoint', {
             method: "GET",
             headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(res => {
-            console.log(res)
-            res.json()
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
         })
-        .then(res => {
-            console.log(res)
-            setEntirePoint(res.point_entire)
-            // var array = []
-            // for(var i = 0; i < res.length; i++) {
-            //     array.push({
-            //         "date": res[i].date,
-            //         "content": res[i].content,
-            //         "add_or_sub": res[i].add_or_sub,
-            //         "point": res[i].point
-            //     })
-            // }
-            // setPointList(pointList.concat(array))
-            // console.log(pointList)
-        })
-        .catch(err =>  console.log(err))
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                if (res != null && res != undefined) {
+                    setEntirePoint(res["point_entire"])
+                    var array = []
+                    for (var i = 0; i < res["point_list"].length; i++) {
+                        array.push({
+                            "date": res["point_list"][i].date.slice(0, 10),
+                            "content": res["point_list"][i].content,
+                            "point": res["point_list"][i].add_or_sub ? res["point_list"][i].point : res["point_list"][i].point * (-1)
+                        })
+                    }
+                    setPointList(pointList.concat(array))
+                    console.log(pointList)
+                }
+            })
+            .catch(err => console.log(err))
     }, [])
     return (
         <>
@@ -77,9 +78,17 @@ export default function ProfilePoint() {
                             borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                             alignSelf: "center",
                         }}>{numberWithCommas(entirePoint)} 원</div>
-                        <PointList date="2021.04.13" content="결제시 사용" price={-10000} />
-                        <PointList date="2021.04.13" content="따라사기 보상 적립" price={200} />
-                        <PointList date="2021.04.13" content="가입보상 적립" price={10000} />
+                        {pointList.length > 0 ? 
+                            pointList.map((item) => {
+                                return <PointList 
+                                    date={item.date}
+                                    content={item.content}
+                                    price={item.point}
+                                />
+                            })
+                            :
+                            <></>
+                        }
                     </div>
                 </div>
             </Default>
@@ -115,9 +124,17 @@ export default function ProfilePoint() {
                         borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                         alignSelf: "center",
                     }}>{numberWithCommas(entirePoint)} 원</div>
-                    <MPointList date="2021.04.13" content="결제시 사용" price={-10000} />
-                    <MPointList date="2021.04.13" content="따라사기 보상 적립" price={200} />
-                    <MPointList date="2021.04.13" content="가입보상 적립" price={10000} />
+                    {pointList.length > 0 ?
+                        pointList.map((item) => {
+                            return <PointList
+                                date={item.date}
+                                content={item.content}
+                                price={item.point}
+                            />
+                        })
+                        :
+                        <></>
+                    }
                 </div>
             </Mobile>
         </>

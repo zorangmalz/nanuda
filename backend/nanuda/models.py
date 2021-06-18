@@ -169,7 +169,7 @@ class PointList(models.Model):
     point = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.date
+        return self.content
     
     class Meta:
         managed=True
