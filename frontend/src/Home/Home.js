@@ -1141,7 +1141,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
     )
 }
 
-function Review({ item }) {
+export function Review({ item }) {
     var maskingName = NameMask(item.user_name)
     var age = parseInt(item.user_age / 10)
     var gender = item.user_gender === 0 ? "남성" : "여성"
@@ -1211,7 +1211,7 @@ function Review({ item }) {
     )
 }
 
-function MReview({ item }) {
+export function MReview({ item }) {
     var maskingName = NameMask(item.user_name)
     var age = parseInt(item.user_age / 10)
     var gender = item.user_gender === 0 ? "남성" : "여성"

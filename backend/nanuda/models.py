@@ -121,7 +121,7 @@ class Review(models.Model):
 class Order(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    # product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     order_id=models.CharField(default="01210413135901010000", blank=False, max_length=30)
     order_date = models.DateTimeField(auto_now_add=True)
     order_price = models.PositiveIntegerField()
@@ -140,6 +140,7 @@ class Order(models.Model):
     wish_title=models.CharField(default="" ,blank=True, max_length=30)
     wish_des=models.CharField(default="" ,blank=True, max_length=30)
     wish_image=models.CharField(default="" ,blank=True, max_length=30)
+    review_write = models.BooleanField(default=False)
     
     def product_name(self):
         return self.product_id.product_name

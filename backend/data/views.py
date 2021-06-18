@@ -217,3 +217,41 @@ def order_all(request):
             order_serializer.save()
             return Response(order_serializer.data, status=status.HTTP_201_CREATED)
         return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["GET"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+def order_list(request):
+    if not request.COOKIES.get("access_token"):
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    else:
+        try:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+
+        except User.DoesNotExist():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        if request.method == "GET":
+            order_serializer = Order.objects.filter(user_id = user.id)
+
+            return JsonResponse({
+                "product_id": order_serializer.product_id,
+                "product_name": order_serializer.product_name,
+                "product_image": order_serializer.product_image,
+                "product_price": order_serializer.product_price,
+                "order_price": order_serializer.order_price,
+                "review_write": order_serializer.review_write
+            })
+        
+        # elif request.method == "PUT":
+        #     order = Order.objects.filter(user_id = user.id, product_id = request.data.product_id)
+        #     order_serializer = OrderAllSerializer(order, data=request.data)
+        #     if order_serializer.is_valid():
+        #         order_serializer.save()
+        #         return Response(order_serializer.data)
+        #     return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
