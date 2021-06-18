@@ -3,6 +3,19 @@ import uuid
 from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
+class PointList(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    date = models.DateTimeField(auto_now_add=True)
+    content = models.CharField(max_length=50, default="")
+    add_or_sub = models.BooleanField(default=True)
+    point = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.date
+    
+    class Meta:
+        db_table = 'pointlist'
+
 class User(models.Model):
     MAN = "1"
     WOMAN = "0"
@@ -31,7 +44,11 @@ class User(models.Model):
     address_claim = models.CharField(max_length=30,default="문 앞")
     address_name = models.CharField(max_length=30,default="나누다씨")
     address_phone = models.CharField(max_length=30,default="01090373600")
-    point = models.IntegerField(default=0)
+    # point 저장소
+    point = models.ForeignKey(PointList, on_delete=models.CASCADE, blank=True, null=True)
+    # point 전체 값
+    point_entire = models.PositiveIntegerField(default=0)
+
     platform = models.CharField(max_length=30, default="0")
     uid = models.CharField(max_length=300, default="")
     # 은행에 대한 choice 필요
@@ -94,8 +111,8 @@ class Product(models.Model):
 
 class Review(models.Model):
     id = models.BigAutoField(primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.PROTECT)
-    product_id = models.ForeignKey(Product, on_delete=models.PROTECT)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     review_score = models.FloatField(default=5.0, blank=True)
     review_date = models.DateTimeField(auto_now_add=True)
     review_like = models.TextField(default="내용", blank=True)
@@ -121,7 +138,7 @@ class Review(models.Model):
 class Order(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
     order_id=models.CharField(default="01210413135901010000", blank=False, max_length=30)
     order_date = models.DateTimeField(auto_now_add=True)
     order_price = models.PositiveIntegerField()

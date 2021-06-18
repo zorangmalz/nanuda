@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components"
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import { Header, MHeader, InputModule, MInputModule, StandardModal, StandardChoiceModal } from "../Style";
+import { Header, MHeader, InputModule, MInputModule, StandardChoiceModal } from "../Style";
 import { MdKeyboardArrowRight } from "react-icons/md"
 import { BiPlusCircle } from "react-icons/bi";
 
 export default function ProfileEdit() {
     let history = useHistory()
-
 
     const onChange = (e) => {
         const { value, name } = e.target
@@ -49,6 +48,11 @@ export default function ProfileEdit() {
             .catch(err => console.log(err))
     }, [])
 
+    const [logoutModal, setLogoutModal] = useState(false)
+    function logout() {
+        localStorage.clear()
+        history.replace('/')
+    }
     return (
         <>
             <Default>
@@ -72,6 +76,18 @@ export default function ProfileEdit() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
+                        {logoutModal ? 
+                            <StandardChoiceModal 
+                                title="로그아웃 하시겠습니까?"
+                                content=""
+                                canceltext="취소"
+                                buttontext="로그아웃"
+                                onCancelClick={() => setLogoutModal(false)}
+                                onClick={logout}
+                            />
+                            :
+                            <></>
+                        }
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
@@ -117,7 +133,7 @@ export default function ProfileEdit() {
                                 value={user_email}
                                 onChange={onChange}
                                 placeholder="이메일 주소"
-                                type={1}
+                                type={4}
                                 width={440}
                             />
                         </div>
@@ -128,7 +144,7 @@ export default function ProfileEdit() {
                             marginBottom: 40,
                             marginLeft: 20,
                         }}>
-                            <Small marginBottom="8px" >로그아웃</Small>
+                            <Small marginBottom="8px" onClick={() => setLogoutModal(true)} >로그아웃</Small>
                             <Small onClick={() => history.push("/profiledelete")}>회원 탈퇴</Small>
                         </div>
                     </div>
@@ -149,6 +165,19 @@ export default function ProfileEdit() {
                         flexDirection: "column",
                         width: "100%",
                     }}>
+                        {logoutModal ? 
+                            <StandardChoiceModal 
+                                title="로그아웃 하시겠습니까?"
+                                content=""
+                                canceltext="취소"
+                                buttontext="로그아웃"
+                                onCancelClick={() => setLogoutModal(false)}
+                                onClick={logout}
+                                mobile={true}
+                            />
+                            :
+                            <></>
+                        }
                         <MHeader content="내 정보 관리" goBack={true} />
                         <Title marginTop="8vw" fontSize="16px">이름</Title>
                         <MInputModule
@@ -189,7 +218,7 @@ export default function ProfileEdit() {
                             value={user_email}
                             onChange={onChange}
                             placeholder="이메일 주소"
-                            type={1}
+                            type={4}
                             width={"90vw"}
                         />
                     </div>
@@ -200,7 +229,7 @@ export default function ProfileEdit() {
                         marginBottom: "10vw",
                         marginLeft: "5vw",
                     }}>
-                        <Small fontSize="12px" marginBottom="2vw" >로그아웃</Small>
+                        <Small fontSize="12px" marginBottom="2vw" onClick={() => setLogoutModal(true)} >로그아웃</Small>
                         <Small fontSize="12px" onClick={() => history.push("/profiledelete")}>회원 탈퇴</Small>
                     </div>
                 </div>

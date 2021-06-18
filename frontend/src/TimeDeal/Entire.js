@@ -11,28 +11,28 @@ export default function Entire() {
     let history = useHistory()
 
     const [productList, setProductList] = useState([])
-    useEffect(() => {
-        setProductList([])
-        fetch('https://haulfree.link/product', {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        }).then(res => res.json())
-        .then(res => {
-            console.log(res)
-            setProductList(
-                productList.push({
-                    product_image: res.product_image,
-                    product_name: res.product_name,
-                    product_price: res.product_price,
-                    brand_name: "LG Gram",
-                    product_stock: res.product_stock
-                })
-            )
-        })
-        .catch(err => console.log(err))
-    },  [])
+    // useEffect(() => {
+    //     setProductList([])
+    //     fetch('https://haulfree.link/product', {
+    //         method: "GET",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //     }).then(res => res.json())
+    //     .then(res => {
+    //         console.log(res)
+    //         setProductList(
+    //             productList.push({
+    //                 product_image: res.product_image,
+    //                 product_name: res.product_name,
+    //                 product_price: res.product_price,
+    //                 brand_name: "LG Gram",
+    //                 product_stock: res.product_stock
+    //             })
+    //         )
+    //     })
+    //     .catch(err => console.log(err))
+    // },  [])
     return (
         <>
             <Default>
@@ -79,17 +79,6 @@ export default function Entire() {
                             sale={5}
                             onClick={() => history.push('/detail?product=ipad')}
                         />
-                        {productList.map(item => 
-                            <TimeShop 
-                                id=""
-                                img={item.product_image}
-                                title={item.brand_name}
-                                sub={item.product_name}
-                                twoPrice={item.product_price}
-                                fourPrice=""
-                                stock={item.product_stock}
-                            />
-                        )}
                     </div>
                 </div>
             </Default>

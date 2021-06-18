@@ -39,7 +39,6 @@ export default function ProfileMain() {
                     ...user,
                     user_email: response.user_email,
                     name: response.name,
-                    point: response.point,
                     limit: response.limit,
                 })
             })
@@ -117,7 +116,7 @@ export default function ProfileMain() {
                         }}>
                             <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" />
                             <ProfileInfo title="하울딜 찬스" data={1} unit="회" chance={true} />
-                            <ProfileInfo title="포인트" data={user.point} unit="P" />
+                            <ProfileInfo title="포인트" data={user.point} unit="P" onClick={() =>  history.push('/profilepoint')} />
                         </div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
@@ -251,7 +250,7 @@ export default function ProfileMain() {
     )
 }
 
-const ProfileInfo = ({ title, data, unit, mobile, chance }) => {
+const ProfileInfo = ({ title, data, unit, mobile, chance, onClick }) => {
     const [chanceInfo, setChanceInfo] = useState(false)
     return (
         <div style={{
@@ -268,11 +267,12 @@ const ProfileInfo = ({ title, data, unit, mobile, chance }) => {
                 flexDirection: "row",
                 alignItems: "center",
             }}>
-                <div style={{
+                <div onClick={onClick} style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: mobile ? 14 : 16,
                     color: "#ffffff",
-                    marginRight: mobile ? "1vw" : 4
+                    marginRight: mobile ? "1vw" : 4,
+                    cursor: "pointer"
                 }}>{title}</div>
                 {chance ?
                     <>
@@ -283,11 +283,12 @@ const ProfileInfo = ({ title, data, unit, mobile, chance }) => {
                     <></>
                 }
             </div>
-            <div style={{
+            <div onClick={onClick} style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: mobile ? 18 : 21,
                 fontWeight: "bold",
-                color: "#ffffff"
+                color: "#ffffff",
+                cursor: "pointer"
             }}>{numberWithCommas(data)} {unit}</div>
         </div>
     )

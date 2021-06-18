@@ -20,6 +20,7 @@
     "open-graph-scraper-lite": "1.1.1",
     "opengraph-io": "2.0.0",
     "react": "^17.0.2",
+    "react-cookie": "^4.0.3",
     "react-daum-postcode": "2.0.6",
     "react-dom": "^17.0.2",
     "react-facebook-login": "4.1.1",
