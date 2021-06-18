@@ -68,20 +68,23 @@ export default function Home() {
         })
             .then(response => response.json())
             .then(response => {
-                var array = []
-                for (var i = 0; i < response.length; i++) {
-                    const data = {
-                        service_score: response[i].service_score.toFixed(1),
-                        user_name: response[i].user_name,
-                        user_age: response[i].user_age,
-                        user_gender: response[i].user_gender,
-                        service_date: response[i].service_date,
-                        service_content: response[i].service_content,
+                if (response != null && response != undefined) {
+                    var array = []
+                    for (var i = 0; i < response.length; i++) {
+                        const data = {
+                            service_score: response[i].service_score.toFixed(1),
+                            user_name: response[i].user_name,
+                            user_age: response[i].user_age,
+                            user_gender: response[i].user_gender,
+                            service_date: response[i].service_date,
+                            service_content: response[i].service_content,
+                        }
+                        array.push(data)
                     }
-                    array.push(data)
+                    setReviewData(reviewData.concat(array))
                 }
-                setReviewData(reviewData.concat(array))
             })
+            .catch(err => console.log(err))
     }, [])
 
     //Get After Review Data
@@ -1114,7 +1117,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
 export function Review({ item }) {
     var maskingName = NameMask(item.user_name)
     var age = parseInt(item.user_age / 10)
-    var gender = item.user_gender === 0 ? "남성" : "여성"
+    var gender = item.user_gender === 1 ? "남성" : "여성"
     var score = item.service_score
     var content = item.service_content
     var date = item.service_date.slice(0, 10)
@@ -1184,7 +1187,7 @@ export function Review({ item }) {
 export function MReview({ item }) {
     var maskingName = NameMask(item.user_name)
     var age = parseInt(item.user_age / 10)
-    var gender = item.user_gender === 0 ? "남성" : "여성"
+    var gender = item.user_gender === 1 ? "남성" : "여성"
     var score = item.service_score
     var content = item.service_content
     var date = item.service_date.slice(0, 10)

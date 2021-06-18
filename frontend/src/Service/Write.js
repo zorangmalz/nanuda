@@ -48,7 +48,7 @@ export default function Write() {
             service_score: number, service_content: after, service_opinion: opinion, user_id:user
         }
     
-        await fetch("https://haulfree.link/servicereview/", {
+        await fetch("https://haulfree.link/servicereview/main", {
             method: "POST",
             headers: {
                 "Accept": "application/json",

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import { MReview, Review } from "../Home/Home";
-import { Header, MHeader } from "../Style";
+import { Header, MHeader, NameMask } from "../Style";
 
 
 export default function ServiceReview() {
@@ -35,29 +34,31 @@ export default function ServiceReview() {
     useEffect(() => {
         checkReview()
         setReviewData([])
-        fetch("https://haulfree.link/servicereview/", {
+        fetch("https://haulfree.link/servicereview/main", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
             },
-            credentials: true
+            credentials: "include"
         })
-            .then(res => res.text())
+            .then(res => res.json())
             .then(response => {
                 console.log(response)
-                var array = []
-                for (var i = 0; i < response.length; i++) {
-                    const data = {
-                        service_score: response[i].service_score.toFixed(1),
-                        user_name: response[i].user_name,
-                        user_age: response[i].user_age,
-                        user_gender: response[i].user_gender,
-                        service_date: response[i].service_date,
-                        service_content: response[i].service_content,
+                if (response != null && response != undefined) {
+                    var array = []
+                    for (var i = 0; i < response.length; i++) {
+                        const data = {
+                            service_score: response[i].service_score.toFixed(1),
+                            user_name: response[i].user_name,
+                            user_age: response[i].user_age,
+                            user_gender: response[i].user_gender,
+                            service_date: response[i].service_date,
+                            service_content: response[i].service_content,
+                        }
+                        array.push(data)
                     }
-                    array.push(data)
+                    setReviewData(reviewData.concat(array))
                 }
-                setReviewData(reviewData.concat(array))
             })
     }, [])
 
@@ -207,124 +208,124 @@ export default function ServiceReview() {
     )
 }
 
-// function Review({ item }) {
-//     var maskingName = NameMask(item.user_name)
-//     var age = parseInt(item.user_age / 10)
-//     var gender = item.user_gender === 0 ? "남성" : "여성"
-//     var score = item.service_score
-//     var content = item.service_content
-//     var date = item.service_date.slice(0, 10)
-//     return (
-//         <>
-//             <div style={{
-//                 width: 408,
-//                 padding: 16,
-//                 height: 138,
-//                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
-//                 display: "flex",
-//                 flexDirection: "column",
-//                 alignItems: "flex-start",
-//                 alignSelf: "center",
-//                 marginTop: 32,
-//                 borderRadius: 6,
-//             }}>
-//                 <div style={{
-//                     fontSize: 21,
-//                     fontWeight: "bold",
-//                     color: "#26c1f0",
-//                     marginBottom: 8,
-//                     fontFamily: "NotoSansCJKkr"
-//                 }}>{score}/5.0</div>
-//                 <div style={{
-//                     display: "flex",
-//                     flexDirection: "row",
-//                     alignItems: "center",
-//                     justifyContent: "space-between",
+function Review({ item }) {
+    var maskingName = NameMask(item.user_name)
+    var age = parseInt(item.user_age / 10)
+    var gender = item.user_gender === 1 ? "남성" : "여성"
+    var score = item.service_score
+    var content = item.service_content
+    var date = item.service_date.slice(0, 10)
+    return (
+        <>
+            <div style={{
+                width: 408,
+                padding: 16,
+                height: 138,
+                boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                alignSelf: "center",
+                marginTop: 32,
+                borderRadius: 6,
+            }}>
+                <div style={{
+                    fontSize: 21,
+                    fontWeight: "bold",
+                    color: "#26c1f0",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{score}/5.0</div>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
 
-//                     width: "100%",
-//                     marginBottom: 8,
-//                 }}>
-//                     <div style={{
-//                         opacity: 0.4,
-//                         color: "#010608",
-//                         fontSize: 14,
-//                         fontFamily: "NotoSansCJKkr"
-//                     }}>{maskingName}({age}0대 {gender})</div>
-//                     <div style={{
-//                         opacity: 0.4,
-//                         color: "#010608",
-//                         fontSize: 14,
-//                         fontFamily: "NotoSansCJKkr"
-//                     }}>{date}</div>
-//                 </div>
-//                 <div style={{
-//                     fontSize: 16,
-//                     color: "#010608",
-//                     lineHeight: 1.5,
-//                     fontFamily: "NotoSansCJKkr"
-//                 }}>{content}</div>
-//             </div>
-//         </>
-//     )
-// }
+                    width: "100%",
+                    marginBottom: 8,
+                }}>
+                    <div style={{
+                        opacity: 0.4,
+                        color: "#010608",
+                        fontSize: 14,
+                        fontFamily: "NotoSansCJKkr"
+                    }}>{maskingName}({age}0대 {gender})</div>
+                    <div style={{
+                        opacity: 0.4,
+                        color: "#010608",
+                        fontSize: 14,
+                        fontFamily: "NotoSansCJKkr"
+                    }}>{date}</div>
+                </div>
+                <div style={{
+                    fontSize: 16,
+                    color: "#010608",
+                    lineHeight: 1.5,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{content}</div>
+            </div>
+        </>
+    )
+}
 
-// function MReview({ item }) {
-//     var maskingName = NameMask(item.user_name)
-//     var age = parseInt(item.user_age / 10)
-//     var gender = item.user_gender === 0 ? "남성" : "여성"
-//     var score = item.service_score
-//     var content = item.service_content
-//     var date = item.service_date.slice(0, 10)
-//     return (
-//         <>
-//             <div style={{
-//                 width: "82vw",
-//                 padding: "4vw",
-//                 height: "32vw",
-//                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
-//                 display: "flex",
-//                 flexDirection: "column",
-//                 alignItems: "flex-start",
-//                 alignSelf: "center",
-//                 marginTop: "8vw",
-//                 borderRadius: 6,
-//             }}>
-//                 <div style={{
-//                     fontSize: 21,
-//                     fontWeight: "bold",
-//                     color: "#26c1f0",
-//                     marginBottom: 8,
-//                     fontFamily: "NotoSansCJKkr"
-//                 }}>{score}/5.0</div>
-//                 <div style={{
-//                     display: "flex",
-//                     flexDirection: "row",
-//                     alignItems: "center",
-//                     justifyContent: "space-between",
+function MReview({ item }) {
+    var maskingName = NameMask(item.user_name)
+    var age = parseInt(item.user_age / 10)
+    var gender = item.user_gender === 1 ? "남성" : "여성"
+    var score = item.service_score
+    var content = item.service_content
+    var date = item.service_date.slice(0, 10)
+    return (
+        <>
+            <div style={{
+                width: "82vw",
+                padding: "4vw",
+                height: "32vw",
+                boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                alignSelf: "center",
+                marginTop: "8vw",
+                borderRadius: 6,
+            }}>
+                <div style={{
+                    fontSize: 21,
+                    fontWeight: "bold",
+                    color: "#26c1f0",
+                    marginBottom: 8,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{score}/5.0</div>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
 
-//                     width: "100%",
-//                     marginBottom: "2vw",
-//                 }}>
-//                     <div style={{
-//                         opacity: 0.4,
-//                         color: "#010608",
-//                         fontSize: 14,
-//                         fontFamily: "NotoSansCJKkr"
-//                     }}>{maskingName}({age}0대 {gender})</div>
-//                     <div style={{
-//                         opacity: 0.4,
-//                         color: "#010608",
-//                         fontSize: 14,
-//                         fontFamily: "NotoSansCJKkr"
-//                     }}>{date}</div>
-//                 </div>
-//                 <div style={{
-//                     fontSize: 16,
-//                     color: "#010608",
-//                     lineHeight: 1.5,
-//                     fontFamily: "NotoSansCJKkr"
-//                 }}>{content}</div>
-//             </div>
-//         </>
-//     )
-// }
+                    width: "100%",
+                    marginBottom: "2vw",
+                }}>
+                    <div style={{
+                        opacity: 0.4,
+                        color: "#010608",
+                        fontSize: 14,
+                        fontFamily: "NotoSansCJKkr"
+                    }}>{maskingName}({age}0대 {gender})</div>
+                    <div style={{
+                        opacity: 0.4,
+                        color: "#010608",
+                        fontSize: 14,
+                        fontFamily: "NotoSansCJKkr"
+                    }}>{date}</div>
+                </div>
+                <div style={{
+                    fontSize: 16,
+                    color: "#010608",
+                    lineHeight: 1.5,
+                    fontFamily: "NotoSansCJKkr"
+                }}>{content}</div>
+            </div>
+        </>
+    )
+}
