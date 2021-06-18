@@ -1,6 +1,6 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import WebIntro, { Header, MHeader, numberWithCommas } from "../Style";
 import { RiArrowRightSLine } from "react-icons/ri"
 import { useHistory } from "react-router";
 
@@ -18,6 +18,9 @@ function reducer(state, action) {
 }
 
 export default function ReviewSelect() {
+    useEffect(() => {
+
+    }, [])
     return (
         <>
             <Default>
@@ -124,8 +127,8 @@ export function Product({ name, current, sale, border }) {
                     flexDirection: "column"
                 }}>
                     <div style={{ fontSize: 14, fontFamily: "AvenirNext", marginBottom: 8 }}>{name}</div>
-                    <div style={{ fontSize: 14, opacity: 0.6, textDecoration: "line-through", marginBottom: 8 }}>{current} 원</div>
-                    <div style={{ fontSize: 16, fontWeight: "bold", color: "#010608", marginBottom: 8 }}>{sale} 원에 획득 완료!</div>
+                    <div style={{ fontSize: 14, opacity: 0.6, textDecoration: "line-through", marginBottom: 8 }}>{numberWithCommas(current)} 원</div>
+                    <div style={{ fontSize: 16, fontWeight: "bold", color: "#010608", marginBottom: 8 }}>{numberWithCommas(sale)} 원에 획득 완료!</div>
                 </div>
             </div>
             <RiArrowRightSLine color="#dfdfdf" size={24} style={{ cursor: "pointer" }} />
@@ -165,8 +168,8 @@ export function MProduct({ name, current, sale, border }) {
                     flexDirection: "column"
                 }}>
                     <div style={{ fontSize: 12, fontFamily: "AvenirNext", marginBottom: 4 }}>{name}</div>
-                    <div style={{ fontSize: 12, opacity: 0.6, textDecoration: "line-through", marginBottom: 4 }}>{current} 원</div>
-                    <div style={{ fontSize: 14, fontWeight: "bold", color: "#010608", marginBottom: 4 }}>{sale} 원에 획득 완료!</div>
+                    <div style={{ fontSize: 12, opacity: 0.6, textDecoration: "line-through", marginBottom: 4 }}>{numberWithCommas(current)} 원</div>
+                    <div style={{ fontSize: 14, fontWeight: "bold", color: "#010608", marginBottom: 4 }}>{numberWithCommas(sale)} 원에 획득 완료!</div>
                 </div>
             </div>
             <RiArrowRightSLine color="#dfdfdf" size={20} style={{ cursor: "pointer" }} />
