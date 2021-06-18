@@ -3,19 +3,6 @@ import uuid
 from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
-class PointList(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    date = models.DateTimeField(auto_now_add=True)
-    content = models.CharField(max_length=50, default="")
-    add_or_sub = models.BooleanField(default=True)
-    point = models.PositiveIntegerField(default=0)
-
-    def __str__(self):
-        return self.date
-    
-    class Meta:
-        managed=True
-
 class User(models.Model):
     MAN = "1"
     WOMAN = "0"
@@ -44,8 +31,6 @@ class User(models.Model):
     address_claim = models.CharField(max_length=30,default="문 앞")
     address_name = models.CharField(max_length=30,default="나누다씨")
     address_phone = models.CharField(max_length=30,default="01090373600")
-    # point 저장소
-    point = models.ForeignKey(PointList, on_delete=models.CASCADE, blank=True, null=True)
     # point 전체 값
     point_entire = models.PositiveIntegerField(default=0)
 
@@ -173,4 +158,18 @@ class Order(models.Model):
     
     class Meta:
         ordering = ["id", "order_date"]
+        managed=True
+
+class PointList(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    content = models.CharField(max_length=50, default="")
+    add_or_sub = models.BooleanField(default=True)
+    point = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.date
+    
+    class Meta:
         managed=True

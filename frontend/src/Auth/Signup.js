@@ -54,21 +54,6 @@ export default function Signup() {
             }).catch(err => {
                 console.log(err)
             })
-        await fetch("https://haulfree.link/userInfoName/", {
-            method: "GET",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: "include"
-        }).then(res => res.json())
-        .then(res =>  {
-            if(res.data == true) {
-                history.replace("/")
-            } else {
-                history.replace("/signupprofile")
-            }
-        }).catch(err => console.log(err))
     }
     const kakaoFail = async (res) => {
     }

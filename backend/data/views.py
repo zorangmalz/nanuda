@@ -14,7 +14,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.parsers import JSONParser
 
 # Model Import 
-from nanuda.models import User, ServiceReview, Product, Review, Order
+from nanuda.models import PointList, User, ServiceReview, Product, Review, Order
 from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
 
 #Python 내장함수
@@ -255,3 +255,38 @@ def order_list(request):
         #         order_serializer.save()
         #         return Response(order_serializer.data)
         #     return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["GET", "POST"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+def point_list(request):
+    if not request.COOKIES.get("access_token"):
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    else:
+        try:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+
+        except User.DoesNotExist():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        if request.method == "GET":
+            point = PointList.objects.filter(user_id = user.id)
+            return JsonResponse({
+                "point_list": point,
+                "point_entire": user.point_entire
+            })
+        
+        elif request.method == "POST":
+            PointList.objects.create(
+                user_id = user,
+                content = request.POST.get("content"),
+                add_or_sub = request.POST.get("add_or_sub"),
+                point = request.POST.get("point")
+            )
+            user.point_entire = request.POST.get("point_entire")
+            return Response(status=status.HTTP_201_CREATED)
