@@ -157,7 +157,7 @@ export function MHeader({ content, goBack, goX }) {
                 justifyContent: "center",
                 fontFamily: "NotoSansCJKkr"
             }}>{content}</div>
-        </div>
+        </div> 
     )
 }
 
