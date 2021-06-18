@@ -15,6 +15,7 @@ class PointList(models.Model):
     
     class Meta:
         db_table = 'pointlist'
+        managed=True
 
 class User(models.Model):
     MAN = "1"
