@@ -57,7 +57,7 @@ export default function ProfileDelete() {
                             marginTop: 16,
                             marginLeft: 20,
                         }}>
-                            <div style={{ marginBottom: 8 }}>1. 나누다 포인트가 사라져요.</div>
+                            <div style={{ marginBottom: 8 }}>1. 1/n 포인트가 사라져요.</div>
                             <div>2. 더이상 자유로운 분할결제가 불가능해요.</div>
                         </div>
                         <div style={{
@@ -165,7 +165,7 @@ export default function ProfileDelete() {
                         marginTop: "4vw",
                         marginLeft: "5vw",
                     }}>
-                        <div style={{ marginBottom: 4 }}>1. 나누다 포인트가 사라져요.</div>
+                        <div style={{ marginBottom: 4 }}>1. 1/n 포인트가 사라져요.</div>
                         <div>2. 더이상 자유로운 분할결제가 불가능해요.</div>
                     </div>
                     <div style={{

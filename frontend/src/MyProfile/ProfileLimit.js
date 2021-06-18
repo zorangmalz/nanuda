@@ -25,7 +25,7 @@ export default function ProfileLimit() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        <Header content="나누다 한도" goBack={true} />
+                        <Header content="1/n 한도" goBack={true} />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -70,7 +70,7 @@ export default function ProfileLimit() {
                                 fontSize: 14,
                                 fontWeight: "bold",
                                 color: "#010608"
-                            }}>나누다 팁!</div>
+                            }}>1/n 팁!</div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
@@ -240,7 +240,7 @@ export default function ProfileLimit() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="나누다 한도" goBack={true} />
+                    <MHeader content="1/n 한도" goBack={true} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
@@ -285,7 +285,7 @@ export default function ProfileLimit() {
                             fontSize: 12,
                             fontWeight: "bold",
                             color: "#010608"
-                        }}>나누다 팁!</div>
+                        }}>1/n 팁!</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,

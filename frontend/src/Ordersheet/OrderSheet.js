@@ -596,7 +596,7 @@ export default function OrderSheet() {
                             marginBottom: 4,
                             alignSelf: "flex-start",
                             fontFamily: "NotoSansCJKkr"
-                        }}>나누다 팁!</div>
+                        }}>1/n 팁!</div>
                         <div style={{
                             opacity: 0.8,
                             fontSize: 14,
@@ -692,7 +692,7 @@ export default function OrderSheet() {
                                     opacity: 0.6,
                                     color: "#010608",
                                     fontFamily: "NotoSansCJKkr"
-                                }}>나누다 포인트 : </div>
+                                }}>1/n 포인트 : </div>
                                 <div style={{
                                     fontSize: 16,
                                     opacity: 0.6,
@@ -768,7 +768,7 @@ export default function OrderSheet() {
                             color: "#010608",
                             marginLeft: 20,
                             fontFamily: "NotoSansCJKkr"
-                        }}>* 개별 판매자가 등록한 나누다 딜 상품에 대한 광고, 상품주문, 배송 및 환불의 의무와 책임은 각 판매자가 부담하고, 이에 대하여 나누다는 통신판매중개자로서 통신판매의 당사자가 아니므로 일체 책임을 지지 않습니다.</div>
+                        }}>* 개별 판매자가 등록한 1/n 딜 상품에 대한 광고, 상품주문, 배송 및 환불의 의무와 책임은 각 판매자가 부담하고, 이에 대하여 1/n는 통신판매중개자로서 통신판매의 당사자가 아니므로 일체 책임을 지지 않습니다.</div>
                         <div style={{
                             height: 1,
                             width: 480,
@@ -1049,7 +1049,7 @@ export default function OrderSheet() {
                         marginBottom: 4,
                         alignSelf: "flex-start",
                         fontFamily: "NotoSansCJKkr"
-                    }}>나누다 팁!</div>
+                    }}>1/n 팁!</div>
                     <div style={{
                         opacity: 0.8,
                         fontSize: 12,
@@ -1144,7 +1144,7 @@ export default function OrderSheet() {
                                 opacity: 0.6,
                                 color: "#010608",
                                 fontFamily: "NotoSansCJKkr"
-                            }}>나누다 포인트 : </div>
+                            }}>1/n 포인트 : </div>
                             <div style={{
                                 fontSize: 14,
                                 opacity: 0.6,
@@ -1219,7 +1219,7 @@ export default function OrderSheet() {
                         color: "#010608",
                         alignSelf: "center",
                         fontFamily: "NotoSansCJKkr"
-                    }}>* 개별 판매자가 등록한 나누다 딜 상품에 대한 광고, 상품주문, 배송 및 환불의 의무와 책임은 각 판매자가 부담하고, 이에 대하여 나누다는 통신판매중개자로서 통신판매의 당사자가 아니므로 일체 책임을 지지 않습니다.</div>
+                    }}>* 개별 판매자가 등록한 1/n 딜 상품에 대한 광고, 상품주문, 배송 및 환불의 의무와 책임은 각 판매자가 부담하고, 이에 대하여 1/n는 통신판매중개자로서 통신판매의 당사자가 아니므로 일체 책임을 지지 않습니다.</div>
                     <div style={{
                         height: 1,
                         width: "100%",

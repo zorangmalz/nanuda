@@ -25,7 +25,7 @@ export default function ProfilePoint() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        <Header content="나누다 포인트" goBack={true} />
+                        <Header content="1/n 포인트" goBack={true} />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -34,7 +34,7 @@ export default function ProfilePoint() {
 
                             marginTop: 32,
                             marginLeft: 20,
-                        }}>나누다 포인트</div>
+                        }}>1/n 포인트</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 32,
@@ -63,7 +63,7 @@ export default function ProfilePoint() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="나누다 포인트" goBack={true} />
+                    <MHeader content="1/n 포인트" goBack={true} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
@@ -72,7 +72,7 @@ export default function ProfilePoint() {
 
                         marginTop: "8vw",
                         marginLeft: "5vw",
-                    }}>나누다 포인트</div>
+                    }}>1/n 포인트</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 28,

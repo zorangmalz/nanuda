@@ -143,7 +143,7 @@ export default function Write() {
                                 marginTop: 32,
                                 marginLeft: 20,
                                 fontFamily: "NotoSansCJKkr"
-                            }}>나누다 서비스 만족도는 어느정도인가요?</div>
+                            }}>1/n 서비스 만족도는 어느정도인가요?</div>
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
@@ -170,7 +170,7 @@ export default function Write() {
                                 marginTop: 36,
                                 marginLeft: 20,
                                 fontFamily: "NotoSansCJKkr"
-                            }}>나누다 서비스 이용 후기를 작성해주세요!</div>
+                            }}>1/n 서비스 이용 후기를 작성해주세요!</div>
                             <textarea onChange={onChange} name="after" value={after} cols="10" rows="5" placeholder="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
                                 outline: 0,
                                 border: 0,
@@ -278,7 +278,7 @@ export default function Write() {
                             marginTop: 32,
                             marginLeft: "5%",
                             fontFamily: "NotoSansCJKkr"
-                        }}>나누다 서비스 만족도는 어느정도인가요?</div>
+                        }}>1/n 서비스 만족도는 어느정도인가요?</div>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -305,7 +305,7 @@ export default function Write() {
                             marginTop: 36,
                             marginLeft: "5%",
                             fontFamily: "NotoSansCJKkr"
-                        }}>나누다 서비스 이용 후기를 작성해주세요!</div>
+                        }}>1/n 서비스 이용 후기를 작성해주세요!</div>
                         <textarea onChange={onChange} name="after" value={after} cols="10" rows="5" placeholder="정성스럽게 작성해주시면.. 사랑합니다 ❤️" style={{
                             outline: 0,
                             border: 0,

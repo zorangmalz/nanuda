@@ -231,7 +231,7 @@ export default function SignupProfile() {
                                 fontSize: 14,
                                 color: "#010608",
                                 marginLeft: 8,
-                            }}>나누다 <span style={{
+                            }}>1/n <span style={{
                                 textDecorationLine: "underline",
                                 marginRight: 2,
                             }}>서비스 이용약관</span> 동의 (필수)</div>
@@ -420,7 +420,7 @@ export default function SignupProfile() {
                             fontSize: 14,
                             color: "#010608",
                             marginLeft: "2vw",
-                        }}>나누다 <span style={{
+                        }}>1/n <span style={{
                             textDecorationLine: "underline",
                             marginRight: 2,
                         }}>서비스 이용약관</span> 동의 (필수)</div>

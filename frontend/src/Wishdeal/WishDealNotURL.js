@@ -547,7 +547,7 @@ function FashionForm({ image, brand, name, price, color, size, etc }) {
                 marginLeft: 20,
             }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <input
-                placeholder="나누다"
+                placeholder="1/n"
                 style={{
                     marginTop: 16,
                     width: 440,
@@ -712,7 +712,7 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
                 marginLeft: "5vw",
             }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <input
-                placeholder="나누다"
+                placeholder="1/n"
                 style={{
                     marginTop: "4vw",
                     width: "90vw",
@@ -877,7 +877,7 @@ function ElectronicForm({ image, brand, name, price, count, etc }) {
                 marginLeft: 20,
             }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <input
-                placeholder="나누다"
+                placeholder="1/n"
                 style={{
                     marginTop: 16,
                     width: 440,
@@ -1017,7 +1017,7 @@ function MElectronicForm({ image, brand, name, price, count, etc }) {
                 marginLeft: "5vw",
             }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <input
-                placeholder="나누다"
+                placeholder="1/n"
                 style={{
                     marginTop: "4vw",
                     width: "90vw",
@@ -1157,7 +1157,7 @@ function FoodForm({ image, brand, name, price, count, etc }) {
                 marginLeft: 20,
             }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <input
-                placeholder="나누다"
+                placeholder="1/n"
                 style={{
                     marginTop: 16,
                     width: 440,
@@ -1297,7 +1297,7 @@ function MFoodForm({ image, brand, name, price, count, etc }) {
                 marginLeft: "5vw",
             }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <input
-                placeholder="나누다"
+                placeholder="1/n"
                 style={{
                     marginTop: "4vw",
                     width: "90vw",
@@ -1437,7 +1437,7 @@ function ETCForm({ image, brand, name, price, etc }) {
                 marginLeft: 20,
             }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <input
-                placeholder="나누다"
+                placeholder="1/n"
                 style={{
                     marginTop: 16,
                     width: 440,
@@ -1552,7 +1552,7 @@ function METCForm({ image, brand, name, price, etc }) {
                 marginLeft: "5vw",
             }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <input
-                placeholder="나누다"
+                placeholder="1/n"
                 style={{
                     marginTop: "4vw",
                     width: "90vw",

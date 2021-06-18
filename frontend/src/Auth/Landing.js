@@ -24,7 +24,7 @@ export default function Landing() {
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
                     }}>
-                        <Header content="나누다 시작하기" />
+                        <Header content="1/n 시작하기" />
                         <Slider dotsClass="desktop-landing-slick-dots"
                             dots={true}
                             slidesToShow={1}
@@ -114,7 +114,7 @@ export default function Landing() {
                                     fontFamily: "NotoSansCJKkr",
                                     textAlign: "left",
                                     color: "#010608"
-                                }}>나누다에서 나눠서 결제해! <br /> 할부 이자 없이 구매할 수 있어 ㅎㅎ</div>
+                                }}>1/n에서 나눠서 결제해! <br /> 할부 이자 없이 구매할 수 있어 ㅎㅎ</div>
                                 <div style={{
                                     width: 408,
                                     marginLeft: 20,
@@ -299,7 +299,7 @@ export default function Landing() {
                         <div style={{ marginTop: 4, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>거야? </div>
                     </div>
                     <div style={{ border: "solid 1px rgba(0,0,0,0.12)", marginTop: 32, marginLeft: 20, backgroundColor: "#ffffff", width: 288, height: 80, borderRadius: 10, boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)" }}>
-                        <div style={{ marginTop: 20, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>나누다에서 나눠서 결제해!</div>
+                        <div style={{ marginTop: 20, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>1/n에서 나눠서 결제해!</div>
                         <div style={{ marginTop: 4, marginLeft: 16, fontSize: 16, fontFamily: "NotoSansCJKkr" }}>할부 이자 없이 구매할 수 있어 ㅎㅎ </div>
                     </div>
                     <div style={{ width: "100%", marginLeft: 20, marginTop: 32, height: 56, backgroundColor: "#D4F7F6", boxShadow: "0 3px 6px 0 rgba(38, 37, 37, 0.12)", borderRadius: 10 }}>

@@ -47,7 +47,7 @@ export default function WebIntro() {
                         fontWeight: "bold",
                         color: "#010608",
                         fontFamily: "NotoSansCJKkr"
-                    }}>나누다</div>
+                    }}>1/n</div>
                     <div style={{
                         fontSize: 24,
                         fontWeight: "bold",
@@ -69,7 +69,7 @@ export default function WebIntro() {
                         marginBottom: 32,
                         fontFamily: "NotoSansCJKkr"
                     }}>
-                        나누다는 <br />
+                        1/n는 <br />
                         원하는 상품을 신용등급 상관없이 누구나 <br />
                         분할결제 할 수 있게 도와주는 서비스입니다.
                     </div>
@@ -80,7 +80,7 @@ export default function WebIntro() {
                         color: "#010608",
                         textDecorationLine: "underline",
                         fontFamily: "NotoSansCJKkr"
-                    }}>나누다는 신용카드와 무엇이 다른가요?</div>
+                    }}>1/n는 신용카드와 무엇이 다른가요?</div>
                 </div>
             </div>
         </>
@@ -421,7 +421,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
 
                         cursor: "pointer",
                         marginTop: 8,
-                    }}>나누다는 어떤 서비스인가요?</div>
+                    }}>1/n은 어떤 서비스인가요?</div>
                     <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
@@ -646,7 +646,7 @@ export function BottomTag({ marginTop, marginBottom }) {
 
                         cursor: "pointer",
                         marginTop: 8,
-                    }}>나누다는 어떤 서비스인가요?</div>
+                    }}>1/n은 어떤 서비스인가요?</div>
                     <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
                         fontSize: 12,
                         opacity: 0.8,
@@ -872,7 +872,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
 
                         cursor: "pointer",
                         marginTop: 6,
-                    }}>나누다는 어떤 서비스인가요?</div>
+                    }}>1/n은 어떤 서비스인가요?</div>
                     <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,
@@ -1098,7 +1098,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
 
                         cursor: "pointer",
                         marginTop: 6,
-                    }}>나누다는 어떤 서비스인가요?</div>
+                    }}>1/n은 어떤 서비스인가요?</div>
                     <div onClick={() => window.open('https://www.notion.so/HaulFree-6a3f1f7d342d493193ac59d4319c2100', "_blank")} style={{
                         fontSize: 10,
                         opacity: 0.8,

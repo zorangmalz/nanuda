@@ -155,7 +155,7 @@ export default function ProfileVerification() {
                                 marginTop: 16,
                                 width: 440,
                                 alignSelf: "center"
-                            }}>나누다 팁!</div>
+                            }}>1/n 팁!</div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
@@ -282,7 +282,7 @@ export default function ProfileVerification() {
                             marginTop: "4vw",
                             width: "90vw",
                             alignSelf: "center"
-                        }}>나누다 팁!</div>
+                        }}>1/n 팁!</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
