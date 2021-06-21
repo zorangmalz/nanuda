@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, numberWithCommas } from "../Style";
+import { Header, MHeader, numberWithCommas } from "../Style";
 
 export default function ProfileLimit() {
-    const history = useHistory()
-
     //현재 유저 정보
     const [user, setUser] = useState({
         name: "",
