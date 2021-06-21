@@ -196,20 +196,12 @@ def review_profile(request, pk):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            review = Review.objects.filter(user_id = user.id).order_by("-review_date").values_list(
-                'user_nickname',
-                'user_profile',
-                'review_image',
-                'review_score',
-                'review_like',
-                'order_price',
-                flat=True
-            )
+            review = Review.objects.filter(user_id = user.id).order_by("-review_date").values()
             count = len(review)
             if (pk + 4 > count):
-                my_reviews = review[pk, count]
+                my_reviews = review[pk:count]
             else:
-                my_reviews = review[pk, pk+4]
+                my_reviews = review[pk:pk+4]
 
             lists = []
             for my_review in my_reviews:
