@@ -1,8 +1,36 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import WebIntro, { Header, MHeader, numberWithCommas } from "../Style";
 
 export default function ProfileLimit() {
+    const history = useHistory()
+
+    //현재 유저 정보
+    const [user, setUser] = useState({
+        name: "",
+        limit: 0,
+    })
+
+    useEffect(() => {
+        fetch('https://haulfree.link/userinfo/', {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                setUser({
+                    ...user,
+                    name: response.name,
+                    limit: response.limit,
+                })
+            })
+            .catch(err => console.log(err))
+    }, [])
     return (
         <>
             <Default>
@@ -33,7 +61,7 @@ export default function ProfileLimit() {
                             color: "#010608",
                             marginTop: 32,
                             marginLeft: 20,
-                        }}>김현명님의 총 한도</div>
+                        }}>{user.name}님의 총 한도</div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 32,
@@ -42,8 +70,8 @@ export default function ProfileLimit() {
                             marginTop: 16,
                             marginBottom: 16,
                             marginLeft: 20,
-                        }}>300,000 원</div>
-                        <Progressbar width={440} percent={100} />
+                        }}>{numberWithCommas(user.limit)} 원</div>
+                        <Progressbar width={440} percent={percentCalculator(user.limit, 300000)} />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -248,7 +276,7 @@ export default function ProfileLimit() {
                         color: "#010608",
                         marginTop: 28,
                         marginLeft: "5vw",
-                    }}>김현명님의 총 한도</div>
+                    }}>{user.name}님의 총 한도</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 28,
@@ -257,8 +285,8 @@ export default function ProfileLimit() {
                         marginTop: 14,
                         marginBottom: 14,
                         marginLeft: "5vw",
-                    }}>300,000 원</div>
-                    <Progressbar width="90vw" percent={100} />
+                    }}>{numberWithCommas(user.limit)} 원</div>
+                    <Progressbar width="90vw" percent={percentCalculator(user.limit, 300000)} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
@@ -468,4 +496,8 @@ function Progressbar({ width, percent }) {
             }} />
         </div>
     )
+}
+
+function percentCalculator(a, b) {
+    return (a * 100 / b).toFixed(0)
 }

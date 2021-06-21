@@ -130,6 +130,7 @@ export default function ProfilePoint() {
                                 date={item.date}
                                 content={item.content}
                                 price={item.point}
+                                mobile={true}
                             />
                         })
                         :
@@ -141,12 +142,12 @@ export default function ProfilePoint() {
     )
 }
 
-function PointList({ date, content, price }) {
+function PointList({ date, content, price, mobile }) {
     return (
         <div style={{
-            width: 440,
-            marginTop: 16,
-            paddingBottom: 16,
+            width: mobile ? "90vw" : 440,
+            marginTop: mobile ? "4vw" : 16,
+            paddingBottom: mobile ? "4vw" : 16,
             borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
             display: "flex",
@@ -156,7 +157,7 @@ function PointList({ date, content, price }) {
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 opacity: 0.6,
-                fontSize: 16,
+                fontSize: mobile ? 14 : 16,
                 color: "#20246",
             }}>{date}</div>
             <div style={{
@@ -165,60 +166,17 @@ function PointList({ date, content, price }) {
                 alignItems: "center",
                 justifyContent: "space-between",
                 width: "100%",
-                marginTop: 8,
+                marginTop: mobile ? "2vw" : 8,
             }}>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
+                    fontSize: mobile ? 14 : 16,
                     fontWeight: "bold",
                     color: "#010608",
                 }}>{content}</div>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    fontWeight: "bold",
-                    color: price > 0 ? "#26c1f0" : "#f72b2b"
-                }}>{price > 0 ? "+" + price + " 원" : price + " 원"}</div>
-            </div>
-        </div>
-    )
-}
-
-function MPointList({ date, content, price }) {
-    return (
-        <div style={{
-            width: "90vw",
-            marginTop: "4vw",
-            paddingBottom: "4vw",
-            borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-            display: "flex",
-            flexDirection: "column",
-            alignSelf: "center",
-        }}>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                opacity: 0.6,
-                fontSize: 14,
-                color: "#20246",
-            }}>{date}</div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-                marginTop: 8,
-            }}>
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    fontWeight: "bold",
-                    color: "#010608",
-                }}>{content}</div>
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
+                    fontSize: mobile ? 14 : 16,
                     fontWeight: "bold",
                     color: price > 0 ? "#26c1f0" : "#f72b2b"
                 }}>{price > 0 ? "+" + price + " 원" : price + " 원"}</div>
