@@ -22,7 +22,7 @@ export default function ProfileEdit() {
         name: "",
         user_email: "",
         phone_number: ""
-    })
+    }) 
 
     const { name, user_email, phone_number } = user
 
@@ -51,7 +51,25 @@ export default function ProfileEdit() {
     const [logoutModal, setLogoutModal] = useState(false)
     function logout() {
         localStorage.clear()
-        history.replace('/')
+        fetch("https://haulfree.link/logout", {
+            method: "post",      
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+        })
+        .then(res => res.json())
+            .then(res => {
+              console.log(res)
+              if(res.success===true){
+                history.replace('/')
+              }
+              
+            }).catch(err => {
+                console.log(err)
+            })
+        
     }
     return (
         <>
