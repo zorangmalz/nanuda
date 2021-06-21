@@ -279,7 +279,8 @@ class logout(View):
         res["Acess-Control-Max-Age"] = "1000"
         res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
         res.set_cookie(key="access_token",value=reset,samesite=None,httponly=True,secure=True)
-
+        return res
+        
 class niceMain(View):
       def post(self,request):
         if not request.COOKIES.get("access_token"):
