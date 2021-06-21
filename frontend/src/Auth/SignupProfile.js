@@ -3,11 +3,22 @@ import { BsCheck } from "react-icons/bs";
 import styled from "styled-components"
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-import { useHistory } from "react-router";
+import { useHistory,useLocation } from "react-router";
 
 export default function SignupProfile() {
     const history = useHistory()
-
+    const location = useLocation()
+    var uid
+    var email
+    useEffect(()=>{
+        try{
+            uid = location.state.uid
+            email = location.state.email
+        }catch(err){
+            console.log(err)
+        }
+        console.log(uid,email)
+    })
     //약관 동의
     const [personal, setPersonal] = useState(false)
     const [service, setService] = useState(false)
@@ -89,7 +100,9 @@ export default function SignupProfile() {
                     birthdate:userData.birthdate,
                     nationalinfo:userData.nationalinfo,
                     mobileno:userData.mobileno,
-                    mobileco:userData.mobileco
+                    mobileco:userData.mobileco,
+                    email:email,
+                    uid:uid
                 },
             })
 
