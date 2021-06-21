@@ -197,7 +197,7 @@ def review_profile(request, pk):
 
         if request.method == "GET":
             review = list(Review.objects.filter(user_id = user.id).order_by("-review_date"))
-            count = review.count()
+            count = len(review)
             if (pk + 4 > count):
                 my_reviews = review[pk, count]
             else:
