@@ -228,7 +228,7 @@ class KakaoLogin(View):
                 jwt_token=jwt_token.decode('utf-8')
                 print(jwt_token,"fixed")
             
-            res=HttpResponse({"success":True})
+            res=HttpResponse("t")
             res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
             res["Access-Control-Allow-Credentials"]="true"
             res["Access-Control-Allow-Origin"] = "http://haulfree.io"
@@ -260,7 +260,7 @@ class KakaoLogin(View):
             if type(jwt_token) is bytes : 
                 jwt_token=jwt_token.decode('utf-8')
                 print(jwt_token,"fixed")
-            res=HttpResponse({"success":True})
+            res=HttpResponse("f")
             res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
             res["Access-Control-Allow-Credentials"]="true"
             res["Access-Control-Allow-Origin"] = "http://haulfree.io"

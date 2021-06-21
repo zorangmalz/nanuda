@@ -47,10 +47,9 @@ export default function Signup() {
                 },
             })
         })
+        .then(response=>response.json())
             .then(response => {
-                if (response.status === 200) {
-                    
-                }
+                console.log(response)
             }).catch(err => {
                 console.log(err)
             })
