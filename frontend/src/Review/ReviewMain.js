@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Header, MHeader } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillStar } from "react-icons/ai";
 import nodata from "../images/nodata.png";
