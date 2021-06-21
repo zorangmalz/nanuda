@@ -53,6 +53,11 @@ export default function ProfileEdit() {
         localStorage.clear()
         fetch("https://haulfree.link/logout", {
             method: "post",      
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
         })
         .then(res => res.json())
             .then(res => {
