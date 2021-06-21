@@ -196,7 +196,7 @@ def review_profile(request, pk):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            review = Review.objects.filter(user_id = user.id).order_by("-review_date").values()
+            review = Review.objects.filter(user_id = user.id).order_by("-review_date")
             count = len(review)
             if (pk + 4 > count):
                 my_reviews = review[pk:count]
@@ -206,15 +206,15 @@ def review_profile(request, pk):
             lists = []
             for my_review in my_reviews:
                 lists.append({
-                    "user_nickname": my_review.user_nickname,
-                    "user_profile": my_review.user_profile,
+                    "user_nickname": my_review.user_nickname(),
+                    "user_profile": my_review.user_profile(),
                     "review_image": my_review.review_image,
                     "review_score": my_review.review_score,
                     "review_like": my_review.review_like,
-                    "order_price": my_review.order_price,
+                    "order_price": my_review.order_price(),
                 })
             return JsonResponse({
-                "review_list": my_reviews
+                "review_list": lists
             })
 
 # Review 하나만 보여줌

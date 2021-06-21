@@ -16,6 +16,7 @@ import bannerTwo from "../images/bannerTwo.png"
 import banner from "../images/homebanner.png"
 import sampleone from "../images/sampleone.png"
 import sampletwo from "../images/sampletwo.png"
+import mainlogo from "../images/mainlogo.png"
 
 const AfterContainer = styled.div`
     width: 424px;
@@ -349,10 +350,11 @@ export default function Home() {
                                         display: "flex",
                                         flexDirection: "row",
                                     }}>
-                                        <img alt="프로필" src={item.user_profile} style={{
+                                        <img alt="프로필" src={item.user_profile.length > 0 ? item.user_profile : mainlogo} style={{
                                             width: 32,
                                             height: 32,
                                             borderRadius: 16,
+                                            backgroundColor: "#ffffff"
                                         }} />
                                         <div style={{
                                             fontSize: 14,
@@ -664,10 +666,11 @@ export default function Home() {
                                     display: "flex",
                                     flexDirection: "row",
                                 }}>
-                                    <img alt="프로필" src={item.user_profile} style={{
+                                    <img alt="프로필" src={item.user_profile.length > 0 ? item.user_profile : mainlogo} style={{
                                         width: "8vw",
                                         height: "8vw",
                                         borderRadius: "4vw",
+                                        backgroundColor: "#ffffff"
                                     }} />
                                     <div style={{
                                         fontSize: 12,

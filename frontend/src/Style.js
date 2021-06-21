@@ -251,22 +251,22 @@ export function HomeHeader() {
 
 export function MHomeHeader() {
     let history = useHistory()
-    const [log, setLog] = useState("")
+    const [log, setLog] = useState(false)
     useEffect(() => {
         test()
     }, [])
     const test = async () => {
         fetch("https://haulfree.link/userInfoName/", {
-            method: "POST",
+            method: "GET",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
             credentials: "include",
         })
-
+            .then((response) => (response.json()))
             .then(response => {
-                setLog(response.data.data)
+                setLog(response.data)
 
             }).catch(err => {
                 console.log(err)
