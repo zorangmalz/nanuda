@@ -269,7 +269,16 @@ class KakaoLogin(View):
             res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True)
             return res
 
-
+class logout(View):
+    def post(self,request):
+        reset=""
+        res = JsonResponse({"success":True})
+        res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+        res["Access-Control-Allow-Credentials"]="true"
+        res["Access-Control-Allow-Origin"] = "http://haulfree.io"
+        res["Acess-Control-Max-Age"] = "1000"
+        res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
+        res.set_cookie(key="access_token",value=reset,samesite=None,httponly=True,secure=True)
 class niceMain(View):
       def post(self,request):
         if not request.COOKIES.get("access_token"):
