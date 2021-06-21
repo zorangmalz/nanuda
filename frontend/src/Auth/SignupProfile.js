@@ -8,12 +8,15 @@ import { useHistory,useLocation } from "react-router";
 export default function SignupProfile() {
     const history = useHistory()
     const location = useLocation()
+    
     var uid
     var email
     useEffect(()=>{
         try{
-            uid = location.state.uid
-            email = location.state.email
+            uid = {uid:location.state.uid}
+            email = {email:location.state.email}
+            window.localStorage.setItem("uid",JSON.stringify(uid))
+            window.localStorage.setItem("email",JSON.stringify(email))
         }catch(err){
             console.log(err)
         }
@@ -85,6 +88,8 @@ export default function SignupProfile() {
 
     
     async function send() {
+        var realEmail=window.localStorage.getItem("email")
+        var realuid=window.localStorage.getItem("uid")
         await fetch("https://haulfree.link/niceMain/", {
             method: "POST",
             headers: {
@@ -101,8 +106,8 @@ export default function SignupProfile() {
                     nationalinfo:userData.nationalinfo,
                     mobileno:userData.mobileno,
                     mobileco:userData.mobileco,
-                    email:email,
-                    uid:uid
+                    email:JSON.parse(realEmail).email,
+                    uid:JSON.parse(realuid).uid
                 },
             })
 
