@@ -45,6 +45,7 @@ export default function ProfileMain() {
             })
             .catch(err => console.log(err))
     }, [])
+    
     return (
         <>
             <Default>
@@ -115,7 +116,7 @@ export default function ProfileMain() {
                             display: "flex",
                             flexDirection: "column",
                         }}>
-                            <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" />
+                            <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" onClick={() => history.push('/profilelimit')} />
                             <ProfileInfo title="하울딜 찬스" data={1} unit="회" chance={true} />
                             <ProfileInfo title="포인트" data={user.point} unit="P" onClick={() =>  history.push('/profilepoint')} />
                         </div>
@@ -210,9 +211,9 @@ export default function ProfileMain() {
                         display: "flex",
                         flexDirection: "column",
                     }}>
-                        <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" mobile={true} />
+                        <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" mobile={true} onClick={() => history.push('/profilelimit')}  />
                         <ProfileInfo title="하울딜 찬스" data={1} unit="회" mobile={true} chance={true} />
-                        <ProfileInfo title="포인트" data={user.point} unit="P" mobile={true} />
+                        <ProfileInfo title="포인트" data={user.point} unit="P" mobile={true} onClick={() =>  history.push('/profilepoint')} />
                     </div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
