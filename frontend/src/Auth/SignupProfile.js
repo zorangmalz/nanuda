@@ -8,8 +8,17 @@ import { useHistory,useLocation } from "react-router";
 export default function SignupProfile() {
     const history = useHistory()
     const location = useLocation()
-    const uid = location.state.uid
-    const email = location.state.email
+    var uid
+    var email
+    useEffect(()=>{
+        try{
+            uid = location.state.uid
+            email = location.state.email
+        }catch(err){
+            console.log(err)
+        }
+        console.log(uid,email)
+    })
     //약관 동의
     const [personal, setPersonal] = useState(false)
     const [service, setService] = useState(false)
