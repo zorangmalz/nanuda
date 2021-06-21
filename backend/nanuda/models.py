@@ -37,7 +37,7 @@ class User(models.Model):
     # 가입날
     createdAt = models.DateTimeField(auto_now_add=True)
     # 정보 수정
-    updatedAt = models.DateTimeField()
+    updatedAt = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return "{}".format(self.user_email)
