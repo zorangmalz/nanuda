@@ -26,6 +26,25 @@ export default function ProfileReview() {
             .catch(err => console.log(err))
     }, [])
 
+    //Get Order Data
+    const [orderData, setOrderData] = useState([])
+    useEffect(() => {
+        setData([])
+        fetch("https://haulfree.link/order/profile", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => console.log(err))
+    }, [])
+
     return (
         <>
             <Default>

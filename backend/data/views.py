@@ -278,8 +278,20 @@ def order_list(request):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            order = Order.objects.filter(user_id = user.id).order_by('-order_date').values()
-            return JsonResponse(order)
+            orders = Order.objects.filter(user_id = user.id).order_by('-order_date')
+            arrays = []
+            for order in orders:
+                arrays.append({
+                    "order_date": order.order_date,
+                    "order_price": order.order_price,
+                    "product_name": order.product_name(),
+                    "product_image": order.product_image(),
+                    "product_price": order.product_price(),
+                    "review_write": order.review_write,
+                })
+            return JsonResponse({
+                "data": arrays
+            })
         
         # elif request.method == "PUT":
         #     order = Order.objects.create(user_id = user.id, product_id = request.data.product_id)
