@@ -17,20 +17,14 @@ class User(models.Model):
     job = models.CharField(max_length=30, default="",blank=True)
     gender = models.IntegerField(choices=GENDER_CHOICE, default="",blank=True)
     birthdate = models.CharField(max_length=30, default="",blank=True)
-    joinday = models.DateTimeField(auto_now_add=True)
+    # 한도 
     limit =  models.IntegerField(blank=True, default=0)
     age = models.PositiveIntegerField(blank=True, default=0)
     profile = models.TextField(blank=True, default="")
     phone_number = models.CharField(max_length=30, default="01090373600",blank=True)
     phone_company = models.CharField(max_length=30, default="SKT",blank=True)
     nationalinfo = models.CharField(max_length=30, default="0",blank=True)
-    address_exist=models.BooleanField(blank=True,default=False)
-    address_number = models.TextField(blank=True, default="우편번호")
-    address = models.TextField(blank=True, default="주소")
-    address_detail = models.TextField(blank=True, default="상세주소")
-    address_claim = models.CharField(max_length=30,default="문 앞")
-    address_name = models.CharField(max_length=30,default="나누다씨")
-    address_phone = models.CharField(max_length=30,default="01090373600")
+    
     # point 전체 값
     point_entire = models.PositiveIntegerField(default=0)
 
@@ -41,13 +35,31 @@ class User(models.Model):
     bank = models.CharField(max_length=30, blank=True, default="은행")
     account = models.CharField(max_length=30, blank=True, default="계좌")
 
+    # 가입날
+    createdAt = models.DateTimeField(auto_now_add=True)
+    # 정보 수정
+    updatedAt = models.DateTimeField()
+
     def __str__(self):
         return "{}".format(self.user_email)
 
     class Meta:
-        ordering = ["id", "joinday"]
+        ordering = ["id", "createdAt"]
         managed=True
     
+class Address(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    address_number = models.TextField(blank=True, default="우편번호")
+    address = models.TextField(blank=True, default="주소")
+    address_detail = models.TextField(blank=True, default="상세주소")
+
+    def __str__(self):
+        return "{}".format(self.user_id.name)
+    
+    class Meta:
+        ordering = ["id", "user_id"]
+        managed = True
 
 class ServiceReview(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

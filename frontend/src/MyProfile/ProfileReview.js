@@ -11,7 +11,7 @@ export default function ProfileReview() {
     const [data, setData] = useState([])
     useEffect(() => {
         setData([])
-        fetch("https://haulfree.link/review", {
+        fetch("https://haulfree.link/review/profile/0", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -21,27 +21,9 @@ export default function ProfileReview() {
         })
             .then(response => response.json())
             .then(response => {
-                var array = []
-                var len;
-                if (response.length > 4) {
-                    len = 4
-                } else {
-                    len = response.length
-                }
-                for (var i = 0; i < len; i++) {
-                    const dict = {
-                        id: response[i].id,
-                        user_profile: response[i].user_profile,
-                        user_nickname: response[i].user_nickname,
-                        review_image: response[i].review_image[0],
-                        review_score: response[i].review_score.toFixed(1),
-                        review_like: response[i].review_like.length < 39 ? response[i].review_like : response[i].review_like.slice(0, 39) + "...",
-                        product_price: 10000,
-                    }
-                    array.push(dict)
-                }
-                setData(data.concat(array))
+                console.log(response)
             })
+            .catch(err => console.log(err))
     }, [])
 
     return (
