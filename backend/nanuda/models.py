@@ -1,6 +1,5 @@
 from django.db import models
 import uuid
-from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class User(models.Model):

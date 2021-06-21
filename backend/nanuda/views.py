@@ -279,6 +279,7 @@ class logout(View):
         res["Acess-Control-Max-Age"] = "1000"
         res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
         res.set_cookie(key="access_token",value=reset,samesite=None,httponly=True,secure=True)
+
 class niceMain(View):
       def post(self,request):
         if not request.COOKIES.get("access_token"):
@@ -293,7 +294,7 @@ class niceMain(View):
             
             user_info=json.loads(request.body)
             
-            User.objects.create(
+            User(
                 uid=user_info['params']['uid'],
                 platform="1",
                 user_email=user_info['params']['email'],
@@ -304,7 +305,7 @@ class niceMain(View):
                 nationalinfo=user_info['params']['nationalinfo'],
                 phone_number=user_info['params']['mobileno'],
                 phone_company=user_info['params']['mobileco']
-            )
+            ).save()
           
             return JsonResponse({"data":True})
             
