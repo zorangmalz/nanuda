@@ -275,19 +275,27 @@ class niceMain(View):
         if not request.COOKIES.get("access_token"):
             return JsonResponse({"data":False})
         else:
+            q=User.objects.annotate(Count("name"))
             load_dotenv(verbose=True)
             SECRET_KEY=os.getenv("SECRET_KEY")
             ALGORITHM=os.getenv("ALGORITHM")
             token=request.COOKIES.get("access_token")
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
             user_info=json.loads(request.body)
-            user=User.objects.get(uid=payload["id"])
-            user.gender=user_info['params']['gender']
-            user.birthdate=user_info['params']['birthdate']
-            user.nationalinfo=user_info['params']['nationalinfo']
-            user.phone_number=user_info['params']['mobileno']
-            user.phone_company=user_info['params']['mobileco']
-            user.save()
+            User(
+                uid=user_info['params']['uid'],
+                platform="1",
+                user_email=user_info['params']['email'],
+                name=user_info['params']['name'],
+                gender=user_info['params']['gender'],
+                nickname="나누다"+str(q.count()+1),
+                birthdate=user_info['params']['birthdate'],
+                nationalinfo=user_info['params']['nationalinfo'],
+                phone_number=user_info['params']['mobileno'],
+                phone_company=user_info['params']['mobileco']
+                
+            ).save()
+          
             return JsonResponse({"data":True})
             
             

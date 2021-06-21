@@ -52,7 +52,7 @@ export default function Signup() {
                 if(response.result==="true"){
                     history.replace("/")
                 }else{
-                    history.push("/signupprofile")
+                    history.push("/signupprofile",{uid:response.uid,email:response.email})
                 }
             }).catch(err => {
                 console.log(err)
