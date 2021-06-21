@@ -259,7 +259,7 @@ def order_all(request):
             return Response(order_serializer.data, status=status.HTTP_201_CREATED)
         return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(["GET"])
+@api_view(["GET", "PUT"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 def order_list(request):
@@ -278,19 +278,11 @@ def order_list(request):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            order_serializer = Order.objects.filter(user_id = user.id)
-
-            return JsonResponse({
-                "product_id": order_serializer.product_id,
-                "product_name": order_serializer.product_name,
-                "product_image": order_serializer.product_image,
-                "product_price": order_serializer.product_price,
-                "order_price": order_serializer.order_price,
-                "review_write": order_serializer.review_write
-            })
+            order = Order.objects.filter(user_id = user.id).order_by('-order_date').values()
+            return JsonResponse(order)
         
         # elif request.method == "PUT":
-        #     order = Order.objects.filter(user_id = user.id, product_id = request.data.product_id)
+        #     order = Order.objects.create(user_id = user.id, product_id = request.data.product_id)
         #     order_serializer = OrderAllSerializer(order, data=request.data)
         #     if order_serializer.is_valid():
         #         order_serializer.save()
