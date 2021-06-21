@@ -4,6 +4,7 @@ import { Header, MHeader } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillStar } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import nodata from "../images/nodata.png";
 
 export default function ProfileReview() {
     //Get Review Data
@@ -67,17 +68,46 @@ export default function ProfileReview() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="내 리뷰" goBack={true} />
-                        <div style={{
-                            display: "grid",
-                            gridTemplateColumns: "1fr 1fr",
-                            width: 440,
-                            columnGap: 20,
-                            alignSelf: "center",
-                        }}>
-                            {data.map(item => (
-                                <PostThumb item={item} mobile={false} />
-                            ))}
-                        </div>
+                        {data.length === 0 ?
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                minHeight: "60vh",
+                                width: "100%",
+                            }}>
+                                <img
+                                    src={nodata}
+                                />
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 24,
+                                    fontWeight: "bold",
+                                    marginTop: 32,
+                                    marginBottom: 8,
+                                    color: "#010608"
+                                }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 18,
+                                    opacity: 0.6,
+                                    color: "#010608"
+                                }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
+                            </div>
+                            :
+                            <div style={{
+                                display: "grid",
+                                gridTemplateColumns: "1fr 1fr",
+                                width: 440,
+                                columnGap: 20,
+                                alignSelf: "center",
+                            }}>
+                                {data.map(item => (
+                                    <PostThumb item={item} mobile={false} />
+                                ))}
+                            </div>
+                        }
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -102,17 +132,46 @@ export default function ProfileReview() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="내 리뷰" goBack={true} />
-                    <div style={{
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr",
-                        width: "90vw",
-                        columnGap: "5vw",
-                        alignSelf: "center",
-                    }}>
-                        {data.map(item => (
-                            <PostThumb item={item} mobile={true} />
-                        ))}
-                    </div>
+                    {data.length === 0 ?
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            minHeight: "60vh",
+                            width: "100%",
+                        }}>
+                            <img
+                                src={nodata}
+                            />
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 20,
+                                fontWeight: "bold",
+                                marginTop: "8vw",
+                                marginBottom: "2vw",
+                                color: "#010608"
+                            }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 16,
+                                opacity: 0.6,
+                                color: "#010608"
+                            }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
+                        </div>
+                        :
+                        <div style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr",
+                            width: "90vw",
+                            columnGap: "5vw",
+                            alignSelf: "center",
+                        }}>
+                            {data.map(item => (
+                                <PostThumb item={item} mobile={true} />
+                            ))}
+                        </div>
+                    }
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
@@ -129,7 +188,7 @@ export default function ProfileReview() {
     )
 }
 
-function ProductList({mobile}) {
+function ProductList({ mobile }) {
     let history = useHistory()
     return (
         <div onClick={() => history.push("/reviewwrite")} style={{

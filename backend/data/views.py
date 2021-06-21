@@ -176,6 +176,47 @@ def review_home(request):
         review_serializer = ReviewAllSerializer(review, many=True)
         return Response(review_serializer.data)
 
+# My_Review 2개만 조회
+@api_view(["GET"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+def review_profile(request, pk):
+    if not request.COOKIES.get("access_token"):
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    else:
+        try:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+
+        except User.DoesNotExist():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        if request.method == "GET":
+            review = Review.objects.filter(user_id = user.id).order_by("-review_date")
+            count = review.count()
+            if (pk + 4 > count):
+                my_reviews = review[pk, count]
+            else:
+                my_reviews = review[pk, pk+4]
+
+            list = []
+            for my_review in my_reviews:
+                list.append({
+                    "user_nickname": my_review.user_nickname,
+                    "user_profile": my_review.user_profile,
+                    "review_image": my_review.review_image,
+                    "review_score": my_review.review_score,
+                    "review_like": my_review.review_like,
+                    "order_price": my_review.order_price,
+                })
+            return JsonResponse({
+                "review_list": list
+            })
+
 # Review 하나만 보여줌
 @api_view(["GET", "PUT", "DELETE"])
 @parser_classes([JSONParser])

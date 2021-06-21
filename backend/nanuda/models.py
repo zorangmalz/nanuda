@@ -93,33 +93,6 @@ class Product(models.Model):
         ordering = ["id", "product_type", "product_price"]
         managed=True
 
-
-class Review(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    review_score = models.FloatField(default=5.0, blank=True)
-    review_date = models.DateTimeField(auto_now_add=True)
-    review_like = models.TextField(default="내용", blank=True)
-    review_dislike = models.TextField(default="내용", blank=True)
-    review_image = models.JSONField(default=list, blank=True)
-    review_alert = models.IntegerField(default=0)
-    review_likeNum = models.IntegerField(default=0)
-    review_dislikeNum = models.IntegerField(default=0)
-
-    def user_nickname(self):
-        return self.user_id.nickname
-    
-    def user_profile(self):
-        return self.user_id.profile
-
-    def __str__(self):
-        return "{}".format(self.user_id)
-
-    class Meta:
-        ordering=["id", "review_date"]
-        managed=True
-
 class Order(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -158,6 +131,35 @@ class Order(models.Model):
     
     class Meta:
         ordering = ["id", "order_date"]
+        managed=True
+
+class Review(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+    review_score = models.FloatField(default=5.0, blank=True)
+    review_date = models.DateTimeField(auto_now_add=True)
+    review_like = models.TextField(default="내용", blank=True)
+    review_dislike = models.TextField(default="내용", blank=True)
+    review_image = models.JSONField(default=list, blank=True)
+    review_alert = models.IntegerField(default=0)
+    review_likeNum = models.IntegerField(default=0)
+    review_dislikeNum = models.IntegerField(default=0)
+
+    def user_nickname(self):
+        return self.user_id.nickname
+    
+    def user_profile(self):
+        return self.user_id.profile
+    
+    def order_price(self):
+        return self.order_id.order_price
+
+    def __str__(self):
+        return "{}".format(self.user_id)
+
+    class Meta:
+        ordering=["id", "review_date"]
         managed=True
 
 class PointList(models.Model):
