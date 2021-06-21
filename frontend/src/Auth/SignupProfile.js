@@ -90,7 +90,7 @@ export default function SignupProfile() {
     async function send() {
         var realEmail=window.localStorage.getItem("email")
         var realuid=window.localStorage.getItem("uid")
-        console.log(JSON.parse(realEmail).email,JSON.parse(realuid).uid)
+        console.log(JSON.parse(realEmail).email,JSON.parse(realuid).uid,userData)
         await fetch("https://haulfree.link/niceMain/", {
             method: "POST",
             headers: {

@@ -281,8 +281,10 @@ class niceMain(View):
             ALGORITHM=os.getenv("ALGORITHM")
             token=request.COOKIES.get("access_token")
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            
             user_info=json.loads(request.body)
-            User(
+            
+            User.objects.create(
                 uid=user_info['params']['uid'],
                 platform="1",
                 user_email=user_info['params']['email'],
@@ -293,8 +295,7 @@ class niceMain(View):
                 nationalinfo=user_info['params']['nationalinfo'],
                 phone_number=user_info['params']['mobileno'],
                 phone_company=user_info['params']['mobileco']
-                
-            ).save()
+            )
           
             return JsonResponse({"data":True})
             
