@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
-import { Header, MHeader } from "../Style";
+import { Header, MHeader, numberWithCommas } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillStar } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import nodata from "../images/nodata.png";
+import mainlogo from "../images/mainlogo.png";
 
 export default function ProfileReview() {
     //Get Review Data
@@ -29,7 +30,7 @@ export default function ProfileReview() {
     //Get Order Data
     const [orderData, setOrderData] = useState([])
     useEffect(() => {
-        setData([])
+        setOrderData([])
         fetch("https://haulfree.link/order/profile", {
             method: "GET",
             headers: {
@@ -41,6 +42,21 @@ export default function ProfileReview() {
             .then(response => response.json())
             .then(response => {
                 console.log(response)
+                if (response != null && response != undefined) {
+                    var array = []
+                    for (var i = 0; i < response["data"].length; i++) {
+                        if (!response["data"][i].review_write) {
+                            array.push({
+                                "order_price": response["data"][i].order_price,
+                                "product_name": response["data"][i].product_name,
+                                "product_image": response["data"][i].product_image,
+                                "product_price": response["data"][i].product_price,
+                                "review_write": response["data"][i].review_write,
+                            })
+                        }
+                    }
+                    setOrderData(orderData.concat(array))
+                }
             })
             .catch(err => console.log(err))
     }, [])
@@ -109,7 +125,7 @@ export default function ProfileReview() {
                                 ))}
                             </div>
                         }
-                        <div style={{
+                        {orderData.length > 0 ? <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
@@ -117,8 +133,10 @@ export default function ProfileReview() {
                             marginLeft: 20,
                             marginTop: 32,
                             marginBottom: 16,
-                        }}>아직 리뷰를 작성하지 않았어요!</div>
-                        <ProductList mobile={false} />
+                        }}>아직 리뷰를 작성하지 않았어요!</div> : <></>}
+                        {orderData.map(item => (
+                            <ProductList item={item} mobile={false} />
+                        ))}
                     </div>
                 </div>
             </Default>
@@ -173,7 +191,7 @@ export default function ProfileReview() {
                             ))}
                         </div>
                     }
-                    <div style={{
+                    {orderData.length > 0 ? <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
@@ -181,15 +199,17 @@ export default function ProfileReview() {
                         marginLeft: "5vw",
                         marginTop: 28,
                         marginBottom: 12,
-                    }}>아직 리뷰를 작성하지 않았어요!</div>
-                    <ProductList mobile={true} />
+                    }}>아직 리뷰를 작성하지 않았어요!</div> : <></>}
+                    {orderData.map(item => (
+                        <ProductList item={item} mobile={true} />
+                    ))}
                 </div>
             </Mobile>
         </>
     )
 }
 
-function ProductList({ mobile }) {
+function ProductList({ item, mobile }) {
     let history = useHistory()
     return (
         <div onClick={() => history.push("/reviewwrite")} style={{
@@ -209,20 +229,20 @@ function ProductList({ mobile }) {
                 flexDirection: "row",
                 alignItems: "center",
             }}>
-                <div style={{
+                <img alt="제품 이미지" src={item.product_image.length > 0 ? item.product_image :  mainlogo} style={{
                     width: mobile ? "20vw" : 96,
                     height: mobile ? "20vw" : 96,
                     backgroundColor: "#dfdfdf",
                     borderRadius: 6
-                }}></div>
+                }} />
                 <div style={{
                     marginLeft: mobile ? "3vw" : 14,
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <div style={{ fontSize: mobile ? 12 : 14, fontFamily: "AvenirNext", marginBottom: mobile ? "2vw" : 8 }}>삼베옷 컬렉션, White, 95</div>
-                    <div style={{ fontSize: mobile ? 12 : 14, opacity: 0.6, textDecoration: "line-through", marginBottom: mobile ? "2vw" : 8 }}>210,000 원</div>
-                    <div style={{ fontSize: mobile ? 14 : 16, fontWeight: "bold", color: "#010608", marginBottom: mobile ? "2vw" : 8 }}>70,000 원에 획득 완료!</div>
+                    <div style={{ fontSize: mobile ? 12 : 14, fontFamily: "AvenirNext", marginBottom: mobile ? "2vw" : 8 }}>{item.product_name}</div>
+                    <div style={{ fontSize: mobile ? 12 : 14, opacity: 0.6, textDecoration: "line-through", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(item.product_price)} 원</div>
+                    <div style={{ fontSize: mobile ? 14 : 16, fontWeight: "bold", color: "#010608", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(item.order_price)} 원에 획득 완료!</div>
                 </div>
             </div>
             <MdKeyboardArrowRight style={{

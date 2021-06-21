@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, numberWithCommas } from "../Style";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useHistory } from "react-router";
+import mainlogo from "../images/mainlogo.png";
 
 export default function ProfileProduct() {
+    //Get Order Data
+    const [orderData, setOrderData] = useState([])
+    useEffect(() => {
+        setOrderData([])
+        fetch("https://haulfree.link/order/profile", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                if (response != null && response != undefined) {
+                    var array = []
+                    for (var i = 0; i < response["data"].length; i++) {
+                        if (!response["data"][i].review_write) {
+                            array.push({
+                                "order_date": response["data"][i].order_date.slice(0, 10),
+                                "order_price": response["data"][i].order_price,
+                                "product_name": response["data"][i].product_name,
+                                "product_image": response["data"][i].product_image,
+                                "product_price": response["data"][i].product_price,
+                                "review_write": response["data"][i].review_write,
+                            })
+                        }
+                    }
+                    setOrderData(orderData.concat(array))
+                }
+            })
+            .catch(err => console.log(err))
+    }, [])
+
     return (
         <>
             <Default>
@@ -31,12 +67,15 @@ export default function ProfileProduct() {
                     }}>
                         <Header content="상품 구매 내역" goBack={true} />
                         <div style={{ marginTop: 16 }} />
-                        <ProductState
-                            date="2021.04.13"
-                            title="PRADA Model 23-9 limited WHITE, 270mm"
-                            price={480000}
-                            mobile={false}
-                        />
+                        {orderData.map(item => (
+                            <ProductState
+                                img={item.product_image.length > 0 ? item.product_image : mainlogo}
+                                date={item.order_date}
+                                title={item.product_name}
+                                price={item.product_price}
+                                mobile={false}
+                            />
+                        ))}
                     </div>
                 </div>
             </Default>
@@ -44,6 +83,7 @@ export default function ProfileProduct() {
                 <div style={{
                     display: "flex",
                     flexDirection: "column",
+                    alignItems: "center",
                     justifyContent: "flex-start",
 
                     width: "100vw",
@@ -52,19 +92,22 @@ export default function ProfileProduct() {
                 }}>
                     <MHeader content="상품 구매 내역" goBack={true} />
                     <div style={{ marginTop: "4vw" }} />
-                    <ProductState
-                        date="2021.04.13"
-                        title="PRADA Model 23-9 limited WHITE, 270mm"
-                        price={480000}
-                        mobile={true}
-                    />
+                    {orderData.map(item => (
+                        <ProductState
+                            img={item.product_image.length > 0 ? item.product_image : mainlogo}
+                            date={item.order_date}
+                            title={item.product_name}
+                            price={item.product_price}
+                            mobile={true}
+                        />
+                    ))}
                 </div>
             </Mobile>
         </>
     )
 }
 
-function ProductState({ date, title, price, mobile }) {
+function ProductState({ img, date, title, price, mobile }) {
     const history = useHistory()
     return (
         <>
@@ -88,14 +131,14 @@ function ProductState({ date, title, price, mobile }) {
                         display: "flex",
                         flexDirection: "row",
                     }}>
-                        <div style={{
+                        <img alt="상품" src={img} style={{
                             width: mobile ? 80 : 120,
                             height: mobile ? 80 : 120,
                             borderRadius: 6,
                             marginRight: mobile ? "4vw" : 16,
                             backgroundColor: "#000000",
                             color: "#ffffff"
-                        }}>상품 그림</div>
+                        }} />
                         <div style={{
                             display: "flex",
                             flexDirection: "column",

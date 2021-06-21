@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Header, MHeader } from "../Style";
 
 export default function ProfileProductInfo() {
     return (
@@ -19,7 +19,7 @@ export default function ProfileProductInfo() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between",
+                        alignItems: "center",
 
                         width: 480,
                         minHeight: "100vh",
@@ -37,6 +37,7 @@ export default function ProfileProductInfo() {
                             addressDetail="e편한세상 203동 2104호"
                             phoneNumber="010-4337-6607"
                             deliveryClaim="집 앞"
+                            mobile={false}
                         />
                     </div>
                 </div>
@@ -52,7 +53,7 @@ export default function ProfileProductInfo() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="상품 상세 구매 내역" goBack={true} />
-                    <MProductInfo
+                    <ProductInfo
                         title="PRADA Model 23-9 limited edition berry expensive"
                         price="460,000"
                         name="김현명"
@@ -62,6 +63,7 @@ export default function ProfileProductInfo() {
                         addressDetail="e편한세상 203동 2104호"
                         phoneNumber="010-4337-6607"
                         deliveryClaim="집 앞"
+                        mobile={true}
                     />
                 </div>
             </Mobile>
@@ -69,15 +71,15 @@ export default function ProfileProductInfo() {
     )
 }
 
-function ProductInfo({ img, title, price, name, number, orderNum, address, addressDetail, phoneNumber, deliveryClaim }) {
+function ProductInfo({ img, title, price, name, number, orderNum, address, addressDetail, phoneNumber, deliveryClaim, mobile }) {
     return (
         <>
             <div style={{
-                width: 408,
-                padding: 16,
+                width: mobile ? "82vw" : 408,
+                padding: mobile ? "4vw" : 16,
                 border: "1px solid #dfdfdf",
                 backgroundColor: "#ffffff",
-                marginTop: 32,
+                marginTop: mobile ? "8vw" : 32,
                 alignSelf: "center",
                 borderRadius: 6,
 
@@ -87,40 +89,41 @@ function ProductInfo({ img, title, price, name, number, orderNum, address, addre
             }}>
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
+                    fontSize: mobile ? 14 : 16,
                     fontWeight: "bold",
-                    marginBottom: 16,
+                    marginBottom: mobile ? "4vw" : 16,
                     color: "#010608"
                 }}>주문상세</div>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
-                    marginBottom: 16
+                    marginBottom: mobile ? "4vw" : 16
                 }}>
-                    <div style={{
+                    <img alt="제품" src={img} style={{
                         width: 80,
                         height: 80,
-                        marginRight: 10,
+                        marginRight: mobile ? "2.5vw" : 10,
                         borderRadius: 6,
                         border: "solid 1px rgba(219, 219, 219, 0.1)",
                         backgroundColor: "#000000"
-                    }}></div>
+                    }} />
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "flex-start",
-                        width: 240,
+                        justifyContent: "space-between",
+                        width: mobile ? "50vw" : 240,
+                        height: 80,
                     }}>
                         <div style={{
-                            fontSize: 16,
+                            fontSize: mobile ? 14 : 16,
                             lineHeight: 1.5,
                             color: "#010608",
                             fontFamily: "AvenirNext",
-                            marginBottom: 8,
                         }}>{title}</div>
                         <div style={{
-                            fontSize: 18,
+                            fontSize: mobile ? 16 : 18,
                             color: "#010608",
                             fontFamily: "NotoSansCJKkr",
                             fontWeight: "bold",
@@ -132,85 +135,7 @@ function ProductInfo({ img, title, price, name, number, orderNum, address, addre
                     opacity: 0.8,
                     color: "#010608",
                     lineHeight: 1.88,
-                    fontSize: 16,
-                }}>
-                    받는사람 : {name} <br />
-                    주문번호 : {orderNum} <br />
-                        우편번호 : {number} <br />
-                        주소: {address} <br />
-                        상세주소 : {addressDetail} <br />
-                        연락처 : {phoneNumber} <br />
-                        배송 요청사항 : {deliveryClaim} <br />
-                </div>
-            </div>
-        </>
-    )
-}
-
-function MProductInfo({ img, title, price, name, number, orderNum, address, addressDetail, phoneNumber, deliveryClaim }) {
-    return (
-        <>
-            <div style={{
-                width: "82%",
-                padding: "4%",
-                border: "1px solid #dfdfdf",
-                backgroundColor: "#ffffff",
-                marginTop: 32,
-                alignSelf: "center",
-                borderRadius: 6,
-
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start"
-            }}>
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    fontWeight: "bold",
-                    marginBottom: 16,
-                    color: "#010608"
-                }}>주문상세</div>
-                <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    marginBottom: 16
-                }}>
-                    <div style={{
-                        width: 70,
-                        height: 70,
-                        marginRight: 10,
-                        borderRadius: 6,
-                        border: "solid 1px rgba(219, 219, 219, 0.1)",
-                        backgroundColor: "#000000"
-                    }}></div>
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                        width: 180,
-                    }}>
-                        <div style={{
-                            fontSize: 14,
-                            lineHeight: 1.5,
-                            color: "#010608",
-                            fontFamily: "AvenirNext",
-                            marginBottom: 8,
-                        }}>{title}</div>
-                        <div style={{
-                            fontSize: 16,
-                            color: "#010608",
-                            fontFamily: "NotoSansCJKkr",
-                            fontWeight: "bold",
-                        }}>{price} 원</div>
-                    </div>
-                </div>
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    opacity: 0.8,
-                    color: "#010608",
-                    lineHeight: 1.88,
-                    fontSize: 14,
+                    fontSize: mobile ? 14 : 16,
                 }}>
                     받는사람 : {name} <br />
                     주문번호 : {orderNum} <br />
