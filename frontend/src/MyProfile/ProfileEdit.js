@@ -51,7 +51,7 @@ export default function ProfileEdit() {
     const [logoutModal, setLogoutModal] = useState(false)
     function logout() {
         localStorage.clear()
-        fetch("https://haulfree.link/logout", {
+        fetch("https://haulfree.link/logout/", {
             method: "post",      
             headers: {
                 'Content-type': 'application/json',
