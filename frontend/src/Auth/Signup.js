@@ -49,7 +49,11 @@ export default function Signup() {
         })
         .then(response=>response.json())
             .then(response => {
-                console.log(response)
+                if(response.result==="true"){
+                    history.replace("/")
+                }else{
+                    history.push("/signupprofile")
+                }
             }).catch(err => {
                 console.log(err)
             })

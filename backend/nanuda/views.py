@@ -245,22 +245,22 @@ class KakaoLogin(View):
                 gender=0
             else:
                 gender=1            
-            User(
-                uid=kakao_response['id'],
-                platform="1",
-                user_email=kakao_response['kakao_account'].get('email',None),
-                name=kakao_response['properties']['nickname'],
-                gender=gender,
-                nickname="나누다"+str(q.count()+1)
+            # User(
+            #     uid=kakao_response['id'],
+            #     platform="1",
+            #     user_email=kakao_response['kakao_account'].get('email',None),
+            #     name=kakao_response['properties']['nickname'],
+            #     gender=gender,
+            #     nickname="나누다"+str(q.count()+1)
                 
-            ).save()
-            user    = User.objects.get(uid=kakao_response['id'])
-            jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY, ALGORITHM)
+            # ).save()
+            # user    = User.objects.get(uid=kakao_response['id'])
+            jwt_token = jwt.encode({'id':kakao_response['id']}, SECRET_KEY, ALGORITHM)
             print(jwt_token,type(jwt_token))
             if type(jwt_token) is bytes : 
                 jwt_token=jwt_token.decode('utf-8')
                 print(jwt_token,"fixed")
-            res=JsonResponse({"result":"false"})
+            res=JsonResponse({"result":"false","uid":kakao_response["id"],"email":kakao_response['kakao_account'].get('email',None),})
             res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
             res["Access-Control-Allow-Credentials"]="true"
             res["Access-Control-Allow-Origin"] = "http://haulfree.io"
