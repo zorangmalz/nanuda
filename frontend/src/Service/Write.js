@@ -47,6 +47,21 @@ export default function Write() {
         var data = {
             service_score: number, service_content: after, service_opinion: opinion, user_id:user
         }
+
+        await fetch("https://haulfree.link/userpoint", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                content: "첫 서비스 리뷰 작성",
+                add_or_sub: true,
+                point: 2000,
+            })
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     
         await fetch("https://haulfree.link/servicereview/main", {
             method: "POST",
@@ -207,7 +222,7 @@ export default function Write() {
                             }} />
                         </div>
                         <StandardButton
-                            onClick={putServiceReview}
+                            onClick={inputs.after.length > 0 && inputs.opinion.length > 0 ? putServiceReview : () => {}}
                             marginTop={32}
                             text="작성 완료"
                             state={inputs.after.length > 0 && inputs.opinion.length > 0 ? true : false}
@@ -342,7 +357,7 @@ export default function Write() {
                         }} />
                     </div>
                     <MStandardButton
-                        onClick={putServiceReview}
+                        onClick={inputs.after.length > 0 && inputs.opinion.length > 0 ? putServiceReview : () => {}}
                         marginTop={32}
                         text="작성 완료"
                         state={inputs.after.length > 0 && inputs.opinion.length > 0 ? true : false}

@@ -1,5 +1,6 @@
 #보안
 import os
+from django.db.models.fields import json
 from django.http.response import HttpResponse, JsonResponse
 import jwt
 import urllib.request
@@ -363,11 +364,13 @@ def point_list(request):
             })
         
         elif request.method == "POST":
+            body_unicode = request.body.decode('utf-8')
+            body = json.loads(body_unicode)
             PointList.objects.create(
                 user_id = user,
-                content = request.POST.get("content"),
-                add_or_sub = request.POST.get("add_or_sub"),
-                point = request.POST.get("point")
+                content = body["content"],
+                add_or_sub = body["add_or_sub"],
+                point = body["point"]
             )
-            user.point_entire = request.POST.get("point_entire")
+            user.point_entire += body["point"]
             return Response(status=status.HTTP_201_CREATED)

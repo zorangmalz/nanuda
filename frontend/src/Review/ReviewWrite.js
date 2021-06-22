@@ -160,10 +160,7 @@ export default function ReviewWrite() {
                         <Header content="리뷰 작성" goBack={true} />
                         {data != null ?
                             <Product
-                                img={data.product_image}
-                                name={data.product_name}
-                                current={data.product_price}
-                                sale={data.order_price}
+                                item={data}
                                 border={true}
                                 mobile={false}
                             />
@@ -278,7 +275,7 @@ export default function ReviewWrite() {
                             resize: "none",
                         }} />
                         <StandardButton
-                            onClick={uploadFile}
+                            onClick={inputs.like.length > 0 && inputs.dislike.length > 0 && filePath.length > 0 && number > 0 ? uploadFile : () => {}}
                             marginTop={40}
                             text="다음"
                             state={inputs.like.length > 0 && inputs.dislike.length > 0 && filePath.length > 0 && number > 0 ? true : false}
@@ -300,10 +297,7 @@ export default function ReviewWrite() {
                     <MHeader content="리뷰 작성" goBack={true} />
                     {data != null ?
                         <Product
-                            img={data.product_image}
-                            name={data.product_name}
-                            current={data.product_price}
-                            sale={data.order_price}
+                            item={data}
                             border={true}
                             mobile={true}
                         />
@@ -417,7 +411,7 @@ export default function ReviewWrite() {
                         alignSelf: "center",
                     }} />
                     <MStandardButton
-                        onClick={uploadFile}
+                        onClick={inputs.like.length > 0 && inputs.dislike.length > 0 && filePath.length > 0 && number > 0 ? uploadFile : () => {}}
                         marginTop={20}
                         text="다음"
                         state={inputs.like.length > 0 && inputs.dislike.length > 0 && filePath.length > 0 && number > 0 ? true : false}

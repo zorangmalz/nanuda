@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Default, Mobile } from "../App";
-import { Header, MHeader, numberWithCommas } from "../Style";
+import { Header, MHeader, MStandardButton, numberWithCommas, StandardButton, StandardChoiceModal } from "../Style";
 
 export default function ProfileProductInfo() {
     const location = useLocation()
@@ -33,6 +33,8 @@ export default function ProfileProductInfo() {
                 .catch(err => console.log(err))
         }
     }, [location])
+
+    const [modal, setModal] = useState(false)
     return (
         <>
             <Default>
@@ -56,6 +58,19 @@ export default function ProfileProductInfo() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
+                        {modal ? 
+                            <StandardChoiceModal 
+                                title="주문을 취소하시겠습니까?"
+                                content="취소 후 결제 금액이 환불됩니다."
+                                canceltext="돌아가기"
+                                onCancelClick={() => setModal(false)}
+                                buttontext="취소하기"
+                                onClick={() => setModal(false)}
+                                mobile={false}
+                            />
+                            :
+                            <></>
+                        }
                         <Header content="상품 상세 구매 내역" goBack={true} />
                         <ProductInfo
                             img={order.product_image}
@@ -70,6 +85,12 @@ export default function ProfileProductInfo() {
                             deliveryClaim={order.order_request}
                             mobile={false}
                         />
+                        <StandardButton 
+                            marginTop={32}
+                            text="분할결제 스케쥴 확인하기"
+                            state={true}
+                            onClick={() => setModal(true)}
+                        />
                     </div>
                 </div>
             </Default>
@@ -83,6 +104,19 @@ export default function ProfileProductInfo() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
+                    {modal ?
+                        <StandardChoiceModal
+                            title="주문을 취소하시겠습니까?"
+                            content="취소 후 결제 금액이 환불됩니다."
+                            canceltext="돌아가기"
+                            onCancelClick={() => setModal(false)}
+                            buttontext="취소하기"
+                            onClick={() => setModal(false)}
+                            mobile={true}
+                        />
+                        :
+                        <></>
+                    }
                     <MHeader content="상품 상세 구매 내역" goBack={true} />
                     <ProductInfo
                         img={order.product_image}
@@ -96,6 +130,12 @@ export default function ProfileProductInfo() {
                         phoneNumber={order.order_phone_number}
                         deliveryClaim={order.order_request}
                         mobile={true}
+                    />
+                    <MStandardButton
+                        marginTop={"8vw"}
+                        text="분할결제 스케쥴 확인하기"
+                        state={true}
+                        onClick={() => setModal(true)}
                     />
                 </div>
             </Mobile>
