@@ -64,20 +64,20 @@ export default function Write() {
         .then(res => console.log(res))
         .catch(err => console.log(err))
     
-        // await fetch("https://haulfree.link/servicereview/main", {
-        //     method: "POST",
-        //     headers: {
-        //         "Accept": "application/json",
-        //         'Content-type': 'application/json',
-        //     },
-        //     credentials: "include",
-        //     body: JSON.stringify(data)
-        // })
-        //     .then(response => response.json())
-        //     .then(response => {
-        //         console.log(response)
-        //         history.replace("/servicereview")
-        //     }).catch(err => console.log(err))
+        await fetch("https://haulfree.link/servicereview/main", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                'Content-type': 'application/json',
+            },
+            credentials: "include",
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                history.replace("/servicereview")
+            }).catch(err => console.log(err))
     }
 
     const ratingChanged = (newRating) => {
