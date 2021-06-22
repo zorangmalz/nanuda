@@ -284,7 +284,7 @@ def order_list(request):
                 arrays.append({
                     "order_date": order.order_date,
                     "order_price": order.order_price,
-                    "product_id": order.product_id,
+                    "product_id": order.product_id.id,
                     "product_name": order.product_name(),
                     "product_image": order.product_image(),
                     "product_price": order.product_price(),
