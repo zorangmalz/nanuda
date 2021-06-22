@@ -87,10 +87,7 @@ export default function ReviewSelect() {
                             {orderData.length > 0 ?
                                 orderData.map(item => (
                                     <Product
-                                        img={item.product_image}
-                                        name={item.product_name}
-                                        current={item.product_price}
-                                        sale={item.order_price}
+                                        item={item}
                                         border={true}
                                         mobile={false}
                                     />
@@ -124,9 +121,7 @@ export default function ReviewSelect() {
                         {orderData.length > 0 ?
                             orderData.map(item => (
                                 <Product
-                                    name={item.product_name}
-                                    current={item.product_price}
-                                    sale={item.order_price}
+                                    item={item}
                                     border={true}
                                     mobile={true}
                                 />
@@ -141,10 +136,13 @@ export default function ReviewSelect() {
     )
 }
 
-export function Product({ img, name, current, sale, border, mobile }) {
+export function Product({ item, border, mobile }) {
     let history = useHistory()
     return (
-        <div onClick={() => history.push("/reviewwrite")} style={{
+        <div onClick={() => history.push({
+            pathname: "/reviewwrite",
+            state: { item: item }
+        })} style={{
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
@@ -161,7 +159,7 @@ export function Product({ img, name, current, sale, border, mobile }) {
                 display: "flex",
                 flexDirection: "row",
             }}>
-                <img alt="상품" src={img} style={{
+                <img alt="상품" src={item.product_image} style={{
                     width: mobile ? 80 : 96,
                     height: mobile ? 80 : 96,
                     backgroundColor: "#dfdfdf",
@@ -172,9 +170,9 @@ export function Product({ img, name, current, sale, border, mobile }) {
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <div style={{ fontSize: mobile ? 12 : 14, fontFamily: "AvenirNext", marginBottom: mobile ? "2vw" : 8 }}>{name}</div>
-                    <div style={{ fontSize: mobile ? 12 : 14, opacity: 0.6, textDecoration: "line-through", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(current)} 원</div>
-                    <div style={{ fontSize: mobile ? 14 : 16, fontWeight: "bold", color: "#010608", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(sale)} 원에 획득 완료!</div>
+                    <div style={{ fontSize: mobile ? 12 : 14, fontFamily: "AvenirNext", marginBottom: mobile ? "2vw" : 8 }}>{item.product_name}</div>
+                    <div style={{ fontSize: mobile ? 12 : 14, opacity: 0.6, textDecoration: "line-through", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(item.product_price)} 원</div>
+                    <div style={{ fontSize: mobile ? 14 : 16, fontWeight: "bold", color: "#010608", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(item.order_price)} 원에 획득 완료!</div>
                 </div>
             </div>
             <RiArrowRightSLine color="#dfdfdf" size={mobile ? 20 : 24} style={{ cursor: "pointer" }} />

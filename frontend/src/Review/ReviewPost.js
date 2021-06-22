@@ -267,13 +267,13 @@ export default function ReviewPost({ match }) {
                             marginTop: 8,
                         }} />
 
-                        <Product
+                        {/* <Product
                             name="삼배옷 컬랙션, White, 95"
                             current={210000}
                             sale={70000}
                             border={false}
                             mobile={false}
-                        />
+                        /> */}
                         <div style={{
                             marginTop: 16,
                             width: 480,
@@ -505,13 +505,13 @@ export default function ReviewPost({ match }) {
 
                     <img alt="사진" src={data.review_image} style={{ width: "100vw", backgroundColor: "#26c1f0", marginTop: 8 }} />
 
-                    <Product
+                    {/* <Product
                         name="삼배옷 컬랙션, White, 95"
                         current={210000}
                         sale={70000}
                         border={false}
                         mobile={true}
-                    />
+                    /> */}
                     <div style={{
                         marginTop: 12,
                         width: "100vw",
