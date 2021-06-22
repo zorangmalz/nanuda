@@ -364,14 +364,13 @@ def point_list(request):
             })
         
         elif request.method == "POST":
-            body_unicode = request.body.decode('utf-8')
-            body = json.loads(body_unicode)
-            PointList(
+            body = json.loads(request.body)
+            PointList.objects.create(
                 user_id = user,
-                content = body["content"],
-                add_or_sub = body["add_or_sub"],
-                point = body["point"]
-            ).save()
+                content = body.get("content", None),
+                add_or_sub = body.get("add_or_sub", None),
+                point = body.get("point", None),
+            )
             # user.point_entire = user.point_entire + body["point"]
             # user.save()
             return Response(status=status.HTTP_201_CREATED)

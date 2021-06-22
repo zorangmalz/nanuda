@@ -51,6 +51,7 @@ export default function Write() {
         await fetch("https://haulfree.link/userpoint", {
             method: "POST",
             headers: {
+                "Accept": "application/json",
                 "Content-Type": "application/json"
             },
             credentials: "include",
