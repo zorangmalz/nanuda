@@ -321,9 +321,19 @@ def order_one(request):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            orders = Order.objects.filter(user_id = user.id, product_id = request.GET["product_id"])
-            order_serilaizer = OrderSerializer(orders)
-            return Response(order_serilaizer.data)
+            order = Order.objects.filter(user_id = user.id, product_id = request.GET["product_id"])
+            return JsonResponse({
+                "order_id": order.order_id,
+                "order_receiver": order.order_receiver,
+                "order_address_number": order.order_address_number,
+                "order_address": order.order_address,
+                "order_address_detail": order.order_address_detail,
+                "order_phone_number": order.order_phone_number,
+                "order_request": order.order_request,
+                "product_name": order.product_name(),
+                "product_image": order.product_image(),
+                "product_price": order.product_price()
+            })
 
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
