@@ -1,6 +1,6 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, numberWithCommas } from "../Style";
+import { Header, MHeader, numberWithCommas } from "../Style";
 import { RiArrowRightSLine } from "react-icons/ri"
 import { useHistory } from "react-router";
 
