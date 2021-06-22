@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Default, Mobile } from "../App";
 import { Header, MHeader } from "../Style";
 
 export default function ProfileProductInfo() {
+    const location = useLocation()
+
+    useEffect(() => {
+        console.log(location.state.product_id)
+        fetch(`https://haulfree.link/order/detail?product_id=${location.state.product_id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    }, [])
     return (
         <>
             <Default>

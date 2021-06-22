@@ -28,6 +28,7 @@ export default function ProfileProduct() {
                             array.push({
                                 "order_date": response["data"][i].order_date.slice(0, 10),
                                 "order_price": response["data"][i].order_price,
+                                "product_id": response["data"][i].product_id,
                                 "product_name": response["data"][i].product_name,
                                 "product_image": response["data"][i].product_image,
                                 "product_price": response["data"][i].product_price,
@@ -73,6 +74,7 @@ export default function ProfileProduct() {
                                 date={item.order_date}
                                 title={item.product_name}
                                 price={item.product_price}
+                                product_id={item.product_id}
                                 mobile={false}
                             />
                         ))}
@@ -98,6 +100,7 @@ export default function ProfileProduct() {
                             date={item.order_date}
                             title={item.product_name}
                             price={item.product_price}
+                            product_id={item.product_id}
                             mobile={true}
                         />
                     ))}
@@ -107,7 +110,7 @@ export default function ProfileProduct() {
     )
 }
 
-function ProductState({ img, date, title, price, mobile }) {
+function ProductState({ img, date, title, price, mobile, product_id }) {
     const history = useHistory()
     return (
         <>
@@ -119,7 +122,10 @@ function ProductState({ img, date, title, price, mobile }) {
                 width: mobile ? "90vw" : 440,
                 borderBottom: "1px solid rgba(1, 6, 8, 0.2)"
             }}>
-                <div onClick={() => history.push("/profileproductinfo")} style={{
+                <div onClick={() => history.push({
+                    pathname: "/profileproductinfo",
+                    state: { "product_id": product_id }
+                })} style={{
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
