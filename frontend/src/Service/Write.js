@@ -56,28 +56,28 @@ export default function Write() {
             },
             credentials: "include",
             body: JSON.stringify({
-                content: "첫 서비스 리뷰 작성",
-                add_or_sub: true,
-                point: 2000,
+                "content": "첫 리뷰 작성",
+                "add_or_sub": true,
+                "point": 2000
             })
         })
         .then(res => console.log(res))
         .catch(err => console.log(err))
     
-        await fetch("https://haulfree.link/servicereview/main", {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                'Content-type': 'application/json',
-            },
-            credentials: "include",
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(response => {
-                console.log(response)
-                history.replace("/servicereview")
-            }).catch(err => console.log(err))
+        // await fetch("https://haulfree.link/servicereview/main", {
+        //     method: "POST",
+        //     headers: {
+        //         "Accept": "application/json",
+        //         'Content-type': 'application/json',
+        //     },
+        //     credentials: "include",
+        //     body: JSON.stringify(data)
+        // })
+        //     .then(response => response.json())
+        //     .then(response => {
+        //         console.log(response)
+        //         history.replace("/servicereview")
+        //     }).catch(err => console.log(err))
     }
 
     const ratingChanged = (newRating) => {

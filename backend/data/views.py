@@ -1,10 +1,10 @@
 #보안
 import os
-from django.db.models.fields import json
 from django.http.response import HttpResponse, JsonResponse
 import jwt
 import urllib.request
 from dotenv import load_dotenv
+import json
 
 # API 제작 - 상태, 기능, 인증, 권한, Header(JSON)
 from rest_framework import status
@@ -364,12 +364,24 @@ def point_list(request):
             })
         
         elif request.method == "POST":
-            PointList(
-                user_id = user.id,
-                content = request.POST.get("content"),
-                add_or_sub = request.POST.get("add_or_sub"),
-                point = request.POST.get("point")
-            ).save()
-            # user.point_entire = user.point_entire + body["point"]
-            # user.save()
-            return Response(status=status.HTTP_201_CREATED)
+            data = json.loads(request.body)
+            if data["add_or_sub"].lower() == 'false':
+                PointList.objects.create(
+                    user_id=user,
+                    content=data["content"],
+                    add_or_sub=False,
+                    point=data["point"]
+                )
+                user.point_entire = user.point_entire - data["point"]
+                user.save()
+                return Response(status=status.HTTP_201_CREATED)
+            elif data["add_or_sub"].lower() == 'true':
+                PointList.objects.create(
+                    user_id=user,
+                    content=data["content"],
+                    add_or_sub=True,
+                    point=data["point"]
+                )
+                user.point_entire = user.point_entire + data["point"]
+                user.save()
+                return Response(status=status.HTTP_201_CREATED)
