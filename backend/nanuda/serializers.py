@@ -60,3 +60,21 @@ class OrderAllSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = "__all__"
+
+class OrderSerializer(serializers.ModelSerializer):
+    product_name = serializers.SerializerMethodField()
+    product_image = serializers.SerializerMethodField()
+    product_price = serializers.SerializerMethodField()
+
+    def get_product_name(self, obj):
+        return obj.product_name()
+    
+    def get_product_image(self, obj):
+        return obj.product_image()
+
+    def get_product_price(self, obj):
+        return obj.product_price()
+
+    class Meta:
+        model = Order
+        fields = ["order_id", "order_receiver", "order_address_number", "order_address", "order_address_detail", "order_phone_number", "order_request"]

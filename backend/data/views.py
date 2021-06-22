@@ -15,7 +15,7 @@ from rest_framework.parsers import JSONParser
 
 # Model Import 
 from nanuda.models import PointList, User, ServiceReview, Product, Review, Order
-from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
+from nanuda.serializers import OrderSerializer, UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
 
 #Python 내장함수
 from datetime import date
@@ -284,6 +284,7 @@ def order_list(request):
                 arrays.append({
                     "order_date": order.order_date,
                     "order_price": order.order_price,
+                    "product_id": order.product_id,
                     "product_name": order.product_name(),
                     "product_image": order.product_image(),
                     "product_price": order.product_price(),
@@ -300,6 +301,29 @@ def order_list(request):
         #         order_serializer.save()
         #         return Response(order_serializer.data)
         #     return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["GET"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+def order_one(request):
+    if not request.COOKIES.get("access_token"):
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    else:
+        try:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+
+        except User.DoesNotExist():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        if request.method == "GET":
+            orders = Order.objects.filter(user_id = user.id, product_id = request.GET["product_id"])
+            order_serilaizer = OrderSerializer(orders)
+            return Response(order_serilaizer.data)
 
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])

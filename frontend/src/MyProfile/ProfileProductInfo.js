@@ -77,7 +77,7 @@ function ProductInfo({ img, title, price, name, number, orderNum, address, addre
             <div style={{
                 width: mobile ? "82vw" : 408,
                 padding: mobile ? "4vw" : 16,
-                border: "1px solid #dfdfdf",
+                border: "1px solid #26c1f0",
                 backgroundColor: "#ffffff",
                 marginTop: mobile ? "8vw" : 32,
                 alignSelf: "center",
