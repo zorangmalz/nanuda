@@ -58,6 +58,7 @@ export default function ReviewSelect() {
                                 current={210000}
                                 sale={70000}
                                 border={true}
+                                mobile={false}
                             />
                         </div>
                     </div>
@@ -82,11 +83,12 @@ export default function ReviewSelect() {
                             color: "#010608",
                             fontFamily: "NotoSansCJKkr"
                         }}>리뷰를 작성할 상품을 골라주세요.</div>
-                        <MProduct
+                        <Product
                             name="삼배옷 컬랙션, White, 95"
                             current={210000}
                             sale={70000}
                             border={true}
+                            mobile={false}
                         />
                     </div>
                 </div>
@@ -95,7 +97,7 @@ export default function ReviewSelect() {
     )
 }
 
-export function Product({ name, current, sale, border }) {
+export function Product({ img, name, current, sale, border, mobile }) {
     let history = useHistory()
     return (
         <div onClick={() => history.push("/reviewwrite")} style={{
@@ -103,76 +105,35 @@ export function Product({ name, current, sale, border }) {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
-            marginLeft: 20,
+            marginLeft: mobile ? "5vw" : 20,
 
             cursor: "pointer",
             paddingBottom: border ? 16 : 0,
             borderBottom: border ? "1px solid rgba(1, 6, 8, 0.2)" : 0,
-            width: 440,
+            width: mobile ? "90vw" : 440,
         }}>
             <div style={{
-                marginTop: 16,
+                marginTop: mobile ? "4vw" : 16,
                 display: "flex",
                 flexDirection: "row",
             }}>
-                <div style={{
-                    width: 96,
-                    height: 96,
+                <img alt="상품" src={img} style={{
+                    width: mobile ? 80 : 96,
+                    height: mobile ? 80 : 96,
                     backgroundColor: "#dfdfdf",
                     borderRadius: 6
                 }} />
                 <div style={{
-                    marginLeft: 14,
+                    marginLeft: mobile ? 12 : 14,
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <div style={{ fontSize: 14, fontFamily: "AvenirNext", marginBottom: 8 }}>{name}</div>
-                    <div style={{ fontSize: 14, opacity: 0.6, textDecoration: "line-through", marginBottom: 8 }}>{numberWithCommas(current)} 원</div>
-                    <div style={{ fontSize: 16, fontWeight: "bold", color: "#010608", marginBottom: 8 }}>{numberWithCommas(sale)} 원에 획득 완료!</div>
+                    <div style={{ fontSize: mobile ? 12 : 14, fontFamily: "AvenirNext", marginBottom: mobile ? "2vw" : 8 }}>{name}</div>
+                    <div style={{ fontSize: mobile ? 12 : 14, opacity: 0.6, textDecoration: "line-through", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(current)} 원</div>
+                    <div style={{ fontSize: mobile ? 14 : 16, fontWeight: "bold", color: "#010608", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(sale)} 원에 획득 완료!</div>
                 </div>
             </div>
-            <RiArrowRightSLine color="#dfdfdf" size={24} style={{ cursor: "pointer" }} />
-        </div>
-    )
-}
-
-export function MProduct({ name, current, sale, border }) {
-    let history = useHistory()
-    return (
-        <div onClick={() => history.push("/reviewwrite")} style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginLeft: 20,
-
-            cursor: "pointer",
-            paddingBottom: border ? "4vw" : 0,
-            borderBottom: border ? "1px solid rgba(1, 6, 8, 0.2)" : 0,
-            width: "90vw",
-        }}>
-            <div style={{
-                marginTop: 12,
-                display: "flex",
-                flexDirection: "row"
-            }}>
-                <div style={{
-                    width: 80,
-                    height: 80,
-                    backgroundColor: "#dfdfdf",
-                    borderRadius: 6
-                }} />
-                <div style={{
-                    marginLeft: 12,
-                    display: "flex",
-                    flexDirection: "column"
-                }}>
-                    <div style={{ fontSize: 12, fontFamily: "AvenirNext", marginBottom: 4 }}>{name}</div>
-                    <div style={{ fontSize: 12, opacity: 0.6, textDecoration: "line-through", marginBottom: 4 }}>{numberWithCommas(current)} 원</div>
-                    <div style={{ fontSize: 14, fontWeight: "bold", color: "#010608", marginBottom: 4 }}>{numberWithCommas(sale)} 원에 획득 완료!</div>
-                </div>
-            </div>
-            <RiArrowRightSLine color="#dfdfdf" size={20} style={{ cursor: "pointer" }} />
+            <RiArrowRightSLine color="#dfdfdf" size={mobile ? 20 : 24} style={{ cursor: "pointer" }} />
         </div>
     )
 }

@@ -1,11 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Default, Mobile } from "../App";
-import { Header, MHeader } from "../Style";
+import { Header, MHeader, numberWithCommas } from "../Style";
 
 export default function ProfileProductInfo() {
     const location = useLocation()
 
+    const [order, setOrder] = useState({
+        order_address: "",
+        order_address_detail: "",
+        order_address_number: "",
+        order_id: "",
+        order_phone_number: "",
+        order_receiver: "",
+        order_request: "",
+        product_image: "",
+        product_name: "",
+        product_price: 0,
+    })
     useEffect(() => {
         console.log(location.state.product_id)
         if (location.state.product_id.length > 0) {
@@ -13,10 +25,11 @@ export default function ProfileProductInfo() {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
-                }
+                },
+                credentials: "include"
             })
                 .then(res => res.json())
-                .then(res => console.log(res))
+                .then(res => setOrder(res))
                 .catch(err => console.log(err))
         }
     }, [location])
@@ -45,15 +58,16 @@ export default function ProfileProductInfo() {
                     }}>
                         <Header content="상품 상세 구매 내역" goBack={true} />
                         <ProductInfo
-                            title="PRADA Model 23-9 limited edition berry expensive"
-                            price="460,000"
-                            name="김현명"
-                            orderNum="20200413137223-00-01"
-                            number="03770"
-                            address="서울 특별시 서대문구 북아현로 1길 17"
-                            addressDetail="e편한세상 203동 2104호"
-                            phoneNumber="010-4337-6607"
-                            deliveryClaim="집 앞"
+                            img={order.product_image}
+                            title={order.product_name}
+                            price={order.product_price}
+                            name={order.order_receiver}
+                            orderNum={order.order_id}
+                            number={order.order_address_number}
+                            address={order.order_address}
+                            addressDetail={order.order_address_detail}
+                            phoneNumber={order.order_phone_number}
+                            deliveryClaim={order.order_request}
                             mobile={false}
                         />
                     </div>
@@ -71,15 +85,16 @@ export default function ProfileProductInfo() {
                 }}>
                     <MHeader content="상품 상세 구매 내역" goBack={true} />
                     <ProductInfo
-                        title="PRADA Model 23-9 limited edition berry expensive"
-                        price="460,000"
-                        name="김현명"
-                        orderNum="20200413137223-00-01"
-                        number="03770"
-                        address="서울 특별시 서대문구 북아현로 1길 17"
-                        addressDetail="e편한세상 203동 2104호"
-                        phoneNumber="010-4337-6607"
-                        deliveryClaim="집 앞"
+                        img={order.product_image}
+                        title={order.product_name}
+                        price={order.product_price}
+                        name={order.order_receiver}
+                        orderNum={order.order_id}
+                        number={order.order_address_number}
+                        address={order.order_address}
+                        addressDetail={order.order_address_detail}
+                        phoneNumber={order.order_phone_number}
+                        deliveryClaim={order.order_request}
                         mobile={true}
                     />
                 </div>
@@ -117,12 +132,11 @@ function ProductInfo({ img, title, price, name, number, orderNum, address, addre
                     alignItems: "center",
                     marginBottom: mobile ? "4vw" : 16
                 }}>
-                    <img alt="제품" src={img} style={{
+                    <img alt="제품" src={img.length > 0 ? img : ""} style={{
                         width: 80,
                         height: 80,
                         marginRight: mobile ? "2.5vw" : 10,
                         borderRadius: 6,
-                        border: "solid 1px rgba(219, 219, 219, 0.1)",
                         backgroundColor: "#000000"
                     }} />
                     <div style={{
@@ -144,7 +158,7 @@ function ProductInfo({ img, title, price, name, number, orderNum, address, addre
                             color: "#010608",
                             fontFamily: "NotoSansCJKkr",
                             fontWeight: "bold",
-                        }}>{price} 원</div>
+                        }}>{numberWithCommas(price)} 원</div>
                     </div>
                 </div>
                 <div style={{

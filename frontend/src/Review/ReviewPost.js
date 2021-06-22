@@ -3,7 +3,7 @@ import { Default, Mobile } from "../App";
 import { Header, MStandardButton, StandardButton, StandardChoiceModal } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
-import { Product, MProduct } from "./ReviewSelect";
+import { Product } from "./ReviewSelect";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
 export default function ReviewPost({ match }) {
@@ -272,6 +272,7 @@ export default function ReviewPost({ match }) {
                             current={210000}
                             sale={70000}
                             border={false}
+                            mobile={false}
                         />
                         <div style={{
                             marginTop: 16,
@@ -504,11 +505,12 @@ export default function ReviewPost({ match }) {
 
                     <img alt="사진" src={data.review_image} style={{ width: "100vw", backgroundColor: "#26c1f0", marginTop: 8 }} />
 
-                    <MProduct
+                    <Product
                         name="삼배옷 컬랙션, White, 95"
                         current={210000}
                         sale={70000}
                         border={false}
+                        mobile={true}
                     />
                     <div style={{
                         marginTop: 12,

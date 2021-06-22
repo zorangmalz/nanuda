@@ -1,11 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { BsPlusCircle } from "react-icons/bs"
 import { useHistory } from "react-router";
-import { Product, MProduct } from "./ReviewSelect";
+import { Product } from "./ReviewSelect";
 import AWS from "aws-sdk";
 import ReactStars from "react-rating-stars-component"
+import { useLocation } from "react-router-dom";
 
 const AWS_ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
 const AWS_SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
@@ -26,6 +27,15 @@ export default function ReviewWrite() {
     const [number, setNumber] = useState(0);
 
     let history = useHistory()
+
+    const [data, setData] = useState()
+    const location = useLocation()
+
+    //상품 정보를 넘겨 받게 됨
+    useEffect(() => {
+        setData(location.state.item)
+        console.log(location.state.item)
+    }, [location])
 
     //이용후기 및 의견 작성
     const [inputs, setInputs] = useState({
@@ -148,13 +158,18 @@ export default function ReviewWrite() {
                         paddingBottom: 50,
                     }}>
                         <Header content="리뷰 작성" goBack={true} />
-                        <Product
-                            name="삼배옷 컬랙션, White, 95"
-                            current={210000}
-                            sale={70000}
-                            border={true}
-                        />
-
+                        {data != null ?
+                            <Product
+                                img={data.product_image}
+                                name={data.product_name}
+                                current={data.product_price}
+                                sale={data.order_price}
+                                border={true}
+                                mobile={false}
+                            />
+                            :
+                            <></>
+                        }
                         <div style={{
                             marginTop: 16,
                             marginLeft: 20,
@@ -283,13 +298,18 @@ export default function ReviewWrite() {
                     paddingBottom: 20
                 }}>
                     <MHeader content="리뷰 작성" goBack={true} />
-                    <MProduct
-                        name="삼배옷 컬랙션, White, 95"
-                        current={210000}
-                        sale={70000}
-                        border={true}
-                    />
-
+                    {data != null ?
+                        <Product
+                            img={data.product_image}
+                            name={data.product_name}
+                            current={data.product_price}
+                            sale={data.order_price}
+                            border={true}
+                            mobile={true}
+                        />
+                        :
+                        <></>
+                    }
                     <div style={{
                         marginTop: "4vw",
                         marginLeft: "5vw",
@@ -405,67 +425,5 @@ export default function ReviewWrite() {
                 </div>
             </Mobile>
         </>
-    )
-}
-
-function ImagePut() {
-    //ImageToS3
-    const [progress, setProgress] = useState(0)
-    const [selectedFile, setSelectedFile] = useState(null)
-
-    const handelFileInput = (e) => {
-        setSelectedFile(e.target.files[0])
-    }
-
-    const uploadFile = (file) => {
-        const params = {
-            ACL: "public-read",
-            Body: file,
-            Bucket: S3_BUCKET,
-            Key: file.name
-        }
-
-        imageBucket.putObject(params)
-            .on("httpUploadProgress", (evt) => {
-                setProgress(Math.round((evt.loaded / evt.total) * 100))
-            })
-            .send((err) => {
-                if (err) console.log(err)
-            })
-    }
-    return (
-        <input onChange={selectedFile === null ? handelFileInput : () => {}} onClick={() => selectedFile === null ? {} : uploadFile(selectedFile)} type="file" style={{
-            marginLeft: 20,
-            marginTop: 16,
-            width: 120,
-            height: 120,
-            borderRadius: 6,
-            backgroundColor: "#f2f3f8",
-            cursor: "pointer",
-
-        }}>
-            {/* <BsPlusCircle size={24} color="#010608" /> */}
-        </input>
-    )
-}
-
-function MImagePut() {
-    return (
-        <div style={{
-            marginLeft: "5vw",
-            marginTop: "4vw",
-            width: "25vw",
-            height: "25vw",
-            borderRadius: 6,
-            backgroundColor: "#f2f3f8",
-
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-
-            cursor: "pointer"
-        }}>
-            <BsPlusCircle size={16} color="#010608" />
-        </div>
     )
 }

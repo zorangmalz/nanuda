@@ -191,18 +191,24 @@ export default function ProfileReview() {
                             ))}
                         </div>
                     }
-                    {orderData.length > 0 ? <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        color: "#010608",
-                        marginLeft: "5vw",
-                        marginTop: 28,
-                        marginBottom: 12,
-                    }}>아직 리뷰를 작성하지 않았어요!</div> : <></>}
-                    {orderData.map(item => (
-                        <ProductList item={item} mobile={true} />
-                    ))}
+                    {orderData.length > 0 ?
+                        <>
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 16,
+                                fontWeight: "bold",
+                                color: "#010608",
+                                marginLeft: "5vw",
+                                marginTop: 28,
+                                marginBottom: 12,
+                            }}>아직 리뷰를 작성하지 않았어요!</div>
+                            {orderData.map(item => (
+                                <ProductList item={item} mobile={true} />
+                            ))}
+                        </>
+                        : 
+                        <></>
+                    }
                 </div>
             </Mobile>
         </>
@@ -212,7 +218,10 @@ export default function ProfileReview() {
 function ProductList({ item, mobile }) {
     let history = useHistory()
     return (
-        <div onClick={() => history.push("/reviewwrite")} style={{
+        <div onClick={() => history.push({
+            pathname: "/reviewwrite",
+            state: {item: item},
+        })} style={{
             marginTop: mobile ? "4vw" : 16,
             display: "flex",
             flexDirection: "row",
@@ -229,7 +238,7 @@ function ProductList({ item, mobile }) {
                 flexDirection: "row",
                 alignItems: "center",
             }}>
-                <img alt="제품 이미지" src={item.product_image.length > 0 ? item.product_image :  mainlogo} style={{
+                <img alt="제품 이미지" src={item.product_image.length > 0 ? item.product_image : mainlogo} style={{
                     width: mobile ? "20vw" : 96,
                     height: mobile ? "20vw" : 96,
                     backgroundColor: "#dfdfdf",

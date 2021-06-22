@@ -323,6 +323,7 @@ def order_one(request):
         if request.method == "GET":
             order = Order.objects.get(user_id = user.id, product_id = request.GET.get("product", None))
             return JsonResponse({
+                "id": order.id,
                 "order_id": order.order_id,
                 "order_receiver": order.order_receiver,
                 "order_address_number": order.order_address_number,
