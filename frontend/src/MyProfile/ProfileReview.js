@@ -47,6 +47,7 @@ export default function ProfileReview() {
                     for (var i = 0; i < response["data"].length; i++) {
                         if (!response["data"][i].review_write) {
                             array.push({
+                                "id": response["data"][i].id,
                                 "order_price": response["data"][i].order_price,
                                 "product_name": response["data"][i].product_name,
                                 "product_image": response["data"][i].product_image,
