@@ -365,7 +365,7 @@ def point_list(request):
         
         elif request.method == "POST":
             data = json.loads(request.body)
-            if data["add_or_sub"].lower() == 'false':
+            if str(data["add_or_sub"]).lower() == 'false':
                 PointList.objects.create(
                     user_id=user,
                     content=data["content"],
@@ -375,7 +375,7 @@ def point_list(request):
                 user.point_entire = user.point_entire - data["point"]
                 user.save()
                 return Response(status=status.HTTP_201_CREATED)
-            elif data["add_or_sub"].lower() == 'true':
+            elif str(data["add_or_sub"]).lower() == 'true':
                 PointList.objects.create(
                     user_id=user,
                     content=data["content"],
