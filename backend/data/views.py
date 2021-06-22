@@ -294,14 +294,6 @@ def order_list(request):
             return JsonResponse({
                 "data": arrays
             })
-        
-        # elif request.method == "PUT":
-        #     order = Order.objects.create(user_id = user.id, product_id = request.data.product_id)
-        #     order_serializer = OrderAllSerializer(order, data=request.data)
-        #     if order_serializer.is_valid():
-        #         order_serializer.save()
-        #         return Response(order_serializer.data)
-        #     return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(["GET"])
 @parser_classes([JSONParser])

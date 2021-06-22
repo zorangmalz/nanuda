@@ -84,13 +84,20 @@ export default function ReviewSelect() {
                                 color: "#010608",
                                 fontFamily: "NotoSansCJKkr"
                             }}>리뷰를 작성할 상품을 골라주세요.</div>
-                            <Product
-                                name="삼배옷 컬랙션, White, 95"
-                                current={210000}
-                                sale={70000}
-                                border={true}
-                                mobile={false}
-                            />
+                            {orderData.length > 0 ?
+                                orderData.map(item => (
+                                    <Product
+                                        img={item.product_image}
+                                        name={item.product_name}
+                                        current={item.product_price}
+                                        sale={item.order_price}
+                                        border={true}
+                                        mobile={false}
+                                    />
+                                ))
+                                :
+                                <></>
+                            }
                         </div>
                     </div>
                 </div>
@@ -114,13 +121,19 @@ export default function ReviewSelect() {
                             color: "#010608",
                             fontFamily: "NotoSansCJKkr"
                         }}>리뷰를 작성할 상품을 골라주세요.</div>
-                        <Product
-                            name="삼배옷 컬랙션, White, 95"
-                            current={210000}
-                            sale={70000}
-                            border={true}
-                            mobile={false}
-                        />
+                        {orderData.length > 0 ?
+                            orderData.map(item => (
+                                <Product
+                                    name={item.product_name}
+                                    current={item.product_price}
+                                    sale={item.order_price}
+                                    border={true}
+                                    mobile={true}
+                                />
+                            ))
+                            :
+                            <></>
+                        }
                     </div>
                 </div>
             </Mobile>
