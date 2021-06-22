@@ -372,5 +372,6 @@ def point_list(request):
                 add_or_sub = body["add_or_sub"],
                 point = body["point"]
             )
-            user.point_entire += body["point"]
+            user.point_entire = user.point_entire + body["point"]
+            user.save()
             return Response(status=status.HTTP_201_CREATED)
