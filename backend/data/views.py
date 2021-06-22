@@ -282,6 +282,7 @@ def order_list(request):
             arrays = []
             for order in orders:
                 arrays.append({
+                    "id": order.id,
                     "order_date": order.order_date,
                     "order_price": order.order_price,
                     "product_id": order.product_id.id,
