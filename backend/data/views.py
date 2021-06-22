@@ -321,7 +321,7 @@ def order_one(request):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            order = Order.objects.filter(user_id = user.id, product_id = request.GET["product_id"])
+            order = Order.objects.get(user_id = user.id, product_id = request.GET["product_id"])
             return JsonResponse({
                 "order_id": order.order_id,
                 "order_receiver": order.order_receiver,
