@@ -8,15 +8,17 @@ export default function ProfileProductInfo() {
 
     useEffect(() => {
         console.log(location.state.product_id)
-        fetch(`https://haulfree.link/order/detail?product_id=${location.state.product_id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => res.json())
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        if (location.state.product_id.length > 0) {
+            fetch(`https://haulfree.link/order/detail?product=${location.state.product_id}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(res => res.json())
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+        }
     }, [location])
     return (
         <>
