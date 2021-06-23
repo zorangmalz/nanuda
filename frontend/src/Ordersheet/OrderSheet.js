@@ -324,7 +324,7 @@ export default function OrderSheet() {
     }
     const getResult = (res) => {
         if (res.PCD_PAY_RST === 'success') {
-            payResult = res;
+            var payResult = res;
 
             // 전달받은 결제 파라미터값을 state에 저장 후  '/react/order_result'로 이동
             console.log(payResult)
