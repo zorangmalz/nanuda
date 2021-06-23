@@ -343,7 +343,7 @@ const handleClick = (e) => {
          */
         obj.PCD_CPAY_VER = "1.0.1"		             // (필수) 결제창 버전 (Default : 1.0.1)
         obj.PCD_PAY_TYPE = "transfer"			             // (필수) 결제 방법 (transfer | card)
-        obj.PCD_PAY_WORK = "ATUH";			             // (필수) 결제요청 업무구분 (AUTH : 본인인증+계좌등록, CERT: 본인인증+계좌등록+결제요청등록(최종 결제승인요청 필요), PAY: 본인인증+계좌등록+결제완료)
+        obj.PCD_PAY_WORK = "AUTH";			             // (필수) 결제요청 업무구분 (AUTH : 본인인증+계좌등록, CERT: 본인인증+계좌등록+결제요청등록(최종 결제승인요청 필요), PAY: 본인인증+계좌등록+결제완료)
         obj.PCD_CARD_VER = '01';			     // DEFAULT: 01 (01: 정기결제 플렛폼, 02: 일반결제 플렛폼), 카드결제 시 필수
         obj.PCD_PAYER_AUTHTYPE = "sms";				     // (선택) [간편결제/정기결제] 본인인증 방식 (sms : 문자인증 | pwd : 패스워드 인증)
 
