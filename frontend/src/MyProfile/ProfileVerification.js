@@ -51,21 +51,27 @@ export default function ProfileVerification() {
     const [number, dispatch] = useReducer(reducer, 0)
     const onStudent = () => {
         dispatch({ type: "STUDENT" })
+        setJob("학생")
     }
     const onEmploy = () => {
         dispatch({ type: "EMPLOY" })
+        setJob("직장인")
     }
     const onHouse = () => {
         dispatch({ type: "HOUSE" })
+        setJob("주부")
     }
     const onReady = () => {
         dispatch({ type: "READY" })
+        setJob("취준생")
     }
     const onSelf = () => {
         dispatch({ type: "SELF" })
+        setJob("자영업")
     }
     const onEtc = () => {
         dispatch({ type: "ETC" })
+        setJob("기타")
     }
 
     //직업 입력
@@ -150,9 +156,30 @@ export default function ProfileVerification() {
                 })
             imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/user/${user.user_email}/mission/job/${selectedFile[i].name}`)
         }
-        if (imageArray.length === selectedFile.length) {
-            history.replace("/")
-        }
+        
+        await fetch("https://haulfree.link/user/mission", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                mission_type: "job",
+                mission_images: imageArray,
+                mission_options: {
+                    "content": job,
+                }
+            })
+        })
+        .then(res => {
+            console.log(res)
+            history.push("/")
+        })
+        .catch(err => {
+            console.log(err)
+            history.push("/")
+        })
     }
     return (
         <>
