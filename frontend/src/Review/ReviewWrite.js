@@ -100,14 +100,15 @@ export default function ReviewWrite() {
             credentials: "include",
             body: JSON.stringify(array)
         })
-            .then(response => response.json())
-            .then(response => {
-                history.push("/reviewsuccess")
-                console.log(response)
-            }).catch(err => {
-                console.log(err)
-                history.push("/reviewfail")
-            })
+            .then(response => response.text())
+            .then(response => console.log(response))
+            // .then(response => {
+            //     history.push("/reviewsuccess")
+            //     console.log(response)
+            // }).catch(err => {
+            //     console.log(err)
+            //     history.push("/reviewfail")
+            // })
     }
 
     const ratingChanged = (newRating) => {

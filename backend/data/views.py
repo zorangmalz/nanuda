@@ -177,16 +177,15 @@ def review_all(request):
             
             data = json.loads(request.body)
 
+            order = Order.objects.get(id = data["order_id"])
             Review.objects.create(
                 user_id = user,
-                order_id = data["order_id"],
+                order_id = order,
                 review_score = data["review_score"],
                 review_like = data["review_like"],
                 review_dislike = data["review_dislike"],
                 review_image = data["review_image"]
             )
-
-            order = Order.objects.get(id = data["order_id"])
             order.review_write = True
             order.save()
             return status.HTTP_201_CREATED

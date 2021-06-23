@@ -1,9 +1,10 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useRef } from "react";
 import { Default, Mobile } from "../App";
 import { Button, MButton } from "../Auth/SignupProfile";
-import { Header, MHeader, InputModule, MInputModule, StandardButton, MStandardButton } from "../Style";
+import { Header, MHeader, InputModule, MInputModule, StandardButton, MStandardButton, S3_BUCKET, imageBucket } from "../Style";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styled from "styled-components"
+import { useHistory } from "react-router-dom";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -70,6 +71,59 @@ export default function ProfileVerification() {
     const [job, setJob] = useState("")
     const onJob = (e) => {
         setJob(e.target.value)
+    }
+
+    const history = useHistory()
+
+    //ImageToS3
+    //이미지 컴포넌트
+    const inputFile = useRef(null)
+
+    //이미지 저장 및 경로
+    const [selectedFile, setSelectedFile] = useState([])
+    const [filePath, setFilePath] = useState([])
+
+    const onButtonclick = () => {
+        inputFile.current.click()
+    }
+
+    //여러 이미지 경로 저장
+    const handelFileInput = (e) => {
+        const files = e.target.files;
+        let length;
+        if (files.length > 2) {
+            length = 3;
+        } else {
+            length = files.length
+        }
+        for (let i = 0; i < length; i++) {
+            setSelectedFile(selectedFile => [...selectedFile, files[i]])
+            setFilePath(filePath => [...filePath, URL.createObjectURL(files[i])])
+        }
+    }
+
+    //s3로 업로드 후 URL을 RDS에 삽입 + user_id, product_id는 추후에 수정
+    const uploadFile = async () => {
+        var imageArray = []
+        for (let i = 0; i < selectedFile.length; i++) {
+            const params = {
+                ACL: "public-read",
+                Body: selectedFile[i],
+                Bucket: S3_BUCKET,
+                Key: selectedFile[i].name
+            }
+
+            imageBucket.putObject(params)
+                .on("httpUploadProgress", (evt) => {
+
+                })
+                .send((err) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                })
+            imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[i].name}`)
+        }
     }
     return (
         <>
@@ -192,12 +246,12 @@ export default function ProfileVerification() {
                                 alignSelf: "center",
                             }}>학생증, 사원증, 아르바이트 월급 인증, 고무장갑 인증 등 다양하게 <br />
                                 자신의 직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요! <br />
-                            사용자님의 소중한 개인정보는 확인용도외에 일절 사용 되지 않습니다.</div>
+                                사용자님의 소중한 개인정보는 확인용도외에 일절 사용 되지 않습니다.</div>
                         </div>
-                        <StandardButton 
+                        <StandardButton
                             marginTop={40}
                             text="인증 완료"
-                            onClick={() => {}}
+                            onClick={() => { }}
                             state={number != 0 ? true : false}
                         />
                     </div>
