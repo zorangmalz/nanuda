@@ -32,6 +32,30 @@ export default function ProfileLimit() {
             })
             .catch(err => console.log(err))
     }, [])
+
+    const [jobExist, setJobExist] = useState(false)
+    useEffect(() => {
+        fetch('https://haulfree.link/user/mission', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            credentials: "include"
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res != null && res != undefined) {
+                    res.forEach(item => {
+                        if (item.mission_type === "job") {
+                            setJobExist(true)
+                        }
+                    })
+                }
+                console.log(res)
+            })
+            .catch(err => console.log(err))
+    }, [])
     return (
         <>
             <Default>
@@ -120,61 +144,17 @@ export default function ProfileLimit() {
                             marginTop: 32,
                             marginLeft: 20,
                         }}>한도 증가 미션</div>
-                        <div style={{
-                            width: 408,
-                            height: 120,
-                            padding: "0px 16px",
-                            borderRadius: 6,
-                            border: "1px solid #25c1f0",
-                            backgroundColor: "#ffffff",
-                            marginTop: 16,
-
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                            alignSelf: "center",
-                        }}>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                            }}>
-                                <div style={{
-                                    width: 72,
-                                    height: 48,
-                                    backgroundColor: "#26f0b0"
-                                }} />
-                                <div style={{ marginLeft: 16 }}>
-                                    <div style={{
-                                        fontFamily: "NotoSansCJKkr",
-                                        fontSize: 16,
-                                        fontWeight: "bold",
-                                        color: "#010608",
-                                        marginBottom: 8,
-                                    }}>직업 인증하기</div>
-                                    <div style={{
-                                        fontFamily: "NotoSansCJKkr",
-                                        opacity: 0.6,
-                                        fontSize: 14,
-                                        color: "#010608"
-                                    }}>한도 10만원 증가</div>
-                                </div>
-                            </div>
-                            <div onClick={() => history.push("/profile/verification/main")} style={{
-                                padding: "7px 14px",
-                                borderRadius: 6,
-                                backgroundColor: "#010608",
-
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 14,
-                                fontWeight: "bold",
-                                color: "#ffffff",
-                                textAlign: "center",
-
-                                cursor: "pointer",
-                            }}>진행 가능</div>
-                        </div>
+                        {!jobExist ?
+                            <MissionForm
+                                title="직업 인증하기"
+                                content="한도 10만원 증가"
+                                ongoing={true}
+                                onClick={() => history.push("/profile/verification/main")}
+                                mobile={false}
+                            />
+                            :
+                            <></>
+                        }
                         <div style={{
                             width: 408,
                             height: 120,
@@ -220,42 +200,52 @@ export default function ProfileLimit() {
                             marginTop: 32,
                             marginLeft: 20,
                         }}>완료된 미션</div>
-                        <div style={{
-                            width: 408,
-                            height: 120,
-                            padding: "0px 16px",
-                            borderRadius: 6,
-                            border: "1px solid #25c1f0",
-                            backgroundColor: "#ffffff",
-                            marginTop: 16,
-
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            alignSelf: "center",
-                        }}>
+                        {!jobExist ?
                             <div style={{
-                                width: 72,
-                                height: 72,
-                                borderRadius: 36,
-                                backgroundColor: "#fff500"
-                            }} />
-                            <div style={{ marginLeft: 16 }}>
+                                width: 408,
+                                height: 120,
+                                padding: "0px 16px",
+                                borderRadius: 6,
+                                border: "1px solid #25c1f0",
+                                backgroundColor: "#ffffff",
+                                marginTop: 16,
+
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                alignSelf: "center",
+                            }}>
                                 <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 16,
-                                    fontWeight: "bold",
-                                    color: "#010608",
-                                    marginBottom: 8,
-                                }}>완료한 미션이 없습니다.</div>
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    opacity: 0.6,
-                                    fontSize: 14,
-                                    color: "#010608"
-                                }}>미션을 수행하고 한도를 늘려보세요.</div>
+                                    width: 72,
+                                    height: 72,
+                                    borderRadius: 36,
+                                    backgroundColor: "#fff500"
+                                }} />
+                                <div style={{ marginLeft: 16 }}>
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontSize: 16,
+                                        fontWeight: "bold",
+                                        color: "#010608",
+                                        marginBottom: 8,
+                                    }}>완료한 미션이 없습니다.</div>
+                                    <div style={{
+                                        fontFamily: "NotoSansCJKkr",
+                                        opacity: 0.6,
+                                        fontSize: 14,
+                                        color: "#010608"
+                                    }}>미션을 수행하고 한도를 늘려보세요.</div>
+                                </div>
                             </div>
-                        </div>
+                            :
+                            <MissionForm
+                                title="직업 인증하기"
+                                content="한도 10만원 증가"
+                                ongoing={false}
+                                onClick={() => history.push("/profile/verification/main")}
+                                mobile={false}
+                            />
+                        }
                     </div>
                 </div>
             </Default>
@@ -324,7 +314,7 @@ export default function ProfileLimit() {
                         }}>현재 한도 금액은 최대 분할결제가 가능한 금액을 의미합니다.
                             예를 들어 60만원 짜리 상품을 구매하는 경우 30만원을 선결제 후
                             나머지 30만원을 2~4 분할 결제 할 수 있습니다.
-                                분할결제를 완료한 만큼 한도가 회복됩니다. </div>
+                            분할결제를 완료한 만큼 한도가 회복됩니다. </div>
                     </div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -335,62 +325,17 @@ export default function ProfileLimit() {
                         marginTop: 28,
                         marginLeft: "5vw",
                     }}>한도 증가 미션</div>
-                    <div style={{
-                        width: "82vw",
-                        height: 90,
-                        paddingLeft: "4vw",
-                        paddingRight: "4vw",
-                        borderRadius: 6,
-                        border: "1px solid #25c1f0",
-                        backgroundColor: "#ffffff",
-                        marginTop: 12,
-
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        alignSelf: "center",
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                        }}>
-                            <div style={{
-                                width: 60,
-                                height: 26,
-                                backgroundColor: "#26f0b0"
-                            }} />
-                            <div style={{ marginLeft: 12 }}>
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontSize: 14,
-                                    fontWeight: "bold",
-                                    color: "#010608",
-                                    marginBottom: 4,
-                                }}>직업 인증하기</div>
-                                <div style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    opacity: 0.6,
-                                    fontSize: 12,
-                                    color: "#010608"
-                                }}>한도 10만원 증가</div>
-                            </div>
-                        </div>
-                        <div onClick={() => history.push("/profile/verification/main")} style={{
-                            padding: "6px 12px",
-                            borderRadius: 6,
-                            backgroundColor: "#010608",
-
-                            fontFamily: "NotoSansCJKkr",
-                            fontSize: 12,
-                            fontWeight: "bold",
-                            color: "#ffffff",
-                            textAlign: "center",
-
-                            cursor: "pointer",
-                        }}>진행 가능</div>
-                    </div>
+                    {!jobExist ?
+                        <MissionForm
+                            title="직업 인증하기"
+                            content="한도 10만원 증가"
+                            ongoing={true}
+                            onClick={() => history.push("/profile/verification/main")}
+                            mobile={true}
+                        />
+                        :
+                        <></>
+                    }
                     <div style={{
                         width: "82vw",
                         height: 90,
@@ -437,44 +382,54 @@ export default function ProfileLimit() {
                         marginTop: 28,
                         marginLeft: "5vw",
                     }}>완료된 미션</div>
-                    <div style={{
-                        width: "82vw",
-                        height: 90,
-                        paddingLeft: "4vw",
-                        paddingRight: "4vw",
-                        borderRadius: 6,
-                        border: "1px solid #25c1f0",
-                        backgroundColor: "#ffffff",
-                        marginTop: 12,
-
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        alignSelf: "center",
-                        marginBottom: "5vw",
-                    }}>
+                    {!jobExist ?
                         <div style={{
-                            width: 60,
-                            height: 60,
-                            borderRadius: 30,
-                            backgroundColor: "#fff500"
-                        }} />
-                        <div style={{ marginLeft: 12 }}>
+                            width: "82vw",
+                            height: 90,
+                            paddingLeft: "4vw",
+                            paddingRight: "4vw",
+                            borderRadius: 6,
+                            border: "1px solid #25c1f0",
+                            backgroundColor: "#ffffff",
+                            marginTop: 12,
+
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            alignSelf: "center",
+                            marginBottom: "5vw",
+                        }}>
                             <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 14,
-                                fontWeight: "bold",
-                                color: "#010608",
-                                marginBottom: 4,
-                            }}>완료한 미션이 없습니다.</div>
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                opacity: 0.6,
-                                fontSize: 12,
-                                color: "#010608"
-                            }}>미션을 수행하고 한도를 늘려보세요.</div>
+                                width: 60,
+                                height: 60,
+                                borderRadius: 30,
+                                backgroundColor: "#fff500"
+                            }} />
+                            <div style={{ marginLeft: 12 }}>
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 14,
+                                    fontWeight: "bold",
+                                    color: "#010608",
+                                    marginBottom: 4,
+                                }}>완료한 미션이 없습니다.</div>
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 12,
+                                    color: "#010608"
+                                }}>미션을 수행하고 한도를 늘려보세요.</div>
+                            </div>
                         </div>
-                    </div>
+                        :
+                        <MissionForm
+                            title="직업 인증하기"
+                            content="한도 10만원 증가"
+                            ongoing={false}
+                            onClick={() => history.push("/profile/verification/main")}
+                            mobile={true}
+                        />
+                    }
                 </div>
             </Mobile>
         </>
@@ -502,4 +457,68 @@ function Progressbar({ width, percent }) {
 
 function percentCalculator(a, b) {
     return (a * 100 / b).toFixed(0)
+}
+
+function MissionForm({ title, content, ongoing, onClick, mobile }) {
+    return (
+        <div style={{
+            width: mobile ? "82vw" : 408,
+            height: mobile ? 90 : 120,
+            padding: mobile ? "0vw 4vw" : "0px 16px",
+            borderRadius: 6,
+            border: "1px solid #25c1f0",
+            backgroundColor: "#ffffff",
+            marginTop: mobile ? "4vw" : 16,
+
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            alignSelf: "center",
+        }}>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+            }}>
+                <div style={{
+                    width: mobile ? 60 : 72,
+                    height: mobile ? 26 : 48,
+                    backgroundColor: "#26f0b0"
+                }} />
+                <div style={{ marginLeft: mobile ? "4vw" : 16 }}>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: mobile ? 14 : 16,
+                        fontWeight: "bold",
+                        color: "#010608",
+                        marginBottom: mobile ? "2vw" : 8,
+                    }}>{title}</div>
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        opacity: 0.6,
+                        fontSize: mobile ? 12 : 14,
+                        color: "#010608"
+                    }}>{content}</div>
+                </div>
+            </div>
+            {ongoing ?
+                <div onClick={onClick} style={{
+                    padding: mobile ? "2vw 3.5vw" : "8px 14px",
+                    borderRadius: 6,
+                    backgroundColor: "#010608",
+
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 12 : 14,
+                    fontWeight: "bold",
+                    color: "#ffffff",
+                    textAlign: "center",
+
+                    cursor: "pointer",
+                }}>진행 가능</div>
+                :
+                <></>
+            }
+        </div>
+    )
 }
