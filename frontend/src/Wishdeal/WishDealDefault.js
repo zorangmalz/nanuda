@@ -64,11 +64,11 @@ export default function WishDealDefault() {
             .then(response => {
                 console.log(response.openGraph)
                 setLoading(false)
-                history.push("wishdealurl", { param: response.openGraph, des: "", url: text, code: 4 })
+                history.push("wishdeal/url/success", { param: response.openGraph, des: "", url: text, code: 4 })
             }).catch(err => {
                 console.log(err)
                 setLoading(false)
-                history.push("wishdealnoturl", { url: text })
+                history.push("wishdeal/url/fail", { url: text })
             })
     }
 
@@ -83,7 +83,6 @@ export default function WishDealDefault() {
         })
             .then(res => {
                 console.log(res["data"])
-                // history.push("/wishdealurl")
             })
             .catch(err => console.log(err))
     }

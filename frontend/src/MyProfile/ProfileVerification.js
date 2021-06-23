@@ -2,7 +2,6 @@ import React, { useState, useReducer, useRef, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import { Button, MButton } from "../Auth/SignupProfile";
 import { Header, MHeader, InputModule, MInputModule, StandardButton, MStandardButton, S3_BUCKET, imageBucket } from "../Style";
-import { AiOutlinePlusCircle } from "react-icons/ai";
 import { BsPlusCircle } from "react-icons/bs"
 import styled from "styled-components"
 import { useHistory } from "react-router-dom";

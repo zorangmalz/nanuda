@@ -117,7 +117,7 @@ export default function SignupProfile() {
             .then(response => {
                 console.log(response)
                 if (response.data === true) {
-                    history.push("/signupcomplete")
+                    history.push("/signup/complete")
                 }
             }).catch(err => {
                 console.log(err)

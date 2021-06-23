@@ -220,7 +220,7 @@ function ProductList({ item, mobile }) {
     let history = useHistory()
     return (
         <div onClick={() => history.push({
-            pathname: "/reviewwrite",
+            pathname: "/revie/wwrite",
             state: {item: item},
         })} style={{
             marginTop: mobile ? "4vw" : 16,

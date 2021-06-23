@@ -163,7 +163,7 @@ export default function ProfileEdit() {
                             marginLeft: 20,
                         }}>
                             <Small marginBottom="8px" onClick={() => setLogoutModal(true)} >로그아웃</Small>
-                            <Small onClick={() => history.push("/profiledelete")}>회원 탈퇴</Small>
+                            <Small onClick={() => history.push("/profile/delete")}>회원 탈퇴</Small>
                         </div>
                     </div>
                 </div>
@@ -248,7 +248,7 @@ export default function ProfileEdit() {
                         marginLeft: "5vw",
                     }}>
                         <Small fontSize="12px" marginBottom="2vw" onClick={() => setLogoutModal(true)} >로그아웃</Small>
-                        <Small fontSize="12px" onClick={() => history.push("/profiledelete")}>회원 탈퇴</Small>
+                        <Small fontSize="12px" onClick={() => history.push("/profile/delete")}>회원 탈퇴</Small>
                     </div>
                 </div>
             </Mobile>

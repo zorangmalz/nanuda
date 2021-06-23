@@ -225,7 +225,7 @@ export default function Home() {
                             </Slider>
                         </div>
                         <BannerContainer>
-                            <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
+                            <div id="wishdeal_click" onClick={() => history.push("wishdeal/default")}>
                                 <img style={{ marginRight: 16, cursor: "pointer" }} src={smallbanner} alt="광고배너" /></div>
                             <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
                                 textDecorationLine: "none",
@@ -420,7 +420,7 @@ export default function Home() {
                             marginTop: 64,
                             marginLeft: 20,
                         }}>
-                            <div onClick={() => history.push("/servicereview")} style={{
+                            <div onClick={() => history.push("/service/main")} style={{
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 21,
@@ -429,7 +429,7 @@ export default function Home() {
                                 cursor: "pointer"
                             }}>이용후기</div>
                             <MdKeyboardArrowRight
-                                onClick={() => history.push("/servicereview")}
+                                onClick={() => history.push("/service/main")}
                                 size={24}
                                 color="rgba(1, 6, 8, 0.6)"
                                 style={{
@@ -462,7 +462,7 @@ export default function Home() {
                             </div>
                         </div>
                         <HomeBottomTag marginTop={200} marginBottom={0} bottomRef={bottomRef} />
-                        <div ref={buttonRef} onClick={hide ? () => { } : () => history.push("/wishdealdefault")} style={{
+                        <div ref={buttonRef} onClick={hide ? () => { } : () => history.push("/wishdeal/default")} style={{
                             width: 440,
                             marginLeft: 20,
                             marginRight: 20,
@@ -544,7 +544,7 @@ export default function Home() {
                         </Slider>
                     </div>
                     <MBannerContainer>
-                        <div id="wishdeal_click" onClick={() => history.push("wishdealdefault")}>
+                        <div id="wishdeal_click" onClick={() => history.push("wishdeal/default")}>
                             <img style={{ marginRight: "4vw", width: "67vw" }} src={smallbanner} alt="광고배너" /></div>
                         <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
                             textDecorationLine: "none",
@@ -727,7 +727,7 @@ export default function Home() {
                         marginTop: "8vw",
                         marginLeft: "5vw",
                     }}>
-                        <div onClick={() => history.push("/servicereview")} style={{
+                        <div onClick={() => history.push("/service/main")} style={{
                             fontWeight: "bold",
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -735,7 +735,7 @@ export default function Home() {
                             marginRight: 4,
                         }}>이용후기</div>
                         <MdKeyboardArrowRight
-                            onClick={() => history.push("/servicereview")}
+                            onClick={() => history.push("/service/main")}
                             size={20}
                             color="rgba(1, 6, 8, 0.6)"
                             style={{
@@ -760,7 +760,7 @@ export default function Home() {
                         )}
                     </MAfterContainer>
                     <MHomeBottomTag marginTop={100} marginBottom={0} bottomRef={bottomRef} />
-                    <div ref={buttonRef} onClick={hide ? () => { } : () => history.push("/wishdealdefault")} style={{
+                    <div ref={buttonRef} onClick={hide ? () => { } : () => history.push("/wishdeal/default")} style={{
                         width: "90%",
                         marginLeft: "5%",
                         marginRight: "5%",

@@ -123,7 +123,7 @@ export default function ServiceReview() {
                                 mobile={false}
                             />
                         )}
-                        <div onClick={noReview ? () => history.push("/servicewrite") : () => { }} style={{
+                        <div onClick={noReview ? () => history.push("/service/write") : () => { }} style={{
                             position: "fixed",
                             bottom: 40,
                             width: 440,
@@ -187,7 +187,7 @@ export default function ServiceReview() {
                             mobile={true}
                         />
                     )}
-                    <div onClick={noReview ? () => history.push("/servicewrite") : () => { }} style={{
+                    <div onClick={noReview ? () => history.push("/service/write") : () => { }} style={{
                         position: "fixed",
                         bottom: 40,
                         width: "90%",

@@ -123,7 +123,7 @@ function ProductState({ img, date, title, price, mobile, product_id }) {
                 borderBottom: "1px solid rgba(1, 6, 8, 0.2)"
             }}>
                 <div onClick={() => history.push({
-                    pathname: "/profileproductinfo",
+                    pathname: "/profile/product/info",
                     state: { "product_id": product_id }
                 })} style={{
                     display: "flex",

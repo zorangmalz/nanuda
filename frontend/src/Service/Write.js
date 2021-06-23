@@ -76,7 +76,7 @@ export default function Write() {
             .then(response => response.json())
             .then(response => {
                 console.log(response)
-                history.replace("/servicereview")
+                history.replace("/service/main")
             }).catch(err => console.log(err))
     }
 

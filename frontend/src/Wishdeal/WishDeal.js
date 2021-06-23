@@ -107,13 +107,13 @@ export default function WishDeal() {
     function move() {
         if (type === 0) {
         } else if (type == 1) {
-            history.push("/wishdealurl", { param: myparam, code: 1, des: text })
+            history.push("/wishdeal/url/success", { param: myparam, code: 1, des: text })
         } else if (type == 2) {
-            history.push("/wishdealurl", { param: myparam, code: 2, des: text })
+            history.push("/wishdeal/url/success", { param: myparam, code: 2, des: text })
         } else if (type == 3) {
-            history.push("/wishdealurl", { param: myparam, code: 3, des: text })
+            history.push("/wishdeal/url/success", { param: myparam, code: 3, des: text })
         } else if (type == 4) {
-            history.push("/wishdealurl", { code: 4, param: myparam, des: text })
+            history.push("/wishdeal/url/success", { code: 4, param: myparam, des: text })
         }
     }
     return (

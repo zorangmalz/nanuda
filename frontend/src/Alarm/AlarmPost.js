@@ -12,7 +12,7 @@ export default function AlarmPost() {
         return (
             <>
                 <span> 자세한 사항은 </span>
-                <span onClick={() => history.push("/profilemain")} style={{
+                <span onClick={() => history.push("/profile/main")} style={{
                     textDecorationLine: "underline",
                     cursor: "pointer",
                     marginLeft: 2,
@@ -97,7 +97,7 @@ export default function AlarmPost() {
                         lineHeight: 1.5
                     }}>
                         <span>(결제) 4-29일 회원님의 우리은행계좌에서 100,000원이 자동이체되었습니다. 자세한 사항은 </span>
-                        <span onClick={() => history.push("/profilemain")} style={{
+                        <span onClick={() => history.push("/profile/main")} style={{
                             textDecorationLine: "underline",
                             cursor: "pointer",
                             marginLeft: 2,

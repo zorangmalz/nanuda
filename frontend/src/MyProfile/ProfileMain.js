@@ -101,7 +101,7 @@ export default function ProfileMain() {
                                     color: "#010608",
                                 }}>{user.user_email}</div>
                             </div>
-                            <MdKeyboardArrowRight onClick={() => history.push("/profileedit")} style={{
+                            <MdKeyboardArrowRight onClick={() => history.push("/profile/edit")} style={{
                                 cursor: "pointer"
                             }} size={24} color="rgba(1, 6, 8, 0.6)" />
                         </div>
@@ -116,9 +116,9 @@ export default function ProfileMain() {
                             display: "flex",
                             flexDirection: "column",
                         }}>
-                            <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" onClick={() => history.push('/profilelimit')} />
+                            <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" onClick={() => history.push('/profile/limit')} />
                             <ProfileInfo title="하울딜 찬스" data={1} unit="회" chance={true} />
-                            <ProfileInfo title="포인트" data={user.point} unit="P" onClick={() =>  history.push('/profilepoint')} />
+                            <ProfileInfo title="포인트" data={user.point} unit="P" onClick={() =>  history.push('/profile/point')} />
                         </div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
@@ -147,9 +147,9 @@ export default function ProfileMain() {
                             participateDate="4/13"
                             complete={true}
                         />
-                        <ManageList name="결제 수단 관리" path="profilepayment" />
-                        <ManageList name="상품 구매 내역" path="profileproduct" />
-                        <ManageList name="내 리뷰" path="profilereview" />
+                        <ManageList name="결제 수단 관리" path="profile/payment" />
+                        <ManageList name="상품 구매 내역" path="profile/product" />
+                        <ManageList name="내 리뷰" path="profile/review" />
                         <BottomTag marginTop={120} marginBottom={0} />
                     </div>
                 </div>
@@ -196,7 +196,7 @@ export default function ProfileMain() {
                                 color: "#010608",
                             }}>{user.user_email}</div>
                         </div>
-                        <MdKeyboardArrowRight onClick={() => history.push("/profileedit")} style={{
+                        <MdKeyboardArrowRight onClick={() => history.push("/profile/edit")} style={{
                             cursor: "pointer"
                         }} size={20} color="rgba(1, 6, 8, 0.6)" />
                     </div>
@@ -211,9 +211,9 @@ export default function ProfileMain() {
                         display: "flex",
                         flexDirection: "column",
                     }}>
-                        <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" mobile={true} onClick={() => history.push('/profilelimit')}  />
+                        <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" mobile={true} onClick={() => history.push('/profile/limit')}  />
                         <ProfileInfo title="하울딜 찬스" data={1} unit="회" mobile={true} chance={true} />
-                        <ProfileInfo title="포인트" data={user.point} unit="P" mobile={true} onClick={() =>  history.push('/profilepoint')} />
+                        <ProfileInfo title="포인트" data={user.point} unit="P" mobile={true} onClick={() =>  history.push('/profile/point')} />
                     </div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -242,9 +242,9 @@ export default function ProfileMain() {
                         participateDate="4/13"
                         complete={true}
                     />
-                    <ManageList name="결제 수단 관리" path="profilepayment" mobile={true} />
-                    <ManageList name="상품 구매 내역" path="profileproduct" mobile={true} />
-                    <ManageList name="내 리뷰" path="profilereview" mobile={true} />
+                    <ManageList name="결제 수단 관리" path="profile/payment" mobile={true} />
+                    <ManageList name="상품 구매 내역" path="profile/product" mobile={true} />
+                    <ManageList name="내 리뷰" path="profile/review" mobile={true} />
                     <MBottomTag marginTop={60} marginBottom={0} />
                 </div>
             </Mobile>

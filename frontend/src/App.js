@@ -64,42 +64,42 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/landing" component={Landing} />
-        <Route path="/signup" component={Signup} />
+        <Route path="/signup/main" component={Signup} />
         <Route path="/login" component={Login} />
-        <Route path="/signupprofile" component={SignupProfile} />
-        <Route path="/signupcomplete" component={SignupComplete} />
+        <Route path="/signup/profile" component={SignupProfile} />
+        <Route path="/signup/complete" component={SignupComplete} />
         <Route path="/ordersheet" component={OrderSheet} />
         <Route path="/address" component={Address} />
-        <Route path="/paymentfail" component={PaymentFail} />
-        <Route path="/paymentsuccess" component={PaymentSuccess} />
+        <Route path="/payment/fail" component={PaymentFail} />
+        <Route path="/payment/success" component={PaymentSuccess} />
         <Route path="/review" component={ReviewMain} />
         <Route path="/reviewpost/:pk" component={ReviewPost} />
-        <Route path="/reviewselect" component={ReviewSelect} />
-        <Route path="/reviewwrite" component={ReviewWrite} />
-        <Route path="/reviewsuccess" component={ReviewSuccess} />
-        <Route path="/reviewfail" component={ReviewFail} />
-        <Route path="/servicereview" component={ServiceReview} />
-        <Route path="/servicewrite" component={Write} />
+        <Route path="/review/select" component={ReviewSelect} />
+        <Route path="/review/write" component={ReviewWrite} />
+        <Route path="/review/success" component={ReviewSuccess} />
+        <Route path="/review/fail" component={ReviewFail} />
+        <Route path="/service/main" component={ServiceReview} />
+        <Route path="/service/write" component={Write} />
         <Route path="/wishdeal" component={WishDeal} />
-        <Route path="/wishdealdefault" component={WishDealDefault} />
-        <Route path="/wishdealurl" component={WishDealURL} />
-        <Route path="/wishdealnoturl" component={WishDealNotURL} />
+        <Route path="/wishdeal/default" component={WishDealDefault} />
+        <Route path="/wishdeal/url/success" component={WishDealURL} />
+        <Route path="/wishdeal/url/fail" component={WishDealNotURL} />
         <Route path="/notice" component={Notice} />
         <Route path="/noticepost" component={NoticePost} />
-        <Route path="/profilemain" component={ProfileMain} />
-        <Route path="/profilelimit" component={ProfileLimit} />
-        <Route path="/profileverification" component={ProfileVerification} />
-        <Route path="/profilereview" component={ProfileReview} />
-        <Route path="/profilepoint" component={ProfilePoint} />
-        <Route path="/profileedit" component={ProfileEdit} />
-        <Route path="/profileaddressedit" component={ProfileAddressEdit} />
-        <Route path="/profilepayment" component={ProfilePayment} />
-        <Route path="/profilepaymentsuccess" component={ProfilePaymentSuccess} />
-        <Route path="/profilepaymentfail" component={ProfilePaymentFail} />
-        <Route path="/profilepaymentdetail" component={ProfilePaymentDetail} />
-        <Route path="/profileproduct" component={ProfileProduct} />
-        <Route path="/profileproductinfo" component={ProfileProductInfo} />
-        <Route path="/profiledelete" component={ProfileDelete} />
+        <Route path="/profile/main" component={ProfileMain} />
+        <Route path="/profile/limit" component={ProfileLimit} />
+        <Route path="/profile/verification" component={ProfileVerification} />
+        <Route path="/profile/review" component={ProfileReview} />
+        <Route path="/profile/point" component={ProfilePoint} />
+        <Route path="/profile/edit" component={ProfileEdit} />
+        <Route path="/profile/address/edit" component={ProfileAddressEdit} />
+        <Route path="/profile/payment" component={ProfilePayment} />
+        <Route path="/profile/payment/success" component={ProfilePaymentSuccess} />
+        <Route path="/profile/payment/fail" component={ProfilePaymentFail} />
+        <Route path="/profile/payment/detail" component={ProfilePaymentDetail} />
+        <Route path="/profile/product" component={ProfileProduct} />
+        <Route path="/profile/product/info" component={ProfileProductInfo} />
+        <Route path="/profile/delete" component={ProfileDelete} />
         <Route path="/paymentaccountveri" component={PaymentAccountVeri} />
         <Route path="/paymentars" component={PaymentARS} />
         <Route path="/alarm" component={Alarm} />

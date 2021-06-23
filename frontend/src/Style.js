@@ -189,7 +189,7 @@ export function HomeHeader() {
 
     function profileClick() {
         if (log == true) {
-            history.push("/profilemain")
+            history.push("/profile/main")
         } else {
             setIsLogin(true)
         }
@@ -241,7 +241,7 @@ export function HomeHeader() {
                     canceltext="취소"
                     onCancelClick={() => setIsLogin(false)}
                     buttontext="회원가입"
-                    onClick={() => history.push("/signup")}
+                    onClick={() => history.push("/signup/main")}
                 />
                 :
                 <></>
@@ -276,7 +276,7 @@ export function MHomeHeader() {
 
     function profileClick() {
         if (log == true) {
-            history.push("/profilemain")
+            history.push("/profile/main")
         } else {
             setIsLogin(true)
         }
@@ -327,7 +327,7 @@ export function MHomeHeader() {
                     canceltext="취소"
                     onCancelClick={() => setIsLogin(false)}
                     buttontext="회원가입"
-                    onClick={() => history.push("/signup")}
+                    onClick={() => history.push("/signup/main")}
                     mobile={true}
                 />
                 :

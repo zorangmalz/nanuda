@@ -313,9 +313,9 @@ export default function OrderSheet() {
                 .then(response => response.json())
                 .then(response => {
                     if (response.data.data === true) {
-                        history.push("paymentsuccess")
+                        history.push("payment/success")
                     } else {
-                        history.push("paymentfail", { myparam: myparam, ship: item })
+                        history.push("payment/fail", { myparam: myparam, ship: item })
                     }
                 }).catch(err => {
                     console.log(err)

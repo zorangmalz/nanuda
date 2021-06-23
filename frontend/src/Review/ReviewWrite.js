@@ -101,11 +101,11 @@ export default function ReviewWrite() {
             body: JSON.stringify(array)
         })
             .then(response => {
-                history.push("/reviewsuccess")
+                history.push("/review/success")
                 console.log(response)
             }).catch(err => {
                 console.log(err)
-                history.push("/reviewfail")
+                history.push("/review/fail")
             })
     }
 

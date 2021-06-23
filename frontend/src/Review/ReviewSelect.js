@@ -140,7 +140,7 @@ export function Product({ item, border, mobile }) {
     let history = useHistory()
     return (
         <div onClick={() => history.push({
-            pathname: "/reviewwrite",
+            pathname: "/review/write",
             state: { item: item }
         })} style={{
             display: "flex",

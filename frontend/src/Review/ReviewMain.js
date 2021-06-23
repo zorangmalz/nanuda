@@ -187,7 +187,7 @@ export default function ReviewMain() {
                                 )}
                             </div>
                         }
-                        <div onClick={() => history.push("/reviewselect")} style={{
+                        <div onClick={() => history.push("/review/select")} style={{
                             position: "fixed",
                             zIndex: 5,
                             bottom: 0,
@@ -340,7 +340,7 @@ export default function ReviewMain() {
                             )}
                         </div>
                     }
-                    <div onClick={() => history.push("/reviewselect")} style={{
+                    <div onClick={() => history.push("/review/select")} style={{
                         position: "fixed",
                         zIndex: 5,
                         bottom: 0,

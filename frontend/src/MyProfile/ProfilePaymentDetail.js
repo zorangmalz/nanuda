@@ -110,7 +110,7 @@ export default function ProfilePaymentDetail() {
                                 alignSelf: "center",
                                 marginTop: 8,
                             }}>7-29일까지 결제를 완료하지 않으면 추심이 진행됩니다. 결제를 서둘러주세요.</div>}
-                        <div onClick={() => history.push("/profilepaymentsuccess")} style={{
+                        <div onClick={() => history.push("/profile/payment/success")} style={{
                             width: 440,
                             paddingTop: 15,
                             paddingBottom: 15,
@@ -228,7 +228,7 @@ export default function ProfilePaymentDetail() {
                             alignSelf: "center",
                             marginTop: 8,
                         }}>7-29일까지 결제를 완료하지 않으면 추심이 진행됩니다. 결제를 서둘러주세요.</div>}
-                    <div onClick={() => history.push("/profilepaymentsuccess")} style={{
+                    <div onClick={() => history.push("/profile/payment/success")} style={{
                         width: "90vw",
                         paddingTop: "4vw",
                         paddingBottom: "4vw",
