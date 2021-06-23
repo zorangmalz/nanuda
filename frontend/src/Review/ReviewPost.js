@@ -366,7 +366,7 @@ export default function ReviewPost({ match }) {
                         <StandardButton
                             marginTop={30}
                             text="위시딜 신청하기"
-                            onClick={() => history.push("/wishdeal")}
+                            onClick={() => history.push("/wishdeal/main")}
                             state={true}
                         />
                     </div>
@@ -542,7 +542,7 @@ export default function ReviewPost({ match }) {
                     <MStandardButton
                         marginTop={20}
                         text="위시딜 신청하기"
-                        onClick={() => history.push("/wishdeal")}
+                        onClick={() => history.push("/wishdeal/main")}
                         state={true}
                     />
                 </div>

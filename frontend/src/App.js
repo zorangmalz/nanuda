@@ -81,7 +81,7 @@ function App() {
         <Route path="/review/fail" component={ReviewFail} />
         <Route path="/service/main" component={ServiceReview} />
         <Route path="/service/write" component={Write} />
-        <Route path="/wishdeal" component={WishDeal} />
+        <Route path="/wishdeal/main" component={WishDeal} />
         <Route path="/wishdeal/default" component={WishDealDefault} />
         <Route path="/wishdeal/url/success" component={WishDealURL} />
         <Route path="/wishdeal/url/fail" component={WishDealNotURL} />
