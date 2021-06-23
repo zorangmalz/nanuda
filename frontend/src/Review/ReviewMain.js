@@ -133,7 +133,7 @@ export default function ReviewMain() {
                                             }}>{item.user_nickname} </div>
                                         </div>
                                         {item.review_image.length > 0 ?
-                                            <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                            <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
                                                 width: 210,
                                                 height: 160,
                                                 borderRadius: 6,
@@ -143,7 +143,7 @@ export default function ReviewMain() {
                                                 border: "1px solid #ebebeb"
                                             }} />
                                             :
-                                            <div onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                            <div onClick={() => history.push(`/review/post/${item.id}`)} style={{
                                                 width: 210,
                                                 height: 160,
                                                 borderRadius: 6,
@@ -286,7 +286,7 @@ export default function ReviewMain() {
                                         }}>{item.user_nickname} </div>
                                     </div>
                                     {item.review_image.length > 0 ?
-                                        <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                        <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
                                             width: "42vw",
                                             height: "32vw",
                                             borderRadius: 6,
@@ -296,7 +296,7 @@ export default function ReviewMain() {
                                             border: "1px solid #ebebeb"
                                         }} />
                                         :
-                                        <div onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                        <div onClick={() => history.push(`/review/post/${item.id}`)} style={{
                                             width: "42vw",
                                             height: "32vw",
                                             borderRadius: 6,

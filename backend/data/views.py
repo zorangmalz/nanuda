@@ -14,7 +14,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.parsers import JSONParser
 
-# Model Import 
+# Model Import
 from nanuda.models import MissionList, PointList, User, ServiceReview, Product, Review, Order
 from nanuda.serializers import MissionAllSerializer, OrderSerializer, UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
 
@@ -53,11 +53,11 @@ def user_one(request):
     else:
         try:
             load_dotenv(verbose=True)
-            SECRET_KEY=os.getenv("SECRET_KEY")
-            ALGORITHM=os.getenv("ALGORITHM")
-            token=request.COOKIES.get("access_token")
-            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-            user=User.objects.get(uid=payload["id"])
+            SECRET_KEY = os.getenv("SECRET_KEY")
+            ALGORITHM = os.getenv("ALGORITHM")
+            token = request.COOKIES.get("access_token")
+            payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+            user = User.objects.get(uid=payload["id"])
 
         except User.DoesNotExist():
             return Response(status=status.HTTP_404_NOT_FOUND)
@@ -65,17 +65,18 @@ def user_one(request):
         if request.method == "GET":
             user_serializer = UserAllSerializer(user)
             return Response(user_serializer.data)
-        
+
         elif request.method == "PUT":
             user_serializer = UserAllSerializer(user, data=request.data)
             if user_serializer.is_valid():
                 user_serializer.save()
                 return Response(user_serializer.data)
             return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+
         elif request.method == 'DELETE':
             user.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 @api_view(["GET", "PUT"])
 @parser_classes([JSONParser])
@@ -86,11 +87,11 @@ def user_info_order(request):
     else:
         try:
             load_dotenv(verbose=True)
-            SECRET_KEY=os.getenv("SECRET_KEY")
-            ALGORITHM=os.getenv("ALGORITHM")
-            token=request.COOKIES.get("access_token")
-            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-            user=User.objects.get(uid=payload["id"])
+            SECRET_KEY = os.getenv("SECRET_KEY")
+            ALGORITHM = os.getenv("ALGORITHM")
+            token = request.COOKIES.get("access_token")
+            payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+            user = User.objects.get(uid=payload["id"])
 
         except User.DoesNotExist():
             return Response(status=status.HTTP_404_NOT_FOUND)
@@ -98,7 +99,7 @@ def user_info_order(request):
         if request.method == "GET":
             user_serializer = UserAllSerializer(user)
             return Response(user_serializer.data)
-        
+
         elif request.method == "PUT":
             user_serializer = UserAllSerializer(user, data=request.data)
             if user_serializer.is_valid():
@@ -113,11 +114,13 @@ def user_info_order(request):
 def service_review_all(request):
     if request.method == "GET":
         service_review = ServiceReview.objects.all().order_by("-service_date")
-        service_review_serializer = ServicReviewAllSerializer(service_review, many=True)
+        service_review_serializer = ServicReviewAllSerializer(
+            service_review, many=True)
         return Response(service_review_serializer.data)
-     
+
     elif request.method == "POST":
-        service_review_serializer = ServicReviewAllSerializer(data=request.data)
+        service_review_serializer = ServicReviewAllSerializer(
+            data=request.data)
         if service_review_serializer.is_valid():
             service_review_serializer.save()
             return Response(service_review_serializer.data, status=status.HTTP_201_CREATED)
@@ -129,8 +132,10 @@ def service_review_all(request):
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 def service_review_home(request):
     if request.method == "GET":
-        service_review = ServiceReview.objects.all().order_by("-service_date")[0:2]
-        service_review_serializer = ServicReviewAllSerializer(service_review, many=True)
+        service_review = ServiceReview.objects.all().order_by(
+            "-service_date")[0:2]
+        service_review_serializer = ServicReviewAllSerializer(
+            service_review, many=True)
         return Response(service_review_serializer.data)
 
 # Product
@@ -142,7 +147,7 @@ def product_all(request):
         product = Product.objects.all()
         product_serializer = ProductAllSerializer(product, many=True)
         return Response(product_serializer.data)
-    
+
     elif request.method == "POST":
         product_serializer = ProductAllSerializer(data=request.data)
         if request.user.is_authenticated and product_serializer.is_valid():
@@ -159,36 +164,36 @@ def review_all(request):
         review = Review.objects.all().order_by("-review_date")
         review_serializer = ReviewAllSerializer(review, many=True)
         return Response(review_serializer.data)
-    
+
     elif request.method == "POST":
         if not request.COOKIES.get("access_token"):
             return Response(status=status.HTTP_404_NOT_FOUND)
         else:
             try:
                 load_dotenv(verbose=True)
-                SECRET_KEY=os.getenv("SECRET_KEY")
-                ALGORITHM=os.getenv("ALGORITHM")
-                token=request.COOKIES.get("access_token")
-                payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-                user=User.objects.get(uid=payload["id"])
+                SECRET_KEY = os.getenv("SECRET_KEY")
+                ALGORITHM = os.getenv("ALGORITHM")
+                token = request.COOKIES.get("access_token")
+                payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+                user = User.objects.get(uid=payload["id"])
 
             except User.DoesNotExist():
                 return Response(status=status.HTTP_404_NOT_FOUND)
-            
+
             data = json.loads(request.body)
 
-            order = Order.objects.get(id = data["order_id"])
-            Review.objects.create(
-                user_id = user,
-                order_id = order,
-                review_score = data["review_score"],
-                review_like = data["review_like"],
-                review_dislike = data["review_dislike"],
-                review_image = data["review_image"]
+            order = Order.objects.get(id=data["order_id"])
+            review = Review.objects.create(
+                user_id=user,
+                order_id=order,
+                review_score=data["review_score"],
+                review_like=data["review_like"],
+                review_dislike=data["review_dislike"],
+                review_image=data["review_image"]
             )
             order.review_write = True
             order.save()
-            return Response(status=status.HTTP_201_CREATED)
+            return Response({"data": review.id}, status=status.HTTP_201_CREATED)
 
 # Review_Home 2개만 조회
 @api_view(["GET"])
@@ -210,17 +215,18 @@ def review_profile(request, pk):
     else:
         try:
             load_dotenv(verbose=True)
-            SECRET_KEY=os.getenv("SECRET_KEY")
-            ALGORITHM=os.getenv("ALGORITHM")
-            token=request.COOKIES.get("access_token")
-            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-            user=User.objects.get(uid=payload["id"])
+            SECRET_KEY = os.getenv("SECRET_KEY")
+            ALGORITHM = os.getenv("ALGORITHM")
+            token = request.COOKIES.get("access_token")
+            payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+            user = User.objects.get(uid=payload["id"])
 
         except User.DoesNotExist():
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            review = Review.objects.filter(user_id = user.id).order_by("-review_date")
+            review = Review.objects.filter(
+                user_id=user.id).order_by("-review_date")
             count = len(review)
             if (pk + 4 > count):
                 my_reviews = review[pk:count]
@@ -254,14 +260,14 @@ def review_one(request, pk):
     if request.method == "GET":
         review_serializer = ReviewAllSerializer(review)
         return Response(review_serializer.data)
-    
+
     elif request.method == "PUT":
         review_serializer = ReviewAllSerializer(review, data=request.data)
         if review_serializer.is_valid():
             review_serializer.save()
             return Response(review_serializer.data)
         return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
     elif request.method == 'DELETE':
         review.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -275,13 +281,14 @@ def order_all(request):
         order = Order.objects.all()
         order_serializer = OrderAllSerializer(order, many=True)
         return Response(order_serializer.data)
-    
+
     elif request.method == "POST":
         order_serializer = OrderAllSerializer(data=request.data)
         if request.user.is_authenticated and order_serializer.is_valid():
             order_serializer.save()
             return Response(order_serializer.data, status=status.HTTP_201_CREATED)
         return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(["GET", "PUT"])
 @parser_classes([JSONParser])
@@ -292,17 +299,18 @@ def order_list(request):
     else:
         try:
             load_dotenv(verbose=True)
-            SECRET_KEY=os.getenv("SECRET_KEY")
-            ALGORITHM=os.getenv("ALGORITHM")
-            token=request.COOKIES.get("access_token")
-            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-            user=User.objects.get(uid=payload["id"])
+            SECRET_KEY = os.getenv("SECRET_KEY")
+            ALGORITHM = os.getenv("ALGORITHM")
+            token = request.COOKIES.get("access_token")
+            payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+            user = User.objects.get(uid=payload["id"])
 
         except User.DoesNotExist():
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            orders = Order.objects.filter(user_id = user.id).order_by('-order_date')
+            orders = Order.objects.filter(
+                user_id=user.id).order_by('-order_date')
             arrays = []
             for order in orders:
                 arrays.append({
@@ -319,6 +327,7 @@ def order_list(request):
                 "data": arrays
             })
 
+
 @api_view(["GET"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
@@ -328,17 +337,18 @@ def order_one(request):
     else:
         try:
             load_dotenv(verbose=True)
-            SECRET_KEY=os.getenv("SECRET_KEY")
-            ALGORITHM=os.getenv("ALGORITHM")
-            token=request.COOKIES.get("access_token")
-            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-            user=User.objects.get(uid=payload["id"])
+            SECRET_KEY = os.getenv("SECRET_KEY")
+            ALGORITHM = os.getenv("ALGORITHM")
+            token = request.COOKIES.get("access_token")
+            payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+            user = User.objects.get(uid=payload["id"])
 
         except User.DoesNotExist():
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            order = Order.objects.get(user_id = user.id, product_id = request.GET.get("product", None))
+            order = Order.objects.get(
+                user_id=user.id, product_id=request.GET.get("product", None))
             return JsonResponse({
                 "id": order.id,
                 "order_id": order.order_id,
@@ -353,6 +363,7 @@ def order_one(request):
                 "product_price": order.product_price()
             })
 
+
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
@@ -362,17 +373,17 @@ def point_list(request):
     else:
         try:
             load_dotenv(verbose=True)
-            SECRET_KEY=os.getenv("SECRET_KEY")
-            ALGORITHM=os.getenv("ALGORITHM")
-            token=request.COOKIES.get("access_token")
-            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-            user=User.objects.get(uid=payload["id"])
+            SECRET_KEY = os.getenv("SECRET_KEY")
+            ALGORITHM = os.getenv("ALGORITHM")
+            token = request.COOKIES.get("access_token")
+            payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+            user = User.objects.get(uid=payload["id"])
 
         except User.DoesNotExist():
             return Response(status=status.HTTP_404_NOT_FOUND)
-        
+
         if request.method == "GET":
-            points = PointList.objects.filter(user_id = user.id)
+            points = PointList.objects.filter(user_id=user.id)
             list = []
             for point in points:
                 list.append({
@@ -385,7 +396,7 @@ def point_list(request):
                 "point_list": list,
                 "point_entire": user.point_entire
             })
-        
+
         elif request.method == "POST":
             data = json.loads(request.body)
             if str(data["add_or_sub"]).lower() == 'false':
@@ -409,6 +420,7 @@ def point_list(request):
                 user.save()
                 return Response(status=status.HTTP_201_CREATED)
 
+
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
@@ -418,26 +430,26 @@ def mission_all(request):
     else:
         try:
             load_dotenv(verbose=True)
-            SECRET_KEY=os.getenv("SECRET_KEY")
-            ALGORITHM=os.getenv("ALGORITHM")
-            token=request.COOKIES.get("access_token")
-            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-            user=User.objects.get(uid=payload["id"])
+            SECRET_KEY = os.getenv("SECRET_KEY")
+            ALGORITHM = os.getenv("ALGORITHM")
+            token = request.COOKIES.get("access_token")
+            payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+            user = User.objects.get(uid=payload["id"])
 
         except User.DoesNotExist():
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            mission = MissionList.objects.filter(user_id = user.id)
+            mission = MissionList.objects.filter(user_id=user.id)
             mission_serializer = MissionAllSerializer(mission, many=True)
             return Response(mission_serializer.data, status=status.HTTP_200_OK)
 
         elif request.method == "POST":
             data = json.loads(request.body)
             MissionList.objects.create(
-                user_id = user,
-                mission_type = data["mission_type"],
-                mission_images = data["mission_images"],
-                mission_options = data["mission_options"]
+                user_id=user,
+                mission_type=data["mission_type"],
+                mission_images=data["mission_images"],
+                mission_options=data["mission_options"]
             )
             return Response(status=status.HTTP_201_CREATED)

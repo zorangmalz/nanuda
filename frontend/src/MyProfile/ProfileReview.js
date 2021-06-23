@@ -285,7 +285,7 @@ function PostThumb({ item, mobile }) {
                     marginTop: mobile ? "1.5vw" : 6
                 }}>{item.user_nickname} </div>
             </div>
-            <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+            <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
                 width: mobile ? "42vw" : 210,
                 height: mobile ? "32vw" : 160,
                 borderRadius: 6,

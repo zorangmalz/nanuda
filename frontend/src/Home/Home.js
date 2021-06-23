@@ -373,7 +373,7 @@ export default function Home() {
                                         justifyContent: "center",
                                         alignItems: "center"
                                     }}>
-                                        <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                        <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
                                             width: 210,
                                             height: 160,
                                             borderRadius: 6,
@@ -680,7 +680,7 @@ export default function Home() {
                                         marginTop: 6
                                     }}>{item.user_nickname} </div>
                                 </div>
-                                <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/reviewpost/${item.id}`)} style={{
+                                <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
                                     width: "42vw",
                                     height: "32vw",
                                     borderRadius: 6,
