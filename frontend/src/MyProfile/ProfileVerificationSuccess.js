@@ -1,17 +1,14 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import { Header, MHeader } from "../Style";
+import { Header, MHeader, StandardButton, MStandardButton } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useHistory } from "react-router";
 
-export default function ReviewSuccess() {
+export default function ProfileVerificationSuccess() {
     //화면 변경
     let history = useHistory()
     function goHome() {
         history.replace("/")
-    }
-    function goReview() {
-        history.push("/review/main")
     }
     return (
         <>
@@ -37,7 +34,7 @@ export default function ReviewSuccess() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        <Header content="작성 완료" goX={true} />
+                        <Header content="미션 결과" goX={true} />
                         <div style={{
                             width: 80,
                             height: 80,
@@ -57,42 +54,23 @@ export default function ReviewSuccess() {
                             fontWeight: "bold",
                             color: "#26c1f0",
                             fontFamily: "NotoSansCJKkr",
-                        }}>작성이 완료
+                        }}>미션이 완료
                                 <span style={{ color: "#010608" }}>되었습니다!</span>
                         </div>
-                        <div onClick={goHome} style={{
-                            borderRadius: 8,
-                            width: 440,
-                            paddingTop: 15,
-                            paddingBottom: 15,
-                            alignSelf: "center",
-                            marginTop: 32,
-                            backgroundColor: "#26c1f0",
-
-                            color: "#ffffff",
-                            fontSize: 18,
-                            fontWeight: "bold",
+                        <div style={{
                             fontFamily: "NotoSansCJKkr",
-                            textAlign: "center",
-
-                            cursor: "pointer",
-                        }}>홈으로</div>
-                        <div onClick={goReview} style={{
-                            width: 440,
-                            paddingTop: 15,
-                            paddingBottom: 15,
-                            backgroundColor: "#ffffff",
-                            borderRadius: 6,
-                            marginTop: 16,
-                            border: "1px solid #dfdfdf",
-
-                            textAlign: "center",
                             fontSize: 18,
-                            opacity: 0.6,
+                            opacity: 0.8,
                             color: "#010608",
-                            cursor: "pointer",
-                            fontFamily: "NotoSansCJKkr",
-                        }}>내 리뷰 확인하기</div>
+                            marginTop: 8,
+                            textAlign: "center",
+                        }}>검토 후 승인 여부를 알림을 통해 알려드릴게요.</div>
+                        <StandardButton 
+                            marginTop={32}
+                            text="홈으로"
+                            onClick={goHome}
+                            state={true}
+                        />
                     </div>
                 </div>
             </Default>
@@ -130,39 +108,20 @@ export default function ReviewSuccess() {
                     }}>작성이 완료
                         <span style={{ color: "#010608" }}>되었습니다!</span>
                     </div>
-                    <div onClick={goHome} style={{
-                        borderRadius: 8,
-                        width: "90vw",
-                        paddingTop: "4vw",
-                        paddingBottom: "4vw",
-                        alignSelf: "center",
-                        marginTop: "8vw",
-                        backgroundColor: "#26c1f0",
-
-                        color: "#ffffff",
-                        fontSize: 16,
-                        fontWeight: "bold",
+                    <div style={{
                         fontFamily: "NotoSansCJKkr",
-                        textAlign: "center",
-
-                        cursor: "pointer",
-                    }}>홈으로</div>
-                    <div onClick={goReview} style={{
-                        width: "90%",
-                        paddingTop: 8,
-                        paddingBottom: 8,
-                        backgroundColor: "#ffffff",
-                        borderRadius: 6,
-                        marginTop: 8,
-                        border: "1px solid #dfdfdf",
-
-                        textAlign: "center",
                         fontSize: 16,
-                        opacity: 0.6,
+                        opacity: 0.8,
                         color: "#010608",
-                        cursor: "pointer",
-                        fontFamily: "NotoSansCJKkr",
-                    }}>내 리뷰 확인하기</div>
+                        marginTop: "2vw",
+                        textAlign: "center",
+                    }}>검토 후 승인 여부를 알림을 통해 알려드릴게요.</div>
+                    <MStandardButton
+                        marginTop={"8vw"}
+                        text="홈으로"
+                        onClick={goHome}
+                        state={true}
+                    />
                 </div>
             </Mobile>
         </>

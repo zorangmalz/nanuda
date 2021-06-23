@@ -173,11 +173,7 @@ export default function ProfileVerification() {
         })
         .then(res => {
             console.log(res)
-            history.push("/")
-        })
-        .catch(err => {
-            console.log(err)
-            history.push("/")
+            history.push("/profile/verification/success")
         })
     }
     return (

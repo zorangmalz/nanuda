@@ -161,7 +161,7 @@ export default function ProfileLimit() {
                                     }}>한도 10만원 증가</div>
                                 </div>
                             </div>
-                            <div onClick={() => history.push("/profile/verification")} style={{
+                            <div onClick={() => history.push("/profile/verification/main")} style={{
                                 padding: "7px 14px",
                                 borderRadius: 6,
                                 backgroundColor: "#010608",
@@ -377,7 +377,7 @@ export default function ProfileLimit() {
                                 }}>한도 10만원 증가</div>
                             </div>
                         </div>
-                        <div onClick={() => history.push("/profile/verification")} style={{
+                        <div onClick={() => history.push("/profile/verification/main")} style={{
                             padding: "6px 12px",
                             borderRadius: 6,
                             backgroundColor: "#010608",

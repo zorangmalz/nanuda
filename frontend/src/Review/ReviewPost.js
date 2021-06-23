@@ -172,8 +172,8 @@ export default function ReviewPost({ match }) {
             },
             credentials: "include",
         })
-        .then(response => response.json())    
-        .then(response => {
+            .then(response => response.json())
+            .then(response => {
                 history.goBack()
             })
             .catch(err => console.log(err))
@@ -222,32 +222,42 @@ export default function ReviewPost({ match }) {
                                     fontSize: 14
                                 }}>{data.user_nickname}</div>
                             </div>
+                            {modal && mine ?
+                                <StandardChoiceModal
+                                    title="삭제하시겠습니까?"
+                                    content="삭제한 게시물은 되돌릴 수 없습니다."
+                                    canceltext="취소"
+                                    onCancelClick={() => setModal(true)}
+                                    buttontext="삭제하기"
+                                    onClick={deletePost}
+                                    mobile={false}
+                                />
+                                :
+                                <></>
+                            }
+                            {modal && !mine ?
+                                <StandardChoiceModal
+                                    title="신고하시겠습니까?"
+                                    content="신고된 게시물은 운영팀에게 전달됩니다."
+                                    canceltext="취소"
+                                    onCancelClick={() => setModal(true)}
+                                    buttontext="신고하기"
+                                    onClick={() => {}}
+                                    mobile={false}
+                                />
+                                :
+                                <></>
+                            }
                             {mine ?
-                                <>
-                                    <div onClick={() => setModal(true)} style={{
-                                        fontFamily: "NotoSansCJKkr",
-                                        opacity: 0.6,
-                                        fontSize: 14,
-                                        color: "#010608",
-                                        textDecorationLine: "underline",
-                                        marginRight: 20,
-                                        cursor: "pointer",
-                                    }}>삭제하기</div>
-                                    {modal ?
-                                        <>
-                                            <StandardChoiceModal
-                                                title="삭제하시겠습니까?"
-                                                content="삭제한 게시물은 되돌릴 수 없습니다."
-                                                canceltext="취소"
-                                                onCancelClick={() => setModal(true)}
-                                                buttontext="삭제하기"
-                                                onClick={deletePost}
-                                            />
-                                        </>
-                                        :
-                                        <></>
-                                    }
-                                </>
+                                <div onClick={() => setModal(true)} style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 14,
+                                    color: "#010608",
+                                    textDecorationLine: "underline",
+                                    marginRight: 20,
+                                    cursor: "pointer",
+                                }}>삭제하기</div>
                                 :
                                 <div onClick={putAlert} style={{
                                     fontFamily: "NotoSansCJKkr",
@@ -260,7 +270,6 @@ export default function ReviewPost({ match }) {
                                 }}>신고하기</div>
                             }
                         </div>
-
                         <img alt="제품 사진" src={data.review_image} style={{
                             width: 480,
                             backgroundColor: "#26c1f0",
@@ -394,102 +403,42 @@ export default function ReviewPost({ match }) {
                                 fontSize: 12
                             }}>{data.user_nickname}</div>
                         </div>
+                        {modal && mine ?
+                            <StandardChoiceModal
+                                title="삭제하시겠습니까?"
+                                content="삭제한 게시물은 되돌릴 수 없습니다."
+                                canceltext="취소"
+                                onCancelClick={() => setModal(true)}
+                                buttontext="삭제하기"
+                                onClick={deletePost}
+                                mobile={true}
+                            />
+                            :
+                            <></>
+                        }
+                        {modal && !mine ?
+                            <StandardChoiceModal
+                                title="신고하시겠습니까?"
+                                content="신고된 게시물은 운영팀에게 전달됩니다."
+                                canceltext="취소"
+                                onCancelClick={() => setModal(true)}
+                                buttontext="신고하기"
+                                onClick={() => { }}
+                                mobile={true}
+                            />
+                            :
+                            <></>
+                        }
                         {mine ?
-                            <>
-                                <div onClick={() => setModal(true)} style={{
-                                    fontFamily: "NotoSansCJKkr",
-                                    opacity: 0.6,
-                                    fontSize: 12,
-                                    color: "#010608",
-                                    textDecorationLine: "underline",
-                                    marginRight: "5vw",
-                                    cursor: "pointer",
-                                }}>삭제하기</div>
-                                {modal ?
-                                    <div onClick={() => setModal(false)} style={{
-                                        position: "fixed",
-                                        top: 0,
-                                        width: "100vw",
-                                        height: "100vh",
-                                        backgroundColor: "rgba(0, 0, 0, 0.4)",
-
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        zIndex: 2,
-                                    }}>
-                                        <div style={{
-                                            width: "75vw",
-                                            height: "40vw",
-                                            borderRadius: 6,
-                                            backgroundColor: "#ffffff",
-
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "center",
-                                            justifyContent: "space-between",
-                                        }}>
-                                            <div style={{
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                alignItems: "center",
-                                            }}>
-                                                <div style={{
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    fontSize: 14,
-                                                    fontWeight: "bold",
-                                                    color: "#010608",
-                                                    marginTop: "4vw",
-                                                }}>삭제하시겠습니까?</div>
-                                                <div style={{
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    fontSize: 12,
-                                                    color: "#010608",
-                                                    textAlign: "center",
-                                                    height: "10vw",
-                                                    marginTop: "4vw",
-                                                }}>삭제한 게시물은 되돌릴 수 없습니다.</div>
-                                            </div>
-                                            <div style={{
-                                                display: "flex",
-                                                flexDirection: "row",
-                                                alignItems: "center",
-                                                width: "75vw",
-                                            }}>
-                                                <div onClick={() => setModal(false)} style={{
-                                                    width: "37.5vw",
-                                                    paddingTop: "3.5vw",
-                                                    paddingBottom: "3.5vw",
-                                                    textAlign: "center",
-                                                    backgroundColor: "#f2f3f8",
-
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    fontSize: 12,
-                                                    color: "rgba(1, 6, 8, 0.6)",
-                                                    cursor: "pointer",
-                                                    borderBottomLeftRadius: 6,
-                                                }}>취소</div>
-                                                <div onClick={deletePost} style={{
-                                                    width: "37.5vw",
-                                                    paddingTop: "3.5vw",
-                                                    paddingBottom: "3.5vw",
-                                                    textAlign: "center",
-                                                    backgroundColor: "#2dd9d3",
-
-                                                    fontFamily: "NotoSansCJKkr",
-                                                    fontSize: 12,
-                                                    fontWeight: "bold",
-                                                    color: "#ffffff",
-                                                    cursor: "pointer",
-                                                    borderBottomRightRadius: 6,
-                                                }}>삭제하기</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    :
-                                    <></>
-                                }
-                            </>
+                            <div onClick={() => setModal(true)} style={{
+                                fontFamily: "NotoSansCJKkr",
+                                opacity: 0.6,
+                                fontSize: 12,
+                                color: "#010608",
+                                textDecorationLine: "underline",
+                                marginRight: "5vw",
+                                cursor: "pointer",
+                            }}>삭제하기</div>
                             :
                             <div onClick={putAlert} style={{
                                 fontFamily: "NotoSansCJKkr",
@@ -502,9 +451,7 @@ export default function ReviewPost({ match }) {
                             }}>신고하기</div>
                         }
                     </div>
-
                     <img alt="사진" src={data.review_image} style={{ width: "100vw", backgroundColor: "#26c1f0", marginTop: 8 }} />
-
                     {/* <Product
                         name="삼배옷 컬랙션, White, 95"
                         current={210000}

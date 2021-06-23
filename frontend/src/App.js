@@ -46,6 +46,7 @@ import PaymentAddAccount from './MyProfile/PaymentAddAccount';
 import TimeDeal from './TimeDeal/TimeDeal';
 import Alarm from './Alarm/Alarm';
 import TimeDealDetail from "./TimeDeal/TimeDealDetail"
+import ProfileVerificationSuccess from './MyProfile/ProfileVerificationSuccess';
 
 
 export const Default = ({ children }) => {
@@ -88,7 +89,8 @@ function App() {
         <Route path="/noticepost" component={NoticePost} />
         <Route path="/profile/main" component={ProfileMain} />
         <Route path="/profile/limit" component={ProfileLimit} />
-        <Route path="/profile/verification" component={ProfileVerification} />
+        <Route path="/profile/verification/main" component={ProfileVerification} />
+        <Route path="/profile/verification/success" component={ProfileVerificationSuccess} />
         <Route path="/profile/review" component={ProfileReview} />
         <Route path="/profile/point" component={ProfilePoint} />
         <Route path="/profile/edit" component={ProfileEdit} />
