@@ -193,3 +193,9 @@ class MissionList(models.Model):
     mission_type = models.CharField(max_length=50, default="")
     mission_images = models.JSONField(default=list, blank=True)
     mission_options = models.JSONField(default=dict, blank=True)
+
+    def __str__(self):
+        return self.user_id.user_email
+    
+    class Meta:
+        managed=True
