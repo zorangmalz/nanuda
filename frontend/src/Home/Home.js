@@ -306,7 +306,7 @@ export default function Home() {
                             marginTop: 32,
                             marginLeft: 20,
                         }}>
-                            <div onClick={() => history.push("/review")} style={{
+                            <div onClick={() => history.push("/review/main")} style={{
                                 fontWeight: "bold",
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 21,
@@ -315,7 +315,7 @@ export default function Home() {
                                 cursor: "pointer"
                             }}>나눠산 사람들</div>
                             <MdKeyboardArrowRight
-                                onClick={() => history.push("/review")}
+                                onClick={() => history.push("/review/main")}
                                 size={24}
                                 color="rgba(1, 6, 8, 0.6)"
                                 style={{

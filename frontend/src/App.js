@@ -72,7 +72,7 @@ function App() {
         <Route path="/address" component={Address} />
         <Route path="/payment/fail" component={PaymentFail} />
         <Route path="/payment/success" component={PaymentSuccess} />
-        <Route path="/review" component={ReviewMain} />
+        <Route path="/review/main" component={ReviewMain} />
         <Route path="/reviewpost/:pk" component={ReviewPost} />
         <Route path="/review/select" component={ReviewSelect} />
         <Route path="/review/write" component={ReviewWrite} />
