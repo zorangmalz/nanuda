@@ -92,6 +92,7 @@ export default function OrderSheet() {
     const [fourDate, setFourDate] = useState("")
     const [fourMoney, setFourMoney] = useState("")
 
+    
     const paymentDate = [
         {
             num: "1",
@@ -322,12 +323,20 @@ export default function OrderSheet() {
                 })
         }
     }
+
+
+    const [bank,setBank]=useState("")
+    const [banknum,setBankNum]=useState("")
     const getResult = (res) => {
         if (res.PCD_PAY_RST === 'success') {
             var payResult = res;
 
             // 전달받은 결제 파라미터값을 state에 저장 후  '/react/order_result'로 이동
             console.log(payResult)
+            setRegister(true)
+            setBank(payResult.PCD_PAY_BANKNAME)
+            setBankNum(payResult.PCD_PAY_BANKNUM)
+
         } else {
             // 결제 실패일 경우 알림 메시지
             window.alert(res.PCD_PAY_MSG);
@@ -521,7 +530,7 @@ const handleClick = (e) => {
                                     opacity: 0.8,
                                     color: "#010608",
                                     fontFamily: "NotoSansCJKkr"
-                                }}>우리 1002-550-5**544</div>
+                                }}>{bank}{banknum}</div>
                             </div>
                             :
                             <div onClick={handleClick}style={{
@@ -974,7 +983,7 @@ const handleClick = (e) => {
                                 opacity: 0.8,
                                 color: "#010608",
                                 fontFamily: "NotoSansCJKkr"
-                            }}>우리 1002-550-5**544</div>
+                            }}>{bank}{banknum}</div>
                         </div>
                         :
                         <div onClick={() => history.push("/paymentaddbank")} style={{
