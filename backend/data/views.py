@@ -15,8 +15,8 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.parsers import JSONParser
 
 # Model Import 
-from nanuda.models import PointList, User, ServiceReview, Product, Review, Order
-from nanuda.serializers import OrderSerializer, UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
+from nanuda.models import MissionList, PointList, User, ServiceReview, Product, Review, Order
+from nanuda.serializers import MissionAllSerializer, OrderSerializer, UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
 
 #Python 내장함수
 from datetime import date
@@ -408,3 +408,36 @@ def point_list(request):
                 user.point_entire = user.point_entire + data["point"]
                 user.save()
                 return Response(status=status.HTTP_201_CREATED)
+
+@api_view(["GET", "POST"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+def mission_all(request):
+    if not request.COOKIES.get("access_token"):
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    else:
+        try:
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+
+        except User.DoesNotExist():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        if request.method == "GET":
+            mission = MissionList.objects.filter(user_id = user.id)
+            mission_serializer = MissionAllSerializer(mission, many=True)
+            return Response(mission_serializer.data, status=status.HTTP_200_OK)
+
+        elif request.method == "POST":
+            data = json.loads(request.body)
+            MissionList.objects.create(
+                user_id = user,
+                mission_type = data["mission_type"],
+                mission_images = data["mission_images"],
+                mission_options = data["mission_options"]
+            )
+            return Response(status=status.HTTP_201_CREATED)

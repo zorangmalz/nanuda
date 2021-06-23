@@ -192,4 +192,4 @@ class MissionList(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     mission_type = models.CharField(max_length=50, default="")
     mission_images = models.JSONField(default=list, blank=True)
-    mission_contents = models.TextField(default="", blank=True)
+    mission_options = models.JSONField(default=dict, blank=True)
