@@ -11,7 +11,7 @@ export default function ReviewSuccess() {
         history.replace("/")
     }
     function goReview() {
-        history.push("/review")
+        history.push("/review/main")
     }
     return (
         <>

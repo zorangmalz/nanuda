@@ -18,7 +18,7 @@ export default function PaymentSuccess() {
         history.replace("/")
     }
     function goReview() {
-        history.push("/review")
+        history.push("/review/main")
     }
     return (
         <>
@@ -156,7 +156,7 @@ export default function PaymentSuccess() {
                         state={true}
                         marginTop={"8vw"}
                     />
-                    <div onClick={() => history.push("/review")} style={{
+                    <div onClick={() => history.push("/review/main")} style={{
                         width: "90vw",
                         paddingTop: "4vw",
                         paddingBottom: "4vw",
