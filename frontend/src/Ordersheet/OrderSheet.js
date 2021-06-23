@@ -322,7 +322,19 @@ export default function OrderSheet() {
                 })
         }
     }
-    
+    const getResult = (res) => {
+        if (res.PCD_PAY_RST === 'success') {
+            payResult = res;
+
+            // 전달받은 결제 파라미터값을 state에 저장 후  '/react/order_result'로 이동
+            console.log(payResult)
+        } else {
+            // 결제 실패일 경우 알림 메시지
+            window.alert(res.PCD_PAY_MSG);
+        }
+
+    }
+
 const handleClick = (e) => {
         e.preventDefault();
         const obj = {};
