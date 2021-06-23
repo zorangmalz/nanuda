@@ -188,7 +188,7 @@ def review_all(request):
             )
             order.review_write = True
             order.save()
-            return status.HTTP_201_CREATED
+            return Response(status=status.HTTP_201_CREATED)
 
 # Review_Home 2개만 조회
 @api_view(["GET"])

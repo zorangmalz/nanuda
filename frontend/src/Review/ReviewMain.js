@@ -25,6 +25,7 @@ export default function ReviewMain() {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 var array = []
                 for (var i = 0; i < response.length; i++) {
                     const dict = {
@@ -40,6 +41,7 @@ export default function ReviewMain() {
                 }
                 setData(data.concat(array))
             })
+            .catch(err => console.log(err))
     }, [])
     return (
         <>
