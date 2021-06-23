@@ -92,7 +92,7 @@ export default function ProfileReview() {
                                 flexDirection: "column",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                minHeight: "60vh",
+                                minHeight: orderData.length > 0 ? "60vh" : "90vh",
                                 width: "100%",
                             }}>
                                 <img
@@ -158,7 +158,7 @@ export default function ProfileReview() {
                             flexDirection: "column",
                             justifyContent: "center",
                             alignItems: "center",
-                            minHeight: "60vh",
+                            minHeight: orderData.length > 0 ? "60vh" : "90vh",
                             width: "100%",
                         }}>
                             <img

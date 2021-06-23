@@ -448,6 +448,7 @@ export default function Home() {
                             {reviewData.map(item =>
                                 <Review
                                     item={item}
+                                    mobile={false}
                                 />
                             )}
                         </AfterContainer>
@@ -752,8 +753,9 @@ export default function Home() {
                     }}>아직도 이용을 망설이시나요?</div>
                     <MAfterContainer>
                         {reviewData.map(item =>
-                            <MReview
+                            <Review
                                 item={item}
+                                mobile={true}
                             />
                         )}
                     </MAfterContainer>
@@ -1117,7 +1119,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
     )
 }
 
-export function Review({ item }) {
+function Review({ item, mobile }) {
     var maskingName = NameMask(item.user_name)
     var age = parseInt(item.user_age / 10)
     var gender = item.user_gender === 1 ? "남성" : "여성"
@@ -1127,38 +1129,38 @@ export function Review({ item }) {
     return (
         <>
             <div style={{
-                minWidth: 298,
-                padding: 16,
+                minWidth: mobile ? "72vw" : 298,
+                padding: mobile ? "4vw" : 16,
                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
                 justifyContent: "space-between",
                 alignSelf: "center",
-                marginRight: 20,
+                marginRight: mobile ? "5vw" : 20,
                 borderRadius: 6,
             }}>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
-                    marginBottom: 8,
+                    marginBottom: mobile ? "2vw" : 8,
                 }}>
-                    <AiFillStar size={16} color="#fad94f" />
+                    <AiFillStar size={mobile ? 14 :16} color="#fad94f" />
                     <div style={{
-                        fontSize: 14,
+                        fontSize: mobile ? 12 : 14,
                         fontWeight: "bold",
                         color: "#010608",
                         fontFamily: "NotoSansCJKkr",
-                        marginLeft: 4,
+                        marginLeft: mobile ? "1vw" : 4,
                     }}>{score}</div>
                 </div>
                 <div style={{
-                    fontSize: 16,
+                    fontSize: mobile ? 14 : 16,
                     color: "#010608",
                     lineHeight: 1.5,
                     fontFamily: "NotoSansCJKkr",
-                    height: 72,
+                    height: mobile ? "18vw" : 72,
                 }}>{content}</div>
                 <div style={{
                     display: "flex",
@@ -1167,93 +1169,22 @@ export function Review({ item }) {
                     justifyContent: "space-between",
 
                     width: "100%",
-                    marginTop: 8,
+                    marginTop: mobile ? "2vw" : 8,
                 }}>
                     <div style={{
                         opacity: 0.4,
                         color: "#010608",
-                        fontSize: 14,
+                        fontSize: mobile ? 12 : 14,
                         fontFamily: "NotoSansCJKkr"
                     }}>{maskingName}({age}0대 {gender})</div>
                     <div style={{
                         opacity: 0.4,
                         color: "#010608",
-                        fontSize: 14,
+                        fontSize: mobile ? 12 : 14,
                         fontFamily: "NotoSansCJKkr"
                     }}>{date}</div>
                 </div>
             </div>
         </>
-    )
-}
-
-export function MReview({ item }) {
-    var maskingName = NameMask(item.user_name)
-    var age = parseInt(item.user_age / 10)
-    var gender = item.user_gender === 1 ? "남성" : "여성"
-    var score = item.service_score
-    var content = item.service_content
-    var date = item.service_date.slice(0, 10)
-    return (
-        <div>
-            <div style={{
-                width: "72vw",
-                padding: "4vw",
-                boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                justifyContent: "space-between",
-                alignSelf: "center",
-                borderRadius: 6,
-                marginRight: 12,
-            }}>
-                <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    marginBottom: 6,
-                }}>
-                    <AiFillStar size={14} color="#fad94f" />
-                    <div style={{
-                        fontSize: 12,
-                        fontWeight: "bold",
-                        color: "#010608",
-                        marginBottom: 6,
-                        fontFamily: "NotoSansCJKkr",
-                        marginLeft: "1vw",
-                    }}>{score}</div>
-                </div>
-                <div style={{
-                    fontSize: 14,
-                    color: "#010608",
-                    lineHeight: 1.5,
-                    fontFamily: "NotoSansCJKkr",
-                    height: "18vw",
-                }}>{content}</div>
-                <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-
-                    width: "100%",
-                    marginTop: 6,
-                }}>
-                    <div style={{
-                        opacity: 0.4,
-                        color: "#010608",
-                        fontSize: 12,
-                        fontFamily: "NotoSansCJKkr"
-                    }}>{maskingName}({age}0대 {gender})</div>
-                    <div style={{
-                        opacity: 0.4,
-                        color: "#010608",
-                        fontSize: 12,
-                        fontFamily: "NotoSansCJKkr"
-                    }}>{date}</div>
-                </div>
-            </div>
-        </div>
     )
 }

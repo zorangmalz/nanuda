@@ -307,7 +307,5 @@ class niceMain(View):
                 phone_number=user_info['params']['mobileno'],
                 phone_company=user_info['params']['mobileco']
             ).save()
-          
             return JsonResponse({"data":True})
-            
             

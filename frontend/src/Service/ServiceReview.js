@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, NameMask } from "../Style";
+import { AiFillStar } from "react-icons/ai";
 
 
 export default function ServiceReview() {
@@ -119,6 +120,7 @@ export default function ServiceReview() {
                         {reviewData.map(item =>
                             <Review
                                 item={item}
+                                mobile={false}
                             />
                         )}
                         <div onClick={noReview ? () => history.push("/servicewrite") : () => { }} style={{
@@ -180,8 +182,9 @@ export default function ServiceReview() {
                         }}>실제 후기를 확인해보세요.</div>
                     </div>
                     {reviewData.map(item =>
-                        <MReview
+                        <Review
                             item={item}
+                            mobile={true}
                         />
                     )}
                     <div onClick={noReview ? () => history.push("/servicewrite") : () => { }} style={{
@@ -208,7 +211,7 @@ export default function ServiceReview() {
     )
 }
 
-function Review({ item }) {
+function Review({ item, mobile }) {
     var maskingName = NameMask(item.user_name)
     var age = parseInt(item.user_age / 10)
     var gender = item.user_gender === 1 ? "남성" : "여성"
@@ -218,24 +221,40 @@ function Review({ item }) {
     return (
         <>
             <div style={{
-                width: 408,
-                padding: 16,
-                height: 138,
+                width: mobile ? "82vw" : 408,
+                padding: mobile ? "4vw" : 16,
                 boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
                 alignSelf: "center",
-                marginTop: 32,
+                marginTop: mobile ? "8vw" : 32,
                 borderRadius: 6,
             }}>
                 <div style={{
-                    fontSize: 21,
-                    fontWeight: "bold",
-                    color: "#26c1f0",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
                     marginBottom: 8,
-                    fontFamily: "NotoSansCJKkr"
-                }}>{score}/5.0</div>
+                }}>
+                    <AiFillStar size={mobile ? 14 : 16} color="#fad94f" />
+                    <div style={{
+                        fontSize: mobile ? 12 : 14,
+                        fontWeight: "bold",
+                        color: "#010608",
+                        fontFamily: "NotoSansCJKkr",
+                        marginLeft: mobile ? "1vw" : 4,
+                    }}>{score}</div>
+                </div>
+                <div style={{
+                    fontSize: mobile ? 14 : 16,
+                    color: "#010608",
+                    lineHeight: 1.5,
+                    fontFamily: "NotoSansCJKkr",
+                    marginBottom: mobile ? "2vw" : 8,
+                    minHeight: mobile ? "20vw" : 80,
+                    maxHeight: mobile ? "20vw" : 80,
+                }}>{content}</div>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
@@ -243,88 +262,21 @@ function Review({ item }) {
                     justifyContent: "space-between",
 
                     width: "100%",
-                    marginBottom: 8,
+                    marginBottom: mobile ? "2vw" : 8,
                 }}>
                     <div style={{
                         opacity: 0.4,
                         color: "#010608",
-                        fontSize: 14,
+                        fontSize: mobile ? 12 : 14,
                         fontFamily: "NotoSansCJKkr"
                     }}>{maskingName}({age}0대 {gender})</div>
                     <div style={{
                         opacity: 0.4,
                         color: "#010608",
-                        fontSize: 14,
+                        fontSize: mobile ? 12 : 14,
                         fontFamily: "NotoSansCJKkr"
                     }}>{date}</div>
                 </div>
-                <div style={{
-                    fontSize: 16,
-                    color: "#010608",
-                    lineHeight: 1.5,
-                    fontFamily: "NotoSansCJKkr"
-                }}>{content}</div>
-            </div>
-        </>
-    )
-}
-
-function MReview({ item }) {
-    var maskingName = NameMask(item.user_name)
-    var age = parseInt(item.user_age / 10)
-    var gender = item.user_gender === 1 ? "남성" : "여성"
-    var score = item.service_score
-    var content = item.service_content
-    var date = item.service_date.slice(0, 10)
-    return (
-        <>
-            <div style={{
-                width: "82vw",
-                padding: "4vw",
-                height: "32vw",
-                boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.12)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                alignSelf: "center",
-                marginTop: "8vw",
-                borderRadius: 6,
-            }}>
-                <div style={{
-                    fontSize: 21,
-                    fontWeight: "bold",
-                    color: "#26c1f0",
-                    marginBottom: 8,
-                    fontFamily: "NotoSansCJKkr"
-                }}>{score}/5.0</div>
-                <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-
-                    width: "100%",
-                    marginBottom: "2vw",
-                }}>
-                    <div style={{
-                        opacity: 0.4,
-                        color: "#010608",
-                        fontSize: 14,
-                        fontFamily: "NotoSansCJKkr"
-                    }}>{maskingName}({age}0대 {gender})</div>
-                    <div style={{
-                        opacity: 0.4,
-                        color: "#010608",
-                        fontSize: 14,
-                        fontFamily: "NotoSansCJKkr"
-                    }}>{date}</div>
-                </div>
-                <div style={{
-                    fontSize: 16,
-                    color: "#010608",
-                    lineHeight: 1.5,
-                    fontFamily: "NotoSansCJKkr"
-                }}>{content}</div>
             </div>
         </>
     )
