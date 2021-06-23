@@ -15,8 +15,8 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.parsers import JSONParser
 
 # Model Import
-from nanuda.models import MissionList, PointList, User, ServiceReview, Product, Review, Order
-from nanuda.serializers import MissionAllSerializer, OrderSerializer, UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
+from nanuda.models import Address, MissionList, PointList, User, ServiceReview, Product, Review, Order
+from nanuda.serializers import AddressAllSerializer, MissionAllSerializer, OrderSerializer, UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
 
 #Python 내장함수
 from datetime import date
@@ -451,5 +451,40 @@ def mission_all(request):
                 mission_type=data["mission_type"],
                 mission_images=data["mission_images"],
                 mission_options=data["mission_options"]
+            )
+            return Response(status=status.HTTP_201_CREATED)
+
+@api_view(["GET", "POST"])
+@parser_classes([JSONParser])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+def address_all(request):
+    if not request.COOKIES.get("access_token"):
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    else:
+        try:
+            load_dotenv(verbose=True)
+            SECRET_KEY = os.getenv("SECRET_KEY")
+            ALGORITHM = os.getenv("ALGORITHM")
+            token = request.COOKIES.get("access_token")
+            payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+            user = User.objects.get(uid=payload["id"])
+
+        except User.DoesNotExist():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        if request.method == "GET":
+            address = Address.objects.filter(user_id=user.id)
+            address_serializer = AddressAllSerializer(address, many=True)
+            if address_serializer.is_valid():
+                return Response(address_serializer.data, status=status.HTTP_200_OK)
+            return Response({"data": False}, status=status.HTTP_404_NOT_FOUND)
+
+        elif request.method == "POST":
+            data = json.loads(request.body)
+            Address.objects.create(
+                user_id=user,
+                address_number=data["address_number"],
+                address=data["address"],
+                address_detail=data["address_detail"]
             )
             return Response(status=status.HTTP_201_CREATED)

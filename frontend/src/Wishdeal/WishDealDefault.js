@@ -65,7 +65,7 @@ export default function WishDealDefault() {
                 console.log(response.openGraph)
                 setLoading(false)
                 history.push({
-                    pathname: "wishdeal/url/success", 
+                    pathname: "/wishdeal/url/success", 
                     state: { param: response.openGraph, des: "", url: text, code: 4 }
                 })
             }).catch(err => {

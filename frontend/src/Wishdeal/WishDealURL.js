@@ -102,7 +102,7 @@ export default function WishDealURL() {
             if (number && numberB > 1) {
                 if (number === 2 && numberB === 5) {
                     if (option && ship != "") {
-                        if (Einputs.Eprice > 30000) {
+                        if (Einputs.Eprice >= 30000) {
                             setNext(true)
                         } else {
                             setNext(false)
@@ -114,7 +114,7 @@ export default function WishDealURL() {
                 }
                 if (number === 2 && numberB < 5) {
                     if (option != "") {
-                        if (Einputs.Eprice > 30000) {
+                        if (Einputs.Eprice >= 30000) {
                             setNext(true)
                         } else {
                             setNext(false)
@@ -126,7 +126,7 @@ export default function WishDealURL() {
                 }
                 if (number === 3 && numberB === 5) {
                     if (ship != "") {
-                        if (Einputs.Eprice > 30000) {
+                        if (Einputs.Eprice >= 30000) {
                             setNext(true)
                         } else {
                             setNext(false)
@@ -137,7 +137,7 @@ export default function WishDealURL() {
                     }
                 }
                 if (number === 3 && numberB < 5) {
-                    if (Einputs.Eprice > 30000) {
+                    if (Einputs.Eprice >= 30000) {
                         setNext(true)
                     } else {
                         setNext(false)

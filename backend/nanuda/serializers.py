@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from nanuda.models import MissionList, User, ServiceReview, Product, Review, Order
+from nanuda.models import Address, MissionList, User, ServiceReview, Product, Review, Order
 
 class UserAllSerializer(serializers.ModelSerializer):
     class Meta:
@@ -94,3 +94,8 @@ class MissionAllSerializer(serializers.ModelSerializer):
     class Meta:
         model = MissionList
         fields = "__all__"
+
+class AddressAllSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ["address_number", "address", "address_detail"]
