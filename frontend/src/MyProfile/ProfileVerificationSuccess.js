@@ -85,7 +85,7 @@ export default function ProfileVerificationSuccess() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="작성 완료" goX={true} />
+                    <MHeader content="미션 결과" goX={true} />
                     <div style={{
                         width: 80,
                         height: 80,
@@ -100,12 +100,12 @@ export default function ProfileVerificationSuccess() {
                         <AiOutlineCheck color="#ffffff" size={50} />
                     </div>
                     <div style={{
-                        marginTop: 32,
+                        marginTop: "8vw",
                         fontSize: 18,
                         fontWeight: "bold",
                         color: "#26c1f0",
                         fontFamily: "NotoSansCJKkr"
-                    }}>작성이 완료
+                    }}>미션이 완료
                         <span style={{ color: "#010608" }}>되었습니다!</span>
                     </div>
                     <div style={{

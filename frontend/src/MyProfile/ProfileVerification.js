@@ -23,7 +23,6 @@ function reducer(state, action) {
         default:
             return 0;
     }
-
 }
 
 const Title = styled.div`
