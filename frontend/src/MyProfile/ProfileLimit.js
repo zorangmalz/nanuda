@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, numberWithCommas } from "../Style";
 
 export default function ProfileLimit() {
+    const history = useHistory()
+
     //현재 유저 정보
     const [user, setUser] = useState({
         name: "",
@@ -149,7 +152,7 @@ export default function ProfileLimit() {
                                         fontWeight: "bold",
                                         color: "#010608",
                                         marginBottom: 8,
-                                    }}>작업 인증하기</div>
+                                    }}>직업 인증하기</div>
                                     <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         opacity: 0.6,
@@ -158,7 +161,7 @@ export default function ProfileLimit() {
                                     }}>한도 10만원 증가</div>
                                 </div>
                             </div>
-                            <div style={{
+                            <div onClick={() => history.push("/profileverification")} style={{
                                 padding: "7px 14px",
                                 borderRadius: 6,
                                 backgroundColor: "#010608",
@@ -365,7 +368,7 @@ export default function ProfileLimit() {
                                     fontWeight: "bold",
                                     color: "#010608",
                                     marginBottom: 4,
-                                }}>작업 인증하기</div>
+                                }}>직업 인증하기</div>
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     opacity: 0.6,
@@ -374,7 +377,7 @@ export default function ProfileLimit() {
                                 }}>한도 10만원 증가</div>
                             </div>
                         </div>
-                        <div style={{
+                        <div onClick={() => history.push("/profileverification")} style={{
                             padding: "6px 12px",
                             borderRadius: 6,
                             backgroundColor: "#010608",
@@ -448,6 +451,7 @@ export default function ProfileLimit() {
                         flexDirection: "row",
                         alignItems: "center",
                         alignSelf: "center",
+                        marginBottom: "5vw",
                     }}>
                         <div style={{
                             width: 60,

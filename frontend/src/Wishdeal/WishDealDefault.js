@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import { Header, MHeader, urlCheck } from "../Style";
+import { Header, MHeader } from "../Style";
 import axios from "axios"
 import Slider from "react-slick"
 import wishone from "../images/wishone.png"
 import wishtwo from "../images/wishtwo.png"
 import wishthree from "../images/wishthree.png"
 import Loader from "react-loader-spinner"
+
 export default function WishDealDefault() {
     const [loading, setLoading] = useState(false)
     function Loading() {
         return (
-
             <Loader
                 type="Oval"
                 color="#ffffff"
@@ -20,7 +20,6 @@ export default function WishDealDefault() {
                 width={20}
                 timeout={10000}
             >
-
             </Loader>
 
         )
@@ -30,59 +29,47 @@ export default function WishDealDefault() {
     const [text, setText] = useState("")
     const [image, setImage] = useState("")
     const [title, setTitle] = useState("")
-    const [des, setDes] = useState("")
     const [url, setUrl] = useState("")
     const [checker, setChecker] = useState(false)
+
     function check() {
         if (text.length > 5) {
             setChecker(true)
         } else {
             setChecker(false)
-        } 
+        }
     }
+
     useEffect(() => {
         check()
     }, [text])
+
     const onChange = (e) => {
         setText(e.target.value)
     }
+
     const ogtag = async () => {
         setLoading(true)
-        await fetch("https://wishdeal.link/api",{
-            method:"POST",
+        await fetch("https://wishdeal.link/api", {
+            method: "POST",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Accept': 'application/json'
             },
-            
-            body:new URLSearchParams({
-                code:text
+            body: new URLSearchParams({
+                code: text
             })
-
         })
             .then(response => response.json())
             .then(response => {
                 console.log(response.openGraph)
                 setLoading(false)
                 history.push("wishdealurl", { param: response.openGraph, des: "", url: text, code: 4 })
-
-                // if (response.openGraph.description != "") {
-                //     setLoading(false)
-                //     history.push("wishdealurl", { param: response.data.openGraph, des: "", url: text, code: 4 })
-    
-                // } else {
-                //     setLoading(false)
-                //     history.push("wishdealnoturl")
-                // }
-                
             }).catch(err => {
                 console.log(err)
                 setLoading(false)
                 history.push("wishdealnoturl", { url: text })
             })
-
-     
-
     }
 
     const naverSearch = async () => {
@@ -273,44 +260,43 @@ export default function WishDealDefault() {
                             name="text"
                             placeholder="상품 url"
                         />
-                       {checker ?
-                                <div id="url_click" onClick={ogtag} style={{
-                                    borderRadius: 6,
-                                    width: 440,
-                                    marginLeft: 20,
-                                    paddingTop: 15,
-                                    paddingBottom: 15,
-                                    alignSelf: "center",
+                        {checker ?
+                            <div id="url_click" onClick={ogtag} style={{
+                                borderRadius: 6,
+                                width: 440,
+                                marginLeft: 20,
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                alignSelf: "center",
 
-                                    marginTop: 32,
-                                    backgroundColor: "#26c1f0",
+                                marginTop: 32,
+                                backgroundColor: "#26c1f0",
 
-                                    color: "#ffffff",
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    cursor: "pointer",
-                                    textAlign: "center",
-                                }}>{loading ? <Loading></Loading> : "확인"}</div>
-                                :
-                                <div id="url_click" style={{
-                                    borderRadius: 6,
-                                    width: 440,
-                                    marginLeft: 20,
-                                    paddingTop: 15,
-                                    paddingBottom: 15,
-                                    alignSelf: "center",
+                                color: "#ffffff",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                cursor: "pointer",
+                                textAlign: "center",
+                            }}>{loading ? <Loading></Loading> : "확인"}</div>
+                            :
+                            <div id="url_click" style={{
+                                borderRadius: 6,
+                                width: 440,
+                                marginLeft: 20,
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                alignSelf: "center",
 
-                                    marginTop: 32,
-                                    backgroundColor: "#dbdbdb",
+                                marginTop: 32,
+                                backgroundColor: "#dbdbdb",
 
-                                    color: "#ffffff",
-                                    fontSize: 18,
-                                    fontWeight: "bold",
-                                    cursor: "pointer",
-                                    textAlign: "center",
-                                }}>{loading ? <Loading></Loading> : "확인"}</div>
-
-                            }
+                                color: "#ffffff",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                cursor: "pointer",
+                                textAlign: "center",
+                            }}>{loading ? <Loading></Loading> : "확인"}</div>
+                        }
                     </div>
                 </div>
             </Default>
@@ -474,7 +460,7 @@ export default function WishDealDefault() {
                             name="text"
                             placeholder="상품 url"
                         />
-                       {checker ?
+                        {checker ?
                             <div id="url_click" onClick={ogtag} style={{
                                 borderRadius: 6,
                                 width: "90vw",
@@ -509,7 +495,6 @@ export default function WishDealDefault() {
                                 textAlign: "center",
                             }}>{loading ? <Loading></Loading> : "확인"}</div>
                         }
-
                     </div>
                 </div>
             </Mobile>

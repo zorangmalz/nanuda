@@ -1,27 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import { Header, MHeader, MStandardButton, StandardButton } from "../Style";
+import { Header, imageBucket, MHeader, MStandardButton, S3_BUCKET, StandardButton } from "../Style";
 import { BsPlusCircle } from "react-icons/bs"
 import { useHistory } from "react-router";
 import { Product } from "./ReviewSelect";
-import AWS from "aws-sdk";
 import ReactStars from "react-rating-stars-component"
 import { useLocation } from "react-router-dom";
-
-const AWS_ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
-const AWS_SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
-const S3_BUCKET = process.env.REACT_APP_S3_IMAGE_BUCKET
-const REGION = process.env.REACT_APP_REGION
-
-AWS.config.update({
-    accessKeyId: AWS_ACCESS_KEY,
-    secretAccessKey: AWS_SECRET_KEY
-})
-
-const imageBucket = new AWS.S3({
-    params: { Bucket: S3_BUCKET },
-    region: REGION
-})
 
 export default function ReviewWrite() {
     const [number, setNumber] = useState(0);
@@ -52,9 +36,6 @@ export default function ReviewWrite() {
     }
 
     //ImageToS3
-    //이미지 진행상황
-    const [progress, setProgress] = useState(0)
-
     //이미지 컴포넌트
     const inputFile = useRef(null)
 
@@ -94,7 +75,7 @@ export default function ReviewWrite() {
 
             imageBucket.putObject(params)
                 .on("httpUploadProgress", (evt) => {
-                    setProgress(Math.round((evt.loaded / evt.total) * 100))
+                    
                 })
                 .send((err) => {
                     if (err) {
@@ -103,26 +84,26 @@ export default function ReviewWrite() {
                 })
             imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[i].name}`)
         }
-        var data = {
-            user_id: 1,
-            product_id: "285dc6bf-91e7-4b7c-a1f7-9ac3a03e7fba",
+        var array = {
+            order_id: data.id,
             review_score: number,
             review_like: inputs.like,
             review_dislike: inputs.dislike,
             review_image: imageArray
         }
-        await fetch("https://haulfree.link/review/", {
+        await fetch("https://haulfree.link/review", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
                 'Content-type': 'application/json',
             },
             credentials: "include",
-            body: JSON.stringify(data)
+            body: JSON.stringify(array)
         })
             .then(response => response.json())
             .then(response => {
                 history.push("/reviewsuccess")
+                console.log(response)
             }).catch(err => {
                 console.log(err)
                 history.push("/reviewfail")

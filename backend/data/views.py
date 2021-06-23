@@ -161,11 +161,35 @@ def review_all(request):
         return Response(review_serializer.data)
     
     elif request.method == "POST":
-        review_serializer = ReviewAllSerializer(data=request.data)
-        if review_serializer.is_valid():
-            review_serializer.save()
-            return Response(review_serializer.data, status=status.HTTP_201_CREATED)
-        return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if not request.COOKIES.get("access_token"):
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        else:
+            try:
+                load_dotenv(verbose=True)
+                SECRET_KEY=os.getenv("SECRET_KEY")
+                ALGORITHM=os.getenv("ALGORITHM")
+                token=request.COOKIES.get("access_token")
+                payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+                user=User.objects.get(uid=payload["id"])
+
+            except User.DoesNotExist():
+                return Response(status=status.HTTP_404_NOT_FOUND)
+            
+            data = json.loads(request.body)
+
+            Review.objects.create(
+                user_id = user,
+                order_id = data["order_id"],
+                review_score = data["review_score"],
+                review_like = data["review_like"],
+                review_dislike = data["review_dislike"],
+                review_image = data["review_image"]
+            )
+
+            order = Order.objects.get(id = data["order_id"])
+            order.review_write = True
+            order.save()
+            return status.HTTP_201_CREATED
 
 # Review_Home 2개만 조회
 @api_view(["GET"])

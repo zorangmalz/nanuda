@@ -8,6 +8,7 @@ import styled from "styled-components";
 import kakao from "./images/kkt cs.png"
 import mainlogo from "./images/mainlogo.png"
 import "./css/haulfree.css"
+import AWS from "aws-sdk";
 
 export default function WebIntro() {
     let history = useHistory()
@@ -157,7 +158,7 @@ export function MHeader({ content, goBack, goX }) {
                 justifyContent: "center",
                 fontFamily: "NotoSansCJKkr"
             }}>{content}</div>
-        </div> 
+        </div>
     )
 }
 
@@ -1405,6 +1406,7 @@ export function StandardButton({ marginTop, text, onClick, state }) {
                 alignSelf: "center",
                 cursor: state ? "pointer" : "auto",
                 marginTop: marginTop,
+                marginBottom: 40,
 
                 fontSize: 18,
                 fontWeight: "bold",
@@ -1427,6 +1429,7 @@ export function MStandardButton({ marginTop, text, onClick, state }) {
             cursor: state ? "pointer" : "auto",
             marginTop: marginTop,
             borderRadius: 6,
+            marginBottom: "10vw",
 
             fontSize: 16,
             fontWeight: "bold",
@@ -1782,14 +1785,29 @@ export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export function urlCheck(url){
+export function urlCheck(url) {
     //url 유효성 검사
     let regex = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-    
+
     //올바른 url이 맞다면 해당 url로 이동
-    if(regex.test(url)){
+    if (regex.test(url)) {
         return true
     } else {
         return false
     }
-  }
+}
+
+const AWS_ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
+const AWS_SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
+export const S3_BUCKET = process.env.REACT_APP_S3_IMAGE_BUCKET
+const REGION = process.env.REACT_APP_REGION
+
+AWS.config.update({
+    accessKeyId: AWS_ACCESS_KEY,
+    secretAccessKey: AWS_SECRET_KEY
+})
+
+export const imageBucket = new AWS.S3({
+    params: { Bucket: S3_BUCKET },
+    region: REGION
+})

@@ -1,8 +1,8 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BsCheck } from "react-icons/bs";
 import styled from "styled-components"
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Header, MHeader } from "../Style";
 import { useHistory,useLocation } from "react-router";
 
 export default function SignupProfile() {

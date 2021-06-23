@@ -1,8 +1,9 @@
 import React, { useState, useReducer } from "react";
 import { Default, Mobile } from "../App";
-import { Title, Button, InputModule, MTitle, MButton } from "../Auth/SignupProfile";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Button, MButton } from "../Auth/SignupProfile";
+import { Header, MHeader, InputModule, MInputModule, StandardButton, MStandardButton } from "../Style";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import styled from "styled-components"
 
 function reducer(state, action) {
     switch (action.type) {
@@ -23,6 +24,26 @@ function reducer(state, action) {
     }
 
 }
+
+const Title = styled.div`
+    width: 440px;
+    font-family: "NotoSansCJKkr";
+    font-size: 18px;
+    font-weight: bold;
+    color: #010608;
+    margin-top: 32px;
+    margin-left: 20px;
+`;
+
+const MTitle = styled.div`
+    width: 90vw;
+    font-family: "NotoSansCJKkr";
+    font-size: 16px;
+    font-weight: bold;
+    color: #010608;
+    margin-top: 8vw;
+    margin-left: 5vw;
+`;
 
 export default function ProfileVerification() {
     const [number, dispatch] = useReducer(reducer, 0)
@@ -86,6 +107,7 @@ export default function ProfileVerification() {
                                 alignSelf: "center",
                                 marginTop: 16,
                                 rowGap: 16,
+                                marginBottom: 16,
                             }}>
                                 <Button
                                     text="대학생"
@@ -124,15 +146,18 @@ export default function ProfileVerification() {
                                     onClick={onEtc}
                                 />
                             </div>
-                            <InputModule
-                                input={job}
-                                onChange={onJob}
-                                placeholder="현재 직업을 입력해주세요."
-                                width={440}
-                                marginLeft={20}
-                                marginTop={16}
-                                fontSize={16}
-                            />
+                            {number === 6 ?
+                                <InputModule
+                                    name="job"
+                                    value={job}
+                                    onChange={onJob}
+                                    placeholder="현재 직업을 입력해주세요."
+                                    width={440}
+                                    type={1}
+                                />
+                                :
+                                <></>
+                            }
                             <Title>직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요. (최대 두장)</Title>
                             <div style={{
                                 display: "flex",
@@ -165,28 +190,16 @@ export default function ProfileVerification() {
                                 marginTop: 4,
                                 width: 440,
                                 alignSelf: "center",
-                            }}>학생증, 사원증, 아르바이트 월급 인증, 고무장갑 인증 등 다양하게
-                                자신의 직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요!
+                            }}>학생증, 사원증, 아르바이트 월급 인증, 고무장갑 인증 등 다양하게 <br />
+                                자신의 직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요! <br />
                             사용자님의 소중한 개인정보는 확인용도외에 일절 사용 되지 않습니다.</div>
                         </div>
-                        <div style={{
-                            width: 440,
-                            paddingTop: 15,
-                            paddingBottom: 15,
-                            backgroundColor: "#26c1f0",
-                            cursor: "pointer",
-                            borderRadius: 6,
-
-                            fontFamily: "NotoSansCJKkr",
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            color: "#ffffff",
-                            textAlign: "center",
-
-                            marginTop: 40,
-                            alignSelf: "center",
-                            marginBottom: 40,
-                        }}>인증 완료</div>
+                        <StandardButton 
+                            marginTop={40}
+                            text="인증 완료"
+                            onClick={() => {}}
+                            state={number != 0 ? true : false}
+                        />
                     </div>
                 </div>
             </Default>
@@ -211,8 +224,9 @@ export default function ProfileVerification() {
                             gridTemplateColumns: "repeat(4, 1fr)",
                             width: "90vw",
                             alignSelf: "center",
-                            marginTop: 12,
+                            marginTop: "4vw",
                             rowGap: 12,
+                            marginBottom: "4vw",
                         }}>
                             <MButton
                                 text="대학생"
@@ -251,15 +265,18 @@ export default function ProfileVerification() {
                                 onClick={onEtc}
                             />
                         </div>
-                        <InputModule
-                            input={job}
-                            onChange={onJob}
-                            placeholder="현재 직업을 입력해주세요."
-                            width={"90vw"}
-                            marginLeft={"5vw"}
-                            marginTop={12}
-                            fontSize={12}
-                        />
+                        {number === 6 ?
+                            <MInputModule
+                                name="job"
+                                value={job}
+                                onChange={onJob}
+                                placeholder="현재 직업을 입력해주세요."
+                                width={"90vw"}
+                                type={1}
+                            />
+                            :
+                            <></>
+                        }
                         <MTitle>직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요. (최대 두장)</MTitle>
                         <div style={{
                             display: "flex",
@@ -292,28 +309,18 @@ export default function ProfileVerification() {
                             marginTop: 4,
                             width: "90vw",
                             alignSelf: "center",
-                        }}>학생증, 사원증, 아르바이트 월급 인증, 고무장갑 인증 등 다양하게
-                            자신의 직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요!
+                        }}>학생증, 사원증, 아르바이트 월급 인증, 고무장갑 인증 등 다양하게 <br />
+                            자신의 직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요! <br />
                             사용자님의 소중한 개인정보는 확인용도외에 일절 사용 되지 않습니다.</div>
                     </div>
-                    <div style={{
-                        width: "90vw",
-                        paddingTop: 8,
-                        paddingBottom: 8,
-                        backgroundColor: "#26c1f0",
-                        cursor: "pointer",
-                        borderRadius: 6,
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        color: "#ffffff",
-                        textAlign: "center",
-
-                        marginTop: 20,
-                        alignSelf: "center",
-                        marginBottom: 20,
-                    }}>인증 완료</div>
+                    <MStandardButton
+                        marginTop={"10vw"}
+                        text="인증 완료"
+                        onClick={() => { }}
+                        state={
+                            number === 7 && job.length > 0 ? true : number != 0 ? true : false
+                        }
+                    />
                 </div>
             </Mobile>
         </>

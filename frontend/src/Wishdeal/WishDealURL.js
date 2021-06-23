@@ -371,7 +371,7 @@ export default function WishDealURL() {
                         <StandardButton
                             marginTop={32}
                             text="다음"
-                            onClick={NextPage}
+                            onClick={next ? NextPage : () => {}}
                             state={next}
                         />
                     </div>
@@ -588,7 +588,7 @@ export default function WishDealURL() {
                         <MStandardButton
                             marginTop={"8vw"}
                             text="다음"
-                            onClick={NextPage}
+                            onClick={next ? NextPage : () => {}}
                             state={next}
                         />
                     </div>
