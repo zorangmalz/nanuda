@@ -247,7 +247,7 @@ export default function ProfileVerification() {
                                 flexDirection: "row",
                                 marginTop: 16,
                             }}>
-                                {filePath.length < 3 ?
+                                {filePath.length < 2 ?
                                     <div onClick={onButtonclick} style={{
                                         marginLeft: 20,
                                         width: 120,
@@ -401,7 +401,7 @@ export default function ProfileVerification() {
                             flexDirection: "row",
                             marginTop: "4vw",
                         }}>
-                            {filePath.length < 3 ?
+                            {filePath.length < 2 ?
                                 <div onClick={onButtonclick} style={{
                                     marginLeft: "5vw",
                                     width: "25vw",
@@ -454,8 +454,8 @@ export default function ProfileVerification() {
                             marginTop: 4,
                             width: "90vw",
                             alignSelf: "center",
-                        }}>학생증, 사원증, 아르바이트 월급 인증, 고무장갑 인증 등 다양하게 <br />
-                            자신의 직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요! <br />
+                        }}>학생증, 사원증, 아르바이트 월급 인증, 고무장갑 인증 등 다양하게 
+                            자신의 직장 혹은 소득을 증빙할 수 있는 사진을 업로드해주세요! 
                             사용자님의 소중한 개인정보는 확인용도외에 일절 사용 되지 않습니다.</div>
                     </div>
                     <MStandardButton
