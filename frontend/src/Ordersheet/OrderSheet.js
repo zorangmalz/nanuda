@@ -4,7 +4,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { BiPlusCircle } from "react-icons/bi";
 import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile/ProfileEdit";
-
+import {authenticate} from "./authenticate";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -120,7 +120,7 @@ export default function OrderSheet() {
     const [payment, setPayment] = useState(true)
 
     //계좌 등록 여부
-    const [register, setRegister] = useState(true);
+    const [register, setRegister] = useState(false);
 
 
     //날짜 계산해보기!!
@@ -322,7 +322,63 @@ export default function OrderSheet() {
                 })
         }
     }
+    
+const handleClick = (e) => {
+        e.preventDefault();
+        const obj = {};
+        /*
+         *  공통 설정
+         */
+        obj.PCD_CPAY_VER = "1.0.1"		             // (필수) 결제창 버전 (Default : 1.0.1)
+        obj.PCD_PAY_TYPE = "transfer"			             // (필수) 결제 방법 (transfer | card)
+        obj.PCD_PAY_WORK = "ATUH";			             // (필수) 결제요청 업무구분 (AUTH : 본인인증+계좌등록, CERT: 본인인증+계좌등록+결제요청등록(최종 결제승인요청 필요), PAY: 본인인증+계좌등록+결제완료)
+        obj.PCD_CARD_VER = '01';			     // DEFAULT: 01 (01: 정기결제 플렛폼, 02: 일반결제 플렛폼), 카드결제 시 필수
+        obj.PCD_PAYER_AUTHTYPE = "sms";				     // (선택) [간편결제/정기결제] 본인인증 방식 (sms : 문자인증 | pwd : 패스워드 인증)
 
+      
+
+        obj.payple_auth_file = '';	                                 // 인증파일경로 /절대경로/payple_auth_file (node.js => [app.js] app.post('/pg/auth', ...) {..}
+
+        obj.callbackFunction = getResult;
+
+        /*
+         *  빌링키 등록 (pay_work === 'AUTH')
+         */
+        
+            obj.PCD_PAYER_NO = ""					  // (선택) 가맹점 회원 고유번호 (결과전송 시 입력값 그대로 RETURN)
+            obj.PCD_PAYER_NAME = ""				  // (선택) 결제자 이름
+            obj.PCD_PAYER_HP = ""					  // (선택) 결제자 휴대폰 번호
+            obj.PCD_PAYER_EMAIL = "N"				  // (선택) 결제자 Email
+            obj.PCD_TAXSAVE_FLAG = "N"				  // (선택) 현금영수증 발행여부
+            obj.PCD_REGULER_FLAG = "N"				  // (선택) 정기결제 여부 (Y|N)
+            obj.PCD_SIMPLE_FLAG = "N"				  // (선택) 간편결제 여부 (Y|N)
+        
+        /*
+         *  최초결제 및 단건(일반,비회원)결제
+         */
+        
+        // 결제창에 보낼 Object Set
+        console.log('Object Set:', obj);
+
+        // 가맹점 인증
+        authenticate().then((res) => {
+            console.log('Auth Result:', {...res.data});
+            // 토큰값 세팅
+            obj.PCD_CST_ID = res.data.cst_id;         // 가맹점 인증 후 리턴 받은 cst_id Token
+            obj.PCD_CUST_KEY = res.data.custKey;      // 가맹점 인증 후 리턴 받은 custKey Token
+            obj.PCD_AUTH_KEY = res.data.AuthKey;      // 가맹점 인증 후 리턴 받은 AuthKey Token
+            obj.PCD_PAY_URL = res.data.return_url;    // 가맹점 인증 후 리턴 받은 결제요청 URL
+
+            if (res.data.result !== 'success') return alert(res.data.result_msg);
+
+            // 해당 함수를 불러오려면 cpay.payple.kr 스크립트 추가가 선행 되어야 합니다. /public/index.html
+            // 가맹점 인증 후, 토큰 값을 추가 및 PaypleCpayPopup 함수 호출
+            window.PaypleCpayPopup(obj);
+        }).catch((err) => {
+            console.error(err)
+        })
+    }
+    
 
     return (
         <>
@@ -456,7 +512,7 @@ export default function OrderSheet() {
                                 }}>우리 1002-550-5**544</div>
                             </div>
                             :
-                            <div onClick={() => history.push("/paymentaddbank")} style={{
+                            <div onClick={handleClick}style={{
                                 width: 440,
                                 height: 136,
                                 border: "1px solid rgba(1, 6, 8, 0.2)",
