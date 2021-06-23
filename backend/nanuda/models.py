@@ -3,8 +3,8 @@ import uuid
 
 # Create your models here.
 class User(models.Model):
-    MAN = "1"
-    WOMAN = "0"
+    MAN = 1
+    WOMAN = 0
     GENDER_CHOICE = [
         (MAN, "남성"),
         (WOMAN, "여성"),

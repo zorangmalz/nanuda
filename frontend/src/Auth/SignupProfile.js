@@ -101,14 +101,14 @@ export default function SignupProfile() {
             body: JSON.stringify({
                 params:
                 {
-                    gender:userData.gender,
+                    gender:parseInt(userData.gender),
                     name:userData.name,
                     birthdate:userData.birthdate,
                     nationalinfo:userData.nationalinfo,
                     mobileno:userData.mobileno,
                     mobileco:userData.mobileco,
                     email:JSON.parse(realEmail).email,
-                    uid:JSON.parse(realuid).uid
+                    uid: String(JSON.parse(realuid).uid)
                 },
             })
 
