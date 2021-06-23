@@ -54,7 +54,7 @@ export default function ProfileLimit() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        <Header content="1/n 한도 및 미션" goBack={true} />
+                        <Header content="미션" goBack={true} />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -269,7 +269,7 @@ export default function ProfileLimit() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="1/n 한도 및 미션" goBack={true} />
+                    <MHeader content="미션" goBack={true} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,

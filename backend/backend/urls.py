@@ -30,7 +30,7 @@ urlpatterns = [
     path('servicereview/main', service_review_all),
     path('servicereview/home', service_review_home),
     path('product/', product_all),
-    path('review', review_all),
+    path('review/main', review_all),
     path('review/<int:pk>', review_one),
     path('review/home', review_home),
     path('review/profile/<int:pk>', review_profile),

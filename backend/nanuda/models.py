@@ -186,3 +186,10 @@ class PointList(models.Model):
     
     class Meta:
         managed=True
+
+class MissionList(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    mission_type = models.CharField(max_length=50, default="")
+    mission_images = models.JSONField(default=list, blank=True)
+    mission_contents = models.TextField(default="", blank=True)

@@ -1,8 +1,9 @@
-import React, { useState, useReducer, useRef } from "react";
+import React, { useState, useReducer, useRef, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import { Button, MButton } from "../Auth/SignupProfile";
 import { Header, MHeader, InputModule, MInputModule, StandardButton, MStandardButton, S3_BUCKET, imageBucket } from "../Style";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { BsPlusCircle } from "react-icons/bs"
 import styled from "styled-components"
 import { useHistory } from "react-router-dom";
 
@@ -75,6 +76,31 @@ export default function ProfileVerification() {
 
     const history = useHistory()
 
+    //유저 정보 가져오기
+    const [user, setUser] = useState({
+        user_email: "",
+    })
+
+    useEffect(() => {
+        fetch('https://haulfree.link/userinfo/', {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                setUser({
+                    ...user,
+                    user_email: response.user_email,
+                })
+            })
+            .catch(err => console.log(err))
+    }, [])
+
     //ImageToS3
     //이미지 컴포넌트
     const inputFile = useRef(null)
@@ -122,7 +148,10 @@ export default function ProfileVerification() {
                         console.log(err)
                     }
                 })
-            imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[i].name}`)
+            imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/user/${user.user_email}/mission/job/${selectedFile[i].name}`)
+        }
+        if (imageArray.length === selectedFile.length) {
+            history.replace("/")
         }
     }
     return (
@@ -216,14 +245,41 @@ export default function ProfileVerification() {
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
-                                alignItems: "center",
-
-                                width: 440,
-                                marginLeft: 20,
                                 marginTop: 16,
                             }}>
-                                <PictureButton />
-                                <PictureButton />
+                                {filePath.length < 3 ?
+                                    <div onClick={onButtonclick} style={{
+                                        marginLeft: 20,
+                                        width: 120,
+                                        height: 120,
+                                        borderRadius: 6,
+                                        backgroundColor: "#f2f3f8",
+                                        cursor: "pointer",
+
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center"
+                                    }}>
+                                        <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
+                                            display: "none"
+                                        }} />
+                                        <BsPlusCircle size={24} color="#010608" />
+                                    </div>
+                                    :
+                                    <></>
+                                }
+                                {filePath.length > 0 ?
+                                    filePath.map(item =>
+                                        <img src={item} style={{
+                                            width: 120,
+                                            height: 120,
+                                            resize: "cover",
+                                            marginLeft: 20,
+                                        }} />
+                                    )
+                                    :
+                                    <></>
+                                }
                             </div>
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
@@ -251,8 +307,16 @@ export default function ProfileVerification() {
                         <StandardButton
                             marginTop={40}
                             text="인증 완료"
-                            onClick={() => { }}
-                            state={number != 0 ? true : false}
+                            onClick={
+                                number === 6 && job.length > 0 && selectedFile.length > 0 ?
+                                    uploadFile :
+                                    number != 0 && selectedFile.length > 0 && number != 6 ?
+                                        uploadFile :
+                                        () => { }
+                            }
+                            state={
+                                number === 6 && job.length > 0 && selectedFile.length > 0 ? true : number != 0 && selectedFile.length > 0 && number != 6 ? true : false
+                            }
                         />
                     </div>
                 </div>
@@ -335,14 +399,41 @@ export default function ProfileVerification() {
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
-                            alignItems: "center",
-
-                            width: "90vw",
                             marginTop: "4vw",
-                            alignSelf: "center",
                         }}>
-                            <MPictureButton />
-                            <MPictureButton />
+                            {filePath.length < 3 ?
+                                <div onClick={onButtonclick} style={{
+                                    marginLeft: "5vw",
+                                    width: "25vw",
+                                    height: "25vw",
+                                    borderRadius: 6,
+                                    backgroundColor: "#f2f3f8",
+                                    cursor: "pointer",
+
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center"
+                                }}>
+                                    <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
+                                        display: "none"
+                                    }} />
+                                    <BsPlusCircle size={20} color="#010608" />
+                                </div>
+                                :
+                                <></>
+                            }
+                            {filePath.length > 0 ?
+                                filePath.map(item =>
+                                    <img src={item} style={{
+                                        width: "25vw",
+                                        height: "25vw",
+                                        resize: "cover",
+                                        marginLeft: "5vw",
+                                    }} />
+                                )
+                                :
+                                <></>
+                            }
                         </div>
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
@@ -370,49 +461,19 @@ export default function ProfileVerification() {
                     <MStandardButton
                         marginTop={"10vw"}
                         text="인증 완료"
-                        onClick={() => { }}
+                        onClick={
+                            number === 6 && job.length > 0 && selectedFile.length > 0 ?
+                                uploadFile :
+                                number != 0 && selectedFile.length > 0 && number != 6 ?
+                                    uploadFile :
+                                    () => { }
+                        }
                         state={
-                            number === 7 && job.length > 0 ? true : number != 0 ? true : false
+                            number === 6 && job.length > 0 && selectedFile.length > 0 ? true : number != 0 && selectedFile.length > 0 && number != 6 ? true : false
                         }
                     />
                 </div>
             </Mobile>
         </>
-    )
-}
-
-function PictureButton() {
-    return (
-        <div style={{
-            width: 120,
-            height: 120,
-            borderRadius: 6,
-            backgroundColor: "#f2f3f8",
-            marginRight: 20,
-
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-        }}>
-            <AiOutlinePlusCircle size={32} color="#010608" />
-        </div>
-    )
-}
-
-function MPictureButton() {
-    return (
-        <div style={{
-            width: "25vw",
-            height: "25vw",
-            borderRadius: 6,
-            backgroundColor: "#f2f3f8",
-            marginRight: "4vw",
-
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-        }}>
-            <AiOutlinePlusCircle size={24} color="#010608" />
-        </div>
     )
 }

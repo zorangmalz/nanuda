@@ -15,7 +15,7 @@ export default function ReviewMain() {
     const [data, setData] = useState([])
     useEffect(() => {
         setData([])
-        fetch("https://haulfree.link/review", {
+        fetch("https://haulfree.link/review/main", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
