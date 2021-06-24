@@ -259,8 +259,22 @@ def review_one(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "GET":
-        review_serializer = ReviewAllSerializer(review)
-        return Response(review_serializer.data)
+        return JsonResponse({
+            "user_profile": review.user_profile(),
+            "user_nickname": review.user_nickname(),
+            "review_image": review.review_image[0],
+            "review_date": review.review_date,
+            "review_score": review.review_score,
+            "review_like": review.review_like,
+            "review_dislike": review.review_dislike,
+            "review_likeNum": review.review_likeNum,
+            "review_dislikeNum": review.review_dislikeNum,
+            "review_alert": review.review_alert,
+            "product_name": review.product_name(),
+            "product_image": review.product_image(),
+            "product_price": review.product_price(),
+            "order_price": review.order_price(),
+        })
 
     elif request.method == "PUT":
         review_serializer = ReviewAllSerializer(review, data=request.data)

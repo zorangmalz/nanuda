@@ -167,6 +167,15 @@ class Review(models.Model):
     def user_profile(self):
         return self.user_id.profile
     
+    def product_name(self):
+        return self.order_id.product_name()
+    
+    def product_image(self):
+        return self.order_id.product_image()
+    
+    def product_price(self):
+        return self.order_id.product_price()
+    
     def order_price(self):
         return self.order_id.order_price
 

@@ -9,8 +9,6 @@ export default function ReviewPost({ match }) {
     let history = useHistory()
     const { pk } = match.params
     const [data, setData] = useState({
-        user_id: "",
-        product_id: "",
         user_profile: "",
         user_nickname: "",
         review_image: "",
@@ -21,6 +19,9 @@ export default function ReviewPost({ match }) {
         review_likeNum: 0,
         review_dislikeNum: 0,
         review_alert: 0,
+        product_name: "",
+        product_image: "",
+        product_price: 0
     })
 
     //좋아요 싫어요 버튼 
@@ -39,8 +40,6 @@ export default function ReviewPost({ match }) {
             .then(response => {
                 setData({
                     ...data,
-                    user_id: response.user_id,
-                    product_id: response.product_id,
                     user_profile: response.user_profile,
                     user_nickname: response.user_nickname,
                     review_image: response.review_image[0],
@@ -50,7 +49,11 @@ export default function ReviewPost({ match }) {
                     review_dislike: response.review_dislike,
                     review_likeNum: response.review_likeNum,
                     review_dislikeNum: response.review_dislikeNum,
-                    review_alert: response.review_alert
+                    review_alert: response.review_alert,
+                    product_name: response.product_name,
+                    product_image: response.product_image,
+                    product_price: response.product_price,
+                    order_price: response.order_price,
                 })
             }).catch(error => console.log(error))
     }, [like])
@@ -596,5 +599,45 @@ function CustomStar({ score, num, size }) {
                     <FaStar size={size} color="#dbdbdb" style={{ marginRight: 5 }} />
             }
         </>
+    )
+}
+
+function ReviewProduct({ item, border, mobile }) {
+    let history = useHistory()
+    return (
+        <div style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginLeft: mobile ? "5vw" : 20,
+
+            paddingBottom: border ? 16 : 0,
+            borderBottom: border ? "1px solid rgba(1, 6, 8, 0.2)" : 0,
+            width: mobile ? "90vw" : 440,
+        }}>
+            <div style={{
+                marginTop: mobile ? "4vw" : 16,
+                display: "flex",
+                flexDirection: "row",
+            }}>
+                <img alt="상품" src={item.product_image} style={{
+                    width: mobile ? 80 : 96,
+                    height: mobile ? 80 : 96,
+                    backgroundColor: "#dfdfdf",
+                    borderRadius: 6
+                }} />
+                <div style={{
+                    marginLeft: mobile ? 12 : 14,
+                    display: "flex",
+                    flexDirection: "column"
+                }}>
+                    <div style={{ fontSize: mobile ? 12 : 14, fontFamily: "AvenirNext", marginBottom: mobile ? "2vw" : 8 }}>{item.product_name}</div>
+                    <div style={{ fontSize: mobile ? 12 : 14, opacity: 0.6, textDecoration: "line-through", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(item.product_price)} 원</div>
+                    <div style={{ fontSize: mobile ? 14 : 16, fontWeight: "bold", color: "#010608", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(item.order_price)} 원에 획득 완료!</div>
+                </div>
+            </div>
+            <RiArrowRightSLine color="#dfdfdf" size={mobile ? 20 : 24} style={{ cursor: "pointer" }} />
+        </div>
     )
 }
