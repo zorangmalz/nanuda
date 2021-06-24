@@ -488,6 +488,7 @@ def address_all(request):
                 address=data["address"],
                 address_detail=data["address_detail"],
                 temp_receiver=data["temp_receiver"],
-                temp_phone_number=data["temp_phone_number"]
+                temp_phone_number=data["temp_phone_number"],
+                temp_claim=data["temp_claim"]
             )
             return Response(status=status.HTTP_201_CREATED)
