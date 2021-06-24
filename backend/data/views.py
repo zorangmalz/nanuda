@@ -270,7 +270,7 @@ def review_one(request, pk):
         return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        order = Order.objects.filter(id = review.order_id)
+        order = Order.objects.get(user_id = review.order_id)
         order.review_write = True
         order.save()
         review.delete()

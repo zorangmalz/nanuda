@@ -142,7 +142,7 @@ class Order(models.Model):
         return self.product_id.product_price
     
     def __str__(self):
-        return "{}".format(self.id)
+        return "{}".format(self.user_id)
     
     class Meta:
         ordering = ["id", "order_date"]
