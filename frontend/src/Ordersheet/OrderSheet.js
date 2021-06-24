@@ -431,11 +431,25 @@ export default function OrderSheet() {
             fetch("https://wishdeal.link/transferRegular/", {
                 method: "POST",
                 headers: {
-                    'Content-type': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
                     'Accept': 'application/json'
                 },
-                
-                body: obj
+                body: new URLSearchParams({
+                    PCD_CST_ID : res.data.cst_id,         // 가맹점 인증 후 리턴 받은 cst_id Token
+                    PCD_CUST_KEY : res.data.custKey,      // 가맹점 인증 후 리턴 받은 custKey Token
+                    PCD_AUTH_KEY : res.data.AuthKey,      // 가맹점 인증 후 리턴 받은 AuthKey Token
+                    PCD_PAY_URL : res.data.return_url,    // 가맹점 인증 후 리턴 받은 결제요청 URL
+                    PCD_PAYER_ID:payId,
+                    //상품명
+                    PCD_PAY_GOODS:"test",
+        
+                    PCD_PAYER_NO:"",
+                    PCD_PAYER_EMAIL:"",
+                    PCD_PAY_OID:"",
+                    PCD_PAY_TOTAL:"1000",
+                    PCD_PAY_YEAR:"2021",
+                    PCD_PAY_MONTH:"6",
+                })
             })
                 .then(response => response.json())
                 .then(response => {
