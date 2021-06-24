@@ -474,9 +474,10 @@ def address_all(request):
 
         if request.method == "GET":
             address = Address.objects.filter(user_id=user.id)
-            address_serializer = AddressAllSerializer(address, many=True)
-            if address_serializer.is_valid():
+            if address.exists():
+                address_serializer = AddressAllSerializer(address, many=True)
                 return Response(address_serializer.data, status=status.HTTP_200_OK)
+                
             return Response({"data": False}, status=status.HTTP_404_NOT_FOUND)
 
         elif request.method == "POST":
