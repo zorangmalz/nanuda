@@ -20,7 +20,7 @@ from nanuda.views import KakaoLogin, userInfoName, uploadAddress, checkAddress, 
 #API 제작
 from rest_framework.urlpatterns import format_suffix_patterns
 from nanuda.views import KakaoLogin
-from data.views import mission_all, order_one, point_list, review_profile, user_list, service_review_all, product_all, review_all, order_all, review_one, review_home, service_review_home, user_one, order_list
+from data.views import address_all, mission_all, order_one, point_list, review_profile, user_list, service_review_all, product_all, review_all, order_all, review_one, review_home, service_review_home, user_one, order_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,6 +38,7 @@ urlpatterns = [
     path('order/', order_all),
     path('order/profile', order_list),
     path('order/detail', order_one),
+    path('order/address', address_all),
     path('rest-auth/kakao/', KakaoLogin.as_view(), name='kakao_login'),
     path('userInfoName/', userInfoName.as_view(), name='test'),
     path('uploadAddress/', uploadAddress.as_view(), name='address'),
