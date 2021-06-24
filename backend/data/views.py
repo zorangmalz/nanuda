@@ -491,4 +491,4 @@ def address_all(request):
                 temp_phone_number=data["temp_phone_number"],
                 temp_claim=data["temp_claim"]
             )
-            return Response(status=status.HTTP_201_CREATED)
+            return Response({"data": True}, status=status.HTTP_201_CREATED)
