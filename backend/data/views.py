@@ -5,6 +5,7 @@ import jwt
 import urllib.request
 from dotenv import load_dotenv
 import json
+import uuid
 
 # API 제작 - 상태, 기능, 인증, 권한, Header(JSON)
 from rest_framework import status
@@ -269,7 +270,7 @@ def review_one(request, pk):
         return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        order = Order.objects.get(id = review.order_id)
+        order = Order.objects.get(id = uuid.UUID(review.order_id))
         order.review_write = True
         order.save()
         review.delete()
