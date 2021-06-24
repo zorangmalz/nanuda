@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Header, MHeader } from "../Style";
 import { BiPlusCircle } from "react-icons/bi";
 import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile/ProfileEdit";
 import { authenticate } from "./authenticate";
@@ -39,31 +39,31 @@ export default function OrderSheet() {
         request: f
     }
     async function addressCheck() {
-        fetch("https://haulfree.link/checkAddress/", {
-            method: "get",
+        fetch("https://haulfree.link/order/address", {
+            method: "GET",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
             credentials: "include",
-        }).then(response => response.json())
+        })
+            .then(response => response.json())
             .then(res => {
                 console.log(res)
                 if (res.data === false) {
                     setBasicAddress(false)
                 } else {
                     setBasicAddress(true)
-                    setA(res.address_name)
-                    setB(res.address_number)
-                    setC(res.address)
-                    setD(res.address_detail)
-                    setE(res.address_phone)
-                    setF(res.address_claim)
+                    setA(res[0].temp_receiver)
+                    setB(res[0].address_number)
+                    setC(res[0].address)
+                    setD(res[0].address_detail)
+                    setE(res[0].temp_phone_number)
+                    setF(res[0].temp_claim)
                 }
             }).catch(err => {
                 console.log(err)
             })
-
     }
     useEffect(() => {
         addressCheck()
@@ -464,8 +464,6 @@ export default function OrderSheet() {
 
     }
 
-
-
     return (
         <>
             <Default>
@@ -510,7 +508,7 @@ export default function OrderSheet() {
                                 borderRadius: 6,
                                 marginRight: 16,
                                 objectFit: "cover"
-                            }}></img>
+                            }} />
                             <div style={{
                                 display: "flex",
                                 flexDirection: "column",
@@ -554,14 +552,6 @@ export default function OrderSheet() {
                                 color: "#010608",
                                 fontFamily: "NotoSansCJKkr"
                             }}>배송 정보</div>
-                            <div onClick={() => history.push("/address")} style={{
-                                fontSize: 14,
-                                opacity: 0.8,
-                                color: "#010608",
-                                textDecorationLine: "underline",
-                                cursor: "pointer",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>배송지 수정</div>
                         </div>
                         {basicAddress ?
                             <BasicAddress item={item} />
@@ -962,25 +952,25 @@ export default function OrderSheet() {
                         marginLeft: "5%",
                         fontWeight: "bold",
                         color: "#010608",
-                        marginTop: 32,
-                        marginBottom: 16,
+                        marginTop: "8vw",
+                        marginBottom: "4vw",
                         fontFamily: "NotoSansCJKkr"
                     }}>상품정보</div>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "flex-start",
-
-                        marginLeft: "5%"
+                        marginRight: "5vw",
+                        marginLeft: "5vw",
                     }}>
-                        <div style={{
-                            width: "25vw",
-                            height: "25vw",
+
+                        <img src={image} style={{
+                            width: "30vw",
+                            heigh: "30vw",
                             borderRadius: 6,
                             marginRight: "4vw",
-                            backgroundColor: "#000000",
-                            color: "#ffffff"
-                        }}>상품 그림</div>
+                            objectFit: "cover"
+                        }} />
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
@@ -991,15 +981,15 @@ export default function OrderSheet() {
                                 fontSize: 14,
                                 color: "#010608",
                                 fontFamily: "AvenirNext"
-                            }}>PRADA Model 23-9 limited… <br />
-                                    WHITE, 270mm</div>
+                            }}>{itemDes} <br />
+                                {orderDes}</div>
                             <div style={{
-                                marginTop: 8,
+                                marginTop: "2vw",
                                 fontSize: 16,
                                 fontWeight: "bold",
                                 color: "#010608",
                                 fontFamily: "NotoSansCJKkr"
-                            }}>480,000원</div>
+                            }}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</div>
                         </div>
                     </div>
                     <div style={{

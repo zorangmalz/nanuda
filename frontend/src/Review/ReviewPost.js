@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import { Header, MStandardButton, StandardButton, StandardChoiceModal } from "../Style";
+import { Header, MStandardButton, StandardButton, StandardChoiceModal, StandardModal } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
-import { Product } from "./ReviewSelect";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
 export default function ReviewPost({ match }) {
@@ -174,13 +173,15 @@ export default function ReviewPost({ match }) {
         })
             .then(response => response.json())
             .then(response => {
-                history.goBack()
+                
             })
             .catch(err => console.log(err))
+        history.goBack()
     }
 
     const [mine, setMine] = useState(true)
     const [modal, setModal] = useState(false)
+    const [finishModal, setFinishModal] = useState(false)
     return (
         <>
             <Default>
@@ -229,6 +230,20 @@ export default function ReviewPost({ match }) {
                                     canceltext="취소"
                                     onCancelClick={() => setModal(true)}
                                     buttontext="삭제하기"
+                                    onClick={() => {
+                                        setModal(false)
+                                        setFinishModal(true) 
+                                    }}
+                                    mobile={false}
+                                />
+                                :
+                                <></>
+                            }
+                            {finishModal && mine ? 
+                                <StandardModal 
+                                    title="삭제완료"
+                                    content="내 리뷰에서 다시 작성할 수 있습니다."
+                                    buttontext="확인"
                                     onClick={deletePost}
                                     mobile={false}
                                 />
@@ -410,6 +425,20 @@ export default function ReviewPost({ match }) {
                                 canceltext="취소"
                                 onCancelClick={() => setModal(true)}
                                 buttontext="삭제하기"
+                                onClick={() => {
+                                    setModal(false)
+                                    setFinishModal(true) 
+                                }}
+                                mobile={true}
+                            />
+                            :
+                            <></>
+                        }
+                        {finishModal && mine ?
+                            <StandardModal
+                                title="삭제완료"
+                                content="내 리뷰에서 다시 작성할 수 있습니다."
+                                buttontext="확인"
                                 onClick={deletePost}
                                 mobile={true}
                             />

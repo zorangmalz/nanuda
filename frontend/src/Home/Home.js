@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import { BannerContainer, HomeHeader, MBannerContainer, MHomeHeader, NameMask, HomeBottomTag, MHomeBottomTag } from "../Style";
+import { BannerContainer, HomeHeader, MBannerContainer, MHomeHeader, NameMask, HomeBottomTag, MHomeBottomTag, StandardChoiceModal } from "../Style";
 import { BsUpload } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
@@ -142,7 +142,29 @@ export default function Home() {
 
         return () => window.removeEventListener("scroll", handleScroll);
     }, [wishButton, bottomPosition])
- 
+
+    useEffect(() => {
+        const test = async () => {
+            fetch("https://haulfree.link/userInfoName/", {
+                method: "GET",
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                credentials: "include",
+            })
+                .then((response) => (response.json()))
+                .then(response => {
+                    setIsLogin(response.data)
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        test()
+    }, [])
+
+    const [isLogin, setIsLogin] = useState(false)
+    const [loginModal, setLoginModal] = useState(false)
     return (
         <>
             <Default>
@@ -462,7 +484,7 @@ export default function Home() {
                             </div>
                         </div>
                         <HomeBottomTag marginTop={200} marginBottom={0} bottomRef={bottomRef} />
-                        <div ref={buttonRef} onClick={hide ? () => { } : () => history.push("/wishdeal/default")} style={{
+                        <div ref={buttonRef} onClick={hide ? () => { } : isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)} style={{
                             width: 440,
                             marginLeft: 20,
                             marginRight: 20,
@@ -481,6 +503,19 @@ export default function Home() {
                             position: "fixed",
                             bottom: 40,
                         }}>{hide ? "" : "위시딜 신청하기"}</div>
+                        {loginModal ?
+                            <StandardChoiceModal
+                                title="회원가입이 필요한 서비스입니다."
+                                content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
+                                canceltext="취소"
+                                onCancelClick={() => setIsLogin(false)}
+                                buttontext="회원가입"
+                                onClick={() => history.push("/signup/main")}
+                                mobile={false}
+                            />
+                            :
+                            <></>
+                        }
                     </div>
                 </div>
             </Default>
@@ -760,7 +795,7 @@ export default function Home() {
                         )}
                     </MAfterContainer>
                     <MHomeBottomTag marginTop={100} marginBottom={0} bottomRef={bottomRef} />
-                    <div ref={buttonRef} onClick={hide ? () => { } : () => history.push("/wishdeal/default")} style={{
+                    <div ref={buttonRef} onClick={hide ? () => { } : isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)} style={{
                         width: "90%",
                         marginLeft: "5%",
                         marginRight: "5%",
@@ -779,6 +814,19 @@ export default function Home() {
                         position: "fixed",
                         bottom: 20,
                     }}>{hide ? "" : "위시딜 신청하기"}</div>
+                    {loginModal ?
+                        <StandardChoiceModal
+                            title="회원가입이 필요한 서비스입니다."
+                            content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
+                            canceltext="취소"
+                            onCancelClick={() => setIsLogin(false)}
+                            buttontext="회원가입"
+                            onClick={() => history.push("/signup/main")}
+                            mobile={false}
+                        />
+                        :
+                        <></>
+                    }
                 </div>
             </Mobile>
         </>

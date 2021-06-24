@@ -242,6 +242,7 @@ export function HomeHeader() {
                     onCancelClick={() => setIsLogin(false)}
                     buttontext="회원가입"
                     onClick={() => history.push("/signup/main")}
+                    mobile={false}
                 />
                 :
                 <></>
@@ -1645,7 +1646,8 @@ export function StandardModal({ title, content, buttontext, onClick, mobile }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "rgba(0, 0, 0, 0.4)"
+            backgroundColor: "rgba(0, 0, 0, 0.4)",
+            zIndex: 10
         }}>
             <div style={{
                 width: mobile ? "75vw" : 300,
