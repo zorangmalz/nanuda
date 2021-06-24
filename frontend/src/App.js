@@ -38,7 +38,6 @@ import WishDealDefault from './Wishdeal/WishDealDefault';
 import WishDealNotURL from "./Wishdeal/WishDealNotURL";
 import ProfileDelete from './MyProfile/ProfileDelete';
 import Signup from './Auth/Signup';
-import Login from './Auth/Login';
 import PaymentAccountVeri from './MyProfile/PaymentAccountVeri';
 import PaymentARS from './MyProfile/PaymentARS';
 import AlarmPost from './Alarm/AlarmPost';
@@ -66,7 +65,6 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/landing" component={Landing} />
         <Route path="/signup/main" component={Signup} />
-        <Route path="/login" component={Login} />
         <Route path="/signup/profile" component={SignupProfile} />
         <Route path="/signup/complete" component={SignupComplete} />
         <Route path="/ordersheet" component={OrderSheet} />
