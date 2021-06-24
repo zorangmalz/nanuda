@@ -473,7 +473,7 @@ def address_all(request):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            address = Address.objects.filter(user_id=user.id)
+            address = Address.objects.filter(user_id=user.id).order_by('-address_created_time')
             if address.exists():
                 address_serializer = AddressAllSerializer(address, many=True)
                 return Response(address_serializer.data, status=status.HTTP_200_OK)

@@ -98,4 +98,4 @@ class MissionAllSerializer(serializers.ModelSerializer):
 class AddressAllSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
-        fields = ["address_number", "address", "address_detail"]
+        fields = ["temp_receiver", "temp_phone_number", "temp_claim", "address_number", "address", "address_detail"]
