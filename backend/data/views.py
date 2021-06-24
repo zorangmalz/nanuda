@@ -328,7 +328,7 @@ def order_list(request):
             })
 
 
-@api_view(["GET"])
+@api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 def order_one(request):
@@ -486,6 +486,8 @@ def address_all(request):
                 user_id=user,
                 address_number=data["address_number"],
                 address=data["address"],
-                address_detail=data["address_detail"]
+                address_detail=data["address_detail"],
+                temp_receiver=data["temp_receiver"],
+                temp_phone_number=data["temp_phone_number"]
             )
             return Response(status=status.HTTP_201_CREATED)
