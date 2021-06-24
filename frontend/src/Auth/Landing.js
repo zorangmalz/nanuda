@@ -25,8 +25,8 @@ export default function Landing() {
                         backgroundColor: "#ffffff",
                     }}>
                         <Header content="1/n 시작하기" />
-                        <Slider dotsClass="desktop-landing-slick-dots"
-                            dots={true}
+                        <Slider 
+                            dots={false}
                             slidesToShow={1}
                             slidesToScroll={1}
                             adaptiveHeight={true}

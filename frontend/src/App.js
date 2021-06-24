@@ -95,11 +95,11 @@ function App() {
         <Route path="/profile/point" component={ProfilePoint} />
         <Route path="/profile/edit" component={ProfileEdit} />
         <Route path="/profile/address/edit" component={ProfileAddressEdit} />
-        <Route path="/profile/payment" component={ProfilePayment} />
+        <Route path="/profile/payment/main" component={ProfilePayment} />
         <Route path="/profile/payment/success" component={ProfilePaymentSuccess} />
         <Route path="/profile/payment/fail" component={ProfilePaymentFail} />
         <Route path="/profile/payment/detail" component={ProfilePaymentDetail} />
-        <Route path="/profile/product" component={ProfileProduct} />
+        <Route path="/profile/product/main" component={ProfileProduct} />
         <Route path="/profile/product/info" component={ProfileProductInfo} />
         <Route path="/profile/delete" component={ProfileDelete} />
         <Route path="/paymentaccountveri" component={PaymentAccountVeri} />

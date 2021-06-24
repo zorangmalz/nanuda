@@ -147,8 +147,8 @@ export default function ProfileMain() {
                             participateDate="4/13"
                             complete={true}
                         />
-                        <ManageList name="결제 수단 관리" path="profile/payment" />
-                        <ManageList name="상품 구매 내역" path="profile/product" />
+                        <ManageList name="결제 수단 관리" path="profile/payment/main" />
+                        <ManageList name="상품 구매 내역" path="profile/product/main" />
                         <ManageList name="내 리뷰" path="profile/review" />
                         <BottomTag marginTop={120} marginBottom={0} />
                     </div>
@@ -242,8 +242,8 @@ export default function ProfileMain() {
                         participateDate="4/13"
                         complete={true}
                     />
-                    <ManageList name="결제 수단 관리" path="profile/payment" mobile={true} />
-                    <ManageList name="상품 구매 내역" path="profile/product" mobile={true} />
+                    <ManageList name="결제 수단 관리" path="profile/payment/main" mobile={true} />
+                    <ManageList name="상품 구매 내역" path="profile/product/main" mobile={true} />
                     <ManageList name="내 리뷰" path="profile/review" mobile={true} />
                     <MBottomTag marginTop={60} marginBottom={0} />
                 </div>

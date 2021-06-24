@@ -24,17 +24,15 @@ export default function ProfileProduct() {
                 if (response != null && response != undefined) {
                     var array = []
                     for (var i = 0; i < response["data"].length; i++) {
-                        if (!response["data"][i].review_write) {
-                            array.push({
-                                "order_date": response["data"][i].order_date.slice(0, 10),
-                                "order_price": response["data"][i].order_price,
-                                "product_id": response["data"][i].product_id,
-                                "product_name": response["data"][i].product_name,
-                                "product_image": response["data"][i].product_image,
-                                "product_price": response["data"][i].product_price,
-                                "review_write": response["data"][i].review_write,
-                            })
-                        }
+                        array.push({
+                            "order_date": response["data"][i].order_date.slice(0, 10),
+                            "order_price": response["data"][i].order_price,
+                            "product_id": response["data"][i].product_id,
+                            "product_name": response["data"][i].product_name,
+                            "product_image": response["data"][i].product_image,
+                            "product_price": response["data"][i].product_price,
+                            "review_write": response["data"][i].review_write,
+                        })
                     }
                     setOrderData(orderData.concat(array))
                 }

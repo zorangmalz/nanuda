@@ -126,7 +126,7 @@ export default function WishDealDefault() {
                             borderBottom: "1px solid #dddddd",
                             paddingBottom: 32,
                         }}>
-                            <Slider className="desktop-slick-dots" arrows={false} dots={true} autoplay={true} autoplaySpeed={5000} >
+                            <Slider arrows={false} dots={true} autoplay={true} autoplaySpeed={5000} >
                                 <div style={{
                                     width: 440,
                                     display: "flex",
@@ -334,7 +334,7 @@ export default function WishDealDefault() {
                             borderBottom: "1px solid #dddddd",
                             paddingBottom: "8vw",
                         }}>
-                            <Slider className="mobile-slick-dots" arrows={false} dots={true} autoplay={true} autoplaySpeed={5000} >
+                            <Slider arrows={false} dots={true} autoplay={true} autoplaySpeed={5000} >
                                 <div style={{
                                     width: "90vw",
                                     display: "flex",

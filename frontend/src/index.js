@@ -5,8 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./css/_slick-theme.scss";
-import "./css/_slick.scss";
 
 require("dotenv").config()
 

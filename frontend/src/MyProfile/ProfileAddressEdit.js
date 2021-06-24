@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import { InputModule, MTitle } from "../Auth/SignupProfile";
-import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
+import { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import DaumPostCode from 'react-daum-postcode';
 
 
