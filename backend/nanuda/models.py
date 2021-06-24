@@ -20,8 +20,8 @@ class User(models.Model):
     limit =  models.IntegerField(blank=True, default=0)
     age = models.PositiveIntegerField(blank=True, default=0)
     profile = models.TextField(blank=True, default="")
-    phone_number = models.CharField(max_length=30, default="01090373600",blank=True)
-    phone_company = models.CharField(max_length=30, default="SKT",blank=True)
+    phone_number = models.CharField(max_length=30, default="")
+    phone_company = models.CharField(max_length=30, default="",blank=True)
     nationalinfo = models.CharField(max_length=30, default="0",blank=True)
     
     # point 전체 값
@@ -52,12 +52,16 @@ class Address(models.Model):
     address_number = models.TextField(blank=True, default="우편번호")
     address = models.TextField(blank=True, default="주소")
     address_detail = models.TextField(blank=True, default="상세주소")
+    address_created_time = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    temp_receiver = models.CharField(default="", blank=True, max_length=50)
+    temp_phone_number = models.CharField(default="", blank=True, max_length=50)
+    temp_claim = models.CharField(default="", max_length=300, blank=True)
 
     def __str__(self):
-        return "{}".format(self.user_id.name)
+        return "{}".format(self.user_id.user_email)
     
     class Meta:
-        ordering = ["id", "user_id"]
+        ordering = ["id", "user_id", "address_created_time"]
         managed = True
 
 class ServiceReview(models.Model):
