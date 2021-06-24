@@ -428,7 +428,7 @@ export default function OrderSheet() {
 
             // 해당 함수를 불러오려면 cpay.payple.kr 스크립트 추가가 선행 되어야 합니다. /public/index.html
             // 가맹점 인증 후, 토큰 값을 추가 및 PaypleCpayPopup 함수 호출
-            fetch("https://wishdeal.link/transferRegular/", {
+            fetch("https://wishdeal.link/transferReguler/", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
