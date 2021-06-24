@@ -478,7 +478,7 @@ def address_all(request):
                 address_serializer = AddressAllSerializer(address, many=True)
                 return Response(address_serializer.data, status=status.HTTP_200_OK)
 
-            return Response({"data": False})
+            return Response({"data": False}, status=status.HTTP_404_NOT_FOUND)
 
         elif request.method == "POST":
             data = json.loads(request.body)
