@@ -1,10 +1,10 @@
 import React, { useReducer, useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, StandardButton, MStandardButton, InputModule, MInputModule } from "../Style";
+import { Header, MHeader, StandardButton, MStandardButton, InputModule, MInputModule } from "../Style";
 import { BsCheck } from "react-icons/bs"
 import DaumPostCode from 'react-daum-postcode';
-
 import { useHistory } from "react-router-dom";
+
 function reducer(state, action) {
     switch (action.type) {
         case 'ONE':
@@ -152,7 +152,9 @@ export default function Address() {
 
         )
     }
+
     const [next, setNext] = useState(false)
+
     function check() {
         if (inputs.address && inputs.addressDetail && inputs.addressNum && inputs.claim && inputs.name && inputs.phoneNumber != "") {
             setNext(true)
@@ -160,42 +162,36 @@ export default function Address() {
             setNext(false)
         }
     }
+
     useEffect(() => {
         check()
     }, [inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber])
-    
-    
+
     async function send() {
-        console.log("here?",inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber)
-        await fetch("https://haulfree.link/uploadAddress/", {
+        await fetch("https://haulfree.link/order/address", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
-            }, 
+            },
             credentials: "include",
             body: JSON.stringify({
-                params:
-                { 
-                    address: inputs.address,
-                    address_claim: inputs.claim,
-                    address_code: inputs.addressNum,
-                    address_detail: inputs.addressDetail,
-                    address_name: inputs.name,
-                    address_phone: inputs.phoneNumber,
-                },
+                address_number: inputs.addressNum,
+                address: inputs.address,
+                address_detail: inputs.addressDetail,
+                temp_receiver: inputs.name,
+                temp_phone_number: inputs.phoneNumber,
+                temp_claim: inputs.claim,
             })
-
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response.data)
-                history.goBack()
+                if (response.data) {
+                    history.goBack()
+                }
             }).catch(err => {
                 console.log(err)
             })
-
-
     }
     return (
         <>
@@ -378,7 +374,7 @@ export default function Address() {
                             }}>필수 입력 정보입니다.</div></> : <></>}
                         <StandardButton
                             marginTop={50}
-                            onClick={send}
+                            onClick={next ? send : () => {}}
                             state={next}
                             text={"수정완료"}
                         />
@@ -557,8 +553,8 @@ export default function Address() {
                             fontFamily: "NotoSansCJKkr"
                         }}>필수 입력 정보입니다.</div></> : <></>}
                     <MStandardButton
-                        marginTop={32}
-                        onClick={send}
+                        marginTop={"8vw"}
+                        onClick={next ? send : () => {}}
                         state={next}
                         text={"수정완료"}
                     ></MStandardButton>
