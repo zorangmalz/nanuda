@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import { Header, MStandardButton, StandardButton, StandardChoiceModal, StandardModal } from "../Style";
+import { Header, MStandardButton, StandardButton, StandardChoiceModal, StandardModal, numberWithCommas } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { FaStar, FaStarHalf } from "react-icons/fa";
+import { RiArrowRightSLine } from "react-icons/ri"
+import mainlogo from "../images/mainlogo.png"
 
 export default function ReviewPost({ match }) {
     let history = useHistory()
@@ -21,7 +23,8 @@ export default function ReviewPost({ match }) {
         review_alert: 0,
         product_name: "",
         product_image: "",
-        product_price: 0
+        product_price: 0,
+        order_price: 0,
     })
 
     //좋아요 싫어요 버튼 
@@ -38,11 +41,12 @@ export default function ReviewPost({ match }) {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 setData({
                     ...data,
                     user_profile: response.user_profile,
                     user_nickname: response.user_nickname,
-                    review_image: response.review_image[0],
+                    review_image: response.review_image != null ? response.review_image[0] : "",
                     review_date: response.review_date.slice(0, 10),
                     review_score: response.review_score,
                     review_like: response.review_like,
@@ -212,7 +216,7 @@ export default function ReviewPost({ match }) {
                                 flexDirection: "row",
                                 alignItems: "center",
                             }}>
-                                <img alt="프로필" src={data.user_profile} style={{
+                                <img alt="프로필" src={data.user_profile.length > 0 ? data.user_profile : mainlogo} style={{
                                     width: 32,
                                     height: 32,
                                     backgroundColor: "#f2f3f8",
@@ -293,14 +297,14 @@ export default function ReviewPost({ match }) {
                             backgroundColor: "#26c1f0",
                             marginTop: 8,
                         }} />
-
-                        {/* <Product
-                            name="삼배옷 컬랙션, White, 95"
-                            current={210000}
-                            sale={70000}
+                        <ReviewProduct
+                            product_name={data.product_name}
+                            product_image={data.product_image}
+                            product_price={data.product_price}
+                            order_price={data.order_price}
                             border={false}
                             mobile={false}
-                        /> */}
+                        />
                         <div style={{
                             marginTop: 16,
                             width: 480,
@@ -407,7 +411,7 @@ export default function ReviewPost({ match }) {
                             flexDirection: "row",
                             alignItems: "center",
                         }}>
-                            <img alt="프로필" src={data.user_profile} style={{
+                            <img alt="프로필" src={data.user_profile.length > 0 ? data.user_profile : mainlogo} style={{
                                 width: 28,
                                 height: 28,
                                 backgroundColor: "#f2f3f8",
@@ -484,13 +488,14 @@ export default function ReviewPost({ match }) {
                         }
                     </div>
                     <img alt="사진" src={data.review_image} style={{ width: "100vw", backgroundColor: "#26c1f0", marginTop: 8 }} />
-                    {/* <Product
-                        name="삼배옷 컬랙션, White, 95"
-                        current={210000}
-                        sale={70000}
+                    <ReviewProduct
+                        product_name={data.product_name}
+                        product_image={data.product_image}
+                        product_price={data.product_price}
+                        order_price={data.order_price}
                         border={false}
                         mobile={true}
-                    /> */}
+                    />
                     <div style={{
                         marginTop: 12,
                         width: "100vw",
@@ -602,8 +607,7 @@ function CustomStar({ score, num, size }) {
     )
 }
 
-function ReviewProduct({ item, border, mobile }) {
-    let history = useHistory()
+function ReviewProduct({ product_image, product_name, product_price, order_price, border, mobile }) {
     return (
         <div style={{
             display: "flex",
@@ -621,7 +625,7 @@ function ReviewProduct({ item, border, mobile }) {
                 display: "flex",
                 flexDirection: "row",
             }}>
-                <img alt="상품" src={item.product_image} style={{
+                <img alt="상품" src={product_image} style={{
                     width: mobile ? 80 : 96,
                     height: mobile ? 80 : 96,
                     backgroundColor: "#dfdfdf",
@@ -632,9 +636,9 @@ function ReviewProduct({ item, border, mobile }) {
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <div style={{ fontSize: mobile ? 12 : 14, fontFamily: "AvenirNext", marginBottom: mobile ? "2vw" : 8 }}>{item.product_name}</div>
-                    <div style={{ fontSize: mobile ? 12 : 14, opacity: 0.6, textDecoration: "line-through", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(item.product_price)} 원</div>
-                    <div style={{ fontSize: mobile ? 14 : 16, fontWeight: "bold", color: "#010608", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(item.order_price)} 원에 획득 완료!</div>
+                    <div style={{ fontSize: mobile ? 12 : 14, fontFamily: "AvenirNext", marginBottom: mobile ? "2vw" : 8 }}>{product_name}</div>
+                    <div style={{ fontSize: mobile ? 12 : 14, opacity: 0.6, textDecoration: "line-through", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(product_price)} 원</div>
+                    <div style={{ fontSize: mobile ? 14 : 16, fontWeight: "bold", color: "#010608", marginBottom: mobile ? "2vw" : 8 }}>{numberWithCommas(order_price)} 원에 획득 완료!</div>
                 </div>
             </div>
             <RiArrowRightSLine color="#dfdfdf" size={mobile ? 20 : 24} style={{ cursor: "pointer" }} />

@@ -262,7 +262,7 @@ def review_one(request, pk):
         return JsonResponse({
             "user_profile": review.user_profile(),
             "user_nickname": review.user_nickname(),
-            "review_image": review.review_image[0],
+            "review_image": review.review_image,
             "review_date": review.review_date,
             "review_score": review.review_score,
             "review_like": review.review_like,
