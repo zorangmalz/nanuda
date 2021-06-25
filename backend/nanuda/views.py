@@ -326,5 +326,5 @@ class bankUpload(View):
             user.account=user_info["params"]["bankAccount"]
             user.billing_key=user_info["params"]["billingKey"]
             user.bank_exist=True
-
+            user.save()
             return JsonResponse({"data":True})

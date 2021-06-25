@@ -340,7 +340,7 @@ export default function OrderSheet() {
                 }
             })
         })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(response => {
                 if (response.data === true) {
                     console.log("good")
