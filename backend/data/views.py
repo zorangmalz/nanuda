@@ -290,19 +290,20 @@ def review_one(request, pk):
         
         data = json.loads(request.body)
         if data["type"] == "like":
-            if user.user_email in review.review_likeNum:
+            if user.user_email in list(review.review_likeNum):
                 review.review_likeNum = list(set(review.review_likeNum).difference(set(user.user_email)))
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
-            elif user.user_email in review.review_dislikeNum:
+            elif user.user_email in list(review.review_dislikeNum):
                 review.review_dislikeNum = list(set(review.review_dislikeNum).difference(set(user.user_email)))
                 review.review_likeNum = review.review_likeNum.append(user.user_email)
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
             else:
-                review.review_likeNum = review.review_likeNum.append(user.user_email)
+                review.review_likeNum = list(review.review_likeNum).append(user.user_email)
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
+
         elif data["type"] == "dislike":
             if user.user_email in review.review_dislikeNum:
                 review.review_dislikeNum = list(set(review.review_dislikeNum).difference(set(user.user_email)))
@@ -314,9 +315,10 @@ def review_one(request, pk):
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
             else:
-                review.review_dislikeNum = review.review_dislikeNum.append(user.user_email)
+                review.review_dislikeNum = list(review.review_dislikeNum).append(user.user_email)
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
+
         elif data["type"] == "alert":
             if user.user_email in review.review_alert:
                 return Response(status=status.HTTP_202_ACCEPTED)
