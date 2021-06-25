@@ -508,7 +508,7 @@ export default function Home() {
                                 title="회원가입이 필요한 서비스입니다."
                                 content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
                                 canceltext="취소"
-                                onCancelClick={() => setIsLogin(false)}
+                                onCancelClick={() => setLoginModal(false)}
                                 buttontext="회원가입"
                                 onClick={() => history.push("/signup/main")}
                                 mobile={false}
@@ -653,7 +653,7 @@ export default function Home() {
                             onClick={() => history.push('/timedeal/entire')}
                         />
                     </div>
-                    <div onClick={() => history.push("/review")} style={{
+                    <div onClick={() => history.push("/review/main")} style={{
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
@@ -668,7 +668,7 @@ export default function Home() {
                             marginRight: 4,
                         }}>나눠산 사람들</div>
                         <MdKeyboardArrowRight
-                            onClick={() => history.push("/review")}
+                            onClick={() => history.push("/review/main")}
                             size={20}
                             color="rgba(1, 6, 8, 0.6)"
                             style={{
@@ -819,10 +819,10 @@ export default function Home() {
                             title="회원가입이 필요한 서비스입니다."
                             content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
                             canceltext="취소"
-                            onCancelClick={() => setIsLogin(false)}
+                            onCancelClick={() => setLoginModal(false)}
                             buttontext="회원가입"
                             onClick={() => history.push("/signup/main")}
-                            mobile={false}
+                            mobile={true}
                         />
                         :
                         <></>
