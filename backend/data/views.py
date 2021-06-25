@@ -240,8 +240,7 @@ def review_profile(request, pk):
             lists = []
             for my_review in my_reviews:
                 lists.append({
-                    "user_nickname": my_review.user_nickname(),
-                    "user_profile": my_review.user_profile(),
+                    "user_name": my_review.user_name(),
                     "review_image": my_review.review_image,
                     "review_score": my_review.review_score,
                     "review_like": my_review.review_like,

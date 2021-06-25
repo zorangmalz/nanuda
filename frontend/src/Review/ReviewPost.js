@@ -189,7 +189,6 @@ export default function ReviewPost({ match }) {
                                     backgroundColor: "#f2f3f8",
                                     marginLeft: 20,
                                     borderRadius: 16
-                                }} />
                                 <div style={{
                                     marginLeft: 8,
                                     fontFamily: "AvenirNext",

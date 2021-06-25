@@ -30,8 +30,7 @@ export default function ReviewMain() {
                 for (var i = 0; i < response.length; i++) {
                     const dict = {
                         id: response[i].id,
-                        user_profile: response[i].user_profile,
-                        user_nickname: response[i].user_nickname,
+                        user_name: response[i].user_name,
                         review_image: response[i].review_image[0],
                         review_score: response[i].review_score.toFixed(1),
                         review_like: response[i].review_like.length < 39 ? response[i].review_like : response[i].review_like.slice(0, 39) + "...",
@@ -119,18 +118,12 @@ export default function ReviewMain() {
                                             display: "flex",
                                             flexDirection: "row",
                                         }}>
-                                            <img alt="프로필" src={item.user_profile.length > 0 ? item.user_profile : mainlogo} style={{
-                                                width: 32,
-                                                height: 32,
-                                                borderRadius: 16,
-                                                backgroundColor: "#ffffff"
-                                            }} />
                                             <div style={{
                                                 fontSize: 14,
                                                 fontWeight: "bold",
                                                 marginLeft: 8,
                                                 marginTop: 6
-                                            }}>{item.user_nickname} </div>
+                                            }}>{item.user_name} </div>
                                         </div>
                                         {item.review_image.length > 0 ?
                                             <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
@@ -272,18 +265,12 @@ export default function ReviewMain() {
                                         display: "flex",
                                         flexDirection: "row",
                                     }}>
-                                        <img alt="프로필" src={item.user_profile.length > 0 ? item.user_profile : mainlogo} style={{
-                                            width: "8vw",
-                                            height: "8vw",
-                                            borderRadius: "4vw",
-                                            backgroundColor: "#ffffff"
-                                        }} />
                                         <div style={{
                                             fontSize: 12,
                                             fontWeight: "bold",
                                             marginLeft: 8,
                                             marginTop: 6
-                                        }}>{item.user_nickname} </div>
+                                        }}>{item.user_name} </div>
                                     </div>
                                     {item.review_image.length > 0 ?
                                         <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{

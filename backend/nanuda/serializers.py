@@ -30,14 +30,10 @@ class ProductAllSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ReviewAllSerializer(serializers.ModelSerializer):
-    user_nickname = serializers.SerializerMethodField()
-    user_profile = serializers.SerializerMethodField()
+    user_name = serializers.SerializerMethodField()
 
-    def get_user_nickname(self, obj):
-        return obj.user_nickname()
-    
-    def get_user_profile(self, obj):
-        return obj.user_profile()
+    def get_user_name(self, obj):
+        return obj.user_name()
 
     class Meta:
         model = Review
