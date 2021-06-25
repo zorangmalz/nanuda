@@ -222,6 +222,7 @@ export default function OrderSheet() {
     const [ship, setShip] = useState(0)
 
     useEffect(() => {
+        console.log(myparam,"myparam")
         try {
             //console.log(myparam[0].image.url)
             setImage(myparam[0].image.url)
@@ -321,39 +322,7 @@ export default function OrderSheet() {
         }
 
     }, [number])
-    async function order() {
-        if (basicAddress && payment) {
-            // history.push("paymentsuccess",{myparam:myparam})'
-
-            fetch("https://haulfree.link/checkAddress/", {
-                method: "POST",
-                headers: {
-                    'Content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                credentials: "include",
-                body: JSON.stringify({
-                    params: {
-                        myparam: myparam,
-                        ship: item,
-                        payment: "",
-                        option: number,
-                        schedule: paymentDate
-                    }
-                })
-            })
-                .then(response => response.json())
-                .then(response => {
-                    if (response.data.data === true) {
-                        history.push("payment/success")
-                    } else {
-                        history.push("payment/fail", { myparam: myparam, ship: item })
-                    }
-                }).catch(err => {
-                    console.log(err)
-                })
-        }
-    }
+ 
     
     function uploadBank(a,b,c){
         fetch("https://haulfree.link/bankUpload/", {
@@ -502,12 +471,12 @@ export default function OrderSheet() {
                     custKey:"",
                     AuthKey:"",
                     //상품명
-                    PCD_PAY_GOODS:"test",
+                    PCD_PAY_GOODS:itemDes,
                     PCD_SIMPLE_FLAG:"Y",
                     PCD_PAYER_NO:"",
                     PCD_PAYER_EMAIL:"",
                     PCD_PAY_OID:"",
-                    PCD_PAY_TOTAL:"1000",
+                    PCD_PAY_TOTAL:(Number(oneMoney) + Number(ship)),
                     PCD_PAY_YEAR:"2021",
                     PCD_PAY_MONTH:"6",
                 })
@@ -516,9 +485,9 @@ export default function OrderSheet() {
                 .then(response => {
                    console.log(response)
                    if(response.PCD_PAY_MSG=="출금이체완료"){
-
+                    order()
                    }else{
-
+                    console.log("error")
                    }
                 }).catch(err => {
                     console.log(err)
@@ -529,7 +498,39 @@ export default function OrderSheet() {
 
 
     }
+    async function order() {
+        if (basicAddress && payment) {
+            // history.push("paymentsuccess",{myparam:myparam})'
 
+            fetch("https://haulfree.link/orderUpload/", {
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    params: {
+                        myparam: myparam,
+                        ship: item,
+                        payment: "",
+                        option: number,
+                        schedule: paymentDate
+                    }
+                })
+            })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.data.data === true) {
+                        history.push("payment/success")
+                    } else {
+                        history.push("payment/fail", { myparam: myparam, ship: item })
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+    }
     return (
         <>
             <Default>
