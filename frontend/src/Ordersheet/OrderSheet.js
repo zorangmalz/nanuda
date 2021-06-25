@@ -45,6 +45,7 @@ export default function OrderSheet() {
                     setBank(res.bank)
             setBankNum(res.account)
             setPayId(res.billing)
+            setRegister(true)
                 }
             }).catch(err => {
                 console.log(err)
