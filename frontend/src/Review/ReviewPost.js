@@ -41,9 +41,9 @@ export default function ReviewPost({ match }) {
             .then(res => res.json())
             .then(res => {
                 console.log(res)
-                if (code.review_likeNum.contains(res.user_email)) {
+                if (code.review_likeNum.includes(res.user_email)) {
                     setLike(1)
-                } else if (code.review_dislikeNum.contains(res.user_email)) {
+                } else if (code.review_dislikeNum.includes(res.user_email)) {
                     setLike(2)
                 } else {
                     setLike(0)
@@ -341,21 +341,21 @@ export default function ReviewPost({ match }) {
                             marginTop: 16,
                             marginLeft: 20,
                         }}>
-                            {like === 0 ? <AiOutlineLike onClick={putLike} size={24} color="#010608" /> : like === 1 ? <AiFillLike onClick={putReset} size={24} color="#010608" /> : <AiOutlineLike onClick={putLike} size={24} color="#010608" />}
+                            {like === 0 ? <AiOutlineLike onClick={putLike} size={24} color="#010608" /> : like === 1 ? <AiFillLike onClick={putLike} size={24} color="#010608" /> : <AiOutlineLike onClick={putLike} size={24} color="#010608" />}
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
                                 color: "#010608",
                                 marginLeft: 8,
                                 marginRight: 12,
-                            }}>{data.review_likeNum}</div>
-                            {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={24} color="#010608" /> : like === 2 ? <AiFillDislike onClick={putReset} size={24} color="#010608" /> : <AiOutlineDislike onClick={putDisLike} size={24} color="#010608" />}
+                            }}>{data.review_likeNum.length}</div>
+                            {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={24} color="#010608" /> : like === 2 ? <AiFillDislike onClick={putDisLike} size={24} color="#010608" /> : <AiOutlineDislike onClick={putDisLike} size={24} color="#010608" />}
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
                                 color: "#010608",
                                 marginLeft: 8,
-                            }}>{data.review_dislikeNum}</div>
+                            }}>{data.review_dislikeNum.length}</div>
                         </div>
                         <StandardButton
                             marginTop={30}
@@ -532,21 +532,21 @@ export default function ReviewPost({ match }) {
                         marginTop: "4vw",
                         marginLeft: "5vw",
                     }}>
-                        {like === 0 ? <AiOutlineLike onClick={putLike} size={20} color="#010608" /> : like === 1 ? <AiFillLike onClick={putReset} size={20} color="#010608" /> : <AiOutlineLike onClick={putLike} size={20} color="#010608" />}
+                        {like === 0 ? <AiOutlineLike onClick={putLike} size={20} color="#010608" /> : like === 1 ? <AiFillLike onClick={putLike} size={20} color="#010608" /> : <AiOutlineLike onClick={putLike} size={20} color="#010608" />}
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             color: "#010608",
                             marginLeft: 4,
                             marginRight: 8,
-                        }}>{data.review_likeNum}</div>
-                        {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={20} color="#010608" /> : like === 2 ? <AiFillDislike onClick={putReset} size={20} color="#010608" /> : <AiOutlineDislike onClick={putDisLike} size={20} color="#010608" />}
+                        }}>{data.review_likeNum.length}</div>
+                        {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={20} color="#010608" /> : like === 2 ? <AiFillDislike onClick={putDisLike} size={20} color="#010608" /> : <AiOutlineDislike onClick={putDisLike} size={20} color="#010608" />}
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             color: "#010608",
                             marginLeft: 4,
-                        }}>{data.review_dislikeNum}</div>
+                        }}>{data.review_dislikeNum.length}</div>
                     </div>
                     <MStandardButton
                         marginTop={20}
