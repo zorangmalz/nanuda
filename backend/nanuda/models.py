@@ -33,6 +33,7 @@ class User(models.Model):
     bank_exist=models.BooleanField(blank=True,default=False)
     bank = models.CharField(max_length=30, blank=True, default="은행")
     account = models.CharField(max_length=30, blank=True, default="계좌")
+    billing_key = models.CharField(max_length=100, default="")
 
     # 가입날
     createdAt = models.DateTimeField(auto_now_add=True)
