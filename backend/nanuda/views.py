@@ -321,7 +321,7 @@ class bankUpload(View):
             token=request.COOKIES.get("access_token")
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
             user=User.objects.get(uid=payload["id"])
-
+            user_info=json.loads(request.body)
             user.bank=user_info["params"]["bank"]
             user.account=user_info["params"]["bankAccount"]
             user.billing_key=user_info["params"]["billingKey"]
