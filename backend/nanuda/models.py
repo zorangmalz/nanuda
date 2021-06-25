@@ -158,8 +158,8 @@ class Review(models.Model):
     review_dislike = models.TextField(default="내용", blank=True)
     review_image = models.JSONField(default=list, blank=True)
     review_alert = models.IntegerField(default=0)
-    review_likeNum = models.IntegerField(default=0)
-    review_dislikeNum = models.IntegerField(default=0)
+    review_likeNum = models.JSONField(default=list)
+    review_dislikeNum = models.JSONField(default=list)
 
     def user_nickname(self):
         return self.user_id.nickname

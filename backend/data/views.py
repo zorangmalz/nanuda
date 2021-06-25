@@ -260,8 +260,6 @@ def review_one(request, pk):
 
     if request.method == "GET":
         return JsonResponse({
-            "user_id": review.user_id.id,
-            "order_id": review.order_id.id,
             "user_profile": review.user_profile(),
             "user_nickname": review.user_nickname(),
             "review_image": review.review_image,
@@ -279,11 +277,11 @@ def review_one(request, pk):
         })
 
     elif request.method == "PUT":
-        review_serializer = ReviewAllSerializer(review, data=request.data)
-        if review_serializer.is_valid():
-            review_serializer.save()
-            return Response(review_serializer.data)
-        return Response(review_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        data = json.loads(request.body)
+        review.review_likeNum = data["review_likeNum"]
+        review.review_dislikeNum = data["review_dislikeNum"]
+        review.save()
+        return Response(status=status.HTTP_202_ACCEPTED)
 
     elif request.method == 'DELETE':
         order = Order.objects.get(pk = review.order_id.id)
