@@ -323,8 +323,35 @@ export default function OrderSheet() {
                 })
         }
     }
-
-
+    
+    function uploadBank(a,b,c){
+        fetch("https://haulfree.link/bankUpload/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                params: {
+                    bank: a,
+                    bankAccount: b,
+                    billingKey:c
+                }
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.data === true) {
+                    console.log("good")
+                } else {
+                    console.log("bad")
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+    
+    }
     const [bank, setBank] = useState("")
     const [banknum, setBankNum] = useState("")
     const [payId,setPayId]=useState("")
@@ -338,7 +365,7 @@ export default function OrderSheet() {
             setBank(payResult.PCD_PAY_BANKNAME)
             setBankNum(payResult.PCD_PAY_BANKNUM)
             setPayId(payResult.PCD_PAYER_ID)
-            
+            uploadBank(payResult.PCD_PAY_BANKNAME,payResult.PCD_PAY_BANKNUM,payResult.PCD_PAYER_ID)
 
         } else {
             // 결제 실패일 경우 알림 메시지
