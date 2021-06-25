@@ -115,6 +115,7 @@ export default function ReviewPost({ match }) {
                 type: "like"
             })
         })
+            .then(response => response.text())
             .then(response => console.log(response))
             .catch(err => console.log(err))
     }
@@ -131,6 +132,7 @@ export default function ReviewPost({ match }) {
                 type: "dislike"
             })
         })
+            .then(response => response.text())
             .then(response => console.log(response))
             .catch(err => console.log(err))
     }
