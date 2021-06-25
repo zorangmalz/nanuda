@@ -64,7 +64,7 @@ class orderUpload(View):
                 order_phone_number=user_info["params"]["ship"]["phoneNumber"],
                 order_request=user_info["params"]["ship"]["request"],
                 order_receiver=user_info["params"]["ship"]["name"],
-                order_pay=user_info["params"]["response"]
+                order_pay=user_info["params"]["response"],
                 wish_haul="02",
                 wish_url=user_info["params"]["myparam"][0]["requestUrl"],
                 wish_title=user_info["params"]["myparam"][0]["title"],
