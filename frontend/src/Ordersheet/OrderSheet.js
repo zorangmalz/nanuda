@@ -22,7 +22,37 @@ function reducer(state, action) {
 export default function OrderSheet() {
 
     const [number, dispatch] = useReducer(reducer, 2);
-
+    //기본 계좌 등록 여부
+    const [bank, setBank] = useState("")
+    const [banknum, setBankNum] = useState("")
+    const [payId,setPayId]=useState("")
+    
+    function bankCheck(){
+        fetch("https://haulfree.link/bankCheck", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+        })
+            .then(response => response.json())
+            .then(res => {
+                console.log(res)
+                if (res.data === false) {
+                    setBasicAddress(false)
+                } else {
+                    setBank(res.bank)
+            setBankNum(res.account)
+            setPayId(res.billing)
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+    useEffect(()=>{
+        bankCheck()
+    },[bankChecking])
     //기본 배송지 존재 여부
     const [a, setA] = useState("")
     const [b, setB] = useState("")
@@ -352,9 +382,8 @@ export default function OrderSheet() {
             })
     
     }
-    const [bank, setBank] = useState("")
-    const [banknum, setBankNum] = useState("")
-    const [payId,setPayId]=useState("")
+    
+    const [bankChecking,setBankChecking]=useState(false)
     const getResult = (res) => {
         if (res.PCD_PAY_RST === 'success') {
             var payResult = res;
@@ -362,9 +391,8 @@ export default function OrderSheet() {
             // 전달받은 결제 파라미터값을 state에 저장 후  '/react/order_result'로 이동
             console.log(payResult)
             setRegister(true)
-            setBank(payResult.PCD_PAY_BANKNAME)
-            setBankNum(payResult.PCD_PAY_BANKNUM)
-            setPayId(payResult.PCD_PAYER_ID)
+            
+            setBankChecking(true)
             uploadBank(payResult.PCD_PAY_BANKNAME,payResult.PCD_PAY_BANKNUM,payResult.PCD_PAYER_ID)
 
         } else {
