@@ -159,9 +159,9 @@ class Review(models.Model):
     review_like = models.TextField(default="내용", blank=True)
     review_dislike = models.TextField(default="내용", blank=True)
     review_image = models.JSONField(default=list, blank=True)
-    review_alert = models.JSONField(default={"data" : []}, blank=True)
-    review_likeNum = models.JSONField(default={"data" : []}, blank=True, null=True)
-    review_dislikeNum = models.JSONField(default={"data" : []}, blank=True, null=True)
+    review_alert = models.JSONField(default=dict, blank=True)
+    review_likeNum = models.JSONField(default=dict, blank=True, null=True)
+    review_dislikeNum = models.JSONField(default=dict, blank=True, null=True)
 
     def user_name(self):
         return self.user_id.name
