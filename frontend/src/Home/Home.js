@@ -374,9 +374,8 @@ export default function Home() {
                                         <div style={{
                                             fontSize: 14,
                                             fontWeight: "bold",
-                                            marginLeft: 8,
                                             marginTop: 6
-                                        }}>{item.user_name} </div>
+                                        }}>{NameMask(item.user_name)} </div>
                                     </div>
                                     <div style={{
                                         minWidth: 210,
@@ -698,9 +697,8 @@ export default function Home() {
                                     <div style={{
                                         fontSize: 12,
                                         fontWeight: "bold",
-                                        marginLeft: 8,
                                         marginTop: 6
-                                    }}>{item.user_name} </div>
+                                    }}>{NameMask(item.user_name)} </div>
                                 </div>
                                 <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
                                     width: "42vw",

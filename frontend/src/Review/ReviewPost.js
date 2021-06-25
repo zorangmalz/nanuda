@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
-import { Header, MStandardButton, StandardButton, StandardChoiceModal, StandardModal, numberWithCommas } from "../Style";
+import { Header, MStandardButton, StandardButton, StandardChoiceModal, StandardModal, numberWithCommas, NameMask } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { FaStar, FaStarHalf } from "react-icons/fa";
@@ -11,8 +11,7 @@ export default function ReviewPost({ match }) {
     let history = useHistory()
     const { pk } = match.params
     const [data, setData] = useState({
-        user_profile: "",
-        user_nickname: "",
+        user_name: "",
         review_image: "",
         review_date: "",
         review_score: 0,
@@ -62,17 +61,17 @@ export default function ReviewPost({ match }) {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 setData({
                     ...data,
-                    user_profile: response.user_profile,
-                    user_nickname: response.user_nickname,
+                    user_name: response.user_name,
                     review_image: response.review_image != null ? response.review_image[0] : "",
                     review_date: response.review_date.slice(0, 10),
                     review_score: response.review_score,
                     review_like: response.review_like,
                     review_dislike: response.review_dislike,
-                    review_likeNum: response.review_likeNum,
-                    review_dislikeNum: response.review_dislikeNum,
+                    review_likeNum: response.review_likeNum["data"],
+                    review_dislikeNum: response.review_dislikeNum["data"],
                     review_alert: response.review_alert,
                     product_name: response.product_name,
                     product_image: response.product_image,
@@ -183,18 +182,12 @@ export default function ReviewPost({ match }) {
                                 flexDirection: "row",
                                 alignItems: "center",
                             }}>
-                                <img alt="프로필" src={data.user_profile.length > 0 ? data.user_profile : mainlogo} style={{
-                                    width: 32,
-                                    height: 32,
-                                    backgroundColor: "#f2f3f8",
-                                    marginLeft: 20,
-                                    borderRadius: 16
                                 <div style={{
-                                    marginLeft: 8,
                                     fontFamily: "AvenirNext",
                                     fontWeight: "bold",
-                                    fontSize: 14
-                                }}>{data.user_nickname}</div>
+                                    fontSize: 14,
+                                    marginLeft: 20,
+                                }}>{NameMask(data.user_name)}</div>
                             </div>
                             {modal && mine ?
                                 <StandardChoiceModal
@@ -342,14 +335,14 @@ export default function ReviewPost({ match }) {
                                 color: "#010608",
                                 marginLeft: 8,
                                 marginRight: 12,
-                            }}>{data.review_likeNum.length}</div>
+                            }}>{data.review_likeNum}</div>
                             {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={24} color="#010608" /> : like === 2 ? <AiFillDislike onClick={putDisLike} size={24} color="#010608" /> : <AiOutlineDislike onClick={putDisLike} size={24} color="#010608" />}
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 fontSize: 14,
                                 color: "#010608",
                                 marginLeft: 8,
-                            }}>{data.review_dislikeNum.length}</div>
+                            }}>{data.review_dislikeNum}</div>
                         </div>
                         <StandardButton
                             marginTop={30}
@@ -376,20 +369,13 @@ export default function ReviewPost({ match }) {
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
+                            marginLeft: "5vw"
                         }}>
-                            <img alt="프로필" src={data.user_profile.length > 0 ? data.user_profile : mainlogo} style={{
-                                width: 28,
-                                height: 28,
-                                backgroundColor: "#f2f3f8",
-                                marginLeft: "5vw",
-                                borderRadius: 14
-                            }} />
                             <div style={{
-                                marginLeft: 5,
                                 fontFamily: "AvenirNext",
                                 fontWeight: "bold",
                                 fontSize: 12
-                            }}>{data.user_nickname}</div>
+                            }}>{NameMask(data.user_name)}</div>
                         </div>
                         {modal && mine ?
                             <StandardChoiceModal
@@ -533,14 +519,14 @@ export default function ReviewPost({ match }) {
                             color: "#010608",
                             marginLeft: 4,
                             marginRight: 8,
-                        }}>{data.review_likeNum.length}</div>
+                        }}>{data.review_likeNum}</div>
                         {like === 0 ? <AiOutlineDislike onClick={putDisLike} size={20} color="#010608" /> : like === 2 ? <AiFillDislike onClick={putDisLike} size={20} color="#010608" /> : <AiOutlineDislike onClick={putDisLike} size={20} color="#010608" />}
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 12,
                             color: "#010608",
                             marginLeft: 4,
-                        }}>{data.review_dislikeNum.length}</div>
+                        }}>{data.review_dislikeNum}</div>
                     </div>
                     <MStandardButton
                         marginTop={20}
