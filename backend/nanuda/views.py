@@ -308,4 +308,22 @@ class niceMain(View):
                 phone_company=user_info['params']['mobileco']
             ).save()
             return JsonResponse({"data":True})
+
+class bankUpload(View):
+    def post(self,request):
+        if not request.COOKIES.get("access_token"):
+            return JsonResponse({"data":False})
+        else:
+            q=User.objects.annotate(Count("name"))
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+
+            user.bank=user_info["params"]["bank"]
+            user.account=user_info["params"]["bankAccount"]
+            user.bank_exist=True
             
+            return JsonResponse({"data":True})

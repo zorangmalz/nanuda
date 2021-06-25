@@ -338,7 +338,7 @@ export default function OrderSheet() {
             setBank(payResult.PCD_PAY_BANKNAME)
             setBankNum(payResult.PCD_PAY_BANKNUM)
             setPayId(payResult.PCD_PAYER_ID)
-
+            
 
         } else {
             // 결제 실패일 경우 알림 메시지
@@ -459,6 +459,11 @@ export default function OrderSheet() {
                 .then(response => response.json())
                 .then(response => {
                    console.log(response)
+                   if(response.PCD_PAY_MSG=="출금이체완료"){
+
+                   }else{
+
+                   }
                 }).catch(err => {
                     console.log(err)
                 })
