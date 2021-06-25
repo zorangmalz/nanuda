@@ -65,7 +65,7 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/landing" component={Landing} />
         <Route path="/signup/main" component={Signup} />
-        <Route path="/signup/profile" component={SignupProfile} />
+        <Route path="/signupprofile" component={SignupProfile} />
         <Route path="/signup/complete" component={SignupComplete} />
         <Route path="/ordersheet" component={OrderSheet} />
         <Route path="/address" component={Address} />

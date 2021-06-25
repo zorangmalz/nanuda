@@ -43,7 +43,6 @@ export default function ReviewPost({ match }) {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 setData({
                     ...data,
                     user_id: response.user_id,
@@ -184,7 +183,6 @@ export default function ReviewPost({ match }) {
         })
             .then(response => response.text())
             .then(response => {
-                console.log(response)
             })
             .catch(err => console.log(err))
         history.goBack()

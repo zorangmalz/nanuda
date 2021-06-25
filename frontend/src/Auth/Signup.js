@@ -54,7 +54,7 @@ export default function Signup() {
                 }else{
                     console.log(response.uid,response.email,"hererere")
                     history.push({
-                        pathname: "/signup/profile",
+                        pathname: "/signupprofile",
                         state: {uid:response.uid,email:response.email}
                     })
                 }
