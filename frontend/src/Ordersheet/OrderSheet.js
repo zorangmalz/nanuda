@@ -516,7 +516,8 @@ export default function OrderSheet() {
                         payment: "",
                         option: number,
                         schedule: paymentDate,
-                        response:String(response)
+                        response:String(response),
+                        shipPrice:ship
                     }
                 })
             })
