@@ -39,11 +39,6 @@ class orderUpload(View):
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
             user=User.objects.get(uid=payload["id"])
             user_info=json.loads(request.body)
-            print(user_info["params"]["myparam"][3]["Fprice"])
-            print(user_info["params"]["ship"])
-            print(user_info["params"]["payment"])
-            print(user_info["params"]["option"])
-            print(user_info["params"]["schedule"])
             year=str(datetime.today().year%100)
             if datetime.today().month<10:
                 month="0"+str(datetime.today().month)
