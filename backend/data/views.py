@@ -260,6 +260,8 @@ def review_one(request, pk):
 
     if request.method == "GET":
         return JsonResponse({
+            "user_id": review.user_id,
+            "order_id": review.order_id,
             "user_profile": review.user_profile(),
             "user_nickname": review.user_nickname(),
             "review_image": review.review_image,

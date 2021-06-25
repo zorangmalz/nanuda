@@ -11,6 +11,8 @@ export default function ReviewPost({ match }) {
     let history = useHistory()
     const { pk } = match.params
     const [data, setData] = useState({
+        user_id: "",
+        order_id: "",
         user_profile: "",
         user_nickname: "",
         review_image: "",
@@ -65,7 +67,7 @@ export default function ReviewPost({ match }) {
     const putAlert = async () => {
         var body = {
             id: pk, user_id: data.user_id,
-            product_id: data.product_id, review_alert: data.review_alert + 1
+            order_id: data.order_id, review_alert: data.review_alert + 1
         }
         await fetch(`https://haulfree.link/review/${pk}`, {
             method: "PUT",
@@ -87,13 +89,13 @@ export default function ReviewPost({ match }) {
         if (like == 0) {
             body = {
                 id: pk, review_likeNum: data.review_likeNum + 1,
-                user_id: data.user_id, product_id: data.product_id,
+                user_id: data.user_id, order_id: data.order_id,
             }
         } else if (like == 2) {
             body = {
                 id: pk, review_dislikeNum: data.review_dislikeNum - 1,
                 review_likeNum: data.review_likeNum + 1,
-                user_id: data.user_id, product_id: data.product_id,
+                user_id: data.user_id, order_id: data.order_id,
             }
         }
 
@@ -117,12 +119,12 @@ export default function ReviewPost({ match }) {
         if (like == 1) {
             body = {
                 id: pk, review_likeNum: data.review_likeNum - 1,
-                user_id: data.user_id, product_id: data.product_id
+                user_id: data.user_id, order_id: data.order_id
             }
         } else if (like == 2) {
             body = {
                 id: pk, review_dislikeNum: data.review_dislikeNum - 1,
-                user_id: data.user_id, product_id: data.product_id
+                user_id: data.user_id, order_id: data.order_id
             }
         }
         await fetch(`https://haulfree.link/review/${pk}`, {
@@ -145,13 +147,13 @@ export default function ReviewPost({ match }) {
         if (like == 0) {
             body = {
                 id: pk, review_dislikeNum: data.review_dislikeNum + 1,
-                user_id: data.user_id, product_id: data.product_id
+                user_id: data.user_id, order_id: data.order_id
             }
         } else if (like == 1) {
             body = {
                 id: pk, review_likeNum: data.review_likeNum - 1,
                 review_dislikeNum: data.review_dislikeNum + 1,
-                user_id: data.user_id, product_id: data.product_id
+                user_id: data.user_id, order_id: data.order_id
             }
         }
         await fetch(`https://haulfree.link/review/${pk}`, {
