@@ -485,7 +485,7 @@ export default function OrderSheet() {
                 .then(response => {
                    console.log(response)
                    if(response.PCD_PAY_MSG=="출금이체완료"){
-                    order()
+                    order(response)
                    }else{
                     console.log("error")
                    }
@@ -498,7 +498,7 @@ export default function OrderSheet() {
 
 
     }
-    async function order() {
+    async function order(response) {
         if (basicAddress && payment) {
             // history.push("paymentsuccess",{myparam:myparam})'
 
@@ -515,13 +515,14 @@ export default function OrderSheet() {
                         ship: item,
                         payment: "",
                         option: number,
-                        schedule: paymentDate
+                        schedule: paymentDate,
+                        response:String(response)
                     }
                 })
             })
                 .then(response => response.json())
                 .then(response => {
-                    if (response.data.data === true) {
+                    if (response.data === true) {
                         history.push("payment/success")
                     } else {
                         history.push("payment/fail", { myparam: myparam, ship: item })
