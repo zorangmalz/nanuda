@@ -11,8 +11,6 @@ export default function ReviewPost({ match }) {
     let history = useHistory()
     const { pk } = match.params
     const [data, setData] = useState({
-        user_id: "",
-        order_id: "",
         user_profile: "",
         user_nickname: "",
         review_image: "",
@@ -45,8 +43,6 @@ export default function ReviewPost({ match }) {
             .then(response => {
                 setData({
                     ...data,
-                    user_id: response.user_id,
-                    order_id: response.order_id,
                     user_profile: response.user_profile,
                     user_nickname: response.user_nickname,
                     review_image: response.review_image != null ? response.review_image[0] : "",
@@ -89,14 +85,13 @@ export default function ReviewPost({ match }) {
         var body;
         if (like == 0) {
             body = {
-                id: pk, review_likeNum: data.review_likeNum + 1,
-                user_id: data.user_id, order_id: data.order_id,
+                review_likeNum: data.review_likeNum + 1,
+                review_dislikeNum: data.review_dislikeNum,
             }
         } else if (like == 2) {
             body = {
-                id: pk, review_dislikeNum: data.review_dislikeNum - 1,
+                review_dislikeNum: data.review_dislikeNum - 1,
                 review_likeNum: data.review_likeNum + 1,
-                user_id: data.user_id, order_id: data.order_id,
             }
         }
 
@@ -119,13 +114,13 @@ export default function ReviewPost({ match }) {
         var body;
         if (like == 1) {
             body = {
-                id: pk, review_likeNum: data.review_likeNum - 1,
-                user_id: data.user_id, order_id: data.order_id
+                review_likeNum: data.review_likeNum - 1,
+                review_dislikeNum: data.review_dislikeNum,
             }
         } else if (like == 2) {
             body = {
-                id: pk, review_dislikeNum: data.review_dislikeNum - 1,
-                user_id: data.user_id, order_id: data.order_id
+                review_dislikeNum: data.review_dislikeNum - 1,
+                review_likeNum: data.review_likeNum,
             }
         }
         await fetch(`https://haulfree.link/review/${pk}`, {
@@ -147,14 +142,13 @@ export default function ReviewPost({ match }) {
         var body;
         if (like == 0) {
             body = {
-                id: pk, review_dislikeNum: data.review_dislikeNum + 1,
-                user_id: data.user_id, order_id: data.order_id
+                review_dislikeNum: data.review_dislikeNum + 1,
+                review_likeNum: data.review_likeNum,
             }
         } else if (like == 1) {
             body = {
-                id: pk, review_likeNum: data.review_likeNum - 1,
+                review_likeNum: data.review_likeNum - 1,
                 review_dislikeNum: data.review_dislikeNum + 1,
-                user_id: data.user_id, order_id: data.order_id
             }
         }
         await fetch(`https://haulfree.link/review/${pk}`, {
