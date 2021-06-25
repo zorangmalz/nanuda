@@ -40,7 +40,6 @@ export default function ReviewPost({ match }) {
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res)
                 if (code.review_likeNum.includes(res.user_email)) {
                     setLike(1)
                 } else if (code.review_dislikeNum.includes(res.user_email)) {
@@ -96,12 +95,12 @@ export default function ReviewPost({ match }) {
                 'Accept': 'application/json'
             },
             credentials: "include",
-            body: JSON.stringify(body)
+            body: JSON.stringify({
+                type: "alert"
+            })
         })
-            .then(response => response.json())
-            .then(response => {
-                setMine(false)
-            }).catch(err => console.log(err))
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
     }
 
     const putLike = async () => {
@@ -116,11 +115,9 @@ export default function ReviewPost({ match }) {
                 type: "like"
             })
         })
-            .then(response => response.json())
-            .then(response => {
-                console.log(response)
-                setLike(true)
-            }).catch(err => console.log(err))
+            .then(response => response.text())
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
     }
 
     const putDisLike = async () => {
@@ -135,11 +132,9 @@ export default function ReviewPost({ match }) {
                 type: "dislike"
             })
         })
-            .then(response => response.json())
-            .then(response => {
-                console.log(response)
-                setLike(false)
-            }).catch(err => console.log(err))
+            .then(response => response.text())
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
     }
 
     const deletePost = async () => {
