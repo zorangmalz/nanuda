@@ -46,6 +46,8 @@ export default function ReviewPost({ match }) {
                 console.log(response)
                 setData({
                     ...data,
+                    user_id: response.user_id,
+                    order_id: response.order_id,
                     user_profile: response.user_profile,
                     user_nickname: response.user_nickname,
                     review_image: response.review_image != null ? response.review_image[0] : "",
