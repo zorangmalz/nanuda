@@ -39,18 +39,7 @@ class orderUpload(View):
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
             user=User.objects.get(uid=payload["id"])
             user_info=json.loads(request.body)
-            year=str(datetime.today().year%100)
-            if datetime.today().month<10:
-                month="0"+str(datetime.today().month)
-            else:
-                month=str(datetime.today().month)
             
-            day=str(datetime.today().day)
-            hour=str(datetime.today().hour)
-            minute=str(datetime.today().minute)
-            second=str(datetime.today().second)
-            print(year+month+day+hour+minute+second)
-            print(user.id)
             #??외않되?
             Order(
                 user_id=user,
@@ -65,8 +54,11 @@ class orderUpload(View):
                 order_request=user_info["params"]["ship"]["request"],
                 order_receiver=user_info["params"]["ship"]["name"],
                 order_pay=user_info["params"]["response"],
+                order_detail=user_info["params"]["myparam"][3]["Eetc"]
+                order_total=str(user_info["params"]["myparam"])
+                order_shipPrice=user_info["params"]["shipPrice"]
                 wish_haul="02",
-                wish_url=user_info["params"]["myparam"][0]["requestUrl"],
+                wish_url=user_info["params"]["myparam"][0]["url"],
                 wish_title=user_info["params"]["myparam"][0]["title"],
                 wish_des=user_info["params"]["myparam"][0]["description"],
                 wish_image=user_info["params"]["myparam"][0]["image"]["url"]
