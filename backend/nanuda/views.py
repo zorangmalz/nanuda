@@ -54,9 +54,9 @@ class orderUpload(View):
                 order_request=user_info["params"]["ship"]["request"],
                 order_receiver=user_info["params"]["ship"]["name"],
                 order_pay=user_info["params"]["response"],
-                order_detail=user_info["params"]["myparam"][3]["Eetc"]
-                order_total=str(user_info["params"]["myparam"])
-                order_shipPrice=user_info["params"]["shipPrice"]
+                order_detail=user_info["params"]["myparam"][3]["Eetc"],
+                order_total=str(user_info["params"]["myparam"]),
+                order_shipPrice=user_info["params"]["shipPrice"],
                 wish_haul="02",
                 wish_url=user_info["params"]["myparam"][0]["url"],
                 wish_title=user_info["params"]["myparam"][0]["title"],
