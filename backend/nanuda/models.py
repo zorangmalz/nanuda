@@ -126,6 +126,7 @@ class Order(models.Model):
     order_address_detail = models.TextField(default="상세주소")
     order_phone_number = models.CharField(default="", max_length=30)
     order_request = models.TextField(default="주문 요청사항")
+    order_pay = models.TextField(default="")
     wish_haul=models.CharField(default="" ,blank=True, max_length=30)
     wish_url=models.CharField(default="http://" ,blank=True, max_length=30)
     wish_title=models.CharField(default="" ,blank=True, max_length=30)
