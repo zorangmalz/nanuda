@@ -931,14 +931,14 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                 }}>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
+                        fontSize: 12,
                         color: "#010608",
                     }}>2회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontWeight: "bold",
                         color: "#010608",
-                        fontSize: 18,
+                        fontSize: 16,
                     }}>
                         <span style={{
                             fontSize: 14,
@@ -955,14 +955,14 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                 }}>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
+                        fontSize: 12,
                         color: "#010608",
                     }}>4회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontWeight: "bold",
                         color: "#010608",
-                        fontSize: 18,
+                        fontSize: 16,
                     }}>
                         <span style={{
                             fontSize: 14,
@@ -1098,14 +1098,14 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                 }}>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
-                        fontSize: 11,
+                        fontSize: 10,
                         color: "#010608",
                     }}>2회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontWeight: "bold",
                         color: "#010608",
-                        fontSize: 13,
+                        fontSize: 14,
                     }}>
                         <span style={{
                             fontSize: 11,
@@ -1122,14 +1122,14 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                 }}>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
-                        fontSize: 11,
+                        fontSize: 10,
                         color: "#010608",
                     }}>4회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontWeight: "bold",
                         color: "#010608",
-                        fontSize: 13,
+                        fontSize: 14,
                     }}>
                         <span style={{
                             fontSize: 11,

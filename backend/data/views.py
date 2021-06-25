@@ -290,7 +290,11 @@ def review_one(request, pk):
         
         data = json.loads(request.body)
         if data["type"] == "like":
-            if user.user_email in review.review_likeNum:
+            if review.review_likeNum is None:
+                review.review_likeNum = review.review_likeNum.append(user.user_email)
+                review.save()
+                return Response(status=status.HTTP_202_ACCEPTED)
+            elif user.user_email in review.review_likeNum:
                 review.review_likeNum = list(set(review.review_likeNum).difference(set(user.user_email)))
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
