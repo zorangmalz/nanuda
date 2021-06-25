@@ -18,8 +18,8 @@ export default function ReviewPost({ match }) {
         review_score: 0,
         review_like: "",
         review_dislike: "",
-        review_likeNum: 0,
-        review_dislikeNum: 0,
+        review_likeNum: [],
+        review_dislikeNum: [],
         review_alert: 0,
         product_name: "",
         product_image: "",
@@ -27,8 +27,30 @@ export default function ReviewPost({ match }) {
         order_price: 0,
     })
 
-    //좋아요 싫어요 버튼 
+    //좋아요 싫어요 버튼
     const [like, setLike] = useState(0)
+    const checkUserLikeOrNot = async (code) => {
+        fetch('https://haulfree.link/userinfo/', {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                if (code.review_likeNum.contains(res.user_email)) {
+                    setLike(1)
+                } else if (code.review_dislikeNum.contains(res.user_email)) {
+                    setLike(2)
+                } else {
+                    setLike(0)
+                }
+            })
+            .catch(err => console.log(err))
+    }
     useEffect(() => {
         const { pk } = match.params
         fetch(`https://haulfree.link/review/${pk}`, {
@@ -58,6 +80,7 @@ export default function ReviewPost({ match }) {
                     product_price: response.product_price,
                     order_price: response.order_price,
                 })
+                checkUserLikeOrNot(response)
             }).catch(error => console.log(error))
     }, [like])
 
@@ -82,19 +105,6 @@ export default function ReviewPost({ match }) {
     }
 
     const putLike = async () => {
-        var body;
-        if (like == 0) {
-            body = {
-                review_likeNum: data.review_likeNum + 1,
-                review_dislikeNum: data.review_dislikeNum,
-            }
-        } else if (like == 2) {
-            body = {
-                review_dislikeNum: data.review_dislikeNum - 1,
-                review_likeNum: data.review_likeNum + 1,
-            }
-        }
-
         await fetch(`https://haulfree.link/review/${pk}`, {
             method: "PUT",
             headers: {
@@ -102,55 +112,18 @@ export default function ReviewPost({ match }) {
                 'Accept': 'application/json'
             },
             credentials: "include",
-            body: JSON.stringify(body)
+            body: JSON.stringify({
+                type: "like"
+            })
         })
             .then(response => response.json())
             .then(response => {
-                setLike(1)
-            }).catch(err => console.log(err))
-    }
-
-    const putReset = async () => {
-        var body;
-        if (like == 1) {
-            body = {
-                review_likeNum: data.review_likeNum - 1,
-                review_dislikeNum: data.review_dislikeNum,
-            }
-        } else if (like == 2) {
-            body = {
-                review_dislikeNum: data.review_dislikeNum - 1,
-                review_likeNum: data.review_likeNum,
-            }
-        }
-        await fetch(`https://haulfree.link/review/${pk}`, {
-            method: "PUT",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: "include",
-            body: JSON.stringify(body)
-        })
-            .then(response => response.json())
-            .then(response => {
-                setLike(0)
+                console.log(response)
+                setLike(true)
             }).catch(err => console.log(err))
     }
 
     const putDisLike = async () => {
-        var body;
-        if (like == 0) {
-            body = {
-                review_dislikeNum: data.review_dislikeNum + 1,
-                review_likeNum: data.review_likeNum,
-            }
-        } else if (like == 1) {
-            body = {
-                review_likeNum: data.review_likeNum - 1,
-                review_dislikeNum: data.review_dislikeNum + 1,
-            }
-        }
         await fetch(`https://haulfree.link/review/${pk}`, {
             method: "PUT",
             headers: {
@@ -158,11 +131,14 @@ export default function ReviewPost({ match }) {
                 'Accept': 'application/json'
             },
             credentials: "include",
-            body: JSON.stringify(body)
+            body: JSON.stringify({
+                type: "dislike"
+            })
         })
             .then(response => response.json())
             .then(response => {
-                setLike(2)
+                console.log(response)
+                setLike(false)
             }).catch(err => console.log(err))
     }
 

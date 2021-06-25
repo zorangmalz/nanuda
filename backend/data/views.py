@@ -277,11 +277,49 @@ def review_one(request, pk):
         })
 
     elif request.method == "PUT":
+        try:
+            load_dotenv(verbose=True)
+            SECRET_KEY = os.getenv("SECRET_KEY")
+            ALGORITHM = os.getenv("ALGORITHM")
+            token = request.COOKIES.get("access_token")
+            payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+            user = User.objects.get(uid=payload["id"])
+
+        except User.DoesNotExist():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
         data = json.loads(request.body)
-        review.review_likeNum = data["review_likeNum"]
-        review.review_dislikeNum = data["review_dislikeNum"]
-        review.save()
-        return Response(status=status.HTTP_202_ACCEPTED)
+        if data["type"] == "like":
+            if user.user_eamil in review.review_likeNum:
+                review.review_likeNum = list(set(review.review_likeNum).difference(set(user.user_email)))
+                review.save()
+                return Response(status=status.HTTP_202_ACCEPTED)
+            elif user.user_email in review.review_dislikeNum:
+                review.review_dislikeNum = list(set(review.review_dislikeNum).difference(set(user.user_email)))
+                review.review_likeNum = review.review_likeNum.append(user.user_email)
+                review.save()
+                return Response(status=status.HTTP_202_ACCEPTED)
+            else:
+                review.review_likeNum = review.review_likeNum.append(user.user_email)
+                review.save()
+                return Response(status=status.HTTP_202_ACCEPTED)
+        elif data["type"] == "dislike":
+            if user.user_eamil in review.review_dislikeNum:
+                review.review_dislikeNum = list(set(review.review_dislikeNum).difference(set(user.user_email)))
+                review.save()
+                return Response(status=status.HTTP_202_ACCEPTED)
+            elif user.user_email in review.review_likeNum:
+                review.review_likeNum = list(set(review.review_likeNum).difference(set(user.user_email)))
+                review.review_dislikeNum = review.review_dislikeNum.append(user.user_email)
+                review.save()
+                return Response(status=status.HTTP_202_ACCEPTED)
+            else:
+                review.review_dislikeNum = review.review_dislikeNum.append(user.user_email)
+                review.save()
+                return Response(status=status.HTTP_202_ACCEPTED)
+        else:
+            return Response({"data": False}, status=status.HTTP_400_BAD_REQUEST)
+        
 
     elif request.method == 'DELETE':
         order = Order.objects.get(pk = review.order_id.id)
