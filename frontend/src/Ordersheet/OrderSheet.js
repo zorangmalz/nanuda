@@ -520,7 +520,7 @@ useEffect(()=>{
 const [orderId,setOrderId]=useState("")
     async function order(res) {
         if (basicAddress && payment) {
-            setOrderId(createOid())
+            var orderId=createOid()
             // history.push("paymentsuccess",{myparam:myparam})'
             console.log(myparam,item,number,paymentDate,res,ship)
             fetch("https://haulfree.link/orderupload/", {
