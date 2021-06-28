@@ -498,7 +498,7 @@ export default function OrderSheet() {
 
 
     }
-    async function order(response) {
+    async function order(res) {
         if (basicAddress && payment) {
             // history.push("paymentsuccess",{myparam:myparam})'
 
@@ -516,13 +516,13 @@ export default function OrderSheet() {
                         payment: "",
                         option: number,
                         schedule: paymentDate,
-                        response:String(response),
+                        response:String(res),
                         shipPrice:ship,
                         
                     }
                 })
             })
-                .then(response => response.text())
+                .then(response => response.json())
                 .then(response => {
                     if (response.data === true) {
                         history.push("payment/success")
