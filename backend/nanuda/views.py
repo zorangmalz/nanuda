@@ -39,12 +39,15 @@ class orderUpload(View):
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
             user=User.objects.get(uid=payload["id"])
             user_info=json.loads(request.body)
-            
+            if user_info["params"]["myparam"][7]=="":
+                opt=0
+            else:
+                opt=int(user_info["params"]["myparam"][7])
             #??외않되?
             Order(
                 user_id=user.id,
                 order_id="01",
-                order_price=int(user_info["params"]["myparam"][3]["Eprice"])+int(user_info["params"]["myparam"][7]),
+                order_price=int(user_info["params"]["myparam"][3]["Eprice"])+opt,
                 order_amount=1,
                 order_expected_date={"hi":"hi"},
                 order_address_number=user_info["params"]["ship"]["addressNum"],
