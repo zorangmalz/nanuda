@@ -44,7 +44,27 @@ export default function ProfileMain() {
             })
             .catch(err => console.log(err))
     }, [])
-    
+    async function getSchedule(){
+        fetch('https://haulfree.link/userinfo/', {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+        })
+            .then(response => response.json())
+            .then(response => {
+                setUser({
+                    ...user,
+                    user_email: response.user_email,
+                    name: response.name,
+                    limit: response.limit,
+                    point: response.point_entire,
+                })
+            })
+            .catch(err => console.log(err))
+    }
     return (
         <>
             <Default>
