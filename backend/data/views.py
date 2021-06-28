@@ -264,49 +264,54 @@ def review_one(request, pk):
         review_dislikeNum = ReviewList.objects.filter(review_id = review, type="dislike").count()
         review_alert = ReviewList.objects.filter(review_id = review, type="alert").count()
 
-        try:
-            load_dotenv(verbose=True)
-            SECRET_KEY = os.getenv("SECRET_KEY")
-            ALGORITHM = os.getenv("ALGORITHM")
-            token = request.COOKIES.get("access_token")
-            payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
-            user = User.objects.get(uid=payload["id"])
+        if request.GET.get("access_token"):
+            try:
+                load_dotenv(verbose=True)
+                SECRET_KEY = os.getenv("SECRET_KEY")
+                ALGORITHM = os.getenv("ALGORITHM")
+                token = request.COOKIES.get("access_token")
+                payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
+                user = User.objects.get(uid=payload["id"])
 
-        except User.DoesNotExist():
-            return JsonResponse({
-                "user_name": review.user_name(),
-                "review_image": review.review_image,
-                "review_date": review.review_date,
-                "review_score": review.review_score,
-                "review_like": review.review_like,
-                "review_dislike": review.review_dislike,
-                "review_likeNum": review_likeNum,
-                "review_dislikeNum": review_dislikeNum,
-                "review_alert": review_alert,
-                "product_name": review.product_name(),
-                "product_image": review.product_image(),
-                "product_price": review.product_price(),
-                "order_price": review.order_price(),
-                "mine": False,
-            })
+            except User.DoesNotExist():
+                return Response(status=status.HTTP_404_NOT_FOUND)
 
-        if review.user_id == user:
-            return JsonResponse({
-                "user_name": review.user_name(),
-                "review_image": review.review_image,
-                "review_date": review.review_date,
-                "review_score": review.review_score,
-                "review_like": review.review_like,
-                "review_dislike": review.review_dislike,
-                "review_likeNum": review_likeNum,
-                "review_dislikeNum": review_dislikeNum,
-                "review_alert": review_alert,
-                "product_name": review.product_name(),
-                "product_image": review.product_image(),
-                "product_price": review.product_price(),
-                "order_price": review.order_price(),
-                "mine": True,
-            })
+            if review.user_id == user:
+                return JsonResponse({
+                    "user_name": review.user_name(),
+                    "review_image": review.review_image,
+                    "review_date": review.review_date,
+                    "review_score": review.review_score,
+                    "review_like": review.review_like,
+                    "review_dislike": review.review_dislike,
+                    "review_likeNum": review_likeNum,
+                    "review_dislikeNum": review_dislikeNum,
+                    "review_alert": review_alert,
+                    "product_name": review.product_name(),
+                    "product_image": review.product_image(),
+                    "product_price": review.product_price(),
+                    "order_price": review.order_price(),
+                    "mine": True,
+                })
+                
+            else:
+                return JsonResponse({
+                    "user_name": review.user_name(),
+                    "review_image": review.review_image,
+                    "review_date": review.review_date,
+                    "review_score": review.review_score,
+                    "review_like": review.review_like,
+                    "review_dislike": review.review_dislike,
+                    "review_likeNum": review_likeNum,
+                    "review_dislikeNum": review_dislikeNum,
+                    "review_alert": review_alert,
+                    "product_name": review.product_name(),
+                    "product_image": review.product_image(),
+                    "product_price": review.product_price(),
+                    "order_price": review.order_price(),
+                    "mine": False,
+                })
+
         else:
             return JsonResponse({
                 "user_name": review.user_name(),
