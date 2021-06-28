@@ -93,6 +93,7 @@ export default function PaymentSuccess() {
                             addressDetail={shipDetail.addressDetail}
                             phoneNumber={shipDetail.phoneNumber}
                             deliveryClaim={shipDetail.request}
+                            img={image}
                         />
                         <StandardButton
                             text="홈으로"
@@ -164,6 +165,7 @@ export default function PaymentSuccess() {
                         addressDetail={shipDetail.addressDetail}
                         phoneNumber={shipDetail.phoneNumber}
                         deliveryClaim={shipDetail.request}
+                        img={image}
                     />
                     <MStandardButton
                         text="홈으로"

@@ -176,14 +176,13 @@ export function OrderDetail({ wishTime, img, title, price, name, orderNum, numbe
                         alignItems: "center",
                         marginBottom: 16
                     }}>
-                        <div style={{
-                            width: 80,
-                            height: 80,
-                            marginRight: 10,
-                            borderRadius: 6,
-                            border: "solid 1px rgba(219, 219, 219, 0.1)",
-                            backgroundColor: "#000000"
-                        }}></div>
+                       <img src={img} style={{
+                                width: 120,
+                                heigh: 120,
+                                borderRadius: 6,
+                                marginRight: 16,
+                                objectFit: "cover"
+                            }} />
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
@@ -258,14 +257,13 @@ export function MOrderDetail({ wishTime, img, title, price, name, orderNum, numb
                         alignItems: "center",
                         marginBottom: 16
                     }}>
-                        <div style={{
-                            width: 70,
-                            height: 70,
-                            marginRight: 10,
+                        <img src={img} style={{
+                            width: "30vw",
+                            heigh: "30vw",
                             borderRadius: 6,
-                            border: "solid 1px rgba(219, 219, 219, 0.1)",
-                            backgroundColor: "#000000"
-                        }}></div>
+                            marginRight: "4vw",
+                            objectFit: "cover"
+                        }} />
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
