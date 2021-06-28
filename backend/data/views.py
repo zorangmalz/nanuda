@@ -264,7 +264,7 @@ def review_one(request, pk):
         review_dislikeNum = ReviewList.objects.filter(review_id = review, type="dislike").count()
         review_alert = ReviewList.objects.filter(review_id = review, type="alert").count()
 
-        if request.GET.get("access_token"):
+        if "access_token" in request.COOKIES.keys():
             try:
                 load_dotenv(verbose=True)
                 SECRET_KEY = os.getenv("SECRET_KEY")
