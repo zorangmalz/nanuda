@@ -511,7 +511,7 @@ const createOid = () => {
     var now_hour=now_date.getHours()
     var now_Minute=now_date.getMinutes()
     var now_Second=now_date.getSeconds()
-    return '01-' + now_year[2] +now_year[3] + now_month + now_day + now_hour+now_Minute+now_Second+"-04-0000";
+    return '01-' + now_year.slice(2) + now_month + now_day + now_hour+now_Minute+now_Second+"-04-0000";
 };
 useEffect(()=>{
     console.log(createOid())

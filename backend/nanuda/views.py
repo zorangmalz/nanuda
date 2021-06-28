@@ -46,7 +46,7 @@ class orderUpload(View):
             #??외않되?
             Order(
                 user_id=user,
-                order_id="01",
+                order_id=user_info["params"]["orderid"],
                 order_price=int(user_info["params"]["myparam"][3]["Eprice"])+opt,
                 order_amount=1,
                 order_expected_date=user_info["params"]["schedule"],
