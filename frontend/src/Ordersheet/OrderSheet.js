@@ -498,6 +498,22 @@ export default function OrderSheet() {
 
 
     }
+    /* Oid 생성 함수
+ * 리턴 예시: test20210528 1622170718461
+ */
+const createOid = () => {
+    const now_date = new Date();
+    let now_year = now_date.getFullYear()
+    let now_month = now_date.getMonth() + 1
+    now_month = (now_month < 10) ? '0' + now_month : now_month
+    let now_day = now_date.getDate()
+    now_day = (now_day < 10) ? '0' + now_day : now_day
+    const datetime = now_date.getTime();
+    return '01-' + now_year + now_month + now_day + datetime;
+};
+useEffect(()=>{
+    console.log(createOid)
+})
     async function order(res) {
         if (basicAddress && payment) {
             // history.push("paymentsuccess",{myparam:myparam})'

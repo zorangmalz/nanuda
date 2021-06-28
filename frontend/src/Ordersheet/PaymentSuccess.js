@@ -12,8 +12,14 @@ export default function PaymentSuccess() {
     const location = useLocation()
     const myparam = location.state.myparam
     const ship = location.state.ship
+    const [image,setImage]=useState("")
+    const [itemDes,setItemDes]=useState("")
+    const [price,setPrice]=useState("")
     useEffect(()=>{
         console.log(myparam,ship)
+        setImage(myparam[0].image.url)
+        setItemDes(myparam[0].title)
+        setPrice(Number(myparam[3].Eprice) + Number(myparam[5]))
     },[])
     
     //화면 변경
@@ -104,7 +110,7 @@ export default function PaymentSuccess() {
                             color: "#010608",
                             cursor: "pointer",
                             fontFamily: "NotoSansCJKkr",
-                        }}>내 리뷰 확인하기</div>
+                        }}>분할결제 스케쥴 확인하기</div>
                     </div>
                 </div>
             </Default>
@@ -177,7 +183,7 @@ export default function PaymentSuccess() {
                         fontFamily: "NotoSansCJKkr",
                         color: "#010608",
                         textAlign: "center"
-                    }}>내 리뷰 확인하기</div>
+                    }}>분할결제 스케쥴 확인하기</div>
                 </div>
             </Mobile>
         </>
