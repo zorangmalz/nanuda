@@ -102,6 +102,7 @@ export default function ProfileReview() {
                                 display: "grid",
                                 gridTemplateColumns: "1fr 1fr",
                                 width: 440,
+                                minHeight: "50vh",
                                 columnGap: 20,
                                 alignSelf: "center",
                             }}>
@@ -168,6 +169,7 @@ export default function ProfileReview() {
                             display: "grid",
                             gridTemplateColumns: "1fr 1fr",
                             width: "90vw",
+                            minHeight: "50vh",
                             columnGap: "5vw",
                             alignSelf: "center",
                         }}>

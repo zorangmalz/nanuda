@@ -245,7 +245,8 @@ def review_profile(request, pk):
                     "order_price": my_review.order_price(),
                 })
             return JsonResponse({
-                "review_list": lists
+                "review_list": lists,
+                "review_length": count
             })
 
 # Review 하나만 보여줌
