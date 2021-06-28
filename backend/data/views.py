@@ -290,40 +290,41 @@ def review_one(request, pk):
             return Response(status=status.HTTP_404_NOT_FOUND)
         
         data = json.loads(request.body)
+        email = str(user.user_email)
         if data["type"] == "like":
-            if user.user_email in json.loads(review.review_likeNum):
+            if email in json.loads(review.review_likeNum):
                 review.review_likeNum = json.dumps(list(set(json.loads(review.review_likeNum)).difference(set(user.user_email))))
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
-            elif user.user_email in json.loads(review.review_dislikeNum):
+            elif email in json.loads(review.review_dislikeNum):
                 review.review_dislikeNum = json.dumps(list(set(json.loads(review.review_dislikeNum)).difference(set(user.user_email))))
                 review.review_likeNum = json.dumps(json.loads(review.review_likeNum.append(user.user_email)))
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
             else:
-                aList = json.load(review.review_likeNum).append(user.user_email)
+                aList = json.load(review.review_likeNum).append(email)
                 review.review_likeNum = json.dump(aList)
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
 
         elif data["type"] == "dislike":
-            if user.user_email in json.loads(review.review_dislikeNum):
+            if email in json.loads(review.review_dislikeNum):
                 review.review_dislikeNum = json.dump(list(set(json.loads(review.review_dislikeNum)).difference(set(user.user_email))))
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
-            elif user.user_email in json.loads(review.review_likeNum):
+            elif email in json.loads(review.review_likeNum):
                 review.review_likeNum = json.dumps(list(set(json.loads(review.review_likeNum)).difference(set(user.user_email))))
                 review.review_dislikeNum = json.dump(json.loads(review.review_dislikeNum.append(user.user_email)))
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
             else:
-                aList = json.load(review.review_dislikeNum).append(user.user_email)
+                aList = json.load(review.review_dislikeNum).append(email)
                 review.review_dislikeNum = json.dump(aList)
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
 
         elif data["type"] == "alert":
-            if user.user_email in json.loads(review.review_alert):
+            if email in json.loads(review.review_alert):
                 return Response(status=status.HTTP_202_ACCEPTED)
             else:
                 review.review_alert = json.dumps(json.loads(review.review_alert).append(user.user_email))
