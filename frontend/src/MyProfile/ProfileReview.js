@@ -9,6 +9,7 @@ import mainlogo from "../images/mainlogo.png";
 
 export default function ProfileReview() {
     //Get Review Data
+    const [dataLength, setDataLength] = useState(0)
     const [data, setData] = useState([])
     useEffect(() => {
         setData([])
@@ -34,6 +35,7 @@ export default function ProfileReview() {
                     })
                 }
                 setData(data.concat(array))
+                setDataLength(response.review_length)
             })
             .catch(err => console.log(err))
     }, [])
@@ -97,18 +99,21 @@ export default function ProfileReview() {
                     }}>
                         <Header content="내 리뷰" goBack={true} />
                         {data.length > 0 ?
-                            <div style={{
-                                display: "grid",
-                                gridTemplateColumns: "1fr 1fr",
-                                width: 440,
-                                minHeight: "50vh",
-                                columnGap: 20,
-                                alignSelf: "center",
-                            }}>
-                                {data.map(item => (
-                                    <PostThumb item={item} mobile={false} />
-                                ))}
-                            </div>
+                            <>
+                                <div style={{
+                                    display: "grid",
+                                    gridTemplateColumns: "1fr 1fr",
+                                    width: 440,
+                                    minHeight: "50vh",
+                                    columnGap: 20,
+                                    alignSelf: "center",
+                                }}>
+                                    {data.map(item => (
+                                        <PostThumb item={item} mobile={false} />
+                                    ))}
+                                </div>
+                                
+                            </>
                             :
                             <div style={{
                                 display: "flex",

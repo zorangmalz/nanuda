@@ -56,6 +56,7 @@ export default function ReviewPost({ match }) {
                     product_price: response.product_price,
                     order_price: response.order_price,
                 })
+                setMine(response.mine)
             }).catch(error => console.log(error))
     }, [like])
 
@@ -133,7 +134,7 @@ export default function ReviewPost({ match }) {
         history.goBack()
     }
 
-    const [mine, setMine] = useState(true)
+    const [mine, setMine] = useState(false)
     const [modal, setModal] = useState(false)
     const [finishModal, setFinishModal] = useState(false)
     return (
