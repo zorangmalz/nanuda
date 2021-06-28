@@ -45,7 +45,7 @@ class orderUpload(View):
                 opt=int(user_info["params"]["myparam"][7])
             #??외않되?
             Order(
-                user_id=user.id,
+                user_id=user,
                 order_id="01",
                 order_price=int(user_info["params"]["myparam"][3]["Eprice"])+opt,
                 order_amount=1,
