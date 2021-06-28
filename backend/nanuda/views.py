@@ -39,31 +39,7 @@ class orderUpload(View):
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
             user=User.objects.get(uid=payload["id"])
             user_info=json.loads(request.body)
-            Order(
-                user_id="",
-                order_id="",
-                order_price="",
-                order_amount="",
-                order_expected_date="",
-                order_address_number="",
-                order_address="",
-                order_address_detail="",
-                order_phone_number="",
-                order_request="",
-                order_receiver="",
-                order_pay="",
-                order_detail="",
-                order_total="",
-                order_shipPrice="",
-                wish_haul="",
-                wish_url="",
-                wish_title="",
-                wish_des="",
-                wish_image="",
-                review_write="",
-                order_method=""
-
-            ).save()
+            
             #??외않되?
             # Order(
             #     user_id=user.id,
@@ -90,7 +66,7 @@ class orderUpload(View):
             #     order_method="배달"
 
             # ).save()
-            return JsonResponse({"data":True})
+            return JsonResponse(user_info)
 
 #주문 하나 확인
 # class orderCheck(View):

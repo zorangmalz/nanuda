@@ -501,8 +501,8 @@ export default function OrderSheet() {
     async function order(res) {
         if (basicAddress && payment) {
             // history.push("paymentsuccess",{myparam:myparam})'
-
-            fetch("https://haulfree.link/orderUpload/", {
+            console.log(myparam,item,number,paymentDate,res,ship)
+            fetch("https://haulfree.link/orderupload/", {
                 method: "POST",
                 headers: {
                     'Content-type': 'application/json',
@@ -522,7 +522,7 @@ export default function OrderSheet() {
                     }
                 })
             })
-                .then(response => response.json())
+                .then(response => response.text())
                 .then(response => {
                     if (response.data === true) {
                         history.push("payment/success")
