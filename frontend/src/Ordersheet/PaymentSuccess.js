@@ -12,11 +12,14 @@ export default function PaymentSuccess() {
     const location = useLocation()
     const myparam = location.state.myparam
     const ship = location.state.ship
+    const orderid = location.state.orderid
     const [image,setImage]=useState("")
     const [itemDes,setItemDes]=useState("")
     const [price,setPrice]=useState("")
+    const [order,setOrder]=useState("")
     useEffect(()=>{
-        console.log(myparam,ship)
+        console.log(myparam,ship,orderid)
+        setOrder(orderid)
         setImage(myparam[0].image.url)
         setItemDes(myparam[0].title)
         setPrice(Number(myparam[3].Eprice) + Number(myparam[5]))

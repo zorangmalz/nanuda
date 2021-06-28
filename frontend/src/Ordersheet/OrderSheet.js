@@ -514,10 +514,13 @@ const createOid = () => {
     return '01-' + String(now_year).slice(2) + now_month + now_day + now_hour+now_Minute+now_Second+"-04-0000";
 };
 useEffect(()=>{
-    console.log(createOid())
+    var text=createOid()
+    console.log(text)
 },[])
+const [orderId,setOrderId]=useState("")
     async function order(res) {
         if (basicAddress && payment) {
+            setOrderId(createOid())
             // history.push("paymentsuccess",{myparam:myparam})'
             console.log(myparam,item,number,paymentDate,res,ship)
             fetch("https://haulfree.link/orderupload/", {
@@ -536,14 +539,14 @@ useEffect(()=>{
                         schedule: paymentDate,
                         response:String(res),
                         shipPrice:ship,
-                        orderid:createOid()
+                        orderid:orderId
                     }
                 })
             })
                 .then(response => response.json())
                 .then(response => {
                     if (response.data === true) {
-                        history.push("payment/success",{myparam:myparam,ship:item})
+                        history.push("payment/success",{myparam:myparam,ship:item,orderid:orderId})
                     } else {
                         console.log(response)
                         history.push("payment/fail", { myparam: myparam, ship: item })
