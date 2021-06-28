@@ -17,11 +17,13 @@ export default function PaymentSuccess() {
     const [itemDes,setItemDes]=useState("")
     const [price,setPrice]=useState("")
     const [order,setOrder]=useState("")
+    const [shipDetail,setShipDetail]=useState("")
     useEffect(()=>{
         console.log(myparam,ship,orderid)
         setOrder(orderid)
         setImage(myparam[0].image.url)
         setItemDes(myparam[0].title)
+        setShipDetail(ship)
         setPrice(Number(myparam[3].Eprice) + Number(myparam[5]))
     },[])
     
@@ -82,15 +84,16 @@ export default function PaymentSuccess() {
                         </div>
                         <OrderDetail
                             wishTime={wish}
-                            title="PRADA Model 23-9 limited edition berry expensive"
-                            price="460,000"
-                            name="김현명"
-                            orderNum="20200413137223-00-01"
-                            number="03770"
-                            address="서울 특별시 서대문구 북아현로 1길 17"
-                            addressDetail="e편한세상 203동 2104호"
-                            phoneNumber="010-4337-6607"
-                            deliveryClaim="집 앞"
+                            title={itemDes}
+                            price={price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+                            name={shipDetail.name}
+                            orderNum={order}
+                            number={shipDetail.addressNum}
+                            address={shipDetail.address}
+                            addressDetail={shipDetail.addressDetail}
+                            phoneNumber={shipDetail.phoneNumber}
+                            deliveryClaim={shipDetail.request}
+                            img={image}
                         />
                         <StandardButton
                             text="홈으로"
@@ -153,15 +156,16 @@ export default function PaymentSuccess() {
                     </div>
                     <MOrderDetail
                         wishTime={wish}
-                        title="PRADA Model 23-9 limited edition berry expensive"
-                        price="460,000"
-                        name="김현명"
-                        orderNum="20200413137223-00-01"
-                        number="03770"
-                        address="서울 특별시 서대문구 북아현로 1길 17"
-                        addressDetail="e편한세상 203동 2104호"
-                        phoneNumber="010-4337-6607"
-                        deliveryClaim="집 앞"
+                        title={itemDes}
+                        price={price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+                        name={shipDetail.name}
+                        orderNum={order}
+                        number={shipDetail.addressNum}
+                        address={shipDetail.address}
+                        addressDetail={shipDetail.addressDetail}
+                        phoneNumber={shipDetail.phoneNumber}
+                        deliveryClaim={shipDetail.request}
+                        img={image}
                     />
                     <MStandardButton
                         text="홈으로"
