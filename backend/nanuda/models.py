@@ -134,9 +134,9 @@ class Order(models.Model):
     order_shipPrice=models.PositiveIntegerField(default=0)
     wish_haul=models.CharField(default="" ,blank=True, max_length=30)
     wish_url=models.CharField(default="http://" ,blank=True, max_length=1000)
-    wish_title=models.CharField(default="" ,blank=True, max_length=30)
-    wish_des=models.CharField(default="" ,blank=True, max_length=30)
-    wish_image=models.CharField(default="" ,blank=True, max_length=30)
+    wish_title=models.CharField(default="" ,blank=True, max_length=1000)
+    wish_des=models.CharField(default="" ,blank=True, max_length=1000)
+    wish_image=models.CharField(default="" ,blank=True, max_length=1000)
     review_write = models.BooleanField(default=False)
 
     def product_name(self):
