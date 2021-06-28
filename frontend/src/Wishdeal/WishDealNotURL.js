@@ -31,46 +31,6 @@ function reducerB(state, action) {
     }
 }
 
-const Button = ({ onClick, state, number, content }) => {
-    return (
-        <div onClick={onClick} style={{
-            width: 95,
-            marginRight: 20,
-            borderRadius: 6,
-            border: state === number ? "1px solid #010608" : "1px solid #dfdfdf",
-            backgroundColor: state === number ? "#010608" : "#ffffff",
-            paddingTop: 10,
-            paddingBottom: 10,
-            cursor: "pointer",
-            fontSize: 16,
-            fontWeight: state === number ? "bold" : "normal",
-            color: state === number ? "#ffffff" : "#010608",
-            opacity: state === number ? 1 : 0.8,
-            textAlign: "center",
-        }}>{content}</div>
-    )
-}
-
-const MButton = ({ onClick, state, number, content }) => {
-    return (
-        <div onClick={onClick} style={{
-            width: 90,
-            marginRight: "5vw",
-            borderRadius: 6,
-            border: state === number ? "1px solid #010608" : "1px solid #dfdfdf",
-            backgroundColor: state === number ? "#010608" : "#ffffff",
-            paddingTop: "2vw",
-            paddingBottom: "2vw",
-            cursor: "pointer",
-            fontSize: 14,
-            fontWeight: state === number ? "bold" : "normal",
-            color: state === number ? "#ffffff" : "#010608",
-            opacity: state === number ? 1 : 0.8,
-            textAlign: "center",
-        }}>{content}</div>
-    )
-}
-
 export default function WishDealNotURL() {
     const [number, dispatch] = useReducer(reducerA, 0);
     const onYES = () => {
@@ -121,11 +81,9 @@ export default function WishDealNotURL() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="상품 정보 작성" goBack={true} />
-                        <FashionForm
-                            brand="PRADA"
-                            name="PRADA Model 23-9 limited edition berry expensive"
-                            price={480000}
-                        />
+                        {/* <ETCForm 
+
+                        /> */}
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -148,12 +106,14 @@ export default function WishDealNotURL() {
                                 state={number}
                                 number={2}
                                 content="있음"
+                                mobile={false}
                             />
                             <Button
                                 onClick={onNO}
                                 state={number}
                                 number={3}
                                 content="없음"
+                                mobile={false}
                             />
                         </div>
                         {number === 2 ?
@@ -215,24 +175,28 @@ export default function WishDealNotURL() {
                                 state={numberB}
                                 number={2}
                                 content="없음"
+                                mobile={false}
                             />
                             <Button
                                 onClick={onTWO}
                                 state={numberB}
                                 number={3}
                                 content="2,500"
+                                mobile={false}
                             />
                             <Button
                                 onClick={onFIVE}
                                 state={numberB}
                                 number={4}
                                 content="5,000"
+                                mobile={false}
                             />
                             <Button
                                 onClick={onEXT}
                                 state={numberB}
                                 number={5}
                                 content="기타"
+                                mobile={false}
                             />
                         </div>
                         {numberB === 5 ?
@@ -327,11 +291,6 @@ export default function WishDealNotURL() {
                         backgroundColor: "#ffffff",
                     }}>
                         <MHeader content="상품 정보 작성" goBack={true} />
-                        <MFashionForm
-                            brand="PRADA"
-                            name="PRADA Model 23-9 limited edition berry expensive"
-                            price={480000}
-                        />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
@@ -349,17 +308,19 @@ export default function WishDealNotURL() {
                             marginLeft: "5vw",
                             marginTop: "4vw"
                         }}>
-                            <MButton
+                            <Button
                                 onClick={onYES}
                                 state={number}
                                 number={2}
                                 content="있음"
+                                mobile={true}
                             />
-                            <MButton
+                            <Button
                                 onClick={onNO}
                                 state={number}
                                 number={3}
                                 content="없음"
+                                mobile={true}
                             />
                         </div>
                         {number === 2 ?
@@ -416,29 +377,33 @@ export default function WishDealNotURL() {
                             marginLeft: "5vw",
                             marginTop: "4vw"
                         }}>
-                            <MButton
+                            <Button
                                 onClick={onX}
                                 state={numberB}
                                 number={2}
                                 content="없음"
+                                mobile={true}
                             />
-                            <MButton
+                            <Button
                                 onClick={onTWO}
                                 state={numberB}
                                 number={3}
                                 content="2,500"
+                                mobile={true}
                             />
-                            <MButton
+                            <Button
                                 onClick={onFIVE}
                                 state={numberB}
                                 number={4}
                                 content="5,000"
+                                mobile={true}
                             />
-                            <MButton
+                            <Button
                                 onClick={onEXT}
                                 state={numberB}
                                 number={5}
                                 content="기타"
+                                mobile={true}
                             />
                         </div>
                         {numberB === 5 ?
@@ -516,225 +481,69 @@ export default function WishDealNotURL() {
     )
 }
 
-function FashionForm({ image, brand, name, price, color, size, etc }) {
+const Button = ({ onClick, state, number, content, mobile }) => {
     return (
-        <>
-            <div style={{
-                width: 480,
-                height: 212,
-                backgroundColor: "#f2f3f8",
-
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BsPlusCircle size={36} color="#010608" />
-                <div style={{
-                    marginTop: 24,
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    columnGap: "#010608"
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 16,
-                marginLeft: 20,
-            }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="1/n"
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-
-                marginTop: 16,
-                marginLeft: 20,
-                paddingBottom: 8,
-                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                width: 210,
-            }}>
-                <input
-                    placeholder="상품 가격"
-                    style={{
-                        width: 190,
-                        outline: 0,
-                        border: 0,
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 16,
-                        color: "#010608"
-                    }}
-                />
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    fontWeight: "bold",
-                    color: "#010608"
-                }}>원</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="WHITE, 흰색 등등"
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>사이즈를 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="270, 6.5 등등"
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>기타 옵션을 입력해주세요. </div>
-            <input
-                placeholder="3cm 깔창 추가해주세요."
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-        </>
+        <div onClick={onClick} style={{
+            width: mobile ? 90 : 95,
+            marginRight: mobile ? "5vw" : 20,
+            borderRadius: 6,
+            border: state === number ? "1px solid #010608" : "1px solid #dfdfdf",
+            backgroundColor: state === number ? "#010608" : "#ffffff",
+            paddingTop: mobile ? "2vw" : 10,
+            paddingBottom: mobile ? "2vw" : 10,
+            cursor: "pointer",
+            fontSize: mobile ? 14 : 16,
+            fontWeight: state === number ? "bold" : "normal",
+            color: state === number ? "#ffffff" : "#010608",
+            opacity: state === number ? 1 : 0.8,
+            textAlign: "center",
+        }}>{content}</div>
     )
 }
 
-function MFashionForm({ image, brand, name, price, color, size, etc }) {
+function ETCForm({ image, brand, name, input, setInput, highPrice, mobile }) {
+    // const { Eprice, Eetc } = input
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setInput({
+            ...input,
+            [name]: value
+        })
+    }
     return (
         <>
             <div style={{
-                width: "100vw",
-                height: "45vw",
-                backgroundColor: "#f2f3f8",
+                width: mobile ? "100vw" : 480,
+                height: mobile ? "45vw" : 212,
+            }}><img style={{
+                width: mobile ? "100vw" : 480,
+                height: mobile ? "45vw" : 212,
+                objectFit: "cover"
+            }} src={image}></img></div>
+            <div style={{
+                marginTop: mobile ? "4vw" : 16,
+                marginLeft: mobile ? "5vw" : 20,
 
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BsPlusCircle size={24} color="#010608" />
-                <div style={{
-                    marginTop: 16,
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 12,
-                    columnGap: "#010608"
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
+                fontFamily: "AvenirNext",
+                fontWeight: "bold",
+                fontSize: mobile ? 18 : 21,
+            }}>{brand}</div>
+            <div style={{
+                marginTop: mobile ? "4vw" : 16,
+                marginLeft: mobile ? "5vw" : 20,
+                fontsize: mobile ? 16 : 18,
+                fontWeight: "normal",
+                fontFamily: "AvenirNext",
+                opacity: 0.8
+            }}>{name}</div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
+                fontSize: mobile ? 16 : 18,
                 fontWeight: "bold",
                 color: "#010608",
 
-                marginTop: "4vw",
-                marginLeft: "5vw",
-            }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="1/n"
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
+                marginTop: mobile ? "4vw" : 16,
+                marginLeft: mobile ? "5vw" : 20,
             }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
             <div style={{
                 display: "flex",
@@ -742,515 +551,59 @@ function MFashionForm({ image, brand, name, price, color, size, etc }) {
                 alignItems: "center",
                 justifyContent: "space-between",
 
-                marginTop: "4vw",
-                marginLeft: "5vw",
-                paddingBottom: "2vw",
+                marginTop: mobile ? "4vw" : 16,
+                marginLeft: mobile ? "5vw" : 20,
+                paddingBottom: mobile ? "2vw" : 8,
                 borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                width: "45vw",
+                width: mobile ? "45vw" : 210,
             }}>
                 <input
                     placeholder="상품 가격"
+                    type="number"
+                    name="Eprice"
+                    // value={Eprice}
+                    onChange={onChange}
                     style={{
-                        width: "40vw",
+                        width: mobile ? "40vw" : 190,
                         outline: 0,
                         border: 0,
 
                         fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
+                        fontSize: mobile ? 14 : 16,
                         color: "#010608"
                     }}
                 />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
+                    fontSize: mobile ? 14 : 16,
                     fontWeight: "bold",
                     color: "#010608"
                 }}>원</div>
             </div>
+            {highPrice === true ?
+                <div></div>
+                :
+                <div style={{ color: "#f72b2b", fontSize: mobile ? 14 : 16, marginLeft: mobile ? "5vw" : 20, marginTop: mobile ? "1vw" : 4 }}>최소 주문금액은 30,000원부터 입니다 </div>
+            }
+
             <div style={{
                 fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
+                fontSize: mobile ? 16 : 18,
                 fontWeight: "bold",
                 color: "#010608",
 
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="WHITE, 흰색 등등"
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>사이즈를 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="270, 6.5 등등"
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>기타 옵션을 입력해주세요. </div>
-            <input
-                placeholder="3cm 깔창 추가해주세요."
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-        </>
-    )
-}
-
-function ElectronicForm({ image, brand, name, price, count, etc }) {
-    return (
-        <>
-            <div style={{
-                width: 480,
-                height: 212,
-                backgroundColor: "#f2f3f8",
-
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BsPlusCircle size={36} color="#010608" />
-                <div style={{
-                    marginTop: 24,
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    columnGap: "#010608"
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 16,
-                marginLeft: 20,
-            }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="1/n"
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-
-                marginTop: 32,
-                marginLeft: 20,
-                paddingBottom: 8,
-                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                width: 210,
-            }}>
-                <input
-                    placeholder="상품 가격"
-                    style={{
-                        width: 190,
-                        outline: 0,
-                        border: 0,
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 16,
-                        color: "#010608"
-                    }}
-                />
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    fontWeight: "bold",
-                    color: "#010608"
-                }}>원</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>색상을 입력해주세요.</div>
-            <input
-                placeholder="WHITE, 흰색 등등"
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>기타 옵션을 입력해주세요. </div>
-            <input
-                placeholder="램 32 기가, 마우스 추가해주세요 등"
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-        </>
-    )
-}
-
-function MElectronicForm({ image, brand, name, price, count, etc }) {
-    return (
-        <>
-            <div style={{
-                width: "100vw",
-                height: "45vw",
-                backgroundColor: "#f2f3f8",
-
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BsPlusCircle size={24} color="#010608" />
-                <div style={{
-                    marginTop: 16,
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 12,
-                    columnGap: "#010608"
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "4vw",
-                marginLeft: "5vw",
-            }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="1/n"
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-
-                marginTop: "4vw",
-                marginLeft: "5vw",
-                paddingBottom: "2vw",
-                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                width: "45vw",
-            }}>
-                <input
-                    placeholder="상품 가격"
-                    style={{
-                        width: "40vw",
-                        outline: 0,
-                        border: 0,
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
-                        color: "#010608"
-                    }}
-                />
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    fontWeight: "bold",
-                    color: "#010608"
-                }}>원</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="WHITE, 흰색 등등"
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>기타 옵션을 입력해주세요. </div>
-            <input
-                placeholder="램 32 기가, 마우스 추가해주세요 등"
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-        </>
-    )
-}
-
-function FoodForm({ image, brand, name, price, count, etc }) {
-    return (
-        <>
-            <div style={{
-                width: 480,
-                height: 212,
-                backgroundColor: "#f2f3f8",
-
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BsPlusCircle size={36} color="#010608" />
-                <div style={{
-                    marginTop: 24,
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    columnGap: "#010608"
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 16,
-                marginLeft: 20,
-            }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="1/n"
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-
-                marginTop: 16,
-                marginLeft: 20,
-                paddingBottom: 8,
-                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                width: 210,
-            }}>
-                <input
-                    placeholder="상품 가격"
-                    style={{
-                        width: 190,
-                        outline: 0,
-                        border: 0,
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 16,
-                        color: "#010608"
-                    }}
-                />
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    fontWeight: "bold",
-                    color: "#010608"
-                }}>원</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>개수를 입력해주세요.</div>
-            <input
-                placeholder="숫자 입력"
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
+                marginTop: mobile ? "8vw" : 32,
+                marginLeft: mobile ? "5vw" : 20,
             }}>기타 옵션을 입력해주세요. </div>
             <input
                 placeholder="하나는 딸기맛, 하나는 포도맛으로 해주세요."
+                name="Eetc"
+                // value={Eetc}
+                onChange={onChange}
                 style={{
-                    marginTop: 16,
-                    width: 440,
+                    marginTop: mobile ? "4vw" : 16,
+                    width: mobile ? "90vw" : 440,
+                    marginLeft: mobile ? "5vw" : 20,
                     alignSelf: "center",
                     outline: 0,
                     border: 0,
@@ -1258,377 +611,7 @@ function FoodForm({ image, brand, name, price, count, etc }) {
                     borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-        </>
-    )
-}
-
-function MFoodForm({ image, brand, name, price, count, etc }) {
-    return (
-        <>
-            <div style={{
-                width: "100vw",
-                height: "45vw",
-                backgroundColor: "#f2f3f8",
-
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BsPlusCircle size={24} color="#010608" />
-                <div style={{
-                    marginTop: 16,
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 12,
-                    columnGap: "#010608"
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "4vw",
-                marginLeft: "5vw",
-            }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="1/n"
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-
-                marginTop: "4vw",
-                marginLeft: "5vw",
-                paddingBottom: "2vw",
-                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                width: "45vw",
-            }}>
-                <input
-                    placeholder="상품 가격"
-                    style={{
-                        width: "40vw",
-                        outline: 0,
-                        border: 0,
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
-                        color: "#010608"
-                    }}
-                />
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    fontWeight: "bold",
-                    color: "#010608"
-                }}>원</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>개수를 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="숫자 입력"
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>기타 옵션을 입력해주세요. </div>
-            <input
-                placeholder="하나는 딸기맛, 하나는 포도맛으로 해주세요."
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-        </>
-    )
-}
-
-function ETCForm({ image, brand, name, price, etc }) {
-    return (
-        <>
-            <div style={{
-                width: 480,
-                height: 212,
-                backgroundColor: "#f2f3f8",
-
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BsPlusCircle size={36} color="#010608" />
-                <div style={{
-                    marginTop: 24,
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    columnGap: "#010608"
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 16,
-                marginLeft: 20,
-            }}>상품 이름을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="1/n"
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-
-                marginTop: 16,
-                marginLeft: 20,
-                paddingBottom: 8,
-                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                width: 210,
-            }}>
-                <input
-                    placeholder="상품 가격"
-                    style={{
-                        width: 190,
-                        outline: 0,
-                        border: 0,
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 16,
-                        color: "#010608"
-                    }}
-                />
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    fontWeight: "bold",
-                    color: "#010608"
-                }}>원</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: 32,
-                marginLeft: 20,
-            }}>기타 옵션을 입력해주세요. </div>
-            <input
-                placeholder="하나는 딸기맛, 하나는 포도맛으로 해주세요."
-                style={{
-                    marginTop: 16,
-                    width: 440,
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 16,
-                    color: "#010608",
-                }}
-            />
-        </>
-    )
-}
-
-function METCForm({ image, brand, name, price, etc }) {
-    return (
-        <>
-            <div style={{
-                width: "100vw",
-                height: "45vw",
-                backgroundColor: "#f2f3f8",
-
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BsPlusCircle size={24} color="#010608" />
-                <div style={{
-                    marginTop: 16,
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 12,
-                    columnGap: "#010608"
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "4vw",
-                marginLeft: "5vw",
-            }}>색상을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <input
-                placeholder="1/n"
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: "2vw",
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    color: "#010608",
-                }}
-            />
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-
-                marginTop: "4vw",
-                marginLeft: "5vw",
-                paddingBottom: "2vw",
-                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                width: "45vw",
-            }}>
-                <input
-                    placeholder="상품 가격"
-                    style={{
-                        width: "40vw",
-                        outline: 0,
-                        border: 0,
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 14,
-                        color: "#010608"
-                    }}
-                />
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
-                    fontWeight: "bold",
-                    color: "#010608"
-                }}>원</div>
-            </div>
-            <div style={{
-                fontFamily: "NotoSansCJKkr",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#010608",
-
-                marginTop: "8vw",
-                marginLeft: "5vw",
-            }}>기타 옵션을 입력해주세요. </div>
-            <input
-                placeholder="하나는 딸기맛, 하나는 포도맛으로 해주세요."
-                style={{
-                    marginTop: "4vw",
-                    width: "90vw",
-                    alignSelf: "center",
-                    outline: 0,
-                    border: 0,
-                    paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
+                    fontSize: mobile ? 14 : 16,
                     color: "#010608",
                 }}
             />
