@@ -527,6 +527,7 @@ export default function OrderSheet() {
                     if (response.data === true) {
                         history.push("payment/success")
                     } else {
+                        console.log(response)
                         history.push("payment/fail", { myparam: myparam, ship: item })
                     }
                 }).catch(err => {
