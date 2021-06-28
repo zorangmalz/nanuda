@@ -40,6 +40,7 @@ export default function ReviewPost({ match }) {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 setData({
                     ...data,
                     user_name: response.user_name,

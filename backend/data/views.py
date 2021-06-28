@@ -290,7 +290,7 @@ def review_one(request, pk):
                 "mine": False,
             })
 
-        if review.user_id == user.id:
+        if review.user_id == user:
             return JsonResponse({
                 "user_name": review.user_name(),
                 "review_image": review.review_image,
