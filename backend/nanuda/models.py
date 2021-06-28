@@ -221,7 +221,7 @@ class ReviewList(models.Model):
     type = models.CharField(default="", max_length=30)
 
     def __str__(self):
-        return self.id
+        return self.type
     
     class Meta:
         ordering = ["user_id", "review_id"]
