@@ -290,9 +290,9 @@ def review_one(request, pk):
             return Response(status=status.HTTP_404_NOT_FOUND)
         
         data = json.loads(request.body)
-        user_like = ReviewList.objects.filter(review_id = review, type="like", user = user)
-        user_dislike = ReviewList.objects.filter(review_id = review, type="dislike", user = user)
-        user_alert = ReviewList.objects.filter(review_id = review, type="alert", user = user)
+        user_like = ReviewList.objects.filter(review_id = review, type="like", user = user.id)
+        user_dislike = ReviewList.objects.filter(review_id = review, type="dislike", user = user.id)
+        user_alert = ReviewList.objects.filter(review_id = review, type="alert", user = user.id)
         if data["type"] == "like":
             if user_like.exists():
                 user_like.delete()
