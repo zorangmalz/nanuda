@@ -522,7 +522,7 @@ export default function OrderSheet() {
                     }
                 })
             })
-                .then(response => response.json())
+                .then(response => response.text())
                 .then(response => {
                     if (response.data === true) {
                         history.push("payment/success")
