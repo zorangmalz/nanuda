@@ -287,9 +287,8 @@ function PostThumb({ item, mobile }) {
                 <div style={{
                     fontSize: mobile ? 12 : 14,
                     fontWeight: "bold",
-                    marginLeft: mobile ? "2vw" : 8,
                     marginTop: mobile ? "1.5vw" : 6
-                }}>{NameMask(item.user_nickname)} </div>
+                }}>{NameMask(item.user_name)} </div>
             </div>
             <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
                 width: mobile ? "42vw" : 210,
@@ -329,7 +328,7 @@ function PostThumb({ item, mobile }) {
                 fontSize: mobile ? 12 : 14,
                 fontWeight: "bold",
                 fontFamily: "NotoSansCJKkr"
-            }}>{numberWithCommas(item.product_price)}원에 획득 완료</div>
+            }}>{numberWithCommas(item.order_price)}원에 획득 완료</div>
         </div>
     )
 }
