@@ -502,7 +502,7 @@ export default function OrderSheet() {
         if (basicAddress && payment) {
             // history.push("paymentsuccess",{myparam:myparam})'
             console.log(myparam,item,number,paymentDate,res,ship)
-            fetch("https://haulfree.link/orderUpload/", {
+            fetch("https://haulfree.link/orderupload/", {
                 method: "POST",
                 headers: {
                     'Content-type': 'application/json',
