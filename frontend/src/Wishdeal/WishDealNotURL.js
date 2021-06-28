@@ -561,7 +561,7 @@ function ETCForm({ image, brand, name, input, setInput, highPrice, mobile }) {
                     placeholder="상품 가격"
                     type="number"
                     name="Eprice"
-                    value={Eprice}
+                    // value={Eprice}
                     onChange={onChange}
                     style={{
                         width: mobile ? "40vw" : 190,
@@ -598,7 +598,7 @@ function ETCForm({ image, brand, name, input, setInput, highPrice, mobile }) {
             <input
                 placeholder="하나는 딸기맛, 하나는 포도맛으로 해주세요."
                 name="Eetc"
-                value={Eetc}
+                // value={Eetc}
                 onChange={onChange}
                 style={{
                     marginTop: mobile ? "4vw" : 16,
