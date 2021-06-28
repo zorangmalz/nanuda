@@ -97,7 +97,19 @@ export default function ProfileReview() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="내 리뷰" goBack={true} />
-                        {data.length === 0 ?
+                        {data.length > 0 ?
+                            <div style={{
+                                display: "grid",
+                                gridTemplateColumns: "1fr 1fr",
+                                width: 440,
+                                columnGap: 20,
+                                alignSelf: "center",
+                            }}>
+                                {data.map(item => (
+                                    <PostThumb item={item} mobile={false} />
+                                ))}
+                            </div>
+                            :
                             <div style={{
                                 display: "flex",
                                 flexDirection: "column",
@@ -123,18 +135,6 @@ export default function ProfileReview() {
                                     opacity: 0.6,
                                     color: "#010608"
                                 }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
-                            </div>
-                            :
-                            <div style={{
-                                display: "grid",
-                                gridTemplateColumns: "1fr 1fr",
-                                width: 440,
-                                columnGap: 20,
-                                alignSelf: "center",
-                            }}>
-                                {data.map(item => (
-                                    <PostThumb item={item} mobile={false} />
-                                ))}
                             </div>
                         }
                         {orderData.length > 0 ? <div style={{
@@ -163,7 +163,19 @@ export default function ProfileReview() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="내 리뷰" goBack={true} />
-                    {data.length === 0 ?
+                    {data.length > 0 ?
+                        <div style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr",
+                            width: "90vw",
+                            columnGap: "5vw",
+                            alignSelf: "center",
+                        }}>
+                            {data.map(item => (
+                                <PostThumb item={item} mobile={true} />
+                            ))}
+                        </div>
+                        :
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
@@ -189,18 +201,6 @@ export default function ProfileReview() {
                                 opacity: 0.6,
                                 color: "#010608"
                             }}>아직 작성한 리뷰가 없어요 ㅠㅠ</div>
-                        </div>
-                        :
-                        <div style={{
-                            display: "grid",
-                            gridTemplateColumns: "1fr 1fr",
-                            width: "90vw",
-                            columnGap: "5vw",
-                            alignSelf: "center",
-                        }}>
-                            {data.map(item => (
-                                <PostThumb item={item} mobile={true} />
-                            ))}
                         </div>
                     }
                     {orderData.length > 0 ?
