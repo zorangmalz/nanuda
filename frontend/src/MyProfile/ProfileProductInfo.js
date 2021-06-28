@@ -19,7 +19,6 @@ export default function ProfileProductInfo() {
         product_price: 0,
     })
     useEffect(() => {
-        console.log(location.state.product_id)
         if (location.state.product_id.length > 0) {
             fetch(`https://haulfree.link/order/detail?product=${location.state.product_id}`, {
                 method: "GET",

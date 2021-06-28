@@ -21,7 +21,6 @@ export default function ServiceReview() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 if (response.data === true) {
                     setNoReview(true)
                 } else {
@@ -44,7 +43,6 @@ export default function ServiceReview() {
         })
             .then(res => res.json())
             .then(response => {
-                console.log(response)
                 if (response != null && response != undefined) {
                     var array = []
                     for (var i = 0; i < response.length; i++) {

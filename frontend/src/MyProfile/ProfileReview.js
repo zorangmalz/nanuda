@@ -22,7 +22,6 @@ export default function ProfileReview() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 var array = []
                 for (var i = 0; i < response["review_list"].length; i++) {
                     array.push({
@@ -53,7 +52,6 @@ export default function ProfileReview() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 if (response != null && response != undefined) {
                     var array = []
                     for (var i = 0; i < response["data"].length; i++) {

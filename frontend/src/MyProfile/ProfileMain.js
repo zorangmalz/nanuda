@@ -34,7 +34,6 @@ export default function ProfileMain() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 setUser({
                     ...user,
                     user_email: response.user_email,

@@ -37,7 +37,6 @@ export default function ProfileEdit() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 setUser({
                     ...user,
                     user_email: response.user_email,
@@ -61,7 +60,6 @@ export default function ProfileEdit() {
         })
         .then(res => res.json())
             .then(res => {
-              console.log(res)
               if(res.success===true){
                 history.replace('/')
               }

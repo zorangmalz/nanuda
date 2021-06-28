@@ -36,7 +36,6 @@ export default function Write() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 setUser(response.id)
             }).catch(err=>{
                 console.log(err)
@@ -75,7 +74,6 @@ export default function Write() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 history.replace("/service/main")
             }).catch(err => console.log(err))
     }

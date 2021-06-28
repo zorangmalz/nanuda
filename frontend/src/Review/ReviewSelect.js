@@ -32,7 +32,6 @@ export default function ReviewSelect() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 if (response != null && response != undefined) {
                     var array = []
                     for (var i = 0; i < response["data"].length; i++) {

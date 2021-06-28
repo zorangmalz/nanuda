@@ -40,7 +40,6 @@ export default function ReviewPost({ match }) {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 setData({
                     ...data,
                     user_name: response.user_name,
@@ -94,7 +93,6 @@ export default function ReviewPost({ match }) {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 setLike(response.state)
             })
             .catch(err => console.log(err))
@@ -114,7 +112,6 @@ export default function ReviewPost({ match }) {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 setLike(response.state)
             })
             .catch(err => console.log(err))
