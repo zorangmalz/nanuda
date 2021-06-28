@@ -18,7 +18,6 @@ export default function ReviewWrite() {
     //상품 정보를 넘겨 받게 됨
     useEffect(() => {
         setData(location.state.item)
-        console.log(location.state.item)
     }, [location])
 
     //이용후기 및 의견 작성
@@ -102,7 +101,6 @@ export default function ReviewWrite() {
         })
             .then(response => {
                 history.push("/review/success")
-                console.log(response)
             }).catch(err => {
                 console.log(err)
                 history.push("/review/fail")

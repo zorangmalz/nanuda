@@ -25,7 +25,6 @@ export default function ReviewMain() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 var array = []
                 for (var i = 0; i < response.length; i++) {
                     const dict = {

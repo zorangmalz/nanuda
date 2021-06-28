@@ -23,7 +23,6 @@ export default function ProfileLimit() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 setUser({
                     ...user,
                     name: response.name,
@@ -52,7 +51,6 @@ export default function ProfileLimit() {
                         }
                     })
                 }
-                console.log(res)
             })
             .catch(err => console.log(err))
     }, [])

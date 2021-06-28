@@ -20,7 +20,6 @@ export default function SignupProfile() {
         }catch(err){
             console.log(err)
         }
-        console.log(uid,email)
     })
     //약관 동의
     const [personal, setPersonal] = useState(false)
@@ -63,7 +62,6 @@ export default function SignupProfile() {
         if(code[1].length>2){
             var realCode=code[1].split("EncodeData=")
             var message = realCode[1].replace(/%2B/gi,"+")
-            console.log(message)
             fetch("https://wishdeal.link/checkplus_success", {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -76,21 +74,18 @@ export default function SignupProfile() {
             })
             .then(res => res.json())
                 .then(res => {
-                  console.log(res.gender)
                   setUserData(res)
                   
                 }).catch(err => {
                     console.log(err)
                 })
         }
-        console.log(code)
     },[])
 
     
     async function send() {
         var realEmail=window.localStorage.getItem("email")
         var realuid=window.localStorage.getItem("uid")
-        console.log(JSON.parse(realEmail).email,JSON.parse(realuid).uid,userData)
         await fetch("https://haulfree.link/niceMain/", {
             method: "POST",
             headers: {
@@ -115,7 +110,6 @@ export default function SignupProfile() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 if (response.data === true) {
                     history.push("/signup/complete")
                 }

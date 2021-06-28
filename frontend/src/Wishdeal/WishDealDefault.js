@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import { Header, MHeader } from "../Style";
-import axios from "axios"
 import Slider from "react-slick"
 import wishone from "../images/wishone.png"
 import wishtwo from "../images/wishtwo.png"
@@ -255,15 +254,14 @@ export default function WishDealDefault() {
                             marginLeft: 20,
                             paddingTop: 15,
                             paddingBottom: 15,
-                            alignSelf: "center",
 
                             marginTop: 32,
-                            backgroundColor: "#26c1f0",
+                            backgroundColor: checker ? "#26c1f0" : "#dfdfdf",
 
                             color: "#ffffff",
                             fontSize: 18,
                             fontWeight: "bold",
-                            cursor: "pointer",
+                            cursor: checker ? "pointer" : "auto",
                             textAlign: "center",
                         }}>{loading ? <Loading /> : "확인"}</div>
                     </div>
@@ -437,12 +435,12 @@ export default function WishDealDefault() {
                             alignSelf: "center",
 
                             marginTop: "8vw",
-                            backgroundColor: "#26c1f0",
+                            backgroundColor: checker ? "#26c1f0" : "#dfdfdf",
 
                             color: "#ffffff",
                             fontSize: 18,
                             fontWeight: "bold",
-                            cursor: "pointer",
+                            cursor: checker ? "pointer" : "auto",
                             textAlign: "center",
                         }}>{loading ? <Loading /> : "확인"}</div>
                     </div>

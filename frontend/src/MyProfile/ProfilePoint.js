@@ -17,7 +17,6 @@ export default function ProfilePoint() {
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res)
                 if (res != null && res != undefined) {
                     setEntirePoint(res["point_entire"])
                     var array = []
@@ -29,7 +28,6 @@ export default function ProfilePoint() {
                         })
                     }
                     setPointList(pointList.concat(array))
-                    console.log(pointList)
                 }
             })
             .catch(err => console.log(err))

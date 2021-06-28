@@ -96,7 +96,6 @@ export default function ProfileVerification() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
                 setUser({
                     ...user,
                     user_email: response.user_email,
@@ -171,7 +170,6 @@ export default function ProfileVerification() {
             })
         })
         .then(res => {
-            console.log(res)
             history.push("/profile/verification/success")
         })
     }
