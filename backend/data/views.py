@@ -427,21 +427,8 @@ def order_list(request):
         if request.method == "GET":
             orders = Order.objects.filter(
                 user_id=user.id).order_by('-order_date')
-            arrays = []
-            for order in orders:
-                arrays.append({
-                    "id": order.id,
-                    "order_date": order.order_date,
-                    "order_price": order.order_price,
-                    "product_id": order.product_id.id,
-                    "product_name": order.product_name(),
-                    "product_image": order.product_image(),
-                    "product_price": order.product_price(),
-                    "review_write": order.review_write,
-                })
-            return JsonResponse({
-                "data": arrays
-            })
+            order_serializer=OrderAllSerializer(orders,many=True)
+            return Response(order_serializer.data)
 
 
 @api_view(["GET", "POST"])
