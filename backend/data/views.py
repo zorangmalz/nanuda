@@ -191,9 +191,9 @@ def review_all(request):
                 review_like=data["review_like"],
                 review_dislike=data["review_dislike"],
                 review_image=data["review_image"],
-                review_alert={"data": list()},
-                review_likeNum={"data": list()},
-                review_dislikeNum={"data": list()}
+                review_alert=list(),
+                review_likeNum=list(),
+                review_dislikeNum=list()
             )
             order.review_write = True
             order.save()
@@ -291,40 +291,41 @@ def review_one(request, pk):
         
         data = json.loads(request.body)
         if data["type"] == "like":
-            if user.user_email in review.review_likeNum["data"]:
-                review.review_likeNum["data"] = list(set(review.review_likeNum["data"]).difference(set(user.user_email)))
+            if user.user_email in review.review_likeNum:
+                review.review_likeNum = list(set(review.review_likeNum).difference(set(user.user_email)))
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
-            elif user.user_email in review.review_dislikeNum["data"]:
-                review.review_dislikeNum["data"] = list(set(review.review_dislikeNum["data"]).difference(set(user.user_email)))
-                review.review_likeNum["data"] = review.review_likeNum["data"].append(user.user_email)
+            elif user.user_email in review.review_dislikeNum:
+                review.review_dislikeNum = list(set(review.review_dislikeNum).difference(set(user.user_email)))
+                review.review_likeNum = review.review_likeNum.append(user.user_email)
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
             else:
-                review.review_likeNum["data"] = list(review.review_likeNum["data"]).append(user.user_email)
+                aList = (review.review_likeNum).append(user.user_email)
+                review.review_likeNum = aList
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
 
         elif data["type"] == "dislike":
-            if user.user_email in review.review_dislikeNum["data"]:
-                review.review_dislikeNum["data"] = list(set(review.review_dislikeNum["data"]).difference(set(user.user_email)))
+            if user.user_email in review.review_dislikeNum:
+                review.review_dislikeNum = list(set(review.review_dislikeNum).difference(set(user.user_email)))
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
-            elif user.user_email in review.review_likeNum["data"]:
-                review.review_likeNum["data"] = list(set(review.review_likeNum["data"]).difference(set(user.user_email)))
-                review.review_dislikeNum["data"] = review.review_dislikeNum["data"].append(user.user_email)
+            elif user.user_email in review.review_likeNum:
+                review.review_likeNum = list(set(review.review_likeNum).difference(set(user.user_email)))
+                review.review_dislikeNum = review.review_dislikeNum.append(user.user_email)
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
             else:
-                review.review_dislikeNum["data"] = review.review_dislikeNum["data"].append(user.user_email)
+                review.review_dislikeNum = review.review_dislikeNum.append(user.user_email)
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
 
         elif data["type"] == "alert":
-            if user.user_email in review.review_alert["data"]:
+            if user.user_email in review.review_alert:
                 return Response(status=status.HTTP_202_ACCEPTED)
             else:
-                review.review_alert["data"] = review.review_alert["data"].append(user.user_email)
+                review.review_alert = review.review_alert.append(user.user_email)
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
         else:    
