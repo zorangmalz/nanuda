@@ -378,7 +378,7 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         점심시간 평일 12:30 ~ 1:30
                     </div>
                 </div>
-                <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
+                <a href={"http://pf.kakao.com/_dZMXs"} target="_blank" style={{
                     textDecorationLine: "none",
                     WebkitAppearance: "none"
                 }}>
@@ -604,7 +604,7 @@ export function BottomTag({ marginTop, marginBottom }) {
                         점심시간 평일 12:30 ~ 13:30
                     </div>
                 </div>
-                <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
+                <a href={"http://pf.kakao.com/_dZMXs"} target="_blank" style={{
                     textDecorationLine: "none",
                     WebkitAppearance: "none"
                 }}>
@@ -829,7 +829,7 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                         점심시간 평일 12:30 ~ 1:30
                     </div>
                 </div>
-                <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
+                <a href={"http://pf.kakao.com/_dZMXs"} target="_blank" style={{
                     textDecorationLine: "none",
                     WebkitAppearance: "none"
                 }}>
@@ -1055,7 +1055,7 @@ export function MBottomTag({ marginTop, marginBottom }) {
                         점심시간 평일 12:30 ~ 13:30
                     </div>
                 </div>
-                <a href={"http://pf.kakao.com/_zKxbds"} target="_blank" style={{
+                <a href={"http://pf.kakao.com/_dZMXs"} target="_blank" style={{
                     textDecorationLine: "none",
                     WebkitAppearance: "none"
                 }}>
