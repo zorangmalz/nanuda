@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     "nanuda.apps.NanudaConfig",
     "phonenumber_field",
-    'sslserver'
-    
+    'sslserver',
+    'django_mysql'
 ]
 SITE_ID = 2
 
