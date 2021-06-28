@@ -39,33 +39,57 @@ class orderUpload(View):
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
             user=User.objects.get(uid=payload["id"])
             user_info=json.loads(request.body)
-            
-            #??외않되?
             Order(
-                user_id=user.id,
-                order_id="01",
-                order_price=int(user_info["params"]["myparam"][3]["Eprice"])+int(user_info["params"]["myparam"][7]),
-                order_amount=1,
-                order_expected_date=user_info["params"]["schedule"],
-                order_address_number=user_info["params"]["ship"]["addressNum"],
-                order_address=user_info["params"]["ship"]["address"],
-                order_address_detail=user_info["params"]["ship"]["addressDetail"],
-                order_phone_number=user_info["params"]["ship"]["phoneNumber"],
-                order_request=user_info["params"]["ship"]["request"],
-                order_receiver=user_info["params"]["ship"]["name"],
-                order_pay=user_info["params"]["response"],
-                order_detail=user_info["params"]["myparam"][3]["Eetc"],
-                order_total=str(user_info["params"]["myparam"]),
-                order_shipPrice=user_info["params"]["shipPrice"],
-                wish_haul="02",
-                wish_url=user_info["params"]["myparam"][0]["url"],
-                wish_title=user_info["params"]["myparam"][0]["title"],
-                wish_des=user_info["params"]["myparam"][0]["description"],
-                wish_image=user_info["params"]["myparam"][0]["image"]["url"],
+                user_id="",
+                order_id="",
+                order_price="",
+                order_amount="",
+                order_expected_date="",
+                order_address_number="",
+                order_address="",
+                order_address_detail="",
+                order_phone_number="",
+                order_request="",
+                order_receiver="",
+                order_pay="",
+                order_detail="",
+                order_total="",
+                order_shipPrice="",
+                wish_haul="",
+                wish_url="",
+                wish_title="",
+                wish_des="",
+                wish_image="",
                 review_write="",
-                order_method="배달"
+                order_method=""
 
             ).save()
+            #??외않되?
+            # Order(
+            #     user_id=user.id,
+            #     order_id="01",
+            #     order_price=int(user_info["params"]["myparam"][3]["Eprice"])+int(user_info["params"]["myparam"][7]),
+            #     order_amount=1,
+            #     order_expected_date=user_info["params"]["schedule"],
+            #     order_address_number=user_info["params"]["ship"]["addressNum"],
+            #     order_address=user_info["params"]["ship"]["address"],
+            #     order_address_detail=user_info["params"]["ship"]["addressDetail"],
+            #     order_phone_number=user_info["params"]["ship"]["phoneNumber"],
+            #     order_request=user_info["params"]["ship"]["request"],
+            #     order_receiver=user_info["params"]["ship"]["name"],
+            #     order_pay=user_info["params"]["response"],
+            #     order_detail=user_info["params"]["myparam"][3]["Eetc"],
+            #     order_total=str(user_info["params"]["myparam"]),
+            #     order_shipPrice=user_info["params"]["shipPrice"],
+            #     wish_haul="02",
+            #     wish_url=user_info["params"]["myparam"][0]["url"],
+            #     wish_title=user_info["params"]["myparam"][0]["title"],
+            #     wish_des=user_info["params"]["myparam"][0]["description"],
+            #     wish_image=user_info["params"]["myparam"][0]["image"]["url"],
+            #     review_write="",
+            #     order_method="배달"
+
+            # ).save()
             return JsonResponse({"data":True})
 
 #주문 하나 확인
