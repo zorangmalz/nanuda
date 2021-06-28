@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
-import { Header, MHeader } from "../Style";
+import { Header, MHeader, NameMask } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillStar } from "react-icons/ai";
 import nodata from "../images/nodata.png";
@@ -121,9 +121,8 @@ export default function ReviewMain() {
                                             <div style={{
                                                 fontSize: 14,
                                                 fontWeight: "bold",
-                                                marginLeft: 8,
                                                 marginTop: 6
-                                            }}>{item.user_name} </div>
+                                            }}>{NameMask(item.user_name)} </div>
                                         </div>
                                         {item.review_image.length > 0 ?
                                             <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
@@ -268,9 +267,8 @@ export default function ReviewMain() {
                                         <div style={{
                                             fontSize: 12,
                                             fontWeight: "bold",
-                                            marginLeft: 8,
                                             marginTop: 6
-                                        }}>{item.user_name} </div>
+                                        }}>{NameMask(item.user_name)} </div>
                                     </div>
                                     {item.review_image.length > 0 ?
                                         <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
