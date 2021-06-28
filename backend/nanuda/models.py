@@ -164,9 +164,6 @@ class Review(models.Model):
     review_like = models.TextField(default="내용", blank=True)
     review_dislike = models.TextField(default="내용", blank=True)
     review_image = models.JSONField(default=list, blank=True)
-    review_alert = models.TextField(default="")
-    review_likeNum = models.TextField(default="")
-    review_dislikeNum = models.TextField(default="")
 
     def user_name(self):
         return self.user_id.name
@@ -216,3 +213,16 @@ class MissionList(models.Model):
     
     class Meta:
         managed=True
+
+class ReviewList(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    review_id = models.ForeignKey(Review, on_delete=models.CASCADE)
+    type = models.CharField(default="", max_length=30)
+
+    def __str__(self):
+        return self.id
+    
+    class Meta:
+        ordering = ["user_id", "review_id"]
+        managed = True

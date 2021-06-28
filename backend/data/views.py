@@ -16,7 +16,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.parsers import JSONParser
 
 # Model Import
-from nanuda.models import Address, MissionList, PointList, User, ServiceReview, Product, Review, Order
+from nanuda.models import Address, MissionList, PointList, ReviewList, User, ServiceReview, Product, Review, Order
 from nanuda.serializers import AddressAllSerializer, MissionAllSerializer, OrderSerializer, UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
 
 #Python 내장함수
@@ -191,9 +191,6 @@ def review_all(request):
                 review_like=data["review_like"],
                 review_dislike=data["review_dislike"],
                 review_image=data["review_image"],
-                review_alert="[]",
-                review_likeNum="[]",
-                review_dislikeNum="[]"
             )
             order.review_write = True
             order.save()
@@ -261,6 +258,9 @@ def review_one(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "GET":
+        review_likeNum = ReviewList.objects.filter(review_id = review, type="like").count()
+        review_dislikeNum = ReviewList.objects.filter(review_id = review, type="dislike").count()
+        review_alert = ReviewList.objects.filter(review_id = review, type="alert").count()
         return JsonResponse({
             "user_name": review.user_name(),
             "review_image": review.review_image,
@@ -268,9 +268,9 @@ def review_one(request, pk):
             "review_score": review.review_score,
             "review_like": review.review_like,
             "review_dislike": review.review_dislike,
-            "review_likeNum": json.loads(review.review_likeNum),
-            "review_dislikeNum": json.loads(review.review_dislikeNum),
-            "review_alert": json.loads(review.review_alert),
+            "review_likeNum": review_likeNum,
+            "review_dislikeNum": review_dislikeNum,
+            "review_alert": review_alert,
             "product_name": review.product_name(),
             "product_image": review.product_image(),
             "product_price": review.product_price(),
@@ -289,51 +289,18 @@ def review_one(request, pk):
         except User.DoesNotExist():
             return Response(status=status.HTTP_404_NOT_FOUND)
         
-        data = json.loads(request.body)
-        email = str(user.user_email)
-        reviewLike = json.loads(review.review_likeNum)
-        reviewDisLike = json.loads(review.review_dislikeNum)
-        if data["type"] == "like":
-            if email in reviewLike:
-                review.review_likeNum = json.dumps(list(set(reviewLike).difference(set(email))))
-                review.save()
-                return Response(status=status.HTTP_202_ACCEPTED)
-            elif email in reviewDisLike:
-                review.review_dislikeNum = json.dumps(list(set(reviewDisLike).difference(set(email))))
-                review.review_likeNum = json.dumps(reviewLike.append(email))
-                review.save()
-                return Response(status=status.HTTP_202_ACCEPTED)
-            else:
-                aList = reviewLike.append(email)
-                review.review_likeNum = json.dumps(aList)
-                review.save()
-                return Response(status=status.HTTP_202_ACCEPTED)
+        # data = json.loads(request.body)
+        # review_likeNum = ReviewList.objects.filter(review_id = review, type="like", user=user.id).count()
+        # review_dislikeNum = ReviewList.objects.filter(review_id = review, type="dislike", user=user.id).count()
+        # review_alert = ReviewList.objects.filter(review_id = review, type="alert", user=user.id).count()
+        # if data["type"] == "like":
 
-        elif data["type"] == "dislike":
-            if email in reviewDisLike:
-                review.review_dislikeNum = json.dumps(list(set(reviewDisLike).difference(set(email))))
-                review.save()
-                return Response(status=status.HTTP_202_ACCEPTED)
-            elif email in reviewLike:
-                review.review_likeNum = json.dumps(list(set(reviewLike).difference(set(email))))
-                review.review_dislikeNum = json.dumps(reviewDisLike.append(email))
-                review.save()
-                return Response(status=status.HTTP_202_ACCEPTED)
-            else:
-                aList = reviewDisLike.append(email)
-                review.review_dislikeNum = json.dumps(aList)
-                review.save()
-                return Response(status=status.HTTP_202_ACCEPTED)
+        # elif data["type"] == "dislike":
 
-        elif data["type"] == "alert":
-            if email in json.loads(review.review_alert):
-                return Response(status=status.HTTP_202_ACCEPTED)
-            else:
-                review.review_alert = json.dumps(json.loads(review.review_alert).append(email))
-                review.save()
-                return Response(status=status.HTTP_202_ACCEPTED)
-        else:    
-            return Response({"data": False}, status=status.HTTP_400_BAD_REQUEST)
+        # elif data["type"] == "alert":
+
+        # else:    
+        return Response({"data": False}, status=status.HTTP_400_BAD_REQUEST)
         
 
     elif request.method == 'DELETE':
