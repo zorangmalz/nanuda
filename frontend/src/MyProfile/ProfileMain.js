@@ -147,7 +147,7 @@ export default function ProfileMain() {
                             marginTop: 32,
                             marginLeft: 20,
                         }}>분할결제 진행중인 상품</div>
-                        {item.map(item=>{
+                        {item.map((item)=>{
                             <OngoingProduct 
                             img={item.wish_image}
                             date="2021.03.13"
