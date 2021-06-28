@@ -49,7 +49,7 @@ class orderUpload(View):
                 order_id="01",
                 order_price=int(user_info["params"]["myparam"][3]["Eprice"])+opt,
                 order_amount=1,
-                order_expected_date={"hi":"hi"},
+                order_expected_date=user_info["params"]["schedule"],
                 order_address_number=user_info["params"]["ship"]["addressNum"],
                 order_address=user_info["params"]["ship"]["address"],
                 order_address_detail=user_info["params"]["ship"]["addressDetail"],
