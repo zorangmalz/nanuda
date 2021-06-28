@@ -517,11 +517,12 @@ export default function OrderSheet() {
                         option: number,
                         schedule: paymentDate,
                         response:String(response),
-                        shipPrice:ship
+                        shipPrice:ship,
+                        
                     }
                 })
             })
-                .then(response => response.json())
+                .then(response => response.text())
                 .then(response => {
                     if (response.data === true) {
                         history.push("payment/success")
