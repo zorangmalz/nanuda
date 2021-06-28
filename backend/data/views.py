@@ -191,9 +191,9 @@ def review_all(request):
                 review_like=data["review_like"],
                 review_dislike=data["review_dislike"],
                 review_image=data["review_image"],
-                review_alert=list(),
-                review_likeNum=list(),
-                review_dislikeNum=list()
+                review_alert=["nanuda"],
+                review_likeNum=["nanuda"],
+                review_dislikeNum=["nanuda"]
             )
             order.review_write = True
             order.save()
