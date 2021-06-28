@@ -289,18 +289,43 @@ def review_one(request, pk):
         except User.DoesNotExist():
             return Response(status=status.HTTP_404_NOT_FOUND)
         
-        # data = json.loads(request.body)
-        # review_likeNum = ReviewList.objects.filter(review_id = review, type="like", user=user.id).count()
-        # review_dislikeNum = ReviewList.objects.filter(review_id = review, type="dislike", user=user.id).count()
-        # review_alert = ReviewList.objects.filter(review_id = review, type="alert", user=user.id).count()
-        # if data["type"] == "like":
+        data = json.loads(request.body)
+        user_like = ReviewList.objects.filter(review_id = review, type="like", user = user)
+        user_dislike = ReviewList.objects.filter(review_id = review, type="dislike", user = user)
+        user_alert = ReviewList.objects.filter(review_id = review, type="alert", user = user)
+        if data["type"] == "like":
+            if user_like.exists():
+                user_like.delete()
+                return Response({"state": 0}, status=status.HTTP_202_ACCEPTED)
+            elif user_dislike.exists():
+                user_dislike.delete()
+                ReviewList(user_id = user, review_id = review, type="like").save()
+                return Response({"state": 1}, status=status.HTTP_202_ACCEPTED)
+            else:
+                ReviewList(user_id = user, review_id = review, type="like").save()
+                return Response({"state": 1}, status=status.HTTP_202_ACCEPTED)
+            
+        elif data["type"] == "dislike":
+            if user_like.exists():
+                user_like.delete()
+                ReviewList(user_id = user, review_id = review, type="dislike").save()
+                return Response({"state": 2}, status=status.HTTP_202_ACCEPTED)
+            elif user_dislike.exists():
+                user_dislike.delete()
+                return Response({"state": 0}, status=status.HTTP_202_ACCEPTED)
+            else:
+                ReviewList(user_id = user, review_id = review, type="dislike").save()
+                return Response({"state": 2}, status=status.HTTP_202_ACCEPTED)
+        
+        elif data["type"] == "alert":
+            if user_alert.exists():
+                return Response({"state": "already exists"}, status=status.HTTP_202_ACCEPTED)
+            else:
+                ReviewList(user_id = user, review_id = review, type="alert").save()
+                return Response(status=status.HTTP_202_ACCEPTED)
 
-        # elif data["type"] == "dislike":
-
-        # elif data["type"] == "alert":
-
-        # else:    
-        return Response({"data": False}, status=status.HTTP_400_BAD_REQUEST)
+        else:    
+            return Response({"data": False}, status=status.HTTP_400_BAD_REQUEST)
         
 
     elif request.method == 'DELETE':

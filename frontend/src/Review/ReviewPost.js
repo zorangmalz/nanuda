@@ -17,8 +17,8 @@ export default function ReviewPost({ match }) {
         review_score: 0,
         review_like: "",
         review_dislike: "",
-        review_likeNum: [],
-        review_dislikeNum: [],
+        review_likeNum: 0,
+        review_dislikeNum: 0,
         review_alert: 0,
         product_name: "",
         product_image: "",
@@ -28,27 +28,6 @@ export default function ReviewPost({ match }) {
 
     //좋아요 싫어요 버튼
     const [like, setLike] = useState(0)
-    const checkUserLikeOrNot = async (code) => {
-        fetch('https://haulfree.link/userinfo/', {
-            method: "GET",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: "include",
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (code.review_likeNum.includes(res.user_email)) {
-                    setLike(1)
-                } else if (code.review_dislikeNum.includes(res.user_email)) {
-                    setLike(2)
-                } else {
-                    setLike(0)
-                }
-            })
-            .catch(err => console.log(err))
-    }
     useEffect(() => {
         const { pk } = match.params
         fetch(`https://haulfree.link/review/${pk}`, {
@@ -78,7 +57,6 @@ export default function ReviewPost({ match }) {
                     product_price: response.product_price,
                     order_price: response.order_price,
                 })
-                checkUserLikeOrNot(response)
             }).catch(error => console.log(error))
     }, [like])
 
@@ -114,8 +92,11 @@ export default function ReviewPost({ match }) {
                 type: "like"
             })
         })
-            .then(response => response.text())
-            .then(response => console.log(response))
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                setLike(response.state)
+            })
             .catch(err => console.log(err))
     }
 
@@ -131,8 +112,11 @@ export default function ReviewPost({ match }) {
                 type: "dislike"
             })
         })
-            .then(response => response.text())
-            .then(response => console.log(response))
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                setLike(response.state)
+            })
             .catch(err => console.log(err))
     }
 
