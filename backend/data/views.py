@@ -301,8 +301,8 @@ def review_one(request, pk):
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
             else:
-                aList = (review.review_likeNum).append(user.user_email)
-                review.review_likeNum = aList
+                aList = json.load(review.review_likeNum).append(user.user_email)
+                review.review_likeNum = json.dump(aList)
                 review.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
 
