@@ -44,6 +44,7 @@ export default function ProfileMain() {
             })
             .catch(err => console.log(err))
     }, [])
+    const [item,setItem]=useState([])
     async function getSchedule(){
         fetch('https://haulfree.link/order/profile', {
             method: "GET",
@@ -56,6 +57,7 @@ export default function ProfileMain() {
             .then(response => response.json())
             .then(response => {
                console.log(response)
+               setItem(response)
             })
             .catch(err => console.log(err))
     }
@@ -145,24 +147,18 @@ export default function ProfileMain() {
                             marginTop: 32,
                             marginLeft: 20,
                         }}>분할결제 진행중인 상품</div>
-                        <OngoingProduct 
-                            img={airpod}
+                        {item.map(item=>{
+                            <OngoingProduct 
+                            img={item.wish_image}
                             date="2021.03.13"
-                            title="Apple AirPods Pro 
-                            애플 에어팟 프로 1세대 무선충전형"
+                            title={item.wish_title}
                             participateNum={3}
                             participateDate="5/13"
                             complete={false}
                         />
-                        <OngoingProduct 
-                            img={airpod}
-                            date="2021.03.13"
-                            title="Apple AirPods Pro 
-                            애플 에어팟 프로 1세대 무선충전형"
-                            participateNum={2}
-                            participateDate="4/13"
-                            complete={true}
-                        />
+                        })}
+                        
+                    
                         <ManageList name="결제 수단 관리" path="profile/payment/main" />
                         <ManageList name="상품 구매 내역" path="profile/product/main" />
                         <ManageList name="내 리뷰" path="profile/review" />
