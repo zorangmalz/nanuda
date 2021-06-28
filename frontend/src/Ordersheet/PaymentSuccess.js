@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
 import { MOrderDetail, OrderDetail } from "./PaymentFail";
-import { useHistory } from "react-router";
+import { useHistory,useLocation } from "react-router";
 
 
 export default function PaymentSuccess() {
     //WishDeal인지 여부
     const [wish, setWish] = useState(true)
-
-
-
+    const location = useLocation()
+    const myparam = location.state.myparam
+    const ship = location.state.ship
+    useEffect(()=>{
+        console.log(myparam,ship)
+    },[])
+    
     //화면 변경
     let history = useHistory()
     function goHome() {
