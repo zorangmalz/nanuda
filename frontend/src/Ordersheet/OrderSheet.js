@@ -508,12 +508,14 @@ const createOid = () => {
     now_month = (now_month < 10) ? '0' + now_month : now_month
     let now_day = now_date.getDate()
     now_day = (now_day < 10) ? '0' + now_day : now_day
-    const datetime = now_date.getTime();
-    return '01-' + now_year + now_month + now_day + datetime;
+    var now_hour=now_date.getHours()
+    var now_Minute=now_date.getMinutes()
+    var now_Second=now_date.getSeconds()
+    return '01-' + String(now_year).slice(2) + now_month + now_day + now_hour+now_Minute+now_Second+"-04-0000";
 };
 useEffect(()=>{
-    console.log(createOid)
-})
+    console.log(createOid())
+},[])
     async function order(res) {
         if (basicAddress && payment) {
             // history.push("paymentsuccess",{myparam:myparam})'
@@ -534,7 +536,7 @@ useEffect(()=>{
                         schedule: paymentDate,
                         response:String(res),
                         shipPrice:ship,
-                        
+                        orderid:createOid()
                     }
                 })
             })
