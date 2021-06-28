@@ -138,7 +138,7 @@ class Order(models.Model):
     wish_des=models.CharField(default="" ,blank=True, max_length=1000)
     wish_image=models.CharField(default="" ,blank=True, max_length=1000)
     review_write = models.BooleanField(default=False)
-
+    order_complete=models.BooleanField(default=False)
     def product_name(self):
         return self.product_id.product_name
     

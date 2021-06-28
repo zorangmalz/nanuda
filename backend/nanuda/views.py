@@ -66,7 +66,8 @@ class orderUpload(View):
                 wish_des=user_info["params"]["myparam"][0]["description"],
                 wish_image=user_info["params"]["myparam"][0]["image"]["url"],
                 review_write=False,
-                order_method="배달"
+                order_method="배달",
+                order_complete=False
 
             ).save()
             return JsonResponse({"data":True})
