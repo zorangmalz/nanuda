@@ -72,27 +72,11 @@ export default function WishDealDefault() {
                 console.log(err)
                 setLoading(false)
                 history.push({
-                    pathname: "wishdeal/url/fail", 
+                    pathname: "/wishdeal/url/fail", 
                     state: { url: text }
                 })
             })
     }
-
-    const naverSearch = async () => {
-        await axios.get('/api/v1/search/shop.json', {
-            params: {
-                query: text
-            },
-            headers: {
-                'X-Naver-Client-Id': 'niz7fq7bMSOMVInWyV3w', 'X-Naver-Client-Secret': 'rfa8lA_Uu7'
-            },
-        })
-            .then(res => {
-                console.log(res["data"])
-            })
-            .catch(err => console.log(err))
-    }
-
 
     return (
         <>
@@ -265,43 +249,23 @@ export default function WishDealDefault() {
                             name="text"
                             placeholder="상품 url"
                         />
-                        {checker ?
-                            <div id="url_click" onClick={ogtag} style={{
-                                borderRadius: 6,
-                                width: 440,
-                                marginLeft: 20,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                alignSelf: "center",
+                        <div id="url_click" onClick={checker ? ogtag : () => { }} style={{
+                            borderRadius: 6,
+                            width: 440,
+                            marginLeft: 20,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            alignSelf: "center",
 
-                                marginTop: 32,
-                                backgroundColor: "#26c1f0",
+                            marginTop: 32,
+                            backgroundColor: "#26c1f0",
 
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                cursor: "pointer",
-                                textAlign: "center",
-                            }}>{loading ? <Loading></Loading> : "확인"}</div>
-                            :
-                            <div id="url_click" style={{
-                                borderRadius: 6,
-                                width: 440,
-                                marginLeft: 20,
-                                paddingTop: 15,
-                                paddingBottom: 15,
-                                alignSelf: "center",
-
-                                marginTop: 32,
-                                backgroundColor: "#dbdbdb",
-
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                cursor: "pointer",
-                                textAlign: "center",
-                            }}>{loading ? <Loading></Loading> : "확인"}</div>
-                        }
+                            color: "#ffffff",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            cursor: "pointer",
+                            textAlign: "center",
+                        }}>{loading ? <Loading /> : "확인"}</div>
                     </div>
                 </div>
             </Default>
@@ -465,41 +429,22 @@ export default function WishDealDefault() {
                             name="text"
                             placeholder="상품 url"
                         />
-                        {checker ?
-                            <div id="url_click" onClick={ogtag} style={{
-                                borderRadius: 6,
-                                width: "90vw",
-                                paddingTop: "4vw",
-                                paddingBottom: "4vw",
-                                alignSelf: "center",
+                        <div id="url_click" onClick={checker ? ogtag : () => { }} style={{
+                            borderRadius: 6,
+                            width: "90vw",
+                            paddingTop: "4vw",
+                            paddingBottom: "4vw",
+                            alignSelf: "center",
 
-                                marginTop: 32,
-                                backgroundColor: "#26c1f0",
+                            marginTop: "8vw",
+                            backgroundColor: "#26c1f0",
 
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                cursor: "pointer",
-                                textAlign: "center",
-                            }}>{loading ? <Loading></Loading> : "확인"}</div>
-                            :
-                            <div id="url_click" style={{
-                                borderRadius: 6,
-                                width: "90vw",
-                                paddingTop: "4vw",
-                                paddingBottom: "4vw",
-                                alignSelf: "center",
-
-                                marginTop: 32,
-                                backgroundColor: "#dbdbdb",
-
-                                color: "#ffffff",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                cursor: "pointer",
-                                textAlign: "center",
-                            }}>{loading ? <Loading></Loading> : "확인"}</div>
-                        }
+                            color: "#ffffff",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            cursor: "pointer",
+                            textAlign: "center",
+                        }}>{loading ? <Loading /> : "확인"}</div>
                     </div>
                 </div>
             </Mobile>
