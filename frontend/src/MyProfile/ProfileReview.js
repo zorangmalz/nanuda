@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
-import { Header, MHeader, numberWithCommas } from "../Style";
+import { Header, MHeader, NameMask, numberWithCommas } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillStar } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -22,7 +22,18 @@ export default function ProfileReview() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
+                var array = []
+                for (var i = 0; i < response["review_list"].length; i++) {
+                    array.push({
+                        id: response["review_list"][i].id,
+                        order_price: response["review_list"][i].order_price,
+                        review_image: response["review_list"][i].review_image[0],
+                        review_like: response["review_list"][i].review_like,
+                        review_score: response["review_list"][i].review_score,
+                        user_name: response["review_list"][i].user_name,
+                    })
+                }
+                setData(data.concat(array))
             })
             .catch(err => console.log(err))
     }, [])
@@ -273,17 +284,12 @@ function PostThumb({ item, mobile }) {
                 display: "flex",
                 flexDirection: "row",
             }}>
-                <img alt="프로필" src={item.user_profile} style={{
-                    width: mobile ? "8vw" : 32,
-                    height: mobile ? "8vw" : 32,
-                    borderRadius: mobile ? "4vw" : 16,
-                }} />
                 <div style={{
                     fontSize: mobile ? 12 : 14,
                     fontWeight: "bold",
                     marginLeft: mobile ? "2vw" : 8,
                     marginTop: mobile ? "1.5vw" : 6
-                }}>{item.user_nickname} </div>
+                }}>{NameMask(item.user_nickname)} </div>
             </div>
             <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
                 width: mobile ? "42vw" : 210,
@@ -323,7 +329,7 @@ function PostThumb({ item, mobile }) {
                 fontSize: mobile ? 12 : 14,
                 fontWeight: "bold",
                 fontFamily: "NotoSansCJKkr"
-            }}>{item.product_price}원에 획득 완료</div>
+            }}>{numberWithCommas(item.product_price)}원에 획득 완료</div>
         </div>
     )
 }
