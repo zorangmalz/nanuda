@@ -38,7 +38,7 @@ export default function ReviewPost({ match }) {
             },
             credentials: "include",
         })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(response => {
                 console.log(response)
                 setData({
