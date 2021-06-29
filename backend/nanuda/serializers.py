@@ -55,10 +55,10 @@ class OrderAllSerializer(serializers.ModelSerializer):
         return obj.product_price()
     
     def get_payment_history(self, obj):
-        paymentHistory = PaymentHistory.objects.filter(order_id = obj, whether_like=True)
+        paymentHistory = PaymentHistory.objects.filter(order_id = obj.id, whether_like=True)
         paymentHistory_serializer = PaymentHistorySerializer(paymentHistory, many=True)
         return paymentHistory_serializer.data
-        
+
     class Meta:
         model = Order
         fields = "__all__"
