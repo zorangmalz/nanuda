@@ -6,6 +6,7 @@ import { Header, MHeader, MStandardButton, numberWithCommas, StandardButton, Sta
 export default function ProfileProductInfo() {
     const location = useLocation()
     const history = useHistory()
+    const param= location.state.item
     const [order, setOrder] = useState({
         product_image: "",
         product_name: "",
@@ -58,7 +59,7 @@ export default function ProfileProductInfo() {
     const [modal, setModal] = useState(false)
     function check(){
         console.log("here")
-        history.push("/profile/payment/detail",{item:location.state.item})
+        history.push("/profile/payment/detail",{item:param})
     }
     return (
         <>
