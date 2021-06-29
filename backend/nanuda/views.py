@@ -83,8 +83,9 @@ class orderUpload(View):
                 else:
                     payment=False
 
-                idx=idx+1
+                
                 ).save()
+                idx=idx+1
             
             return JsonResponse({"data":True})
                 
