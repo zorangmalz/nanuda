@@ -1,5 +1,6 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import { useHistory } from "react-router";
+import { useLocation } from "react-router-dom";
 import { Default, Mobile } from "../App";
 import { Header, MHeader } from "../Style";
 
@@ -173,9 +174,12 @@ export default function WishDealNotURL() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="상품 정보 작성" goBack={true} />
-                        {/* <ETCForm 
-
-                        /> */}
+                        <ETCForm
+                            highPrice={highPrice}
+                            input={Einputs}
+                            setInput={setEInputs}
+                            mobile={false}
+                        />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -383,6 +387,12 @@ export default function WishDealNotURL() {
                         backgroundColor: "#ffffff",
                     }}>
                         <MHeader content="상품 정보 작성" goBack={true} />
+                        <ETCForm
+                            highPrice={highPrice}
+                            input={Einputs}
+                            setInput={setEInputs}
+                            mobile={true}
+                        />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 16,
@@ -593,7 +603,7 @@ const Button = ({ onClick, state, number, content, mobile }) => {
     )
 }
 
-function ETCForm({ image, brand, name, input, setInput, highPrice, mobile }) {
+function ETCForm({ brand, input, setInput, highPrice, mobile }) {
     // const { Eprice, Eetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
@@ -608,11 +618,7 @@ function ETCForm({ image, brand, name, input, setInput, highPrice, mobile }) {
             <div style={{
                 width: mobile ? "100vw" : 480,
                 height: mobile ? "45vw" : 212,
-            }}><img style={{
-                width: mobile ? "100vw" : 480,
-                height: mobile ? "45vw" : 212,
-                objectFit: "cover"
-            }} src={image}></img></div>
+            }} />
             <div style={{
                 marginTop: mobile ? "4vw" : 16,
                 marginLeft: mobile ? "5vw" : 20,
@@ -628,57 +634,40 @@ function ETCForm({ image, brand, name, input, setInput, highPrice, mobile }) {
                 fontWeight: "normal",
                 fontFamily: "AvenirNext",
                 opacity: 0.8
-            }}>{name}</div>
+            }}></div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
-                fontSize: mobile ? 16 : 18,
+                fontSize: mobile ? 14 : 16,
                 fontWeight: "bold",
                 color: "#010608",
 
                 marginTop: mobile ? "4vw" : 16,
                 marginLeft: mobile ? "5vw" : 20,
             }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
+            <input
+                placeholder="상품 가격을 입력해주세요.(필수)"
+                name="Eprice"
+                // value={Eprice}
+                onChange={onChange}
+                style={{
+                    width: mobile ? "82vw" : 408,
+                    outline: 0,
+                    border: "1px solid rgba(1, 6, 8, 0.2)",
+                    marginTop: mobile ? "4vw" : 16,
+                    marginLeft: mobile ? "5vw" : 20,
 
-                marginTop: mobile ? "4vw" : 16,
-                marginLeft: mobile ? "5vw" : 20,
-                paddingBottom: mobile ? "2vw" : 8,
-                borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                width: mobile ? "45vw" : 210,
-            }}>
-                <input
-                    placeholder="상품 가격"
-                    type="number"
-                    name="Eprice"
-                    // value={Eprice}
-                    onChange={onChange}
-                    style={{
-                        width: mobile ? "40vw" : 190,
-                        outline: 0,
-                        border: 0,
-
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: mobile ? 14 : 16,
-                        color: "#010608"
-                    }}
-                />
-                <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: mobile ? 14 : 16,
-                    fontWeight: "bold",
-                    color: "#010608"
-                }}>원</div>
-            </div>
+                    color: "#010608",
+                    padding: mobile ? "4vw" : 16,
+                    borderRadius: 6,
+                }}
+            />
             {highPrice === true ?
                 <div></div>
                 :
                 <div style={{ color: "#f72b2b", fontSize: mobile ? 14 : 16, marginLeft: mobile ? "5vw" : 20, marginTop: mobile ? "1vw" : 4 }}>최소 주문금액은 30,000원부터 입니다 </div>
             }
-
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: mobile ? 16 : 18,
@@ -686,10 +675,10 @@ function ETCForm({ image, brand, name, input, setInput, highPrice, mobile }) {
                 color: "#010608",
 
                 marginTop: mobile ? "8vw" : 32,
-                marginLeft: mobile ? "5vw" : 20,
-            }}>기타 옵션을 입력해주세요. </div>
+                marginLeft: mobile ? "5vw" : 0,
+            }}>상품의 옵션이 있다면 입력해주세요.</div>
             <input
-                placeholder="하나는 딸기맛, 하나는 포도맛으로 해주세요."
+                placeholder="색상, 사이즈 같은 추가 옵션을 입력해주세요."
                 name="Eetc"
                 // value={Eetc}
                 onChange={onChange}
@@ -699,13 +688,13 @@ function ETCForm({ image, brand, name, input, setInput, highPrice, mobile }) {
                     marginLeft: mobile ? "5vw" : 20,
                     alignSelf: "center",
                     outline: 0,
-                    border: 0,
                     paddingBottom: 8,
-                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
+                    border: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
                     fontSize: mobile ? 14 : 16,
                     color: "#010608",
+                    borderRadius: 6,
                 }}
             />
         </>
