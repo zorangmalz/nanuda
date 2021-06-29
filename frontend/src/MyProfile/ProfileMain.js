@@ -324,7 +324,7 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
         var splited=id.split("-")
         setDates("20"+splited[1].slice(0,2)+"."+splited[1].slice(2,4)+"."+splited[1].slice(4,6))
         
-        for (var i=0;i<total.payment_history.length();i++){
+        for (var i=0;i<total.payment_history.length;i++){
             if(total.payment_history[i].payment==false){
                 setTimes(total.payment_history[i].num)
                 setExpected(total.payment_history[i].date)
