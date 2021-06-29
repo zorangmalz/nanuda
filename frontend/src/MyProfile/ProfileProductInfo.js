@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useHistory } from "react-router-dom";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, MStandardButton, numberWithCommas, StandardButton, StandardChoiceModal } from "../Style";
 
 export default function ProfileProductInfo() {
     const location = useLocation()
-
+    const history = useHistory()
     const [order, setOrder] = useState({
         product_image: "",
         product_name: "",
@@ -58,6 +58,7 @@ export default function ProfileProductInfo() {
     const [modal, setModal] = useState(false)
     function check(){
         console.log("here")
+        history.push("/profile/payment/detail")
     }
     return (
         <>
