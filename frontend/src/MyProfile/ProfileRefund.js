@@ -271,7 +271,7 @@ function RefundProblem({ text, value, onChange, name, state, num, onClick, mobil
                         marginTop: mobile ? "4vw" : 16,
                         marginLeft: mobile ? "5vw" : 20,
                         fontFamily: "NotoSansCJKkr",
-                        fontSize: 16,
+                        fontSize: mobile ? 14 : 16,
                         color: "#010608",
                         outline: 0,
                         border: 0,
@@ -296,7 +296,7 @@ function RefundCheck({ state, setState, text, mobile }) {
             cursor: "pointer",
             marginLeft: mobile ? "5vw" : 20,
         }}>
-            <BsCheck onClick={() => setState(!state)} size={mobile ? 20 : 24} color={state ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} style={{ marginTop: mobile ? "1vw" : 4 }} />
+            <BsCheck onClick={() => setState(!state)} size={mobile ? 20 : 24} color={state ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} style={{ marginTop: mobile ? "1.5vw" : 6 }} />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: mobile ? 14 : 16,
