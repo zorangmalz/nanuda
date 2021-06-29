@@ -328,6 +328,7 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
             if(total.payment_history[i].payment==false){
                 setTimes(total.payment_history[i].num)
                 setExpected(total.payment_history[i].date)
+                break
             }
         }
     }
