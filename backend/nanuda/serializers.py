@@ -55,7 +55,7 @@ class OrderAllSerializer(serializers.ModelSerializer):
         return obj.product_price()
     
     def get_payment_history(self, obj):
-        paymentHistory = PaymentHistory.objects.filter(order_id = obj.id, whether_like=True)
+        paymentHistory = PaymentHistory.objects.filter(order_id = obj.id)
         paymentHistory_serializer = PaymentHistorySerializer(paymentHistory, many=True)
         return paymentHistory_serializer.data
 
@@ -106,7 +106,7 @@ class WishAllSerializer(serializers.ModelSerializer):
     payment_history = serializers.SerializerMethodField()
 
     def get_payment_history(self, obj):
-        paymentHistory = PaymentHistory.objects.filter(wish_id = obj.id, whether_like=True)
+        paymentHistory = PaymentHistory.objects.filter(wish_id = obj.id)
         paymentHistory_serializer = PaymentHistorySerializer(paymentHistory, many=True)
         return paymentHistory_serializer.data
 
