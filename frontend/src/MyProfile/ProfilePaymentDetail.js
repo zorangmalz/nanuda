@@ -281,7 +281,7 @@ function PayInfo({ num, date, state, payback }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 18,
                         fontWeight: "bold",
-                        color: state === 0 ? "rgba(1, 6, 8, 0.6)" : state === 1 ? "#26c1f0" : "#f72b2b",
+                        color: state === true ? "rgba(1, 6, 8, 0.6)" : state === false ? "#26c1f0" : "#f72b2b",
                     }}>{state === true ? "결제완료" : state === false ? "결제 예정" : "연체"}</div>
                 </div>
                 <div style={{
