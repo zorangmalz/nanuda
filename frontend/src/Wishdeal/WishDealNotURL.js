@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { useLocation } from "react-router-dom";
 import { Default, Mobile } from "../App";
 import { Header, MHeader } from "../Style";
+import { BiPlusCircle } from "react-icons/bi"
 
 function reducerA(state, action) {
     switch (action.type) {
@@ -569,23 +570,20 @@ function ETCForm({ brand, input, setInput, highPrice, mobile }) {
             <div style={{
                 width: mobile ? "100vw" : 480,
                 height: mobile ? "45vw" : 212,
-            }} />
-            <div style={{
-                marginTop: mobile ? "4vw" : 16,
-                marginLeft: mobile ? "5vw" : 20,
-
-                fontFamily: "AvenirNext",
-                fontWeight: "bold",
-                fontSize: mobile ? 18 : 21,
-            }}>{brand}</div>
-            <div style={{
-                marginTop: mobile ? "4vw" : 16,
-                marginLeft: mobile ? "5vw" : 20,
-                fontsize: mobile ? 16 : 18,
-                fontWeight: "normal",
-                fontFamily: "AvenirNext",
-                opacity: 0.8
-            }}></div>
+                backgroundColor: "#f2f3f8",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <BiPlusCircle size={mobile ? 28 : 32} color="#010608" style={{ cursor: "pointer" }} />
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 14 : 16,
+                    color: "#010608",
+                    marginTop: mobile ? "8vw" : 32,
+                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
+            </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: mobile ? 16 : 18,
