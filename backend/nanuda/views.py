@@ -19,7 +19,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.parsers import JSONParser
 
 # Model Import 
-from nanuda.models import User, ServiceReview, Product, Review, Order, WishDeal
+from nanuda.models import User, ServiceReview, Product, Review, Order, WishDeal,PaymentHistory
 from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
 
 #Python 내장함수
@@ -70,6 +70,11 @@ class orderUpload(View):
                 order_complete=False
 
             ).save()
+            # wish=WishDeal.objects.get()
+            # PaymentHistory(
+            #     user_id=user,
+
+            # ).save()
             return JsonResponse({"data":True})
                 
 #서비스 리뷰 조회(작성 or not)
