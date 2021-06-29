@@ -58,7 +58,7 @@ export default function ProfileProductInfo() {
     const [modal, setModal] = useState(false)
     function check(){
         console.log("here")
-        history.push("/profile/payment/detail")
+        history.push("/profile/payment/detail",{item:location.state.iten})
     }
     return (
         <>
