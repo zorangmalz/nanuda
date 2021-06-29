@@ -326,7 +326,7 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
         
         for (var i =0; i<4;i++){
             if(Number((total.order_expected_date[i].date).split("/")[0])>=(Number(month)+1)){
-                if(Number((total.order_expected_date[i].date).split("/")[1])>=Number(day)){
+                if(Number((total.order_expected_date[i].date).split("/")[1])>Number(day)){
                     setTimes(total.order_expected_date[i].num)
                     setExpected(total.order_expected_date[i].date)
                     break
