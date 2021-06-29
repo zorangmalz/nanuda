@@ -296,7 +296,7 @@ function RefundCheck({ state, setState, text, mobile }) {
             cursor: "pointer",
             marginLeft: mobile ? "5vw" : 20,
         }}>
-            <BsCheck onClick={() => setState(!state)} size={mobile ? 20 : 24} color={state ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} style={{ marginTop: mobile ? "0.5vw" : 2 }} />
+            <BsCheck onClick={() => setState(!state)} size={mobile ? 20 : 24} color={state ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} style={{ marginTop: mobile ? "1vw" : 4 }} />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: mobile ? 14 : 16,
