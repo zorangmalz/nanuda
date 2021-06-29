@@ -3,6 +3,7 @@ import { BsCheck } from "react-icons/bs";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, StandardButton, MStandardButton, numberWithCommas } from "../Style";
+import "../css/haulfree.css"
 
 function reducer(state, action) {
     switch (action.type) {
@@ -91,10 +92,10 @@ export default function ProfileRefund() {
                             marginTop: 16,
                             marginLeft: 20,
                         }}>어떤 문제가 있었나요?</div>
-                        <RefundProblem text="단순 변심" value={reason} onChange={onChange} onClick={onSIMPLE} state={refund} num={1} mobile={false} />
-                        <RefundProblem text="제품 불량" value={reason} onChange={onChange} onClick={onPRODUCT} state={refund} num={2} mobile={false} />
-                        <RefundProblem text="오배송" value={reason} onChange={onChange} onClick={onERROR} state={refund} num={3} mobile={false} />
-                        <RefundProblem text="기타" value={reason} onChange={onChange} onClick={onETC} state={refund} num={4} mobile={false} />
+                        <RefundProblem text="단순 변심" name="reason" value={reason} onChange={onChange} onClick={onSIMPLE} state={refund} num={1} mobile={false} />
+                        <RefundProblem text="제품 불량" name="reason" value={reason} onChange={onChange} onClick={onPRODUCT} state={refund} num={2} mobile={false} />
+                        <RefundProblem text="오배송" name="reason" value={reason} onChange={onChange} onClick={onERROR} state={refund} num={3} mobile={false} />
+                        <RefundProblem text="기타" name="reason" value={reason} onChange={onChange} onClick={onETC} state={refund} num={4} mobile={false} />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -141,7 +142,7 @@ function Product({ img, date, title, price, mobile }) {
                 display: "flex",
                 flexDirection: "column",
                 marginTop: mobile ? "8vw" : 32,
-                paddingBottom: mobile ? "2vw" : 8,
+                paddingBottom: mobile ? "4vw" : 16,
                 width: mobile ? "90vw" : 440,
                 borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                 marginLeft: mobile ? "5vw" : 20
@@ -200,7 +201,7 @@ function Product({ img, date, title, price, mobile }) {
     )
 }
 
-function RefundProblem({ text, value, onChange, state, num, onClick, mobile }) {
+function RefundProblem({ text, value, onChange, name, state, num, onClick, mobile }) {
     return (
         <>
             <div style={{
@@ -213,18 +214,20 @@ function RefundProblem({ text, value, onChange, state, num, onClick, mobile }) {
                 cursor: "pointer",
                 marginLeft: mobile ? "5vw" : 20,
             }}>
-                <BsCheck onClick={onClick} size={mobile ? 20 : 24} color={state === num ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} style={{ marginTop: mobile ? "2vw" : 8 }} />
+                <BsCheck onClick={onClick} size={mobile ? 20 : 24} color={state === num ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} style={{ marginTop: mobile ? "0.5vw" : 2 }} />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: mobile ? 14 : 16,
                     color: "#010608",
                     marginLeft: mobile ? "2vw" : 8,
+                    opacity: 0.6,
                 }}>{text}</div>
             </div>
             {state === num ?
                 <textarea
+                    className="input-module"
                     placeholder="상세 사유를 작성해주세요.(최대 100자)"
-                    name={`${value}`}
+                    name={name}
                     value={value}
                     onChange={onChange}
                     style={{
@@ -261,7 +264,7 @@ function RefundCheck({ state, setState, text, mobile }) {
             cursor: "pointer",
             marginLeft: mobile ? "5vw" : 20,
         }}>
-            <BsCheck onClick={() => setState(!state)} size={mobile ? 20 : 24} color={state ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} style={{ marginTop: mobile ? "2vw" : 8 }} />
+            <BsCheck onClick={() => setState(!state)} size={mobile ? 20 : 24} color={state ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} style={{ marginTop: mobile ? "0.5vw" : 2 }} />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: mobile ? 14 : 16,
