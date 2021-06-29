@@ -535,7 +535,7 @@ const Button = ({ onClick, state, number, content, mobile }) => {
     )
 }
 
-function ETCForm({ brand, input, setInput, highPrice, mobile }) {
+function ETCForm({ input, setInput, highPrice, mobile }) {
     const { Eprice, Eetc } = input
     const onChange = (e) => {
         const { value, name } = e.target

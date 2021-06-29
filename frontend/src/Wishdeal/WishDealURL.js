@@ -650,6 +650,7 @@ function ETCForm({ image, brand, name, input, setInput, highPrice, mobile }) {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: mobile ? 14 : 16,
                     color: "#010608",
+                    borderRadius: 6,
                 }}
             />
         </>
