@@ -81,16 +81,17 @@ export default function OrderSheet() {
             .then(response => response.json())
             .then(res => {
                 console.log(res)
-                if (res.data === false) {
-                    setBasicAddress(false)
-                } else {
+                var len = res.length
+                if (len > 0) {
                     setBasicAddress(true)
-                    setA(res[0].temp_receiver)
-                    setB(res[0].address_number)
-                    setC(res[0].address)
-                    setD(res[0].address_detail)
-                    setE(res[0].temp_phone_number)
-                    setF(res[0].temp_claim)
+                    setA(res[len - 1].temp_receiver)
+                    setB(res[len - 1].address_number)
+                    setC(res[len - 1].address)
+                    setD(res[len - 1].address_detail)
+                    setE(res[len - 1].temp_phone_number)
+                    setF(res[len - 1].temp_claim)
+                } else {
+                    setBasicAddress(false)
                 }
             }).catch(err => {
                 console.log(err)

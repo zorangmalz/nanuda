@@ -2,7 +2,8 @@ import React, { useReducer, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useLocation } from "react-router-dom";
 import { Default, Mobile } from "../App";
-import { Header, MHeader } from "../Style";
+import { Header, MHeader, StandardButton, MStandardButton } from "../Style";
+import { BiPlusCircle } from "react-icons/bi"
 
 function reducerA(state, action) {
     switch (action.type) {
@@ -165,13 +166,13 @@ export default function WishDealNotURL() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-
                         justifyContent: "flex-start",
 
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
-                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)",
+                        paddingBottom: 40,
                     }}>
                         <Header content="상품 정보 작성" goBack={true} />
                         <ETCForm
@@ -323,22 +324,12 @@ export default function WishDealNotURL() {
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                         </div>
-                        <div onClick={() => history.push("/ordersheet")} style={{
-                            borderRadius: 8,
-                            width: 440,
-                            paddingTop: 15,
-                            paddingBottom: 15,
-                            alignSelf: "center",
-                            marginTop: 32,
-                            backgroundColor: "#26c1f0",
-
-                            color: "#ffffff",
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            textAlign: "center",
-                            marginBottom: 150,
-                            cursor: "pointer",
-                        }}>다음</div>
+                        <StandardButton
+                            marginTop={32}
+                            text="다음"
+                            onClick={next ? NextPage : () => {}}
+                            state={next}
+                        />
                     </div>
                 </div>
             </Default>
@@ -355,12 +346,12 @@ export default function WishDealNotURL() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-
                         justifyContent: "flex-start",
 
                         width: "100%",
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        paddingBottom: "10vw",
                     }}>
                         <MHeader content="상품 정보 작성" goBack={true} />
                         <ETCForm
@@ -512,22 +503,12 @@ export default function WishDealNotURL() {
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                         </div>
-                        <div onClick={() => history.push("/ordersheet")} style={{
-                            borderRadius: 8,
-                            width: "90vw",
-                            paddingTop: "4vw",
-                            paddingBottom: "4vw",
-                            alignSelf: "center",
-                            marginTop: "8vw",
-                            backgroundColor: "#26c1f0",
-
-                            color: "#ffffff",
-                            fontSize: 16,
-                            fontWeight: "bold",
-                            textAlign: "center",
-                            marginBottom: 80,
-                            cursor: "pointer",
-                        }}>다음</div>
+                        <MStandardButton
+                            marginTop={"8vw"}
+                            text="다음"
+                            onClick={next ? NextPage : () => {}}
+                            state={next}
+                        />
                     </div>
                 </div>
             </Mobile>
@@ -555,7 +536,7 @@ const Button = ({ onClick, state, number, content, mobile }) => {
 }
 
 function ETCForm({ brand, input, setInput, highPrice, mobile }) {
-    // const { Eprice, Eetc } = input
+    const { Eprice, Eetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
         setInput({
@@ -569,23 +550,20 @@ function ETCForm({ brand, input, setInput, highPrice, mobile }) {
             <div style={{
                 width: mobile ? "100vw" : 480,
                 height: mobile ? "45vw" : 212,
-            }} />
-            <div style={{
-                marginTop: mobile ? "4vw" : 16,
-                marginLeft: mobile ? "5vw" : 20,
-
-                fontFamily: "AvenirNext",
-                fontWeight: "bold",
-                fontSize: mobile ? 18 : 21,
-            }}>{brand}</div>
-            <div style={{
-                marginTop: mobile ? "4vw" : 16,
-                marginLeft: mobile ? "5vw" : 20,
-                fontsize: mobile ? 16 : 18,
-                fontWeight: "normal",
-                fontFamily: "AvenirNext",
-                opacity: 0.8
-            }}></div>
+                backgroundColor: "#f2f3f8",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <BiPlusCircle size={mobile ? 28 : 32} color="#010608" style={{ cursor: "pointer" }} />
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 14 : 16,
+                    color: "#010608",
+                    marginTop: mobile ? "8vw" : 32,
+                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
+            </div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: mobile ? 16 : 18,
@@ -598,7 +576,7 @@ function ETCForm({ brand, input, setInput, highPrice, mobile }) {
             <input
                 placeholder="상품 가격을 입력해주세요.(필수)"
                 name="Eprice"
-                // value={Eprice}
+                value={Eprice}
                 onChange={onChange}
                 style={{
                     width: mobile ? "82vw" : 408,
@@ -631,7 +609,7 @@ function ETCForm({ brand, input, setInput, highPrice, mobile }) {
             <input
                 placeholder="색상, 사이즈 같은 추가 옵션을 입력해주세요."
                 name="Eetc"
-                // value={Eetc}
+                value={Eetc}
                 onChange={onChange}
                 style={{
                     marginTop: mobile ? "4vw" : 16,
