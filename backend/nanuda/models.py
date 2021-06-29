@@ -259,7 +259,8 @@ class ReviewList(models.Model):
 class PaymentHistory(models.Model):
     id = models.BigAutoField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order_id = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
+    wish_id = models.ForeignKey(WishDeal, on_delete=models.CASCADE, null=True, blank=True)
     date = models.CharField(default="", max_length=30)
     payment = models.BooleanField(default=False)
 
