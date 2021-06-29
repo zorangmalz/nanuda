@@ -46,6 +46,7 @@ import TimeDeal from './TimeDeal/TimeDeal';
 import Alarm from './Alarm/Alarm';
 import TimeDealDetail from "./TimeDeal/TimeDealDetail"
 import ProfileVerificationSuccess from './MyProfile/ProfileVerificationSuccess';
+import ProfileRefund from './MyProfile/ProfileRefund';
 
 
 export const Default = ({ children }) => {
@@ -94,6 +95,7 @@ function App() {
         <Route path="/profile/edit" component={ProfileEdit} />
         <Route path="/profile/address/edit" component={ProfileAddressEdit} />
         <Route path="/profile/payment/main" component={ProfilePayment} />
+        <Route path="/profile/payment/refund" component={ProfileRefund} />
         <Route path="/profile/payment/success" component={ProfilePaymentSuccess} />
         <Route path="/profile/payment/fail" component={ProfilePaymentFail} />
         <Route path="/profile/payment/detail" component={ProfilePaymentDetail} />
