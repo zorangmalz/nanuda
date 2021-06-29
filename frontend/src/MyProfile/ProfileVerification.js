@@ -336,6 +336,7 @@ export default function ProfileVerification() {
                             state={
                                 number === 6 && job.length > 0 && selectedFile.length > 0 ? true : number != 0 && selectedFile.length > 0 && number != 6 ? true : false
                             }
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -490,6 +491,7 @@ export default function ProfileVerification() {
                         state={
                             number === 6 && job.length > 0 && selectedFile.length > 0 ? true : number != 0 && selectedFile.length > 0 && number != 6 ? true : false
                         }
+                        marginBottom={"10vw"}
                     />
                 </div>
             </Mobile>

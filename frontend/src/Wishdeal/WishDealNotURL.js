@@ -172,7 +172,6 @@ export default function WishDealNotURL() {
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)",
-                        paddingBottom: 40,
                     }}>
                         <Header content="상품 정보 작성" goBack={true} />
                         <ETCForm
@@ -329,6 +328,7 @@ export default function WishDealNotURL() {
                             text="다음"
                             onClick={next ? NextPage : () => {}}
                             state={next}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -351,7 +351,6 @@ export default function WishDealNotURL() {
                         width: "100%",
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
-                        paddingBottom: "10vw",
                     }}>
                         <MHeader content="상품 정보 작성" goBack={true} />
                         <ETCForm
@@ -508,6 +507,7 @@ export default function WishDealNotURL() {
                             text="다음"
                             onClick={next ? NextPage : () => {}}
                             state={next}
+                            marginBottom={"10vw"}
                         />
                     </div>
                 </div>

@@ -181,6 +181,7 @@ export default function ProfileAddressEdit() {
                             text="수정 완료"
                             onClick={() => history.goBack()}
                             state={true}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -251,6 +252,7 @@ export default function ProfileAddressEdit() {
                         text="수정 완료"
                         onClick={() => history.goBack()}
                         state={true}
+                        marginBottom={"10vw"}
                     />
                 </div>
             </Mobile>

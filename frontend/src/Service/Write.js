@@ -225,8 +225,8 @@ export default function Write() {
                             marginTop={32}
                             text="작성 완료"
                             state={inputs.after.length > 0 && inputs.opinion.length > 0 ? true : false}
+                            marginBottom={40}
                         />
-                        <div style={{ marginBottom: 40 }} />
                     </div>
                 </div>
             </Default>
@@ -360,8 +360,8 @@ export default function Write() {
                         marginTop={32}
                         text="작성 완료"
                         state={inputs.after.length > 0 && inputs.opinion.length > 0 ? true : false}
+                        marginBottom={"10vw"}
                     />
-                    <div style={{ marginBottom: "10vw" }} />
                 </div>
             </Mobile>
         </>

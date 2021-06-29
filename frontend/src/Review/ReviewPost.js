@@ -332,6 +332,7 @@ export default function ReviewPost({ match }) {
                             text="위시딜 신청하기"
                             onClick={() => history.push("/wishdeal/default")}
                             state={true}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -516,6 +517,7 @@ export default function ReviewPost({ match }) {
                         text="위시딜 신청하기"
                         onClick={() => history.push("/wishdeal/default")}
                         state={true}
+                        marginBottom={"10vw"}
                     />
                 </div>
             </Mobile>

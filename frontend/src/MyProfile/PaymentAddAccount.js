@@ -58,6 +58,7 @@ export default function PaymentAddAccount() {
                             text="다음"
                             onClick={() => history.push("/paymentaccountveri")}
                             state={true}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -102,6 +103,7 @@ export default function PaymentAddAccount() {
                         text="다음"
                         onClick={() => history.push("/paymentaccountveri")}
                         state={true}
+                        marginBottom={"10vw"}
                     />
                 </div>
             </Mobile>

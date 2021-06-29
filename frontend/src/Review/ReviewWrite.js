@@ -257,6 +257,7 @@ export default function ReviewWrite() {
                             marginTop={40}
                             text="다음"
                             state={inputs.like.length > 0 && inputs.dislike.length > 0 && filePath.length > 0 && number > 0 ? true : false}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -393,6 +394,7 @@ export default function ReviewWrite() {
                         marginTop={20}
                         text="다음"
                         state={inputs.like.length > 0 && inputs.dislike.length > 0 && filePath.length > 0 && number > 0 ? true : false}
+                        marginBottom={"10vw"}
                     />
                 </div>
             </Mobile>

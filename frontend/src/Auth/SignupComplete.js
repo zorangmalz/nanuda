@@ -53,6 +53,7 @@ export default function SingupComplete() {
                             marginTop={32}
                             onClick={() => history.replace("/")}
                             state={true}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -95,6 +96,7 @@ export default function SingupComplete() {
                         marginTop={"8vw"}
                         onClick={() => history.replace("/")}
                         state={true}
+                        marginBottom={"10vw"}
                     />
                 </div>
             </Mobile>

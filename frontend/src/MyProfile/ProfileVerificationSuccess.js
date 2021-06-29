@@ -70,6 +70,7 @@ export default function ProfileVerificationSuccess() {
                             text="홈으로"
                             onClick={goHome}
                             state={true}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -121,6 +122,7 @@ export default function ProfileVerificationSuccess() {
                         text="홈으로"
                         onClick={goHome}
                         state={true}
+                        marginBottom={"10vw"}
                     />
                 </div>
             </Mobile>

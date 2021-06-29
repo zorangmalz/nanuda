@@ -377,6 +377,7 @@ export default function Address() {
                             onClick={next ? send : () => {}}
                             state={next}
                             text={"수정완료"}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -557,7 +558,8 @@ export default function Address() {
                         onClick={next ? send : () => {}}
                         state={next}
                         text={"수정완료"}
-                    ></MStandardButton>
+                        marginBottom={"10vw"}
+                    />
                 </div>
             </Mobile>
         </>
