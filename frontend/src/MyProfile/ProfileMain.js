@@ -322,18 +322,22 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
 
         var id=total.order_id
         var splited=id.split("-")
-        setDates("20"+splited.slice(0,2)+"."+splited.slice(2,4)+"."+splited.slice(4,6))
+        setDates("20"+splited[1].slice(0,2)+"."+splited[1].slice(2,4)+"."+splited[1].slice(4,6))
         
         for (var i =0; i<4;i++){
             if(Number((total.order_expected_date[i].date).split("/")[0])>=(Number(month)+1)){
                 if(Number((total.order_expected_date[i].date).split("/")[1])>=Number(day)){
                     setTimes(total.order_expected_date[i].num)
                     setExpected(total.order_expected_date[i].date)
+                    break
                 }
             }
         }
         
     }
+    useEffect(()=>{
+        compareDate()
+    },[])
     return (
         <>
             <div style={{
