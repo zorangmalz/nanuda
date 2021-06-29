@@ -394,6 +394,29 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
 }
 
 const MOngoingProduct = ({ img, date, title, participateDate, participateNum, complete }) => {
+    const [expected, setExpected] = useState("")
+    const [times, setTimes] = useState("")
+    const [dates, setDates] = useState("")
+    function compareDate() {
+        var today = new Date()
+        var month = today.getMonth()
+        var day = today.getDate()
+
+        var id = total.order_id
+        var splited = id.split("-")
+        setDates("20" + splited[1].slice(0, 2) + "." + splited[1].slice(2, 4) + "." + splited[1].slice(4, 6))
+
+        for (var i = 0; i < total.payment_history.length; i++) {
+            if (total.payment_history[i].payment == false) {
+                setTimes(total.payment_history[i].num)
+                setExpected(total.payment_history[i].date)
+                break
+            }
+        }
+    }
+    useEffect(() => {
+        compareDate()
+    }, [])
     return (
         <>
             <div style={{
@@ -421,7 +444,7 @@ const MOngoingProduct = ({ img, date, title, participateDate, participateNum, co
                         opacity: 0.6,
                         fontSize: 14,
                         color: "#010608",
-                    }}>{date}</div>
+                    }}>{dates}</div>
                     <div style={{
                         maxWidth: "55vw",
                         fontSize: 14,
@@ -432,7 +455,7 @@ const MOngoingProduct = ({ img, date, title, participateDate, participateNum, co
                         fontSize: 16,
                         color: "#26c1f0",
                         fontWeight: "bold",
-                    }}>{participateNum}차 결제 예정 ({participateDate})</div>
+                    }}>{times}차 결제 예정 ({expected})</div>
                 </div>
                 <MdKeyboardArrowRight size={24} color="#010608" />
             </div>
