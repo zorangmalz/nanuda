@@ -121,7 +121,44 @@ class Order(models.Model):
     order_amount = models.PositiveIntegerField(default=0)
     order_method = models.CharField(default="배달", max_length=10)
     order_expected_date = models.JSONField(default=dict)
-    # order_upfront_date = models.DateTimeField(blank=True,default="")
+    order_receiver = models.CharField(default="수령인", max_length=30)
+    order_address_number = models.TextField(default="우편번호")
+    order_address = models.TextField(default="주소")
+    order_address_detail = models.TextField(default="상세주소")
+    order_phone_number = models.CharField(default="", max_length=30)
+    order_request = models.TextField(default="주문 요청사항")
+    order_pay = models.TextField(default="")
+    order_detail=models.CharField(default="", blank=True,max_length=100)
+    order_total = models.TextField(default="")
+    order_shipPrice=models.PositiveIntegerField(default=0)
+    review_write = models.BooleanField(default=False)
+    order_complete=models.BooleanField(default=False)
+
+    def product_name(self):
+        return self.product_id.product_name
+    
+    def product_image(self):
+        return self.product_id.product_image
+    
+    def product_price(self):
+        return self.product_id.product_price
+    
+    def __str__(self):
+        return "{}".format(self.user_id)
+    
+    class Meta:
+        ordering = ["id", "order_date"]
+        managed=True
+
+class WishDeal(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    order_id=models.CharField(default="01210413135901010000", blank=False, max_length=30)
+    order_date = models.DateTimeField(auto_now_add=True)
+    order_price = models.PositiveIntegerField(default=30000)
+    order_amount = models.PositiveIntegerField(default=0)
+    order_method = models.CharField(default="배달", max_length=10)
+    order_expected_date = models.JSONField(default=dict)
     order_receiver = models.CharField(default="수령인", max_length=30)
     order_address_number = models.TextField(default="우편번호")
     order_address = models.TextField(default="주소")
@@ -139,14 +176,6 @@ class Order(models.Model):
     wish_image=models.CharField(default="" ,blank=True, max_length=1000)
     review_write = models.BooleanField(default=False)
     order_complete=models.BooleanField(default=False)
-    def product_name(self):
-        return self.product_id.product_name
-    
-    def product_image(self):
-        return self.product_id.product_image
-    
-    def product_price(self):
-        return self.product_id.product_price
     
     def __str__(self):
         return "{}".format(self.user_id)
