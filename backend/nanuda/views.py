@@ -78,7 +78,8 @@ class orderUpload(View):
                 wish_id=wish,
                 num=i["num"],
                 date=i["date"],
-                payment=idx
+                payment=idx,
+                money=i["money"]
                 ).save()
                 idx=False
             
