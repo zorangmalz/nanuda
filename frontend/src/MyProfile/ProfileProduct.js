@@ -20,17 +20,20 @@ export default function ProfileProduct() {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 if (response != null && response != undefined) {
                     var array = []
-                    for (var i = 0; i < response["data"].length; i++) {
+                    for (var i = 0; i < response.length; i++) {
                         array.push({
-                            "order_date": response["data"][i].order_date.slice(0, 10),
-                            "order_price": response["data"][i].order_price,
-                            "product_id": response["data"][i].product_id,
-                            "product_name": response["data"][i].product_name,
-                            "product_image": response["data"][i].product_image,
-                            "product_price": response["data"][i].product_price,
-                            "review_write": response["data"][i].review_write,
+                            "order_date": response[i].order_date.slice(0, 10),
+                            "order_price": response[i].order_price,
+                            "product_id": response[i].product_id,
+                            "product_name": response[i].product_name,
+                            "product_image": response[i].product_image,
+                            "product_price": response[i].product_price,
+                            "review_write": response[i].review_write,
+                            "wish_image": response[i].wish_image,
+                            "wish_title": response[i].wish_title
                         })
                     }
                     setOrderData(orderData.concat(array))
@@ -67,11 +70,11 @@ export default function ProfileProduct() {
                         <div style={{ marginTop: 16 }} />
                         {orderData.map(item => (
                             <ProductState
-                                img={item.product_image.length > 0 ? item.product_image : mainlogo}
+                                img={item.product_image ? item.product_image : item.wish_image}
                                 date={item.order_date}
-                                title={item.product_name}
-                                price={item.product_price}
-                                product_id={item.product_id}
+                                title={item.product_name ? item.product_name : item.wish_title}
+                                price={item.product_price ? item.product_price : item.order_price}
+                                product_id={item.product_id ? item.product_id : ""}
                                 mobile={false}
                             />
                         ))}
@@ -93,11 +96,11 @@ export default function ProfileProduct() {
                     <div style={{ marginTop: "4vw" }} />
                     {orderData.map(item => (
                         <ProductState
-                            img={item.product_image.length > 0 ? item.product_image : mainlogo}
+                            img={item.product_image ? item.product_image : item.wish_image}
                             date={item.order_date}
-                            title={item.product_name}
-                            price={item.product_price}
-                            product_id={item.product_id}
+                            title={item.product_name ? item.product_name : item.wish_title}
+                            price={item.product_price ? item.product_price : item.order_price}
+                            product_id={item.product_id ? item.product_id : ""}
                             mobile={true}
                         />
                     ))}
