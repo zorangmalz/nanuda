@@ -556,7 +556,7 @@ const Button = ({ onClick, state, number, content, mobile }) => {
 }
 
 function ETCForm({ brand, input, setInput, highPrice, mobile }) {
-    // const { Eprice, Eetc } = input
+    const { Eprice, Eetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
         setInput({
@@ -596,7 +596,7 @@ function ETCForm({ brand, input, setInput, highPrice, mobile }) {
             <input
                 placeholder="상품 가격을 입력해주세요.(필수)"
                 name="Eprice"
-                // value={Eprice}
+                value={Eprice}
                 onChange={onChange}
                 style={{
                     width: mobile ? "82vw" : 408,
@@ -629,7 +629,7 @@ function ETCForm({ brand, input, setInput, highPrice, mobile }) {
             <input
                 placeholder="색상, 사이즈 같은 추가 옵션을 입력해주세요."
                 name="Eetc"
-                // value={Eetc}
+                value={Eetc}
                 onChange={onChange}
                 style={{
                     marginTop: mobile ? "4vw" : 16,
