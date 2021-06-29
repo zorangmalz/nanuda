@@ -255,3 +255,17 @@ class ReviewList(models.Model):
     class Meta:
         ordering = ["user_id", "review_id"]
         managed = True
+
+class PaymentHistory(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+    date = models.CharField(default="", max_length=30)
+    payment = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user_id.name
+    
+    class Meta:
+        ordering = ["user_id", "order_id"]
+        managed = True

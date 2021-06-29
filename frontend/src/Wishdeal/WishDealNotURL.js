@@ -188,7 +188,7 @@ export default function WishDealNotURL() {
 
                             marginTop: 32,
                             marginLeft: 20,
-                        }}>옵션 선택에 따른 추가 비용이 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
+                        }}>옵션에 따른 추가 가격이 있나요?</div>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -214,37 +214,25 @@ export default function WishDealNotURL() {
                         </div>
                         {number === 2 ?
                             <>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
+                                <input
+                                    placeholder="추가 비용을 입력해주세요."
+                                    name="option"
+                                    value={option}
+                                    onChange={onChange}
+                                    style={{
+                                        width: 408,
+                                        outline: 0,
+                                        border: "1px solid rgba(1, 6, 8, 0.2)",
+                                        marginTop: 16,
+                                        marginLeft: 20,
 
-                                    marginTop: 16,
-                                    marginLeft: 20,
-                                    paddingBottom: 8,
-                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                                    width: 240,
-                                }}>
-                                    <input
-                                        placeholder="추가 비용을 입력해주세요."
-                                        style={{
-                                            width: 210,
-                                            outline: 0,
-                                            border: 0,
-
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontSize: 16,
-                                            color: "#010608"
-                                        }}
-                                    />
-                                    <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
-                                        fontWeight: "bold",
-                                        color: "#010608"
-                                    }}>원</div>
-                                </div>
+                                        color: "#010608",
+                                        padding: 16,
+                                        borderRadius: 6,
+                                    }}
+                                />
                             </>
                             :
                             <></>
@@ -257,7 +245,7 @@ export default function WishDealNotURL() {
 
                             marginTop: 32,
                             marginLeft: 20,
-                        }}>배송비가 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
+                        }}>배송비는 얼마인가요?</div>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -297,37 +285,25 @@ export default function WishDealNotURL() {
                         </div>
                         {numberB === 5 ?
                             <>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
+                                <input
+                                    placeholder="추가 비용을 입력해주세요."
+                                    name="ship"
+                                    value={ship}
+                                    onChange={onChange}
+                                    style={{
+                                        width: 408,
+                                        outline: 0,
+                                        border: "1px solid rgba(1, 6, 8, 0.2)",
+                                        marginTop: 16,
+                                        marginLeft: 20,
 
-                                    marginTop: 16,
-                                    marginLeft: 20,
-                                    paddingBottom: 8,
-                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                                    width: 240,
-                                }}>
-                                    <input
-                                        placeholder="배송비용을 입력해주세요"
-                                        style={{
-                                            width: 220,
-                                            outline: 0,
-                                            border: 0,
-
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontSize: 16,
-                                            color: "#010608"
-                                        }}
-                                    />
-                                    <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 16,
-                                        fontWeight: "bold",
-                                        color: "#010608"
-                                    }}>원</div>
-                                </div>
+                                        color: "#010608",
+                                        padding: 16,
+                                        borderRadius: 6,
+                                    }}
+                                />
                             </>
                             :
                             <></>
@@ -401,7 +377,7 @@ export default function WishDealNotURL() {
 
                             marginTop: "8vw",
                             marginLeft: "5vw",
-                        }}>옵션 선택에 따른 추가 비용이 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
+                        }}>옵션에 따른 추가 가격이 있나요?</div>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -427,37 +403,25 @@ export default function WishDealNotURL() {
                         </div>
                         {number === 2 ?
                             <>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
+                                <input
+                                    placeholder="추가 비용을 입력해주세요."
+                                    name="option"
+                                    value={option}
+                                    onChange={onChange}
+                                    style={{
+                                        width: "82vw",
+                                        outline: 0,
+                                        border: "1px solid rgba(1, 6, 8, 0.2)",
+                                        marginTop: "4vw",
+                                        marginLeft: "5vw",
 
-                                    marginTop: "4vw",
-                                    marginLeft: "5vw",
-                                    paddingBottom: "2vw",
-                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                                    width: "50vw",
-                                }}>
-                                    <input
-                                        placeholder="추가 비용을 입력해주세요."
-                                        style={{
-                                            width: "45vw",
-                                            outline: 0,
-                                            border: 0,
-
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontSize: 14,
-                                            color: "#010608"
-                                        }}
-                                    />
-                                    <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 14,
-                                        fontWeight: "bold",
-                                        color: "#010608"
-                                    }}>원</div>
-                                </div>
+                                        color: "#010608",
+                                        padding: "4vw",
+                                        borderRadius: 6,
+                                    }}
+                                />
                             </>
                             :
                             <></>
@@ -470,7 +434,7 @@ export default function WishDealNotURL() {
 
                             marginTop: "8vw",
                             marginLeft: "5vw",
-                        }}>배송비가 있나요? <span style={{ color: "#f72b2b" }}>(필수)</span></div>
+                        }}>배송비는 얼마인가요?</div>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -510,37 +474,25 @@ export default function WishDealNotURL() {
                         </div>
                         {numberB === 5 ?
                             <>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
+                                <input
+                                    placeholder="추가 비용을 입력해주세요."
+                                    name="ship"
+                                    value={ship}
+                                    onChange={onChange}
+                                    style={{
+                                        width: "82vw",
+                                        outline: 0,
+                                        border: "1px solid rgba(1, 6, 8, 0.2)",
+                                        marginTop: "4vw",
+                                        marginLeft: "5vw",
 
-                                    marginTop: "4vw",
-                                    marginLeft: "5vw",
-                                    paddingBottom: "2vw",
-                                    borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
-                                    width: "50vw",
-                                }}>
-                                    <input
-                                        placeholder="배송비용을 입력해주세요"
-                                        style={{
-                                            width: "45vw",
-                                            outline: 0,
-                                            border: 0,
-
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontSize: 14,
-                                            color: "#010608"
-                                        }}
-                                    />
-                                    <div style={{
                                         fontFamily: "NotoSansCJKkr",
                                         fontSize: 14,
-                                        fontWeight: "bold",
-                                        color: "#010608"
-                                    }}>원</div>
-                                </div>
+                                        color: "#010608",
+                                        padding: "4vw",
+                                        borderRadius: 6,
+                                    }}
+                                />
                             </>
                             :
                             <></>
@@ -589,14 +541,13 @@ const Button = ({ onClick, state, number, content, mobile }) => {
             width: mobile ? 90 : 95,
             marginRight: mobile ? "5vw" : 20,
             borderRadius: 6,
-            border: state === number ? "1px solid #010608" : "1px solid #dfdfdf",
-            backgroundColor: state === number ? "#010608" : "#ffffff",
+            backgroundColor: state === number ? "#010608" : "#f2f3f8",
             paddingTop: mobile ? "2vw" : 10,
             paddingBottom: mobile ? "2vw" : 10,
             cursor: "pointer",
             fontSize: mobile ? 14 : 16,
             fontWeight: state === number ? "bold" : "normal",
-            color: state === number ? "#ffffff" : "#010608",
+            color: state === number ? "#ffffff" : "rgba(1, 6, 8, 0.4)",
             opacity: state === number ? 1 : 0.8,
             textAlign: "center",
         }}>{content}</div>
@@ -637,13 +588,13 @@ function ETCForm({ brand, input, setInput, highPrice, mobile }) {
             }}></div>
             <div style={{
                 fontFamily: "NotoSansCJKkr",
-                fontSize: mobile ? 14 : 16,
+                fontSize: mobile ? 16 : 18,
                 fontWeight: "bold",
                 color: "#010608",
 
                 marginTop: mobile ? "4vw" : 16,
                 marginLeft: mobile ? "5vw" : 20,
-            }}>가격을 입력해주세요. <span style={{ color: "#f72b2b" }}>(필수)</span></div>
+            }}>상품의 가격은 얼마인가요?</div>
             <input
                 placeholder="상품 가격을 입력해주세요.(필수)"
                 name="Eprice"
@@ -675,7 +626,7 @@ function ETCForm({ brand, input, setInput, highPrice, mobile }) {
                 color: "#010608",
 
                 marginTop: mobile ? "8vw" : 32,
-                marginLeft: mobile ? "5vw" : 0,
+                marginLeft: mobile ? "5vw" : 20,
             }}>상품의 옵션이 있다면 입력해주세요.</div>
             <input
                 placeholder="색상, 사이즈 같은 추가 옵션을 입력해주세요."
@@ -684,11 +635,10 @@ function ETCForm({ brand, input, setInput, highPrice, mobile }) {
                 onChange={onChange}
                 style={{
                     marginTop: mobile ? "4vw" : 16,
-                    width: mobile ? "90vw" : 440,
+                    width: mobile ? "82vw" : 408,
+                    padding: mobile ? "4vw" : 16,
                     marginLeft: mobile ? "5vw" : 20,
-                    alignSelf: "center",
                     outline: 0,
-                    paddingBottom: 8,
                     border: "1px solid rgba(1, 6, 8, 0.2)",
 
                     fontFamily: "NotoSansCJKkr",
