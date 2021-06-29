@@ -34,8 +34,8 @@ export default function ReviewSelect() {
             .then(response => {
                 if (response != null && response != undefined) {
                     var array = []
-                    for (var i = 0; i < response["data"].length; i++) {
-                        if (!response["data"][i].review_write) {
+                    for (var i = 0; i < response.length; i++) {
+                        if (!response[i].review_write) {
                             if (response[i].product_name != undefined || response[i].product_name != null) {
                                 array.push({
                                     "id": response[i].id,
