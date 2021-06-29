@@ -314,27 +314,15 @@ const ProfileInfo = ({ title, data, unit, mobile, chance, onClick }) => {
 const OngoingProduct = ({ img, date, title, participateDate, participateNum, complete,total }) => {
     const [expected,setExpected]=useState("")
     const [times,setTimes]=useState("")
-    const [dates,setDates]=useState("")
+    
     function compareDate(){
-        var today=new Date()
-        var month =today.getMonth()
-        var day = today.getDate()
-
-        var id=total.order_id
-        var splited=id.split("-")
-        setDates("20"+splited[1].slice(0,2)+"."+splited[1].slice(2,4)+"."+splited[1].slice(4,6))
         
-        for (var i =0; i<4;i++){
-            console.log("월",Number((total.order_expected_date[i].date).split("/")[0]),"일",Number((total.order_expected_date[i].date).split("/")[1]),"실제월",Number(month)+1,"실제일",Number(day))
-            if(Number((total.order_expected_date[i].date).split("/")[0])>=(Number(month)+1)){
-                if(Number((total.order_expected_date[i].date).split("/")[1])>Number(day)){
-                    setTimes(total.order_expected_date[i].num)
-                    setExpected(total.order_expected_date[i].date)
-                    break
-                }
+        for (var i=0;i<total.payment_history.length();i++){
+            if(total.payment_history[i].payment==false){
+                setTimes(total.payment_history[i].num)
+                setExpected(total.payment_history[i].date)
             }
         }
-        
     }
     useEffect(()=>{
         compareDate()
