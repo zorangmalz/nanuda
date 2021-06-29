@@ -71,13 +71,19 @@ class orderUpload(View):
 
             ).save()
             wish=WishDeal.objects.get(order_id=user_info["params"]["orderid"])
+            idx=0
             for i in user_info["params"]["schedule"]:
                 PaymentHistory(
                 user_id=user,
                 wish_id=wish,
                 num=i["num"],
                 date=i["date"],
-                payment=False
+                if idx==0:
+                    payment=True
+                else:
+                    payment=False
+
+                idx=idx+1
                 ).save()
             
             return JsonResponse({"data":True})
