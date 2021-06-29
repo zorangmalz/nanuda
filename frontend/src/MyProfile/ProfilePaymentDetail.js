@@ -13,7 +13,7 @@ export default function ProfilePaymentDetail() {
     useEffect(()=>{
         console.log(item)
     },[])
-    
+
     return (
         <>
             <Default>
@@ -90,24 +90,16 @@ export default function ProfilePaymentDetail() {
                             backgroundColor: "rgba(1, 6, 8, 0.2)",
                             alignSelf: "center",
                         }} />
-                        <PayInfo
-                            num={1}
-                            date={"3 / 29"}
-                            state={0}
-                            payback={180000}
-                        />
-                        <PayInfo
-                            num={2}
-                            date={"4 / 29"}
-                            state={2}
-                            payback={0}
-                        />
-                        <PayInfo
-                            num={3}
-                            date={"5 / 29"}
-                            state={1}
-                            payback={310000}
-                        />
+                            {item.payment_history.map(item =>
+                   <PayInfo
+                   num={item.num}
+                   date={item.date}
+                   state={item.payment}
+                   payback={180000}
+               />
+                        
+                    )}
+                     
                         {complete ? <></> :
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
@@ -208,24 +200,15 @@ export default function ProfilePaymentDetail() {
                         backgroundColor: "rgba(1, 6, 8, 0.2)",
                         alignSelf: "center",
                     }} />
-                    <MPayInfo
-                        num={1}
-                        date={"3 / 29"}
-                        state={0}
-                        payback={180000}
-                    />
-                    <MPayInfo
-                        num={2}
-                        date={"4 / 29"}
-                        state={2}
-                        payback={0}
-                    />
-                    <MPayInfo
-                        num={3}
-                        date={"5 / 29"}
-                        state={1}
-                        payback={310000}
-                    />
+                     {item.payment_history.map(item =>
+                   <MPayInfo
+                   num={item.num}
+                   date={item.date}
+                   state={item.payment}
+                   payback={180000}
+               />
+                        
+                    )}
                     {complete ? <></> :
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
@@ -299,7 +282,7 @@ function PayInfo({ num, date, state, payback }) {
                         fontSize: 18,
                         fontWeight: "bold",
                         color: state === 0 ? "rgba(1, 6, 8, 0.6)" : state === 1 ? "#26c1f0" : "#f72b2b",
-                    }}>{state === 0 ? "결제완료" : state === 1 ? "결제 예정" : "연체"}</div>
+                    }}>{state === true ? "결제완료" : state === false ? "결제 예정" : "연체"}</div>
                 </div>
                 <div style={{
                     display: "flex",
