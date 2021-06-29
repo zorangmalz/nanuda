@@ -64,6 +64,8 @@ export default function ProfileMain() {
     useEffect(()=>{
         getSchedule()
     },[])
+
+    
     return (
         <>
             <Default>
@@ -155,6 +157,7 @@ export default function ProfileMain() {
                             participateNum={3}
                             participateDate="5/13"
                             complete={false}
+                            total={item}
                         />
                         )}
                         
@@ -308,7 +311,29 @@ const ProfileInfo = ({ title, data, unit, mobile, chance, onClick }) => {
     )
 }
 
-const OngoingProduct = ({ img, date, title, participateDate, participateNum, complete }) => {
+const OngoingProduct = ({ img, date, title, participateDate, participateNum, complete,total }) => {
+    const [expected,setExpected]=useState("")
+    const [times,setTimes]=useState("")
+    const [dates,setDates]=useState("")
+    function compareDate(){
+        var today=new Date()
+        var month =today.getMonth()
+        var day = today.getDay()
+
+        var id=total.order_id
+        var splited=id.split("-")
+        setDates("20"+splited.slice(0,2)+"."+splited.slice(2,4)+"."+splited.slice(4,6))
+        
+        for (var i =0; i<4;i++){
+            if(Number((total.order_expected_date[i].date).split("/")[0])>=(Number(month)+1)){
+                if(Number((total.order_expected_date[i].date).split("/")[1])>=Number(day)){
+                    setTimes(total.order_expected_date[i].num)
+                    setExpected(total.order_expected_date[i].date)
+                }
+            }
+        }
+        
+    }
     return (
         <>
             <div style={{
@@ -336,7 +361,7 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
                         opacity: 0.6,
                         fontSize: 16,
                         color: "#010608",
-                    }}>{date}</div>
+                    }}>{dates}</div>
                     <div style={{
                         maxWidth: 260,
                         fontSize: 16,
@@ -347,7 +372,7 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
                         fontSize: 18,
                         color: "#26c1f0",
                         fontWeight: "bold",
-                    }}>{participateNum}차 결제 예정 ({participateDate})</div>
+                    }}>{times}차 결제 예정 ({expected})</div>
                 </div>
                 <MdKeyboardArrowRight size={28} color="#010608" />
             </div>
