@@ -546,6 +546,7 @@ const [orderId,setOrderId]=useState("")
             })
                 .then(response => response.json())
                 .then(response => {
+                    console.log(response)
                     if (response.data === true) {
                         history.push("payment/success",{myparam:myparam,ship:item,orderid:orderId})
                     } else {
