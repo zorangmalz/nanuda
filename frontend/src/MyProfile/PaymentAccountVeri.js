@@ -227,6 +227,7 @@ export default function PaymentAccountVeri() {
                             marginTop={32}
                             onClick={() => history.push("/paymentars")}
                             state={true}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -408,6 +409,7 @@ export default function PaymentAccountVeri() {
                         marginTop={"8vw"}
                         onClick={() => history.push("/paymentars")}
                         state={true}
+                        marginBottom={"10vw"}
                     />
                 </div>
             </Mobile>

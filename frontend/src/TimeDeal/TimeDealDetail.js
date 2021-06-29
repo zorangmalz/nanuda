@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import { BottomTag, Header, MBottomTag, MHeader, MStandardButton } from "../Style";
+import { BottomTag, Header, MBottomTag, MHeader } from "../Style";
 import { useHistory } from "react-router";
 import airpotone from "../images/airpotone.png"
 import airpottwo from "../images/airpottwo.png"

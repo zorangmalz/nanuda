@@ -89,6 +89,7 @@ export default function ProfileDelete() {
                             text="탈퇴하기"
                             onClick={agree ? () => setDeleteModal(true) : () => {}}
                             state={agree}
+                            marginBottom={40}
                         />
                         {deleteModal && payFinish ?
                             <StandardChoiceModal
@@ -197,6 +198,7 @@ export default function ProfileDelete() {
                         text="탈퇴하기"
                         onClick={agree ? () => setDeleteModal(true) : () => {}}
                         state={agree}
+                        marginBottom={"10vw"}
                     />
                     {deleteModal && payFinish ?
                         <StandardChoiceModal

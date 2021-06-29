@@ -78,6 +78,7 @@ export default function PaymentFail() {
                             onClick={timeDeal ? () => history.push("/ordersheet") : () => history.replace("/")}
                             state={true}
                             marginTop={32}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -139,6 +140,7 @@ export default function PaymentFail() {
                         onClick={timeDeal ? () => history.push("/ordersheet") : () => history.replace("/")}
                         state={true}
                         marginTop={"8vw"}
+                        marginBottom={"10vw"}
                     />
                 </div>
             </Mobile>

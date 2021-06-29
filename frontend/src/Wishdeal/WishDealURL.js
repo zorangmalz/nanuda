@@ -341,6 +341,7 @@ export default function WishDealURL() {
                             text="다음"
                             onClick={next ? NextPage : () => {}}
                             state={next}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -528,6 +529,7 @@ export default function WishDealURL() {
                             text="다음"
                             onClick={next ? NextPage : () => {}}
                             state={next}
+                            marginBottom={"10vw"}
                         />
                     </div>
                 </div>

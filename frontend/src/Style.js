@@ -1407,7 +1407,7 @@ export function LimitBox() {
     )
 }
 
-export function StandardButton({ marginTop, text, onClick, state }) {
+export function StandardButton({ marginTop, text, onClick, state, marginBottom }) {
     return (
         <>
             <div onClick={onClick} style={{
@@ -1419,7 +1419,7 @@ export function StandardButton({ marginTop, text, onClick, state }) {
                 alignSelf: "center",
                 cursor: state ? "pointer" : "auto",
                 marginTop: marginTop,
-                marginBottom: 40,
+                marginBottom: marginBottom,
 
                 fontSize: 18,
                 fontWeight: "bold",
@@ -1431,7 +1431,7 @@ export function StandardButton({ marginTop, text, onClick, state }) {
     )
 }
 
-export function MStandardButton({ marginTop, text, onClick, state }) {
+export function MStandardButton({ marginTop, text, onClick, state, marginBottom }) {
     return (
         <div onClick={onClick} style={{
             width: "90vw",
@@ -1442,7 +1442,7 @@ export function MStandardButton({ marginTop, text, onClick, state }) {
             cursor: state ? "pointer" : "auto",
             marginTop: marginTop,
             borderRadius: 6,
-            marginBottom: "10vw",
+            marginBottom: marginBottom,
 
             fontSize: 16,
             fontWeight: "bold",

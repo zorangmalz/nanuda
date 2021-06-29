@@ -89,6 +89,7 @@ export default function ProfileProductInfo() {
                             text="분할결제 스케쥴 확인하기"
                             state={true}
                             onClick={() => setModal(true)}
+                            marginBottom={40}
                         />
                     </div>
                 </div>
@@ -135,6 +136,7 @@ export default function ProfileProductInfo() {
                         text="분할결제 스케쥴 확인하기"
                         state={true}
                         onClick={() => setModal(true)}
+                        marginBottom={"10vw"}
                     />
                 </div>
             </Mobile>
