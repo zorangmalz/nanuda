@@ -19,14 +19,14 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.parsers import JSONParser
 
 # Model Import 
-from nanuda.models import User, ServiceReview, Product, Review, Order
+from nanuda.models import User, ServiceReview, Product, Review, Order, WishDeal
 from nanuda.serializers import UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
 
 #Python 내장함수
 from datetime import date,datetime
 
  
-#WishDeal Order
+#WishDeal Order 주문
 class orderUpload(View):
     def post(self, request):
         if not request.COOKIES.get("access_token"):
@@ -44,7 +44,7 @@ class orderUpload(View):
             else:
                 opt=int(user_info["params"]["myparam"][7])
             #??외않되?
-            Order(
+            WishDeal(
                 user_id=user,
                 order_id=user_info["params"]["orderid"],
                 order_price=int(user_info["params"]["myparam"][3]["Eprice"])+opt,
@@ -71,19 +71,6 @@ class orderUpload(View):
 
             ).save()
             return JsonResponse({"data":True})
-
-#주문 하나 확인
-# class orderCheck(View):
-#     def get(self, request):
-#             if not request.COOKIES.get("access_token"):
-#                 return JsonResponse({"data":False})
-#             else:
-#                 load_dotenv(verbose=True)
-#                 SECRET_KEY=os.getenv("SECRET_KEY")
-#                 ALGORITHM=os.getenv("ALGORITHM")
-#                 token=request.COOKIES.get("access_token")
-#                 payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-#                 user=User.objects.get(uid=payload["id"])
                 
 #서비스 리뷰 조회(작성 or not)
 class serviceReviewOrNOt(View):
