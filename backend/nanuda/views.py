@@ -70,13 +70,15 @@ class orderUpload(View):
                 order_complete=False
 
             ).save()
-            # wish=WishDeal.objects.get(order_id=user_info["params"]["orderid"])
-            # for i in user_info["params"]["schedule"]:
-            #     PaymentHistory(
-            #     user_id=user,
-            #     wish_id=wish,
-            #     date=
-            #     ).save()
+            wish=WishDeal.objects.get(order_id=user_info["params"]["orderid"])
+            for i in user_info["params"]["schedule"]:
+                PaymentHistory(
+                user_id=user,
+                wish_id=wish,
+                num=user_info["params"]["schedule"]["num"]
+                date=user_info["params"]["schedule"]["date"]
+                payment=False
+                ).save()
             
             return JsonResponse({"data":True})
                 
