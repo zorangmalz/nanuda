@@ -262,6 +262,7 @@ class PaymentHistory(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
     wish_id = models.ForeignKey(WishDeal, on_delete=models.CASCADE, null=True, blank=True)
     date = models.CharField(default="", max_length=30)
+    num = models.CharField(default="",max_length=10)
     payment = models.BooleanField(default=False)
 
     def __str__(self):
