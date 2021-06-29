@@ -8,6 +8,7 @@ import mainlogo from "../images/mainlogo.png";
 export default function ProfileProduct() {
     //Get Order Data
     const [orderData, setOrderData] = useState([])
+    const [fullData,setFullData]=useState([])
     useEffect(() => {
         setOrderData([])
         fetch("https://haulfree.link/order/profile", {
@@ -40,7 +41,9 @@ export default function ProfileProduct() {
                             "product_price": response[i].product_price,
                             "review_write": response[i].review_write,
                             "wish_image": response[i].wish_image,
-                            "wish_title": response[i].wish_title
+                            "wish_title": response[i].wish_title,
+                            "payment_history":response[i].payment_history,
+                            "order_expected_date":response[i].order_expected_date
                         })
                     }
                     setOrderData(orderData.concat(array))
