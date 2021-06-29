@@ -99,24 +99,7 @@ export default function ProfilePaymentDetail() {
                />
                         
                     )}
-                        <PayInfo
-                            num={1}
-                            date={"3 / 29"}
-                            state={0}
-                            payback={180000}
-                        />
-                        <PayInfo
-                            num={2}
-                            date={"4 / 29"}
-                            state={2}
-                            payback={0}
-                        />
-                        <PayInfo
-                            num={3}
-                            date={"5 / 29"}
-                            state={1}
-                            payback={310000}
-                        />
+                     
                         {complete ? <></> :
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
@@ -217,24 +200,15 @@ export default function ProfilePaymentDetail() {
                         backgroundColor: "rgba(1, 6, 8, 0.2)",
                         alignSelf: "center",
                     }} />
-                    <MPayInfo
-                        num={1}
-                        date={"3 / 29"}
-                        state={0}
-                        payback={180000}
-                    />
-                    <MPayInfo
-                        num={2}
-                        date={"4 / 29"}
-                        state={2}
-                        payback={0}
-                    />
-                    <MPayInfo
-                        num={3}
-                        date={"5 / 29"}
-                        state={1}
-                        payback={310000}
-                    />
+                     {item.payment_history.map(item =>
+                   <MPayInfo
+                   num={item.num}
+                   date={item.date}
+                   state={item.payment}
+                   payback={180000}
+               />
+                        
+                    )}
                     {complete ? <></> :
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
