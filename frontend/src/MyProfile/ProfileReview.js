@@ -56,16 +56,27 @@ export default function ProfileReview() {
             .then(response => {
                 if (response != null && response != undefined) {
                     var array = []
-                    for (var i = 0; i < response["data"].length; i++) {
-                        if (!response["data"][i].review_write) {
-                            array.push({
-                                "id": response["data"][i].id,
-                                "order_price": response["data"][i].order_price,
-                                "product_name": response["data"][i].product_name,
-                                "product_image": response["data"][i].product_image,
-                                "product_price": response["data"][i].product_price,
-                                "review_write": response["data"][i].review_write,
-                            })
+                    for (var i = 0; i < response.length; i++) {
+                        if (!response[i].review_write) {
+                            if (response[i].product_name != undefined || response[i].product_name != null) {
+                                array.push({
+                                    "id": response[i].id,
+                                    "order_price": response[i].order_price,
+                                    "product_name": response[i].product_name,
+                                    "product_image": response[i].product_image,
+                                    "product_price": response[i].product_price,
+                                    "review_write": response[i].review_write,
+                                })
+                            } else {
+                                array.push({
+                                    "id": response[i].id,
+                                    "order_price": response[i].order_price,
+                                    "product_name": response[i].wish_title,
+                                    "product_image": response[i].wish_image,
+                                    "product_price": response[i].order_price,
+                                    "review_write": response[i].review_write,
+                                })
+                            }
                         }
                     }
                     setOrderData(orderData.concat(array))
