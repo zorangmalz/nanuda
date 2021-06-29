@@ -393,7 +393,7 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
     )
 }
 
-const MOngoingProduct = ({ img, date, title, participateDate, participateNum, complete }) => {
+const MOngoingProduct = ({ img, date, title, participateDate, participateNum, complete,total }) => {
     const [expected, setExpected] = useState("")
     const [times, setTimes] = useState("")
     const [dates, setDates] = useState("")

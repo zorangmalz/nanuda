@@ -13,7 +13,7 @@ export default function ProfileProduct() {
         fetch("https://haulfree.link/order/profile", {
             method: "GET",
             headers: {
-                'Content-type': 'application/json',
+                'Content-type': 'application/json', 
                 'Accept': 'application/json'
             },
             credentials: "include",

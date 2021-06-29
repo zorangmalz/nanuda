@@ -56,6 +56,9 @@ export default function ProfileProductInfo() {
     }, [location])
 
     const [modal, setModal] = useState(false)
+    function check(){
+        console.log("here")
+    }
     return (
         <>
             <Default>
@@ -106,10 +109,17 @@ export default function ProfileProductInfo() {
                             deliveryClaim={order.order_request}
                             mobile={false}
                         />
-                        <StandardButton
+                         <StandardButton
                             marginTop={32}
                             text="분할결제 스케쥴 확인하기"
                             state={true}
+                            onClick={check}
+                            marginBottom={40}
+                        />
+                        <StandardButton
+                            marginTop={32}
+                            text="분할결제 스케쥴 확인하기"
+                            state={false}
                             onClick={() => setModal(true)}
                             marginBottom={40}
                         />
@@ -153,10 +163,17 @@ export default function ProfileProductInfo() {
                         deliveryClaim={order.order_request}
                         mobile={true}
                     />
-                    <MStandardButton
+                     <MStandardButton
                         marginTop={"8vw"}
                         text="분할결제 스케쥴 확인하기"
                         state={true}
+                        onClick={check}
+                        marginBottom={"10vw"}
+                    />
+                    <MStandardButton
+                        marginTop={"8vw"}
+                        text="분할결제 스케쥴 확인하기"
+                        state={false}
                         onClick={() => setModal(true)}
                         marginBottom={"10vw"}
                     />
