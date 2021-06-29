@@ -318,13 +318,14 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
     function compareDate(){
         var today=new Date()
         var month =today.getMonth()
-        var day = today.getDay()
+        var day = today.getDate()
 
         var id=total.order_id
         var splited=id.split("-")
         setDates("20"+splited[1].slice(0,2)+"."+splited[1].slice(2,4)+"."+splited[1].slice(4,6))
         
         for (var i =0; i<4;i++){
+            console.log("월",Number((total.order_expected_date[i].date).split("/")[0]),"일",Number((total.order_expected_date[i].date).split("/")[1]),"실제월",Number(month)+1,"실제일",Number(day))
             if(Number((total.order_expected_date[i].date).split("/")[0])>=(Number(month)+1)){
                 if(Number((total.order_expected_date[i].date).split("/")[1])>Number(day)){
                     setTimes(total.order_expected_date[i].num)

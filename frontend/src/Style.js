@@ -548,9 +548,12 @@ export function HomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                 marginTop: 8
             }}>
                 사업자 등록번호 278-88-02031 <br />
+                통신판매업 신고번호 : 제 2021-서울성동-01434 호<br/>
                 대표자 : 김현명, 이지행 <br />
-
+                연락처 : 02-6952-4443<br/>
+                이메일 : wise@1n1n.io<br/>
                 주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
+
             </div>
             <div style={{
                 width: 440,
@@ -773,9 +776,12 @@ export function BottomTag({ marginTop, marginBottom }) {
                 marginTop: 8
             }}>
                 사업자 등록번호 278-88-02031 <br />
+                통신판매업 신고번호 : 제 2021-서울성동-01434 호<br/>
                 대표자 : 김현명, 이지행 <br />
-
+                연락처 : 02-6952-4443<br/>
+                이메일 : wise@1n1n.io<br/>
                 주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
+
             </div>
             <div style={{
                 width: 440,
@@ -999,9 +1005,12 @@ export function MHomeBottomTag({ marginTop, marginBottom, bottomRef }) {
                 marginTop: 6
             }}>
                 사업자 등록번호 278-88-02031 <br />
+                통신판매업 신고번호 : 제 2021-서울성동-01434 호<br/>
                 대표자 : 김현명, 이지행 <br />
-
+                연락처 : 02-6952-4443<br/>
+                이메일 : wise@1n1n.io<br/>
                 주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
+
             </div>
             <div style={{
                 width: "90%",
@@ -1225,9 +1234,12 @@ export function MBottomTag({ marginTop, marginBottom }) {
                 marginTop: 6
             }}>
                 사업자 등록번호 278-88-02031 <br />
+                통신판매업 신고번호 : 제 2021-서울성동-01434 호<br/>
                 대표자 : 김현명, 이지행 <br />
-
+                연락처 : 02-6952-4443<br/>
+                이메일 : wise@1n1n.io<br/>
                 주소 : 서울특별시 성동구 왕십리로 10길 6, 1204호(성수동 1가, 서울숲비즈포레) <br />
+
             </div>
             <div style={{
                 width: "90%",
