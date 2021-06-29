@@ -103,6 +103,13 @@ class AddressAllSerializer(serializers.ModelSerializer):
         fields = ["temp_receiver", "temp_phone_number", "temp_claim", "address_number", "address", "address_detail"]
 
 class WishAllSerializer(serializers.ModelSerializer):
+    payment_history = serializers.SerializerMethodField()
+
+    def get_payment_history(self, obj):
+        paymentHistory = PaymentHistory.objects.filter(wish_id = obj.id, whether_like=True)
+        paymentHistory_serializer = PaymentHistorySerializer(paymentHistory, many=True)
+        return paymentHistory_serializer.data
+
     class Meta:
         model = WishDeal
         fields = "__all__"
