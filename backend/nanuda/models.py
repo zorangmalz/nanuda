@@ -264,7 +264,7 @@ class PaymentHistory(models.Model):
     date = models.CharField(default="", max_length=30)
     num = models.CharField(default="",max_length=10)
     payment = models.BooleanField(default=False)
-
+    money = models.PositiveIntegerField(default=0)
     def __str__(self):
         return self.user_id.name
     
