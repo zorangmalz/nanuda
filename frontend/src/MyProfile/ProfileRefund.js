@@ -210,9 +210,10 @@ function RefundProblem({ text, value, onChange, state, num, onClick, mobile }) {
 
                 width: mobile ? "90vw" : 440,
                 marginTop: mobile ? "4vw" : 16,
-                cursor: "pointer"
+                cursor: "pointer",
+                marginLeft: mobile ? "5vw" : 20,
             }}>
-                <BsCheck onClick={onClick} size={mobile ? 20 : 24} color={state === num ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
+                <BsCheck onClick={onClick} size={mobile ? 20 : 24} color={state === num ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} style={{ marginTop: mobile ? "2vw" : 8 }} />
                 <div style={{
                     fontFamily: "NotoSansCJKkr",
                     fontSize: mobile ? 14 : 16,
@@ -223,7 +224,7 @@ function RefundProblem({ text, value, onChange, state, num, onClick, mobile }) {
             {state === num ?
                 <textarea
                     placeholder="상세 사유를 작성해주세요.(최대 100자)"
-                    name={value}
+                    name={`${value}`}
                     value={value}
                     onChange={onChange}
                     style={{
@@ -236,7 +237,9 @@ function RefundProblem({ text, value, onChange, state, num, onClick, mobile }) {
                         marginLeft: mobile ? "5vw" : 20,
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
-                        color: "#010608"
+                        color: "#010608",
+                        outline: 0,
+                        border: 0,
                     }}
                 />
                 :
@@ -255,9 +258,10 @@ function RefundCheck({ state, setState, text, mobile }) {
 
             width: mobile ? "90vw" : 440,
             marginTop: mobile ? "4vw" : 16,
-            cursor: "pointer"
+            cursor: "pointer",
+            marginLeft: mobile ? "5vw" : 20,
         }}>
-            <BsCheck onClick={() => setState(!state)} size={mobile ? 20 : 24} color={state ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} />
+            <BsCheck onClick={() => setState(!state)} size={mobile ? 20 : 24} color={state ? "#26c1f0" : "rgba(32, 36, 38, 0.6)"} style={{ marginTop: mobile ? "2vw" : 8 }} />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: mobile ? 14 : 16,
