@@ -95,7 +95,7 @@ export default function ProfilePaymentDetail() {
                    num={item.num}
                    date={item.date}
                    state={item.payment}
-                   payback={180000}
+                   payback={item.money}
                />
                         
                     )}
