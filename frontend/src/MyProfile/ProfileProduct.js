@@ -25,8 +25,15 @@ export default function ProfileProduct() {
                     var array = []
                     for (var i = 0; i < response.length; i++) {
                         array.push({
+                            "order_address": response[i].order_address,
+                            "order_address_detail": response[i].order_address_detail,
+                            "order_address_number": response[i].order_address_number,
                             "order_date": response[i].order_date.slice(0, 10),
                             "order_price": response[i].order_price,
+                            "order_id": response[i].order_id,
+                            "order_phone_number": response[i].order_phone_number,
+                            "order_receiver": response[i].order_receiver,
+                            "order_request": response[i].order_request,
                             "product_id": response[i].product_id,
                             "product_name": response[i].product_name,
                             "product_image": response[i].product_image,
@@ -74,7 +81,7 @@ export default function ProfileProduct() {
                                 date={item.order_date}
                                 title={item.product_name ? item.product_name : item.wish_title}
                                 price={item.product_price ? item.product_price : item.order_price}
-                                product_id={item.product_id ? item.product_id : ""}
+                                item={item}
                                 mobile={false}
                             />
                         ))}
@@ -100,7 +107,7 @@ export default function ProfileProduct() {
                             date={item.order_date}
                             title={item.product_name ? item.product_name : item.wish_title}
                             price={item.product_price ? item.product_price : item.order_price}
-                            product_id={item.product_id ? item.product_id : ""}
+                            item={item}
                             mobile={true}
                         />
                     ))}
@@ -110,7 +117,7 @@ export default function ProfileProduct() {
     )
 }
 
-function ProductState({ img, date, title, price, mobile, product_id }) {
+function ProductState({ img, date, title, price, mobile, item }) {
     const history = useHistory()
     return (
         <>
@@ -124,7 +131,7 @@ function ProductState({ img, date, title, price, mobile, product_id }) {
             }}>
                 <div onClick={() => history.push({
                     pathname: "/profile/product/info",
-                    state: { "product_id": product_id }
+                    state: { "item": item }
                 })} style={{
                     display: "flex",
                     flexDirection: "row",

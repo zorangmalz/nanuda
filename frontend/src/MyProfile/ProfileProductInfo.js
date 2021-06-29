@@ -6,30 +6,10 @@ import { Header, MHeader, MStandardButton, numberWithCommas, StandardButton, Sta
 export default function ProfileProductInfo() {
     const location = useLocation()
 
-    const [order, setOrder] = useState({
-        order_address: "",
-        order_address_detail: "",
-        order_address_number: "",
-        order_id: "",
-        order_phone_number: "",
-        order_receiver: "",
-        order_request: "",
-        product_image: "",
-        product_name: "",
-        product_price: 0,
-    })
+    const [order, setOrder] = useState(undefined)
     useEffect(() => {
-        if (location.state.product_id.length > 0) {
-            fetch(`https://haulfree.link/order/detail?product=${location.state.product_id}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                credentials: "include"
-            })
-                .then(res => res.json())
-                .then(res => setOrder(res))
-                .catch(err => console.log(err))
+        if (location.state.item != null) {
+            setOrder(location.state.item)
         }
     }, [location])
 
@@ -57,8 +37,8 @@ export default function ProfileProductInfo() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        {modal ? 
-                            <StandardChoiceModal 
+                        {modal ?
+                            <StandardChoiceModal
                                 title="주문을 취소하시겠습니까?"
                                 content="취소 후 결제 금액이 환불됩니다."
                                 canceltext="돌아가기"
@@ -72,9 +52,9 @@ export default function ProfileProductInfo() {
                         }
                         <Header content="상품 상세 구매 내역" goBack={true} />
                         <ProductInfo
-                            img={order.product_image}
-                            title={order.product_name}
-                            price={order.product_price}
+                            img={order.product_image != null ? order.product_image : order.wish_image}
+                            title={order.product_name != null ? order.product_name : order.wish_title}
+                            price={order.product_price != null ? order.product_price : order.order_price}
                             name={order.order_receiver}
                             orderNum={order.order_id}
                             number={order.order_address_number}
@@ -84,7 +64,7 @@ export default function ProfileProductInfo() {
                             deliveryClaim={order.order_request}
                             mobile={false}
                         />
-                        <StandardButton 
+                        <StandardButton
                             marginTop={32}
                             text="분할결제 스케쥴 확인하기"
                             state={true}
@@ -119,9 +99,9 @@ export default function ProfileProductInfo() {
                     }
                     <MHeader content="상품 상세 구매 내역" goBack={true} />
                     <ProductInfo
-                        img={order.product_image}
-                        title={order.product_name}
-                        price={order.product_price}
+                        img={order.product_image != null ? order.product_image : order.wish_image}
+                        title={order.product_name != null ? order.product_name : order.wish_title}
+                        price={order.product_price != null ? order.product_price : order.order_price}
                         name={order.order_receiver}
                         orderNum={order.order_id}
                         number={order.order_address_number}
@@ -211,11 +191,11 @@ function ProductInfo({ img, title, price, name, number, orderNum, address, addre
                 }}>
                     받는사람 : {name} <br />
                     주문번호 : {orderNum} <br />
-                        우편번호 : {number} <br />
-                        주소: {address} <br />
-                        상세주소 : {addressDetail} <br />
-                        연락처 : {phoneNumber} <br />
-                        배송 요청사항 : {deliveryClaim} <br />
+                    우편번호 : {number} <br />
+                    주소: {address} <br />
+                    상세주소 : {addressDetail} <br />
+                    연락처 : {phoneNumber} <br />
+                    배송 요청사항 : {deliveryClaim} <br />
                 </div>
             </div>
         </>

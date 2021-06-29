@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from nanuda.models import Address, MissionList, User, ServiceReview, Product, Review, Order, WishDeal
+from nanuda.models import Address, MissionList, PaymentHistory, User, ServiceReview, Product, Review, Order, WishDeal
 
 class UserAllSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,6 +43,7 @@ class OrderAllSerializer(serializers.ModelSerializer):
     product_name = serializers.SerializerMethodField()
     product_image = serializers.SerializerMethodField()
     product_price = serializers.SerializerMethodField()
+    payment_history = serializers.SerializerMethodField()
 
     def get_product_name(self, obj):
         return obj.product_name()
@@ -52,7 +53,12 @@ class OrderAllSerializer(serializers.ModelSerializer):
 
     def get_product_price(self, obj):
         return obj.product_price()
-
+    
+    def get_payment_history(self, obj):
+        paymentHistory = PaymentHistory.objects.filter(order_id = obj, whether_like=True)
+        paymentHistory_serializer = PaymentHistorySerializer(paymentHistory, many=True)
+        return paymentHistory_serializer.data
+        
     class Meta:
         model = Order
         fields = "__all__"
@@ -100,3 +106,8 @@ class WishAllSerializer(serializers.ModelSerializer):
     class Meta:
         model = WishDeal
         fields = "__all__"
+
+class PaymentHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PaymentHistory
+        fields = ["date", "num", "payment"]
