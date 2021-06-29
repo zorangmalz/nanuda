@@ -166,13 +166,13 @@ export default function WishDealNotURL() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-
                         justifyContent: "flex-start",
 
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
-                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
+                        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)",
+                        paddingBottom: 40,
                     }}>
                         <Header content="상품 정보 작성" goBack={true} />
                         <ETCForm
@@ -324,22 +324,12 @@ export default function WishDealNotURL() {
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                         </div>
-                        <div onClick={() => history.push("/ordersheet")} style={{
-                            borderRadius: 8,
-                            width: 440,
-                            paddingTop: 15,
-                            paddingBottom: 15,
-                            alignSelf: "center",
-                            marginTop: 32,
-                            backgroundColor: "#26c1f0",
-
-                            color: "#ffffff",
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            textAlign: "center",
-                            marginBottom: 150,
-                            cursor: "pointer",
-                        }}>다음</div>
+                        <StandardButton
+                            marginTop={32}
+                            text="다음"
+                            onClick={next ? NextPage : () => {}}
+                            state={next}
+                        />
                     </div>
                 </div>
             </Default>
@@ -356,12 +346,12 @@ export default function WishDealNotURL() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-
                         justifyContent: "flex-start",
 
                         width: "100%",
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
+                        paddingBottom: "10vw",
                     }}>
                         <MHeader content="상품 정보 작성" goBack={true} />
                         <ETCForm
@@ -513,22 +503,12 @@ export default function WishDealNotURL() {
                             <div style={{ marginTop: 4 }}>* 만약 추가금액으로 인해 한도를 넘어가는 경우 주문이 취소됩니다.</div>
                             <div style={{ marginTop: 4 }}>* 교환 환불은 불가능합니다.</div>
                         </div>
-                        <div onClick={() => history.push("/ordersheet")} style={{
-                            borderRadius: 8,
-                            width: "90vw",
-                            paddingTop: "4vw",
-                            paddingBottom: "4vw",
-                            alignSelf: "center",
-                            marginTop: "8vw",
-                            backgroundColor: "#26c1f0",
-
-                            color: "#ffffff",
-                            fontSize: 16,
-                            fontWeight: "bold",
-                            textAlign: "center",
-                            marginBottom: 80,
-                            cursor: "pointer",
-                        }}>다음</div>
+                        <MStandardButton
+                            marginTop={"8vw"}
+                            text="다음"
+                            onClick={next ? NextPage : () => {}}
+                            state={next}
+                        />
                     </div>
                 </div>
             </Mobile>
