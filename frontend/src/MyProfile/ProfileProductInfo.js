@@ -6,10 +6,52 @@ import { Header, MHeader, MStandardButton, numberWithCommas, StandardButton, Sta
 export default function ProfileProductInfo() {
     const location = useLocation()
 
-    const [order, setOrder] = useState(undefined)
+    const [order, setOrder] = useState({
+        product_image: "",
+        product_name: "",
+        product_price: "",
+        order_receiver: "",
+        order_id: "",
+        order_address_number: "",
+        order_address: "",
+        order_address_detail: "",
+        order_phone_number: "",
+        order_request: "",
+        order_price: "",
+        wish_image: "",
+        wish_title: "",
+    })
     useEffect(() => {
+        console.log(location.state.item)
         if (location.state.item != null) {
-            setOrder(location.state.item)
+            if (location.state.item.product_image != null) {
+                setOrder({
+                    product_image: location.state.item.product_image,
+                    product_name: location.state.item.product_name,
+                    product_price: location.state.item.product_price,
+                    order_receiver: location.state.item.order_receiver,
+                    order_id: location.state.item.order_id,
+                    order_address_number: location.state.item.order_address_number,
+                    order_address: location.state.item.order_address,
+                    order_address_detail: location.state.item.order_address_detail,
+                    order_phone_number: location.state.item.order_phone_number,
+                    order_request: location.state.item.order_request,
+                    order_price: location.state.item.order_price,
+                })
+            } else {
+                setOrder({
+                    wish_image: location.state.item.wish_image,
+                    wish_title: location.state.item.wish_title,
+                    order_receiver: location.state.item.order_receiver,
+                    order_id: location.state.item.order_id,
+                    order_address_number: location.state.item.order_address_number,
+                    order_address: location.state.item.order_address,
+                    order_address_detail: location.state.item.order_address_detail,
+                    order_phone_number: location.state.item.order_phone_number,
+                    order_request: location.state.item.order_request,
+                    order_price: location.state.item.order_price,
+                })
+            }
         }
     }, [location])
 
@@ -52,9 +94,9 @@ export default function ProfileProductInfo() {
                         }
                         <Header content="상품 상세 구매 내역" goBack={true} />
                         <ProductInfo
-                            img={order.product_image != null ? order.product_image : order.wish_image}
-                            title={order.product_name != null ? order.product_name : order.wish_title}
-                            price={order.product_price != null ? order.product_price : order.order_price}
+                            img={order.product_image != undefined ? order.product_image : order.wish_image}
+                            title={order.product_name != undefined ? order.product_name : order.wish_title}
+                            price={order.product_price != undefined ? order.product_price : order.order_price}
                             name={order.order_receiver}
                             orderNum={order.order_id}
                             number={order.order_address_number}
@@ -99,9 +141,9 @@ export default function ProfileProductInfo() {
                     }
                     <MHeader content="상품 상세 구매 내역" goBack={true} />
                     <ProductInfo
-                        img={order.product_image != null ? order.product_image : order.wish_image}
-                        title={order.product_name != null ? order.product_name : order.wish_title}
-                        price={order.product_price != null ? order.product_price : order.order_price}
+                        img={order.product_image != undefined ? order.product_image : order.wish_image}
+                        title={order.product_name != undefined ? order.product_name : order.wish_title}
+                        price={order.product_price != undefined ? order.product_price : order.order_price}
                         name={order.order_receiver}
                         orderNum={order.order_id}
                         number={order.order_address_number}
