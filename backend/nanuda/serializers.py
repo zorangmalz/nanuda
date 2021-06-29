@@ -117,4 +117,4 @@ class WishAllSerializer(serializers.ModelSerializer):
 class PaymentHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = PaymentHistory
-        fields = ["date", "num", "payment"]
+        fields = ["date", "num", "payment", "money"]
