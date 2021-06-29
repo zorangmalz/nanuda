@@ -1,8 +1,7 @@
-import React, { useReducer, useState } from "react";
-import { BsPlusCircle } from "react-icons/bs";
+import React, { useReducer } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Header, MHeader } from "../Style";
 
 function reducerA(state, action) {
     switch (action.type) {
@@ -32,6 +31,11 @@ function reducerB(state, action) {
 }
 
 export default function WishDealNotURL() {
+    const location = useLocation()
+    const getUrl = location.state.url
+
+    const [highPrice, setHighPrice] = useState(true)
+
     const [number, dispatch] = useReducer(reducerA, 0);
     const onYES = () => {
         dispatch({ type: 'YES' });
@@ -56,6 +60,94 @@ export default function WishDealNotURL() {
 
     let history = useHistory();
 
+    const [Einputs, setEInputs] = useState({
+        Eprice: "",
+        Eetc: "",
+    })
+
+    const [next, setNext] = useState(false)
+    const [inp, setInp] = useState({
+        option: "",
+        ship: "",
+    })
+    const { option, ship } = inp
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setInp({
+            ...inp,
+            [name]: value
+        })
+    }
+
+    useEffect(() => {
+        if (Number(Einputs.Eprice) < 30000) {
+            if (Einputs.Eprice === "") {
+                setHighPrice(true)
+            } else {
+                setHighPrice(false)
+            }
+        } else {
+            setHighPrice(true)
+        }
+    }, [Einputs.Eprice])
+
+    useEffect(() => {
+        if (Einputs.Eprice != "") {
+            if (number && numberB > 1) {
+                if (number === 2 && numberB === 5) {
+                    if (option && ship != "") {
+                        if (Einputs.Eprice >= 30000) {
+                            setNext(true)
+                        } else {
+                            setNext(false)
+                        }
+
+                    } else {
+                        setNext(false)
+                    }
+                }
+                if (number === 2 && numberB < 5) {
+                    if (option != "") {
+                        if (Einputs.Eprice >= 30000) {
+                            setNext(true)
+                        } else {
+                            setNext(false)
+                        }
+
+                    } else {
+                        setNext(false)
+                    }
+                }
+                if (number === 3 && numberB === 5) {
+                    if (ship != "") {
+                        if (Einputs.Eprice >= 30000) {
+                            setNext(true)
+                        } else {
+                            setNext(false)
+                        }
+
+                    } else {
+                        setNext(false)
+                    }
+                }
+                if (number === 3 && numberB < 5) {
+                    if (Einputs.Eprice >= 30000) {
+                        setNext(true)
+                    } else {
+                        setNext(false)
+                    }
+                }
+            }
+        } else {
+            setNext(false)
+        }
+    }, [Einputs, number, numberB, option, ship, highPrice])
+
+    function NextPage() {
+        const lst = []
+        lst.push(Einputs, number, option, numberB, ship)
+        history.push("/ordersheet", { param: lst, addInfo: "", url: getUrl, image: "" })
+    }
 
     return (
         <>
@@ -510,6 +602,7 @@ function ETCForm({ image, brand, name, input, setInput, highPrice, mobile }) {
             [name]: value
         })
     }
+
     return (
         <>
             <div style={{

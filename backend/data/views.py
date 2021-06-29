@@ -16,8 +16,8 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.parsers import JSONParser
 
 # Model Import
-from nanuda.models import Address, MissionList, PointList, ReviewList, User, ServiceReview, Product, Review, Order
-from nanuda.serializers import AddressAllSerializer, MissionAllSerializer, OrderSerializer, UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer
+from nanuda.models import Address, MissionList, PointList, ReviewList, User, ServiceReview, Product, Review, Order, WishDeal
+from nanuda.serializers import AddressAllSerializer, MissionAllSerializer, OrderSerializer, UserAllSerializer, ServicReviewAllSerializer, ProductAllSerializer, ReviewAllSerializer, OrderAllSerializer, WishAllSerializer
 
 #Python 내장함수
 from datetime import date
@@ -428,7 +428,13 @@ def order_list(request):
             orders = Order.objects.filter(
                 user_id=user.id).order_by('-order_date')
             order_serializer=OrderAllSerializer(orders,many=True)
-            return Response(order_serializer.data)
+
+            wishdeals = WishDeal.objects.filter(
+                user_id=user.id).order_by('-order_date')
+            wishdeal_serializer=WishAllSerializer(wishdeals, many=True)
+
+            response = order_serializer.data + wishdeal_serializer.data
+            return Response(response)
 
 
 @api_view(["GET", "POST"])

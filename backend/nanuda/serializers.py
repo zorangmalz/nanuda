@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from nanuda.models import Address, MissionList, User, ServiceReview, Product, Review, Order
+from nanuda.models import Address, MissionList, User, ServiceReview, Product, Review, Order, WishDeal
 
 class UserAllSerializer(serializers.ModelSerializer):
     class Meta:
@@ -95,3 +95,8 @@ class AddressAllSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
         fields = ["temp_receiver", "temp_phone_number", "temp_claim", "address_number", "address", "address_detail"]
+
+class WishAllSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WishDeal
+        fields = "__all__"
