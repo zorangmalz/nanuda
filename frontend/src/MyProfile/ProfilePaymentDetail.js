@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-import { useHistory } from "react-router";
+import { useHistory ,useLocation} from "react-router";
 
 export default function ProfilePaymentDetail() {
     const [complete, setComplete] = useState(true)
-
+    
     //화면 변경
-    let history = useHistory()
+    const history = useHistory()
+    const location = useLocation()
+    const item=location.state.item
+    useEffect(()=>{
+        console.log(item)
+    },[])
+    
     return (
         <>
             <Default>
