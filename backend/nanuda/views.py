@@ -73,14 +73,16 @@ class orderUpload(View):
             wish=WishDeal.objects.get(order_id=user_info["params"]["orderid"])
             idx=True
             for i in user_info["params"]["schedule"]:
+                money=0
+                if i["money"]!="-":
+                    money=i["money"]
                 PaymentHistory(
                 user_id=user,
                 wish_id=wish,
                 num=i["num"],
                 date=i["date"],
                 payment=idx,
-                if i["money"]!="-":
-                    money=int(i["money"])
+                money=money
                 ).save()
                 idx=False
             
