@@ -44,8 +44,8 @@ export default function ProfileMain() {
             })
             .catch(err => console.log(err))
     }, [])
-    const [item,setItem]=useState([])
-    async function getSchedule(){
+    const [item, setItem] = useState([])
+    async function getSchedule() {
         fetch('https://haulfree.link/order/profile', {
             method: "GET",
             headers: {
@@ -56,16 +56,16 @@ export default function ProfileMain() {
         })
             .then(response => response.json())
             .then(response => {
-               console.log(response)
-               setItem(response)
+                console.log(response)
+                setItem(response)
             })
             .catch(err => console.log(err))
     }
-    useEffect(()=>{
+    useEffect(() => {
         getSchedule()
-    },[])
+    }, [])
 
-    
+
     return (
         <>
             <Default>
@@ -138,30 +138,32 @@ export default function ProfileMain() {
                         }}>
                             <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" onClick={() => history.push('/profile/limit')} />
                             <ProfileInfo title="하울딜 찬스" data={1} unit="회" chance={true} />
-                            <ProfileInfo title="포인트" data={user.point} unit="P" onClick={() =>  history.push('/profile/point')} />
+                            <ProfileInfo title="포인트" data={user.point} unit="P" onClick={() => history.push('/profile/point')} />
                         </div>
-                        <div style={{
-                            fontFamily: "NotoSansCJKkr",
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            color: "#010608",
+                        {item.length > 0 ?
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                color: "#010608",
 
-                            marginTop: 32,
-                            marginLeft: 20,
-                        }}>분할결제 진행중인 상품</div>
-                        {item.map(item=>
-                            <OngoingProduct 
-                            img={item.wish_image}
-                            date="2021.03.13"
-                            title={item.wish_title}
-                            participateNum={3}
-                            participateDate="5/13"
-                            complete={false}
-                            total={item}
-                        />
+                                marginTop: 32,
+                                marginLeft: 20,
+                            }}>분할결제 진행중인 상품</div>
+                            :
+                            <></>
+                        }
+                        {item.map(item =>
+                            <OngoingProduct
+                                img={item.wish_image}
+                                date="2021.03.13"
+                                title={item.wish_title}
+                                participateNum={3}
+                                participateDate="5/13"
+                                complete={false}
+                                total={item}
+                            />
                         )}
-                        
-                    
                         <ManageList name="결제 수단 관리" path="profile/payment/main" />
                         <ManageList name="상품 구매 내역" path="profile/product/main" />
                         <ManageList name="내 리뷰" path="profile/review" />
@@ -226,37 +228,34 @@ export default function ProfileMain() {
                         display: "flex",
                         flexDirection: "column",
                     }}>
-                        <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" mobile={true} onClick={() => history.push('/profile/limit')}  />
+                        <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" mobile={true} onClick={() => history.push('/profile/limit')} />
                         <ProfileInfo title="하울딜 찬스" data={1} unit="회" mobile={true} chance={true} />
-                        <ProfileInfo title="포인트" data={user.point} unit="P" mobile={true} onClick={() =>  history.push('/profile/point')} />
+                        <ProfileInfo title="포인트" data={user.point} unit="P" mobile={true} onClick={() => history.push('/profile/point')} />
                     </div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        color: "#010608",
+                    {item.length > 0 ?
+                        <div style={{
+                            fontFamily: "NotoSansCJKkr",
+                            fontSize: 16,
+                            fontWeight: "bold",
+                            color: "#010608",
 
-                        marginTop: "8vw",
-                        marginLeft: "5vw",
-                    }}>분할결제 진행중인 상품</div>
-                    <MOngoingProduct
-                        img={airpod}
-                        date="2021.03.13"
-                        title="Apple AirPods Pro 
-                            애플 에어팟 프로 1세대 무선충전형"
-                        participateNum={3}
-                        participateDate="5/13"
-                        complete={false}
-                    />
-                    <MOngoingProduct
-                        img={airpod}
-                        date="2021.03.13"
-                        title="Apple AirPods Pro 
-                            애플 에어팟 프로 1세대 무선충전형"
-                        participateNum={2}
-                        participateDate="4/13"
-                        complete={true}
-                    />
+                            marginTop: "8vw",
+                            marginLeft: "5vw",
+                        }}>분할결제 진행중인 상품</div>
+                        :
+                        <></>
+                    }
+                    {item.map(item =>
+                        <MOngoingProduct
+                            img={item.wish_image}
+                            date="2021.03.13"
+                            title={item.wish_title}
+                            participateNum={3}
+                            participateDate="5/13"
+                            complete={false}
+                            total={item}
+                        />
+                    )}
                     <ManageList name="결제 수단 관리" path="profile/payment/main" mobile={true} />
                     <ManageList name="상품 구매 내역" path="profile/product/main" mobile={true} />
                     <ManageList name="내 리뷰" path="profile/review" mobile={true} />
@@ -311,30 +310,30 @@ const ProfileInfo = ({ title, data, unit, mobile, chance, onClick }) => {
     )
 }
 
-const OngoingProduct = ({ img, date, title, participateDate, participateNum, complete,total }) => {
-    const [expected,setExpected]=useState("")
-    const [times,setTimes]=useState("")
-    const [dates,setDates]=useState("")
-    function compareDate(){
-        var today=new Date()
-        var month =today.getMonth()
+const OngoingProduct = ({ img, date, title, participateDate, participateNum, complete, total }) => {
+    const [expected, setExpected] = useState("")
+    const [times, setTimes] = useState("")
+    const [dates, setDates] = useState("")
+    function compareDate() {
+        var today = new Date()
+        var month = today.getMonth()
         var day = today.getDate()
 
-        var id=total.order_id
-        var splited=id.split("-")
-        setDates("20"+splited[1].slice(0,2)+"."+splited[1].slice(2,4)+"."+splited[1].slice(4,6))
-        
-        for (var i=0;i<total.payment_history.length;i++){
-            if(total.payment_history[i].payment==false){
+        var id = total.order_id
+        var splited = id.split("-")
+        setDates("20" + splited[1].slice(0, 2) + "." + splited[1].slice(2, 4) + "." + splited[1].slice(4, 6))
+
+        for (var i = 0; i < total.payment_history.length; i++) {
+            if (total.payment_history[i].payment == false) {
                 setTimes(total.payment_history[i].num)
                 setExpected(total.payment_history[i].date)
                 break
             }
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         compareDate()
-    },[])
+    }, [])
     return (
         <>
             <div style={{
@@ -437,7 +436,7 @@ const MOngoingProduct = ({ img, date, title, participateDate, participateNum, co
                 </div>
                 <MdKeyboardArrowRight size={24} color="#010608" />
             </div>
-            {complete ? 
+            {complete ?
                 <div style={{ marginBottom: "4vw" }} />
                 :
                 <div style={{
