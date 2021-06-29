@@ -2,7 +2,7 @@ import React, { useReducer, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useLocation } from "react-router-dom";
 import { Default, Mobile } from "../App";
-import { Header, MHeader } from "../Style";
+import { Header, MHeader, StandardButton, MStandardButton } from "../Style";
 import { BiPlusCircle } from "react-icons/bi"
 
 function reducerA(state, action) {
