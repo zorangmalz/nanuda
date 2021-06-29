@@ -70,11 +70,14 @@ class orderUpload(View):
                 order_complete=False
 
             ).save()
-            # wish=WishDeal.objects.get()
-            # PaymentHistory(
+            # wish=WishDeal.objects.get(order_id=user_info["params"]["orderid"])
+            # for i in user_info["params"]["schedule"]:
+            #     PaymentHistory(
             #     user_id=user,
-
-            # ).save()
+            #     wish_id=wish,
+            #     date=
+            #     ).save()
+            
             return JsonResponse({"data":True})
                 
 #서비스 리뷰 조회(작성 or not)
