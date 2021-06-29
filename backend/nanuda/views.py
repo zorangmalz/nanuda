@@ -79,7 +79,7 @@ class orderUpload(View):
                 num=i["num"],
                 date=i["date"],
                 payment=idx,
-                money=i["money"]
+                money=int(i["money"])
                 ).save()
                 idx=False
             
