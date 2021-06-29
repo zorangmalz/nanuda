@@ -75,8 +75,8 @@ class orderUpload(View):
                 PaymentHistory(
                 user_id=user,
                 wish_id=wish,
-                num=user_info["params"]["schedule"]["num"],
-                date=user_info["params"]["schedule"]["date"],
+                num=i["num"],
+                date=i["date"],
                 payment=False
                 ).save()
             
