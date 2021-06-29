@@ -4,6 +4,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, StandardButton, MStandardButton, numberWithCommas } from "../Style";
 import "../css/haulfree.css"
+import { useHistory } from "react-router-dom";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -25,7 +26,6 @@ export default function ProfileRefund() {
     const [one, setOne] = useState(false)
     const [two, setTwo] = useState(false)
     const [three, setThree] = useState(false)
-
 
     //환불 사유
     const [refund, dispatch] = useReducer(reducer, 0)
@@ -59,6 +59,7 @@ export default function ProfileRefund() {
         })
     }
 
+    const history = useHistory()
     return (
         <>
             <Default>
@@ -111,7 +112,8 @@ export default function ProfileRefund() {
                             text="다음"
                             marginTop={32}
                             marginBottom={40}
-
+                            state={one && two && three && reason.length > 0 ? true : false}
+                            onClick={() => history.replace("/profile/payment/main")}
                         />
                     </div>
                 </div>
@@ -127,7 +129,37 @@ export default function ProfileRefund() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="반품,환불 신청" goBack={true} />
-                    
+                    <Product date="2021.04.13" title="PRADA Model 23-9 limited… WHITE, 270mm" price={480000} mobile={true} />
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        color: "#010608",
+                        marginTop: 16,
+                        marginLeft: 20,
+                    }}>어떤 문제가 있었나요?</div>
+                    <RefundProblem text="단순 변심" name="reason" value={reason} onChange={onChange} onClick={onSIMPLE} state={refund} num={1} mobile={true} />
+                    <RefundProblem text="제품 불량" name="reason" value={reason} onChange={onChange} onClick={onPRODUCT} state={refund} num={2} mobile={true} />
+                    <RefundProblem text="오배송" name="reason" value={reason} onChange={onChange} onClick={onERROR} state={refund} num={3} mobile={true} />
+                    <RefundProblem text="기타" name="reason" value={reason} onChange={onChange} onClick={onETC} state={refund} num={4} mobile={true} />
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        color: "#010608",
+                        marginTop: 32,
+                        marginLeft: 20,
+                    }}>반품 신청하기전에 꼭 확인해주세요!</div>
+                    <RefundCheck state={one} setState={setOne} text={<span>반품, 환불 신청이 완료된 후 카카오톡 고객 센터를 통해 <br /> 1 영업일 내로 안내사항이 전송될 예정입니다. </span>} mobile={true} />
+                    <RefundCheck state={two} setState={setTwo} text="위시딜의 경우 구매한 쇼핑몰의 반품, 환불 약관을 따릅니다." mobile={true} />
+                    <RefundCheck state={three} setState={setThree} text={<span>반품된 상품을 검수한 후  환불이 승인된 경우 <br /> 결제 금액이 환불됩니다. </span>} mobile={true} />
+                    <MStandardButton
+                        text="다음"
+                        marginTop={"8vw"}
+                        marginBottom={"10vw"}
+                        state={one && two && three && reason.length > 0 ? true : false}
+                        onClick={() => history.replace("/profile/payment/main")}
+                    />
                 </div>
             </Mobile>
         </>
