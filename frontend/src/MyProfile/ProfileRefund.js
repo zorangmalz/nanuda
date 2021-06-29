@@ -2,7 +2,7 @@ import React, { useEffect, useState, useReducer } from "react";
 import { BsCheck } from "react-icons/bs";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Default, Mobile } from "../App";
-import { Header, MHeader, StandardButton, MStandardButton } from "../Style";
+import { Header, MHeader, StandardButton, MStandardButton, numberWithCommas } from "../Style";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -135,7 +135,6 @@ export default function ProfileRefund() {
 
 
 function Product({ img, date, title, price, mobile }) {
-    const history = useHistory()
     return (
         <>
             <div style={{
