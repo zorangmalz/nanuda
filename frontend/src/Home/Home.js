@@ -189,12 +189,6 @@ export default function Home() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        	{/* <form name="form_chk" method="post">
-                        <input type="hidden" name="m" value="checkplusService"/>
-                        <input type="hidden" name="EncodeData" value={enc}/>	
-                        <input type ="hidden" name="recvMethodType" value ="get"/>
-                        <div onClick={fnPopup}> CheckPlus 안심본인인증 Click</div>
-                    </form> */}
                         <HomeHeader />
                         <div style={{
                             width: 480,
@@ -475,7 +469,7 @@ export default function Home() {
                         {loginModal ?
                             <StandardChoiceModal
                                 title="회원가입이 필요한 서비스입니다."
-                                content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
+                                content={<span>지금 바로 회원가입하고 <br /> 다양한 상품을 분할결제 해보세요!</span>}
                                 canceltext="취소"
                                 onCancelClick={() => setLoginModal(false)}
                                 buttontext="회원가입"
@@ -753,7 +747,7 @@ export default function Home() {
                     {loginModal ?
                         <StandardChoiceModal
                             title="회원가입이 필요한 서비스입니다."
-                            content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
+                            content={<span>지금 바로 회원가입하고 <br /> 다양한 상품을 분할결제 해보세요!</span>}
                             canceltext="취소"
                             onCancelClick={() => setLoginModal(false)}
                             buttontext="회원가입"
