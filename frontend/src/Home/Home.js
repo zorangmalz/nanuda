@@ -857,6 +857,7 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 12,
                         color: "#010608",
+                        opacity: 0.6
                     }}>2회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -867,6 +868,7 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                         <span style={{
                             fontSize: 14,
                             fontWeight: "normal",
+                            opacity: 0.6
                         }}>월 </span>{twoPrice}원
                     </div>
                 </div>
@@ -881,6 +883,7 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 12,
                         color: "#010608",
+                        opacity: 0.6
                     }}>4회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -891,6 +894,7 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                         <span style={{
                             fontSize: 14,
                             fontWeight: "normal",
+                            opacity: 0.6
                         }}>월 </span>{fourPrice}원
                     </div>
                 </div>
@@ -1024,6 +1028,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 10,
                         color: "#010608",
+                        opacity: 0.6
                     }}>2회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -1034,6 +1039,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                         <span style={{
                             fontSize: 11,
                             fontWeight: "normal",
+                            opacity: 0.6
                         }}>월 </span>{twoPrice}원
                     </div>
                 </div>
@@ -1048,6 +1054,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 10,
                         color: "#010608",
+                        opacity: 0.6
                     }}>4회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -1058,6 +1065,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                         <span style={{
                             fontSize: 11,
                             fontWeight: "normal",
+                            opacity: 0.6
                         }}>월 </span>{fourPrice}원
                     </div>
                 </div>
