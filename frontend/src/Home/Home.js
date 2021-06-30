@@ -301,7 +301,7 @@ export default function Home() {
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
-                            marginTop: 32,
+                            marginTop: 64,
                             marginLeft: 20,
                         }}>
                             <div onClick={() => history.push("/review/main")} style={{
@@ -601,7 +601,7 @@ export default function Home() {
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
-                        marginTop: "8vw",
+                        marginTop: "16vw",
                         marginLeft: "5vw",
                     }}>
                         <div style={{
@@ -696,7 +696,7 @@ export default function Home() {
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
-                        marginTop: "8vw",
+                        marginTop: "16vw",
                         marginLeft: "5vw",
                     }}>
                         <div onClick={() => history.push("/service/main")} style={{
