@@ -132,7 +132,7 @@ export default function ProfilePaymentMethod() {
     
     }
    
-   function handleClick(){
+    const handleClick = (e) =>{
         
         const obj = {};
         /*
