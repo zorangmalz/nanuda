@@ -156,12 +156,10 @@ export default function ProfileMain() {
                         {item.map(item =>
                             <OngoingProduct
                                 img={item.wish_image}
-                                date="2021.03.13"
                                 title={item.wish_title}
-                                participateNum={3}
-                                participateDate="5/13"
                                 complete={false}
                                 total={item}
+                                mobile={false}
                             />
                         )}
                         <ManageList name="결제 수단 관리" path="profile/payment/method" />
@@ -246,14 +244,12 @@ export default function ProfileMain() {
                         <></>
                     }
                     {item.map(item =>
-                        <MOngoingProduct
+                        <OngoingProduct
                             img={item.wish_image}
-                            date="2021.03.13"
                             title={item.wish_title}
-                            participateNum={3}
-                            participateDate="5/13"
                             complete={false}
                             total={item}
+                            mobile={true}
                         />
                     )}
                     <ManageList name="결제 수단 관리" path="profile/payment/method" mobile={true} />
@@ -310,7 +306,7 @@ const ProfileInfo = ({ title, data, unit, mobile, chance, onClick }) => {
     )
 }
 
-const OngoingProduct = ({ img, date, title, participateDate, participateNum, complete, total }) => {
+const OngoingProduct = ({ img, title, complete, total, mobile }) => {
     const [expected, setExpected] = useState("")
     const [times, setTimes] = useState("")
     const [dates, setDates] = useState("")
@@ -342,10 +338,10 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
                 alignItems: "center",
                 justifyContent: "space-between",
 
-                width: 440,
-                height: 120,
-                marginTop: 16,
-                marginLeft: 20,
+                width: mobile ? "90vw" : 440,
+                height: mobile ? "25vw" : 120,
+                marginTop: mobile ? "4vw" : 16,
+                marginLeft: mobile ? "5vw" : 20,
             }}>
                 <img alt="product" src={img} style={{ width: 120 }} />
                 <div style={{
@@ -354,123 +350,40 @@ const OngoingProduct = ({ img, date, title, participateDate, participateNum, com
                     alignItems: "flex-start",
                     justifyContent: "space-between",
 
-                    height: 120,
+                    height: mobile ? "25vw" : 120,
                 }}>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         opacity: 0.6,
-                        fontSize: 16,
+                        fontSize: mobile ? 14 : 16,
                         color: "#010608",
                     }}>{dates}</div>
                     <div style={{
-                        maxWidth: 260,
-                        fontSize: 16,
+                        maxWidth: mobile ? "55vw" : 260,
+                        fontSize: mobile ? 14 : 16,
                         color: "#010608",
                     }}>{title}</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
-                        fontSize: 18,
+                        fontSize: mobile ? 16 : 18,
                         color: "#26c1f0",
                         fontWeight: "bold",
                     }}>{times}차 결제 예정 ({expected})</div>
                 </div>
-                <MdKeyboardArrowRight size={28} color="#010608" />
+                <MdKeyboardArrowRight size={mobile ? 24 : 28} color="#010608" />
             </div>
             {complete ?
-                <div style={{ marginBottom: 16 }} />
+                <div style={{ marginBottom: mobile ? "4vw" : 16 }} />
                 :
                 <div style={{
-                    width: 440,
+                    width: mobile ? "90vw" : 440,
                     fontFamily: "NotoSansCJKkr",
-                    fontSize: 14,
+                    fontSize: mobile ? 12 : 14,
                     color: "#f72b2b",
-                    marginLeft: 20,
+                    marginLeft: mobile ? "5vw" : 20,
                     letterSpacing: -0.35,
-                    marginTop: 16,
-                }}>7-29일까지 결제를 완료하지 않으면 추심이 진행됩니다. 결제를 서둘러주세요.</div>
-            }
-        </>
-    )
-}
-
-const MOngoingProduct = ({ img, date, title, participateDate, participateNum, complete,total }) => {
-    const [expected, setExpected] = useState("")
-    const [times, setTimes] = useState("")
-    const [dates, setDates] = useState("")
-    function compareDate() {
-        var today = new Date()
-        var month = today.getMonth()
-        var day = today.getDate()
-
-        var id = total.order_id
-        var splited = id.split("-")
-        setDates("20" + splited[1].slice(0, 2) + "." + splited[1].slice(2, 4) + "." + splited[1].slice(4, 6))
-
-        for (var i = 0; i < total.payment_history.length; i++) {
-            if (total.payment_history[i].payment == false) {
-                setTimes(total.payment_history[i].num)
-                setExpected(total.payment_history[i].date)
-                break
-            }
-        }
-    }
-    useEffect(() => {
-        compareDate()
-    }, [])
-    return (
-        <>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-
-                width: "90vw",
-                height: "25vw",
-                marginTop: "4vw",
-                marginLeft: "5vw",
-            }}>
-                <img alt="product" src={img} style={{ width: "25vw" }} />
-                <div style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                    justifyContent: "space-between",
-
-                    height: "25vw",
-                }}>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        opacity: 0.6,
-                        fontSize: 14,
-                        color: "#010608",
-                    }}>{dates}</div>
-                    <div style={{
-                        maxWidth: "55vw",
-                        fontSize: 14,
-                        color: "#010608",
-                    }}>{title}</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 16,
-                        color: "#26c1f0",
-                        fontWeight: "bold",
-                    }}>{times}차 결제 예정 ({expected})</div>
-                </div>
-                <MdKeyboardArrowRight size={24} color="#010608" />
-            </div>
-            {complete ?
-                <div style={{ marginBottom: "4vw" }} />
-                :
-                <div style={{
-                    width: "90vw",
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: 12,
-                    color: "#f72b2b",
-                    marginLeft: "5vw",
-                    letterSpacing: -0.35,
-                    marginTop: "4vw",
-                }}>7-29일까지 결제를 완료하지 않으면 추심이 진행됩니다. 결제를 서둘러주세요.</div>
+                    marginTop: mobile ? "4vw" : 16,
+                }}>{expected}일까지 결제를 완료하지 않으면 추심이 진행됩니다. 결제를 서둘러주세요.</div>
             }
         </>
     )
