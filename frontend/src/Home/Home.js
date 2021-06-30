@@ -13,6 +13,7 @@ import smallbannertwo from "../images/smallbannertwo.png";
 import Slider from "react-slick"
 import bannerOne from "../images/bannerOne.png"
 import bannerTwo from "../images/bannerTwo.png"
+import bannerThree from "../images/bannerThree.png"
 import banner from "../images/homebanner.png"
 import sampleone from "../images/sampleone.png"
 import sampletwo from "../images/sampletwo.png"
@@ -209,6 +210,12 @@ export default function Home() {
                                 </div>
                                 <div>
                                     <img src={bannerTwo} alt="bannerTwo" onClick={() => window.open('https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934', '_blank')} style={{
+                                        width: 480,
+                                        cursor: "pointer",
+                                    }} />
+                                </div>
+                                <div>
+                                    <img src={bannerThree} alt="bannerTwo" onClick={() => window.open('https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934', '_blank')} style={{
                                         width: 480,
                                         cursor: "pointer",
                                     }} />
@@ -503,6 +510,12 @@ export default function Home() {
                             </div>
                             <div>
                                 <img src={bannerTwo} alt="bannerTwo" onClick={() => window.open('https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934', '_blank')} style={{
+                                    width: "100vw",
+                                    cursor: "pointer",
+                                }} />
+                            </div>
+                            <div>
+                                <img src={bannerThree} alt="bannerTwo" onClick={() => window.open('https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934', '_blank')} style={{
                                     width: "100vw",
                                     cursor: "pointer",
                                 }} />
