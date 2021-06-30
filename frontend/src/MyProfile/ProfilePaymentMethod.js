@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { BiPlusCircle } from "react-icons/bi";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
