@@ -110,7 +110,7 @@ export default function SignupProfile() {
             })
 
         })
-            .then(response => response.json())
+            .then(response => response.text())
             .then(response => {
                 console.log(response)
                 if (response.data === true) {
