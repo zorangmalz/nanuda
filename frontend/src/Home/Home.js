@@ -198,7 +198,6 @@ export default function Home() {
                         <HomeHeader />
                         <div style={{
                             width: 480,
-                            height: 300,
                             marginBottom: 16,
                         }}>
                             <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
@@ -224,11 +223,11 @@ export default function Home() {
                         </div>
                         <BannerContainer>
                             <div id="wishdeal_click" onClick={() => history.push("wishdeal/default")}>
-                                <img style={{ marginRight: 16, cursor: "pointer" }} src={smallbanner} alt="광고배너" /></div>
+                                <img style={{ marginRight: 16, cursor: "pointer", borderRadius: 6, }} src={smallbanner} alt="광고배너" /></div>
                             <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
                                 textDecorationLine: "none",
                                 WebkitAppearance: "none"
-                            }}><img style={{ marginRight: 16 }} src={smallbannertwo} alt="광고배너" /></a>
+                            }}><img style={{ marginRight: 16, borderRadius: 6, }} src={smallbannertwo} alt="광고배너" /></a>
                         </BannerContainer>
                         <div style={{
                             display: "flex",
