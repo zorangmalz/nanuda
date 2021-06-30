@@ -15,6 +15,21 @@ export default function ReviewWrite() {
     const [data, setData] = useState()
     const location = useLocation()
 
+    //User 정보 받기
+    const [userName, setUserName] = useState("")
+    useEffect(() => {
+        fetch("https://haulfree.link/userInfoName/", {
+            method: "GET",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            credentials: "include"
+        })
+            .then(res => res.json())
+            .then(res => setUserName(res.name))
+            .catch(err => console.log(err))
+    }, [])
+
     //상품 정보를 넘겨 받게 됨
     useEffect(() => {
         setData(location.state.item)
@@ -69,7 +84,7 @@ export default function ReviewWrite() {
                 ACL: "public-read",
                 Body: selectedFile[i],
                 Bucket: S3_BUCKET,
-                Key: selectedFile[i].name
+                Key: `${userName}/review/${selectedFile[i].name}`
             }
 
             imageBucket.putObject(params)
@@ -81,7 +96,7 @@ export default function ReviewWrite() {
                         console.log(err)
                     }
                 })
-            imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[i].name}`)
+            imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${userName}/review/${selectedFile[i].name}`)
         }
         var array;
         if (data.type === "timedeal") {

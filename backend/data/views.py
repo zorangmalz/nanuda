@@ -462,11 +462,18 @@ def review_one(request, pk):
         
 
     elif request.method == 'DELETE':
-        order = Order.objects.get(pk = review.order_id.id)
-        order.review_write = False
-        order.save()
-        review.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        if review.order_id is not None:
+            order = Order.objects.get(pk = review.order_id.id)
+            order.review_write = False
+            order.save()
+            review.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        else:
+            wish = WishDeal.objects.get(pk = review.wish_id.id)
+            wish.review_write = False
+            wish.save()
+            review.delete()
+            return Response(status=status.HTTP_202_ACCEPTED)
 
 # Order
 @api_view(["GET", "POST"])
