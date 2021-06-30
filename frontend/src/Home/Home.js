@@ -222,11 +222,12 @@ export default function Home() {
                             </Slider>
                         </div>
                         <BannerContainer>
-                            <div id="wishdeal_click" onClick={() => history.push("wishdeal/default")}>
+                            <div id="wishdeal_click" onClick={() => history.push("wishdeal/default")} style={{ borderRadius: 6, }} >
                                 <img style={{ marginRight: 16, cursor: "pointer", borderRadius: 6, }} src={smallbanner} alt="광고배너" /></div>
                             <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
                                 textDecorationLine: "none",
-                                WebkitAppearance: "none"
+                                WebkitAppearance: "none",
+                                borderRadius: 6,
                             }}><img style={{ marginRight: 16, borderRadius: 6, }} src={smallbannertwo} alt="광고배너" /></a>
                         </BannerContainer>
                         <div style={{
