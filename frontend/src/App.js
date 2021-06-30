@@ -30,6 +30,7 @@ import ProfileMain from './MyProfile/ProfileMain';
 import ProfileLimit from './MyProfile/ProfileLimit';
 import ProfilePoint from './MyProfile/ProfilePoint';
 import ProfileVerification from './MyProfile/ProfileVerification';
+import ProfilePaymentMethod from "./MyProfile/ProfilePaymentMethod"
 import ReviewSelect from './Review/ReviewSelect';
 import ReviewFail from './Review/ReviewFail';
 import ReviewSuccess from './Review/ReviewSuccess';
@@ -99,6 +100,7 @@ function App() {
         <Route path="/profile/payment/success" component={ProfilePaymentSuccess} />
         <Route path="/profile/payment/fail" component={ProfilePaymentFail} />
         <Route path="/profile/payment/detail" component={ProfilePaymentDetail} />
+        <Route path="/profile/payment/method" component={ProfilePaymentMethod} />
         <Route path="/profile/product/main" component={ProfileProduct} />
         <Route path="/profile/product/info" component={ProfileProductInfo} />
         <Route path="/profile/delete" component={ProfileDelete} />
