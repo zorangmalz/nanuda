@@ -195,36 +195,6 @@ export default function Home() {
                         <div onClick={fnPopup}> CheckPlus 안심본인인증 Click</div>
                     </form> */}
                         <HomeHeader />
-                        {/* 배너 넣어야됨 */}
-                        <div style={{
-                            width: 480,
-                            height: 48,
-                            backgroundColor: "#010608"
-                        }}>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "flex-start",
-
-                            }}>
-                                <div style={{
-                                    fontSize: 16,
-                                    color: "#ffffff",
-                                    marginTop: 12,
-                                    marginLeft: 69
-                                }}>스타트업 대표님이신가요?</div>
-                                <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
-                                    <div style={{
-                                        marginLeft: 5,
-                                        fontSize: 16,
-                                        color: "#ffffff",
-                                        marginTop: 12,
-                                        textDecorationLine: "underline",
-                                        fontWeight: "bold"
-                                    }}>첫 구매 수수료 50% 할인</div>
-                                </a>
-                            </div>
-                        </div>
                         <div style={{
                             width: 480,
                             height: 300,
@@ -523,37 +493,6 @@ export default function Home() {
                     zIndex: 0,
                 }}>
                     <MHomeHeader />
-                    <div style={{
-                        width: "100%",
-                        height: 48,
-                        backgroundColor: "#010608"
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "flex-start",
-
-                        }}>
-                            <div style={{
-                                fontSize: 14,
-                                color: "#ffffff",
-                                marginTop: 12,
-                                marginLeft: 50
-                            }}>
-                                스타트업 대표님이신가요?
-                            </div>
-                            <a id="startup_click" target="_blank" href={"https://www.notion.so/haulfree/f97fa37a92e04d2c91b2a11aa9624bea"}>
-                                <div style={{
-                                    marginLeft: 5,
-                                    fontSize: 14,
-                                    color: "#ffffff",
-                                    marginTop: 12,
-                                    textDecorationLine: "underline",
-                                    fontWeight: "bold"
-                                }}>첫 구매 수수료 50% 할인</div>
-                            </a>
-                        </div>
-                    </div>
                     <div style={{ width: "100vw", marginBottom: "3vw" }}>
                         <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
                             <div>
