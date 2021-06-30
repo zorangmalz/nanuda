@@ -120,16 +120,23 @@ export default function ProfilePaymentDetail() {
                             backgroundColor: "rgba(1, 6, 8, 0.2)",
                             alignSelf: "center",
                         }} />
-                            {item.payment_history.map(item =>
-                   <PayInfo
-                   num={item.num}
-                   date={item.date}
-                   state={item.payment}
-                   payback={item.money}
-               />
-                        
-                    )}
-                     
+                            {item.payment_history.map((item) =>{
+                                return(
+                                    <>
+                                    {item.money===0?
+                                    <></>
+                                    :
+                                    <PayInfo
+                                    num={item.num}
+                                    date={item.date}
+                                    state={item.payment}
+                                    payback={item.money}
+                                />
+                                }  
+                                    </>
+                                )
+                            })
+                        }
                         {complete ? <></> :
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
@@ -188,14 +195,24 @@ export default function ProfilePaymentDetail() {
                         marginTop: 24,
                         marginBottom: 24,
                     }}>
-                        <div style={{
-                            width: 100,
-                            height: 100,
-                            borderRadius: 6,
-                            marginRight: 12,
-                            backgroundColor: "#000000",
-                            color: "#ffffff"
-                        }}>상품 그림</div>
+                              {item.product_image===undefined?
+                               <img src={item.wish_image} style={{
+                                width: 100,
+                                heigh: 100,
+                                borderRadius: 6,
+                                marginRight: 16,
+                                objectFit: "cover"
+                            }} />
+                            :
+                            <img src={item.product_image} style={{
+                                width: 100,
+                                heigh: 100,
+                                borderRadius: 6,
+                                marginRight: 16,
+                                objectFit: "cover"
+                            }} />
+                            }
+                  
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
@@ -203,25 +220,33 @@ export default function ProfilePaymentDetail() {
                             justifyContent: "space-between",
                             height: 100,
                         }}>
-                            <div style={{
-                                fontSize: 14,
-                                fontFamily: "NotoSansCJKkr",
-                                color: "#010608",
-                                opacity: 0.6,
-                            }}>2021.03.13</div>
-                            <div style={{
-                                fontSize: 14,
-                                color: "#010608",
-                                fontFamily: "AvenirNext",
-                                lineHeight: 1.5,
-                            }}>PRADA Model 23-9 limited… <br />
-                                    WHITE, 270mm</div>
-                            <div style={{
-                                fontSize: 16,
-                                fontWeight: "bold",
-                                color: "#010608",
-                                fontFamily: "NotoSansCJKkr"
-                            }}>480,000원</div>
+                              <div style={{
+                                    fontSize: 14,
+                                    fontFamily: "NotoSansCJKkr",
+                                    color: "#010608",
+                                    opacity: 0.6,
+                                }}>{dates}</div>
+                                {item.product_name==undefined ?
+                                 <div style={{
+                                    fontSize: 14,
+                                    color: "#010608",
+                                    fontFamily: "AvenirNext",
+                                    lineHeight: 1.5,
+                                 }}>{item.wish_title}</div>
+                                    :
+                                    <div style={{
+                                        fontSize: 14,
+                                        color: "#010608",
+                                        fontFamily: "AvenirNext",
+                                        lineHeight: 1.5,
+                                     }}>{item.product_name}</div>
+                                 }
+                                <div style={{
+                                    fontSize: 16,
+                                    fontWeight: "bold",
+                                    color: "#010608",
+                                    fontFamily: "NotoSansCJKkr"
+                                }}>{item.order_price}원</div>
                         </div>
                     </div>
                     <div style={{
@@ -230,15 +255,23 @@ export default function ProfilePaymentDetail() {
                         backgroundColor: "rgba(1, 6, 8, 0.2)",
                         alignSelf: "center",
                     }} />
-                     {item.payment_history.map(item =>
-                   <MPayInfo
-                   num={item.num}
-                   date={item.date}
-                   state={item.payment}
-                   payback={180000}
-               />
-                        
-                    )}
+                 {item.payment_history.map((item) =>{
+                                return(
+                                    <>
+                                    {item.money===0?
+                                    <></>
+                                    :
+                                    <MPayInfo
+                                    num={item.num}
+                                    date={item.date}
+                                    state={item.payment}
+                                    payback={item.money}
+                                />
+                                }  
+                                    </>
+                                )
+                            })
+                        }
                     {complete ? <></> :
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
@@ -429,8 +462,8 @@ function MPayInfo({ num, date, state, payback }) {
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
-                        color: state === 0 ? "rgba(1, 6, 8, 0.6)" : state === 1 ? "#26c1f0" : "#f72b2b",
-                    }}>{state === 0 ? "결제완료" : state === 1 ? "결제 예정" : "연체"}</div>
+                        color: state === true ? "rgba(1, 6, 8, 0.6)" : state === false ? "#26c1f0" : "#f72b2b",
+                    }}>{state === true ? "결제완료" : state === false ? "결제 예정" : "연체"}</div>
                 </div>
                 <div style={{
                     display: "flex",
