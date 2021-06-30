@@ -106,7 +106,7 @@ export default function ProfilePaymentMethod() {
                 alignSelf: "center",
                 cursor: "pointer",
                 marginTop: 32,
-                marginBottom: marginBottom,
+                
 
                 fontSize: 18,
                 fontWeight: "bold",
