@@ -44,6 +44,7 @@ export default function ReviewSelect() {
                                     "product_image": response[i].product_image,
                                     "product_price": response[i].product_price,
                                     "review_write": response[i].review_write,
+                                    "type": "timedeal"
                                 })
                             } else {
                                 array.push({
@@ -53,6 +54,7 @@ export default function ReviewSelect() {
                                     "product_image": response[i].wish_image,
                                     "product_price": response[i].order_price,
                                     "review_write": response[i].review_write,
+                                    "type": "wishdeal"
                                 })
                             }
                         }

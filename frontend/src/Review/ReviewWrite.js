@@ -74,7 +74,7 @@ export default function ReviewWrite() {
 
             imageBucket.putObject(params)
                 .on("httpUploadProgress", (evt) => {
-                    
+
                 })
                 .send((err) => {
                     if (err) {
@@ -83,12 +83,25 @@ export default function ReviewWrite() {
                 })
             imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${selectedFile[i].name}`)
         }
-        var array = {
-            order_id: data.id,
-            review_score: number,
-            review_like: inputs.like,
-            review_dislike: inputs.dislike,
-            review_image: imageArray
+        var array;
+        if (data.type === "timedeal") {
+            array = {
+                order_id: data.id,
+                review_score: number,
+                review_like: inputs.like,
+                review_dislike: inputs.dislike,
+                review_image: imageArray,
+                type: "timedeal",
+            }
+        } else {
+            array = {
+                wish_id: data.id,
+                review_score: number,
+                review_like: inputs.like,
+                review_dislike: inputs.dislike,
+                review_image: imageArray,
+                type: "wishdeal",
+            }
         }
         await fetch("https://haulfree.link/review/main", {
             method: "POST",
