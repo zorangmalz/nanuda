@@ -252,14 +252,25 @@ def review_profile(request, pk):
 
             lists = []
             for my_review in my_reviews:
-                lists.append({
-                    "id": my_review.id,
-                    "user_name": my_review.user_name(),
-                    "review_image": my_review.review_image,
-                    "review_score": my_review.review_score,
-                    "review_like": my_review.review_like,
-                    "order_price": my_review.order_price(),
-                })
+                if review.order_id is not None:
+                    lists.append({
+                        "id": my_review.id,
+                        "user_name": my_review.user_name(),
+                        "review_image": my_review.review_image,
+                        "review_score": my_review.review_score,
+                        "review_like": my_review.review_like,
+                        "order_price": my_review.order_price(),
+                    })
+                else:
+                    lists.append({
+                        "id": my_review.id,
+                        "user_name": my_review.user_name(),
+                        "review_image": my_review.review_image,
+                        "review_score": my_review.review_score,
+                        "review_like": my_review.review_like,
+                        "order_price": my_review.wish_order_price(),
+                    })
+
             return JsonResponse({
                 "review_list": lists,
                 "review_length": count
