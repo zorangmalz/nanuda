@@ -7,6 +7,7 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import kakao from "./images/kkt cs.png"
 import mainlogo from "./images/mainlogo.png"
+import back from "./images/back.png"
 import "./css/haulfree.css"
 import AWS from "aws-sdk";
 
@@ -103,10 +104,12 @@ export function Header({ content, goBack, goX }) {
             paddingBottom: 15,
             position: "relative",
         }}>
-            {goBack ? <IoIosArrowBack size={24} color="#010608" onClick={() => history.goBack()} style={{
+            {goBack ? <img src={back} onClick={() => history.goBack()} style={{
                 position: "absolute",
                 left: 20,
-                cursor: "pointer"
+                cursor: "pointer",
+                width: 24,
+                height: 24,
             }} /> : <></>}
             {goX ? <BsX size={32} color="#010608" onClick={() => history.replace("/")} style={{
                 position: "absolute",
@@ -140,10 +143,12 @@ export function MHeader({ content, goBack, goX }) {
             paddingBottom: 15,
             position: "relative",
         }}>
-            {goBack ? <IoIosArrowBack size={24} color="#010608" onClick={() => history.goBack()} style={{
+            {goBack ? <img src={back} onClick={() => history.goBack()} style={{
                 position: "absolute",
                 left: "5vw",
-                cursor: "pointer"
+                cursor: "pointer",
+                width: 24,
+                height: 24,
             }} /> : <></>}
             {goX ? <BsX size={24} color="#010608" onClick={() => history.replace("/")} style={{
                 position: "absolute",
