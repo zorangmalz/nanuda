@@ -24,23 +24,20 @@ export default function WishDealDefault() {
         )
     }
     let history = useHistory();
-    const [linkOrNot, setLinkOrNot] = useState(false)
     const [text, setText] = useState("")
-    const [image, setImage] = useState("")
-    const [title, setTitle] = useState("")
-    const [url, setUrl] = useState("")
     const [checker, setChecker] = useState(false)
-
-    function check() {
-        if (text.length > 5) {
-            setChecker(true)
-        } else {
-            setChecker(false)
+    const isValidUrl = (url) => {
+        try {
+          new URL(url);
+        } catch (e) {
+          console.error(e);
+          setChecker(false)
         }
-    }
+        setChecker(true)
+      };
 
     useEffect(() => {
-        check()
+        isValidUrl(text)
     }, [text])
 
     const onChange = (e) => {
@@ -76,7 +73,6 @@ export default function WishDealDefault() {
                 })
             })
     }
-
     return (
         <>
             <Default>
@@ -169,68 +165,6 @@ export default function WishDealDefault() {
                             fontWeight: "bold",
                             fontSize: 18
                         }}>사고 싶은 상품 링크를 입력해주세요</div>
-                        {linkOrNot ?
-                            <>
-                                <div style={{
-                                    width: 440,
-                                    height: 140,
-                                    marginLeft: 20,
-                                    marginRight: 20,
-                                    marginTop: 32,
-
-                                }}>
-                                    <img style={{
-                                        width: 440,
-                                        height: 200,
-                                        objectFit: "cover"
-                                    }} src={image}></img>
-                                </div>
-                                <div style={{
-                                    width: 440,
-                                    marginLeft: 20,
-                                    marginRight: 20,
-                                    marginTop: 32,
-                                    backgroundColor: "#f2f3f8",
-                                }}>
-                                    <div stlye={{
-                                        fontSize: 14,
-                                        opacity: 0.6,
-                                        color: "#010608",
-
-                                    }}>{url.substr(0, 20)}...</div>
-                                    <div style={{
-                                        fontWeight: "bold",
-                                        marginTop: 8,
-                                        fontSize: 14
-                                    }}>{title}</div>
-
-                                </div>
-                                <div style={{
-                                    marginTop: 18,
-                                    marginLeft: 46,
-                                    fontSize: 14
-                                }}> 이 상품이 맞는지 한번 더 확인해주세요.</div>
-                                <div style={{
-                                    marginTop: 36,
-                                    marginLeft: 20,
-                                    fontWeight: "bold",
-                                    fontSize: 18
-                                }}>상품 카테고리를 알려주세요!</div>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    marginTop: 16
-                                }}>
-                                    <div style={{ width: 93, height: 74, marginLeft: 20, borderRadius: 6, border: "solid 1px #707070" }}></div>
-                                    <div style={{ width: 93, height: 74, marginLeft: 20, borderRadius: 6, border: "solid 1px #707070" }}></div>
-                                    <div style={{ width: 93, height: 74, marginLeft: 20, borderRadius: 6, border: "solid 1px #707070" }}></div>
-                                    <div style={{ width: 93, height: 74, marginLeft: 20, borderRadius: 6, border: "solid 1px #707070" }}></div>
-                                </div>
-                            </>
-                            :
-                            <></>
-                        }
                         <input value={text} onChange={onChange} style={{
                             outline: 0,
                             width: 408,
@@ -356,60 +290,6 @@ export default function WishDealDefault() {
                             fontWeight: "bold",
                             fontSize: 16
                         }}>사고 싶은 상품 링크를 입력해주세요!</div>
-                        {linkOrNot ?
-                            <>
-                                <img style={{
-                                    width: "90vw",
-                                    height: "50vw",
-                                    objectFit: "cover",
-                                    marginLeft: "5vw",
-                                    marginRight: "5vw",
-                                    marginTop: "8vw",
-                                }} src={image} />
-                                <div style={{
-                                    width: "90vw",
-                                    marginLeft: "5vw",
-                                    marginRight: "5vw",
-                                    marginTop: "8vw",
-                                    backgroundColor: "#f2f3f8",
-                                }}>
-                                    <div stlye={{
-                                        fontSize: 12,
-                                        opacity: 0.6,
-                                        color: "#010608",
-                                    }}>{url.substr(0, 20)}...</div>
-                                    <div style={{
-                                        fontWeight: "bold",
-                                        marginTop: "2vw",
-                                        fontSize: 12
-                                    }}>{title}</div>
-                                </div>
-                                <div style={{
-                                    marginTop: "4vw",
-                                    marginLeft: "12vw",
-                                    fontSize: 12
-                                }}> 이 상품이 맞는지 한번 더 확인해주세요.</div>
-                                <div style={{
-                                    marginTop: "9vw",
-                                    marginLeft: "5vw",
-                                    fontWeight: "bold",
-                                    fontSize: 16
-                                }}>상품 카테고리를 알려주세요!</div>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    marginTop: "4vw"
-                                }}>
-                                    <div style={{ width: "23vw", height: "18vw", marginLeft: "5vw", borderRadius: 6, border: "solid 1px #707070" }} />
-                                    <div style={{ width: "23vw", height: "18vw", marginLeft: "5vw", borderRadius: 6, border: "solid 1px #707070" }} />
-                                    <div style={{ width: "23vw", height: "18vw", marginLeft: "5vw", borderRadius: 6, border: "solid 1px #707070" }} />
-                                    <div style={{ width: "23vw", height: "18vw", marginLeft: "5vw", borderRadius: 6, border: "solid 1px #707070" }} />
-                                </div>
-                            </>
-                            :
-                            <></>
-                        }
                         <input value={text} onChange={onChange} style={{
                             outline: 0,
                             width: "82vw",
