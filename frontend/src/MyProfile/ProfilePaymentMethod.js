@@ -3,6 +3,7 @@ import { BiPlusCircle } from "react-icons/bi";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
+import { authenticate } from "./authenticate";
 
 export default function ProfilePaymentMethod() {
     let history = useHistory()
@@ -40,8 +41,164 @@ export default function ProfilePaymentMethod() {
     },[])
 
     function change(){
+        authenticate().then((res) => {
+            console.log('Auth Result:', { ...res.data });
+            // 토큰값 세팅
+            obj.PCD_CST_ID = res.data.cst_id;         // 가맹점 인증 후 리턴 받은 cst_id Token
+            obj.PCD_CUST_KEY = res.data.custKey;      // 가맹점 인증 후 리턴 받은 custKey Token
+            obj.PCD_AUTH_KEY = res.data.AuthKey;      // 가맹점 인증 후 리턴 받은 AuthKey Token
+            obj.PCD_PAY_URL = res.data.return_url;    // 가맹점 인증 후 리턴 받은 결제요청 URL
+            obj.PCD_PAYER_ID=payId;
+            //상품명
+            obj.PCD_PAY_GOODS="test";
+
+            obj.PCD_PAYER_NO=""
+            obj.PCD_PAYER_EMAIL=""
+            obj.PCD_PAY_OID=""
+            obj.PCD_PAY_TOTAL="1000"
+            obj.PCD_PAY_YEAR="2021"
+            obj.PCD_PAY_MONTH="6"
+
+            if (res.data.result !== 'success') return alert(res.data.result_msg);
+
+            // 해당 함수를 불러오려면 cpay.payple.kr 스크립트 추가가 선행 되어야 합니다. /public/index.html
+            // 가맹점 인증 후, 토큰 값을 추가 및 PaypleCpayPopup 함수 호출
+            fetch("https://wishdeal.link/puserDel/", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': 'application/json',
+                    "Host":"https://testcpay.payple.kr"
+                },
+                
+                body: new URLSearchParams({
+                    PCD_CST_ID : res.data.cst_id,         // 가맹점 인증 후 리턴 받은 cst_id Token
+                    PCD_CUST_KEY : res.data.custKey,      // 가맹점 인증 후 리턴 받은 custKey Token
+                    PCD_AUTH_KEY : res.data.AuthKey,      // 가맹점 인증 후 리턴 받은 AuthKey Token
+                    PCD_PAY_URL : res.data.return_url,    // 가맹점 인증 후 리턴 받은 결제요청 URL
+                    cst_id:"",
+                    custKey:"",
+                    AuthKey:"",
+                    PCD_PAYER_ID:payId
+                })
+            })
+                .then(response => response.json())
+                .then(response => {
+                   console.log(response)
+                   if(response.PCD_PAY_RST=="success"){
+                    handleClick()
+                   }else{
+                    console.log("error")
+                   }
+                }).catch(err => {
+                    console.log(err)
+                })
+        }).catch((err) => {
+            console.error(err)
+        })
+
 
     }
+    function uploadBank(a,b,c){
+        fetch("https://haulfree.link/bankUpload/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                params: {
+                    bank: a,
+                    bankAccount: b,
+                    billingKey:c
+                }
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.data === true) {
+                    console.log("good")
+                } else {
+                    console.log("bad")
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+    
+    }
+    const handleClick = (e) => {
+        e.preventDefault();
+        const obj = {};
+        /*
+         *  공통 설정
+         */
+        obj.PCD_CPAY_VER = "1.0.1"		             // (필수) 결제창 버전 (Default : 1.0.1)
+        obj.PCD_PAY_TYPE = "transfer"			             // (필수) 결제 방법 (transfer | card)
+        obj.PCD_PAY_WORK = "AUTH";			             // (필수) 결제요청 업무구분 (AUTH : 본인인증+계좌등록, CERT: 본인인증+계좌등록+결제요청등록(최종 결제승인요청 필요), PAY: 본인인증+계좌등록+결제완료)
+        obj.PCD_CARD_VER = '01';			     // DEFAULT: 01 (01: 정기결제 플렛폼, 02: 일반결제 플렛폼), 카드결제 시 필수
+        obj.PCD_PAYER_AUTHTYPE = "sms";				     // (선택) [간편결제/정기결제] 본인인증 방식 (sms : 문자인증 | pwd : 패스워드 인증)
+
+
+
+        obj.payple_auth_file = '';	                                 // 인증파일경로 /절대경로/payple_auth_file (node.js => [app.js] app.post('/pg/auth', ...) {..}
+
+        obj.callbackFunction = getResult;
+
+        /*
+         *  빌링키 등록 (pay_work === 'AUTH')
+         */
+
+        obj.PCD_PAYER_NO = ""					  // (선택) 가맹점 회원 고유번호 (결과전송 시 입력값 그대로 RETURN)
+        obj.PCD_PAYER_NAME = ""				  // (선택) 결제자 이름
+        obj.PCD_PAYER_HP = ""					  // (선택) 결제자 휴대폰 번호
+        obj.PCD_PAYER_EMAIL = "N"				  // (선택) 결제자 Email
+        obj.PCD_TAXSAVE_FLAG = "N"				  // (선택) 현금영수증 발행여부
+        obj.PCD_REGULER_FLAG = "N"				  // (선택) 정기결제 여부 (Y|N)
+        obj.PCD_SIMPLE_FLAG = "N"				  // (선택) 간편결제 여부 (Y|N)
+
+        /*
+         *  최초결제 및 단건(일반,비회원)결제
+         */
+
+        // 결제창에 보낼 Object Set
+        console.log('Object Set:', obj);
+
+        // 가맹점 인증
+        authenticate().then((res) => {
+            console.log('Auth Result:', { ...res.data });
+            // 토큰값 세팅
+            obj.PCD_CST_ID = res.data.cst_id;         // 가맹점 인증 후 리턴 받은 cst_id Token
+            obj.PCD_CUST_KEY = res.data.custKey;      // 가맹점 인증 후 리턴 받은 custKey Token
+            obj.PCD_AUTH_KEY = res.data.AuthKey;      // 가맹점 인증 후 리턴 받은 AuthKey Token
+            obj.PCD_PAY_URL = res.data.return_url;    // 가맹점 인증 후 리턴 받은 결제요청 URL
+
+            if (res.data.result !== 'success') return alert(res.data.result_msg);
+
+            // 해당 함수를 불러오려면 cpay.payple.kr 스크립트 추가가 선행 되어야 합니다. /public/index.html
+            // 가맹점 인증 후, 토큰 값을 추가 및 PaypleCpayPopup 함수 호출
+            window.PaypleCpayPopup(obj);
+        }).catch((err) => {
+            console.error(err)
+        })
+    }
+    const getResult = (res) => {
+        if (res.PCD_PAY_RST === 'success') {
+            var payResult = res;
+
+            // 전달받은 결제 파라미터값을 state에 저장 후  '/react/order_result'로 이동
+            console.log(payResult)
+            setBank(payResult.PCD_PAY_BANKNAME)
+            setBankNum(payResult.PCD_PAY_BANKNUM)
+            uploadBank(payResult.PCD_PAY_BANKNAME,payResult.PCD_PAY_BANKNUM,payResult.PCD_PAYER_ID)
+
+        } else {
+            // 결제 실패일 경우 알림 메시지
+            window.alert(res.PCD_PAY_MSG);
+        }
+
+    }
+
     return (
         <>
             <Default>
