@@ -91,7 +91,8 @@ export default function ServiceReview() {
                         <img src={servicereviewbanner} style={{
                             width: 440,
                             marginTop: 32,
-                            marginLeft: 20
+                            marginLeft: 20,
+                            marginBottom: 32,
                         }} />
                         {reviewData.map(item =>
                             <Review
@@ -134,7 +135,8 @@ export default function ServiceReview() {
                     <img src={servicereviewbanner} style={{
                         width: "90vw",
                         marginTop: "8vw",
-                        marginLeft: "5vw"
+                        marginLeft: "5vw",
+                        marginBottom: "8vw"
                     }} />
                     {reviewData.map(item =>
                         <Review

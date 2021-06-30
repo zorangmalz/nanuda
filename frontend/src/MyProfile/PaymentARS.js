@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { BiPlusCircle } from "react-icons/bi";
-import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Header, MHeader } from "../Style";
 
 export default function PaymentARS() {
     const [call, setCall] = useState(false)
