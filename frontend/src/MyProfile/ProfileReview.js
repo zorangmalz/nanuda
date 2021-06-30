@@ -21,7 +21,7 @@ export default function ProfileReview() {
             },
             credentials: "include",
         })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(response => {
                 console.log(response)
                 var array = []
