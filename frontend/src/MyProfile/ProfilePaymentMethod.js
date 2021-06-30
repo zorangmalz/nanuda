@@ -129,9 +129,7 @@ export default function ProfilePaymentMethod() {
             })
     
     }
-    function deleteBank(){
-        
-    }
+   
     const handleClick = (e) => {
         
         const obj = {};
