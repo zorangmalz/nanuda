@@ -242,8 +242,7 @@ def review_profile(request, pk):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         if request.method == "GET":
-            review = Review.objects.filter(
-                user_id=user.id).order_by("-review_date")
+            review = Review.objects.filter(user_id=user.id).order_by("-review_date")
             count = len(review)
             if (pk + 4 > count):
                 my_reviews = review[pk:count]
@@ -252,7 +251,7 @@ def review_profile(request, pk):
 
             lists = []
             for my_review in my_reviews:
-                if review.order_id is not None:
+                if my_review.order_id is not None:
                     lists.append({
                         "id": my_review.id,
                         "user_name": my_review.user_name(),
