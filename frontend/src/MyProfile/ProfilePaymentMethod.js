@@ -204,6 +204,7 @@ export default function ProfilePaymentMethod() {
 
     }
 
+
     return (
         <>
             <Default>
@@ -269,7 +270,7 @@ export default function ProfilePaymentMethod() {
                             alignSelf: "center",
                         }}>
                             <BiPlusCircle size={64} color="rgba(1, 6, 8, 0.6)" />
-                            <div style={{
+                            <div onClick={handleClick} style={{
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 16,
@@ -336,7 +337,7 @@ export default function ProfilePaymentMethod() {
                         alignSelf: "center",
                         }}>
                             <BiPlusCircle size={64} color="rgba(1, 6, 8, 0.6)" />
-                            <div style={{
+                            <div onClick={handleClick} style={{
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 16,
