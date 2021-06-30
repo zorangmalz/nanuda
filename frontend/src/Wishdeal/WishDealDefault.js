@@ -58,17 +58,25 @@ export default function WishDealDefault() {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response.openGraph)
-                setLoading(false)
-                history.push({
-                    pathname: "/wishdeal/url/success", 
-                    state: { param: response.openGraph, des: "", url: text, code: 4 }
-                })
+                try {
+                    console.log(response.openGraph)
+                    setLoading(false)
+                    history.push({
+                        pathname: "/wishdeal/url/success",
+                        state: { param: response.openGraph, des: "", url: text, code: 4 }
+                    })
+                } catch {
+                    setLoading(false)
+                    history.push({
+                        pathname: "/wishdeal/url/fail",
+                        state: { url: text }
+                    })
+                }
             }).catch(err => {
                 console.log(err)
                 setLoading(false)
                 history.push({
-                    pathname: "/wishdeal/url/fail", 
+                    pathname: "/wishdeal/url/fail",
                     state: { url: text }
                 })
             })
