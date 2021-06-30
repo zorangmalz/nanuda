@@ -174,6 +174,8 @@ function ProductState({ img, date, title, price, mobile, item }) {
                                 color: "#010608",
                                 fontFamily: "AvenirNext",
                                 lineHeight: 1.5,
+                                height:46,
+                                overflowY: "hidden"
                             }}>{title}</div>
                             <div style={{
                                 fontSize: mobile ? 16 : 18,
