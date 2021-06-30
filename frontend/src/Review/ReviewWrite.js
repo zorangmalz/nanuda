@@ -99,7 +99,9 @@ export default function ReviewWrite() {
             credentials: "include",
             body: JSON.stringify(array)
         })
+            .then(response => response.text())
             .then(response => {
+                console.log(response)
                 history.push("/review/success")
             }).catch(err => {
                 console.log(err)
