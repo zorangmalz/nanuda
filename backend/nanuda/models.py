@@ -27,7 +27,7 @@ class User(models.Model):
     nationalinfo = models.CharField(max_length=30, default="0",blank=True)
     
     # point 전체 값
-    point_entire = models.PositiveIntegerField(default=0)
+    point_entire = models.PositiveIntegerField(default=0,blank=True)
 
     platform = models.CharField(max_length=30, default="0")
     uid = models.CharField(max_length=300, default="")
@@ -35,7 +35,7 @@ class User(models.Model):
     bank_exist=models.BooleanField(blank=True,default=False)
     bank = models.CharField(max_length=30, blank=True, default="은행")
     account = models.CharField(max_length=30, blank=True, default="계좌")
-    billing_key = models.CharField(max_length=100, default="")
+    billing_key = models.CharField(max_length=100, default="",blank=True)
 
     # 가입날
     createdAt = models.DateTimeField(auto_now_add=True)
