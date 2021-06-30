@@ -64,6 +64,28 @@ export default function ServiceReview() {
     let history = useHistory()
 
 
+    useEffect(() => {
+        const test = async () => {
+            fetch("https://haulfree.link/userInfoName/", {
+                method: "GET",
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                credentials: "include",
+            })
+                .then((response) => (response.json()))
+                .then(response => {
+                    setIsLogin(response.data)
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        test()
+    }, [])
+
+    const [isLogin, setIsLogin] = useState(false)
+    const [loginModal, setLoginModal] = useState(false)
     return (
         <>
             <Default>
@@ -100,14 +122,14 @@ export default function ServiceReview() {
                                 mobile={false}
                             />
                         )}
-                        <div onClick={noReview ? () => history.push("/service/write") : () => { }} style={{
+                        <div onClick={isLogin ? noReview ? () => history.push("/service/write") : () => {} : () => setLoginModal(true)} style={{
                             position: "fixed",
                             bottom: 40,
                             width: 440,
                             alignSelf: "center",
                             paddingTop: 21,
                             paddingBottom: 21,
-                            backgroundColor: noReview ? "#26c1f0" : "#dbdbdb",
+                            backgroundColor: isLogin ? noReview ? "#26c1f0" : "#dbdbdb" : "#26c1f0",
                             borderRadius: 6,
                             boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
 
@@ -115,9 +137,22 @@ export default function ServiceReview() {
                             fontSize: 21,
                             fontWeight: "bold",
                             textAlign: "center",
-                            cursor: noReview ? "pointer" : "auto",
+                            cursor: isLogin ? noReview ? "pointer" : "auto" : "pointer",
                             fontFamily: "NotoSansCJKkr"
-                        }}>첫 후기 작성하고 2천 포인트 받기</div>
+                        }}>{isLogin ? "회원가입 하고 후기 작성하기" : "첫 후기 작성하고 2천 포인트 받기"}</div>
+                        {loginModal ?
+                            <StandardChoiceModal
+                                title="회원가입이 필요한 서비스입니다."
+                                content={<span>지금 바로 회원가입하고 <br /> 다양한 상품을 분할결제 해보세요!</span>}
+                                canceltext="취소"
+                                onCancelClick={() => setLoginModal(false)}
+                                buttontext="회원가입"
+                                onClick={() => history.push("/signup/main")}
+                                mobile={false}
+                            />
+                            :
+                            <></>
+                        }
                     </div>
                 </div>
             </Default>
@@ -144,14 +179,14 @@ export default function ServiceReview() {
                             mobile={true}
                         />
                     )}
-                    <div onClick={noReview ? () => history.push("/service/write") : () => { }} style={{
+                    <div onClick={isLogin ? noReview ? () => history.push("/service/write") : () => {} : () => setLoginModal(true)} style={{
                         position: "fixed",
                         bottom: 40,
                         width: "90%",
                         alignSelf: "center",
                         paddingTop: 12,
                         paddingBottom: 12,
-                        backgroundColor: noReview ? "#26c1f0" : "#dbdbdb",
+                        backgroundColor: isLogin ? noReview ? "#26c1f0" : "#dbdbdb" : "#26c1f0",
                         borderRadius: 6,
                         boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.14)",
 
@@ -159,9 +194,22 @@ export default function ServiceReview() {
                         fontSize: 18,
                         fontWeight: "bold",
                         textAlign: "center",
-                        cursor: noReview ? "pointer" : "auto",
+                        cursor: isLogin ? noReview ? "pointer" : "auto" : "pointer",
                         fontFamily: "NotoSansCJKkr"
-                    }}>첫 후기 작성하고 2천 포인트 받기</div>
+                    }}>{isLogin ? "회원가입 하고 후기 작성하기" : "첫 후기 작성하고 2천 포인트 받기"}</div>
+                    {loginModal ?
+                        <StandardChoiceModal
+                            title="회원가입이 필요한 서비스입니다."
+                            content={<span>지금 바로 회원가입하고 <br /> 다양한 상품을 분할결제 해보세요!</span>}
+                            canceltext="취소"
+                            onCancelClick={() => setLoginModal(false)}
+                            buttontext="회원가입"
+                            onClick={() => history.push("/signup/main")}
+                            mobile={true}
+                        />
+                        :
+                        <></>
+                    }
                 </div>
             </Mobile>
         </>
