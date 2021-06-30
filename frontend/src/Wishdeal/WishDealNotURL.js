@@ -561,7 +561,7 @@ function ETCForm({ input, setInput, highPrice, mobile }) {
                     fontFamily: "NotoSansCJKkr",
                     fontSize: mobile ? 14 : 16,
                     color: "#010608",
-                    marginTop: mobile ? "8vw" : 32,
+                    marginTop: mobile ? "5vw" : 20,
                 }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
             </div>
             <div style={{
