@@ -188,6 +188,7 @@ class Review(models.Model):
     id = models.BigAutoField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True)
+    wish_id = models.ForeignKey(WishDeal, on_delete=models.CASCADE, null=True, blank=True)
     review_score = models.FloatField(default=5.0, blank=True)
     review_date = models.DateTimeField(auto_now_add=True)
     review_like = models.TextField(default="내용", blank=True)
@@ -205,6 +206,12 @@ class Review(models.Model):
     
     def product_price(self):
         return self.order_id.product_price()
+    
+    def wish_title(self):
+        return self.wish_id.wish_title
+    
+    def wish_image(self):
+        return self.wish_id.wish_image
     
     def order_price(self):
         return self.order_id.order_price

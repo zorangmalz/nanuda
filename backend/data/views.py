@@ -183,18 +183,34 @@ def review_all(request):
 
             data = json.loads(request.body)
 
-            order = Order.objects.get(id=data["order_id"])
-            review = Review.objects.create(
-                user_id=user,
-                order_id=order,
-                review_score=data["review_score"],
-                review_like=data["review_like"],
-                review_dislike=data["review_dislike"],
-                review_image=data["review_image"],
-            )
-            order.review_write = True
-            order.save()
-            return Response({"data": review.id}, status=status.HTTP_201_CREATED)
+            if data["type"] == "timedeal":
+                order = Order.objects.get(id=data["order_id"])
+                review = Review.objects.create(
+                    user_id=user,
+                    order_id=order,
+                    review_score=data["review_score"],
+                    review_like=data["review_like"],
+                    review_dislike=data["review_dislike"],
+                    review_image=data["review_image"],
+                )
+                order.review_write = True
+                order.save()
+                return Response({"data": review.id}, status=status.HTTP_201_CREATED)
+            elif data["type"] == "wishdeal":
+                wish = WishDeal.objects.get(id=data["order_id"])
+                review = Review.objects.create(
+                    user_id=user,
+                    wish_id=wish,
+                    review_score=data["review_score"],
+                    review_like=data["review_like"],
+                    review_dislike=data["review_dislike"],
+                    review_image=data["review_image"],
+                )
+                wish.review_write = True
+                wish.save()
+                return Response({"data": review.id}, status=status.HTTP_201_CREATED)
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
 
 # Review_Home 2개만 조회
 @api_view(["GET"])
