@@ -145,11 +145,33 @@ export default function WishDealNotURL() {
         }
     }, [Einputs, number, numberB, option, ship, highPrice])
 
-    function NextPage() {
+    //s3로 업로드 후 URL을 RDS에 삽입 + user_id, product_id는 추후에 수정
+    const [selectedFile, setSelectedFile] = useState([])
+    const NextPage = async () => {
+        var imageArray;
+        const params = {
+            ACL: "public-read",
+            Body: selectedFile[0],
+            Bucket: S3_BUCKET,
+            Key: `${userName}/wishdeal/${selectedFile[0].name}`
+        }
+
+        imageBucket.putObject(params)
+            .on("httpUploadProgress", (evt) => {
+
+            })
+            .send((err) => {
+                if (err) {
+                    console.log(err)
+                }
+            })
+        imageArray = `https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${userName}/wishdeal/${selectedFile[0].name}`
+
         const lst = []
         lst.push(Einputs, number, option, numberB, ship)
-        history.push("/ordersheet", { param: lst, addInfo: "", url: getUrl, image: "" })
+        history.push("/ordersheet", { param: lst, addInfo: "", url: getUrl, image: imageArray })
     }
+
 
     return (
         <>
@@ -178,6 +200,8 @@ export default function WishDealNotURL() {
                             highPrice={highPrice}
                             input={Einputs}
                             setInput={setEInputs}
+                            selectedFile={selectedFile}
+                            setSelectedFile={setSelectedFile}
                             mobile={false}
                         />
                         <div style={{
@@ -357,6 +381,8 @@ export default function WishDealNotURL() {
                             highPrice={highPrice}
                             input={Einputs}
                             setInput={setEInputs}
+                            selectedFile={selectedFile}
+                            setSelectedFile={setSelectedFile}
                             mobile={true}
                         />
                         <div style={{
@@ -535,7 +561,7 @@ const Button = ({ onClick, state, number, content, mobile }) => {
     )
 }
 
-function ETCForm({ input, setInput, highPrice, mobile }) {
+function ETCForm({ input, setInput, highPrice, selectedFile, setSelectedFile, mobile }) {
     const { Eprice, Eetc } = input
     const onChange = (e) => {
         const { value, name } = e.target
@@ -545,25 +571,68 @@ function ETCForm({ input, setInput, highPrice, mobile }) {
         })
     }
 
+    //ImageToS3
+    //이미지 컴포넌트
+    const inputFile = useRef(null)
+
+    //이미지 저장 및 경로
+    const [filePath, setFilePath] = useState([])
+
+    const onButtonclick = () => {
+        inputFile.current.click()
+    }
+
+    //여러 이미지 경로 저장
+    const handelFileInput = (e) => {
+        const files = e.target.files;
+        let length;
+        if (files.length > 2) {
+            length = 3;
+        } else {
+            length = files.length
+        }
+        for (let i = 0; i < length; i++) {
+            setSelectedFile(selectedFile => [...selectedFile, files[i]])
+            setFilePath(filePath => [...filePath, URL.createObjectURL(files[i])])
+        }
+    }
+
     return (
         <>
-            <div style={{
-                width: mobile ? "100vw" : 480,
-                height: mobile ? "45vw" : 212,
-                backgroundColor: "#f2f3f8",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-            }}>
-                <BiPlusCircle size={mobile ? 28 : 32} color="#010608" style={{ cursor: "pointer" }} />
-                <div style={{
-                    fontFamily: "NotoSansCJKkr",
-                    fontSize: mobile ? 14 : 16,
-                    color: "#010608",
-                    marginTop: mobile ? "5vw" : 20,
-                }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
-            </div>
+            {filePath.length === 0 ?
+                <div onClick={onButtonclick} style={{
+                    width: mobile ? "100vw" : 480,
+                    height: mobile ? "45vw" : 212,
+                    backgroundColor: "#f2f3f8",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer"
+                }}>
+                    <input ref={inputFile} onChange={handelFileInput} type="file" style={{
+                        display: "none"
+                    }} />
+                    <BiPlusCircle size={mobile ? 28 : 32} color="#010608" style={{ cursor: "pointer" }} />
+                    <div style={{
+                        fontFamily: "NotoSansCJKkr",
+                        fontSize: mobile ? 14 : 16,
+                        color: "#010608",
+                        marginTop: mobile ? "5vw" : 20,
+                    }}>상품 정보를 알 수 있는 사진을 추가해주세요.</div>
+                </div>
+                :
+                <></>
+            }
+            {filePath.length > 0 ?
+                <img src={filePath} style={{
+                    width: mobile ? "100vw" : 480,
+                    height: mobile ? "45vw" : 212,
+                    resize: "cover",
+                }} />
+                :
+                <></>
+            }
             <div style={{
                 fontFamily: "NotoSansCJKkr",
                 fontSize: mobile ? 16 : 18,
