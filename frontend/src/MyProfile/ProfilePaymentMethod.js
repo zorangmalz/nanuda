@@ -31,6 +31,7 @@ export default function ProfilePaymentMethod() {
             setBankNum(res.account)
             setPayId(res.billing)
             setBankOrNot(true)
+            change()
                 }
             }).catch(err => {
                 console.log(err)
@@ -234,7 +235,7 @@ export default function ProfilePaymentMethod() {
                         marginBottom={16}
                         marginTop={32}
                     />
-                    <div onClick={change} style={{
+                    <div onClick={handleClick} style={{
                         width: 440,
                         paddingTop: 16,
                         paddingBottom: 16,
@@ -301,9 +302,10 @@ export default function ProfilePaymentMethod() {
                         marginBottom={16}
                         marginTop={32}
                     />
-                    <div onClick={change} style={{
+                    <div onClick={handleClick} style={{
                         width: "90vw",
-                        padding: "5vw 7vw",
+                        paddingTop: "4vw",
+                        paddingBottom: "4vw",
                         borderRadius: 6,
                         
                         alignSelf: "center",
