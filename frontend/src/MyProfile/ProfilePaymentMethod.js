@@ -31,7 +31,7 @@ export default function ProfilePaymentMethod() {
             setBankNum(res.account)
             setPayId(res.billing)
             setBankOrNot(true)
-            change()
+            
                 }
             }).catch(err => {
                 console.log(err)
@@ -125,13 +125,14 @@ export default function ProfilePaymentMethod() {
                 } else {
                     console.log("bad")
                 }
+                change()
             }).catch(err => {
                 console.log(err)
             })
     
     }
    
-    const handleClick = (e) => {
+   function handleClick(){
         
         const obj = {};
         /*
