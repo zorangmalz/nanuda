@@ -17,7 +17,7 @@ import bannerThree from "../images/bannerThree.png"
 import banner from "../images/homebanner.png"
 import sampleone from "../images/sampleone.png"
 import sampletwo from "../images/sampletwo.png"
-import mainlogo from "../images/mainlogo.png"
+import upload from "../images/upload.png"
 
 const AfterContainer = styled.div`
     width: 424px;
@@ -839,12 +839,14 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                         color: "#010608",
                         fontWeight: "bold",
                     }}>{title}</div>
-                    <BsUpload onClick={() => {
+                    <img alt="" src={upload} onClick={() => {
                         setCopy(true)
                         setTimeout(() => {
                             setCopy(false)
                         }, 5000)
-                    }} size={18} style={{
+                    }} style={{
+                        width: 18,
+                        height: 18,
                         marginRight: 4,
                         cursor: "pointer"
                     }} />
@@ -1008,12 +1010,14 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                         color: "#010608",
                         fontWeight: "bold"
                     }}>{title}</div>
-                    <BsUpload onClick={() => {
+                    <img alt="" src={upload} onClick={() => {
                         setCopy(true)
                         setTimeout(() => {
                             setCopy(false)
                         }, 5000)
-                    }} size={18} style={{
+                    }} style={{
+                        width: 18,
+                        height: 18,
                         marginRight: 4,
                         cursor: "pointer"
                     }} />
