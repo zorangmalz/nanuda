@@ -90,13 +90,18 @@ export default function ProfilePaymentDetail() {
                             backgroundColor: "rgba(1, 6, 8, 0.2)",
                             alignSelf: "center",
                         }} />
-                            {item.payment_history.map(item =>
-                   <PayInfo
-                   num={item.num}
-                   date={item.date}
-                   state={item.payment}
-                   payback={item.money}
-               />
+                            {item.payment_history.map((item) =>
+                   {item.money==0?
+                    <></>
+                :
+                <PayInfo
+                num={item.num}
+                date={item.date}
+                state={item.payment}
+                payback={item.money}
+            />
+         
+            }         
                         
                     )}
                      
