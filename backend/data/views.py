@@ -197,7 +197,7 @@ def review_all(request):
                 order.save()
                 return Response({"data": review.id}, status=status.HTTP_201_CREATED)
             elif data["type"] == "wishdeal":
-                wish = WishDeal.objects.get(id=data["order_id"])
+                wish = WishDeal.objects.get(id=data["wish_id"])
                 review = Review.objects.create(
                     user_id=user,
                     wish_id=wish,
