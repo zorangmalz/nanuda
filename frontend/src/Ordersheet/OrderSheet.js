@@ -25,9 +25,9 @@ export default function OrderSheet() {
     //기본 계좌 등록 여부
     const [bank, setBank] = useState("")
     const [banknum, setBankNum] = useState("")
-    const [payId,setPayId]=useState("")
-    
-    function bankCheck(){
+    const [payId, setPayId] = useState("")
+
+    function bankCheck() {
         fetch("https://haulfree.link/bankCheck", {
             method: "GET",
             headers: {
@@ -40,20 +40,20 @@ export default function OrderSheet() {
             .then(res => {
                 console.log(res)
                 if (res.data === false) {
-                    setBasicAddress(false)
+                    setRegister(false)
                 } else {
                     setBank(res.bank)
-            setBankNum(res.account)
-            setPayId(res.billing)
-            setRegister(true)
+                    setBankNum(res.account)
+                    setPayId(res.billing)
+                    setRegister(true)
                 }
             }).catch(err => {
                 console.log(err)
             })
     }
-    useEffect(()=>{
+    useEffect(() => {
         bankCheck()
-    },[bankChecking])
+    }, [bankChecking, register])
     //기본 배송지 존재 여부
     const [a, setA] = useState("")
     const [b, setB] = useState("")
@@ -223,7 +223,7 @@ export default function OrderSheet() {
     const [ship, setShip] = useState(0)
 
     useEffect(() => {
-        console.log(myparam,"myparam")
+        console.log(myparam, "myparam")
         try {
             //console.log(myparam[0].image.url)
             setImage(myparam[0].image.url)
@@ -323,9 +323,9 @@ export default function OrderSheet() {
         }
 
     }, [number])
- 
-    
-    function uploadBank(a,b,c){
+
+
+    function uploadBank(a, b, c) {
         fetch("https://haulfree.link/bankUpload/", {
             method: "POST",
             headers: {
@@ -337,7 +337,7 @@ export default function OrderSheet() {
                 params: {
                     bank: a,
                     bankAccount: b,
-                    billingKey:c
+                    billingKey: c
                 }
             })
         })
@@ -351,10 +351,10 @@ export default function OrderSheet() {
             }).catch(err => {
                 console.log(err)
             })
-    
+
     }
-    
-    const [bankChecking,setBankChecking]=useState(false)
+
+    const [bankChecking, setBankChecking] = useState(false)
     const getResult = (res) => {
         if (res.PCD_PAY_RST === 'success') {
             var payResult = res;
@@ -362,9 +362,9 @@ export default function OrderSheet() {
             // 전달받은 결제 파라미터값을 state에 저장 후  '/react/order_result'로 이동
             console.log(payResult)
             setRegister(true)
-            
+
             setBankChecking(true)
-            uploadBank(payResult.PCD_PAY_BANKNAME,payResult.PCD_PAY_BANKNUM,payResult.PCD_PAYER_ID)
+            uploadBank(payResult.PCD_PAY_BANKNAME, payResult.PCD_PAY_BANKNUM, payResult.PCD_PAYER_ID)
 
         } else {
             // 결제 실패일 경우 알림 메시지
@@ -439,16 +439,16 @@ export default function OrderSheet() {
             obj.PCD_CUST_KEY = res.data.custKey;      // 가맹점 인증 후 리턴 받은 custKey Token
             obj.PCD_AUTH_KEY = res.data.AuthKey;      // 가맹점 인증 후 리턴 받은 AuthKey Token
             obj.PCD_PAY_URL = res.data.return_url;    // 가맹점 인증 후 리턴 받은 결제요청 URL
-            obj.PCD_PAYER_ID=payId;
+            obj.PCD_PAYER_ID = payId;
             //상품명
-            obj.PCD_PAY_GOODS="test";
+            obj.PCD_PAY_GOODS = "test";
 
-            obj.PCD_PAYER_NO=""
-            obj.PCD_PAYER_EMAIL=""
-            obj.PCD_PAY_OID=""
-            obj.PCD_PAY_TOTAL="1000"
-            obj.PCD_PAY_YEAR="2021"
-            obj.PCD_PAY_MONTH="6"
+            obj.PCD_PAYER_NO = ""
+            obj.PCD_PAYER_EMAIL = ""
+            obj.PCD_PAY_OID = ""
+            obj.PCD_PAY_TOTAL = "1000"
+            obj.PCD_PAY_YEAR = "2021"
+            obj.PCD_PAY_MONTH = "6"
 
             if (res.data.result !== 'success') return alert(res.data.result_msg);
 
@@ -459,37 +459,37 @@ export default function OrderSheet() {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Accept': 'application/json',
-                    "Host":"https://testcpay.payple.kr"
+                    "Host": "https://testcpay.payple.kr"
                 },
-                
+
                 body: new URLSearchParams({
-                    PCD_CST_ID : res.data.cst_id,         // 가맹점 인증 후 리턴 받은 cst_id Token
-                    PCD_CUST_KEY : res.data.custKey,      // 가맹점 인증 후 리턴 받은 custKey Token
-                    PCD_AUTH_KEY : res.data.AuthKey,      // 가맹점 인증 후 리턴 받은 AuthKey Token
-                    PCD_PAY_URL : res.data.return_url,    // 가맹점 인증 후 리턴 받은 결제요청 URL
-                    PCD_PAYER_ID:payId,
-                    cst_id:"",
-                    custKey:"",
-                    AuthKey:"",
+                    PCD_CST_ID: res.data.cst_id,         // 가맹점 인증 후 리턴 받은 cst_id Token
+                    PCD_CUST_KEY: res.data.custKey,      // 가맹점 인증 후 리턴 받은 custKey Token
+                    PCD_AUTH_KEY: res.data.AuthKey,      // 가맹점 인증 후 리턴 받은 AuthKey Token
+                    PCD_PAY_URL: res.data.return_url,    // 가맹점 인증 후 리턴 받은 결제요청 URL
+                    PCD_PAYER_ID: payId,
+                    cst_id: "",
+                    custKey: "",
+                    AuthKey: "",
                     //상품명
-                    PCD_PAY_GOODS:itemDes,
-                    PCD_SIMPLE_FLAG:"Y",
-                    PCD_PAYER_NO:"",
-                    PCD_PAYER_EMAIL:"",
-                    PCD_PAY_OID:"",
-                    PCD_PAY_TOTAL:(Number(oneMoney) + Number(ship)),
-                    PCD_PAY_YEAR:"2021",
-                    PCD_PAY_MONTH:"6",
+                    PCD_PAY_GOODS: itemDes,
+                    PCD_SIMPLE_FLAG: "Y",
+                    PCD_PAYER_NO: "",
+                    PCD_PAYER_EMAIL: "",
+                    PCD_PAY_OID: "",
+                    PCD_PAY_TOTAL: (Number(oneMoney) + Number(ship)),
+                    PCD_PAY_YEAR: "2021",
+                    PCD_PAY_MONTH: "6",
                 })
             })
                 .then(response => response.json())
                 .then(response => {
-                   console.log(response)
-                   if(response.PCD_PAY_MSG=="출금이체완료"){
-                    order(response)
-                   }else{
-                    console.log("error")
-                   }
+                    console.log(response)
+                    if (response.PCD_PAY_MSG == "출금이체완료") {
+                        order(response)
+                    } else {
+                        console.log("error")
+                    }
                 }).catch(err => {
                     console.log(err)
                 })
@@ -502,28 +502,28 @@ export default function OrderSheet() {
     /* Oid 생성 함수
  * 리턴 예시: test20210528 1622170718461
  */
-const createOid = () => {
-    const now_date = new Date();
-    let now_year = now_date.getFullYear()
-    let now_month = now_date.getMonth() + 1
-    now_month = (now_month < 10) ? '0' + now_month : now_month
-    let now_day = now_date.getDate()
-    now_day = (now_day < 10) ? '0' + now_day : now_day
-    var now_hour=now_date.getHours()
-    var now_Minute=now_date.getMinutes()
-    var now_Second=now_date.getSeconds()
-    return '01-' + String(now_year).slice(2) + now_month + now_day + now_hour+now_Minute+now_Second+"-04-0000";
-};
-useEffect(()=>{
-    var text=createOid()
-    console.log(text)
-},[])
-const [orderId,setOrderId]=useState("")
+    const createOid = () => {
+        const now_date = new Date();
+        let now_year = now_date.getFullYear()
+        let now_month = now_date.getMonth() + 1
+        now_month = (now_month < 10) ? '0' + now_month : now_month
+        let now_day = now_date.getDate()
+        now_day = (now_day < 10) ? '0' + now_day : now_day
+        var now_hour = now_date.getHours()
+        var now_Minute = now_date.getMinutes()
+        var now_Second = now_date.getSeconds()
+        return '01-' + String(now_year).slice(2) + now_month + now_day + now_hour + now_Minute + now_Second + "-04-0000";
+    };
+    useEffect(() => {
+        var text = createOid()
+        console.log(text)
+    }, [])
+    const [orderId, setOrderId] = useState("")
     async function order(res) {
         if (basicAddress && payment) {
-            var orderId=createOid()
+            var orderId = createOid()
             // history.push("paymentsuccess",{myparam:myparam})'
-            console.log(myparam,item,number,paymentDate,res,ship)
+            console.log(myparam, item, number, paymentDate, res, ship)
             fetch("https://haulfree.link/orderupload/", {
                 method: "POST",
                 headers: {
@@ -538,9 +538,9 @@ const [orderId,setOrderId]=useState("")
                         payment: "",
                         option: number,
                         schedule: paymentDate,
-                        response:String(res),
-                        shipPrice:ship,
-                        orderid:orderId
+                        response: String(res),
+                        shipPrice: ship,
+                        orderid: orderId
                     }
                 })
             })
@@ -548,7 +548,7 @@ const [orderId,setOrderId]=useState("")
                 .then(response => {
                     console.log(response)
                     if (response.data === true) {
-                        history.push("payment/success",{myparam:myparam,ship:item,orderid:orderId})
+                        history.push("payment/success", { myparam: myparam, ship: item, orderid: orderId })
                     } else {
                         console.log(response)
                         history.push("payment/fail", { myparam: myparam, ship: item })

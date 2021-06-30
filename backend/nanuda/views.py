@@ -343,4 +343,26 @@ class bankCheck(View):
                 return JsonResponse({"data":True,"bank":user.bank,"account":user.account,"billing":user.billing_key})
             else:
                 return JsonResponse({"data":False})
+
+class bankDelete(View):
+    def get(self,request):
+        if not request.COOKIES.get("access_token"):
+            return JsonResponse({"data":False})
+        else:
+            q=User.objects.annotate(Count("name"))
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user=User.objects.get(uid=payload["id"])
+            user.bank=""
+            user.account=""
+            user.billing_key=""
+            user.bank_exist=False
+            user.save()
+            if user.bank_exist:
+                return JsonResponse({"data":True})
+            else:
+                return JsonResponse({"data":False})
   
