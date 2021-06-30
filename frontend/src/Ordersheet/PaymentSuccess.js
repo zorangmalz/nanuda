@@ -33,7 +33,7 @@ export default function PaymentSuccess() {
         history.replace("/")
     }
     function goReview() {
-        history.push("/review/main")
+        history.push("/profile/product/main")
     }
     return (
         <>
