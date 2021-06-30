@@ -9,7 +9,7 @@ export default function ProfilePaymentMethod() {
     const [bank, setBank] = useState("")
     const [banknum, setBankNum] = useState("")
     const [payId,setPayId]=useState("")
-    
+    const [bankOrNot,setBankOrNot]=useState(false)
     function bankCheck(){
         fetch("https://haulfree.link/bankCheck", {
             method: "GET",
@@ -38,6 +38,10 @@ export default function ProfilePaymentMethod() {
     useEffect(()=>{
         bankCheck()
     },[])
+
+    function change(){
+
+    }
     return (
         <>
             <Default>
@@ -62,12 +66,14 @@ export default function ProfilePaymentMethod() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="결제 계좌 관리" goBack={true} />
+                        {bankOrNot?
                         <RegisterForm
-                            bank="우리"
-                            account="1002-550-568544"
-                            marginBottom={16}
-                            marginTop={0}
-                        />
+                        bank={bank}
+                        account={banknum}
+                        marginBottom={16}
+                        marginTop={0}
+                    />
+                        :
                         <div onClick={() => history.push("/paymentaddbank")} style={{
                             width: 440,
                             height: 136,
@@ -90,6 +96,25 @@ export default function ProfilePaymentMethod() {
                                 marginTop: 8,
                             }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
                         </div>
+                        }
+                          <div onClick={change} style={{
+                width: 440,
+                paddingTop: 16,
+                paddingBottom: 16,
+                borderRadius: 6,
+                backgroundColor: "#ffffff",
+                alignSelf: "center",
+                cursor: "pointer",
+                marginTop: 32,
+                marginBottom: marginBottom,
+
+                fontSize: 18,
+                fontWeight: "bold",
+                fontFamily: "NotoSansCJKkr",
+                color: "#ffffff",
+                textAlign: "center"
+            }}>결제수단 변경하기</div>
+                      
                     </div>
                 </div>
             </Default>
