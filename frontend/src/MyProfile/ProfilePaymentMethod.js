@@ -130,7 +130,7 @@ export default function ProfilePaymentMethod() {
     
     }
     const handleClick = (e) => {
-        e.preventDefault();
+        
         const obj = {};
         /*
          *  공통 설정
