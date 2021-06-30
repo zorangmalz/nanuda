@@ -17,6 +17,7 @@ export default function SignupProfile() {
             email = {email:location.state.email}
             window.localStorage.setItem("uid",JSON.stringify(uid))
             window.localStorage.setItem("email",JSON.stringify(email))
+
         }catch(err){
             console.log(err)
         }
@@ -86,6 +87,7 @@ export default function SignupProfile() {
     async function send() {
         var realEmail=window.localStorage.getItem("email")
         var realuid=window.localStorage.getItem("uid")
+        console.log(realEmail,realuid)
         await fetch("https://haulfree.link/niceMain/", {
             method: "POST",
             headers: {
@@ -108,8 +110,9 @@ export default function SignupProfile() {
             })
 
         })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(response => {
+                console.log(response)
                 if (response.data === true) {
                     history.push("/signup/complete")
                 }
@@ -119,6 +122,7 @@ export default function SignupProfile() {
     }
     useEffect(()=>{
         if(userData){
+            console.log(userData)
             send()
         }
     },[userData])

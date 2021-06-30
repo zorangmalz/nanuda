@@ -299,7 +299,7 @@ class niceMain(View):
                 user_email=user_info['params']['email'],
                 name=user_info['params']['name'],
                 gender=user_info['params']['gender'],
-                nickname="나누다"+str(q.count()+1),
+                
                 birthdate=user_info['params']['birthdate'],
                 nationalinfo=user_info['params']['nationalinfo'],
                 phone_number=user_info['params']['mobileno'],
