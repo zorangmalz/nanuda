@@ -68,7 +68,8 @@ export default function ProfilePaymentMethod() {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Accept': 'application/json',
-                    "Host":"https://testcpay.payple.kr"
+                    "Host":"https://testcpay.payple.kr",
+                    "Cache-Control":"no-cache"
                 },
                 
                 body: new URLSearchParams({
@@ -250,7 +251,7 @@ export default function ProfilePaymentMethod() {
                     }}>결제수단 변경하기</div>
                     </>
                         :
-                        <div onClick={() => history.push("/paymentaddbank")} style={{
+                        <div style={{
                             width: 440,
                             height: 136,
                             border: "1px solid rgba(1, 6, 8, 0.2)",
