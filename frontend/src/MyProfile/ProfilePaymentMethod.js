@@ -6,6 +6,38 @@ import WebIntro, { Header, MHeader } from "../Style";
 
 export default function ProfilePaymentMethod() {
     let history = useHistory()
+    const [bank, setBank] = useState("")
+    const [banknum, setBankNum] = useState("")
+    const [payId,setPayId]=useState("")
+    
+    function bankCheck(){
+        fetch("https://haulfree.link/bankCheck", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+        })
+            .then(response => response.json())
+            .then(res => {
+                console.log(res)
+                if (res.data === false) {
+                    
+                } else {
+                    console.log(res)
+                    setBank(res.bank)
+            setBankNum(res.account)
+            setPayId(res.billing)
+            setRegister(true)
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+    useEffect(()=>{
+        bankCheck()
+    },[])
     return (
         <>
             <Default>
@@ -22,7 +54,7 @@ export default function ProfilePaymentMethod() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between",
+                        
 
                         width: 480,
                         minHeight: "100vh",
