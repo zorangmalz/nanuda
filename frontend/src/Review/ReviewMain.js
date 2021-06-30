@@ -124,7 +124,7 @@ export default function ReviewMain() {
                                             }}>{NameMask(item.user_name)} </div>
                                         </div>
                                         {item.review_image.length > 0 ?
-                                            <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
+                                            <img alt="리뷰사진" src={item.review_image[0]} onClick={() => history.push(`/review/post/${item.id}`)} style={{
                                                 width: 210,
                                                 height: 160,
                                                 borderRadius: 6,
@@ -270,7 +270,7 @@ export default function ReviewMain() {
                                         }}>{NameMask(item.user_name)} </div>
                                     </div>
                                     {item.review_image.length > 0 ?
-                                        <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
+                                        <img alt="리뷰사진" src={item.review_image[0]} onClick={() => history.push(`/review/post/${item.id}`)} style={{
                                             width: "42vw",
                                             height: "32vw",
                                             borderRadius: 6,
