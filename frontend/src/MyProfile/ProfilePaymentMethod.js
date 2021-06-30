@@ -1,17 +1,17 @@
-import React,{useState,useEffect} from "react";
-import { BiPlusCircle } from "react-icons/bi";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Header, MHeader } from "../Style";
 import { authenticate } from "../Ordersheet/authenticate";
+import plus from "../images/plus.png"
 
 export default function ProfilePaymentMethod() {
     let history = useHistory()
     const [bank, setBank] = useState("")
     const [banknum, setBankNum] = useState("")
-    const [payId,setPayId]=useState("")
-    const [bankOrNot,setBankOrNot]=useState(false)
-    function bankCheck(){
+    const [payId, setPayId] = useState("")
+    const [bankOrNot, setBankOrNot] = useState(false)
+    function bankCheck() {
         fetch("https://haulfree.link/bankCheck", {
             method: "GET",
             headers: {
@@ -24,24 +24,24 @@ export default function ProfilePaymentMethod() {
             .then(res => {
                 console.log(res)
                 if (res.data === false) {
-                    
+
                 } else {
                     console.log(res)
                     setBank(res.bank)
-            setBankNum(res.account)
-            setPayId(res.billing)
-            setBankOrNot(true)
-            
+                    setBankNum(res.account)
+                    setPayId(res.billing)
+                    setBankOrNot(true)
+
                 }
             }).catch(err => {
                 console.log(err)
             })
     }
-    useEffect(()=>{
+    useEffect(() => {
         bankCheck()
-    },[])
+    }, [])
 
-    function change(){
+    function change() {
         authenticate().then((res) => {
             const obj = {};
             console.log('Auth Result:', { ...res.data });
@@ -50,16 +50,16 @@ export default function ProfilePaymentMethod() {
             obj.PCD_CUST_KEY = res.data.custKey;      // 가맹점 인증 후 리턴 받은 custKey Token
             obj.PCD_AUTH_KEY = res.data.AuthKey;      // 가맹점 인증 후 리턴 받은 AuthKey Token
             obj.PCD_PAY_URL = res.data.return_url;    // 가맹점 인증 후 리턴 받은 결제요청 URL
-            obj.PCD_PAYER_ID=payId;
+            obj.PCD_PAYER_ID = payId;
             //상품명
-            obj.PCD_PAY_GOODS="test";
+            obj.PCD_PAY_GOODS = "test";
 
-            obj.PCD_PAYER_NO=""
-            obj.PCD_PAYER_EMAIL=""
-            obj.PCD_PAY_OID=""
-            obj.PCD_PAY_TOTAL="1000"
-            obj.PCD_PAY_YEAR="2021"
-            obj.PCD_PAY_MONTH="6"
+            obj.PCD_PAYER_NO = ""
+            obj.PCD_PAYER_EMAIL = ""
+            obj.PCD_PAY_OID = ""
+            obj.PCD_PAY_TOTAL = "1000"
+            obj.PCD_PAY_YEAR = "2021"
+            obj.PCD_PAY_MONTH = "6"
 
             if (res.data.result !== 'success') return alert(res.data.result_msg);
 
@@ -70,29 +70,29 @@ export default function ProfilePaymentMethod() {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Accept': 'application/json',
-                    "Host":"https://testcpay.payple.kr",
-                    "Cache-Control":"no-cache"
+                    "Host": "https://testcpay.payple.kr",
+                    "Cache-Control": "no-cache"
                 },
-                
+
                 body: new URLSearchParams({
-                    PCD_CST_ID : res.data.cst_id,         // 가맹점 인증 후 리턴 받은 cst_id Token
-                    PCD_CUST_KEY : res.data.custKey,      // 가맹점 인증 후 리턴 받은 custKey Token
-                    PCD_AUTH_KEY : res.data.AuthKey,      // 가맹점 인증 후 리턴 받은 AuthKey Token
-                    PCD_PAY_URL : res.data.return_url,    // 가맹점 인증 후 리턴 받은 결제요청 URL
-                    cst_id:"",
-                    custKey:"",
-                    AuthKey:"",
-                    PCD_PAYER_ID:payId
+                    PCD_CST_ID: res.data.cst_id,         // 가맹점 인증 후 리턴 받은 cst_id Token
+                    PCD_CUST_KEY: res.data.custKey,      // 가맹점 인증 후 리턴 받은 custKey Token
+                    PCD_AUTH_KEY: res.data.AuthKey,      // 가맹점 인증 후 리턴 받은 AuthKey Token
+                    PCD_PAY_URL: res.data.return_url,    // 가맹점 인증 후 리턴 받은 결제요청 URL
+                    cst_id: "",
+                    custKey: "",
+                    AuthKey: "",
+                    PCD_PAYER_ID: payId
                 })
             })
                 .then(response => response.json())
                 .then(response => {
-                   console.log(response)
-                   if(response.PCD_PAY_RST=="success"){
-                    handleClick()
-                   }else{
-                    console.log("error")
-                   }
+                    console.log(response)
+                    if (response.PCD_PAY_RST == "success") {
+                        handleClick()
+                    } else {
+                        console.log("error")
+                    }
                 }).catch(err => {
                     console.log(err)
                 })
@@ -102,7 +102,7 @@ export default function ProfilePaymentMethod() {
 
 
     }
-    function uploadBank(a,b,c){
+    function uploadBank(a, b, c) {
         fetch("https://haulfree.link/bankUpload/", {
             method: "POST",
             headers: {
@@ -114,7 +114,7 @@ export default function ProfilePaymentMethod() {
                 params: {
                     bank: a,
                     bankAccount: b,
-                    billingKey:c
+                    billingKey: c
                 }
             })
         })
@@ -129,11 +129,11 @@ export default function ProfilePaymentMethod() {
             }).catch(err => {
                 console.log(err)
             })
-    
+
     }
-   
-    const handleClick = (e) =>{
-        
+
+    const handleClick = (e) => {
+
         const obj = {};
         /*
          *  공통 설정
@@ -195,7 +195,7 @@ export default function ProfilePaymentMethod() {
             console.log(payResult)
             setBank(payResult.PCD_PAY_BANKNAME)
             setBankNum(payResult.PCD_PAY_BANKNUM)
-            uploadBank(payResult.PCD_PAY_BANKNAME,payResult.PCD_PAY_BANKNUM,payResult.PCD_PAYER_ID)
+            uploadBank(payResult.PCD_PAY_BANKNAME, payResult.PCD_PAY_BANKNUM, payResult.PCD_PAYER_ID)
 
         } else {
             // 결제 실패일 경우 알림 메시지
@@ -221,7 +221,7 @@ export default function ProfilePaymentMethod() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-                        
+
 
                         width: 480,
                         minHeight: "100vh",
@@ -229,59 +229,59 @@ export default function ProfilePaymentMethod() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="결제 계좌 관리" goBack={true} />
-                        {bankOrNot?
-                        <>
-                        <RegisterForm
-                        bank={bank}
-                        account={banknum}
-                        marginBottom={16}
-                        marginTop={32}
-                    />
-                    <div onClick={handleClick} style={{
-                        width: 440,
-                        paddingTop: 16,
-                        paddingBottom: 16,
-                        borderRadius: 6,
-                        
-                        alignSelf: "center",
-                        cursor: "pointer",
-                        marginTop: 32,
-                        border: "solid 1px #051a1a",
-        
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        fontFamily: "NotoSansCJKkr",
-                        opacity:0.2,
-                        textAlign: "center"
-                    }}>결제수단 변경하기</div>
-                    </>
-                        :
-                        <div style={{
-                            width: 440,
-                            height: 136,
-                            border: "1px solid rgba(1, 6, 8, 0.2)",
-                            borderRadius: 6,
-                            cursor: "pointer",
+                        {bankOrNot ?
+                            <>
+                                <RegisterForm
+                                    bank={bank}
+                                    account={banknum}
+                                    marginBottom={16}
+                                    marginTop={32}
+                                />
+                                <div onClick={handleClick} style={{
+                                    width: 440,
+                                    paddingTop: 16,
+                                    paddingBottom: 16,
+                                    borderRadius: 6,
 
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            alignSelf: "center",
-                        }}>
-                            <BiPlusCircle size={64} color="rgba(1, 6, 8, 0.6)" />
-                            <div onClick={handleClick} style={{
-                                fontFamily: "NotoSansCJKkr",
-                                opacity: 0.6,
-                                fontSize: 16,
-                                color: "#010608",
-                                marginTop: 8,
-                            }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
-                        </div>
+                                    alignSelf: "center",
+                                    cursor: "pointer",
+                                    marginTop: 32,
+                                    border: "solid 1px #051a1a",
+
+                                    fontSize: 18,
+                                    fontWeight: "bold",
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.2,
+                                    textAlign: "center"
+                                }}>결제수단 변경하기</div>
+                            </>
+                            :
+                            <div style={{
+                                width: 440,
+                                height: 136,
+                                border: "1px solid rgba(1, 6, 8, 0.2)",
+                                borderRadius: 6,
+                                cursor: "pointer",
+
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                alignSelf: "center",
+                            }}>
+                                <img alt="" src={plus} style={{ width: 64, height: 64}} />
+                                <div onClick={handleClick} style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    opacity: 0.6,
+                                    fontSize: 16,
+                                    color: "#010608",
+                                    marginTop: 8,
+                                }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
+                            </div>
 
                         }
-                         
-                      
+
+
                     </div>
                 </div>
             </Default>
@@ -296,47 +296,47 @@ export default function ProfilePaymentMethod() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="결제 계좌 관리" goBack={true} />
-                    {bankOrNot?
+                    {bankOrNot ?
                         <>
-                        <MRegisterForm
-                        bank={bank}
-                        account={banknum}
-                        marginBottom={16}
-                        marginTop={32}
-                    />
-                    <div onClick={handleClick} style={{
-                        width: "90vw",
-                        paddingTop: "4vw",
-                        paddingBottom: "4vw",
-                        borderRadius: 6,
-                        
-                        alignSelf: "center",
-                        cursor: "pointer",
-                        marginTop: 32,
-                        border: "solid 1px #051a1a",
-        
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        fontFamily: "NotoSansCJKkr",
-                        opacity:0.2,
-                        textAlign: "center"
-                    }}>결제수단 변경하기</div>
-                    </>
+                            <MRegisterForm
+                                bank={bank}
+                                account={banknum}
+                                marginBottom={16}
+                                marginTop={32}
+                            />
+                            <div onClick={handleClick} style={{
+                                width: "90vw",
+                                paddingTop: "4vw",
+                                paddingBottom: "4vw",
+                                borderRadius: 6,
+
+                                alignSelf: "center",
+                                cursor: "pointer",
+                                marginTop: 32,
+                                border: "solid 1px #051a1a",
+
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                fontFamily: "NotoSansCJKkr",
+                                opacity: 0.2,
+                                textAlign: "center"
+                            }}>결제수단 변경하기</div>
+                        </>
                         :
                         <div style={{
                             width: "76vw",
-                        padding: "5vw 7vw",
-                        border: "1px solid rgba(1, 6, 8, 0.2)",
-                        borderRadius: 6,
-                        cursor: "pointer",
+                            padding: "5vw 7vw",
+                            border: "1px solid rgba(1, 6, 8, 0.2)",
+                            borderRadius: 6,
+                            cursor: "pointer",
 
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        alignSelf: "center",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            alignSelf: "center",
                         }}>
-                            <BiPlusCircle size={64} color="rgba(1, 6, 8, 0.6)" />
+                            <img alt="" src={plus} style={{ width: 64, height: 64}} />
                             <div onClick={handleClick} style={{
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
@@ -346,8 +346,8 @@ export default function ProfilePaymentMethod() {
                             }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
                         </div>
 
-                        }
-                    
+                    }
+
                 </div>
             </Mobile>
         </>

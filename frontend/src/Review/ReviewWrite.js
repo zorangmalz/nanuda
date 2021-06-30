@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import { Header, imageBucket, MHeader, MStandardButton, S3_BUCKET, StandardButton } from "../Style";
-import { BsPlusCircle } from "react-icons/bs"
 import { useHistory } from "react-router";
 import { Product } from "./ReviewSelect";
 import ReactStars from "react-rating-stars-component"
 import { useLocation } from "react-router-dom";
+import plus from "../images/plus.png"
 
 export default function ReviewWrite() {
     const [number, setNumber] = useState(0);
@@ -228,7 +228,7 @@ export default function ReviewWrite() {
                                     <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
                                         display: "none"
                                     }} />
-                                    <BsPlusCircle size={24} color="#010608" />
+                                    <img alt="" src={plus} style={{ width: 24, height: 24 }} />
                                 </div>
                                 :
                                 <></>
@@ -365,7 +365,7 @@ export default function ReviewWrite() {
                                 <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
                                     display: "none"
                                 }} />
-                                <BsPlusCircle size={20} color="#010608" />
+                                <img alt="" src={plus} style={{ width: 20, height: 20 }} />
                             </div>
                             :
                             <></>

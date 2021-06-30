@@ -2,9 +2,9 @@ import React, { useState, useReducer, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Default, Mobile } from "../App";
 import { Header, MHeader } from "../Style";
-import { BiPlusCircle } from "react-icons/bi";
 import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile/ProfileEdit";
 import { authenticate } from "./authenticate";
+import plus from "../images/plus.png"
 
 function reducer(state, action) {
     switch (action.type) {
@@ -696,7 +696,7 @@ export default function OrderSheet() {
                                 justifyContent: "center",
                                 alignSelf: "center",
                             }}>
-                                <BiPlusCircle size={32} color="rgba(1, 6, 8, 0.6)" />
+                                <img alt="" src={plus} style={{ width: 32, height: 32 }} />
                                 <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     opacity: 0.6,
@@ -1149,7 +1149,7 @@ export default function OrderSheet() {
                             borderRadius: 6,
                             marginTop: "4vw",
                         }}>
-                            <BiPlusCircle size={28} color="rgba(1, 6, 8, 0.6)" />
+                            <img alt="" src={plus} style={{ width: 28, height: 28 }} />
                             <div style={{
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
