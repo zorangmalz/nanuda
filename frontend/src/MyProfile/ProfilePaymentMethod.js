@@ -29,7 +29,7 @@ export default function ProfilePaymentMethod() {
                     setBank(res.bank)
             setBankNum(res.account)
             setPayId(res.billing)
-            
+            setBankOrNot(true)
                 }
             }).catch(err => {
                 console.log(err)
@@ -67,12 +67,31 @@ export default function ProfilePaymentMethod() {
                     }}>
                         <Header content="결제 계좌 관리" goBack={true} />
                         {bankOrNot?
+                        <>
                         <RegisterForm
                         bank={bank}
                         account={banknum}
                         marginBottom={16}
-                        marginTop={0}
+                        marginTop={32}
                     />
+                    <div onClick={change} style={{
+                        width: 440,
+                        paddingTop: 16,
+                        paddingBottom: 16,
+                        borderRadius: 6,
+                        
+                        alignSelf: "center",
+                        cursor: "pointer",
+                        marginTop: 32,
+                        border: "solid 1px #051a1a",
+        
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        fontFamily: "NotoSansCJKkr",
+                        opacity:0.2,
+                        textAlign: "center"
+                    }}>결제수단 변경하기</div>
+                    </>
                         :
                         <div onClick={() => history.push("/paymentaddbank")} style={{
                             width: 440,
@@ -96,24 +115,9 @@ export default function ProfilePaymentMethod() {
                                 marginTop: 8,
                             }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
                         </div>
-                        }
-                          <div onClick={change} style={{
-                width: 440,
-                paddingTop: 16,
-                paddingBottom: 16,
-                borderRadius: 6,
-                backgroundColor: "#ffffff",
-                alignSelf: "center",
-                cursor: "pointer",
-                marginTop: 32,
-                
 
-                fontSize: 18,
-                fontWeight: "bold",
-                fontFamily: "NotoSansCJKkr",
-                color: "#ffffff",
-                textAlign: "center"
-            }}>결제수단 변경하기</div>
+                        }
+                         
                       
                     </div>
                 </div>
