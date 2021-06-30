@@ -38,10 +38,10 @@ const AfterContainer = styled.div`
 const MAfterContainer = styled.div`
     width: 86vw;
     margin-left: 5vw;
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-top: 4vw;
-    padding-bottom: 4vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    padding-top: 6vw;
+    padding-bottom: 6vw;
     overflow: auto;
     ::-webkit-scrollbar {
         display: none;
@@ -708,7 +708,6 @@ export default function Home() {
                         opacity: 0.6,
                         color: "#010608",
                         marginLeft: "5%",
-                        marginTop: "2vw"
                     }}>아직도 이용을 망설이시나요?</div>
                     <MAfterContainer>
                         {reviewData.map(item =>
@@ -857,6 +856,7 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 12,
                         color: "#010608",
+                        opacity: 0.6
                     }}>2회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -867,6 +867,7 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                         <span style={{
                             fontSize: 14,
                             fontWeight: "normal",
+                            opacity: 0.6
                         }}>월 </span>{twoPrice}원
                     </div>
                 </div>
@@ -881,6 +882,7 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 12,
                         color: "#010608",
+                        opacity: 0.6
                     }}>4회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -891,6 +893,7 @@ export function TimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onCl
                         <span style={{
                             fontSize: 14,
                             fontWeight: "normal",
+                            opacity: 0.6
                         }}>월 </span>{fourPrice}원
                     </div>
                 </div>
@@ -1024,6 +1027,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 10,
                         color: "#010608",
+                        opacity: 0.6
                     }}>2회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -1034,6 +1038,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                         <span style={{
                             fontSize: 11,
                             fontWeight: "normal",
+                            opacity: 0.6
                         }}>월 </span>{twoPrice}원
                     </div>
                 </div>
@@ -1048,6 +1053,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 10,
                         color: "#010608",
+                        opacity: 0.6
                     }}>4회 분할결제</div>
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
@@ -1058,6 +1064,7 @@ export function MTimeShop({ id, img, title, sub, twoPrice, fourPrice, stock, onC
                         <span style={{
                             fontSize: 11,
                             fontWeight: "normal",
+                            opacity: 0.6
                         }}>월 </span>{fourPrice}원
                     </div>
                 </div>
