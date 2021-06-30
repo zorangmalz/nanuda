@@ -236,7 +236,7 @@ export default function ReviewPost({ match }) {
                         </div>
                         <img alt="제품 사진" src={data.review_image} style={{
                             width: 480,
-                            backgroundColor: "#26c1f0",
+                            backgroundColor: "#ffffff",
                             marginTop: 8,
                         }} />
                         <ReviewProduct
@@ -423,7 +423,7 @@ export default function ReviewPost({ match }) {
                             }}>신고하기</div>
                         }
                     </div>
-                    <img alt="사진" src={data.review_image} style={{ width: "100vw", backgroundColor: "#26c1f0", marginTop: 8 }} />
+                    <img alt="사진" src={data.review_image} style={{ width: "100vw", backgroundColor: "#ffffff", marginTop: 8 }} />
                     <ReviewProduct
                         product_name={data.product_name}
                         product_image={data.product_image}
