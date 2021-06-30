@@ -40,8 +40,8 @@ const MAfterContainer = styled.div`
     margin-left: 5vw;
     padding-left: 2vw;
     padding-right: 2vw;
-    padding-top: 4vw;
-    padding-bottom: 4vw;
+    padding-top: 6vw;
+    padding-bottom: 6vw;
     overflow: auto;
     ::-webkit-scrollbar {
         display: none;
@@ -708,7 +708,6 @@ export default function Home() {
                         opacity: 0.6,
                         color: "#010608",
                         marginLeft: "5%",
-                        marginTop: "2vw"
                     }}>아직도 이용을 망설이시나요?</div>
                     <MAfterContainer>
                         {reviewData.map(item =>

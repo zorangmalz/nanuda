@@ -108,7 +108,7 @@ export function Header({ content, goBack, goX }) {
                 left: 20,
                 cursor: "pointer"
             }} /> : <></>}
-            {goX ? <BsX size={32} color="#010608" onClick={() => history.goBack()} style={{
+            {goX ? <BsX size={32} color="#010608" onClick={() => history.replace("/")} style={{
                 position: "absolute",
                 left: 20,
                 cursor: "pointer"
@@ -145,7 +145,7 @@ export function MHeader({ content, goBack, goX }) {
                 left: "5vw",
                 cursor: "pointer"
             }} /> : <></>}
-            {goX ? <BsX size={24} color="#010608" onClick={() => history.goBack()} style={{
+            {goX ? <BsX size={24} color="#010608" onClick={() => history.replace("/")} style={{
                 position: "absolute",
                 left: "5vw",
                 cursor: "pointer"
