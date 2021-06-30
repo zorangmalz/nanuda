@@ -58,7 +58,7 @@ export default function WishDealDefault() {
         })
             .then(response => response.json())
             .then(response => {
-                if (response.openGraph.error) {
+                if (response.openGraph.error != undefined) {
                     setLoading(false)
                     history.push({
                         pathname: "/wishdeal/url/fail",
@@ -172,7 +172,7 @@ export default function WishDealDefault() {
                             marginTop: 32,
                             fontWeight: "bold",
                             fontSize: 18
-                        }}>사고 싶은 상품 링크를 입력해주세요</div>
+                        }}>사고 싶은 상품의 url을 입력해주세요</div>
                         <input value={text} onChange={onChange} style={{
                             outline: 0,
                             width: 408,
@@ -297,7 +297,7 @@ export default function WishDealDefault() {
                             marginTop: "8vw",
                             fontWeight: "bold",
                             fontSize: 16
-                        }}>사고 싶은 상품 링크를 입력해주세요!</div>
+                        }}>사고 싶은 상품의 url을 입력해주세요</div>
                         <input value={text} onChange={onChange} style={{
                             outline: 0,
                             width: "82vw",
