@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import { Header, MHeader, NameMask } from "../Style";
+import { Header, MHeader, NameMask, StandardChoiceModal } from "../Style";
 import { AiFillStar } from "react-icons/ai";
 import servicereviewbanner from "../images/servicereviewbanner.png"
 
