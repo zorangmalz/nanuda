@@ -62,7 +62,7 @@ export default function WishDealDefault() {
                     setLoading(false)
                     history.push({
                         pathname: "/wishdeal/url/fail",
-                        state: { url: text }
+                        state: { des: "", url: text, code: 4 }
                     })
                 } else {
                     console.log(response.openGraph)
@@ -77,7 +77,7 @@ export default function WishDealDefault() {
                 setLoading(false)
                 history.push({
                     pathname: "/wishdeal/url/fail",
-                    state: { url: text }
+                    state: { des: "", url: text, code: 4 }
                 })
             })
     }

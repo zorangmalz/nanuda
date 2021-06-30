@@ -34,6 +34,9 @@ function reducerB(state, action) {
 
 export default function WishDealNotURL() {
     const location = useLocation()
+    const myparam = []
+    const code = location.state.code
+    const des = location.state.des
     const getUrl = location.state.url
 
     const [highPrice, setHighPrice] = useState(true)
@@ -183,7 +186,7 @@ export default function WishDealNotURL() {
         imageArray = `https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/${userName}/wishdeal/${selectedFile[0].name}`
 
         const lst = []
-        lst.push(Einputs, number, option, numberB, ship)
+        lst.push(myparam, code, des, Einputs, number, option, numberB, ship)
         history.push("/ordersheet", { param: lst, addInfo: "", url: getUrl, image: imageArray })
     }
 
