@@ -13,7 +13,19 @@ export default function ProfilePaymentDetail() {
     useEffect(()=>{
         console.log(item)
     },[])
+    const [dates, setDates] = useState("")
+    function compareDate() {
+        var today = new Date()
+        var month = today.getMonth()
+        var day = today.getDate()
 
+        var id = item.order_id
+        var splited = id.split("-")
+        setDates("20" + splited[1].slice(0, 2) + "." + splited[1].slice(2, 4) + "." + splited[1].slice(4, 6))
+    }
+    useEffect(()=>{
+        compareDate()
+    },[])
     return (
         <>
             <Default>
@@ -48,14 +60,24 @@ export default function ProfilePaymentDetail() {
                             marginTop: 32,
                             marginBottom: 32,
                         }}>
-                            <div style={{
+                            {item.product_image===undefined?
+                               <img src={item.wish_image} style={{
                                 width: 120,
-                                height: 120,
+                                heigh: 120,
                                 borderRadius: 6,
                                 marginRight: 16,
-                                backgroundColor: "#000000",
-                                color: "#ffffff"
-                            }}>상품 그림</div>
+                                objectFit: "cover"
+                            }} />
+                            :
+                            <img src={item.product_image} style={{
+                                width: 120,
+                                heigh: 120,
+                                borderRadius: 6,
+                                marginRight: 16,
+                                objectFit: "cover"
+                            }} />
+                            }
+                          
                             <div style={{
                                 display: "flex",
                                 flexDirection: "column",
@@ -68,20 +90,28 @@ export default function ProfilePaymentDetail() {
                                     fontFamily: "NotoSansCJKkr",
                                     color: "#010608",
                                     opacity: 0.6,
-                                }}>2021.03.13</div>
-                                <div style={{
+                                }}>{dates}</div>
+                                {item.product_name==undefined ?
+                                 <div style={{
                                     fontSize: 16,
                                     color: "#010608",
                                     fontFamily: "AvenirNext",
                                     lineHeight: 1.5,
-                                }}>PRADA Model 23-9 limited… <br />
-                                    WHITE, 270mm</div>
+                                 }}>{item.wish_title}</div>
+                                    :
+                                    <div style={{
+                                        fontSize: 16,
+                                        color: "#010608",
+                                        fontFamily: "AvenirNext",
+                                        lineHeight: 1.5,
+                                     }}>{item.product_name}</div>
+                                 }
                                 <div style={{
                                     fontSize: 18,
                                     fontWeight: "bold",
                                     color: "#010608",
                                     fontFamily: "NotoSansCJKkr"
-                                }}>480,000원</div>
+                                }}>{item.order_price}원</div>
                             </div>
                         </div>
                         <div style={{
@@ -90,18 +120,13 @@ export default function ProfilePaymentDetail() {
                             backgroundColor: "rgba(1, 6, 8, 0.2)",
                             alignSelf: "center",
                         }} />
-                            {item.payment_history.map((item) =>
-                   {item.money==0?
-                    <></>
-                :
-                <PayInfo
-                num={item.num}
-                date={item.date}
-                state={item.payment}
-                payback={item.money}
-            />
-         
-            }         
+                            {item.payment_history.map(item =>
+                   <PayInfo
+                   num={item.num}
+                   date={item.date}
+                   state={item.payment}
+                   payback={item.money}
+               />
                         
                     )}
                      
