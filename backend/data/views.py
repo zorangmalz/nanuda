@@ -323,8 +323,8 @@ def review_one(request, pk):
                         "review_alert": review_alert,
                         "product_name": review.wish_title(),
                         "product_image": review.wish_image(),
-                        "product_price": review.order_price(),
-                        "order_price": review.order_price(),
+                        "product_price": review.wish_order_price(),
+                        "order_price": review.wish_order_price(),
                         "mine": True,
                     })
                 
@@ -359,8 +359,8 @@ def review_one(request, pk):
                         "review_alert": review_alert,
                         "product_name": review.wish_title(),
                         "product_image": review.wish_image(),
-                        "product_price": review.order_price(),
-                        "order_price": review.order_price(),
+                        "product_price": review.wish_order_price(),
+                        "order_price": review.wish_order_price(),
                         "mine": False,
                     })
 
@@ -395,8 +395,8 @@ def review_one(request, pk):
                     "review_alert": review_alert,
                     "product_name": review.wish_title(),
                     "product_image": review.wish_image(),
-                    "product_price": review.order_price(),
-                    "order_price": review.order_price(),
+                    "product_price": review.wish_order_price(),
+                    "order_price": review.wish_order_price(),
                     "mine": False,
                 })
 

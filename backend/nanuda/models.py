@@ -215,6 +215,9 @@ class Review(models.Model):
     
     def order_price(self):
         return self.order_id.order_price
+    
+    def wish_order_price(self):
+        return self.wish_id.order_price
 
     def __str__(self):
         return "{}".format(self.user_id)
