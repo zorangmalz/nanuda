@@ -255,15 +255,23 @@ export default function ProfilePaymentDetail() {
                         backgroundColor: "rgba(1, 6, 8, 0.2)",
                         alignSelf: "center",
                     }} />
-                     {item.payment_history.map(item =>
-                   <MPayInfo
-                   num={item.num}
-                   date={item.date}
-                   state={item.payment}
-                   payback={item.money}
-               />
-                        
-                    )}
+                 {item.payment_history.map((item) =>{
+                                return(
+                                    <>
+                                    {item.money===0?
+                                    <></>
+                                    :
+                                    <MPayInfo
+                                    num={item.num}
+                                    date={item.date}
+                                    state={item.payment}
+                                    payback={item.money}
+                                />
+                                }  
+                                    </>
+                                )
+                            })
+                        }
                     {complete ? <></> :
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
