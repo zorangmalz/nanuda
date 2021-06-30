@@ -164,7 +164,7 @@ export default function ProfileMain() {
                                 total={item}
                             />
                         )}
-                        <ManageList name="결제 수단 관리" path="profile/payment/main" />
+                        <ManageList name="결제 수단 관리" path="profile/payment/method" />
                         <ManageList name="상품 구매 내역" path="profile/product/main" />
                         <ManageList name="내 리뷰" path="profile/review" />
                         <BottomTag marginTop={120} marginBottom={0} />
