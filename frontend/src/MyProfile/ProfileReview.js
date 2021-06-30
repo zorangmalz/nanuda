@@ -21,8 +21,9 @@ export default function ProfileReview() {
             },
             credentials: "include",
         })
-            .then(response => response.json())
+            .then(response => response.text())
             .then(response => {
+                console.log(response)
                 var array = []
                 for (var i = 0; i < response["review_list"].length; i++) {
                     array.push({
