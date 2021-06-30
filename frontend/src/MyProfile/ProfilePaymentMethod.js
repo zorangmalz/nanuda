@@ -293,14 +293,34 @@ export default function ProfilePaymentMethod() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="결제 계좌 관리" goBack={true} />
-                    <MRegisterForm
-                        bank="우리"
-                        account="1002-550-568544"
-                        marginBottom={8}
-                        marginTop={0}
+                    {bankOrNot?
+                        <>
+                        <MRegisterForm
+                        bank={bank}
+                        account={banknum}
+                        marginBottom={16}
+                        marginTop={32}
                     />
-                    <div onClick={() => history.push("/paymentaddbank")} style={{
-                        width: "76vw",
+                    <div onClick={change} style={{
+                        width: "90vw",
+                        padding: "5vw 7vw",
+                        borderRadius: 6,
+                        
+                        alignSelf: "center",
+                        cursor: "pointer",
+                        marginTop: 32,
+                        border: "solid 1px #051a1a",
+        
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        fontFamily: "NotoSansCJKkr",
+                        opacity:0.2,
+                        textAlign: "center"
+                    }}>결제수단 변경하기</div>
+                    </>
+                        :
+                        <div style={{
+                            width: "76vw",
                         padding: "5vw 7vw",
                         border: "1px solid rgba(1, 6, 8, 0.2)",
                         borderRadius: 6,
@@ -311,16 +331,19 @@ export default function ProfilePaymentMethod() {
                         alignItems: "center",
                         justifyContent: "center",
                         alignSelf: "center",
-                    }}>
-                        <BiPlusCircle size={48} color="rgba(1, 6, 8, 0.6)" />
-                        <div style={{
-                            fontFamily: "NotoSansCJKkr",
-                            opacity: 0.6,
-                            fontSize: 12,
-                            color: "#010608",
-                            marginTop: 4,
-                        }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
-                    </div>
+                        }}>
+                            <BiPlusCircle size={64} color="rgba(1, 6, 8, 0.6)" />
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                opacity: 0.6,
+                                fontSize: 16,
+                                color: "#010608",
+                                marginTop: 8,
+                            }}>처음 결제하시는군요? 결제를 위한 계좌를 등록해주세요!</div>
+                        </div>
+
+                        }
+                    
                 </div>
             </Mobile>
         </>
