@@ -343,7 +343,7 @@ const OngoingProduct = ({ img, title, complete, total, mobile }) => {
                 marginTop: mobile ? "4vw" : 16,
                 marginLeft: mobile ? "5vw" : 20,
             }}>
-                <img alt="product" src={img} style={{ width: 120 }} />
+                <img alt="product" src={img} style={{ width: mobile ? "25vw" : 120, borderRadius: 6 }} />
                 <div style={{
                     display: "flex",
                     flexDirection: "column",

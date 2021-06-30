@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import { Header, MHeader, NameMask } from "../Style";
+import { Header, MHeader, NameMask, StandardButton, MStandardButton } from "../Style";
 import { AiFillStar } from "react-icons/ai";
 
 
@@ -113,6 +113,7 @@ export default function ServiceReview() {
 
                                 marginTop: 16,
                                 marginLeft: 32,
+                                marginBottom: 32,
                             }}>실제 후기를 확인해보세요.</div>
                         </div>
                         {reviewData.map(item =>
@@ -177,6 +178,7 @@ export default function ServiceReview() {
                             color: "#ffffff",
 
                             marginTop: "4vw",
+                            marginBottom: "8vw",
                         }}>실제 후기를 확인해보세요.</div>
                     </div>
                     {reviewData.map(item =>
@@ -226,7 +228,7 @@ function Review({ item, mobile }) {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 alignSelf: "center",
-                marginTop: mobile ? "8vw" : 32,
+                marginBottom: mobile ? "8vw" : 32,
                 borderRadius: 6,
             }}>
                 <div style={{

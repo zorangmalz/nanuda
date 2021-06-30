@@ -128,7 +128,7 @@ export default function ReviewMain() {
                                                 width: 210,
                                                 height: 160,
                                                 borderRadius: 6,
-                                                backgroundColor: "#010608",
+                                                backgroundColor: "#ffffff",
                                                 marginTop: 8,
                                                 objectFit: "cover",
                                                 border: "1px solid #ebebeb"
@@ -274,7 +274,7 @@ export default function ReviewMain() {
                                             width: "42vw",
                                             height: "32vw",
                                             borderRadius: 6,
-                                            backgroundColor: "#010608",
+                                            backgroundColor: "#ffffff",
                                             marginTop: "2vw",
                                             objectFit: "cover",
                                             border: "1px solid #ebebeb"
