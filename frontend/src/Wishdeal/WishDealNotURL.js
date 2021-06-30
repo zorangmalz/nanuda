@@ -1,8 +1,8 @@
-import React, { useReducer, useState, useEffect } from "react";
+import React, { useReducer, useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router";
 import { useLocation } from "react-router-dom";
 import { Default, Mobile } from "../App";
-import { Header, MHeader, StandardButton, MStandardButton } from "../Style";
+import { Header, MHeader, StandardButton, MStandardButton, imageBucket, S3_BUCKET } from "../Style";
 import { BiPlusCircle } from "react-icons/bi"
 
 function reducerA(state, action) {
@@ -144,6 +144,21 @@ export default function WishDealNotURL() {
             setNext(false)
         }
     }, [Einputs, number, numberB, option, ship, highPrice])
+
+    //User 정보 받기
+    const [userName, setUserName] = useState("")
+    useEffect(() => {
+        fetch("https://haulfree.link/userInfoName/", {
+            method: "GET",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            credentials: "include"
+        })
+            .then(res => res.json())
+            .then(res => setUserName(res.name))
+            .catch(err => console.log(err))
+    }, [])
 
     //s3로 업로드 후 URL을 RDS에 삽입 + user_id, product_id는 추후에 수정
     const [selectedFile, setSelectedFile] = useState([])
