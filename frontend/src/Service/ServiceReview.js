@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import { Header, MHeader, NameMask, StandardButton, MStandardButton } from "../Style";
+import { Header, MHeader, NameMask } from "../Style";
 import { AiFillStar } from "react-icons/ai";
-
+import servicereviewbanner from "../images/servicereviewbanner.png"
 
 export default function ServiceReview() {
     //Get Review Data
@@ -88,34 +88,12 @@ export default function ServiceReview() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="나눠본 사람들" goBack={true} />
-                        <div style={{
+                        <img src={servicereviewbanner} style={{
                             width: 440,
-                            height: 150,
-                            alignSelf: "center",
                             marginTop: 32,
-
-                            backgroundColor: "#010608",
-                            borderRadius: 6,
-                        }}>
-                            <div style={{
-                                marginLeft: 32,
-                                marginTop: 32,
-
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 18,
-                                color: "#ffffff"
-                            }}>아직도 하울프리 사용을 망설이시나요?</div>
-                            <div style={{
-                                fontFamily: "NotoSansCJKkr",
-                                fontSize: 24,
-                                fontWeight: "bold",
-                                color: "#ffffff",
-
-                                marginTop: 16,
-                                marginLeft: 32,
-                                marginBottom: 32,
-                            }}>실제 후기를 확인해보세요.</div>
-                        </div>
+                            marginLeft: 20,
+                            marginBottom: 32,
+                        }} />
                         {reviewData.map(item =>
                             <Review
                                 item={item}
@@ -154,33 +132,12 @@ export default function ServiceReview() {
                     paddingBottom: reviewData.length > 3 ? 120 : 0,
                 }}>
                     <MHeader content="나눠본 사람들" goBack={true} />
-                    <div style={{
-                        width: "72vw",
-                        alignSelf: "center",
+                    <img src={servicereviewbanner} style={{
+                        width: "90vw",
                         marginTop: "8vw",
-                        paddingTop: "8vw",
-                        paddingLeft: "8vw",
-                        paddingRight: "10vw",
-                        paddingBottom: "8vw",
-
-                        backgroundColor: "#010608",
-                        borderRadius: 6,
-                    }}>
-                        <div style={{
-                            fontFamily: "NotoSansCJKkr",
-                            fontSize: 16,
-                            color: "#ffffff"
-                        }}>아직도 하울프리 사용을 망설이시나요?</div>
-                        <div style={{
-                            fontFamily: "NotoSansCJKkr",
-                            fontSize: 20,
-                            fontWeight: "bold",
-                            color: "#ffffff",
-
-                            marginTop: "4vw",
-                            marginBottom: "8vw",
-                        }}>실제 후기를 확인해보세요.</div>
-                    </div>
+                        marginLeft: "5vw",
+                        marginBottom: "8vw"
+                    }} />
                     {reviewData.map(item =>
                         <Review
                             item={item}

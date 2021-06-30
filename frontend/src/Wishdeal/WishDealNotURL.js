@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import { useLocation } from "react-router-dom";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, StandardButton, MStandardButton, imageBucket, S3_BUCKET } from "../Style";
-import { BiPlusCircle } from "react-icons/bi"
+import plus from "../images/plus.png"
 
 function reducerA(state, action) {
     switch (action.type) {
@@ -631,7 +631,7 @@ function ETCForm({ input, setInput, highPrice, selectedFile, setSelectedFile, mo
                     <input ref={inputFile} onChange={handelFileInput} type="file" style={{
                         display: "none"
                     }} />
-                    <BiPlusCircle size={mobile ? 28 : 32} color="#010608" style={{ cursor: "pointer" }} />
+                    <img alt="" src={plus} style={{ width: mobile ? 28 : 32, height: mobile ? 28 : 32, cursor: "pointer" }} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: mobile ? 14 : 16,

@@ -2,9 +2,9 @@ import React, { useState, useReducer, useRef, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import { Button, MButton } from "../Auth/SignupProfile";
 import { Header, MHeader, InputModule, MInputModule, StandardButton, MStandardButton, S3_BUCKET, imageBucket } from "../Style";
-import { BsPlusCircle } from "react-icons/bs"
 import styled from "styled-components"
 import { useHistory } from "react-router-dom";
+import plus from "../images/plus.png"
 
 function reducer(state, action) {
     switch (action.type) {
@@ -282,7 +282,7 @@ export default function ProfileVerification() {
                                         <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
                                             display: "none"
                                         }} />
-                                        <BsPlusCircle size={24} color="#010608" />
+                                        <img alt="" src={plus} style={{ width: 24, height: 24 }} />
                                     </div>
                                     :
                                     <></>
@@ -437,7 +437,7 @@ export default function ProfileVerification() {
                                     <input multiple ref={inputFile} onChange={handelFileInput} type="file" style={{
                                         display: "none"
                                     }} />
-                                    <BsPlusCircle size={20} color="#010608" />
+                                    <img alt="" src={plus} style={{ width: 20, height: 20 }} />
                                 </div>
                                 :
                                 <></>

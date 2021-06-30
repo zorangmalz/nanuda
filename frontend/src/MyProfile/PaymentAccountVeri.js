@@ -1,9 +1,8 @@
 import React, { useReducer, useState } from "react";
-import { BiPlusCircle } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
+import { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 
 function reducer(state, action) {
     switch (action.type) {

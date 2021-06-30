@@ -4,8 +4,7 @@ import { Header, MHeader, NameMask } from "../Style";
 import { useHistory } from "react-router";
 import { AiFillStar } from "react-icons/ai";
 import nodata from "../images/nodata.png";
-import bigbanner from "../images/bigbanner.png"
-import mainlogo from "../images/mainlogo.png"
+import reviewbanner from "../images/reviewbanner.png"
 
 export default function ReviewMain() {
     let history = useHistory()
@@ -65,7 +64,7 @@ export default function ReviewMain() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="나눠산 사람들" goBack={true} />
-                        <img src={bigbanner} alt="큰 배너" style={{
+                        <img src={reviewbanner} alt="큰 배너" style={{
                             width: 440,
                             marginTop: 32,
                             alignSelf: "center",
@@ -211,7 +210,7 @@ export default function ReviewMain() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="나눠산 사람들" goBack={true} />
-                    <img src={bigbanner} alt="큰 배너" style={{
+                    <img src={reviewbanner} alt="큰 배너" style={{
                         width: "90vw",
                         marginTop: "8vw",
                         alignSelf: "center",

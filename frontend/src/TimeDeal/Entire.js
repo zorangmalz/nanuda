@@ -3,6 +3,7 @@ import { Default, Mobile } from "../App";
 import { BannerContainer, MBannerContainer } from "../Style";
 import { useHistory } from "react-router";
 import smallbanner from "../images/smallbanner.png";
+import smallbannerTwo from "../images/smallbannerTwo.png"
 import { MTimeShop, TimeShop } from "../Home/Home";
 import sampleone from "../images/sampleone.png"
 import sampletwo from "../images/sampletwo.png"
@@ -46,7 +47,7 @@ export default function Entire() {
                 }}>
                     <BannerContainer marginTop="16px" >
                         <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" />
-                        <img style={{ marginRight: 16 }} src={smallbanner} alt="광고배너" />
+                        <img style={{ marginRight: 16 }} src={smallbannerTwo} alt="광고배너" />
                     </BannerContainer>
                     <div style={{
                         display: "grid",

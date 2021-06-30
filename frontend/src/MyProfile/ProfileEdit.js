@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, InputModule, MInputModule, StandardChoiceModal } from "../Style";
 import { MdKeyboardArrowRight } from "react-icons/md"
-import { BiPlusCircle } from "react-icons/bi";
+import plus from "../images/plus.png"
 
 export default function ProfileEdit() {
     let history = useHistory()
@@ -417,9 +417,11 @@ export const NoAddress = () => {
             borderRadius: 6,
             marginTop: 16,
         }}>
-            <BiPlusCircle
-                size={32}
-                color="rgba(1, 6, 8, 0.6)"
+            <img src={plus}
+                style={{
+                    width: 32,
+                    height: 32
+                }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
@@ -449,9 +451,11 @@ export const MNoAddress = () => {
             borderRadius: 6,
             marginTop: "4vw",
         }}>
-            <BiPlusCircle
-                size={28}
-                color="rgba(1, 6, 8, 0.6)"
+            <img src={plus}
+                style={{
+                    width: 28,
+                    height: 28
+                }}
             />
             <div style={{
                 fontFamily: "NotoSansCJKkr",
