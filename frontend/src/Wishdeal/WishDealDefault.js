@@ -28,16 +28,16 @@ export default function WishDealDefault() {
     const [checker, setChecker] = useState(false)
     const isValidUrl = (url) => {
         try {
-          new URL(url);
+            new URL(url);
         } catch (e) {
-          console.error(e);
-          setChecker(false)
+            console.error(e);
+            return false
         }
-        setChecker(true)
-      };
+        return true
+    };
 
     useEffect(() => {
-        isValidUrl(text)
+        setChecker(isValidUrl(text))
     }, [text])
 
     const onChange = (e) => {
