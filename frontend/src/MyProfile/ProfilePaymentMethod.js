@@ -3,7 +3,7 @@ import { BiPlusCircle } from "react-icons/bi";
 import { useHistory } from "react-router";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
-import { authenticate } from "./authenticate";
+import { authenticate } from "../Ordersheet/authenticate";
 
 export default function ProfilePaymentMethod() {
     let history = useHistory()
@@ -42,6 +42,7 @@ export default function ProfilePaymentMethod() {
 
     function change(){
         authenticate().then((res) => {
+            const obj = {};
             console.log('Auth Result:', { ...res.data });
             // 토큰값 세팅
             obj.PCD_CST_ID = res.data.cst_id;         // 가맹점 인증 후 리턴 받은 cst_id Token
