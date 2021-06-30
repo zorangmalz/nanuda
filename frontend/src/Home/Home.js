@@ -38,8 +38,8 @@ const AfterContainer = styled.div`
 const MAfterContainer = styled.div`
     width: 86vw;
     margin-left: 5vw;
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
     padding-top: 6vw;
     padding-bottom: 6vw;
     overflow: auto;
