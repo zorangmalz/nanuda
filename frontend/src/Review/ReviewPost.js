@@ -5,7 +5,6 @@ import { useHistory } from "react-router";
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 import { RiArrowRightSLine } from "react-icons/ri"
-import mainlogo from "../images/mainlogo.png"
 
 export default function ReviewPost({ match }) {
     let history = useHistory()
@@ -138,6 +137,29 @@ export default function ReviewPost({ match }) {
     const [mine, setMine] = useState(false)
     const [modal, setModal] = useState(false)
     const [finishModal, setFinishModal] = useState(false)
+
+    useEffect(() => {
+        const test = async () => {
+            fetch("https://haulfree.link/userInfoName/", {
+                method: "GET",
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                credentials: "include",
+            })
+                .then((response) => (response.json()))
+                .then(response => {
+                    setIsLogin(response.data)
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        test()
+    }, [])
+
+    const [isLogin, setIsLogin] = useState(false)
+    const [loginModal, setLoginModal] = useState(false)
     return (
         <>
             <Default>
@@ -330,10 +352,23 @@ export default function ReviewPost({ match }) {
                         <StandardButton
                             marginTop={30}
                             text="위시딜 신청하기"
-                            onClick={() => history.push("/wishdeal/default")}
+                            onClick={isLogin ? () => history.push("/wishdeal/default") : () => setIsLogin(true)}
                             state={true}
                             marginBottom={40}
                         />
+                        {loginModal ?
+                            <StandardChoiceModal
+                                title="회원가입이 필요한 서비스입니다."
+                                content={<span>지금 바로 회원가입하고 <br /> 다양한 상품을 분할결제 해보세요!</span>}
+                                canceltext="취소"
+                                onCancelClick={() => setLoginModal(false)}
+                                buttontext="회원가입"
+                                onClick={() => history.push("/signup/main")}
+                                mobile={false}
+                            />
+                            :
+                            <></>
+                        }
                     </div>
                 </div>
             </Default>
@@ -515,10 +550,23 @@ export default function ReviewPost({ match }) {
                     <MStandardButton
                         marginTop={20}
                         text="위시딜 신청하기"
-                        onClick={() => history.push("/wishdeal/default")}
+                        onClick={isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)}
                         state={true}
                         marginBottom={"10vw"}
                     />
+                    {loginModal ?
+                        <StandardChoiceModal
+                            title="회원가입이 필요한 서비스입니다."
+                            content={<span>지금 바로 회원가입하고 <br /> 다양한 상품을 분할결제 해보세요!</span>}
+                            canceltext="취소"
+                            onCancelClick={() => setLoginModal(false)}
+                            buttontext="회원가입"
+                            onClick={() => history.push("/signup/main")}
+                            mobile={true}
+                        />
+                        :
+                        <></>
+                    }
                 </div>
             </Mobile>
         </>
