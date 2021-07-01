@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useLocation,useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, MStandardButton, numberWithCommas, StandardButton, StandardChoiceModal } from "../Style";
 
 export default function ProfileProductInfo() {
     const location = useLocation()
     const history = useHistory()
-    const param= location.state.item
+    const param = location.state.item
     const [order, setOrder] = useState({
         product_image: "",
         product_name: "",
@@ -22,8 +22,17 @@ export default function ProfileProductInfo() {
         wish_image: "",
         wish_title: "",
     })
+    const [payComplete, setPayComplete] = useState(false)
     useEffect(() => {
         console.log(location.state.item)
+        for (var i = 0; i < 4; i++) {
+            if (location.state.item.payment_history[i].money === 0) {
+                setPayComplete(location.state.item.payment_history[i - 1].payment)
+                break;
+            } else if (location.state.item.payment_history[i].money != 0 && i === 3) {
+                setPayComplete(location.state.item.payment_history[3].payment)
+            }
+        }
         if (location.state.item != null) {
             if (location.state.item.product_image != null) {
                 setOrder({
@@ -57,9 +66,9 @@ export default function ProfileProductInfo() {
     }, [location])
 
     const [modal, setModal] = useState(false)
-    function check(){
+    function check() {
         console.log("here")
-        history.push("/profile/payment/detail",{item:param})
+        history.push("/profile/payment/detail", { item: param })
     }
     return (
         <>
@@ -111,20 +120,30 @@ export default function ProfileProductInfo() {
                             deliveryClaim={order.order_request}
                             mobile={false}
                         />
-                         <StandardButton
+                        <StandardButton
                             marginTop={32}
                             text="분할결제 스케쥴 확인하기"
                             state={true}
                             onClick={check}
-                            marginBottom={40}
+                            marginBottom={0}
                         />
-                        <StandardButton
-                            marginTop={32}
-                            text="분할결제 스케쥴 확인하기"
-                            state={false}
-                            onClick={() => setModal(true)}
-                            marginBottom={40}
-                        />
+                        <div onClick={() => setModal(true)} style={{
+                            width: 440,
+                            paddingTop: 16,
+                            paddingBottom: 16,
+                            borderRadius: 6,
+                            backgroundColor: "#dbdbdb",
+                            alignSelf: "center",
+                            cursor: "pointer",
+                            marginTop: 16,
+                            marginBottom: 40,
+
+                            fontSize: 18,
+                            fontWeight: "bold",
+                            fontFamily: "NotoSansCJKkr",
+                            color: "#ffffff",
+                            textAlign: "center"
+                        }}>{payComplete ? "반품, 환불 신청" : "주문 취소"}</div>
                     </div>
                 </div>
             </Default>
@@ -165,20 +184,30 @@ export default function ProfileProductInfo() {
                         deliveryClaim={order.order_request}
                         mobile={true}
                     />
-                     <MStandardButton
+                    <MStandardButton
                         marginTop={"8vw"}
                         text="분할결제 스케쥴 확인하기"
                         state={true}
                         onClick={check}
-                        marginBottom={"10vw"}
+                        marginBottom={0}
                     />
-                    <MStandardButton
-                        marginTop={"8vw"}
-                        text="분할결제 스케쥴 확인하기"
-                        state={false}
-                        onClick={() => setModal(true)}
-                        marginBottom={"10vw"}
-                    />
+                    <div onClick={() => setModal(true)} style={{
+                        width: "90vw",
+                        paddingTop: "4vw",
+                        paddingBottom: "4vw",
+                        backgroundColor: "#dbdbdb",
+                        alignSelf: "center",
+                        cursor: "pointer",
+                        marginTop: "4vw",
+                        borderRadius: 6,
+                        marginBottom: "10vw",
+
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        fontFamily: "NotoSansCJKkr",
+                        color: "#ffffff",
+                        textAlign: "center"
+                    }}>{payComplete ? "반품, 환불 신청" : "주문 취소"}</div>
                 </div>
             </Mobile>
         </>
