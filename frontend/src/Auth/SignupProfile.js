@@ -65,7 +65,7 @@ export default function SignupProfile() {
     })
     function check(){
         console.log("checking")
-        await fetch("https://haulfree.link/niceCheck/", {
+         fetch("https://haulfree.link/niceCheck/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

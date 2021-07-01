@@ -366,7 +366,7 @@ class bankDelete(View):
             else:
                 return JsonResponse({"data":False})
 
-  class niceSearch(View):
+class niceSearch(View):
     def get(self,request):
         if not request.COOKIES.get("access_token"):
             return JsonResponse({"data":False})
