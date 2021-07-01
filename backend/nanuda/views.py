@@ -229,7 +229,7 @@ class KakaoLogin(View):
             res=JsonResponse({"result":"true"})
             res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
             res["Access-Control-Allow-Credentials"]="true"
-            res["Access-Control-Allow-Origin"] = "http://haulfree.io"
+            res["Access-Control-Allow-Origin"] = "https://1n1n.io"
             res["Acess-Control-Max-Age"] = "1000"
             res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
             res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True)
@@ -261,7 +261,7 @@ class KakaoLogin(View):
             res=JsonResponse({"result":"false","uid":kakao_response["id"],"email":kakao_response['kakao_account'].get('email',None),})
             res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
             res["Access-Control-Allow-Credentials"]="true"
-            res["Access-Control-Allow-Origin"] = "http://haulfree.io"
+            res["Access-Control-Allow-Origin"] = "https://1n1n.io"
             res["Acess-Control-Max-Age"] = "1000"
             res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
             res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True)
@@ -273,7 +273,7 @@ class logout(View):
         res = JsonResponse({"success":True})
         res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
         res["Access-Control-Allow-Credentials"]="true"
-        res["Access-Control-Allow-Origin"] = "http://haulfree.io"
+        res["Access-Control-Allow-Origin"] = "https://1n1n.io"
         res["Acess-Control-Max-Age"] = "1000"
         res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
         res.set_cookie(key="access_token",value=reset,samesite=None,httponly=True,secure=True)
@@ -377,7 +377,7 @@ class niceSearch(View):
             ALGORITHM=os.getenv("ALGORITHM")
             token=request.COOKIES.get("access_token")
             payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
-            try:  
+            try:
                 user=User.objects.get(uid=payload["id"])
                 return JsonResponse({"data":True})
             except:
