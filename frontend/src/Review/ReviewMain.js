@@ -40,6 +40,29 @@ export default function ReviewMain() {
             })
             .catch(err => console.log(err))
     }, [])
+
+    useEffect(() => {
+        const test = async () => {
+            fetch("https://haulfree.link/userInfoName/", {
+                method: "GET",
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                credentials: "include",
+            })
+                .then((response) => (response.json()))
+                .then(response => {
+                    setIsLogin(response.data)
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        test()
+    }, [])
+
+    const [isLogin, setIsLogin] = useState(false)
+    const [loginModal, setLoginModal] = useState(false)
     return (
         <>
             <Default>
@@ -177,7 +200,7 @@ export default function ReviewMain() {
                                 )}
                             </div>
                         }
-                        <div onClick={() => history.push("/review/select")} style={{
+                        <div onClick={isLogin ? () => history.push("/review/select") : () => setLoginModal(true)} style={{
                             position: "fixed",
                             zIndex: 5,
                             bottom: 0,
@@ -194,7 +217,20 @@ export default function ReviewMain() {
                             fontWeight: "bold",
                             cursor: "pointer",
                             marginBottom: 30,
-                        }}>리뷰 작성하기</div>
+                        }}>{isLogin ? "리뷰 작성하기" : "회원가입하고 리뷰 작성하기"}</div>
+                        {loginModal ?
+                            <StandardChoiceModal
+                                title="회원가입이 필요한 서비스입니다."
+                                content={<span>지금 바로 회원가입하고 <br /> 다양한 상품을 분할결제 해보세요!</span>}
+                                canceltext="취소"
+                                onCancelClick={() => setLoginModal(false)}
+                                buttontext="회원가입"
+                                onClick={() => history.push("/signup/main")}
+                                mobile={false}
+                            />
+                            :
+                            <></>
+                        }
                     </div>
                 </div>
             </Default>
@@ -323,7 +359,7 @@ export default function ReviewMain() {
                             )}
                         </div>
                     }
-                    <div onClick={() => history.push("/review/select")} style={{
+                    <div onClick={isLogin ? () => history.push("/review/select") : () => setLoginModal(true)} style={{
                         position: "fixed",
                         zIndex: 5,
                         bottom: 0,
@@ -340,7 +376,20 @@ export default function ReviewMain() {
                         fontWeight: "bold",
                         cursor: "pointer",
                         marginBottom: "7vw",
-                    }}>리뷰 작성하기</div>
+                    }}>{isLogin ? "리뷰 작성하기" : "회원가입하고 리뷰 작성하기"}</div>
+                    {loginModal ?
+                        <StandardChoiceModal
+                            title="회원가입이 필요한 서비스입니다."
+                            content={<span>지금 바로 회원가입하고 <br /> 다양한 상품을 분할결제 해보세요!</span>}
+                            canceltext="취소"
+                            onCancelClick={() => setLoginModal(false)}
+                            buttontext="회원가입"
+                            onClick={() => history.push("/signup/main")}
+                            mobile={true}
+                        />
+                        :
+                        <></>
+                    }
                 </div>
             </Mobile>
         </>
