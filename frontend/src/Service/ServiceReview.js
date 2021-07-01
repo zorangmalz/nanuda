@@ -139,7 +139,7 @@ export default function ServiceReview() {
                             textAlign: "center",
                             cursor: isLogin ? noReview ? "pointer" : "auto" : "pointer",
                             fontFamily: "NotoSansCJKkr"
-                        }}>{isLogin ? "회원가입 하고 후기 작성하기" : "첫 후기 작성하고 2천 포인트 받기"}</div>
+                        }}>{isLogin ? "첫 후기 작성하고 2천 포인트 받기" : "회원가입 하고 후기 작성하기"}</div>
                         {loginModal ?
                             <StandardChoiceModal
                                 title="회원가입이 필요한 서비스입니다."
@@ -196,7 +196,7 @@ export default function ServiceReview() {
                         textAlign: "center",
                         cursor: isLogin ? noReview ? "pointer" : "auto" : "pointer",
                         fontFamily: "NotoSansCJKkr"
-                    }}>{isLogin ? "회원가입 하고 후기 작성하기" : "첫 후기 작성하고 2천 포인트 받기"}</div>
+                    }}>{isLogin ? "첫 후기 작성하고 2천 포인트 받기" : "회원가입 하고 후기 작성하기"}</div>
                     {loginModal ?
                         <StandardChoiceModal
                             title="회원가입이 필요한 서비스입니다."
