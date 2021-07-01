@@ -8,7 +8,24 @@ import { useHistory,useLocation } from "react-router";
 export default function SignupProfile() {
     const history = useHistory()
     const location = useLocation()
+    const [safariOrNot,setSafariOrNot]=useState(true)
+    var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+    var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+
+function isSafariBrowser(){
+    if (is_safari){
+        if (is_chrome){  // Chrome seems to have both Chrome and Safari userAgents
+            setSafariOrNot(true)
+            console.log("this is chrome")}
+        else{
+     setSafariOrNot(false)
+     console.log("this is safari")}
+    }
     
+}
+useEffect(()=>{
+    isSafariBrowser()
+},[])
     var uid
     var email
     useEffect(()=>{
@@ -271,6 +288,7 @@ history.replace("/")          }
                         <form name="form_chk" method="post">
                             <input type="hidden" name="m" value="checkplusService" />
                             <input type="hidden" name="EncodeData" value={enc} />
+                            <input type ="hidden" name="recvMethodType" value ="get"/>
                             <div style={{
                                 width: 440,
                                 paddingTop: 15,
@@ -458,6 +476,7 @@ history.replace("/")          }
                     <form name="form_chk" method="post">
                         <input type="hidden" name="m" value="checkplusService" />
                         <input type="hidden" name="EncodeData" value={enc} />
+                        <input type ="hidden" name="recvMethodType" value ="get"/>
                         <div style={{
                             width: "90vw",
                             paddingTop: 12,

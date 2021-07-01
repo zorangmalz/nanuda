@@ -14,22 +14,24 @@ export default function SingupComplete() {
 
 function isSafariBrowser(){
     if (is_safari){
-        if (is_chrome)  // Chrome seems to have both Chrome and Safari userAgents
+        if (is_chrome){  // Chrome seems to have both Chrome and Safari userAgents
             setSafariOrNot(true)
-        else
+            console.log("this is chrome")}
+        else{
      setSafariOrNot(false)
+     console.log("this is safari")}
     }
     
 }
 useEffect(()=>{
     isSafariBrowser()
-})
+},[])
     useEffect(()=>{
         var code = document.location.href.split("complete")
         if(code[1].length>2){
             var realCode=code[1].split("EncodeData=")
             var message = realCode[1].replace(/%2B/gi,"+")
-            if(safariOrNot){
+            // if(safariOrNot){
                 fetch("https://wishdeal.link/checkplus_success", {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -42,29 +44,31 @@ useEffect(()=>{
                 })
                 .then(res => res.json())
                     .then(res => {
+                    console.log(res)
                       setUserData(res)
                       
                     }).catch(err => {
                         console.log(err)
                     })
-                }else{
-                    fetch("https://wishdeal.link/checkplus_success?EncodeData="+message, {
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'Accept': 'application/json'
-                        },
-                        method: "GET",    
+                // }else{
+                //     console.log("GET!@@@")
+                //     fetch("https://wishdeal.link/checkplus_success?EncodeData="+message, {
+                //         headers: {
+                //             'Content-Type': 'application/x-www-form-urlencoded',
+                //             'Accept': 'application/json'
+                //         },
+                //         method: "GET",    
                        
-                    })
-                    .then(res => res.json())
-                        .then(res => {
-                          setUserData(res)
+                //     })
+                //     .then(res => res.json())
+                //         .then(res => {
+                //           setUserData(res)
                           
-                        }).catch(err => {
-                            console.log(err)
-                        })
+                //         }).catch(err => {
+                //             console.log(err)
+                //         })
                 
-                }
+                // }
                 
          
         }
