@@ -8,28 +8,65 @@ export default function SingupComplete() {
     let history = useHistory()
 
     const [userData,setUserData]=useState("")
+    const [safariOrNot,setSafariOrNot]=useState(true)
+    var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+    var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+
+function isSafariBrowser(){
+    if (is_safari){
+        if (is_chrome)  // Chrome seems to have both Chrome and Safari userAgents
+            setSafariOrNot(true)
+        else
+     setSafariOrNot(false)
+    }
+    
+}
+useEffect(()=>{
+    isSafariBrowser()
+})
     useEffect(()=>{
         var code = document.location.href.split("complete")
         if(code[1].length>2){
             var realCode=code[1].split("EncodeData=")
             var message = realCode[1].replace(/%2B/gi,"+")
-            fetch("https://wishdeal.link/checkplus_success", {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Accept': 'application/json'
-                },
-                method: "POST",    
-                body:new URLSearchParams({
-                    EncodeData:message
+            if(safariOrNot){
+                fetch("https://wishdeal.link/checkplus_success", {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Accept': 'application/json'
+                    },
+                    method: "POST",    
+                    body:new URLSearchParams({
+                        EncodeData:message
+                    })
                 })
-            })
-            .then(res => res.json())
-                .then(res => {
-                  setUserData(res)
-                  
-                }).catch(err => {
-                    console.log(err)
-                })
+                .then(res => res.json())
+                    .then(res => {
+                      setUserData(res)
+                      
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }else{
+                    fetch("https://wishdeal.link/checkplus_success?EncodeData="+message, {
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'Accept': 'application/json'
+                        },
+                        method: "GET",    
+                       
+                    })
+                    .then(res => res.json())
+                        .then(res => {
+                          setUserData(res)
+                          
+                        }).catch(err => {
+                            console.log(err)
+                        })
+                
+                }
+                
+         
         }
     },[])
 

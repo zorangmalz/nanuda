@@ -58,13 +58,12 @@ export default function SignupProfile() {
         }
         
     }
-    const [checking,setChecking]=useState(false)
+    
+    var timer
     useEffect(()=>{
-        var timer=setInterval(function(){
+        timer=setInterval(function(){
             check()
-            if(checking){
-                clearInterval(timer)
-            }
+            
         },1000)
     },[])
     
@@ -84,7 +83,8 @@ export default function SignupProfile() {
                 console.log(response)
                 
                 if (response.data === true) {
-                    setChecking(true)
+                    
+                    clearInterval(timer)
 history.replace("/")          }
             }).catch(err => {
                 console.log(err)
