@@ -57,75 +57,7 @@ export default function SignupProfile() {
         }
         
     }
-    const [userData,setUserData]=useState("")
-    useEffect(()=>{
-        var code = document.location.href.split("signupprofile")
-        if(code[1].length>2){
-            var realCode=code[1].split("EncodeData=")
-            var message = realCode[1].replace(/%2B/gi,"+")
-            fetch("https://wishdeal.link/checkplus_success", {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Accept': 'application/json'
-                },
-                method: "POST",    
-                body:new URLSearchParams({
-                    EncodeData:message
-                })
-            })
-            .then(res => res.json())
-                .then(res => {
-                  setUserData(res)
-                  
-                }).catch(err => {
-                    console.log(err)
-                })
-        }
-    },[])
-
-    
-    async function send() {
-        var realEmail=window.localStorage.getItem("email")
-        var realuid=window.localStorage.getItem("uid")
-        console.log(realEmail,realuid)
-        await fetch("https://haulfree.link/niceMain/", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                params:
-                {
-                    gender:parseInt(userData.gender),
-                    name:userData.name,
-                    birthdate:userData.birthdate,
-                    nationalinfo:userData.nationalinfo,
-                    mobileno:userData.mobileno,
-                    mobileco:userData.mobileco,
-                    email:JSON.parse(realEmail).email,
-                    uid: String(JSON.parse(realuid).uid)
-                },
-            })
-
-        })
-            .then(response => response.json())
-            .then(response => {
-                console.log(response)
-                if (response.data === true) {
-                    history.push("/signup/complete")
-                }
-            }).catch(err => {
-                console.log(err)
-            })
-    }
-    useEffect(()=>{
-        if(userData){
-            console.log(userData)
-            send()
-        }
-    },[userData])
+  
     return (
         <>
             <Default>

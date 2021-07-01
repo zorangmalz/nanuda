@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import point from "../images/point.png"
@@ -6,6 +6,80 @@ import { useHistory } from "react-router";
 
 export default function SingupComplete() {
     let history = useHistory()
+
+    const [userData,setUserData]=useState("")
+    useEffect(()=>{
+        var code = document.location.href.split("signupprofile")
+        if(code[1].length>2){
+            var realCode=code[1].split("EncodeData=")
+            var message = realCode[1].replace(/%2B/gi,"+")
+            fetch("https://wishdeal.link/checkplus_success", {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': 'application/json'
+                },
+                method: "POST",    
+                body:new URLSearchParams({
+                    EncodeData:message
+                })
+            })
+            .then(res => res.json())
+                .then(res => {
+                  setUserData(res)
+                  
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+    },[])
+
+    
+    async function send() {
+        var realEmail=window.localStorage.getItem("email")
+        var realuid=window.localStorage.getItem("uid")
+        console.log(realEmail,realuid)
+        await fetch("https://haulfree.link/niceMain/", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                params:
+                {
+                    gender:parseInt(userData.gender),
+                    name:userData.name,
+                    birthdate:userData.birthdate,
+                    nationalinfo:userData.nationalinfo,
+                    mobileno:userData.mobileno,
+                    mobileco:userData.mobileco,
+                    email:JSON.parse(realEmail).email,
+                    uid: String(JSON.parse(realuid).uid)
+                },
+            })
+
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                if (response.data === true) {
+                    history.push("/signup/complete")
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+    useEffect(()=>{
+        if(userData){
+            console.log(userData)
+            send()
+        }
+    },[userData])
+
+    function closewindow(){
+        window.close()
+    }
     return (
         <>
             <Default>
@@ -51,7 +125,7 @@ export default function SingupComplete() {
                         <StandardButton
                             text="1/n 시작하기"
                             marginTop={32}
-                            onClick={() => history.replace("/")}
+                            onClick={closewindow}
                             state={true}
                             marginBottom={40}
                         />
@@ -94,7 +168,7 @@ export default function SingupComplete() {
                     <MStandardButton
                         text="1/n 시작하기"
                         marginTop={"8vw"}
-                        onClick={() => history.replace("/")}
+                        onClick={closewindow}
                         state={true}
                         marginBottom={"10vw"}
                     />
