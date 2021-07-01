@@ -365,4 +365,21 @@ class bankDelete(View):
                 return JsonResponse({"data":True})
             else:
                 return JsonResponse({"data":False})
-  
+
+  class niceSearch(View):
+    def get(self,request):
+        if not request.COOKIES.get("access_token"):
+            return JsonResponse({"data":False})
+        else:
+            q=User.objects.annotate(Count("name"))
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            try:  
+                user=User.objects.get(uid=payload["id"])
+                return JsonResponse({"data":True})
+            except:
+                return JsonResponse({"data":False})
+           

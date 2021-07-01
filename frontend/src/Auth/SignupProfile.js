@@ -44,6 +44,7 @@ export default function SignupProfile() {
     }
     useEffect(()=>{
         getInfo()
+    
     },[])
     function fnPopup(){
         console.log(enc)
