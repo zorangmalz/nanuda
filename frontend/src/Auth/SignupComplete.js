@@ -9,7 +9,7 @@ export default function SingupComplete() {
 
     const [userData,setUserData]=useState("")
     useEffect(()=>{
-        var code = document.location.href.split("signupprofile")
+        var code = document.location.href.split("complete")
         if(code[1].length>2){
             var realCode=code[1].split("EncodeData=")
             var message = realCode[1].replace(/%2B/gi,"+")
@@ -64,8 +64,7 @@ export default function SingupComplete() {
             .then(response => {
                 console.log(response)
                 if (response.data === true) {
-                    history.push("/signup/complete")
-                }
+console.log("true")                }
             }).catch(err => {
                 console.log(err)
             })
