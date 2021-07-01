@@ -58,14 +58,19 @@ export default function SignupProfile() {
         }
         
     }
+    const [checking,setChecking]=useState(false)
     useEffect(()=>{
-        setTimeout(()=>{
+        var timer=setInterval(function(){
             check()
+            if(checking){
+                clearInterval(timer)
+            }
         },1000)
-    })
+    },[])
+    
     function check(){
         console.log("checking")
-         fetch("https://haulfree.link/niceCheck/", {
+         fetch("https://haulfree.link/niceSearch/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -77,7 +82,9 @@ export default function SignupProfile() {
             .then(response => response.json())
             .then(response => {
                 console.log(response)
+                
                 if (response.data === true) {
+                    setChecking(true)
 history.replace("/")          }
             }).catch(err => {
                 console.log(err)
