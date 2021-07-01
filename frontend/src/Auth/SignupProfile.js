@@ -58,7 +58,31 @@ export default function SignupProfile() {
         }
         
     }
-  
+    useEffect(()=>{
+        setTimeout(()=>{
+            check()
+        },1000)
+    })
+    function check(){
+        console.log("checking")
+        await fetch("https://haulfree.link/niceCheck/", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+           
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                if (response.data === true) {
+history.replace("/")          }
+            }).catch(err => {
+                console.log(err)
+            })
+    }
     return (
         <>
             <Default>
