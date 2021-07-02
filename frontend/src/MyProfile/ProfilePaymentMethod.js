@@ -11,6 +11,7 @@ export default function ProfilePaymentMethod() {
     const [banknum, setBankNum] = useState("")
     const [payId, setPayId] = useState("")
     const [bankOrNot, setBankOrNot] = useState(false)
+    const [check,setCheck]=useState(false)
     function bankCheck() {
         fetch("https://api.1n1n.io/bankCheck", {
             method: "GET",
@@ -39,7 +40,7 @@ export default function ProfilePaymentMethod() {
     }
     useEffect(() => {
         bankCheck()
-    }, [])
+    }, [check])
 
     function change() {
         authenticate().then((res) => {
@@ -121,6 +122,7 @@ export default function ProfilePaymentMethod() {
             .then(response => response.json())
             .then(response => {
                 if (response.data === true) {
+                    setCheck(true)
                     console.log("good")
                 } else {
                     console.log("bad")
