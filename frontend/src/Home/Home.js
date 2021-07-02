@@ -56,10 +56,7 @@ const MAfterContainer = styled.div`
 
 export default function Home() {
     let history = useHistory()
-    const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
-    useEffect(()=>{
-        setCookie("rememberEmail","gigigigi")
-    },[])
+    
     //Get Service Review Data
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {

@@ -167,4 +167,4 @@ STATIC_URL = '/static/'
 STATIC_URL = os.path.join(BASE_DIR, "/static/")
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 CSRF_COOKIE_SAMESITE = None
-SESSION_COOKIE_SAMESITE = None
+SESSION_COOKIE_SAMESITE = False
