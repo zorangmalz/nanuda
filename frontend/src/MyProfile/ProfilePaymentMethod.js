@@ -256,13 +256,13 @@ export default function ProfilePaymentMethod() {
                                 }}>결제수단 변경하기</div>
                             </>
                             :
-                            <div style={{
+                            <div onClick={handleClick}  style={{
                                 width: 440,
                                 height: 136,
                                 border: "1px solid rgba(1, 6, 8, 0.2)",
                                 borderRadius: 6,
                                 cursor: "pointer",
-
+                                marginTop:32,
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
@@ -270,7 +270,7 @@ export default function ProfilePaymentMethod() {
                                 alignSelf: "center",
                             }}>
                                 <img alt="" src={plus} style={{ width: 64, height: 64}} />
-                                <div onClick={handleClick} style={{
+                                <div style={{
                                     fontFamily: "NotoSansCJKkr",
                                     opacity: 0.6,
                                     fontSize: 16,
@@ -323,13 +323,13 @@ export default function ProfilePaymentMethod() {
                             }}>결제수단 변경하기</div>
                         </>
                         :
-                        <div style={{
+                        <div onClick={handleClick} style={{
                             width: "76vw",
                             padding: "5vw 7vw",
                             border: "1px solid rgba(1, 6, 8, 0.2)",
                             borderRadius: 6,
                             cursor: "pointer",
-
+                            marginTop:32,
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
@@ -337,7 +337,7 @@ export default function ProfilePaymentMethod() {
                             alignSelf: "center",
                         }}>
                             <img alt="" src={plus} style={{ width: 64, height: 64}} />
-                            <div onClick={handleClick} style={{
+                            <div  style={{
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.6,
                                 fontSize: 16,
