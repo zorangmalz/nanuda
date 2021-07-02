@@ -670,7 +670,6 @@ def mission_all(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
-@csrf_protect
 def address_all(request):
     if not request.COOKIES.get("access_token"):
         return Response(status=status.HTTP_404_NOT_FOUND)
