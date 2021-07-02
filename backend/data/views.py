@@ -1,6 +1,7 @@
 #보안
 import os
 from django.http.response import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_protect
 import jwt
 import urllib.request
 from dotenv import load_dotenv
@@ -31,6 +32,7 @@ from datetime import date
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def user_list(request):
     if request.method == "GET":
         users = User.objects.all()
@@ -48,6 +50,7 @@ def user_list(request):
 @api_view(["GET", "PUT", "DELETE"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def user_one(request):
     if not request.COOKIES.get("access_token"):
         return Response(status=status.HTTP_404_NOT_FOUND)
@@ -82,6 +85,7 @@ def user_one(request):
 @api_view(["GET", "PUT"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def user_info_order(request):
     if not request.COOKIES.get("access_token"):
         return Response(status=status.HTTP_404_NOT_FOUND)
@@ -112,6 +116,7 @@ def user_info_order(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def service_review_all(request):
     if request.method == "GET":
         service_review = ServiceReview.objects.all().order_by("-service_date")
@@ -131,6 +136,7 @@ def service_review_all(request):
 @api_view(["GET"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def service_review_home(request):
     if request.method == "GET":
         service_review = ServiceReview.objects.all().order_by(
@@ -143,6 +149,7 @@ def service_review_home(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def product_all(request):
     if request.method == "GET":
         product = Product.objects.all()
@@ -160,6 +167,7 @@ def product_all(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def review_all(request):
     if request.method == "GET":
         review = Review.objects.all().order_by("-review_date")
@@ -216,6 +224,7 @@ def review_all(request):
 @api_view(["GET"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def review_home(request):
     if request.method == "GET":
         review = Review.objects.all().order_by("-review_date")[0:2]
@@ -226,6 +235,7 @@ def review_home(request):
 @api_view(["GET"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def review_profile(request, pk):
     if not request.COOKIES.get("access_token"):
         return Response(status=status.HTTP_404_NOT_FOUND)
@@ -279,6 +289,7 @@ def review_profile(request, pk):
 @api_view(["GET", "PUT", "DELETE"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def review_one(request, pk):
     try:
         review = Review.objects.get(pk=pk)
@@ -479,6 +490,7 @@ def review_one(request, pk):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def order_all(request):
     if request.method == "GET":
         order = Order.objects.all()
@@ -496,6 +508,7 @@ def order_all(request):
 @api_view(["GET", "PUT"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def order_list(request):
     if not request.COOKIES.get("access_token"):
         return Response(status=status.HTTP_404_NOT_FOUND)
@@ -527,6 +540,7 @@ def order_list(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def order_one(request):
     if not request.COOKIES.get("access_token"):
         return Response(status=status.HTTP_404_NOT_FOUND)
@@ -563,6 +577,7 @@ def order_one(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def point_list(request):
     if not request.COOKIES.get("access_token"):
         return Response(status=status.HTTP_404_NOT_FOUND)
@@ -620,6 +635,7 @@ def point_list(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def mission_all(request):
     if not request.COOKIES.get("access_token"):
         return Response(status=status.HTTP_404_NOT_FOUND)
@@ -653,6 +669,7 @@ def mission_all(request):
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
+@csrf_protect
 def address_all(request):
     if not request.COOKIES.get("access_token"):
         return Response(status=status.HTTP_404_NOT_FOUND)
