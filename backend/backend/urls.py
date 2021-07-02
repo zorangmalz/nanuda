@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.views.decorators.csrf import csrf_exempt
 from nanuda.views import KakaoLogin, userInfoName, uploadAddress, checkAddress, serviceReviewOrNOt, orderUpload, niceMain,logout,bankUpload,bankCheck,niceSearch
 
 #API 제작
@@ -25,7 +24,7 @@ from data.views import address_all, mission_all, order_one, point_list, review_p
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', csrf_exempt(user_list)),
+    path('user/', user_list),
     path('userinfo/', user_one),
     path('userpoint', point_list),
     path('user/mission', mission_all),
@@ -39,7 +38,7 @@ urlpatterns = [
     path('order/', order_all),
     path('order/profile', order_list),
     path('order/detail', order_one),
-    path('order/address', csrf_exempt(address_all)),
+    path('order/address', address_all),
     path('rest-auth/kakao/', KakaoLogin.as_view(), name='kakao_login'),
     path('userInfoName/', userInfoName.as_view(), name='test'),
     path('uploadAddress/', uploadAddress.as_view(), name='address'),
