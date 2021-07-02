@@ -18,6 +18,7 @@ import banner from "../images/homebanner.png"
 import sampleone from "../images/sampleone.png"
 import sampletwo from "../images/sampletwo.png"
 import upload from "../images/upload.png"
+import {useCookies} from "react-cookie"
 
 const AfterContainer = styled.div`
     width: 424px;
@@ -55,7 +56,10 @@ const MAfterContainer = styled.div`
 
 export default function Home() {
     let history = useHistory()
- 
+    const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+    useEffect(()=>{
+        setCookie("rememberEmail","gigigigi")
+    },[])
     //Get Service Review Data
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {
