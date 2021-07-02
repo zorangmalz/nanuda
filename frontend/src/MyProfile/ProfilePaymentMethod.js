@@ -12,7 +12,7 @@ export default function ProfilePaymentMethod() {
     const [payId, setPayId] = useState("")
     const [bankOrNot, setBankOrNot] = useState(false)
     function bankCheck() {
-        fetch("https://haulfree.link/bankCheck", {
+        fetch("https://api.1n1n.io/bankCheck", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -103,7 +103,7 @@ export default function ProfilePaymentMethod() {
 
     }
     function uploadBank(a, b, c) {
-        fetch("https://haulfree.link/bankUpload/", {
+        fetch("https://api.1n1n.io/bankUpload/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',

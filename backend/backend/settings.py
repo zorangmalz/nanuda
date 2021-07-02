@@ -26,7 +26,7 @@ SECRET_KEY = 'h=7y9=-tjzrin@t6=^d*^*zbs(3=n7k2zl_t*jf=+2ic=b$dc$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['15.164.94.36', 'ec2-15-164-94-36.ap-northeast-2.compute.amazonaws.com', 'haulfree.io',".amazonaws.com","haulfree.link", "1n1n.io","api.1n1n.io"]
+ALLOWED_HOSTS = ['15.164.94.36', 'ec2-15-164-94-36.ap-northeast-2.compute.amazonaws.com', 'haulfree.io',".amazonaws.com","api.1n1n.io", "1n1n.io","api.1n1n.io"]
 
 
 # Application definition
@@ -155,7 +155,7 @@ AUTHENTICATION_BACKENDS = (
 CORS_ORIGIN_ALLOW_ALL =True
 CORS_ALLOWED_ORIGINS=[
     "https://haulfree.io",
-    "https://haulfree.link",
+    "https://api.1n1n.io",
     "https://1n1n.io",
 ]
 CORS_ALLOW_CREDENTIALS = True

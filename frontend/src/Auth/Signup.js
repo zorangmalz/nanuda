@@ -32,8 +32,9 @@ const KaKaoBtn = styled(KakaoLogin)`
 `;
 
 export default function Signup() {
+    
     const kakaoResponse = async (response) => {
-        await fetch("https://haulfree.link/rest-auth/kakao/", {
+        await fetch("https://api.1n1n.io/rest-auth/kakao/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',

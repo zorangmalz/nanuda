@@ -86,7 +86,7 @@ useEffect(()=>{
     
     function check(){
         console.log("checking")
-         fetch("https://haulfree.link/niceSearch/", {
+         fetch("https://api.1n1n.io/niceSearch/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

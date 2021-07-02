@@ -11,7 +11,7 @@ export default function ServiceReview() {
     const [noReview, setNoReview] = useState(false)
 
     async function checkReview() {
-        await fetch("https://haulfree.link/servicereviewornot/", {
+        await fetch("https://api.1n1n.io/servicereviewornot/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -34,7 +34,7 @@ export default function ServiceReview() {
     useEffect(() => {
         checkReview()
         setReviewData([])
-        fetch("https://haulfree.link/servicereview/main", {
+        fetch("https://api.1n1n.io/servicereview/main", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -66,7 +66,7 @@ export default function ServiceReview() {
 
     useEffect(() => {
         const test = async () => {
-            fetch("https://haulfree.link/userInfoName/", {
+            fetch("https://api.1n1n.io/userInfoName/", {
                 method: "GET",
                 headers: {
                     'Content-type': 'application/json',

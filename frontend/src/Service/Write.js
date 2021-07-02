@@ -25,7 +25,7 @@ export default function Write() {
 
     const [user,setUser]=useState(0)
     useEffect(() => {
-        fetch("https://haulfree.link/servicereviewornot/",{
+        fetch("https://api.1n1n.io/servicereviewornot/",{
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -47,7 +47,7 @@ export default function Write() {
             service_score: number, service_content: after, service_opinion: opinion, user_id:user
         }
 
-        await fetch("https://haulfree.link/userpoint", {
+        await fetch("https://api.1n1n.io/userpoint", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -63,7 +63,7 @@ export default function Write() {
         .then(res => console.log(res))
         .catch(err => console.log(err))
     
-        await fetch("https://haulfree.link/servicereview/main", {
+        await fetch("https://api.1n1n.io/servicereview/main", {
             method: "POST",
             headers: {
                 "Accept": "application/json",

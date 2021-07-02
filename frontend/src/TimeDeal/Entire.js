@@ -14,7 +14,7 @@ export default function Entire() {
     const [productList, setProductList] = useState([])
     // useEffect(() => {
     //     setProductList([])
-    //     fetch('https://haulfree.link/product', {
+    //     fetch('https://api.1n1n.io/product', {
     //         method: "GET",
     //         headers: {
     //             "Content-Type": "application/json"

@@ -28,7 +28,7 @@ export default function OrderSheet() {
     const [payId, setPayId] = useState("")
 
     function bankCheck() {
-        fetch("https://haulfree.link/bankCheck", {
+        fetch("https://api.1n1n.io/bankCheck", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -70,7 +70,7 @@ export default function OrderSheet() {
         request: f
     }
     async function addressCheck() {
-        fetch("https://haulfree.link/order/address", {
+        fetch("https://api.1n1n.io/order/address", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -326,7 +326,7 @@ export default function OrderSheet() {
 
 
     function uploadBank(a, b, c) {
-        fetch("https://haulfree.link/bankUpload/", {
+        fetch("https://api.1n1n.io/bankUpload/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
@@ -524,7 +524,7 @@ export default function OrderSheet() {
             var orderId = createOid()
             // history.push("paymentsuccess",{myparam:myparam})'
             console.log(myparam, item, number, paymentDate, res, ship)
-            fetch("https://haulfree.link/orderupload/", {
+            fetch("https://api.1n1n.io/orderupload/", {
                 method: "POST",
                 headers: {
                     'Content-type': 'application/json',

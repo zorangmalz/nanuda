@@ -61,7 +61,7 @@ export default function Home() {
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {
         setReviewData([])
-        fetch("https://haulfree.link/servicereview/home", {
+        fetch("https://api.1n1n.io/servicereview/home", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -94,7 +94,7 @@ export default function Home() {
     const [review, setReview] = useState([])
     useEffect(() => {
         setReview([])
-        fetch("https://haulfree.link/review/home", {
+        fetch("https://api.1n1n.io/review/home", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -146,7 +146,7 @@ export default function Home() {
 
     useEffect(() => {
         const test = async () => {
-            fetch("https://haulfree.link/userInfoName/", {
+            fetch("https://api.1n1n.io/userInfoName/", {
                 method: "GET",
                 headers: {
                     'Content-type': 'application/json',

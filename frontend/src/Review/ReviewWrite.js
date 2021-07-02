@@ -18,7 +18,7 @@ export default function ReviewWrite() {
     //User 정보 받기
     const [userName, setUserName] = useState("")
     useEffect(() => {
-        fetch("https://haulfree.link/userInfoName/", {
+        fetch("https://api.1n1n.io/userInfoName/", {
             method: "GET",
             headers: {
                 "Content-Type" : "application/json"
@@ -118,7 +118,7 @@ export default function ReviewWrite() {
                 type: "wishdeal",
             }
         }
-        await fetch("https://haulfree.link/review/main", {
+        await fetch("https://api.1n1n.io/review/main", {
             method: "POST",
             headers: {
                 "Accept": "application/json",

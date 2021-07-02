@@ -24,7 +24,7 @@ export default function ProfileMain() {
     })
 
     useEffect(() => {
-        fetch('https://haulfree.link/userinfo/', {
+        fetch('https://api.1n1n.io/userinfo/', {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -46,7 +46,7 @@ export default function ProfileMain() {
     }, [])
     const [item, setItem] = useState([])
     async function getSchedule() {
-        fetch('https://haulfree.link/order/profile', {
+        fetch('https://api.1n1n.io/order/profile', {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

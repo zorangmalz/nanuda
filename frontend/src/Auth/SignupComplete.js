@@ -79,7 +79,7 @@ useEffect(()=>{
         var realEmail=window.localStorage.getItem("email")
         var realuid=window.localStorage.getItem("uid")
         console.log(realEmail,realuid)
-        await fetch("https://haulfree.link/niceMain/", {
+        await fetch("https://api.1n1n.io/niceMain/", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',

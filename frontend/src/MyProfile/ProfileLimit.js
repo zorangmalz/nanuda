@@ -13,7 +13,7 @@ export default function ProfileLimit() {
     })
 
     useEffect(() => {
-        fetch('https://haulfree.link/userinfo/', {
+        fetch('https://api.1n1n.io/userinfo/', {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -34,7 +34,7 @@ export default function ProfileLimit() {
 
     const [jobExist, setJobExist] = useState(false)
     useEffect(() => {
-        fetch('https://haulfree.link/user/mission', {
+        fetch('https://api.1n1n.io/user/mission', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

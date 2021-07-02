@@ -13,7 +13,7 @@ export default function ProfileReview() {
     const [data, setData] = useState([])
     useEffect(() => {
         setData([])
-        fetch("https://haulfree.link/review/profile/0", {
+        fetch("https://api.1n1n.io/review/profile/0", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -45,7 +45,7 @@ export default function ProfileReview() {
     const [orderData, setOrderData] = useState([])
     useEffect(() => {
         setOrderData([])
-        fetch("https://haulfree.link/order/profile", {
+        fetch("https://api.1n1n.io/order/profile", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

@@ -22,7 +22,7 @@ export default function ReviewSelect() {
     const [orderData, setOrderData] = useState([])
     useEffect(() => {
         setOrderData([])
-        fetch("https://haulfree.link/order/profile", {
+        fetch("https://api.1n1n.io/order/profile", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

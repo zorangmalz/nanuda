@@ -29,7 +29,7 @@ export default function ReviewPost({ match }) {
     const [like, setLike] = useState(0)
     useEffect(() => {
         const { pk } = match.params
-        fetch(`https://haulfree.link/review/${pk}`, {
+        fetch(`https://api.1n1n.io/review/${pk}`, {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -65,7 +65,7 @@ export default function ReviewPost({ match }) {
             id: pk, user_id: data.user_id,
             order_id: data.order_id, review_alert: data.review_alert + 1
         }
-        await fetch(`https://haulfree.link/review/${pk}`, {
+        await fetch(`https://api.1n1n.io/review/${pk}`, {
             method: "PUT",
             headers: {
                 'Content-type': 'application/json',
@@ -81,7 +81,7 @@ export default function ReviewPost({ match }) {
     }
 
     const putLike = async () => {
-        await fetch(`https://haulfree.link/review/${pk}`, {
+        await fetch(`https://api.1n1n.io/review/${pk}`, {
             method: "PUT",
             headers: {
                 'Content-type': 'application/json',
@@ -100,7 +100,7 @@ export default function ReviewPost({ match }) {
     }
 
     const putDisLike = async () => {
-        await fetch(`https://haulfree.link/review/${pk}`, {
+        await fetch(`https://api.1n1n.io/review/${pk}`, {
             method: "PUT",
             headers: {
                 'Content-type': 'application/json',
@@ -119,7 +119,7 @@ export default function ReviewPost({ match }) {
     }
 
     const deletePost = async () => {
-        await fetch(`https://haulfree.link/review/${pk}`, {
+        await fetch(`https://api.1n1n.io/review/${pk}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ export default function ReviewPost({ match }) {
 
     useEffect(() => {
         const test = async () => {
-            fetch("https://haulfree.link/userInfoName/", {
+            fetch("https://api.1n1n.io/userInfoName/", {
                 method: "GET",
                 headers: {
                     'Content-type': 'application/json',

@@ -86,7 +86,7 @@ export default function ProfileVerification() {
     })
 
     useEffect(() => {
-        fetch('https://haulfree.link/userinfo/', {
+        fetch('https://api.1n1n.io/userinfo/', {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -154,7 +154,7 @@ export default function ProfileVerification() {
             imageArray.push(`https://${S3_BUCKET}.s3.ap-northeast-2.amazonaws.com/user/${user.user_email}/mission/job/${selectedFile[i].name}`)
         }
         
-        await fetch("https://haulfree.link/user/mission", {
+        await fetch("https://api.1n1n.io/user/mission", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

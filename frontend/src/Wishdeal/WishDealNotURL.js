@@ -151,7 +151,7 @@ export default function WishDealNotURL() {
     //User 정보 받기
     const [userName, setUserName] = useState("")
     useEffect(() => {
-        fetch("https://haulfree.link/userInfoName/", {
+        fetch("https://api.1n1n.io/userInfoName/", {
             method: "GET",
             headers: {
                 "Content-Type" : "application/json"

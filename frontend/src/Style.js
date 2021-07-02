@@ -174,7 +174,7 @@ export function HomeHeader() {
         test()
     }, [])
     const test = async () => {
-        fetch("https://haulfree.link/userInfoName/", {
+        fetch("https://api.1n1n.io/userInfoName/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -263,7 +263,7 @@ export function MHomeHeader() {
         test()
     }, [])
     const test = async () => {
-        fetch("https://haulfree.link/userInfoName/", {
+        fetch("https://api.1n1n.io/userInfoName/", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

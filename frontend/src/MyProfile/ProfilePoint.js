@@ -7,7 +7,7 @@ export default function ProfilePoint() {
     const [entirePoint, setEntirePoint] = useState(0)
     useEffect(() => {
         setPointList([])
-        fetch('https://haulfree.link/userpoint', {
+        fetch('https://api.1n1n.io/userpoint', {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

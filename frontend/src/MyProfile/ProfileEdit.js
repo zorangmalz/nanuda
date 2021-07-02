@@ -27,7 +27,7 @@ export default function ProfileEdit() {
     const { name, user_email, phone_number } = user
 
     useEffect(() => {
-        fetch('https://haulfree.link/userinfo/', {
+        fetch('https://api.1n1n.io/userinfo/', {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -50,7 +50,7 @@ export default function ProfileEdit() {
     const [logoutModal, setLogoutModal] = useState(false)
     function logout() {
         localStorage.clear()
-        fetch("https://haulfree.link/logout/", {
+        fetch("https://api.1n1n.io/logout/", {
             method: "post",      
             headers: {
                 'Content-type': 'application/json',

@@ -168,7 +168,7 @@ export default function Address() {
     }, [inputs.address, inputs.addressDetail, inputs.addressNum, inputs.claim, inputs.name, inputs.phoneNumber])
 
     async function send() {
-        await fetch("https://haulfree.link/order/address", {
+        await fetch("https://api.1n1n.io/order/address", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
