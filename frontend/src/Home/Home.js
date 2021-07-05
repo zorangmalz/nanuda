@@ -1151,7 +1151,9 @@ function Review({ item, mobile }) {
                     color: "#010608",
                     lineHeight: 1.5,
                     fontFamily: "NotoSansCJKkr",
-                    height: mobile ? "18vw" : 72,
+                    minHeight: mobile ? "18vw" : 72,
+                    maxHeight: mobile ? "18vw" : 72,
+                    overflowY: "hidden"
                 }}>{content}</div>
                 <div style={{
                     display: "flex",
