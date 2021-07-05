@@ -13,7 +13,7 @@ import uuid
 from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes, parser_classes
 from rest_framework.response import Response
-from rest_framework.authentication import TokenAuthentication BasicAuthentication
+from rest_framework.authentication import TokenAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.parsers import JSONParser
 
@@ -32,7 +32,7 @@ from datetime import date
 # User Information
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def user_list(request):
     if request.method == "GET":
@@ -50,7 +50,7 @@ def user_list(request):
 # User 하나만 보여줌
 @api_view(["GET", "PUT", "DELETE"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def user_one(request):
     if not request.COOKIES.get("access_token"):
@@ -85,7 +85,7 @@ def user_one(request):
 
 @api_view(["GET", "PUT"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def user_info_order(request):
     if not request.COOKIES.get("access_token"):
@@ -116,7 +116,7 @@ def user_info_order(request):
 # ServiceReview
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def service_review_all(request):
     if request.method == "GET":
@@ -136,7 +136,7 @@ def service_review_all(request):
 # ServiceReview_Home 2개만 조회
 @api_view(["GET"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def service_review_home(request):
     if request.method == "GET":
@@ -149,7 +149,7 @@ def service_review_home(request):
 # Product
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def product_all(request):
     if request.method == "GET":
@@ -167,7 +167,7 @@ def product_all(request):
 # Review 전체를 보여줌
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def review_all(request):
     if request.method == "GET":
@@ -224,7 +224,7 @@ def review_all(request):
 # Review_Home 2개만 조회
 @api_view(["GET"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def review_home(request):
     if request.method == "GET":
@@ -235,7 +235,7 @@ def review_home(request):
 # My_Review 조회
 @api_view(["GET"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def review_profile(request, pk):
     if not request.COOKIES.get("access_token"):
@@ -289,7 +289,7 @@ def review_profile(request, pk):
 # Review 하나만 보여줌
 @api_view(["GET", "PUT", "DELETE"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def review_one(request, pk):
     try:
@@ -490,7 +490,7 @@ def review_one(request, pk):
 # Order
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def order_all(request):
     if request.method == "GET":
@@ -508,7 +508,7 @@ def order_all(request):
 
 @api_view(["GET", "PUT"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def order_list(request):
     if not request.COOKIES.get("access_token"):
@@ -540,7 +540,7 @@ def order_list(request):
 
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def order_one(request):
     if not request.COOKIES.get("access_token"):
@@ -577,7 +577,7 @@ def order_one(request):
 
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def point_list(request):
     if not request.COOKIES.get("access_token"):
@@ -635,7 +635,7 @@ def point_list(request):
 
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 
 def mission_all(request):
     if not request.COOKIES.get("access_token"):
@@ -669,7 +669,7 @@ def mission_all(request):
 
 @api_view(["GET", "POST"])
 @parser_classes([JSONParser])
-@authentication_classes([TokenAuthentication BasicAuthentication])
+@authentication_classes([TokenAuthentication, BasicAuthentication])
 def address_all(request):
     if not request.COOKIES.get("access_token"):
         return Response(status=status.HTTP_404_NOT_FOUND)
