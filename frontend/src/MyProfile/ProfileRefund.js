@@ -106,6 +106,7 @@ export default function ProfileRefund() {
             .then(response => response.json())
             .then(response => {
               if(response.data==true){
+                  console.log(response)
                 history.push("/profile/payment/refundsuccess")
               }else{
                 history.push("/profile/payment/refundfail")
