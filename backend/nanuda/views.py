@@ -382,4 +382,31 @@ class niceSearch(View):
                 return JsonResponse({"data":True})
             except:
                 return JsonResponse({"data":False})
-           
+
+class refundProduct(View):
+    def post(self,request):
+        if not request.COOKIES.get("access_token"):
+            return JsonResponse({"data":False})
+        else:
+            q=User.objects.annotate(Count("name"))
+            load_dotenv(verbose=True)
+            SECRET_KEY=os.getenv("SECRET_KEY")
+            ALGORITHM=os.getenv("ALGORITHM")
+            token=request.COOKIES.get("access_token")
+            payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+            user_info=json.loads(request.body)
+            user=User.objects.get(uid=payload["id"])
+            wish=WishDeal.objects.get(order_id=user_info["params"]["orderid"])
+            try:
+                RefundProduct(
+                    user_id=user,
+                    wish_id=wish,
+                    problem=user_info["params"]["problem"],
+                    problem_detail=user_info["params"]["problem_detail"]
+                    order_total=user_info["params"]["order_total"]
+
+                ).save() 
+                return JsonResponse({"data":True})
+            except:
+                return JsonResponse({"data":False})
+

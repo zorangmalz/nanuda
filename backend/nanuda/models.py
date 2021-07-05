@@ -281,3 +281,18 @@ class PaymentHistory(models.Model):
     class Meta:
         ordering = ["user_id", "order_id"]
         managed = True
+
+class RefundProduct(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    order_id = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
+    wish_id = models.ForeignKey(WishDeal, on_delete=models.CASCADE, null=True, blank=True)
+    problem = models.CharField(default="", max_length=30)
+    problem_detail = models.CharField(default="", max_length=30)
+    order_total=models.CharField(default="" ,blank=True, max_length=10000)
+    def __str__(self):
+        return self.user_id.name
+    
+    class Meta:
+        ordering = ["user_id", "order_id"]
+        managed = True
