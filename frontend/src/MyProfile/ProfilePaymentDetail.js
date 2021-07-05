@@ -4,7 +4,7 @@ import WebIntro, { Header, MHeader } from "../Style";
 import { useHistory ,useLocation} from "react-router";
 
 export default function ProfilePaymentDetail() {
-    const [complete, setComplete] = useState(true)
+    const [complete, setComplete] = useState(false)
     
     //화면 변경
     const history = useHistory()
@@ -161,17 +161,7 @@ export default function ProfilePaymentDetail() {
                             cursor: "pointer",
                             fontFamily: "NotoSansCJKkr",
                         }}>{complete ? "모든 결제가 완료되었습니다." : "전체 결제하기"}</div>
-                        <div style={{
-                            fontFamily: "NotoSansCJKkr",
-                            fontSize: 14,
-                            opacity: 0.6,
-                            color: "#010608",
-                            textDecorationLine: "underline",
-
-                            marginTop: 16,
-                            marginLeft: 20,
-                            cursor: "pointer",
-                        }}>미결제 금액과 연체료는 무엇인가요?</div>
+                        
                     </div>
                 </div>
             </Default>
@@ -296,17 +286,7 @@ export default function ProfilePaymentDetail() {
                         cursor: "pointer",
                         fontFamily: "NotoSansCJKkr",
                     }}>{complete ? "모든 결제가 완료되었습니다." : "전체 결제하기"}</div>
-                    <div style={{
-                        fontFamily: "NotoSansCJKkr",
-                        fontSize: 12,
-                        opacity: 0.6,
-                        color: "#010608",
-                        textDecorationLine: "underline",
-
-                        marginTop: 12,
-                        marginLeft: "5vw",
-                        cursor: "pointer",
-                    }}>미결제 금액과 연체료는 무엇인가요?</div>
+                    
                 </div>
             </Mobile>
         </>
