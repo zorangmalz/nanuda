@@ -76,6 +76,44 @@ export default function ProfileRefund() {
 
     function refunding(){
         console.log(param,refund,reason)
+        var problem
+        if(refund==1){
+            problem="단순 변심"
+        }else if(refund==2){
+            problem="제품 불량"
+        }else if(refund==3){
+            problem="오배송"
+        }else{
+            problem="기타"
+        }
+        fetch('https://api.1n1n.io/refundProduct/', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            
+            credentials: "include",
+            body: JSON.stringify({
+                params: {
+                    problem:problem,
+                    problem_detail:reason,
+                    order_total:param
+                }
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+              if(response.data==true){
+                history.push("/profile/payment/refundsuccess")
+              }else{
+                history.push("/profile/payment/refundfail")
+              }
+            })
+            .catch(err => {
+                console.log(err)
+                history.push("/profile/payment/refundfail")
+            })
     }
     return (
         <>
