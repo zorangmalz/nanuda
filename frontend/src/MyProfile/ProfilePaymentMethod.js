@@ -90,7 +90,7 @@ export default function ProfilePaymentMethod() {
                 .then(response => {
                     console.log(response)
                     if (response.PCD_PAY_RST == "success") {
-                        handleClick()
+                        bankDelete()
                     } else {
                         console.log("error")
                     }
@@ -198,14 +198,37 @@ export default function ProfilePaymentMethod() {
             setBank(payResult.PCD_PAY_BANKNAME)
             setBankNum(payResult.PCD_PAY_BANKNUM)
             uploadBank(payResult.PCD_PAY_BANKNAME, payResult.PCD_PAY_BANKNUM, payResult.PCD_PAYER_ID)
-
+            change()
         } else {
             // 결제 실패일 경우 알림 메시지
             window.alert(res.PCD_PAY_MSG);
         }
 
     }
+    function bankDelete() {
+        fetch("https://api.1n1n.io/bankDelete/", {
+            method: "get",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+           
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.data === true) {
+                    
+                    console.log("good")
+                } else {
+                    console.log("bad")
+                }
+                change()
+            }).catch(err => {
+                console.log(err)
+            })
 
+    }
 
     return (
         <>
