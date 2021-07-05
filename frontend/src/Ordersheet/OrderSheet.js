@@ -191,8 +191,8 @@ export default function OrderSheet() {
                 setFourDate("1/28")
             } else {
                 setOneDate((today.getMonth() + 1) + "/" + today.getDate())
-                setTwoDate(((today.getMonth() + 1) + 2) + "/" + today.getDate())
-                setThreeDate(((today.getMonth() + 1) + 3) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/" + today.getDate())
+                setThreeDate(((today.getMonth() + 1) + 2) + "/" + today.getDate())
                 setFourDate("1/" + today.getDate())
             }
         } else {
@@ -203,9 +203,9 @@ export default function OrderSheet() {
                 setFourDate(((today.getMonth() + 1) + 3) + "/28")
             } else {
                 setOneDate((today.getMonth() + 1) + "/" + today.getDate())
-                setTwoDate(((today.getMonth() + 1) + 2) + "/" + today.getDate())
-                setThreeDate(((today.getMonth() + 1) + 3) + "/" + today.getDate())
-                setFourDate(((today.getMonth() + 1) + 4) + "/" + today.getDate())
+                setTwoDate(((today.getMonth() + 1) + 1) + "/" + today.getDate())
+                setThreeDate(((today.getMonth() + 1) + 2) + "/" + today.getDate())
+                setFourDate(((today.getMonth() + 1) + 3) + "/" + today.getDate())
             }
         }
     }, [])
