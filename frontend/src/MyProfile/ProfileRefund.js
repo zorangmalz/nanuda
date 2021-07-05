@@ -13,7 +13,7 @@ function reducer(state, action) {
         case "PRODUCT":
             return 2;
         case "ERROR":
-            return 3;
+            return 3; 
         case "ETC":
             return 4;
         default:

@@ -70,6 +70,11 @@ export default function ProfileProductInfo() {
         console.log("here")
         history.push("/profile/payment/detail", { item: param })
     }
+
+    function refund(){
+        console.log("refund")
+        history.push("/profile/payment/refund",{item:param})
+    }
     return (
         <>
             <Default>
