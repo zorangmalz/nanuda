@@ -105,7 +105,7 @@ export default function ProfileProductInfo() {
                                 canceltext="돌아가기"
                                 onCancelClick={() => setModal(false)}
                                 buttontext="취소하기"
-                                onClick={() => setModal(false)}
+                                onClick={refund}
                                 mobile={false}
                             />
                             :
@@ -169,7 +169,7 @@ export default function ProfileProductInfo() {
                             canceltext="돌아가기"
                             onCancelClick={() => setModal(false)}
                             buttontext="취소하기"
-                            onClick={() => setModal(false)}
+                            onClick={refund}
                             mobile={true}
                         />
                         :

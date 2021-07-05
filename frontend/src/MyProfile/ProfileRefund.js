@@ -4,7 +4,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { Default, Mobile } from "../App";
 import { Header, MHeader, StandardButton, MStandardButton, numberWithCommas } from "../Style";
 import "../css/haulfree.css"
-import { useHistory } from "react-router-dom";
+import { useHistory,useLocation } from "react-router-dom";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -25,8 +25,12 @@ export default function ProfileRefund() {
     //환불 체크하는 요소
     const [one, setOne] = useState(false)
     const [two, setTwo] = useState(false)
+    const location = useLocation()
     const [three, setThree] = useState(false)
-
+    const param = location.state.item
+    useEffect(()=>{
+        console.log(param)
+    },[])
     //환불 사유
     const [refund, dispatch] = useReducer(reducer, 0)
     const onSIMPLE = () => {

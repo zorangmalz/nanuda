@@ -304,7 +304,7 @@ const ProfileInfo = ({ title, data, unit, mobile, chance, onClick }) => {
             }}>{numberWithCommas(data)} {unit}</div>
         </div>
     )
-}
+} 
 
 const OngoingProduct = ({ img, title, complete, total, mobile }) => {
     const [expected, setExpected] = useState("")
