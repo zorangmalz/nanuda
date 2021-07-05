@@ -402,7 +402,7 @@ class refundProduct(View):
                     user_id=user,
                     wish_id=wish,
                     problem=user_info["params"]["problem"],
-                    problem_detail=user_info["params"]["problem_detail"]
+                    problem_detail=user_info["params"]["problem_detail"],
                     order_total=user_info["params"]["order_total"]
 
                 ).save() 
