@@ -98,7 +98,8 @@ export default function ProfileRefund() {
                 params: {
                     problem:problem,
                     problem_detail:reason,
-                    order_total:param
+                    order_total:param,
+                    order_id:param.order_id
                 }
             })
         })
