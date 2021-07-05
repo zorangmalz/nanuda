@@ -288,8 +288,8 @@ class RefundProduct(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
     wish_id = models.ForeignKey(WishDeal, on_delete=models.CASCADE, null=True, blank=True)
     problem = models.CharField(default="", max_length=30)
-    problem_detail = models.CharField(default="", max_length=30)
-    order_total=models.CharField(default="" ,blank=True, max_length=10000)
+    problem_detail = models.CharField(default="", max_length=300)
+    order_total = models.TextField(default="")
     def __str__(self):
         return self.user_id.name
     
