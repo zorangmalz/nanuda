@@ -99,7 +99,7 @@ export default function ProfileRefund() {
                     problem:problem,
                     problem_detail:reason,
                     order_total:param,
-                    order_id:param.order_id
+                    orderid:param.order_id
                 }
             })
         })
