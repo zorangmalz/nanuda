@@ -166,4 +166,4 @@ CORS_ALLOW_CREDENTIALS = True
 STATIC_URL = '/static/'
 STATIC_URL = os.path.join(BASE_DIR, "/static/")
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-CSRF_TRUSTED_ORIGINS = ['1n1n.io']
+# CSRF_TRUSTED_ORIGINS = ['1n1n.io']
