@@ -23,6 +23,10 @@ import ProfilePaymentFail from './MyProfile/ProfilePaymentFail';
 import ProfilePaymentDetail from './MyProfile/ProfilePaymentDetail';
 import ProfileProductInfo from './MyProfile/ProfileProductInfo';
 import ProfileProduct from './MyProfile/ProfileProduct';
+import ProfileVerificationSuccess from './MyProfile/ProfileVerificationSuccess';
+import ProfileRefund from './MyProfile/ProfileRefund';
+import ProfileRefundSuccess from './MyProfile/ProfileRefundSuccess';
+import ProfileRefundFail from './MyProfile/ProfileRefundFail';
 import Notice from './Notice/Notice';
 import NoticePost from './Notice/NoticePost';
 import ProfilePayment from './MyProfile/ProfilePayment';
@@ -46,8 +50,7 @@ import PaymentAddAccount from './MyProfile/PaymentAddAccount';
 import TimeDeal from './TimeDeal/TimeDeal';
 import Alarm from './Alarm/Alarm';
 import TimeDealDetail from "./TimeDeal/TimeDealDetail"
-import ProfileVerificationSuccess from './MyProfile/ProfileVerificationSuccess';
-import ProfileRefund from './MyProfile/ProfileRefund';
+
 
 
 export const Default = ({ children }) => {
@@ -97,6 +100,8 @@ function App() {
         <Route path="/profile/address/edit" component={ProfileAddressEdit} />
         <Route path="/profile/payment/main" component={ProfilePayment} />
         <Route path="/profile/payment/refund" component={ProfileRefund} />
+        <Route path="/profile/payment/refundsuccess" component={ProfileRefundSuccess} />
+        <Route path="/profile/payment/refundfail" component={ProfileRefundFail} />
         <Route path="/profile/payment/success" component={ProfilePaymentSuccess} />
         <Route path="/profile/payment/fail" component={ProfilePaymentFail} />
         <Route path="/profile/payment/detail" component={ProfilePaymentDetail} />

@@ -28,8 +28,17 @@ export default function ProfileRefund() {
     const location = useLocation()
     const [three, setThree] = useState(false)
     const param = location.state.item
+
+    const [image,setImage]=useState("")
+    const [date,setDate]=useState("")
+    const [title,setTitle]=useState("")
+    const [price,setPrice]=useState("")
     useEffect(()=>{
         console.log(param)
+        setImage(param.wish_image)
+        setDate(param.order_date)
+        setTitle(param.wish_title)
+        setPrice(param.order_price)
     },[])
     //환불 사유
     const [refund, dispatch] = useReducer(reducer, 0)
@@ -64,6 +73,10 @@ export default function ProfileRefund() {
     }
 
     const history = useHistory()
+
+    function refunding(){
+        console.log(param,refund,reason)
+    }
     return (
         <>
             <Default>
@@ -88,7 +101,7 @@ export default function ProfileRefund() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="반품,환불 신청" goBack={true} />
-                        <Product date="2021.04.13" title="PRADA Model 23-9 limited… WHITE, 270mm" price={480000} mobile={false} />
+                        <Product img={image} date={date} title={title} price={price} mobile={false} />
                         <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
@@ -117,7 +130,7 @@ export default function ProfileRefund() {
                             marginTop={32}
                             marginBottom={40}
                             state={one && two && three && reason.length > 0 ? true : false}
-                            onClick={() => history.replace("/profile/payment/main")}
+                            onClick={refunding}
                         />
                     </div>
                 </div>
@@ -133,7 +146,7 @@ export default function ProfileRefund() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="반품,환불 신청" goBack={true} />
-                    <Product date="2021.04.13" title="PRADA Model 23-9 limited… WHITE, 270mm" price={480000} mobile={true} />
+                    <Product img={image} date={date} title={title} price={price} mobile={true} />
                     <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 18,
@@ -162,7 +175,7 @@ export default function ProfileRefund() {
                         marginTop={"8vw"}
                         marginBottom={"10vw"}
                         state={one && two && three && reason.length > 0 ? true : false}
-                        onClick={() => history.replace("/profile/payment/main")}
+                        onClick={refunding}
                     />
                 </div>
             </Mobile>
@@ -194,7 +207,7 @@ function Product({ img, date, title, price, mobile }) {
                         display: "flex",
                         flexDirection: "row",
                     }}>
-                        <img alt="상품" src={img} style={{
+                        <img src={img} style={{
                             width: mobile ? 80 : 120,
                             height: mobile ? 80 : 120,
                             borderRadius: 6,
