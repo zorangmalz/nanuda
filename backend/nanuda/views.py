@@ -269,7 +269,8 @@ class KakaoLogin(View):
 class appleLogin(View):
     def post(self, request):
         code=json.loads(request.body)
-        appleAccess=code["params"]["code"]+"1n1n.io"
+        idx="1n1n.io"
+        appleAccess=code["params"]["code"]+idx
         if User.objects.filter(uid=appleAccess).exists():
             user    = User.objects.get(uid=appleAccess)
             jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY,ALGORITHM)
@@ -285,7 +286,6 @@ class appleLogin(View):
             res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
             res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True)
             return res
-
         else: 
             if appleAccess['kakao_account']['gender']=="male":
                 gender=0
