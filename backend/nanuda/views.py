@@ -286,11 +286,7 @@ class appleLogin(View):
             res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
             res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True)
             return res
-        else: 
-            if appleAccess['kakao_account']['gender']=="male":
-                gender=0
-            else:
-                gender=1            
+        else:          
             jwt_token = jwt.encode({'id':appleAccess}, SECRET_KEY, ALGORITHM)
             print(jwt_token,type(jwt_token))
             if type(jwt_token) is bytes : 
