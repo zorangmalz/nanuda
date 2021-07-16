@@ -335,13 +335,34 @@ class niceMain(View):
                 user_email=user_info['params']['email'],
                 name=user_info['params']['name'],
                 gender=user_info['params']['gender'],
-                
+                dupinfo=user_info['params']['dupinfo']
                 birthdate=user_info['params']['birthdate'],
                 nationalinfo=user_info['params']['nationalinfo'],
                 phone_number=user_info['params']['mobileno'],
                 phone_company=user_info['params']['mobileco']
             ).save()
             return JsonResponse({"data":True})
+class niceCheck(View):
+    def get(self,request):
+        if not request.COOKIES.get("access_token"):
+            return JsonResponse({"data":False})
+        else:
+            user_info=json.loads(request.body)
+            if User.objects.filter(dupinfo=user_info["params"]["dupinfo"]).exists():
+                return JsonResponse({"data":"dup"})
+            else:
+                load_dotenv(verbose=True)
+                SECRET_KEY=os.getenv("SECRET_KEY")
+                ALGORITHM=os.getenv("ALGORITHM")
+                token=request.COOKIES.get("access_token")
+                payload=jwt.decode(token,SECRET_KEY,ALGORITHM)
+                try:
+                    user=User.objects.get(uid=payload["id"])
+                    return JsonResponse({"data":True})
+                except:
+                    return JsonResponse({"data":False})
+                
+
 
 class bankUpload(View):
     def post(self,request):

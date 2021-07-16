@@ -13,7 +13,7 @@ class User(models.Model):
     ]
     id = models.BigAutoField(primary_key=True)
     user_email = models.EmailField()
-    
+    dupinfo = models.CharField(max_length=100, default="",blank=True)
     name = models.TextField(default="나누다")
     job = models.CharField(max_length=30, default="",blank=True)
     gender = models.IntegerField(choices=GENDER_CHOICE, default="",blank=True)
