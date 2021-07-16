@@ -268,6 +268,9 @@ class KakaoLogin(View):
             return res
 class appleLogin(View):
     def post(self, request):
+        load_dotenv(verbose=True)
+        SECRET_KEY=os.getenv("SECRET_KEY")
+        ALGORITHM=os.getenv("ALGORITHM")
         code=json.loads(request.body)
         idx="1n1n.io"
         appleAccess=code["params"]["code"]+idx
