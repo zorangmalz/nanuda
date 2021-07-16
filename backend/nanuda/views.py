@@ -266,7 +266,44 @@ class KakaoLogin(View):
             res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
             res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True)
             return res
+class appleLogin(View):
+    def post(self, request):
+        code=json.loads(request.body)
+        appleAccess=code["params"]["code"]+"1n1n.io"
+        if User.objects.filter(uid=appleAccess).exists():
+            user    = User.objects.get(uid=appleAccess)
+            jwt_token = jwt.encode({'id':user.uid}, SECRET_KEY,ALGORITHM)
+            print(jwt_token,type(jwt_token))
+            if type(jwt_token) is bytes : 
+                jwt_token=jwt_token.decode('utf-8')
+                print(jwt_token,"fixed")
+            res=JsonResponse({"result":"true"})
+            res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+            res["Access-Control-Allow-Credentials"]="true"
+            res["Access-Control-Allow-Origin"] = "https://1n1n.io"
+            res["Acess-Control-Max-Age"] = "1000"
+            res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
+            res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True)
+            return res
 
+        else: 
+            if appleAccess['kakao_account']['gender']=="male":
+                gender=0
+            else:
+                gender=1            
+            jwt_token = jwt.encode({'id':appleAccess}, SECRET_KEY, ALGORITHM)
+            print(jwt_token,type(jwt_token))
+            if type(jwt_token) is bytes : 
+                jwt_token=jwt_token.decode('utf-8')
+                print(jwt_token,"fixed")
+            res=JsonResponse({"result":"false","uid":appleAccess})
+            res["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+            res["Access-Control-Allow-Credentials"]="true"
+            res["Access-Control-Allow-Origin"] = "https://1n1n.io"
+            res["Acess-Control-Max-Age"] = "1000"
+            res["Access-Control-Allow-Headers"] = "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"
+            res.set_cookie(key="access_token",value=jwt_token,samesite=None,httponly=True,secure=True)
+            return res
 class logout(View):
     def post(self,request):
         reset=""
