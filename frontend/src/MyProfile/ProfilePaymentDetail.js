@@ -26,6 +26,9 @@ export default function ProfilePaymentDetail() {
     useEffect(()=>{
         compareDate()
     },[])
+    function totalpay(){
+        
+    }
     return (
         <>
             <Default>

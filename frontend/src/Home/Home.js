@@ -56,6 +56,10 @@ const MAfterContainer = styled.div`
 
 export default function Home() {
     let history = useHistory()
+    function call(){
+        var obj={"hi":"hihihihi"}
+        window.callApi(obj)
+    }
     
     //Get Service Review Data
     const [reviewData, setReviewData] = useState([])
@@ -249,6 +253,7 @@ export default function Home() {
                                 }}
                             />
                         </div>
+                        <div onClick={call}>hihihi</div>
                         <div style={{
                             fontSize: 16,
                             fontFamily: "NotoSansCJKkr",
