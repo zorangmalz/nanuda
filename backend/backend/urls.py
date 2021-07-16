@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from nanuda.views import KakaoLogin, userInfoName, uploadAddress, checkAddress, serviceReviewOrNOt, orderUpload, niceMain,logout,bankUpload,bankCheck,niceSearch,bankDelete,refundProduct
+from nanuda.views import KakaoLogin, userInfoName, uploadAddress, checkAddress, serviceReviewOrNOt, orderUpload, niceMain,logout,bankUpload,bankCheck,niceSearch,bankDelete,refundProduct,appleLogin
 
 #API 제작
 from rest_framework.urlpatterns import format_suffix_patterns
 from nanuda.views import KakaoLogin
-from data.views import address_all, mission_all, order_one, point_list, review_profile, user_list, service_review_all, product_all, review_all, order_all, review_one, review_home, service_review_home, user_one, order_list,appleLogin
+from data.views import address_all, mission_all, order_one, point_list, review_profile, user_list, service_review_all, product_all, review_all, order_all, review_one, review_home, service_review_home, user_one, order_list,
 
 urlpatterns = [
     path('admin/', admin.site.urls),
