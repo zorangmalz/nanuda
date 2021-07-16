@@ -335,7 +335,7 @@ class niceMain(View):
                 user_email=user_info['params']['email'],
                 name=user_info['params']['name'],
                 gender=user_info['params']['gender'],
-                dupinfo=user_info['params']['dupinfo']
+                dupinfo=user_info['params']['dupinfo'],
                 birthdate=user_info['params']['birthdate'],
                 nationalinfo=user_info['params']['nationalinfo'],
                 phone_number=user_info['params']['mobileno'],
