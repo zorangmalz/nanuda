@@ -342,6 +342,7 @@ const OngoingProduct = ({ img, title, complete, total, mobile }) => {
                 height: mobile ? "25vw" : 120,
                 marginTop: mobile ? "4vw" : 16,
                 marginLeft: mobile ? "5vw" : 20,
+                border: "1px solid #010608"
             }}>
                 <img alt="product" src={img} style={{ width: mobile ? "25vw" : 120, borderRadius: 6 }} />
                 <div style={{
