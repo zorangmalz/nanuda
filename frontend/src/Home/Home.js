@@ -58,7 +58,6 @@ export default function Home() {
     let history = useHistory()
     function call(){
         var obj={"hi":"hihihihi"}
-        console.log(returnvalue)
     }
     
     //Get Service Review Data
