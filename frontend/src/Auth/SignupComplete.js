@@ -78,7 +78,7 @@ useEffect(()=>{
     async function send() {
         var realEmail=window.localStorage.getItem("email")
         var realuid=window.localStorage.getItem("uid")
-        console.log(realEmail,realuid)
+        console.log(realEmail,realuid,userData.gender)
         await fetch("https://api.1n1n.io/niceMain/", {
             method: "POST",
             headers: {
