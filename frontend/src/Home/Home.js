@@ -58,7 +58,7 @@ export default function Home() {
     let history = useHistory()
     function call(){
         var obj={"hi":"hihihihi"}
-        window.callApi(obj)
+        console.log(returnvalue)
     }
     
     //Get Service Review Data
@@ -253,7 +253,7 @@ export default function Home() {
                                 }}
                             />
                         </div>
-                        <div onClick={call}>hihihi</div>
+                        
                         <div style={{
                             fontSize: 16,
                             fontFamily: "NotoSansCJKkr",
