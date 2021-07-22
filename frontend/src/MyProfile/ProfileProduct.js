@@ -130,7 +130,7 @@ function ProductState({ img, date, title, price, mobile, item }) {
                 marginTop: mobile ? "4vw" : 16,
                 paddingBottom: mobile ? "4vw" : 16,
                 width: mobile ? "90vw" : 440,
-                borderBottom: "1px solid rgba(1, 6, 8, 0.2)"
+                border: "1px solid rgba(1, 6, 8, 1)"
             }}>
                 <div onClick={() => history.push({
                     pathname: "/profile/product/info",
