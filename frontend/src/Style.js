@@ -100,8 +100,8 @@ export function Header({ content, goBack, goX }) {
             backgroundColor: "#ffffff",
             borderBottom: "1px solid #dfdfdf",
             justifyContent: "center",
-            paddingTop: 15,
-            paddingBottom: 15,
+            paddingTop: 23,
+            paddingBottom: 23,
             position: "relative",
         }}>
             {goBack ? <img src={back} onClick={() => history.goBack()} style={{
@@ -139,8 +139,8 @@ export function MHeader({ content, goBack, goX }) {
             backgroundColor: "#ffffff",
             borderBottom: "1px solid #dfdfdf",
             justifyContent: "center",
-            paddingTop: 15,
-            paddingBottom: 15,
+            paddingTop: "6vw",
+            paddingBottom: "6vw",
             position: "relative",
         }}>
             {goBack ? <img src={back} onClick={() => history.goBack()} style={{
@@ -210,8 +210,8 @@ export function HomeHeader() {
                 justifyContent: "space-between",
                 backgroundColor: "#ffffff",
                 borderBottom: "1px solid #dfdfdf",
-                paddingTop: 15,
-                paddingBottom: 15,
+                paddingTop: 23,
+                paddingBottom: 23,
                 zIndex: 5,
             }}>
                 <div style={{
@@ -298,8 +298,8 @@ export function MHomeHeader() {
                 justifyContent: "space-between",
                 backgroundColor: "#ffffff",
                 borderBottom: "1px solid #dfdfdf",
-                paddingTop: 15,
-                paddingBottom: 15,
+                paddingTop: "6vw",
+                paddingBottom: "6vw",
                 zIndex: 5,
             }}>
                 <div style={{
