@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import WebIntro, { BottomTab, Header, MHeader } from "../Style";
 import { Switch, Route, useHistory } from "react-router";
 import Entire from "./Entire"
 
@@ -133,7 +133,7 @@ export default function TimeDeal() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        <Header content="1/n 딜" goBack={true} />
+                        <Header content="전체 상품" goBack={false} />
                         <Container>
                             <Title onClick={onENTIRE} text="전체 상품" state={tabNum == 0} />
                             <Title onClick={onELECTRONIC} text="전자제품" state={tabNum == 1} />
@@ -144,6 +144,7 @@ export default function TimeDeal() {
                         <Switch>
                             <Route exact path="/timedeal/entire" component={Entire} />
                         </Switch>
+                        <BottomTab mobile={false} />
                     </div>
                 </div>
             </Default>
@@ -156,7 +157,7 @@ export default function TimeDeal() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="1/n 딜" goBack={true} />
+                    <MHeader content="전체 상품" goBack={false} />
                     <MContainer>
                         <MTitle onClick={onENTIRE} text="전체 상품" state={tabNum == 0} />
                         <MTitle onClick={onELECTRONIC} text="전자제품" state={tabNum == 1} />
@@ -167,6 +168,7 @@ export default function TimeDeal() {
                     <Switch>
                         <Route exact path="/timedeal/entire" component={Entire} />
                     </Switch>
+                    <BottomTab mobile={true} />
                 </div>
             </Mobile>
         </>

@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import { BannerContainer, HomeHeader, MBannerContainer, MHomeHeader, NameMask, HomeBottomTag, MHomeBottomTag, StandardChoiceModal } from "../Style";
-import { BsUpload } from "react-icons/bs";
+import { BannerContainer, MBannerContainer, NameMask, HomeBottomTag, MHomeBottomTag, StandardChoiceModal, BottomTab, Header, MHeader } from "../Style";
 import { BiTime } from "react-icons/bi";
 import { useHistory } from "react-router";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -18,7 +17,7 @@ import banner from "../images/homebanner.png"
 import sampleone from "../images/sampleone.png"
 import sampletwo from "../images/sampletwo.png"
 import upload from "../images/upload.png"
-import {useCookies} from "react-cookie"
+import mainlogo from "../images/mainlogo.png"
 
 const AfterContainer = styled.div`
     width: 424px;
@@ -56,10 +55,10 @@ const MAfterContainer = styled.div`
 
 export default function Home() {
     let history = useHistory()
-    function call(){
-        var obj={"hi":"hihihihi"}
+    function call() {
+        var obj = { "hi": "hihihihi" }
     }
-    
+
     //Get Service Review Data
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {
@@ -130,22 +129,22 @@ export default function Home() {
     const bottomRef = useRef(0)
 
     const [hide, setHide] = useState(false)
- 
-    useEffect(() => {
-        const handleScroll = () => {
-            setBottomPosition(bottomRef.current.getBoundingClientRect().top)
-            setWishButton(buttonRef.current.getBoundingClientRect().top)
-            if (bottomPosition < wishButton) {
-                setHide(true)
-            } else {
-                setHide(false)
-            }
-        };
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         setBottomPosition(bottomRef.current.getBoundingClientRect().top)
+    //         setWishButton(buttonRef.current.getBoundingClientRect().top)
+    //         if (bottomPosition < wishButton) {
+    //             setHide(true)
+    //         } else {
+    //             setHide(false)
+    //         }
+    //     };
 
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [wishButton, bottomPosition])
+    //     window.addEventListener("scroll", handleScroll, { passive: true });
+
+    //     return () => window.removeEventListener("scroll", handleScroll);
+    // }, [wishButton, bottomPosition])
 
     useEffect(() => {
         const test = async () => {
@@ -193,7 +192,11 @@ export default function Home() {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        <HomeHeader />
+                        <Header content={<> <img alt="mainlogo" src={mainlogo} style={{
+                            width: 32,
+                            height: 32,
+                            marginRight: 8
+                        }} /> n분의 일 </>} />
                         <div style={{
                             width: 480,
                             marginBottom: 16,
@@ -252,7 +255,7 @@ export default function Home() {
                                 }}
                             />
                         </div>
-                        
+
                         <div style={{
                             fontSize: 16,
                             fontFamily: "NotoSansCJKkr",
@@ -452,7 +455,7 @@ export default function Home() {
                             </div>
                         </div>
                         <HomeBottomTag marginTop={200} marginBottom={0} bottomRef={bottomRef} />
-                        <div ref={buttonRef} onClick={hide ? () => { } : isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)} style={{
+                        {/* <div ref={buttonRef} onClick={hide ? () => { } : isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)} style={{
                             width: 440,
                             marginLeft: 20,
                             marginRight: 20,
@@ -470,7 +473,7 @@ export default function Home() {
                             cursor: hide ? "none" : "pointer",
                             position: "fixed",
                             bottom: 40,
-                        }}>{hide ? "" : "위시딜 신청하기"}</div>
+                        }}>{hide ? "" : "위시딜 신청하기"}</div> */}
                         {loginModal ?
                             <StandardChoiceModal
                                 title="회원가입이 필요한 서비스입니다."
@@ -484,6 +487,7 @@ export default function Home() {
                             :
                             <></>
                         }
+                        <BottomTab mobile={false} />
                     </div>
                 </div>
             </Default>
@@ -498,7 +502,11 @@ export default function Home() {
                     backgroundColor: "#ffffff",
                     zIndex: 0,
                 }}>
-                    <MHomeHeader />
+                    <MHeader content={<> <img alt="mainlogo" src={mainlogo} style={{
+                        width: 24,
+                        height: 24,
+                        marginRight: 4
+                    }} /> n분의 일 </>} />
                     <div style={{ width: "100vw", marginBottom: "3vw" }}>
                         <Slider dots={false} arrows={false} autoplaySpeed={3000} autoplay={true} >
                             <div>
@@ -730,7 +738,7 @@ export default function Home() {
                         )}
                     </MAfterContainer>
                     <MHomeBottomTag marginTop={100} marginBottom={0} bottomRef={bottomRef} />
-                    <div ref={buttonRef} onClick={hide ? () => { } : isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)} style={{
+                    {/* <div ref={buttonRef} onClick={hide ? () => { } : isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)} style={{
                         width: "90%",
                         marginLeft: "5%",
                         marginRight: "5%",
@@ -748,7 +756,7 @@ export default function Home() {
                         cursor: hide ? "none" : "pointer",
                         position: "fixed",
                         bottom: 20,
-                    }}>{hide ? "" : "위시딜 신청하기"}</div>
+                    }}>{hide ? "" : "위시딜 신청하기"}</div> */}
                     {loginModal ?
                         <StandardChoiceModal
                             title="회원가입이 필요한 서비스입니다."
@@ -762,6 +770,7 @@ export default function Home() {
                         :
                         <></>
                     }
+                    <BottomTab mobile={true} />
                 </div>
             </Mobile>
         </>
@@ -1141,7 +1150,7 @@ function Review({ item, mobile }) {
                     alignItems: "center",
                     marginBottom: mobile ? "2vw" : 8,
                 }}>
-                    <AiFillStar size={mobile ? 14 :16} color="#fad94f" />
+                    <AiFillStar size={mobile ? 14 : 16} color="#fad94f" />
                     <div style={{
                         fontSize: mobile ? 12 : 14,
                         fontWeight: "bold",

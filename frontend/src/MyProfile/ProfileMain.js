@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
-import { BottomTag, Header, MBottomTag, MHeader, numberWithCommas } from "../Style";
+import { BottomTab, BottomTag, Header, MBottomTag, MHeader, numberWithCommas } from "../Style";
 import { IoIosArrowForward } from "react-icons/io";
 import { useHistory } from "react-router";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -82,14 +82,13 @@ export default function ProfileMain() {
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between",
 
                         width: 480,
                         minHeight: "100vh",
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        <Header content="마이페이지" goBack={true} />
+                        <Header content="마이페이지" goBack={false} />
                         <div style={{
                             marginTop: 32,
                             width: 440,
@@ -129,15 +128,14 @@ export default function ProfileMain() {
                             width: 440,
                             paddingLeft: 20,
                             paddingRight: 20,
-                            paddingTop: 8,
-                            paddingBottom: 8,
+                            paddingTop: 35,
+                            paddingBottom: 35,
                             backgroundColor: "#010608",
 
                             display: "flex",
                             flexDirection: "column",
+                            marginBottom: 32
                         }}>
-                            <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" onClick={() => history.push('/profile/limit')} />
-                            <ProfileInfo title="하울딜 찬스" data={1} unit="회" chance={true} />
                             <ProfileInfo title="포인트" data={user.point} unit="P" onClick={() => history.push('/profile/point')} />
                         </div>
                         {item.length > 0 ?
@@ -147,7 +145,6 @@ export default function ProfileMain() {
                                 fontWeight: "bold",
                                 color: "#010608",
 
-                                marginTop: 32,
                                 marginLeft: 20,
                             }}>분할결제 진행중인 상품</div>
                             :
@@ -163,9 +160,16 @@ export default function ProfileMain() {
                             />
                         )}
                         <ManageList name="결제 수단 관리" path="profile/payment/method" />
-                        <ManageList name="상품 구매 내역" path="profile/product/main" />
                         <ManageList name="내 리뷰" path="profile/review" />
-                        <BottomTag marginTop={120} marginBottom={0} />
+                        <div style={{
+                            width: 440,
+                            height: 90,
+                            backgroundColor: "#26c1f0",
+                            marginLeft: 20,
+                            marginTop: 80,
+                            marginBottom: 160
+                        }}>배너 영역</div>
+                        <BottomTab mobile={false} />
                     </div>
                 </div>
             </Default>
@@ -179,7 +183,7 @@ export default function ProfileMain() {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="마이페이지" goBack={true} />
+                    <MHeader content="마이페이지" goBack={false} />
                     <div style={{
                         marginTop: "8vw",
                         width: "90vw",
@@ -219,15 +223,14 @@ export default function ProfileMain() {
                         width: "90vw",
                         paddingLeft: "5vw",
                         paddingRight: "5vw",
-                        paddingTop: "2vw",
-                        paddingBottom: "2vw",
+                        paddingTop: "9vw",
+                        paddingBottom: "9vw",
                         backgroundColor: "#010608",
 
                         display: "flex",
                         flexDirection: "column",
+                        marginBottom: "8vw",
                     }}>
-                        <ProfileInfo title="위시딜 한도" data={user.limit} unit="원" mobile={true} onClick={() => history.push('/profile/limit')} />
-                        <ProfileInfo title="하울딜 찬스" data={1} unit="회" mobile={true} chance={true} />
                         <ProfileInfo title="포인트" data={user.point} unit="P" mobile={true} onClick={() => history.push('/profile/point')} />
                     </div>
                     {item.length > 0 ?
@@ -237,7 +240,6 @@ export default function ProfileMain() {
                             fontWeight: "bold",
                             color: "#010608",
 
-                            marginTop: "8vw",
                             marginLeft: "5vw",
                         }}>분할결제 진행중인 상품</div>
                         :
@@ -253,9 +255,16 @@ export default function ProfileMain() {
                         />
                     )}
                     <ManageList name="결제 수단 관리" path="profile/payment/method" mobile={true} />
-                    <ManageList name="상품 구매 내역" path="profile/product/main" mobile={true} />
                     <ManageList name="내 리뷰" path="profile/review" mobile={true} />
-                    <MBottomTag marginTop={60} marginBottom={0} />
+                    <div style={{
+                        width: "90vw",
+                        height: "22.5vw",
+                        backgroundColor: "#26c1f0",
+                        marginLeft: "5vw",
+                        marginTop: "20vw",
+                        marginBottom: "40vw",
+                    }}>배너 영역</div>
+                    <BottomTab mobile={true} />
                 </div>
             </Mobile>
         </>

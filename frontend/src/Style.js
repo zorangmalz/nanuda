@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logoS from "./images/logoS.png"
 import user from "./images/users.png"
-import { IoIosArrowBack } from "react-icons/io";
 import { BsX } from "react-icons/bs"
 import { useHistory } from "react-router";
 import styled from "styled-components";
@@ -10,6 +9,10 @@ import mainlogo from "./images/mainlogo.png"
 import back from "./images/back.png"
 import "./css/haulfree.css"
 import AWS from "aws-sdk";
+import { VscHome } from "react-icons/vsc"
+import { AiOutlineShopping } from "react-icons/ai";
+import { MdPieChartOutlined } from "react-icons/md";
+import { BiUser } from "react-icons/bi";
 
 export default function WebIntro() {
     let history = useHistory()
@@ -89,6 +92,147 @@ export default function WebIntro() {
     )
 }
 
+export function BottomTab({ mobile }) {
+    const history = useHistory()
+    const [log, setLog] = useState(false)
+    useEffect(() => {
+        test()
+    }, [])
+    const test = async () => {
+        fetch("https://api.1n1n.io/userInfoName/", {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: "include",
+        })
+            .then((response) => (response.json()))
+            .then(response => {
+                setLog(response.data)
+
+            }).catch(err => {
+                console.log(err)
+            })
+
+    }
+
+    const [isLogin, setIsLogin] = useState(false)
+
+    const [bottomPo, setBottomPo] = useState(0)
+    return (
+        <div style={{
+            position: "fixed",
+            bottom: 0,
+            width: mobile ? "90vw" : 440,
+            height: mobile ? "20vw" : 100,
+            paddingLeft: mobile ? "5vw" : 20,
+            paddingRight: mobile ? "5vw" : 20,
+            backgroundColor: "#ffffff",
+            borderTop: "1px solid #dbdbdb",
+
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center"
+        }}>
+            <div onClick={() => { 
+                history.replace("/") 
+                setBottomPo(0)
+            }} style={{
+                cursor: "pointer",
+                width: mobile ? "22.5vw" : 110,
+                height: mobile ? "20vw" : 100,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <VscHome size={mobile ? 24 : 32} color={bottomPo === 0 ? "#010608" : "rgba(1, 6, 8, 0.4)"} />
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 12 : 14,
+                    fontWeight: "bold",
+                    color: bottomPo === 0 ? "#010608" : "rgba(1, 6, 8, 0.4)"
+                }}>홈</div>
+            </div>
+            <div onClick={() => { 
+                setBottomPo(1)
+                history.replace("/timedeal/entire")
+            }} style={{
+                cursor: "pointer",
+                width: mobile ? "22.5vw" : 110,
+                height: mobile ? "20vw" : 100,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <AiOutlineShopping size={mobile ? 24 : 32} color={bottomPo === 1 ? "#010608" : "rgba(1, 6, 8, 0.4)"} />
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 12 : 14,
+                    fontWeight: "bold",
+                    color: bottomPo === 1 ? "#010608" : "rgba(1, 6, 8, 0.4)"
+                }}>전체 상품</div>
+            </div>
+            <div onClick={log ? () => { 
+                setBottomPo(2)
+                history.replace("/profile/main") 
+            } : () => { setIsLogin(true) }} style={{
+                cursor: "pointer",
+                width: mobile ? "22.5vw" : 110,
+                height: mobile ? "20vw" : 100,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <MdPieChartOutlined size={mobile ? 24 : 32} color={bottomPo === 2 ? "#010608" : "rgba(1, 6, 8, 0.4)"} />
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 12 : 14,
+                    fontWeight: "bold",
+                    color: bottomPo === 2 ? "#010608" : "rgba(1, 6, 8, 0.4)"
+                }}>결제 내역</div>
+            </div>
+            <div onClick={log ? () => { 
+                setBottomPo(3)
+                history.replace("/profile/main") 
+            } : () => { setIsLogin(true) }} style={{
+                cursor: "pointer",
+                width: mobile ? "22.5vw" : 110,
+                height: mobile ? "20vw" : 100,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <BiUser size={mobile ? 24 : 32} color={bottomPo === 3 ? "#010608" : "rgba(1, 6, 8, 0.4)"} />
+                <div style={{
+                    fontFamily: "NotoSansCJKkr",
+                    fontSize: mobile ? 12 : 14,
+                    fontWeight: "bold",
+                    color: bottomPo === 3 ? "#010608" : "rgba(1, 6, 8, 0.4)"
+                }}>마이페이지</div>
+            </div>
+            {isLogin ?
+                <StandardChoiceModal
+                    title="회원가입이 필요한 서비스입니다."
+                    content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
+                    canceltext="취소"
+                    onCancelClick={() => setIsLogin(false)}
+                    buttontext="회원가입"
+                    onClick={() => history.push("/signup/main")}
+                    mobile={false}
+                />
+                :
+                <></>
+            }
+        </div>
+    )
+}
+
 export function Header({ content, goBack, goX }) {
     let history = useHistory()
     return (
@@ -121,6 +265,9 @@ export function Header({ content, goBack, goX }) {
                 fontWeight: "bold",
                 color: "#010608",
                 alignSelf: "center",
+                display:"flex",
+                flexDirection: "row",
+                alignItems: "center",
                 justifyContent: "center",
                 fontFamily: "NotoSansCJKkr"
             }}>{content}</div>
@@ -159,187 +306,14 @@ export function MHeader({ content, goBack, goX }) {
                 fontSize: 16,
                 fontWeight: "bold",
                 color: "#010608",
+                display:"flex",
+                flexDirection: "row",
+                alignItems: "center",
                 alignSelf: "center",
                 justifyContent: "center",
                 fontFamily: "NotoSansCJKkr"
             }}>{content}</div>
         </div>
-    )
-}
-
-export function HomeHeader() {
-    let history = useHistory()
-    const [log, setLog] = useState(false)
-    useEffect(() => {
-        test()
-    }, [])
-    const test = async () => {
-        fetch("https://api.1n1n.io/userInfoName/", {
-            method: "GET",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: "include",
-        })
-            .then((response) => (response.json()))
-            .then(response => {
-                setLog(response.data)
-
-            }).catch(err => {
-                console.log(err)
-            })
-
-    }
-
-    function profileClick() {
-        if (log == true) {
-            history.push("/profile/main")
-        } else {
-            setIsLogin(true)
-        }
-    }
-    const [isLogin, setIsLogin] = useState(false)
-    return (
-        <>
-            <div style={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                backgroundColor: "#ffffff",
-                borderBottom: "1px solid #dfdfdf",
-                paddingTop: 23,
-                paddingBottom: 23,
-                zIndex: 5,
-            }}>
-                <div style={{
-                    width: 100,
-                    height: 28,
-                }} />
-                <img alt="mainlogo" src={mainlogo} style={{
-                    width: 32,
-                    height: 32
-                }} />
-                <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "flex-end",
-
-                    paddingRight: 20,
-                    width: 80,
-                }}>
-                    <img onClick={profileClick} alt="" src={user} style={{
-                        width: 28,
-                        height: 28,
-                        marginLeft: 8,
-                        cursor: "pointer"
-                    }} />
-                </div>
-            </div>
-            {isLogin ?
-                <StandardChoiceModal
-                    title="회원가입이 필요한 서비스입니다."
-                    content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
-                    canceltext="취소"
-                    onCancelClick={() => setIsLogin(false)}
-                    buttontext="회원가입"
-                    onClick={() => history.push("/signup/main")}
-                    mobile={false}
-                />
-                :
-                <></>
-            }
-        </>
-    )
-}
-
-export function MHomeHeader() {
-    let history = useHistory()
-    const [log, setLog] = useState(false)
-    useEffect(() => {
-        test()
-    }, [])
-    const test = async () => {
-        fetch("https://api.1n1n.io/userInfoName/", {
-            method: "GET",
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: "include",
-        })
-            .then((response) => (response.json()))
-            .then(response => {
-                setLog(response.data)
-
-            }).catch(err => {
-                console.log(err)
-            })
-    }
-
-    function profileClick() {
-        if (log == true) {
-            history.push("/profile/main")
-        } else {
-            setIsLogin(true)
-        }
-    }
-    const [isLogin, setIsLogin] = useState(false)
-    return (
-        <>
-            <div style={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                backgroundColor: "#ffffff",
-                borderBottom: "1px solid #dfdfdf",
-                paddingTop: "6vw",
-                paddingBottom: "6vw",
-                zIndex: 5,
-            }}>
-                <div style={{
-                    width: "30vw",
-                }} />
-                <img alt="mainlogo" src={mainlogo} style={{
-                    width: "8vw",
-                    height: "8vw"
-                }} />
-                <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "flex-end",
-
-                    paddingRight: "5vw",
-                    width: "25vw"
-                }}>
-                    <img onClick={profileClick} alt="" src={user} style={{
-                        width: 24,
-                        height: 24,
-                        marginLeft: 4,
-                        cursor: "pointer"
-                    }} />
-                </div>
-            </div>
-            {isLogin ?
-                <StandardChoiceModal
-                    title="회원가입이 필요한 서비스입니다."
-                    content="지금 바로 회원가입하고 다양한 상품을 분할결제 해보세요!"
-                    canceltext="취소"
-                    onCancelClick={() => setIsLogin(false)}
-                    buttontext="회원가입"
-                    onClick={() => history.push("/signup/main")}
-                    mobile={true}
-                />
-                :
-                <></>
-            }
-        </>
     )
 }
 

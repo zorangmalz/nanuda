@@ -258,7 +258,6 @@ function Review({ item, mobile }) {
                     fontFamily: "NotoSansCJKkr",
                     marginBottom: mobile ? "2vw" : 8,
                     minHeight: mobile ? "20vw" : 80,
-                    maxHeight: mobile ? "20vw" : 80,
                 }}>{content}</div>
                 <div style={{
                     display: "flex",
