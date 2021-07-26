@@ -3,7 +3,7 @@ import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader } from "../Style";
 import { useHistory ,useLocation} from "react-router";
 
-export default function ProfilePaymentDetail() {
+export default function PaymentDetail() {
     const [complete, setComplete] = useState(false)
     
     //화면 변경
@@ -148,7 +148,7 @@ export default function ProfilePaymentDetail() {
                                 alignSelf: "center",
                                 marginTop: 8,
                             }}>7-29일까지 결제를 완료하지 않으면 추심이 진행됩니다. 결제를 서둘러주세요.</div>}
-                        <div onClick={() => history.push("/profile/payment/success")} style={{
+                        <div onClick={() => history.push("/payment/success")} style={{
                             width: 440,
                             paddingTop: 15,
                             paddingBottom: 15,
@@ -273,7 +273,7 @@ export default function ProfilePaymentDetail() {
                             alignSelf: "center",
                             marginTop: 8,
                         }}>7-29일까지 결제를 완료하지 않으면 추심이 진행됩니다. 결제를 서둘러주세요.</div>}
-                    <div onClick={() => history.push("/profile/payment/success")} style={{
+                    <div onClick={() => history.push("/payment/success")} style={{
                         width: "90vw",
                         paddingTop: "4vw",
                         paddingBottom: "4vw",

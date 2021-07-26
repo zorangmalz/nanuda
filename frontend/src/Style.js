@@ -175,7 +175,7 @@ export function BottomTab({ mobile, state }) {
                 }}>전체 상품</div>
             </div>
             <div onClick={log ? () => { 
-                history.replace("/profile/main") 
+                history.replace("/payment/schedule") 
             } : () => { setIsLogin(true) }} style={{
                 cursor: "pointer",
                 width: mobile ? "22.5vw" : 110,

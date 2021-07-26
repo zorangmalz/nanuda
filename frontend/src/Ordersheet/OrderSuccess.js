@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Default, Mobile } from "../App";
 import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
-import { MOrderDetail, OrderDetail } from "./PaymentFail";
+import { MOrderDetail, OrderDetail } from "./OrderFail";
 import { useHistory,useLocation } from "react-router";
 
 
-export default function PaymentSuccess() {
+export default function OrderSuccess() {
     //WishDeal인지 여부
     const [wish, setWish] = useState(true)
     const location = useLocation()
@@ -33,7 +33,7 @@ export default function PaymentSuccess() {
         history.replace("/")
     }
     function goReview() {
-        history.push("/profile/product/main")
+        history.push("/payment/history")
     }
     return (
         <>

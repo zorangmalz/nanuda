@@ -68,7 +68,7 @@ export default function ProfileProductInfo() {
     const [modal, setModal] = useState(false)
     function check() {
         console.log("here")
-        history.push("/profile/payment/detail", { item: param })
+        history.push("/payment/history", { item: param })
     }
 
     function refund(){

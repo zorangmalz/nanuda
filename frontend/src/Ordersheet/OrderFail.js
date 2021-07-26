@@ -4,7 +4,7 @@ import WebIntro, { Header, MHeader, MStandardButton, StandardButton } from "../S
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router";
 
-export default function PaymentFail() {
+export default function OrderFail() {
     //타임딜 여부
     const [timeDeal, setTimeDeal] = useState(true)
 

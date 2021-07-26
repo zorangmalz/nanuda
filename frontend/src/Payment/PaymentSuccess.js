@@ -4,7 +4,7 @@ import WebIntro, { Header, MHeader } from "../Style";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useHistory } from "react-router";
 
-export default function ProfilePaymentSuccess() {
+export default function PaymentSuccess() {
     //화면 변경
     let history = useHistory()
     function goHome() {

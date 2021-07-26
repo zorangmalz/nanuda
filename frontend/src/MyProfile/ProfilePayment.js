@@ -77,7 +77,7 @@ function BNPLForm({ state, title, num, date, payback }) {
                 color: "#010608",
                 marginBottom: 16,
             }}>{state === 0 ? "분할결제 완료" : "분할결제 진행중"}</div>
-            <div onClick={() => history.push("/profile/payment/detail")} style={{
+            <div onClick={() => history.push("/payment/detail")} style={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
@@ -264,7 +264,7 @@ function MBNPLForm({ state, title, num, date, payback }) {
                 color: "#010608",
                 marginBottom: "4vw",
             }}>{state === 0 ? "분할결제 완료" : "분할결제 진행중"}</div>
-            <div onClick={() => history.push("/profile/payment/detail")} style={{
+            <div onClick={() => history.push("/payment/detail")} style={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",

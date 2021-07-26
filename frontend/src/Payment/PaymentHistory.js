@@ -5,7 +5,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { useHistory } from "react-router";
 import mainlogo from "../images/mainlogo.png";
 
-export default function ProfileProduct() {
+export default function PaymentHistory() {
     //Get Order Data
     const [orderData, setOrderData] = useState([])
     const [fullData,setFullData]=useState([])

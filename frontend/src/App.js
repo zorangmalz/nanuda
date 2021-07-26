@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './Home/Home';
 import OrderSheet from './Ordersheet/OrderSheet';
 import Address from './Ordersheet/Address';
-import PaymentFail from './Ordersheet/PaymentFail';
-import PaymentSuccess from './Ordersheet/PaymentSuccess';
 import SignupComplete from './Auth/SignupComplete';
 import ReviewMain from './Review/ReviewMain';
 import ReviewPost from './Review/ReviewPost';
@@ -18,11 +16,10 @@ import WishDealURL from './Wishdeal/WishDealURL';
 import SignupProfile from './Auth/SignupProfile';
 import ProfileEdit from './MyProfile/ProfileEdit';
 import ProfileAddressEdit from './MyProfile/ProfileAddressEdit';
-import ProfilePaymentSuccess from './MyProfile/ProfilePaymentSuccess';
-import ProfilePaymentFail from './MyProfile/ProfilePaymentFail';
-import ProfilePaymentDetail from './MyProfile/ProfilePaymentDetail';
+import PaymentSuccess from './Payment/PaymentSuccess';
+import PaymentDetail from './Payment/PaymentDetail';
 import ProfileProductInfo from './MyProfile/ProfileProductInfo';
-import ProfileProduct from './MyProfile/ProfileProduct';
+import PaymentHistory from './Payment/PaymentHistory';
 import ProfileVerificationSuccess from './MyProfile/ProfileVerificationSuccess';
 import ProfileRefund from './MyProfile/ProfileRefund';
 import ProfileRefundSuccess from './MyProfile/ProfileRefundSuccess';
@@ -50,6 +47,8 @@ import PaymentAddAccount from './MyProfile/PaymentAddAccount';
 import TimeDeal from './TimeDeal/TimeDeal';
 import Alarm from './Alarm/Alarm';
 import TimeDealDetail from "./TimeDeal/TimeDealDetail"
+import PaymentSchedule from './Payment/PaymentSchedule';
+import PaymentFail from './Payment/PaymentFail';
 
 
 
@@ -74,8 +73,6 @@ function App() {
         <Route path="/signup/complete" component={SignupComplete} />
         <Route path="/ordersheet" component={OrderSheet} />
         <Route path="/address" component={Address} />
-        <Route path="/payment/fail" component={PaymentFail} />
-        <Route path="/payment/success" component={PaymentSuccess} />
         <Route path="/review/main" component={ReviewMain} />
         <Route path="/review/post/:pk" component={ReviewPost} />
         <Route path="/review/select" component={ReviewSelect} />
@@ -102,13 +99,14 @@ function App() {
         <Route path="/profile/payment/refund" component={ProfileRefund} />
         <Route path="/profile/payment/refundsuccess" component={ProfileRefundSuccess} />
         <Route path="/profile/payment/refundfail" component={ProfileRefundFail} />
-        <Route path="/profile/payment/success" component={ProfilePaymentSuccess} />
-        <Route path="/profile/payment/fail" component={ProfilePaymentFail} />
-        <Route path="/profile/payment/detail" component={ProfilePaymentDetail} />
         <Route path="/profile/payment/method" component={ProfilePaymentMethod} />
-        <Route path="/profile/product/main" component={ProfileProduct} />
         <Route path="/profile/product/info" component={ProfileProductInfo} />
         <Route path="/profile/delete" component={ProfileDelete} />
+        <Route path="/payment/schedule" component={PaymentSchedule} />
+        <Route path="/payment/detail" component={PaymentDetail} />
+        <Route path="/payment/history" component={PaymentHistory} />
+        <Route path="/payment/success" component={PaymentSuccess} />
+        <Route path="/payment/fail" component={PaymentFail} />
         <Route path="/paymentaccountveri" component={PaymentAccountVeri} />
         <Route path="/paymentars" component={PaymentARS} />
         <Route path="/alarm" component={Alarm} />

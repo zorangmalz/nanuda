@@ -4,7 +4,7 @@ import WebIntro, { Header, MHeader } from "../Style";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router";
 
-export default function ProfilePaymentFail() {
+export default function PaymentFail() {
     //화면 변경
     let history = useHistory()
     return (
