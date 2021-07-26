@@ -166,6 +166,123 @@ export default function PaymentSchedule() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="결제 내역" />
+                    <div style={{
+                        width: "90vw",
+                        marginTop: "6vw",
+                        marginLeft: "5vw",
+                        marginRight: "5vw",
+                        marginBottom: "8vw",
+
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "space-between"
+                    }}>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "flex-start",
+                        }}>
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 16,
+                                fontWeight: "500",
+                                color: "#010608",
+                                marginBottom: "4vw",
+                            }}>사용한 한도</div>
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 26,
+                                fontWeight: "bold",
+                                color: "#010608",
+                                marginBottom: "2vw",
+                            }}>0 원</div>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "start"
+                            }}>
+                                <div style={{
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontSize: 14,
+                                    opacity: 0.6,
+                                    color: "#010608",
+                                    marginRight: "2vw"
+                                }}>총 한도 : 500,000 원</div>
+                                <AiFillQuestionCircle size={20} color="#000000" />
+                            </div>
+                        </div>
+                        <div style={{
+                            width: 100,
+                            height: 100,
+                            borderRadius: 50,
+                            backgroundColor: "#000000"
+                        }}></div>
+                    </div>
+                    <div style={{
+                        width: "90vw",
+                        paddingLeft: "5vw",
+                        paddingRight: "5vw",
+                        paddingTop: "6vw",
+                        paddingBottom: "6vw",
+                        backgroundColor: "#010608",
+
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center"
+                    }}>
+                        <PaymentMonth mobile={true} price={0} month="이번달" />
+                        <PaymentMonth mobile={true} price={0} month="다음달" />
+                        <PaymentMonth mobile={true} price={0} month="2달 뒤" />
+                    </div>
+                    {data.length > 0 ?
+                        <>
+                            <div style={{
+                                marginTop: "8vw",
+                                marginLeft: "5vw",
+
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 16,
+                                fontWeight: "bold",
+                                color: "#010608",
+                                alignSelf: "flex-start",
+                            }}>결제 진행중</div>
+                        </>
+                        :
+                        <>
+                            <img alt="" src={nodata} style={{
+                                marginTop: "16vw",
+                                marginBottom: "8vw",
+                                alignSelf: "center",
+                                width: "66vw",
+                                height: "33vw",
+                                objectFit: "contain"
+                            }} />
+                            <div style={{
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 16,
+                                color: "#202426",
+                                alignSelf: "center"
+                            }}>1/n에 처음 오셨나요?</div>
+                            <div onClick={() => history.replace("/timedeal/entire")} style={{
+                                width: "90vw",
+                                paddingTop: "4vw",
+                                paddingBottom: "4vw",
+                                backgroundColor: "#26c1f0",
+                                borderRadius: 6,
+                                alignSelf: "center",
+                                marginTop: "8vw",
+                                cursor: "pointer",
+
+                                textAlign: "center",
+                                fontFamily: "NotoSansCJKkr",
+                                fontSize: 16,
+                                fontWeight: "bold",
+                                color: "#ffffff"
+                            }}>쇼핑하러가기</div>
+                        </>
+                    }
                     <BottomTab mobile={true} state={2} />
                 </div>
             </Mobile>

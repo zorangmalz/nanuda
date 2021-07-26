@@ -454,7 +454,7 @@ export default function Home() {
                                 </a>
                             </div>
                         </div>
-                        <HomeBottomTag marginTop={200} marginBottom={0} bottomRef={bottomRef} />
+                        <HomeBottomTag marginTop={200} marginBottom={100} bottomRef={bottomRef} />
                         {/* <div ref={buttonRef} onClick={hide ? () => { } : isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)} style={{
                             width: 440,
                             marginLeft: 20,
@@ -737,7 +737,7 @@ export default function Home() {
                             />
                         )}
                     </MAfterContainer>
-                    <MHomeBottomTag marginTop={100} marginBottom={0} bottomRef={bottomRef} />
+                    <MHomeBottomTag marginTop={100} marginBottom={"20vw"} bottomRef={bottomRef} />
                     {/* <div ref={buttonRef} onClick={hide ? () => { } : isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)} style={{
                         width: "90%",
                         marginLeft: "5%",
