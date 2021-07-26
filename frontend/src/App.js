@@ -49,6 +49,7 @@ import Alarm from './Alarm/Alarm';
 import TimeDealDetail from "./TimeDeal/TimeDealDetail"
 import PaymentSchedule from './Payment/PaymentSchedule';
 import PaymentFail from './Payment/PaymentFail';
+import PaymentRefundSuccess from './Payment/PaymentRefundSuccess';
 
 
 
@@ -107,6 +108,7 @@ function App() {
         <Route path="/payment/history" component={PaymentHistory} />
         <Route path="/payment/success" component={PaymentSuccess} />
         <Route path="/payment/fail" component={PaymentFail} />
+        <Route path="/payment/refund/success" component={PaymentRefundSuccess} />
         <Route path="/paymentaccountveri" component={PaymentAccountVeri} />
         <Route path="/paymentars" component={PaymentARS} />
         <Route path="/alarm" component={Alarm} />

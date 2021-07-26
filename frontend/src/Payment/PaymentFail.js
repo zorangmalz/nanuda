@@ -1,6 +1,6 @@
 import React from "react";
 import { Default, Mobile } from "../App";
-import WebIntro, { Header, MHeader } from "../Style";
+import { Header, MHeader } from "../Style";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router";
 
