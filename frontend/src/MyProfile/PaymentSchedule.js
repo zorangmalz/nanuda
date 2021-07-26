@@ -1,6 +1,6 @@
 import React from "react"
 import { Default, Mobile } from "../App";
-import { Header, MHeader } from "../Style";
+import { BottomTab, Header, MHeader } from "../Style";
 
 export default function PaymentSchedule() {
     return (
@@ -28,6 +28,7 @@ export default function PaymentSchedule() {
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
                         <Header content="결제 내역" />
+                        <BottomTab mobile={false} state={2} />
                     </div>
                 </div>
             </Default>
@@ -43,6 +44,7 @@ export default function PaymentSchedule() {
                     backgroundColor: "#ffffff",
                 }}>
                     <MHeader content="결제 내역" />
+                    <BottomTab mobile={true} state={2} />
                 </div>
             </Mobile>
         </>

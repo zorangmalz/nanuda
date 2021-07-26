@@ -144,7 +144,7 @@ export default function TimeDeal() {
                         <Switch>
                             <Route exact path="/timedeal/entire" component={Entire} />
                         </Switch>
-                        <BottomTab mobile={false} />
+                        <BottomTab mobile={false} state={1}  />
                     </div>
                 </div>
             </Default>
@@ -168,7 +168,7 @@ export default function TimeDeal() {
                     <Switch>
                         <Route exact path="/timedeal/entire" component={Entire} />
                     </Switch>
-                    <BottomTab mobile={true} />
+                    <BottomTab mobile={true} state={1}  />
                 </div>
             </Mobile>
         </>

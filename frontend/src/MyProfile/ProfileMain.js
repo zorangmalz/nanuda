@@ -169,7 +169,7 @@ export default function ProfileMain() {
                             marginTop: 80,
                             marginBottom: 160
                         }}>배너 영역</div>
-                        <BottomTab mobile={false} />
+                        <BottomTab mobile={false} state={3}  />
                     </div>
                 </div>
             </Default>
@@ -264,7 +264,7 @@ export default function ProfileMain() {
                         marginTop: "20vw",
                         marginBottom: "40vw",
                     }}>배너 영역</div>
-                    <BottomTab mobile={true} />
+                    <BottomTab mobile={true} state={3}  />
                 </div>
             </Mobile>
         </>

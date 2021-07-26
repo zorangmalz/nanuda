@@ -487,7 +487,7 @@ export default function Home() {
                             :
                             <></>
                         }
-                        <BottomTab mobile={false} />
+                        <BottomTab mobile={false} state={0} />
                     </div>
                 </div>
             </Default>
@@ -770,7 +770,7 @@ export default function Home() {
                         :
                         <></>
                     }
-                    <BottomTab mobile={true} />
+                    <BottomTab mobile={true} state={0}  />
                 </div>
             </Mobile>
         </>
