@@ -349,13 +349,13 @@ export default function ReviewPost({ match }) {
                                 marginLeft: 8,
                             }}>{data.review_dislikeNum}</div>
                         </div>
-                        <StandardButton
+                        {/* <StandardButton
                             marginTop={30}
                             text="위시딜 신청하기"
                             onClick={isLogin ? () => history.push("/wishdeal/default") : () => setIsLogin(true)}
                             state={true}
                             marginBottom={40}
-                        />
+                        /> */}
                         {loginModal ?
                             <StandardChoiceModal
                                 title="회원가입이 필요한 서비스입니다."
@@ -547,13 +547,13 @@ export default function ReviewPost({ match }) {
                             marginLeft: 4,
                         }}>{data.review_dislikeNum}</div>
                     </div>
-                    <MStandardButton
+                    {/* <MStandardButton
                         marginTop={20}
                         text="위시딜 신청하기"
                         onClick={isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)}
                         state={true}
                         marginBottom={"10vw"}
-                    />
+                    /> */}
                     {loginModal ?
                         <StandardChoiceModal
                             title="회원가입이 필요한 서비스입니다."

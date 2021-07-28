@@ -116,8 +116,8 @@ export default function TimeDealDetail({ location }) {
                             :
                             <img alt="airpotthree" src={query.product === "airpod" ? airpotthree : ipadlong} style={{ width: 440, marginLeft: 20, marginBottom: 32, height: "auto" }} />
                         }
-                        <div style={{ width: 440, height: 1, backgroundColor: "rgba(1, 6, 8, 0.2)", alignSelf: "center", marginBottom: 32 }} />
-                        <div style={{
+                        <div style={{ width: 440, height: 1, backgroundColor: "rgba(1, 6, 8, 0.2)", alignSelf: "center", marginBottom: 16 }} />
+                        {/* <div style={{
                             fontFamily: "NotoSansCJKkr",
                             fontSize: 18,
                             fontWeight: "bold",
@@ -234,10 +234,10 @@ export default function TimeDealDetail({ location }) {
                                 opacity: 0.6,
                                 color: "#010608"
                             }}>2021.03.30</div>
-                        </div>
+                        </div> */}
                         <InfoBox onClick={() => setNeccInfo(true)} name="필수 표기 정보" marginBottom={16} />
                         <InfoBox onClick={() => setInfoShow(true)} name="배송 및 반품, 교환안내" marginBottom={16} />
-                        <InfoBox name="자주 묻는 질문" marginBottom={0} />
+                        {/* <InfoBox name="자주 묻는 질문" marginBottom={0} /> */}
                         <BottomTag marginTop={100} marginBottom={0} />
                         <div id="hauldeal_click" onClick={() => history.push("/ordersheet", { param: [query.product ? "airpod" : "ipad", 4, "", "white", 1, "", 4, ""], addInfo: "", url: "", image: query.product === "airpod" ? "airpodone" : "ipad" })} style={{
                             position: "fixed",
@@ -380,8 +380,8 @@ export default function TimeDealDetail({ location }) {
                         :
                         <img alt="airpotthree" src={query.product === "airpod" ? airpotthree : ipadlong} style={{ width: "90vw", marginLeft: "5vw", marginBottom: "8vw", height: "auto" }} />
                     }
-                    <div style={{ width: "90vw", height: 1, backgroundColor: "rgba(1, 6, 8, 0.2)", alignSelf: "center", marginBottom: "8vw" }} />
-                    <div style={{
+                    <div style={{ width: "90vw", height: 1, backgroundColor: "rgba(1, 6, 8, 0.2)", alignSelf: "center", marginBottom: "4vw" }} />
+                    {/* <div style={{
                         fontFamily: "NotoSansCJKkr",
                         fontSize: 16,
                         fontWeight: "bold",
@@ -497,10 +497,10 @@ export default function TimeDealDetail({ location }) {
                             opacity: 0.6,
                             color: "#010608"
                         }}>2021.03.30</div>
-                    </div>
+                    </div> */}
                     <MInfoBox onClick={() => setNeccInfo(true)} name="필수 표기 정보" marginBottom={"4vw"} />
                     <MInfoBox onClick={() => setInfoShow(true)} name="배송 및 반품, 교환안내" marginBottom={"4vw"} />
-                    <MInfoBox name="자주 묻는 질문" marginBottom={0} />
+                    {/* <MInfoBox name="자주 묻는 질문" marginBottom={0} /> */}
                     <MBottomTag marginTop={"25vw"} marginBottom={0} />
                     <div id="hauldeal_click" onClick={() => history.push("/ordersheet", { param: ["", 4, "", "white", 1, "", 4, ""], addInfo: "", url: "", image: query.product === "airpod" ? "airpodone" : "ipad" })} style={{
                         position: "fixed",

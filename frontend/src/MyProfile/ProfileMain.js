@@ -160,13 +160,13 @@ export default function ProfileMain() {
                             />
                         )}
                         <ManageList name="결제 수단 관리" path="profile/payment/method" />
-                        <ManageList name="내 리뷰" path="profile/review" />
+                        {/* <ManageList name="내 리뷰" path="profile/review" /> */}
                         <div style={{
                             width: 440,
                             height: 90,
                             backgroundColor: "#26c1f0",
                             marginLeft: 20,
-                            marginTop: 80,
+                            marginTop: 24,
                             marginBottom: 160
                         }}>배너 영역</div>
                         <BottomTab mobile={false} state={3}  />
@@ -255,13 +255,13 @@ export default function ProfileMain() {
                         />
                     )}
                     <ManageList name="결제 수단 관리" path="profile/payment/method" mobile={true} />
-                    <ManageList name="내 리뷰" path="profile/review" mobile={true} />
+                    {/* <ManageList name="내 리뷰" path="profile/review" mobile={true} /> */}
                     <div style={{
                         width: "90vw",
                         height: "22.5vw",
                         backgroundColor: "#26c1f0",
                         marginLeft: "5vw",
-                        marginTop: "20vw",
+                        marginTop: "6vw",
                         marginBottom: "40vw",
                     }}>배너 영역</div>
                     <BottomTab mobile={true} state={3}  />
@@ -410,7 +410,6 @@ const ManageList = ({ name, path, mobile }) => {
 
             borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
             paddingBottom: mobile ? "4vw" : 16,
-            marginTop: mobile ? "4vw" : 16,
             cursor: "pointer",
             width: mobile ? "90vw" : 440,
             alignSelf: "center",

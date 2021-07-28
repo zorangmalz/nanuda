@@ -200,7 +200,7 @@ export default function ReviewMain() {
                                 )}
                             </div>
                         }
-                        <div onClick={isLogin ? () => history.push("/review/select") : () => setLoginModal(true)} style={{
+                        {/* <div onClick={isLogin ? () => history.push("/review/select") : () => setLoginModal(true)} style={{
                             position: "fixed",
                             zIndex: 5,
                             bottom: 0,
@@ -217,7 +217,7 @@ export default function ReviewMain() {
                             fontWeight: "bold",
                             cursor: "pointer",
                             marginBottom: 30,
-                        }}>{isLogin ? "리뷰 작성하기" : "회원가입하고 리뷰 작성하기"}</div>
+                        }}>{isLogin ? "리뷰 작성하기" : "회원가입하고 리뷰 작성하기"}</div> */}
                         {loginModal ?
                             <StandardChoiceModal
                                 title="회원가입이 필요한 서비스입니다."
@@ -359,7 +359,7 @@ export default function ReviewMain() {
                             )}
                         </div>
                     }
-                    <div onClick={isLogin ? () => history.push("/review/select") : () => setLoginModal(true)} style={{
+                    {/* <div onClick={isLogin ? () => history.push("/review/select") : () => setLoginModal(true)} style={{
                         position: "fixed",
                         zIndex: 5,
                         bottom: 0,
@@ -376,7 +376,7 @@ export default function ReviewMain() {
                         fontWeight: "bold",
                         cursor: "pointer",
                         marginBottom: "7vw",
-                    }}>{isLogin ? "리뷰 작성하기" : "회원가입하고 리뷰 작성하기"}</div>
+                    }}>{isLogin ? "리뷰 작성하기" : "회원가입하고 리뷰 작성하기"}</div> */}
                     {loginModal ?
                         <StandardChoiceModal
                             title="회원가입이 필요한 서비스입니다."
