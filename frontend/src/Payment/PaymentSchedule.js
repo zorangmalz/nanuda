@@ -4,9 +4,11 @@ import { Default, Mobile } from "../App";
 import { BottomTab, Header, MHeader, numberWithCommas } from "../Style";
 import nodata from "../images/nodata.png"
 import { useHistory } from "react-router-dom";
+import { VictoryPie, VictoryLabel } from "victory"
 
 export default function PaymentSchedule() {
     const [data, setData] = useState([0])
+    const limit = 500000;
     const history = useHistory()
     return (
         <>
@@ -76,7 +78,7 @@ export default function PaymentSchedule() {
                                         opacity: 0.6,
                                         color: "#010608",
                                         marginRight: 8
-                                    }}>총 한도 : 500,000 원</div>
+                                    }}>총 한도 : {numberWithCommas(limit)} 원</div>
                                     <AiFillQuestionCircle size={24} color="#000000" />
                                 </div>
                             </div>
@@ -84,8 +86,28 @@ export default function PaymentSchedule() {
                                 width: 114,
                                 height: 114,
                                 borderRadius: 57,
-                                backgroundColor: "#000000"
-                            }}></div>
+                                backgroundColor: "#ffffff"
+                            }}>
+                                <svg width={114} height={114} >
+                                    <VictoryPie
+                                        colorScale={["#26c1f0", "#f2f3f8"]}
+                                        standalone={false}
+                                        width={114} height={114}
+                                        data={[
+                                            { x: "use", y: 0, label: "" },
+                                            { x: "no-use", y: limit, label: "" },
+                                        ]}
+                                        radius={57}
+                                    />
+                                    <circle cx="57" cy="57" r="40" fill="#ffffff" />
+                                    <VictoryLabel
+                                        textAnchor="middle" verticalAnchor="middle"
+                                        x={57} y={57}
+                                        style={{ fontSize: 18, fontFamily: "NotoSansCJKkr", fontWeight: "bold" }}
+                                        text="0%"
+                                    />
+                                </svg>
+                            </div>
                         </div>
                         <div style={{
                             width: 440,
@@ -217,8 +239,28 @@ export default function PaymentSchedule() {
                             width: 100,
                             height: 100,
                             borderRadius: 50,
-                            backgroundColor: "#000000"
-                        }}></div>
+                            backgroundColor: "#ffffff"
+                        }}>
+                            <svg width={100} height={100} >
+                                <VictoryPie
+                                    colorScale={["#26c1f0", "#f2f3f8"]}
+                                    standalone={false}
+                                    width={100} height={100}
+                                    data={[
+                                        { x: "use", y: 0, label: "" },
+                                        { x: "no-use", y: limit, label: "" },
+                                    ]}
+                                    radius={50}
+                                />
+                                <circle cx="50" cy="50" r="40" fill="#ffffff" />
+                                <VictoryLabel
+                                    textAnchor="middle" verticalAnchor="middle"
+                                    x={50} y={50}
+                                    style={{ fontSize: 16, fontFamily: "NotoSansCJKkr", fontWeight: "bold" }}
+                                    text="0%"
+                                />
+                            </svg>
+                        </div>
                     </div>
                     <div style={{
                         width: "90vw",
