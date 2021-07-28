@@ -252,7 +252,7 @@ export default function PaymentSchedule() {
                                     ]}
                                     radius={50}
                                 />
-                                <circle cx="50" cy="50" r="40" fill="#ffffff" />
+                                <circle cx="50" cy="50" r="38" fill="#ffffff" />
                                 <VictoryLabel
                                     textAnchor="middle" verticalAnchor="middle"
                                     x={50} y={50}
