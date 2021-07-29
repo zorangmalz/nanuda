@@ -46,7 +46,7 @@ export default function TimeDealDetail({ location }) {
                         backgroundColor: "#ffffff",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)"
                     }}>
-                        <Header content="하울딜" goBack={true} />
+                        <Header content="n분의1딜" goBack={true} />
                         <img alt="airpotone" src={query.product === "airpod" ? airpotone : ipadlogo} style={{
                             width: 480,
                         }} />
@@ -179,7 +179,7 @@ export default function TimeDealDetail({ location }) {
                                             fontSize: 14,
                                             fontWeight: "bold",
                                             color: "#010608",
-                                        }}>하울 홀릭</div>
+                                        }}>n분의1 홀릭</div>
                                     </div>
                                     <div style={{
                                         display: "flex",
@@ -310,7 +310,7 @@ export default function TimeDealDetail({ location }) {
                     minHeight: "100vh",
                     backgroundColor: "#ffffff",
                 }}>
-                    <MHeader content="하울딜" goBack={true} />
+                    <MHeader content="n분의1딜" goBack={true} />
                     <img alt="airpotone" src={query.product === "airpod" ? airpotone : ipadlogo} style={{
                         width: "100vw",
                     }} />
@@ -442,7 +442,7 @@ export default function TimeDealDetail({ location }) {
                                         fontSize: 12,
                                         fontWeight: "bold",
                                         color: "#010608",
-                                    }}>하울 홀릭</div>
+                                    }}>n분의1 홀릭</div>
                                 </div>
                                 <div style={{
                                     display: "flex",
