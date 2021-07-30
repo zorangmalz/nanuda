@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { VictoryPie, VictoryLabel } from "victory"
 
 export default function PaymentSchedule() {
-    const [data, setData] = useState([0])
+    const [data, setData] = useState([])
     const limit = 500000;
     const history = useHistory()
     return (
