@@ -102,7 +102,7 @@ export default function TimeDeal() {
     const [tabNum, dispatch] = useReducer(tab, 0)
     const onENTIRE = () => {
         dispatch({ type: "ENTIRE" })
-        history.push("/timedeal/entire")
+        history.replace("/timedeal/entire")
     }
     const onELECTRONIC = () => {
         dispatch({ type: "ELECTRONIC" })
