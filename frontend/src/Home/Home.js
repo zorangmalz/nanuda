@@ -7,8 +7,8 @@ import { useHistory } from "react-router";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import { IoMdCheckmarkCircle } from "react-icons/io"
-import smallbanner from "../images/smallbanner.png";
-import smallbannertwo from "../images/smallbannertwo.png";
+import smallbanner from "../images/smallbannercopy.png";
+import smallbannertwo from "../images/smallbannertwocopy.png";
 import Slider from "react-slick"
 import bannerOne from "../images/bannerOne.png"
 import bannerTwo from "../images/bannerTwo.png"

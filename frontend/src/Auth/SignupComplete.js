@@ -97,7 +97,7 @@ useEffect(()=>{
                     mobileco:userData.mobileco,
                     email:JSON.parse(realEmail).email,
                     uid: String(JSON.parse(realuid).uid),
-                    dupinfo:userData.dupinfo
+                    dupinfo:userData.conninfo
                 },
             })
 
