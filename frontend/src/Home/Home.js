@@ -445,7 +445,7 @@ export default function Home() {
                                 />
                             )}
                         </AfterContainer>
-                        <div style={{ marginTop: 64, marginLeft: 20, width: 440, height: 160, backgroundImage: `url(${banner})`, backgroundSize: "cover", borderRadius: 6, }}>
+                        {/* <div style={{ marginTop: 64, marginLeft: 20, width: 440, height: 160, backgroundImage: `url(${banner})`, backgroundSize: "cover", borderRadius: 6, }}>
                             <div style={{ marginLeft: 20, marginTop: 20, fontSize: 21, color: "#ffffff", fontWeight: "bold" }}>스타트업 대표님이신가요?</div>
                             <div style={{ marginLeft: 20, marginTop: 8, fontSize: 16, color: "#ffffff" }}>스타트업을 위한 분할결제 서비스를 신청해보세요.</div>
                             <div style={{ marginLeft: 24, marginTop: 8, backgroundColor: "#010608", width: 240, height: 48, borderRadius: 6 }}>
@@ -453,7 +453,7 @@ export default function Home() {
                                     <div style={{ textDecorationLine: "none", padding: 15, marginTop: 20, marginLeft: 20, fontSize: 16, fontWeight: "bold", color: "#ffffff" }}>첫 구매 수수료 50% 할인!</div>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                         <HomeBottomTag marginTop={200} marginBottom={100} bottomRef={bottomRef} />
                         {/* <div ref={buttonRef} onClick={hide ? () => { } : isLogin ? () => history.push("/wishdeal/default") : () => setLoginModal(true)} style={{
                             width: 440,
