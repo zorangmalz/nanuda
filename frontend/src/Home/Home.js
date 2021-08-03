@@ -55,9 +55,6 @@ const MAfterContainer = styled.div`
 
 export default function Home() {
     let history = useHistory()
-    function call() {
-        var obj = { "hi": "hihihihi" }
-    }
 
     //Get Service Review Data
     const [reviewData, setReviewData] = useState([])
