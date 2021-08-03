@@ -115,7 +115,7 @@ function App() {
         <Route path="/alarmpost" component={AlarmPost} />
         <Route path="/addaccount" component={PaymentAddAccount} />
         <Route path="/timedeal" component={TimeDeal} />
-        <Route path="/timedeal/detail" component={TimeDealDetail} />
+        <Route path="/detail" component={TimeDealDetail} />
       </Switch>
     </Router>
   );
