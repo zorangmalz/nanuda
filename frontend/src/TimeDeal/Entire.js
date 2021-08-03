@@ -66,7 +66,7 @@ export default function Entire() {
                             fourPrice="65,000"
                             stock={0}
                             sale={27}
-                            onClick={() => history.push('/detail?product=airpod')}
+                            onClick={() => history.push('/timedeal/detail?product=airpod')}
                         />
                         <TimeShop
                             id=""
@@ -78,7 +78,7 @@ export default function Entire() {
                             fourPrice="180,375"
                             stock={0}
                             sale={5}
-                            onClick={() => history.push('/detail?product=ipad')}
+                            onClick={() => history.push('/timedeal/detail?product=ipad')}
                         />
                     </div>
                 </div>

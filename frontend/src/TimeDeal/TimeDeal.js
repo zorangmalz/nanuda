@@ -1,9 +1,10 @@
 import React, { useReducer } from "react";
 import styled from "styled-components";
 import { Default, Mobile } from "../App";
-import WebIntro, { BottomTab, Header, MHeader } from "../Style";
+import { BottomTab, Header, MHeader } from "../Style";
 import { Switch, Route, useHistory } from "react-router";
 import Entire from "./Entire"
+import TimeDealDetail from "./TimeDealDetail"
 
 const Container = styled.div`
     width: 440px;
@@ -143,6 +144,7 @@ export default function TimeDeal() {
                         </Container>
                         <Switch>
                             <Route exact path="/timedeal/entire" component={Entire} />
+                            <Route path="/timedeal/detail" component={TimeDealDetail} />
                         </Switch>
                         <BottomTab mobile={false} state={1}  />
                     </div>
@@ -167,6 +169,7 @@ export default function TimeDeal() {
                     </MContainer>
                     <Switch>
                         <Route exact path="/timedeal/entire" component={Entire} />
+                        <Route path="/timedeal/detail" component={TimeDealDetail} />
                     </Switch>
                     <BottomTab mobile={true} state={1}  />
                 </div>

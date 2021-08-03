@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 import { Default, Mobile } from "../App";
 import { BottomTag, Header, MBottomTag, MHeader } from "../Style";
 import { useHistory } from "react-router";
 import airpotone from "../images/airpotone.png"
 import airpottwo from "../images/airpottwo.png"
 import airpotthree from "../images/airpotthree.png"
-import profile from "../images/profile.png"
-import reviewexample from "../images/reviewexample.png"
-import { AiFillStar, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import queryString from "query-string"
 import ipadlogo from "../images/ipadlogo.png"
@@ -19,7 +16,10 @@ export default function TimeDealDetail({ location }) {
     let history = useHistory()
 
     const query = queryString.parse(location.search)
-    console.log(query)
+    useEffect(() => {
+        console.log(query)
+    }, [])
+    
 
     const [infoHide, setInfoHide] = useState(true)
     const [infoShow, setInfoShow] = useState(false)
