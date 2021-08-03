@@ -738,7 +738,7 @@ export default function OrderSheet() {
                                 textAlign: "center",
                                 fontFamily: "NotoSansCJKkr"
                             }}>2회</div>
-                            <div onClick={onThree} style={{
+                            {/* <div onClick={onThree} style={{
                                 width: 95,
                                 marginRight: 20,
                                 borderRadius: 6,
@@ -768,7 +768,7 @@ export default function OrderSheet() {
                                 opacity: number === 4 ? 1 : 0.8,
                                 textAlign: "center",
                                 fontFamily: "NotoSansCJKkr"
-                            }}>4회</div>
+                            }}>4회</div> */}
                         </div>
                         <div style={{
                             padding: 16,
@@ -1191,7 +1191,7 @@ export default function OrderSheet() {
                             textAlign: "center",
                             fontFamily: "NotoSansCJKkr"
                         }}>2회</div>
-                        <div onClick={onThree} style={{
+                        {/* <div onClick={onThree} style={{
                             width: 80,
                             marginRight: 10,
                             borderRadius: 6,
@@ -1221,7 +1221,7 @@ export default function OrderSheet() {
                             opacity: number === 4 ? 1 : 0.8,
                             textAlign: "center",
                             fontFamily: "NotoSansCJKkr"
-                        }}>4회</div>
+                        }}>4회</div> */}
                     </div>
                     <div style={{
                         padding: "4%",
