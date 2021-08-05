@@ -219,9 +219,16 @@ export default function Home() {
                                 </div>
                             </Slider>
                         </div>
+                        
                         <BannerContainer>
-                            <div id="wishdeal_click" onClick={() => history.push("wishdeal/default")} style={{ borderRadius: 6, }} >
-                                <img style={{ marginRight: 16, cursor: "pointer", borderRadius: 6, }} src={smallbanner} alt="광고배너" /></div>
+                            {/* <div id="wishdeal_click" onClick={() => history.push("wishdeal/default")} style={{ borderRadius: 6, }} > */}
+                            <a href={"https://docs.google.com/forms/d/e/1FAIpQLSedEeMtDWU6rlKZ7QC_2YhpWerjx_sWI7C3UuS2gsHMTz85hA/viewform?usp=sf_link"} target="_blank" style={{
+                                textDecorationLine: "none",
+                                WebkitAppearance: "none",
+                                borderRadius: 6,
+                            }}><img style={{ marginRight: 16, cursor: "pointer", borderRadius: 6, }} src={smallbanner} alt="광고배너" /></a>
+                                
+                                {/* </div> */}
                             <a href={"https://www.notion.so/ydot/1-2021-06-03-fc5701e698f24bb7ab5cb9068c1e2934"} target="_blank" style={{
                                 textDecorationLine: "none",
                                 WebkitAppearance: "none",
