@@ -6,7 +6,7 @@ import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile
 import { authenticate } from "./authenticate";
 import plus from "../images/plus.png"
 
-function reducer(state, action) {
+  function reducer(state, action) {
     switch (action.type) {
         case 'TWO':
             return 2;
