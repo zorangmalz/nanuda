@@ -16,8 +16,14 @@ export default function TimeDealDetail({ location }) {
     let history = useHistory()
 
     const query = queryString.parse(location.search)
+    const [des,setDes]=useState("")
     useEffect(() => {
         console.log(query)
+        if(query.product === "airpod"){
+            setDes("Apple AirPods Pro 애플 에어팟 프로 1세대 무선충전형")
+        }else{
+            setDes(`Apple iPad Air 4세대 (MYFM2KH/A), Wi-Fi, 64GB, 스페이스그레이`)
+        }
     }, [])
     
 
@@ -67,7 +73,7 @@ export default function TimeDealDetail({ location }) {
                             marginRight: 20,
                             marginTop: 8,
                             marginBottom: 28,
-                        }}>{query.product === "airpod" ? "Apple AirPods Pro 애플 에어팟 프로 1세대 무선충전형" : `Apple iPad Air 4세대 (MYFM2KH/A), ${<br />} Wi-Fi, 64GB, 스페이스그레이`}</div>
+                        }}>{des}</div>
                         <DivideContainer num="2" price={query.product === "airpod" ? "130,000" : "360,750"} marginBottom={20} />
                         <DivideContainer num="4" price={query.product === "airpod" ? "65,000" : "180,375"} marginBottom={16} />
                         <div style={{
@@ -239,7 +245,8 @@ export default function TimeDealDetail({ location }) {
                         <InfoBox onClick={() => setInfoShow(true)} name="배송 및 반품, 교환안내" marginBottom={16} />
                         {/* <InfoBox name="자주 묻는 질문" marginBottom={0} /> */}
                         <BottomTag marginTop={100} marginBottom={0} />
-                        <div id="hauldeal_click" onClick={() => history.push("/ordersheet", { param: [query.product ? "airpod" : "ipad", 4, "", "white", 1, "", 4, ""], addInfo: "", url: "", image: query.product === "airpod" ? "airpodone" : "ipad" })} style={{
+                        {/* 넘기는 파라미터값으로 1.product Id(여기서는 Airpod) 2.가격, 3.옵션 */}
+                        <div id="hauldeal_click" onClick={() => history.push("/timeorder", { param:[query.product,query.product=="ipad"? "721500":"260000","",des] })} style={{
                             position: "fixed",
                             bottom: 40,
                             width: 440,
@@ -502,7 +509,8 @@ export default function TimeDealDetail({ location }) {
                     <MInfoBox onClick={() => setInfoShow(true)} name="배송 및 반품, 교환안내" marginBottom={"4vw"} />
                     {/* <MInfoBox name="자주 묻는 질문" marginBottom={0} /> */}
                     <MBottomTag marginTop={"25vw"} marginBottom={0} />
-                    <div id="hauldeal_click" onClick={() => history.push("/ordersheet", { param: ["", 4, "", "white", 1, "", 4, ""], addInfo: "", url: "", image: query.product === "airpod" ? "airpodone" : "ipad" })} style={{
+                    {/* 넘기는 파라미터값으로 1.product Id(여기서는 Airpod) 2.가격, 3.옵션 */}
+                    <div id="hauldeal_click" onClick={() => history.push("/timeorder", { param:[query.product,query.product=="ipad"? "721500":"260000","",des] })} style={{
                         position: "fixed",
                         bottom: "10vw",
                         width: "90vw",

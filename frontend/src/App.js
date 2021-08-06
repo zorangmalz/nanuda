@@ -45,6 +45,7 @@ import PaymentARS from './MyProfile/PaymentARS';
 import AlarmPost from './Alarm/AlarmPost';
 import PaymentAddAccount from './MyProfile/PaymentAddAccount';
 import TimeDeal from './TimeDeal/TimeDeal';
+import TimeOrder from "./TimeDeal/TimeOrder"
 import Alarm from './Alarm/Alarm';
 import TimeDealDetail from "./TimeDeal/TimeDealDetail"
 import PaymentSchedule from './Payment/PaymentSchedule';
@@ -115,6 +116,7 @@ function App() {
         <Route path="/alarmpost" component={AlarmPost} />
         <Route path="/addaccount" component={PaymentAddAccount} />
         <Route path="/timedeal" component={TimeDeal} />
+        <Route path="/timeorder" component={TimeOrder} />
         <Route path="/detail" component={TimeDealDetail} />
       </Switch>
     </Router>

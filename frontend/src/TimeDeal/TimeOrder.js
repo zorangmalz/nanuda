@@ -3,8 +3,11 @@ import { useHistory, useLocation } from "react-router";
 import { Default, Mobile } from "../App";
 import { Header, MHeader } from "../Style";
 import { BasicAddress, MBasicAddress, MNoAddress, NoAddress } from "../MyProfile/ProfileEdit";
-import { authenticate } from "./authenticate";
+// import { authenticate } from "./authenticate";
 import plus from "../images/plus.png"
+import sampleone from "../images/sampleone.png"
+import sampletwo from "../images/sampletwo.png"
+
 
 function reducer(state, action) {
     switch (action.type) {
@@ -136,16 +139,6 @@ export default function TimeOrder() {
             date: twoDate,
             money: twoMoney,
         },
-        {
-            num: "3",
-            date: threeDate,
-            money: threeMoney,
-        },
-        {
-            num: "4",
-            date: fourDate,
-            money: fourMoney,
-        },
     ]
 
     //결제 성공 시 -> paymentsuccess, 결제 실패 시 -> paymentfail
@@ -213,9 +206,6 @@ export default function TimeOrder() {
     //파라미터 받기
     const location = useLocation()
     const myparam = location.state.param
-    const addre = location.state.addInfo
-    const getUrl = location.state.url
-    const imageUrl = location.state.image
     const [image, setImage] = useState("")
     const [itemDes, setItemDes] = useState("")
     const [orderDes, setOrderDes] = useState("")
@@ -224,104 +214,18 @@ export default function TimeOrder() {
 
     useEffect(() => {
         console.log(myparam, "myparam")
-        try {
-            //console.log(myparam[0].image.url)
-            setImage(myparam[0].image.url)
-            setItemDes(myparam[0].title)
-
-        } catch (err) {
-            setImage(imageUrl)
-            setItemDes(myparam.Fname)
-            //console.log("??")
+       setPrice(myparam[1])
+        setItemDes("애플")
+        setOrderDes(myparam[3])
+        if(myparam[0]=="airpod"){
+            setImage(sampleone)
+            setOneMoney(130000)
+            setTwoMoney(130000)
+        }else{
+            setImage(sampletwo)
+            setOneMoney(360750)
+            setTwoMoney(360750)
         }
-        if (myparam[6] === 2) {
-            setShip(0)
-        } else if (myparam[6] === 3) {
-            setShip(2500)
-        } else if (myparam[6] === 4) {
-            setShip(5000)
-        } else {
-            setShip(myparam[7])
-        }
-
-        if (myparam[1] === 1) {
-            setOrderDes(myparam[3].ELcolor + "   " + myparam[3].ELetc)
-            setPrice(Number(myparam[3].ELprice) + Number(myparam[5]))
-
-            if (number === 2) {
-                var res = parseInt(parseInt((myparam[3].ELprice) / 100) / 2)
-                var left = parseInt((myparam[3].ELprice) / 100) % 2
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney("-")
-                setFourMoney("-")
-            } else if (number === 3) {
-                var res = parseInt(parseInt((myparam[3].ELprice) / 100) / 3)
-                var left = parseInt((myparam[3].ELprice) / 100) % 3
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney(res * 100)
-                setFourMoney("-")
-            } else {
-                var res = parseInt(parseInt((myparam[3].ELprice) / 100) / 4)
-                var left = parseInt((myparam[3].ELprice) / 100) % 4
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney(res * 100)
-                setFourMoney(res * 100)
-            }
-        } else if (myparam[1] === 2) {
-            setOrderDes(myparam[3].Fcolor + "   " + myparam[3].Fsize + "   " + myparam[3].Fetc)
-            setPrice(Number(myparam[3].Fprice) + Number(myparam[5]))
-            if (number === 2) {
-                var res = parseInt(parseInt((myparam[3].Fprice) / 100) / 2)
-                var left = parseInt((myparam[3].Fprice) / 100) % 2
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney("-")
-                setFourMoney("-")
-            } else if (number === 3) {
-                var res = parseInt(parseInt((myparam[3].Fprice) / 100) / 3)
-                var left = parseInt((myparam[3].Fprice) / 100) % 3
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney(res * 100)
-                setFourMoney("-")
-            } else {
-                var res = parseInt(parseInt((myparam[3].Fprice) / 100) / 4)
-                var left = parseInt((myparam[3].Fprice) / 100) % 4
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney(res * 100)
-                setFourMoney(res * 100)
-            }
-        } else {
-            setOrderDes(myparam[3].Eetc)
-            setPrice(Number(myparam[3].Eprice) + Number(myparam[5]))
-            if (number === 2) {
-                var res = parseInt(parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) / 2)
-                var left = parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) % 2
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney("-")
-                setFourMoney("-")
-            } else if (number === 3) {
-                var res = parseInt(parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) / 3)
-                var left = parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) % 3
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney(res * 100)
-                setFourMoney("-")
-            } else {
-                var res = parseInt(parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) / 4)
-                var left = parseInt((Number(myparam[3].Eprice) + Number(myparam[5])) / 100) % 4
-                setOneMoney(res * 100 + left * 100)
-                setTwoMoney(res * 100)
-                setThreeMoney(res * 100)
-                setFourMoney(res * 100)
-            }
-        }
-
     }, [number])
 
 
