@@ -5,7 +5,7 @@ import { Header, MHeader } from "../Style";
 import { authenticate } from "../Ordersheet/authenticate";
 import plus from "../images/plus.png"
 
-export default function ProfilePaymentMethod() {
+export default function PaymentMethod() {
     let history = useHistory()
     const [bank, setBank] = useState("")
     const [banknum, setBankNum] = useState("")
@@ -278,7 +278,7 @@ export default function ProfilePaymentMethod() {
                                     fontFamily: "NotoSansCJKkr",
                                     opacity: 0.2,
                                     textAlign: "center"
-                                }}>결제수단 변경하기</div>
+                                }}>결제수단 추가하기</div>
                             </>
                             :
                             <div onClick={handleClick}  style={{
@@ -345,7 +345,7 @@ export default function ProfilePaymentMethod() {
                                 fontFamily: "NotoSansCJKkr",
                                 opacity: 0.2,
                                 textAlign: "center"
-                            }}>결제수단 변경하기</div>
+                            }}>결제수단 추가하기</div>
                         </>
                         :
                         <div onClick={handleClick} style={{

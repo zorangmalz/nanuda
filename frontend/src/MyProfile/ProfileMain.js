@@ -159,7 +159,7 @@ export default function ProfileMain() {
                                 mobile={false}
                             />
                         )}
-                        <ManageList name="결제 수단 관리" path="profile/payment/method" />
+                        <ManageList name="결제 수단 관리" path="payment/method" />
                         {/* <ManageList name="내 리뷰" path="profile/review" /> */}
                         <div style={{
                             width: 440,
@@ -254,7 +254,7 @@ export default function ProfileMain() {
                             mobile={true}
                         />
                     )}
-                    <ManageList name="결제 수단 관리" path="profile/payment/method" mobile={true} />
+                    <ManageList name="결제 수단 관리" path="payment/method" mobile={true} />
                     {/* <ManageList name="내 리뷰" path="profile/review" mobile={true} /> */}
                     <div style={{
                         width: "90vw",

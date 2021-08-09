@@ -75,7 +75,7 @@ export default function ProfilePoint() {
                             paddingBottom: 32,
                             borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                             alignSelf: "center",
-                        }}>{numberWithCommas(entirePoint)} P</div>
+                        }}>{numberWithCommas(entirePoint)} 원</div>
                         {pointList.length > 0 ? 
                             pointList.map((item) => {
                                 return <PointList 
@@ -121,7 +121,7 @@ export default function ProfilePoint() {
                         paddingBottom: "8vw",
                         borderBottom: "1px solid rgba(1, 6, 8, 0.2)",
                         alignSelf: "center",
-                    }}>{numberWithCommas(entirePoint)} P</div>
+                    }}>{numberWithCommas(entirePoint)} 원</div>
                     {pointList.length > 0 ?
                         pointList.map((item) => {
                             return <PointList
@@ -177,7 +177,7 @@ function PointList({ date, content, price, mobile }) {
                     fontSize: mobile ? 14 : 16,
                     fontWeight: "bold",
                     color: price > 0 ? "#26c1f0" : "#f72b2b"
-                }}>{price > 0 ? "+" + price + " P" : price + " P"}</div>
+                }}>{price > 0 ? "+" + price + " 원" : price + " 원"}</div>
             </div>
         </div>
     )
