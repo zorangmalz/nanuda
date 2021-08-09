@@ -143,7 +143,7 @@ export default function ReviewMain() {
                                                 fontSize: 14,
                                                 fontWeight: "bold",
                                                 marginTop: 6
-                                            }}>{NameMask(item.user_name)} </div>
+                                            }}>{NameMask(item.user_name)}님이 구매하신 상품 </div>
                                         </div>
                                         {item.review_image.length > 0 ?
                                             <img alt="리뷰사진" src={item.review_image} onClick={() => history.push(`/review/post/${item.id}`)} style={{
@@ -151,7 +151,7 @@ export default function ReviewMain() {
                                                 height: 160,
                                                 borderRadius: 6,
                                                 backgroundColor: "#ffffff",
-                                                marginTop: 8,
+                                                marginTop: 16,
                                                 objectFit: "cover",
                                                 border: "1px solid #ebebeb"
                                             }} />
@@ -161,37 +161,30 @@ export default function ReviewMain() {
                                                 height: 160,
                                                 borderRadius: 6,
                                                 backgroundColor: "#010608",
-                                                marginTop: 8,
+                                                marginTop: 16,
                                                 objectFit: "cover",
                                                 border: "1px solid #ebebeb"
                                             }} />
                                         }
                                         <div style={{
-                                            display: "flex",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            justifyContent: "flex-start",
-                                            marginTop: 8,
-                                        }}>
-                                            <AiFillStar size={16} color="#fad94f" />
-                                            <div style={{
-                                                fontFamily: "NotoSansCJKkr",
-                                                fontSize: 14,
-                                                fontWeight: "bold",
-                                                color: "#010608",
-                                                marginLeft: 4,
-                                            }}>{item.review_score}</div>
-                                        </div>
+                                            fontSize: 14,
+                                            marginTop: 6,
+                                            width: 210,
+                                            fontFamily: "NotoSansCJKkr",
+                                            color: "#202426",
+                                            fontWeight: "bold",
+                                        }}>날짜 작성</div>
                                         <div style={{
                                             fontSize: 14,
-                                            opacity: 0.8,
                                             marginTop: 8,
                                             width: 210,
-                                            fontFamily: "NotoSansCJKkr"
-                                        }}>{item.review_like}</div>
+                                            fontFamily: "NotoSansCJKkr",
+                                            color: "#202426",
+                                            fontWeight: "bold",
+                                        }}>상품명 작성</div>
                                         <div style={{
                                             color: "#26c1f0",
-                                            marginTop: 4,
+                                            marginTop: 8,
                                             fontSize: 14,
                                             fontWeight: "bold",
                                             fontFamily: "NotoSansCJKkr"
